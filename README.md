@@ -1,6 +1,6 @@
 # International Tax Competitiveness Index
 
-The Tax Foundation’s International Tax Competitiveness Index (ITCI) measures the degree to which the 34 OECD countries’ tax systems promote competitiveness through low tax burdens on business investment and neutrality through a well-structured tax code. The ITCI considers more than forty variables across five categories: Corporate Taxes, Consumption Taxes, Property Taxes, Individual Taxes, and International Tax Rules.
+The Tax Foundation’s [International Tax Competitiveness Index](http://taxfoundation.org/article/international-tax-competitiveness-index) (ITCI) measures the degree to which the 34 OECD countries’ tax systems promote competitiveness through low tax burdens on business investment and neutrality through a well-structured tax code. The ITCI considers more than forty variables across five categories: Corporate Taxes, Consumption Taxes, Property Taxes, Individual Taxes, and International Tax Rules.
 
 The ITCI attempts to display not only which countries provide the best tax environment for investment but also the best tax environment to start and grow a business.
 
