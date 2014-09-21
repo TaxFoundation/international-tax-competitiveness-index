@@ -30,6 +30,56 @@ From here, two transformations occur on the category scores and the overall scor
 
 Second, the p-value of the overall and category scores for each country is scaled to 100, relative to the country with the highest p-value overall and in each category. This is done by taking each country’s p-value and dividing it by the highest p-value in each category. For example, Estonia, which has the highest overall p-value of 77.9 percent, receives a final overall score of 100. The United States, which has an overall p-value of 33.5 percent, receives a final overall score of 43.1.
 
+## Explanation of Data
+
+A more thorough description of these data and how the Tax Foundation uses them is contained within the [International Tax Competitiveness Index](http://taxfoundation.org/article/international-tax-competitiveness-index).
+
+| Name | Description |
+| --- | --- |
+| `country` | Name of each OECD nation in the Index, in English. |
+| `corporate` | The top marginal corporate tax rate in a given nation. |
+| `losscarryback` | Number of years a corporation may apply current losses against previous tax bills, allowing for tax rebates. |
+| `losscarryforward` | Number of years a corporation may apply current losses against future tax bills, lowering those years' taxable income. |
+| `pdvmachines` | Percentage of the present value cost of machinery that corporations can write off over the depreciable life of the asset. |
+| `pdvbuildings` | Percentage of the present value cost of buildings that corporations can write off over the depreciable life of the asset. |
+| `pdvintangibles` | Percentage of the present value cost of intangibles that corporations can write off over the depreciable life of the asset. |
+| `inventory` | Score given based on a country's allowable inventory cost accounting methods. Countries that allow Last In, First Out (LIFO) score `1`; countries that allow Average Cost of Inventory score `0.5`; countries that only allow First In, First Out (FIFO) score `0`. |
+| `patentbox` | Indicates which countries have patent boxes, which create lower tax rates for income generated through patented products. Countries without patent boxes are marked with `0`, countries with patent boxes are marked as `1`. |
+| `rndcredit` | Indicates which countries offer research and development tax credits. Countries without such credits are marked `0`; those with R&D credits are marked `1`. |
+| `corptime` | Complexity of tax system measured by average time in hours needed to comply with a country's corporate tax requirements. |
+| `profitpayments` | Complexity of tax system measured by number of yearly profit payments. |
+| `otherpayments` | Complexity of tax system measured by number of other yearly tax payments. |
+| `vatrate` | The national (or average) consumption tax rate (either sales tax or VAT) for a country. |
+| `threshold` | The upper sales limit in US dollars for which a corporation does not need to pay consumption taxes. |
+| `base` | The ratio of consumption taxes collected to potential collections if consumption tax rates were applied equally across all goods/services. This ratio measures exemptions to the taxes and/or noncompliance. |
+| `deduction limitations` | Indicates whether or not there are limits to deducting consumption taxes paid on business inputs. Countries with limits to deducations are marked `1`; counties with no limits are marked `0`. |
+| `consumptiontime` | Complexity of consumption taxes measured by average time in hours needed for corporations to comply with a country's consumption tax requirements. |
+| `propertytaxes` | Indicates whether capital additions to land are taxed. Fully taxing land and improvements is marked `1`; allowing deductions of taxes on improvements from corporate income taxes is marked `0.5`; taxing only land or not having a property tax is marked `0`. |
+| `propertytaxescollections` | Property taxes collected in a country as a percentage of GDP. |
+| `netwealth` | Indicates the existence of taxes on net wealth. Countries with wealth taxes are marked `1`; those without are marked `0`. |
+| `estate/inheritance tax` | Indicates the existence of taxes on estates or inheritances. Countries with such taxes are marked `1`; those without are marked `0`. |
+| `transfertaxes` | Indicates the existence of taxes on the transfer (buying and selling) of real property. Countries with property transfer taxes are marked `1`; those without are marked `0`. |
+| `Assettaxes` | Indicates the existence of a tax on net corporate assets. Countries with an asset tax are marked `1`; those without are marked `0`. |
+| `capitalduties` | Indicates the existence of a tax on the issuance of shares of stock. Countries with a capital duties tax are marked `1`; those without are marked `0`. |
+| `financialtrans` | Indicates the existence of a tax on the transfer of financial assets. Countries with financial transfer taxes are marked `1`; those without are marked `0`. |
+| `capgainsrate` | Tax rate for capital gains. |
+| `capgainsindex` | Indicates whether a country indexes capital gains against inflation, ensuring that only real returns are taxed. Countries with capital gains indexing are marked `1`; countries without indexing are marked `0`. |
+| `divrate` |  The total top marginal dividend tax rate after any imputation or credit system. |
+| `incrate` | The top marginal income tax rate. |
+| `progressivity` | Measure of progressivity of individual income tax rates as a ratio of minimum income level at which the top rate applies to the average income. |
+| `taxwedge` | Total tax cost of labor in a country (includes individual income tax and payroll tax). |
+| `laborpayments` | Complexity of tax system measured by number of yearly labor tax payments. |
+| `labortime` | Complexity of tax system measured by average time in hours needed to comply with a country's labor tax requirements. |
+| `dividendexempt` | Percentage of dividends paid from foreign subsidiaries which are exempt from local taxes. |
+| `capgainsexemption` | Indicates whether capital gains from foreign investments are exempted from local taxes. Fully exempt is marked as `1`; non-exempt is marked as `0`. |
+| `divwithhold` | Required withholding for tax payments on dividends to be paid to foreign investors or businesses. |
+| `intwithhold` | Required withholding for tax payments on interest to be paid to foreign investors or businesses. |
+| `roywithhold` | Required withholding for tax payments on royalties to be paid to foreign investors or businesses. |
+| `taxtreaties` | Number of foreign nations with which a country has tax treaties. |
+| `cfcrules` | Indicates existence of controlled foreign corporation rules. Countries with CFC rules are marked `1`; those without are marked `0`. |
+| `country limitations` | Indicates whether country has certain exemptions to a territorial tax system based on the source of the foreign income. Existence of exemptions are marked as `1`; no exemptions are marked `0`.  |
+| `thincap` | Indicates whether a country puts thin capitalization resitrictions on companies' debt-to-asset ratios. Countries with restrictions are marked as `1`; those without are marked `0`. |
+
 ## Data Sources
 
 * PricewaterhouseCoopers Worldwide Tax Summaries
