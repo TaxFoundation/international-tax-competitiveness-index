@@ -1,6 +1,6 @@
 # Sets the working directory. This sets it to the "index" folder on my desktop
 
-setwd("C:/Users/kep/Desktop/index")
+setwd("C:/Users/kep/Documents/GitHub/indexcode")
 
 #Clears all datasets and variables from memory
 
