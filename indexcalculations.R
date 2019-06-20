@@ -1,27 +1,29 @@
 # Sets the working directory. This sets it to the "index" folder on my desktop
 library(plyr)
 
-setwd("C:/Users/kep/Dropbox (Personal)/Work/international-tax-competitiveness-index")
+setwd("C:/Users/kep/Dropbox (Personal)/Work/international-tax-competitiveness-index/2016 Index")
 
 #Clears all datasets and variables from memory
 
 rm(list=ls())
 #Load Data
 #2014
-rawdata2014<-read.csv("indexdata2014fixed.csv", header = TRUE, fill = TRUE, sep = ",")
+rawdata2014<-read.csv("indexdata2014.csv", header = TRUE, fill = TRUE, sep = ",")
 rawdata2014$year<-2014
 #2015
 rawdata2015<-read.csv("indexdata2015.csv", header = TRUE, fill = TRUE, sep = ",")
   #rawdata2015<-rename(rawdata2015, c("country.limitations"="countrylimitations"))
   rawdata2015$year<-2015
-
+#2016
+rawdata2016<-read.csv("indexdata2016France.csv", header = TRUE, fill = TRUE, sep = ",")
+rawdata2016$year<-2016
 #Combined Data
-rawdata<-rbind(rawdata2014,rawdata2015)
+rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016)
 
   #ALT Min-Max Test
     
     normalize <-function(x){
-      normal <- apply(x,2, function(x){(x-min(x))/(max(x)-min(x))*100})
+      normal <- apply(x,2, function(x){(x-min(x))/(max(x)-min(x))*10})
       
       return(normal)
     }
@@ -90,7 +92,7 @@ flipfunc <- function(x) {
 
 ALTflip <- function(x){
   
-  (x-100)*-1
+  (x-10)*-1
   
 }
 
@@ -298,11 +300,11 @@ categories$final<-apply((categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
   #Alt Subcategory Scores
 
-    ALTsubcategories<-data.frame(country=rawdata$country,
-                              ddply(ALTsubcategories[-1],
-                                    .(year),
-                                    ALTscale)
-    )
+#    ALTsubcategories<-data.frame(country=rawdata$country,
+#                              ddply(ALTsubcategories[-1],
+#                                    .(year),
+#                                    ALTscale)
+#    )
 
 
   #Add Ranks
@@ -359,11 +361,11 @@ categories<-data.frame(country=rawdata$country,
 
   #ALT Category Scores
 
-    ALTcategories<-data.frame(country=rawdata$country,
-                           ddply(ALTcategories[-1],
-                                 .(year),
-                                 ALTscale)
-    )
+#    ALTcategories<-data.frame(country=rawdata$country,
+#                           ddply(ALTcategories[-1],
+#                                 .(year),
+#                                 ALTscale)
+#    )
   
   #Add Ranks
 
@@ -441,7 +443,7 @@ rm(zscores, categories, subcategories, ALTscores, ALTcategories, ALTsubcategorie
 
 Final2014<-finalcategories[finalcategories$year==2014,]
 Final2015<-finalcategories[finalcategories$year==2015,]
-
+Final2016<-finalcategories[finalcategories$year==2016,]
 
 #Data Check
 
@@ -451,7 +453,7 @@ check<-rawdata[rawdata$country == "Greece",]
 
   #Does the normalization technique drive the results?
 
-    cor(ALTfinalcategories$final[ALTfinalcategories$year == 2015],finalcategories$final[finalcategories$year == 2015])
+    cor(ALTfinalcategories$final[ALTfinalcategories$year == 2016],finalcategories$final[finalcategories$year == 2016])
 
       #not really. 98 percent correlation between the two
 
