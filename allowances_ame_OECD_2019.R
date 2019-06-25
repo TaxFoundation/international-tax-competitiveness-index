@@ -35,7 +35,7 @@ using(countrycode)
 using(tidyverse)
 using(readxl)
 
-cbt<-read.csv("./data/CBT_tax_database_web_2019_all_ame.csv", header = TRUE, fill = TRUE, sep = ",")
+cbt<-read.csv("./CBT_tax_database_web_2019_all_ame.csv", header = TRUE, fill = TRUE, sep = ",")
 
 
 # copy 2018 cbt data to 2019
@@ -44,7 +44,7 @@ year2019_preliminary$year <- 2019
 cbt <- rbind(cbt, year2019_preliminary)
 
 # gdp data
-gdp <- read.csv("./data/USDA_ERSInternationalMacroeconomicDataSet_GDP.csv", header = TRUE, fill = TRUE, sep = ",", fileEncoding = "UTF-8-BOM", check.names=FALSE)
+gdp <- read.csv("./USDA_ERSInternationalMacroeconomicDataSet_GDP.csv", header = TRUE, fill = TRUE, sep = ",", fileEncoding = "UTF-8-BOM", check.names=FALSE)
 gdp <- melt(gdp, id.vars = c("Country"))
 gdp$Country <- countrycode(gdp$Country, 'country.name', 'iso3c')
 names(gdp)[names(gdp) == 'Country'] <- 'country'
@@ -54,9 +54,9 @@ names(gdp)[names(gdp) == 'value'] <- 'gdp'
 #Alternative GDP source data 
 #GDP Data cleaning
 #Read in USDA data
-USDA_Projected<- read_excel("./data/ProjectedRealGDPValues.xlsx", range = "A11:K232")
+USDA_Projected<- read_excel("./ProjectedRealGDPValues.xlsx", range = "A11:K232")
 USDA_Projected<-USDA_Projected[,-c(2:8)]
-USDA_Historical<-read_excel("./data/HistoricalRealGDPValues.xls", range = "A11:AL232")
+USDA_Historical<-read_excel("./HistoricalRealGDPValues.xls", range = "A11:AL232")
 gdp<-merge(USDA_Historical,USDA_Projected,by="Country")
 colnames(gdp)[1]<-"Country"
 gdp<-na.omit(gdp)
@@ -552,7 +552,7 @@ legend(2010, y=0.7, legend=c("Machinery", "Buildings","Intangibles"), col=c("gre
 title("Present Discounted Value of Cost Recovery \nin the OECD by Asset Category, 1983-2019")
 
 #EU Countries and CCCTB
-CCCTB<-read_xlsx("./data/CCCTB_and_EU.xlsx")
+CCCTB<-read_xlsx("./CCCTB_and_EU.xlsx")
 CCCTB<-CCCTB[,c(1,9)]
 CCCTB<-subset(CCCTB, CCCTB$country!="CCTB" & CCCTB$country!="CHE" & CCCTB$country!="TUR" & CCCTB$country!="NOR" & CCCTB$country!="ISL")
 CCCTB<-CCCTB[
@@ -633,7 +633,7 @@ year.2019.rank$buildings.rank<- rank(-year.2019.rank$`buildings`,ties.method = "
 year.2019.rank$intangibles.rank<- rank(-year.2019.rank$`intangibles`,ties.method = "min")
 year.2019.rank$waverage.rank<- rank(-year.2019.rank$`waverage`,ties.method = "min")
 
-country.code<-read_xlsx("./data/ISO Country Codes.xlsx")
+country.code<-read_xlsx("./ISO Country Codes.csv")
 colnames(country.code)<-c("country","ISO-2","ISO-3")
 colnames(year.2019.rank)[colnames(year.2019.rank)=="country"] <- "ISO-3"
 year.2019.rank<-merge(year.2019.rank,country.code,by=c("ISO-3"))
