@@ -1,7 +1,8 @@
 # Sets the working directory. This sets it to the "index" folder on my desktop
 library(plyr)
+library(dplyr)
 
-setwd("C:/Users/kep/Dropbox (Personal)/Work/international-tax-competitiveness-index/2016 Index")
+setwd("C:/Users/kep/Dropbox (Personal)/Work/international-tax-competitiveness-index/2017 Index")
 
 #Clears all datasets and variables from memory
 
@@ -15,10 +16,17 @@ rawdata2015<-read.csv("indexdata2015.csv", header = TRUE, fill = TRUE, sep = ","
   #rawdata2015<-rename(rawdata2015, c("country.limitations"="countrylimitations"))
   rawdata2015$year<-2015
 #2016
-rawdata2016<-read.csv("indexdata2016France.csv", header = TRUE, fill = TRUE, sep = ",")
+rawdata2016<-read.csv("indexdata2016.csv", header = TRUE, fill = TRUE, sep = ",")
 rawdata2016$year<-2016
+#2017
+rawdata2017<-read.csv("indexdata2017-fixed.csv", header = TRUE, fill = TRUE, sep = ",")
+rawdata2017$year<-2017
+#2017TCJA
+rawdataft<-read.csv("indexdata2017-fixedft.csv", header = TRUE, fill = TRUE, sep = ",")
+rawdataft$year<-2018
+
 #Combined Data
-rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016)
+rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdataft)
 
   #ALT Min-Max Test
     
@@ -439,11 +447,13 @@ for (x in 1:((length(subcategories)-2)/2)){
     }
 
 
-rm(zscores, categories, subcategories, ALTscores, ALTcategories, ALTsubcategories, rawdata2014, rawdata2015)
+#rm(zscores, categories, subcategories, ALTscores, ALTcategories, ALTsubcategories)
 
 Final2014<-finalcategories[finalcategories$year==2014,]
 Final2015<-finalcategories[finalcategories$year==2015,]
 Final2016<-finalcategories[finalcategories$year==2016,]
+Final2017<-finalcategories[finalcategories$year==2017,]
+Final2018<-finalcategories[finalcategories$year==2018,]
 
 #Data Check
 
@@ -474,3 +484,4 @@ check<-rawdata[rawdata$country == "Greece",]
 
       cortest2<-ALTfinalcategories[ALTfinalcategories$year == 2015,]
       cor(cortest2[c(4,6,8,10,12,14)])     
+      write.csv(Final2017, file = "data2017run.csv")
