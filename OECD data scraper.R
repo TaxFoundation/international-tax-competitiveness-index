@@ -199,7 +199,7 @@ OECDvars_data<-merge(OECDvars_data,taxwedge,by=c("Country","Year"))
 
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
-ISO_Country_Codes <- read_excel("ISO Country Codes.xlsx")
+ISO_Country_Codes <- read_csv("ISO Country Codes.csv")
 colnames(ISO_Country_Codes)<-c("country","ISO-2","ISO-3")
 
 colnames(OECDvars_data)<-c("ISO-3","year","corprate","divrate", "incrate", "progressivity", "taxwedge")
