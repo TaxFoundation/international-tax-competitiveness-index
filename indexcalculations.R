@@ -25,6 +25,7 @@ using<-function(...,prompt=TRUE){
 using(plyr)
 using(dplyr)
 using(tidyverse)
+using(readxl)
 
 setwd("C:/Users/dbunn/Dropbox (Tax Foundation)/international-tax-competitiveness-index/2018 Index")
 
@@ -33,20 +34,22 @@ setwd("C:/Users/dbunn/Dropbox (Tax Foundation)/international-tax-competitiveness
 rm(list=ls())
 #Load Data
 #2014
-rawdata2014<-read.csv("indexdata2014.csv", header = TRUE, fill = TRUE, sep = ",")
+
+
+rawdata2014 <- read_excel("indexdata2018 review 9.24.18.xlsx",sheet = "2014")
 rawdata2014$year<-2014
 #2015
-rawdata2015<-read.csv("indexdata2015db.csv", header = TRUE, fill = TRUE, sep = ",")
-  #rawdata2015<-rename(rawdata2015, c("country.limitations"="countrylimitations"))
+rawdata2015 <- read_excel("indexdata2018 review 9.24.18.xlsx",sheet = "2015")
+#rawdata2015<-rename(rawdata2015, c("country.limitations"="countrylimitations"))
   rawdata2015$year<-2015
 #2016
-rawdata2016<-read.csv("indexdata2016.csv", header = TRUE, fill = TRUE, sep = ",")
-rawdata2016$year<-2016
+  rawdata2016 <- read_excel("indexdata2018 review 9.24.18.xlsx",sheet = "2016")
+  rawdata2016$year<-2016
 #2017
-rawdata2017<-read.csv("indexdata2017.csv", header = TRUE, fill = TRUE, sep = ",")
-rawdata2017$year<-2017
+  rawdata2017 <- read_excel("indexdata2018 review 9.24.18.xlsx",sheet = "2017")
+  rawdata2017$year<-2017
 #2017TCJA
-rawdata2018<-read.csv("indexdata2018.csv", header = TRUE, fill = TRUE, sep = ",")
+  rawdata2018 <- read_excel("indexdata2018 review 9.24.18.xlsx",sheet = "2018")
 rawdata2018$year<-2018
 
 #Combined Data
@@ -559,7 +562,7 @@ colnames(Table2_Changes)<-c("country", "2017 Rank","2017 Score","2018 Rank","201
 Table2_Changes<-merge(Final2016,Table2_Changes,by="country")
 Table2_Changes<-Table2_Changes[c(1,13:18)]
 colnames(Table2_Changes)<-c("Country","2016 Rank","2016 Score", "2017 Rank","2017 Score","2018 Rank","2018 Score")
-Table2_Changes$'Change in Rank'<-Table2_Changes$`2018 Rank`-Table2_Changes$`2017 Rank`
+Table2_Changes$'Change in Rank'<-(Table2_Changes$`2018 Rank`-Table2_Changes$`2017 Rank`)*(-1)
 Table2_Changes$'Change in Score'<-Table2_Changes$`2018 Score`-Table2_Changes$`2017 Score`
 write.csv(Table2_Changes,"Table 2 Changes from Previous Years.csv")
 
