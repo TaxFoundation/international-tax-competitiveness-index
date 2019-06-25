@@ -37,20 +37,20 @@ gc()
 #2014
 
 
-rawdata2014 <- read_excel("indexdata2018 review 10.4.18.xlsx",sheet = "2014")
+rawdata2014 <- read_excel("indexdata2018 review 10.9.18.xlsx",sheet = "2014")
 rawdata2014$year<-2014
 #2015
-rawdata2015 <- read_excel("indexdata2018 review 10.4.18.xlsx",sheet = "2015")
+rawdata2015 <- read_excel("indexdata2018 review 10.9.18.xlsx",sheet = "2015")
 #rawdata2015<-rename(rawdata2015, c("country.limitations"="countrylimitations"))
   rawdata2015$year<-2015
 #2016
-  rawdata2016 <- read_excel("indexdata2018 review 10.4.18.xlsx",sheet = "2016")
+  rawdata2016 <- read_excel("indexdata2018 review 10.9.18.xlsx",sheet = "2016")
   rawdata2016$year<-2016
 #2017
-  rawdata2017 <- read_excel("indexdata2018 review 10.4.18.xlsx",sheet = "2017")
+  rawdata2017 <- read_excel("indexdata2018 review 10.9.18.xlsx",sheet = "2017")
   rawdata2017$year<-2017
 #2017TCJA
-  rawdata2018 <- read_excel("indexdata2018 review 10.4.18.xlsx",sheet = "2018")
+  rawdata2018 <- read_excel("indexdata2018 review 10.9.18.xlsx",sheet = "2018")
 rawdata2018$year<-2018
 
 #Combined Data
@@ -568,4 +568,6 @@ Table2_Changes$'Change in Score'<-Table2_Changes$`2018 Score`-Table2_Changes$`20
 write.csv(Table2_Changes,"Table 2 Changes from Previous Years.csv")
 
 subcategories_2018<-subset(subcategories,year==2018)
+subcategories_2017<-subset(subcategories,year==2017)
+
 write.csv(subcategories_2018,"subcategories 2018.csv")
