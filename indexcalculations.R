@@ -36,20 +36,20 @@ rm(list=ls())
 #2014
 
 
-rawdata2014 <- read_excel("indexdata2018 review 9.27.18 property options.xlsx",sheet = "2014")
+rawdata2014 <- read_excel("indexdata2018 review 10.1.18.xlsx",sheet = "2014")
 rawdata2014$year<-2014
 #2015
-rawdata2015 <- read_excel("indexdata2018 review 9.27.18 property options.xlsx",sheet = "2015")
+rawdata2015 <- read_excel("indexdata2018 review 10.1.18.xlsx",sheet = "2015")
 #rawdata2015<-rename(rawdata2015, c("country.limitations"="countrylimitations"))
   rawdata2015$year<-2015
 #2016
-  rawdata2016 <- read_excel("indexdata2018 review 9.27.18 property options.xlsx",sheet = "2016")
+  rawdata2016 <- read_excel("indexdata2018 review 10.1.18.xlsx",sheet = "2016")
   rawdata2016$year<-2016
 #2017
-  rawdata2017 <- read_excel("indexdata2018 review 9.27.18 property options.xlsx",sheet = "2017")
+  rawdata2017 <- read_excel("indexdata2018 review 10.1.18.xlsx",sheet = "2017")
   rawdata2017$year<-2017
 #2017TCJA
-  rawdata2018 <- read_excel("indexdata2018 review 9.27.18 property options.xlsx",sheet = "2018")
+  rawdata2018 <- read_excel("indexdata2018 review 10.1.18.xlsx",sheet = "2018")
 rawdata2018$year<-2018
 
 #Combined Data
@@ -98,27 +98,28 @@ zscores<-zscores[-44]
 #16 threshold
 #18 consumptiontime
 #19 propertytaxes
-#20 netwealth
-#21 estinhergifttaxes
-#22 transfertaxes
-#23 assettaxes
-#24 capitalduties
-#25 financialtransactiontaxes
-#26 capgainsrate
-#28 divrate
-#29 incrate
-#30 progressivity
-#31 taxwedge
-#32 laborpayments
-#33 labortime
-#36 divwithholding
-#37 intwithhholding
-#38 roywithholding
-#40 cfcrules
-#41 terreligiblecountries
-#42 thincap
+#20 propertytaxcollections
+#21 netwealth
+#22 estinhergifttaxes
+#23 transfertaxes
+#24 assettaxes
+#25 capitalduties
+#26 financialtransactiontaxes
+#27 capgainsrate
+#29 divrate
+#30 incrate
+#31 progressivity
+#32 taxwedge
+#33 laborpayments
+#34 labortime
+#37 divwithholding
+#38 intwithhholding
+#39 roywithholding
+#41 cfcrules
+#42 terreligiblecountries
+#43 thincap
 
-flip<-c(3,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,28,29,30,31,32,33,36,37,38,40,41,42)
+flip<-c(3,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33,34,37,38,39,41,42,43)
 flipfunc <- function(x) {
   x*(-1)
 }
@@ -167,52 +168,53 @@ zscores[i]<-apply(zscores[i], 2, flipfunc)
     #18 consumptiontime
   #Real Property Taxes
     #19 propertytaxes
+    #20 propertycollections
   #Wealth Taxes
-    #20 netwealth
-    #21 estate/inheritance
+    #21 netwealth
+    #22 estate/inheritance
   #Capital Taxes
-    #22 Transfertaxes
-    #23 assettaxes
-    #24 capitalduties
-    #25 financialtransactiontaxes
+    #23 Transfertaxes
+    #24 assettaxes
+    #25 capitalduties
+    #26 financialtransactiontaxes
   #Capital Gains and Dividends
-    #26 capgainsrates
-    #27 capgainsindex
-    #28 divrate
+    #27 capgainsrates
+    #28 capgainsindex
+    #29 divrate
   #income taxes
-    #29 incrate
-    #30 progressivity
-    #31 taxwedge
+    #30 incrate
+    #31 progressivity
+    #32 taxwedge
   #income complexity
-    #32 laborpayments
-    #33 labortime
+    #33 laborpayments
+    #34 labortime
   #territoriality
-    #34 dividendexemption
-    #35 capgainsexemption
+    #35 dividendexemption
+    #36 capgainsexemption
   #withholding taxes
-    #36 divwithholding
-    #37 intwithholding
-    #38 roywithholding
-    #39 treaties
+    #37 divwithholding
+    #38 intwithholding
+    #39 roywithholding
+    #40 treaties
   #regulations
-    #40 cfcrules
-    #41 terrrelig
-    #42 thincap
+    #41 cfcrules
+    #42 terrrelig
+    #43 thincap
 corporaterateindex<-c(3)
 costrecoveryindex<-c(4:9)
 incentivesindex<-c(10:14)
 consumptiontaxrateindex<-c(15)
 consumptiontaxbaseindex<-c(16:17)
 consumptiontaxcomplexity<-c(18)
-realpropertyindex<-c(19)
-wealthtaxesindex<-c(20:21)
-capitaltaxesindex<-c(22:25)
-capgainsdividindex<-c(26:28)
-incometaxindex<-c(29:31)
-incomecomplexindex<-c(32:33)
-terrindex<-c(34:35)
-withholdingindex<-c(36:39)
-regsindex<-c(40:42)
+realpropertyindex<-c(19:20)
+wealthtaxesindex<-c(21:22)
+capitaltaxesindex<-c(23:26)
+capgainsdividindex<-c(27:29)
+incometaxindex<-c(30:32)
+incomecomplexindex<-c(33:34)
+terrindex<-c(35:36)
+withholdingindex<-c(37:40)
+regsindex<-c(41:43)
 
 subcategories<-data.frame(country=zscores$country,
                           year=zscores$year)
