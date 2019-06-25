@@ -2,7 +2,7 @@
 library(plyr)
 library(dplyr)
 
-setwd("C:/Users/dbunn/Dropbox (Tax Foundation)/international-tax-competitiveness-index/2017 Index")
+setwd("C:/Users/kep/Dropbox (Personal)/Work/international-tax-competitiveness-index/2018 Index")
 
 #Clears all datasets and variables from memory
 
@@ -19,14 +19,14 @@ rawdata2015<-read.csv("indexdata2015.csv", header = TRUE, fill = TRUE, sep = ","
 rawdata2016<-read.csv("indexdata2016.csv", header = TRUE, fill = TRUE, sep = ",")
 rawdata2016$year<-2016
 #2017
-rawdata2017<-read.csv("indexdata2017-fixed.csv", header = TRUE, fill = TRUE, sep = ",")
+rawdata2017<-read.csv("indexdata2017.csv", header = TRUE, fill = TRUE, sep = ",")
 rawdata2017$year<-2017
 #2017TCJA
-rawdataft<-read.csv("indexdata2017-fixedft.csv", header = TRUE, fill = TRUE, sep = ",")
-rawdataft$year<-2018
+rawdata2018<-read.csv("indexdata2018.csv", header = TRUE, fill = TRUE, sep = ",")
+rawdata2018$year<-2018
 
 #Combined Data
-rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdataft)
+rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018)
 
   #ALT Min-Max Test
     
