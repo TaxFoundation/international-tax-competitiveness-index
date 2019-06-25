@@ -32,24 +32,25 @@ setwd("C:/Users/dbunn/Dropbox (Tax Foundation)/international-tax-competitiveness
 #Clears all datasets and variables from memory
 
 rm(list=ls())
+gc()
 #Load Data
 #2014
 
 
-rawdata2014 <- read_excel("indexdata2018 review 10.3.18.xlsx",sheet = "2014")
+rawdata2014 <- read_excel("indexdata2018 review 10.4.18.xlsx",sheet = "2014")
 rawdata2014$year<-2014
 #2015
-rawdata2015 <- read_excel("indexdata2018 review 10.3.18.xlsx",sheet = "2015")
+rawdata2015 <- read_excel("indexdata2018 review 10.4.18.xlsx",sheet = "2015")
 #rawdata2015<-rename(rawdata2015, c("country.limitations"="countrylimitations"))
   rawdata2015$year<-2015
 #2016
-  rawdata2016 <- read_excel("indexdata2018 review 10.3.18.xlsx",sheet = "2016")
+  rawdata2016 <- read_excel("indexdata2018 review 10.4.18.xlsx",sheet = "2016")
   rawdata2016$year<-2016
 #2017
-  rawdata2017 <- read_excel("indexdata2018 review 10.3.18.xlsx",sheet = "2017")
+  rawdata2017 <- read_excel("indexdata2018 review 10.4.18.xlsx",sheet = "2017")
   rawdata2017$year<-2017
 #2017TCJA
-  rawdata2018 <- read_excel("indexdata2018 review 10.3.18.xlsx",sheet = "2018")
+  rawdata2018 <- read_excel("indexdata2018 review 10.4.18.xlsx",sheet = "2018")
 rawdata2018$year<-2018
 
 #Combined Data
@@ -80,11 +81,11 @@ ALTscores<-data.frame(country=rawdata$country,
 )
 
 #drops the extra "year" variable left over
-zscores<-zscores[-45]
+zscores<-zscores[-44]
 
   #Alt Scoring Technique
   
-    ALTscores<-ALTscores[-45]
+    ALTscores<-ALTscores[-44]
 
 #Multiply variables that need to be flipped by -1 (There is likely a better way to do this)
 #List of variables flipped for reference:
@@ -118,9 +119,8 @@ zscores<-zscores[-45]
 #41 cfcrules
 #42 terreligiblecountries
 #43 thincap
-#44 divertedprofits
 
-flip<-c(3,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33,34,37,38,39,41,42,43,44)
+flip<-c(3,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33,34,37,38,39,41,42,43)
 flipfunc <- function(x) {
   x*(-1)
 }
@@ -201,7 +201,6 @@ zscores[i]<-apply(zscores[i], 2, flipfunc)
     #41 cfcrules
     #42 terrrelig
     #43 thincap
-    #44 divertedprofits
 corporaterateindex<-c(3)
 costrecoveryindex<-c(4:9)
 incentivesindex<-c(10:14)
@@ -216,7 +215,7 @@ incometaxindex<-c(30:32)
 incomecomplexindex<-c(33:34)
 terrindex<-c(35:36)
 withholdingindex<-c(37:40)
-regsindex<-c(41:44)
+regsindex<-c(41:43)
 
 subcategories<-data.frame(country=zscores$country,
                           year=zscores$year)
