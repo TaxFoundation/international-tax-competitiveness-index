@@ -77,11 +77,11 @@ ALTscores<-data.frame(country=rawdata$country,
 )
 
 #drops the extra "year" variable left over
-zscores<-zscores[-45]
+zscores<-zscores[-44]
 
   #Alt Scoring Technique
   
-    ALTscores<-ALTscores[-45]
+    ALTscores<-ALTscores[-44]
 
 #Multiply variables that need to be flipped by -1 (There is likely a better way to do this)
 #List of variables flipped for reference:
@@ -93,31 +93,30 @@ zscores<-zscores[-45]
 #14 otherpayments
 #15 vatrate
 #16 threshold
-#18 deductionlimitations
-#19 consumptiontime
-#20 propertytaxes
-#21 propertytaxcollections
-#22 netwealth
-#23 estinhergifttaxes
-#24 transfertaxes
-#25 assettaxes
-#26 capitalduties
-#27 financialtransactiontaxes
-#28 capgainsrate
-#30 divrate
-#31 incrate
-#32 progressivity
-#33 taxwedge
-#34 laborpayments
-#35 labortime
-#38 divwithholding
-#39 intwithhholding
-#40 roywithholding
-#42 cfcrules
-#43 terreligiblecountries
-#44 thincap
+#18 consumptiontime
+#19 propertytaxes
+#20 propertytaxcollections
+#21 netwealth
+#22 estinhergifttaxes
+#23 transfertaxes
+#24 assettaxes
+#25 capitalduties
+#26 financialtransactiontaxes
+#27 capgainsrate
+#29 divrate
+#30 incrate
+#31 progressivity
+#32 taxwedge
+#33 laborpayments
+#34 labortime
+#37 divwithholding
+#38 intwithhholding
+#39 roywithholding
+#41 cfcrules
+#42 terreligiblecountries
+#43 thincap
 
-flip<-c(3,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33,34,35,38,39,40,42,43,44)
+flip<-c(3,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33,34,37,38,39,41,42,43)
 flipfunc <- function(x) {
   x*(-1)
 }
@@ -162,58 +161,57 @@ zscores[i]<-apply(zscores[i], 2, flipfunc)
   #Consumption Tax Base
     #16 threshold
     #17 base
-    #18 deductionlimitations
   #Consumption Tax Complexity
-    #19 consumptiontime
+    #18 consumptiontime
   #Real Property Taxes
-    #20 propertytaxes
-    #21 propertycollections
+    #19 propertytaxes
+    #20 propertycollections
   #Wealth Taxes
-    #22 netwealth
-    #23 estate/inheritance
+    #21 netwealth
+    #22 estate/inheritance
   #Capital Taxes
-    #24 Transfertaxes
-    #25 assettaxes
-    #26 capitalduties
-    #27 financialtransactiontaxes
+    #23 Transfertaxes
+    #24 assettaxes
+    #25 capitalduties
+    #26 financialtransactiontaxes
   #Capital Gains and Dividends
-    #28 capgainsrates
-    #29 capgainsindex
-    #30 divrate
+    #27 capgainsrates
+    #28 capgainsindex
+    #29 divrate
   #income taxes
-    #31 incrate
-    #32 progressivity
-    #33 taxwedge
+    #30 incrate
+    #31 progressivity
+    #32 taxwedge
   #income complexity
-    #34 laborpayments
-    #35 labortime
+    #33 laborpayments
+    #34 labortime
   #territoriality
-    #36 dividendexemption
-    #37 capgainsexemption
+    #35 dividendexemption
+    #36 capgainsexemption
   #withholding taxes
-    #38 divwithholding
-    #39 intwithholding
-    #40 roywithholding
-    #41 treaties
+    #37 divwithholding
+    #38 intwithholding
+    #39 roywithholding
+    #40 treaties
   #regulations
-    #42 cfcrules
-    #43 terrrelig
-    #44 thincap
+    #41 cfcrules
+    #42 terrrelig
+    #43 thincap
 corporaterateindex<-c(3)
 costrecoveryindex<-c(4:9)
 incentivesindex<-c(10:14)
 consumptiontaxrateindex<-c(15)
-consumptiontaxbaseindex<-c(16:18)
-consumptiontaxcomplexity<-c(19)
-realpropertyindex<-c(20:21)
-wealthtaxesindex<-c(22:23)
-capitaltaxesindex<-c(24:27)
-capgainsdividindex<-c(28:30)
-incometaxindex<-c(31:33)
-incomecomplexindex<-c(34:35)
-terrindex<-c(36:37)
-withholdingindex<-c(38:41)
-regsindex<-c(42:44)
+consumptiontaxbaseindex<-c(16:17)
+consumptiontaxcomplexity<-c(18)
+realpropertyindex<-c(19:20)
+wealthtaxesindex<-c(21:22)
+capitaltaxesindex<-c(23:26)
+capgainsdividindex<-c(27:29)
+incometaxindex<-c(30:32)
+incomecomplexindex<-c(33:34)
+terrindex<-c(35:36)
+withholdingindex<-c(37:40)
+regsindex<-c(41:43)
 
 subcategories<-data.frame(country=zscores$country,
                           year=zscores$year)
@@ -509,3 +507,61 @@ check<-rawdata[rawdata$country == "Greece",]
       cortest2<-ALTfinalcategories[ALTfinalcategories$year == 2015,]
       cor(cortest2[c(4,6,8,10,12,14)])     
       write.csv(Final2018, file = "data2018run.csv")
+      
+Australia<-finalcategories[finalcategories$country=="Australia",]
+Austria<-finalcategories[finalcategories$country=="Austria",]
+Belgium<-finalcategories[finalcategories$country=="Belgium",]
+Canada<-finalcategories[finalcategories$country=="Canada",]
+Chile<-finalcategories[finalcategories$country=="Chile",]
+Czech_Republic<-finalcategories[finalcategories$country=="Czech Republic",]
+Denmark<-finalcategories[finalcategories$country=="Denmark",]
+Estonia<-finalcategories[finalcategories$country=="Estonia",]
+Finland<-finalcategories[finalcategories$country=="Finland",]
+France<-finalcategories[finalcategories$country=="France",]
+Germany<-finalcategories[finalcategories$country=="Germany",]
+Greece<-finalcategories[finalcategories$country=="Greece",]
+Hungary<-finalcategories[finalcategories$country=="Hungary",]
+Iceland<-finalcategories[finalcategories$country=="Iceland",]
+Ireland<-finalcategories[finalcategories$country=="Ireland",]
+Israel<-finalcategories[finalcategories$country=="Israel",]
+Italy<-finalcategories[finalcategories$country=="Italy",]
+Japan<-finalcategories[finalcategories$country=="Japan",]
+Korea<-finalcategories[finalcategories$country=="Korea",]
+Latvia<-finalcategories[finalcategories$country=="Latvia",]
+Luxembourg<-finalcategories[finalcategories$country=="Luxembourg",]
+Mexico<-finalcategories[finalcategories$country=="Mexico",]
+Netherlands<-finalcategories[finalcategories$country=="Netherlands",]
+New_Zealand<-finalcategories[finalcategories$country=="New Zealand",]
+Norway<-finalcategories[finalcategories$country=="Norway",]
+Poland<-finalcategories[finalcategories$country=="Poland",]
+Portugal<-finalcategories[finalcategories$country=="Portugal",]
+Slovak_Republic<-finalcategories[finalcategories$country=="Slovak Republic",]
+Slovenia<-finalcategories[finalcategories$country=="Slovenia",]
+Spain<-finalcategories[finalcategories$country=="Spain",]
+Sweden<-finalcategories[finalcategories$country=="Sweden",]
+Switzerland<-finalcategories[finalcategories$country=="Switzerland",]
+Turkey<-finalcategories[finalcategories$country=="Turkey",]
+United_Kingdom<-finalcategories[finalcategories$country=="United Kingdom",]
+United_States<-finalcategories[finalcategories$country=="United States",]
+
+
+#Changes from 2017 index
+M <- merge(Final2018,Final2017,by="country")
+
+Changes <- M[,grepl("*\\.x$",names(M))] - M[,grepl("*\\.y$",names(M))]
+
+Changes<-cbind(M[,1,drop=FALSE],Changes)
+
+#Compare 2016, 2017, and 2018 results
+Table2_Changes<-merge(Final2017,Final2018,by="country")
+Table2_Changes<-Table2_Changes[c(1,13,14,26,27)]
+colnames(Table2_Changes)<-c("country", "2017 Rank","2017 Score","2018 Rank","2018 Score")
+Table2_Changes<-merge(Final2016,Table2_Changes,by="country")
+Table2_Changes<-Table2_Changes[c(1,13:18)]
+colnames(Table2_Changes)<-c("Country","2016 Rank","2016 Score", "2017 Rank","2017 Score","2018 Rank","2018 Score")
+Table2_Changes$'Change in Rank'<-Table2_Changes$`2018 Rank`-Table2_Changes$`2017 Rank`
+Table2_Changes$'Change in Score'<-Table2_Changes$`2018 Score`-Table2_Changes$`2017 Score`
+write.csv(Table2_Changes,"Table 2 Changes from Previous Years.csv")
+
+subcategories_2018<-subset(subcategories,year==2018)
+write.csv(subcategories_2018,"subcategories 2018.csv")
