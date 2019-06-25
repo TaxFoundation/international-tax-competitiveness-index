@@ -2,7 +2,7 @@
 library(plyr)
 library(dplyr)
 
-setwd("C:/Users/kep/Dropbox (Personal)/Work/international-tax-competitiveness-index/2017 Index")
+setwd("C:/Users/dbunn/Dropbox (Tax Foundation)/international-tax-competitiveness-index/2017 Index")
 
 #Clears all datasets and variables from memory
 
