@@ -1,0 +1,36 @@
+Country,Exists,Active,Exemption
+Australia,1,0,1
+Austria,1,0,0.5
+Belgium,0,0,0
+Canada,1,0,0
+Chile,1,0,0.5
+Czech Republic,0,0,0
+Denmark,1,1,0.5
+Estonia,1,1,0
+Finland,1,1,0.5
+France,1,1,0
+Germany,1,0,0.5
+Greece,1,0,0.5
+Hungary,1,0,0
+Iceland ,1,1,0.5
+Ireland,0,0,0
+Israel,1,0,1
+Italy,1,1,0
+Japan,1,0,1
+Korea,1,1,0
+Latvia,0,0,0
+Luxembourg,0,0,0
+Mexico,1,1,1
+Netherlands,0,0,0
+New Zealand,1,0,1
+Norway,1,1,0.5
+Poland,1,1,0.5
+Portugal,1,1,0.5
+Slovak Republic,1,1,1
+Slovenia,0,0,0
+Spain,1,0,0.5
+Sweden    ,1,1,0
+Switzerland,0,0,0
+Turkey,1,0,1
+United Kingdom,1,1,0
+United States,1,0,1
