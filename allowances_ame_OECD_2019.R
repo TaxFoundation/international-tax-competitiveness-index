@@ -35,7 +35,7 @@ using(countrycode)
 using(tidyverse)
 using(readxl)
 
-cbt<-read.csv("./CBT_tax_database_web_2019_all_ame.csv", header = TRUE, fill = TRUE, sep = ",")
+cbt<-read.csv("./source-data/CBT_tax_database_web_2019_all_ame.csv", header = TRUE, fill = TRUE, sep = ",")
 
 
 # copy 2018 cbt data to 2019
@@ -44,7 +44,7 @@ year2019_preliminary$year <- 2019
 cbt <- rbind(cbt, year2019_preliminary)
 
 # gdp data
-gdp <- read.csv("./USDA_ERSInternationalMacroeconomicDataSet_GDP.csv", header = TRUE, fill = TRUE, sep = ",", fileEncoding = "UTF-8-BOM", check.names=FALSE)
+gdp <- read.csv("./source-data/USDA_ERSInternationalMacroeconomicDataSet_GDP.csv", header = TRUE, fill = TRUE, sep = ",", fileEncoding = "UTF-8-BOM", check.names=FALSE)
 gdp <- melt(gdp, id.vars = c("Country"))
 gdp$Country <- countrycode(gdp$Country, 'country.name', 'iso3c')
 names(gdp)[names(gdp) == 'Country'] <- 'country'
@@ -54,9 +54,9 @@ names(gdp)[names(gdp) == 'value'] <- 'gdp'
 #Alternative GDP source data 
 #GDP Data cleaning
 #Read in USDA data
-USDA_Projected<- read_excel("./ProjectedRealGDPValues.xlsx", range = "A11:K232")
+USDA_Projected<- read_excel("./source-data/ProjectedRealGDPValues.xlsx", range = "A11:K232")
 USDA_Projected<-USDA_Projected[,-c(2:8)]
-USDA_Historical<-read_excel("./HistoricalRealGDPValues.xls", range = "A11:AL232")
+USDA_Historical<-read_excel("./source-data/HistoricalRealGDPValues.xls", range = "A11:AL232")
 gdp<-merge(USDA_Historical,USDA_Projected,by="Country")
 colnames(gdp)[1]<-"Country"
 gdp<-na.omit(gdp)
@@ -418,10 +418,12 @@ data<-subset(data,data$year==2019)
 
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
-ISO_Country_Codes <- read_csv("ISO Country Codes.csv")
+
+ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
 colnames(ISO_Country_Codes)<-c("country","ISO-2","ISO-3")
 
 colnames(data)<-c("ISO-3","year","machines","buildings", "intangibles")
 data<-merge(data,ISO_Country_Codes,by="ISO-3")
 
 write.csv(data, file = "cap_allowances_data.csv",row.names=F)
+
