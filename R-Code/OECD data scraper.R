@@ -204,6 +204,5 @@ colnames(ISO_Country_Codes)<-c("country","ISO-2","ISO-3")
 
 colnames(OECDvars_data)<-c("ISO-3","year","corprate","divrate", "incrate", "progressivity", "taxwedge")
 OECDvars_data<-merge(OECDvars_data,ISO_Country_Codes,by="ISO-3")
-OECDvars_data<-(OECDvars_data[-c(1,9)])
 
-write.csv(OECDvars_data, file = "OECDvars_data.csv")
+write.csv(OECDvars_data, file = "OECDvars_data.csv", row.names = FALSE)

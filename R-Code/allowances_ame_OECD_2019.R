@@ -1,0 +1,429 @@
+# capital allowance model
+
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+# Clears all datasets and variables from memory
+rm(list=ls())
+
+using<-function(...,prompt=TRUE){
+  libs<-sapply(substitute(list(...))[-1],deparse)
+  req<-unlist(lapply(libs,require,character.only=TRUE))
+  need<-libs[req==FALSE]
+  n<-length(need)
+  installAndRequire<-function(){
+    install.packages(need)
+    lapply(need,require,character.only=TRUE)
+  }
+  if(n>0){
+    libsmsg<-if(n>2) paste(paste(need[1:(n-1)],collapse=", "),",",sep="") else need[1]
+    if(n>1){
+      libsmsg<-paste(libsmsg," and ", need[n],sep="")
+    }
+    libsmsg<-paste("The following packages count not be found: ",libsmsg,"n\r\n\rInstall missing packages?",collapse="")
+    if(prompt==FALSE){
+      installAndRequire()
+    }else if(winDialog(type=c("yesno"),libsmsg)=="YES"){
+      installAndRequire()
+    }
+  }
+}
+
+using(OECD)
+using(plyr)
+using(reshape2)
+using(countrycode)
+using(tidyverse)
+using(readxl)
+
+cbt<-read.csv("./source-data/CBT_tax_database_web_2019_all_ame.csv", header = TRUE, fill = TRUE, sep = ",")
+
+
+# copy 2018 cbt data to 2019
+year2019_preliminary<-cbt[cbt$year==2018,]
+year2019_preliminary$year <- 2019
+cbt <- rbind(cbt, year2019_preliminary)
+
+# gdp data
+gdp <- read.csv("./source-data/USDA_ERSInternationalMacroeconomicDataSet_GDP.csv", header = TRUE, fill = TRUE, sep = ",", fileEncoding = "UTF-8-BOM", check.names=FALSE)
+gdp <- melt(gdp, id.vars = c("Country"))
+gdp$Country <- countrycode(gdp$Country, 'country.name', 'iso3c')
+names(gdp)[names(gdp) == 'Country'] <- 'country'
+names(gdp)[names(gdp) == 'variable'] <- 'year'
+names(gdp)[names(gdp) == 'value'] <- 'gdp'
+
+#Alternative GDP source data 
+#GDP Data cleaning
+#Read in USDA data
+USDA_Projected<- read_excel("./source-data/ProjectedRealGDPValues.xlsx", range = "A11:K232")
+USDA_Projected<-USDA_Projected[,-c(2:8)]
+USDA_Historical<-read_excel("./source-data/HistoricalRealGDPValues.xls", range = "A11:AL232")
+gdp<-merge(USDA_Historical,USDA_Projected,by="Country")
+colnames(gdp)[1]<-"Country"
+gdp<-na.omit(gdp)
+gdp <- subset(gdp, Country!="AsiaLessJapan" & Country!="EastAsiaLessJapan")
+
+gdp <- melt(gdp, id.vars = c("Country"))
+gdp$Country <- countrycode(gdp$Country, 'country.name', 'iso3c')
+names(gdp)[names(gdp) == 'Country'] <- 'country'
+names(gdp)[names(gdp) == 'variable'] <- 'year'
+names(gdp)[names(gdp) == 'value'] <- 'gdp'
+gdp<-na.omit(gdp)
+
+
+# merge GDP with CBT tax data
+data <- merge(cbt, gdp, by = c("country", "year"))
+
+# drop non OECD countries
+# Note: we dont have data on latvia
+data <- data[which(data$country=="AUS" 
+                   | data$country=="AUT"
+                   | data$country=="BEL" 
+                   | data$country=="CAN" 
+                   | data$country=="CHL" 
+                   | data$country=="CZE" 
+                   | data$country=="DNK" 
+                   | data$country=="EST" 
+                   | data$country=="FIN" 
+                   | data$country=="FRA"
+                   | data$country=="DEU"
+                   | data$country=="GRC"
+                   | data$country=="HUN"
+                   | data$country=="ISL"
+                   | data$country=="IRL"
+                   | data$country=="ISR"
+                   | data$country=="ITA"
+                   | data$country=="JPN"
+                   | data$country=="KOR"
+                   | data$country=="LVA"
+                   | data$country=="LTU"
+                   | data$country=="LUX"
+                   | data$country=="MEX"
+                   | data$country=="NLD"
+                   | data$country=="NZL"
+                   | data$country=="NOR"
+                   | data$country=="POL"
+                   | data$country=="PRT"
+                   | data$country=="SVK"
+                   | data$country=="SVN"
+                   | data$country=="ESP"
+                   | data$country=="SWE"
+                   | data$country=="CHE"
+                   | data$country=="TUR"
+                   | data$country=="GBR"
+                   | data$country=="USA"),]
+
+#Defining OECD Countries
+OECD_Countries<-c("AUS",
+                  "AUT",
+                  "BEL",
+                  "CAN",
+                  "CHL",
+                  "CZE",
+                  "DNK",
+                  "EST",
+                  "FIN",
+                  "FRA",
+                  "DEU",
+                  "GRC",
+                  "HUN",
+                  "ISL",
+                  "IRL",
+                  "ISR",
+                  "ITA",
+                  "JPN",
+                  "KOR",
+                  "LUX",
+                  "MEX",
+                  "NLD",
+                  "NZL",
+                  "NOR",
+                  "POL",
+                  "PRT",
+                  "SVK",
+                  "SVN",
+                  "ESP",
+                  "SWE",
+                  "CHE",
+                  "TUR",
+                  "GBR",
+                  "USA",
+                  "LVA",
+                  "LTU")
+
+#Defining OECD_Europe Countries
+Europe_OECD_Countries<-c("AUT",
+                     "BEL",
+                     "BGR",
+                     "CZE",
+                     "HRV",
+                     "DNK",
+                     "EST",
+                     "FIN",
+                     "FRA",
+                     "DEU",
+                     "GRC",
+                     "HUN",
+                     "IRL",
+                     "ISL",
+                     "ITA",
+                     "LVA",
+                     "LTU",
+                     "LUX",
+                     "NLD",
+                     "NOR",
+                     "POL",
+                     "PRT",
+                     "ROU",
+                     "SVK",
+                     "SVN",
+                     "ESP",
+                     "SWE",
+                     "CHE",
+                     "TUR",
+                     "GBR")
+
+#Defining OECD_EU Countries
+EU_OECD_Countries<-c("AUT",
+                         "BEL",
+                         "BGR",
+                         "CZE",
+                         "HRV",
+                         "DNK",
+                         "EST",
+                         "FIN",
+                         "FRA",
+                         "DEU",
+                         "GRC",
+                         "HUN",
+                         "IRL",
+                         "ITA",
+                         "LVA",
+                         "LTU",
+                         "LUX",
+                         "NLD",
+                         "POL",
+                         "PRT",
+                         "ROU",
+                         "SVK",
+                         "SVN",
+                         "ESP",
+                         "SWE",
+                         "GBR")
+
+#Gross fixed capital formation (GFCF)
+#investment<-read.csv("investment.csv", header = TRUE, fill = TRUE, sep = ",")
+#investment <- investment[c("country", "year", "investment")]
+#data <- merge(data, investment, by = c("country", "year"))
+#write.csv(data, file = "data2.csv")
+
+SL<-function(rate,i){
+  pdv<-((rate*(1+i))/i)*(1-(1^(1/rate)/(1+i)^(1/rate)))
+  return(pdv)
+}
+
+SL2<-function(rate1,year1,rate2,year2,i){
+  SL1 <- ((rate1*(1+i))/i)*(1-(1^year1)/(1+i)^year1)
+  SL2 <- ((rate2*(1+i))/i)*(1-(1^year2)/(1+i)^year2) / (1+i)^year1
+  pdv <-  SL1 + SL2
+  return(pdv)
+  
+}
+
+# SL3 is treated as SL2
+SL3<-function(year1,rate1,year2,rate2,year3,rate3,i){
+  pdv <- 0
+  for (x in 0:(year1-1)){
+    pdv <- pdv + (rate1 / ((1+i)^x))
+  }
+  for (x in year1:(year2-1)){
+    pdv <- pdv + (rate2 / ((1+i)^x))
+  }
+  for (x in year2:(year3-1)){
+    pdv <- pdv + (rate3 / ((1+i)^x))
+  }
+  return(pdv)
+}
+
+
+DB<-function(rate,i){
+  pdv<- (rate*(1+i))/(i+rate)
+  return(pdv)
+}
+
+initialDB<-function(rate1,rate2,i){
+  pdv<- rate1 + ((rate2*(1+i))/(i+rate2)*(1-rate1))/(1+i)
+  return(pdv)
+}
+
+DBSL1<-function(rate1,year1,rate2,year2,i){
+  value <- 1
+  DB <- 0
+  SL <- 0
+  for (x in 0:(year1-1)){
+    DB <- DB + (rate1*(1-rate1)^x)/(1+i)^x
+  }
+  SL <- ((rate2*(1+i))/i)*(1-(1^(year2)/(1+i)^(year2)))/(1+i)^(year1)
+  return(DB+SL)
+}
+
+DBSL2<-function(rate1,year1,rate2,year2,i){
+  top<- (rate1+(rate2/((1+i)^year1))/year2 )*(1+i)
+  bottom <- i + (rate1+(rate2/((1+i)^year1))/year2)
+  return(top/bottom)
+}
+
+SLITA<-function(rate,year,i){
+  pdv <- rate + (((rate*2)*(1+i))/i)*(1-(1^(2)/(1+i)^(2)))/(1+i) + ((rate*(1+i))/i)*(1-(1^(year-3)/(1+i)^(year-3)))/(1+i)^3
+  return(pdv)
+}
+
+CZK<-function(rate,i){
+  value<-1
+  pdv <- 0
+  years<-round(((1/rate)-1))
+  for (x in 0:years){
+    if (x == 0){
+      pdv <- pdv + rate
+      value <- value - rate
+    } else {
+      pdv<- pdv + (((value*2)/((1/rate)-x+1))/(1+i)^x)
+      value <- value - ((value*2)/((1/rate)-x+1))
+    }
+  }
+  return(pdv)
+}
+
+#debug summarys
+summary(data)
+summary(data$taxdepbuildtype)
+summary(data$taxdepmachtype)
+summary(data$taxdepintangibltype)
+
+#Need to replace odd depreciation systems (SL3, DB DB SL)
+#going to treat DB DB SL as DB with switch to SL
+#Going to treat SL3 as SL2
+data[c("taxdepbuildtype", "taxdepmachtype", "taxdepintangibltype")] <- as.data.frame(sapply(data[c("taxdepbuildtype", "taxdepmachtype", "taxdepintangibltype")], function(x) gsub("SL3", "SL2", x)))
+data[c("taxdepbuildtype", "taxdepmachtype", "taxdepintangibltype")] <- as.data.frame(sapply(data[c("taxdepbuildtype", "taxdepmachtype", "taxdepintangibltype")], function(x) gsub("DB DB SL", "initialDB", x)))
+
+#Ireland's machine schedules are messed up. I assume that these are the fixes:
+data[c('taxdepmachtimedb')][data$country == "IRL" & data$year >=1988 & data$year<=1991,]<-1
+
+#The coding of the 3-schedule Straightline ACRS for Machines is wrong
+#Since this model does not support 3-schedule, it is assumed to be a 2 schedule
+data[c('taxdepmachtimesl')][data$country == "USA" & data$year >1980 & data$year<1987,]<-4
+
+
+#data[c('taxdeprbuildtimesl')][data$country == "USA" & data$year == 2018,] <- 40
+#data[c('taxdeprbuildsl')][data$country == "USA" & data$year == 2018,] <- 0.025
+
+
+#calculate capital cost allowances
+
+#machines
+#DB
+data$machines[data$taxdepmachtype == "DB" & !is.na(data$taxdepmachtype)]<-DB(data$taxdeprmachdb[data$taxdepmachtype == "DB" & !is.na(data$taxdepmachtype)],0.075)
+#SL
+data$machines[data$taxdepmachtype == "SL" & !is.na(data$taxdepmachtype)]<-SL(data$taxdeprmachsl[data$taxdepmachtype == "SL" & !is.na(data$taxdepmachtype)],0.075)
+#initialDB
+data$machines[data$taxdepmachtype == "initialDB" & !is.na(data$taxdepmachtype)]<-initialDB(data$taxdeprmachdb[data$taxdepmachtype == "initialDB" & !is.na(data$taxdepmachtype)],
+  data$taxdeprmachsl[data$taxdepmachtype == "initialDB" & !is.na(data$taxdepmachtype)], 0.075)
+#DB or SL
+data$machines[data$taxdepmachtype == "DB or SL" & !is.na(data$taxdepintangibltype)]<-DBSL2(data$taxdeprmachdb[data$taxdepmachtype == "DB or SL" & !is.na(data$taxdepmachtype)],
+  data$taxdepmachtimedb[data$taxdepmachtype == "DB or SL" & !is.na(data$taxdepmachtype)],
+  data$taxdeprmachsl[data$taxdepmachtype == "DB or SL" & !is.na(data$taxdepmachtype)],
+  data$taxdepmachtimesl[data$taxdepmachtype == "DB or SL" & !is.na(data$taxdepmachtype)], 0.075)
+#SL2
+data$machines[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)]<-SL2(data$taxdeprmachdb[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)],
+  data$taxdepmachtimedb[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)],
+  data$taxdeprmachsl[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)],
+  data$taxdepmachtimesl[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)], 0.075)
+#SLITA
+data$machines[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)]<-SL(data$taxdeprmachsl[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)],0.075)
+#CZK
+for (x in 1:length(data$taxdeprmachdb)){
+  if(grepl("CZK",data$taxdepmachtype[x]) == TRUE){
+    data$machines[x]<-CZK(data$taxdeprmachdb[x], 0.075)
+  }
+}
+
+#buildings
+#DB
+data$buildings[data$taxdepbuildtype == "DB" & !is.na(data$taxdepbuildtype)]<-DB(data$taxdeprbuilddb[data$taxdepbuildtype == "DB" & !is.na(data$taxdepbuildtype)],0.075)
+#SL
+data$buildings[data$taxdepbuildtype == "SL" & !is.na(data$taxdepbuildtype)]<-SL(data$taxdeprbuildsl[data$taxdepbuildtype == "SL" & !is.na(data$taxdepbuildtype)],0.075)
+#initialDB
+data$buildings[data$taxdepbuildtype == "initialDB" & !is.na(data$taxdepbuildtype)]<-initialDB(data$taxdeprbuilddb[data$taxdepbuildtype == "initialDB" & !is.na(data$taxdepbuildtype)],
+  data$taxdeprbuildsl[data$taxdepbuildtype == "initialDB" & !is.na(data$taxdepbuildtype)], 0.075)
+#DB or SL
+data$buildings[data$taxdepbuildtype == "DB or SL" & !is.na(data$taxdepbuildtype)]<-DBSL2(data$taxdeprbuilddb[data$taxdepbuildtype == "DB or SL" & !is.na(data$taxdepbuildtype)],
+  data$taxdeprbuildtimedb[data$taxdepbuildtype == "DB or SL" & !is.na(data$taxdepbuildtype)],
+  data$taxdeprbuildsl[data$taxdepbuildtype == "DB or SL" & !is.na(data$taxdepbuildtype)],
+  data$taxdeprbuildtimesl[data$taxdepbuildtype == "DB or SL" & !is.na(data$taxdepbuildtype)], 0.075)
+#SL2
+data$buildings[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)]<-SL2(data$taxdeprbuilddb[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)],
+  data$taxdeprbuildtimedb[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)],
+  data$taxdeprbuildsl[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)],
+  data$taxdeprbuildtimesl[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)], 0.075)
+#SLITA
+data$buildings[data$taxdepbuildtype == "SLITA" & !is.na(data$taxdepbuildtype)]<-SL(data$taxdeprbuildsl[data$taxdepbuildtype == "SLITA" & !is.na(data$taxdepbuildtype)],0.075)
+#CZK
+for (x in 1:length(data$taxdeprbuilddb)){
+  if(grepl("CZK",data$taxdepbuildtype[x]) == TRUE){
+    data$buildings[x]<-CZK(data$taxdeprbuilddb[x], 0.075)
+  }
+}
+
+#intangibles
+#DB
+data$intangibles[data$taxdepintangibltype == "DB" & !is.na(data$taxdepintangibltype)]<-DB(data$taxdeprintangibldb[data$taxdepintangibltype == "DB" & !is.na(data$taxdepintangibltype)], 0.075)
+#SL
+data$intangibles[data$taxdepintangibltype == "SL" & !is.na(data$taxdepintangibltype)]<-SL(data$taxdeprintangiblsl[data$taxdepintangibltype == "SL" & !is.na(data$taxdepintangibltype)], 0.075)
+#initialDB
+data$intangibles[data$taxdepintangibltype == "initialDB" & !is.na(data$taxdepintangibltype)]<-initialDB(data$taxdeprintangibldb[data$taxdepintangibltype == "initialDB" & !is.na(data$taxdepintangibltype)],
+  data$taxdeprintangiblsl[data$taxdepintangibltype == "initialDB" & !is.na(data$taxdepintangibltype)], 0.075)
+#DB or SL
+data$intangibles[data$taxdepintangibltype == "DB or SL" & !is.na(data$taxdepintangibltype)]<-DBSL2(data$taxdeprintangibldb[data$taxdepintangibltype == "DB or SL" & !is.na(data$taxdepintangibltype)],
+  data$taxdepintangibltimedb[data$taxdepintangibltype == "DB or SL" & !is.na(data$taxdepintangibltype)],
+  data$taxdeprintangiblsl[data$taxdepintangibltype == "DB or SL" & !is.na(data$taxdepintangibltype)],
+  data$taxdepintangibltimesl[data$taxdepintangibltype == "DB or SL" & !is.na(data$taxdepintangibltype)], 0.075)
+
+#In 2000, Estonia moved to a cash-flow type business tax. All allowances need to be coded as 1
+data[c('intangibles','machines','buildings')][data$country == "EST" & data$year >=2000,]<-1
+
+#Latvia too as of 2018 :)
+data[c('intangibles','machines','buildings')][data$country == "LVA" & data$year >=2018,]<-1
+
+#In fall 2018, Canada introduced full expensing for machinery
+data[c('machines')][data$country == "CAN" & data$year >2018,]<-1
+
+# fix USA data to include bonus dep for machines
+data[c('machines')][data$country == "USA" & data$year == 2002,] <- (data[c('machines')][data$country == "USA" & data$year == 2002,] * 0.70) + 0.30
+data[c('machines')][data$country == "USA" & data$year == 2003,] <- (data[c('machines')][data$country == "USA" & data$year == 2003,] * 0.70) + 0.30
+data[c('machines')][data$country == "USA" & data$year == 2004,] <- (data[c('machines')][data$country == "USA" & data$year == 2004,] * 0.50) + 0.50
+data[c('machines')][data$country == "USA" & data$year == 2008,] <- (data[c('machines')][data$country == "USA" & data$year == 2008,] * 0.50) + 0.50
+data[c('machines')][data$country == "USA" & data$year == 2009,] <- (data[c('machines')][data$country == "USA" & data$year == 2009,] * 0.50) + 0.50
+data[c('machines')][data$country == "USA" & data$year == 2010,] <- (data[c('machines')][data$country == "USA" & data$year == 2010,] * 0.50) + 0.50
+data[c('machines')][data$country == "USA" & data$year == 2011,] <- (data[c('machines')][data$country == "USA" & data$year == 2011,] * 0.00) + 1.00
+data[c('machines')][data$country == "USA" & data$year == 2012,] <- (data[c('machines')][data$country == "USA" & data$year == 2012,] * 0.50) + 0.50
+data[c('machines')][data$country == "USA" & data$year == 2013,] <- (data[c('machines')][data$country == "USA" & data$year == 2013,] * 0.50) + 0.50
+data[c('machines')][data$country == "USA" & data$year == 2014,] <- (data[c('machines')][data$country == "USA" & data$year == 2014,] * 0.50) + 0.50
+data[c('machines')][data$country == "USA" & data$year == 2015,] <- (data[c('machines')][data$country == "USA" & data$year == 2015,] * 0.50) + 0.50
+data[c('machines')][data$country == "USA" & data$year == 2016,] <- (data[c('machines')][data$country == "USA" & data$year == 2016,] * 0.50) + 0.50
+data[c('machines')][data$country == "USA" & data$year == 2017,] <- (data[c('machines')][data$country == "USA" & data$year == 2017,] * 0.50) + 0.50
+data[c('machines')][data$country == "USA" & data$year == 2018,] <- (data[c('machines')][data$country == "USA" & data$year == 2018,] * 0.00) + 1.00
+data[c('machines')][data$country == "USA" & data$year == 2019,] <- (data[c('machines')][data$country == "USA" & data$year == 2019,] * 0.00) + 1.00
+
+data<-data[-c(3:23)]
+data<-subset(data,data$year==2019)
+
+#Load ISO Country Codes####
+#Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
+
+ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
+colnames(ISO_Country_Codes)<-c("country","ISO-2","ISO-3")
+
+colnames(data)<-c("ISO-3","year","machines","buildings", "intangibles")
+data<-merge(data,ISO_Country_Codes,by="ISO-3")
+
+write.csv(data, file = "cap_allowances_data.csv",row.names=F)
+
