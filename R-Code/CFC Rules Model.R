@@ -28,3 +28,16 @@ using<-function(...,prompt=TRUE){
   }
 }
 
+using(readr)
+CFC_Rules <- read_csv("CFC Rules.csv")
+CFC_Rules$Score<-rowMeans(CFC_Rules[,2:4])
+
+#Load ISO Country Codes####
+#Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
+ISO_Country_Codes <- read_csv("ISO Country Codes.csv")
+colnames(ISO_Country_Codes)<-c("country","ISO-2","ISO-3")
+
+colnames(CFC_Rules)<-c("country","exists","active","exemption", "cfcrules")
+data<-merge(CFC_Rules,ISO_Country_Codes,by="country")
+
+write.csv(data, file = "CFC Rules Data.csv",row.names=F)
