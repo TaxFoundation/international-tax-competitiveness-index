@@ -91,7 +91,7 @@ indexdata_cap_a_vars<-indexdata_cap_a_vars[,!names(indexdata_cap_a_vars) %in% ou
 names(indexdata_cap_a_vars)[names(indexdata_cap_a_vars) == 'ISO-3.x'] <- 'ISO-3'
 names(indexdata_cap_a_vars)[names(indexdata_cap_a_vars) == 'ISO-2.x'] <- 'ISO-2'
 
-indexdata_cap_a_vars<-indexdata_cap_a_vars[-c("ISO-2.y","ISO-3.y")]
+#indexdata_cap_a_vars<-indexdata_cap_a_vars[-c("ISO-2.y","ISO-3.y")]
 
 
 write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2014),file = "indexdata2014.csv",row.names=F)
