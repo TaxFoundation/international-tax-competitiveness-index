@@ -33,7 +33,6 @@ using(tidyverse)
 
 OECD_vars<-read_csv("OECDvars_data.csv")
 Cap_Allowances<-read_csv("cap_allowances_data.csv")
-CFC_Rules<-read_csv("CFC Rules Data.csv")
 
 indexdata2014<-read_csv("indexdata2014.csv")
 indexdata2014$year<-2014
@@ -53,21 +52,16 @@ indexdata2018$year<-2018
 indexdata2019<-read_csv("indexdata2019.csv")
 indexdata2019$year<-2019
 
-#Join cap allowances data with indexdata2019#
 
-Cap_Allowances_Vars<-c("pdvmachines","pdvbuildings", "pdvintangibles")
-indexdata2019<-indexdata2019[,!names(indexdata2019) %in% Cap_Allowances_Vars]
-
-indexdata2019<-merge(indexdata2019,Cap_Allowances,by=c("country","year"))
-indexdata2019<-indexdata2019[-c(41,45)]
 
 #Join CFC rules data with indexdata2019
+CFC_Rules<-read_csv("CFC Rules Data.csv")
+CFC_Rules<-CFC_Rules[-c(2:4,6:7)]
 
 CFC_Rules_var<-c("cfcrules")
 indexdata2019<-indexdata2019[,!names(indexdata2019) %in% CFC_Rules_var]
 
 indexdata2019<-merge(indexdata2019,CFC_Rules,by=c("country"))
-indexdata2019<-indexdata2019[-c(43:45,47:48)]
 
 indexdata_old<-rbind(indexdata2014,indexdata2015,indexdata2016,indexdata2017,indexdata2018,indexdata2019)
 #Rename progressivity variable
@@ -81,9 +75,28 @@ indexdata_old<-indexdata_old[,!names(indexdata_old) %in% OECDvars]
 
 indexdata_OECD_vars<-merge(indexdata_old,OECD_vars,by=c("country","year"))
 
-write.csv(subset(indexdata_OECD_vars,indexdata_OECD_vars$year==2014),file = "indexdata2014.csv",row.names=F)
-write.csv(subset(indexdata_OECD_vars,indexdata_OECD_vars$year==2015),file = "indexdata2015.csv",row.names=F)
-write.csv(subset(indexdata_OECD_vars,indexdata_OECD_vars$year==2016),file = "indexdata2016.csv",row.names=F)
-write.csv(subset(indexdata_OECD_vars,indexdata_OECD_vars$year==2017),file = "indexdata2017.csv",row.names=F)
-write.csv(subset(indexdata_OECD_vars,indexdata_OECD_vars$year==2018),file = "indexdata2018.csv",row.names=F)
-write.csv(subset(indexdata_OECD_vars,indexdata_OECD_vars$year==2019),file = "indexdata2019.csv",row.names=F)
+
+#Join cap allowances data with indexdata2019#
+
+Cap_Allowances_Vars<-c("pdvmachines","pdvbuildings", "pdvintangibles")
+colnames(Cap_Allowances)<-c("ISO-3.x","year","pdvmachines","pdvbuildings", "pdvintangibles")
+
+indexdata_OECD_vars<-indexdata_OECD_vars[,!names(indexdata_OECD_vars) %in% Cap_Allowances_Vars]
+
+indexdata_cap_a_vars<-merge(indexdata_OECD_vars,Cap_Allowances,by=c("ISO-3.x","year"))
+
+#Clean up ISO variables
+out<-c("ISO-2.y","ISO-3.y")
+indexdata_cap_a_vars<-indexdata_cap_a_vars[,!names(indexdata_cap_a_vars) %in% out]
+names(indexdata_cap_a_vars)[names(indexdata_cap_a_vars) == 'ISO-3.x'] <- 'ISO-3'
+names(indexdata_cap_a_vars)[names(indexdata_cap_a_vars) == 'ISO-2.x'] <- 'ISO-2'
+
+indexdata_cap_a_vars<-indexdata_cap_a_vars[-c("ISO-2.y","ISO-3.y")]
+
+
+write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2014),file = "indexdata2014.csv",row.names=F)
+write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2015),file = "indexdata2015.csv",row.names=F)
+write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2016),file = "indexdata2016.csv",row.names=F)
+write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2017),file = "indexdata2017.csv",row.names=F)
+write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2018),file = "indexdata2018.csv",row.names=F)
+write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2019),file = "indexdata2019.csv",row.names=F)

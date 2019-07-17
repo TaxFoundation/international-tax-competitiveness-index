@@ -414,16 +414,15 @@ data[c('machines')][data$country == "USA" & data$year == 2018,] <- (data[c('mach
 data[c('machines')][data$country == "USA" & data$year == 2019,] <- (data[c('machines')][data$country == "USA" & data$year == 2019,] * 0.00) + 1.00
 
 data<-data[-c(3:23)]
-data<-subset(data,data$year==2019)
 
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
 
-ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
-colnames(ISO_Country_Codes)<-c("country","ISO-2","ISO-3")
+#ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
+#colnames(ISO_Country_Codes)<-c("country","ISO-2","ISO-3")
 
-colnames(data)<-c("ISO-3","year","pdvmachines","pdvbuildings", "pdvintangibles")
-data<-merge(data,ISO_Country_Codes,by="ISO-3")
+#colnames(data)<-c("ISO-3","year","pdvmachines","pdvbuildings", "pdvintangibles")
+#data<-merge(data,ISO_Country_Codes,by="ISO-3")
 
 write.csv(data, file = "cap_allowances_data.csv",row.names=F)
 
