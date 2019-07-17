@@ -36,6 +36,8 @@ using(tidyverse)
 using(readxl)
 using(stringr)
 
+#VAT Rates
+
 vat_data <- read_excel("source-data/vat-gst-rates-ctt-trends.xlsx", 
                                        range = "A4:s39")
 
@@ -49,4 +51,17 @@ vat_data<-rbind(vat_data,US)
 vat_data<-vat_data[-c(2)]
 vat_data<-melt(vat_data,id.vars=c("X__1"))
 colnames(vat_data)<-c("country","year","vatrate")
-vat_data$country <- stringr::str_replace(vat_data$country, '\\*', '')
+vat_data$country <- str_remove_all(vat_data$country, "[*]")
+
+
+write.csv(vat_data,"vatrates.csv",row.names = FALSE)
+
+#VAT Thresholds
+vat_thresholds <- read_excel("source-data/vat-gst-annual-turnover-concessions-ctt-trends.xlsx", range = "A4:e42")
+
+vat_thresholds<-vat_thresholds[-c(2:4)]
+colnames(vat_thresholds)<-c("country","threshold")
+
+vat_thresholds$country <- stringr::str_replace(vat_thresholds$country, '\\*', '')
+vat_thresholds$country <- str_remove_all(vat_thresholds$country, "[6*]")
+
