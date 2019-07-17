@@ -1,4 +1,4 @@
-"ISO-3","year","machines","buildings","intangibles","country","ISO-2"
+"ISO-3","year","pdvmachines","pdvbuildings","pdvintangibles","country","ISO-2"
 "AUS",2019,0.851484971473245,0.479318672008477,0.547953910556565,"Australia","AU"
 "AUT",2019,0.813463195231154,0.391406012913837,0.737888702767901,"Austria","AT"
 "BEL",2019,0.882216122406083,0.622404878792567,0.802532679160089,"Belgium","BE"
