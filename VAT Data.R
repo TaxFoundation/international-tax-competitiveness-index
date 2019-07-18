@@ -38,20 +38,20 @@ using(stringr)
 
 #VAT Rates
 
-vat_data <- read_excel("source-data/vat-gst-rates-ctt-trends.xlsx", 
+vat_rates <- read_excel("source-data/vat-gst-rates-ctt-trends.xlsx", 
                                        range = "A4:s39")
 
-columns <- names(vat_data)
+columns <- names(vat_rates)
 values<-c("United States","","","","","","","","","","","","","7.2","7.3","7.3","7.4","7.4","7.4")
 US <- data.frame(columns, values)
 US<-spread(US,columns,values)
 
-vat_data<-rbind(vat_data,US)
+vat_rates<-rbind(vat_rates,US)
 
-vat_data<-vat_data[-c(2)]
-vat_data<-melt(vat_data,id.vars=c("X__1"))
-colnames(vat_data)<-c("country","year","vatrate")
-vat_data$country <- str_remove_all(vat_data$country, "[*]")
+vat_rates<-vat_rates[-c(2)]
+vat_rates<-melt(vat_rates,id.vars=c("X__1"))
+colnames(vat_rates)<-c("country","year","vatrate")
+vat_rates$country <- str_remove_all(vat_rates$country, "[*]")
 
 
 #write.csv(vat_data,"vatrates.csv",row.names = FALSE)
@@ -104,4 +104,9 @@ US_2019<-c("United States","0","2019")
 
 additional_countries <- data.frame(columns, US_2014, US_2015, US_2016,US_2017,US_2018,US_2019)
 US<-gather(columns,values)
+
+#Vat Base
+#Source data: https://doi.org/10/1787.888933890122
+vat_base <- read_excel("source-data/vat-revenue-ratio-calculations.xlsx", 
+                                             sheet = "Sheet1", range = "A7:U43")
 
