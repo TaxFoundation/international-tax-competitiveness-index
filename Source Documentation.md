@@ -18,7 +18,7 @@
 
 ### **inventory**: EY, “Worldwide Corporate Tax Guide 2018,“ https://www.ey.com/Publication/vwLUAssets/EY-2018-worldwide-corporate-tax-guide/$FILE/EY-2018-worldwide-corporate-tax-guide.pdf. EY, “Worldwide Capital and Fixed Assets Guide,” 2018, https://www.ey.com/Publication/vwLUAssets/ey-2018-worldwide-capital-and-fixed-assets-guide/$FILE/ey-2018-worldwide-capital-and-fixed-assets-guide.pdf. Deloitte, “Tax Guides and Highlights,” 2018, https://dits.deloitte.com/#TaxGuides. PKF, “International Worldwide Tax Guide 2018-2019,” https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2018-19/. Prior years based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/4635/".
 
-### **patentbox**: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf. OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes. 
+### **patentbox**: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf. OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes. Gary Guenther, "Patent Boxes: A Primer," Congressional Research Service, https://fas.org/sgp/crs/misc/R44829.pdf. 
 
 ### **rndcredit**: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
 
