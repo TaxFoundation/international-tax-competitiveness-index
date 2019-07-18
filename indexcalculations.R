@@ -1,3 +1,10 @@
+#main index code
+rm(list=ls())
+gc()
+
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+
 using<-function(...,prompt=TRUE){
   libs<-sapply(substitute(list(...))[-1],deparse)
   req<-unlist(lapply(libs,require,character.only=TRUE))
@@ -27,58 +34,66 @@ using(dplyr)
 using(tidyverse)
 using(readxl)
 
-setwd("C:/Users/dbunn/Dropbox (Tax Foundation)/international-tax-competitiveness-index/2018 Index")
 
 #Clears all datasets and variables from memory
 
-rm(list=ls())
-gc()
+
 #Load Data
 #2014
-
-
-rawdata2014 <- read_excel("indexdata2018 review 10.9.18.xlsx",sheet = "2014")
-rawdata2014$year<-2014
+rawdata2014 <- read_csv("indexdata2014.csv")
 #2015
-rawdata2015 <- read_excel("indexdata2018 review 10.9.18.xlsx",sheet = "2015")
-#rawdata2015<-rename(rawdata2015, c("country.limitations"="countrylimitations"))
-  rawdata2015$year<-2015
+rawdata2015 <- read_csv("indexdata2015.csv")
 #2016
-  rawdata2016 <- read_excel("indexdata2018 review 10.9.18.xlsx",sheet = "2016")
-  rawdata2016$year<-2016
+rawdata2016 <- read_csv("indexdata2016.csv")
 #2017
-  rawdata2017 <- read_excel("indexdata2018 review 10.9.18.xlsx",sheet = "2017")
-  rawdata2017$year<-2017
-#2017TCJA
-  rawdata2018 <- read_excel("indexdata2018 review 10.9.18.xlsx",sheet = "2018")
-rawdata2018$year<-2018
+rawdata2017 <- read_csv("indexdata2017.csv")
+#2018
+rawdata2018 <- read_csv("indexdata2018.csv")
+#2019
+rawdata2018 <- read_csv("indexdata2019.csv")
 
 #Combined Data
 rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018)
 
-  #ALT Min-Max Test
-    
-    normalize <-function(x){
-      normal <- apply(x,2, function(x){(x-min(x))/(max(x)-min(x))*10})
-      
-      return(normal)
-    }
+#Order variables for easy working
+rawdata<-rawdata[c("ISO-3","ISO-2","country","year",
+          "corprate","losscarryback" ,"losscarryforward","pdvmachines","pdvbuildings","pdvintangibles","inventory",
+          "patentbox","rndcredit","corptime","profitpayments","otherpayments",
+          "vatrate","threshold","base",
+          "consumptiontime",
+          "propertytaxes","propertytaxescollections","netwealth","estate/inheritance tax","transfertaxes",
+          "Assettaxes","capitalduties","financialtrans","capgainsrate","capgainsindex",
+          "incrate","progressivity","taxwedge",
+          "threshold_1","laborpayments","labortime",
+          "dividendexempt","capgainsexemption","divwithhold","intwithhold",
+          "roywithhold","taxtreaties","cfcrules","countrylimitations", 
+          "thincap","divrate")]
 
+#temporary NA's as zeros
+rawdata[is.na(rawdata)] <- 0
+
+#ALT Min-Max Test
+normalize <-function(x){
+  normal <- apply(x,2, function(x){(x-min(x))/(max(x)-min(x))*10})
   
+  return(normal)
+}   
+
 #standardize all the scores into a new dataframe called "zscores," This does this by year.
 zscores<-data.frame(country=rawdata$country,
                     year=rawdata$year,
-                    ddply(rawdata[-1],
+                    ddply(rawdata[4:46],
                           .(year),
                           scale)
-                    )
-
+)
 ALTscores<-data.frame(country=rawdata$country,
                       year=rawdata$year,
-                      ddply(rawdata[-1],
+                      ddply(rawdata[4:46],
                             .(year),
                             normalize)
 )
+####Leaving off here####
+
 
 #drops the extra "year" variable left over
 zscores<-zscores[-44]
