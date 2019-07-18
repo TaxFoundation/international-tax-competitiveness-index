@@ -132,4 +132,7 @@ vat_base<-melt(vat_base,id.vars=c("Country"))
 
 colnames(vat_base)<-c("country","year","base")
 
+#Combine files
+vat_data<-merge(vat_rates,vat_thresholds,by=c("country","year"))
+vat_data<-merge(vat_data,vat_base,by=c("country","year"))
 
