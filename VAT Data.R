@@ -109,4 +109,21 @@ US<-gather(columns,values)
 #Source data: https://doi.org/10/1787.888933890122
 vat_base <- read_excel("source-data/vat-revenue-ratio-calculations.xlsx", 
                                              sheet = "Sheet1", range = "A7:U43")
+vat_base <- vat_base[-c(2:18)]
 
+vat_base$`2017`<-vat_base$`2016`
+vat_base$`2018`<-vat_base$`2016`
+vat_base$`2019`<-vat_base$`2016`
+
+
+columns <- names(vat_base)
+values<-c("United States","0.397","0.397","0.397","0.397","0.4","0.4")
+US <- data.frame(columns, values)
+US<-spread(US,columns,values)
+
+vat_base<-rbind(vat_base,US)
+
+vat_rates<-vat_rates[-c(2)]
+vat_base<-melt(vat_base,id.vars=c("Country"))
+
+colnames(vat_rates)<-c("country","year","base")
