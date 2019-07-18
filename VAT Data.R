@@ -92,18 +92,23 @@ vat_thresholds[is.na(vat_thresholds)] <- 0
 
 #Add US for all years; Latvia for 2014 and 2015; Lithuania for 2014, 2015, 2016, 2017#
 #
-columns<-names(vat_thresholds)
-US_2014<-c("United States","0","2014")
-US_2015<-c("United States","0","2015")
-US_2016<-c("United States","0","2016")
-US_2017<-c("United States","0","2017")
-US_2018<-c("United States","0","2018")
-US_2019<-c("United States","0","2019")
+country<-c("United States","United States","United States","United States","United States","United States")
+threshold<-c("0","0","0","0","0","0")
+year<-c("2014","2015","2016","2017","2018","2019")
+USA <- data.frame(country,threshold,year)
 
 
+country<-c("Latvia","Latvia")
+threshold<-c("0","0")
+year<-c("2014","2015")
+LVA <- data.frame(country,threshold,year)
 
-additional_countries <- data.frame(columns, US_2014, US_2015, US_2016,US_2017,US_2018,US_2019)
-US<-gather(columns,values)
+country<-c("Lithuania","Lithuania","Lithuania","Lithuania")
+threshold<-c("0","0","0","0")
+year<-c("2014","2015","2016","2017")
+LTU <- data.frame(country,threshold,year)
+
+vat_thresholds<-rbind(vat_thresholds,USA,LVA,LTU)
 
 #Vat Base
 #Source data: https://doi.org/10/1787.888933890122
@@ -123,7 +128,8 @@ US<-spread(US,columns,values)
 
 vat_base<-rbind(vat_base,US)
 
-vat_rates<-vat_rates[-c(2)]
 vat_base<-melt(vat_base,id.vars=c("Country"))
 
-colnames(vat_rates)<-c("country","year","base")
+colnames(vat_base)<-c("country","year","base")
+
+
