@@ -63,6 +63,9 @@ indexdata2019<-indexdata2019[,!names(indexdata2019) %in% CFC_Rules_var]
 
 indexdata2019<-merge(indexdata2019,CFC_Rules,by=c("country"))
 
+#Join VAT data with indexdata2019
+
+
 indexdata_old<-rbind(indexdata2014,indexdata2015,indexdata2016,indexdata2017,indexdata2018,indexdata2019)
 #Rename progressivity variable
 indexdata_old$threshold_1->indexdata_old$progressivity
