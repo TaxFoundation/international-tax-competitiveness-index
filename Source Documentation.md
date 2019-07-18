@@ -48,12 +48,11 @@
 
 ### **CONSUMPTION TAXES**
 
-### **vatrate**: !!!
-This one? OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/.
+### **vatrate**: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/.
 
-### **threshold**: !!!
+### **threshold**: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/.
 
-### **base**: !!!
+### **base**: OECD, "Consumption Tax Trends 2018," Dec. 5,2018, https://www.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en.
 
 ### **consumptiontime**: PwC, "Paying Taxes 2019," https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
 
@@ -152,7 +151,7 @@ This one? OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," 
 
 ## Ireland
 
-### !!! **financialtrans**: evidence for FTT here? https://uk.practicallaw.thomsonreuters.com/3-503-0590?transitionType=Default&contextData=(sc.Default)&firstPage=true&comp=pluk&bhcp=1 I can't open it
+### **financialtrans**: BNY Mellon, "Financial Transactions Tax (FTT): A Global Perspective," 2018, https://www.bnymellon.com/emea/en/_locale-assets/pdf/our-thinking/ftt-globalperspective-brochure-03-2018.pdf.
 
 ### **cfcrules** (cfcexemption): Thomson Reuters, "Ireland Enacts EU ATAD CFC Rules," Feb 7, 2019, https://tax.thomsonreuters.com/blog/ireland-enacts-eu-atad-cfc-rules/.
 
@@ -196,4 +195,4 @@ This one? OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," 
 
 ### **capgainsexemption**: Kyle Pomerleau, "A Hybrid Approach: The Treatment of Foreign Profits under the Tax Cuts and Jobs Act," Tax Foundation, May 3, 2018, https://taxfoundation.org/treatment-foreign-profits-tax-cuts-jobs-act/.
 
-### **vatrate**: !!!
+### **vatrate**: Janelle Cammenga, "State and Local Sales Tax Rates, 2019," Jan. 30, 2019, https://taxfoundation.org/sales-tax-rates-2019/.
