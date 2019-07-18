@@ -20,7 +20,7 @@
 
 ### **patentbox**: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf. OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes. Gary Guenther, "Patent Boxes: A Primer," Congressional Research Service, https://fas.org/sgp/crs/misc/R44829.pdf. 
 
-### **rndcredit**: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
+### **rndcredit**: Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380. PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
 
 ### **corptime**: PwC, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
 
@@ -41,18 +41,18 @@
 
 ### **labortime**: PwC, "Paying Taxes 2019," https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
 
-### **capgainsrate**: EY, "Worldwide Personal Tax and Immigration Guide 2018-19," https://www.ey.com/Publication/vwLUAssets/ey-2018-19-worldwide-personal-tax-and-immigration-guide/$FILE/ey-2018-19-worldwide-personal-tax-and-immigration-guide.pdf.
+### **capgainsrate**: EY, "Worldwide Personal Tax and Immigration Guide 2018-19," https://www.ey.com/Publication/vwLUAssets/ey-2018-19-worldwide-personal-tax-and-immigration-guide/$FILE/ey-2018-19-worldwide-personal-tax-and-immigration-guide.pdf. Includes surtaxes for some countries.
 
 ### **divrate**: OECD, "OECD Tax Database, Table II.4. Overall statutory tax rates on dividend income," https://stats.oecd.org/index.aspx?DataSetCode=TABLE_II4.
 
 
 ### **CONSUMPTION TAXES**
 
-### **vatrate**: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/.
+### **vatrate**: !!!
 
-### **threshold**: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/.
+### **threshold**: !!!
 
-### **base**: OECD, "Consumption Tax Trends 2018," Dec. 5,2018, https://www.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en.
+### **base**: !!!
 
 ### **consumptiontime**: PwC, "Paying Taxes 2019," https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
 
@@ -131,11 +131,13 @@
 
 ## Greece
 
+### **rndcredit**: Bloomberg Tax, "Country Guides - Corporate Tax Computation and Administration," https://www.bloomberglaw.com/product/tax/document/25059413032. 
+
 ### **countrylimitations**: Bloomberg Tax, "Country Guides - Corporate Tax Computation and Administration," https://www.bloomberglaw.com/product/tax/document/25059413032.
 
 ## Hungary
 
-### **rndcredit**: OECD, "R&D Tax Incentives: Hungary, 2018," https://www.oecd.org/sti/rd-tax-stats-hungary.pdf.
+### **rndcredit**: OECD, "R&D Tax Incentives: Hungary, 2018," https://www.oecd.org/sti/rd-tax-stats-hungary.pdf. EY, "Worldwide Corporate Tax Guide: 2019," https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf.
 
 ### **financialtrans**: More details at PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
 
@@ -151,11 +153,15 @@
 
 ## Ireland
 
-### **financialtrans**: BNY Mellon, "Financial Transactions Tax (FTT): A Global Perspective," 2018, https://www.bnymellon.com/emea/en/_locale-assets/pdf/our-thinking/ftt-globalperspective-brochure-03-2018.pdf.
+### !!! **financialtrans**: evidence for FTT here? https://uk.practicallaw.thomsonreuters.com/3-503-0590?transitionType=Default&contextData=(sc.Default)&firstPage=true&comp=pluk&bhcp=1 I can't open it
 
 ### **cfcrules** (cfcexemption): Thomson Reuters, "Ireland Enacts EU ATAD CFC Rules," Feb 7, 2019, https://tax.thomsonreuters.com/blog/ireland-enacts-eu-atad-cfc-rules/.
 
 ### **countrylimitations**: Deloitte, “Tax Guides and Highlights,” 2019, https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-irelandhighlights-2019.pdf.
+
+## Israel
+
+### **capgainsrate**: Includes a 3% surtax.
 
 ## Latvia
 
@@ -165,19 +171,27 @@
 
 ## Lithuania
 
+### **capgainsrate**: Atlas Network, "Lithuanian Reforms Lower Tax Burden for 1.3 Million," July 13, 2018, https://www.atlasnetwork.org/news/article/lithuanian-reforms-lower-tax-burden-for-1.3-million.
+
 ### **countrylimitations**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides.
 
 ## Netherlands
 
 ### **rndcredit**: OECD, "R&D Tax Incentives: Netherlands, 2018," https://www.oecd.org/sti/rd-tax-stats-netherlands.pdf.
 
+## Norway
+
+### **capgainsrate**: EU, "Taxation Trends in the European Union," https://ec.europa.eu/taxation_customs/sites/taxation/files/taxation_trends_report_2019.pdf. 
+
 ## Poland
 
 ### **cfcrules** (cfcexemption): PwC, "Corporate - Significant developments," http://taxsummaries.pwc.com/ID/Latvia-Corporate-Significant-developments.
 
+### **patentbox**: Bloomberg, "Country Guide - Corporate Tax Computation and Administartion," https://www.bloomberglaw.com/product/tax/document/25153077800. 
+
 ## Slovakia
 
-### **capgainsrate**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides.
+### **capgainsrate**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. EU, "Taxation Trends in the European Union: 2016," https://ec.europa.eu/taxation_customs/sites/taxation/files/resources/documents/taxation/gen_info/economic_analysis/tax_structures/2016/econ_analysis_report_2016.pdf.
 
 ## Slovenia
 
@@ -189,10 +203,10 @@
 
 ## United States
 
-### **capgainsrate**: Erica York, "An Overview of Capital Gains Taxes," Tax Foundation, April 16, 2019, https://taxfoundation.org/capital-gains-taxes/.
+### **capgainsrate**: Erica York, "An Overview of Capital Gains Taxes," Tax Foundation, April 16, 2019, https://taxfoundation.org/capital-gains-taxes/. The 2013 maximum rate includes the effect of the 3.8% tax on net investment income and 3% itemized deduction phaseout, computed as 25.102=20+3.8+.03*(39.6+3.8), see U.S. Department of the Treasury," https://www.treasury.gov/resource-center/tax-policy/tax-analysis/Documents/Taxes-Paid-on-Capital-Gains-for-Returns-with-Positive-Net-Capital-Gains.pdf.
 
 ### **dividendexempt**: Kyle Pomerleau, "A Hybrid Approach: The Treatment of Foreign Profits under the Tax Cuts and Jobs Act," Tax Foundation, May 3, 2018, https://taxfoundation.org/treatment-foreign-profits-tax-cuts-jobs-act/.
 
 ### **capgainsexemption**: Kyle Pomerleau, "A Hybrid Approach: The Treatment of Foreign Profits under the Tax Cuts and Jobs Act," Tax Foundation, May 3, 2018, https://taxfoundation.org/treatment-foreign-profits-tax-cuts-jobs-act/.
 
-### **vatrate**: Janelle Cammenga, "State and Local Sales Tax Rates, 2019," Jan. 30, 2019, https://taxfoundation.org/sales-tax-rates-2019/.
+### **vatrate**: !!!
