@@ -90,7 +90,8 @@ vat_thresholds<-rbind(vat_thresholds_2014,vat_thresholds_2015,vat_thresholds_201
 vat_thresholds[is.na(vat_thresholds)] <- 0
 
 
-#Add US and other countries
+#Add US for all years; Latvia for 2014 and 2015; Lithuania for 2014, 2015, 2016, 2017#
+#
 columns<-names(vat_thresholds)
 US_2014<-c("United States","0","2014")
 US_2015<-c("United States","0","2015")
