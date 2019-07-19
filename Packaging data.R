@@ -101,7 +101,7 @@ indexdata_cap_a_vars<-merge(indexdata_OECD_vars,Cap_Allowances,by=c("ISO-3.x","y
 vat_vars<-c("vatrate","threshold", "base")
 indexdata_cap_a_vars<-indexdata_cap_a_vars[,!names(indexdata_cap_a_vars) %in% vat_vars]
 
-#Join VAT data with indexdata_old####
+#Join VAT data with indexdata_cap_a_vars####
 
 indexdata_VAT_vars<-merge(indexdata_cap_a_vars,vat_data,by=c("country","year"))
 

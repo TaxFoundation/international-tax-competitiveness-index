@@ -100,7 +100,7 @@ threshold<-c("0","0","0","0","0","0")
 year<-c("2014","2015","2016","2017","2018","2019")
 USA <- data.frame(country,threshold,year)
 
-
+#Check source C:\Github\international-tax-competitiveness-index\source-data\VAT Thresholds_LVA and LTU_Previous Years.xlsx
 country<-c("Latvia","Latvia")
 threshold<-c("100402","100604")
 year<-c("2014","2015")
@@ -117,7 +117,7 @@ write.csv(vat_thresholds,"vat_thresholds.csv",row.names = FALSE)
 
 
 #Vat Base
-#Source data: https://doi.org/10/1787.888933890122
+#Source data: https://doi.org/10.1787/888933890122
 vat_base <- read_excel("source-data/vat-revenue-ratio-calculations.xlsx", 
                                              sheet = "Sheet1", range = "A7:U43")
 vat_base <- vat_base[-c(2:18)]
