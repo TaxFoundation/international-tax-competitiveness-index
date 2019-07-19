@@ -41,8 +41,10 @@ using(stringr)
 vat_rates <- read_excel("source-data/vat-gst-rates-ctt-trends.xlsx", 
                                        range = "A4:s39")
 
+vat_rates<-vat_rates[-c(3:13)]
+
 columns <- names(vat_rates)
-values<-c("United States","","","","","","","","","","","","","7.2","7.3","7.3","7.4","7.4","7.4")
+values<-c("United States","","7.2","7.3","7.3","7.4","7.4","7.4")
 US <- data.frame(columns, values)
 US<-spread(US,columns,values)
 
@@ -54,7 +56,7 @@ colnames(vat_rates)<-c("country","year","vatrate")
 vat_rates$country <- str_remove_all(vat_rates$country, "[*]")
 
 
-#write.csv(vat_data,"vatrates.csv",row.names = FALSE)
+write.csv(vat_rates,"vatrates.csv",row.names = FALSE)
 
 #VAT Thresholds
 vat_thresholds_2018 <- read_excel("source-data/vat-gst-annual-turnover-concessions-ctt-trends.xlsx", sheet = "2018", range = "A4:e42")
@@ -89,6 +91,7 @@ vat_thresholds<-rbind(vat_thresholds_2014,vat_thresholds_2015,vat_thresholds_201
 #Change NAs to zeros
 vat_thresholds[is.na(vat_thresholds)] <- 0
 
+vat_thresholds<-subset(vat_thresholds,vat_thresholds$country!="0")
 
 #Add US for all years; Latvia for 2014 and 2015; Lithuania for 2014, 2015, 2016, 2017#
 #
@@ -110,6 +113,9 @@ LTU <- data.frame(country,threshold,year)
 
 vat_thresholds<-rbind(vat_thresholds,USA,LVA,LTU)
 
+write.csv(vat_thresholds,"vat_thresholds.csv",row.names = FALSE)
+
+
 #Vat Base
 #Source data: https://doi.org/10/1787.888933890122
 vat_base <- read_excel("source-data/vat-revenue-ratio-calculations.xlsx", 
@@ -129,11 +135,23 @@ US<-spread(US,columns,values)
 vat_base<-rbind(vat_base,US)
 
 vat_base<-melt(vat_base,id.vars=c("Country"))
-
 colnames(vat_base)<-c("country","year","base")
+#Change NAs to zeros
+vat_base[is.na(vat_base)] <- 0
+
+vat_base<-subset(vat_base,vat_base$country!="0")
+
+write.csv(vat_base,"vat_base.csv",row.names = FALSE)
+
+
 
 #Combine files
-vat_data<-merge(vat_rates,vat_thresholds,by=c("country","year"),all=T)
+vat_base <- read_csv("vat_base.csv")
+vat_rates <- read_csv("vatrates.csv")
+vat_thresholds <- read_csv("vat_thresholds.csv")
+
+
+vat_data<-merge(vat_rates,vat_thresholds,by=c("country","year"))
 vat_data<-merge(vat_data,vat_base,by=c("country","year"))
 
 write.csv(vat_data,file = "vat_data.csv",row.names=F)
