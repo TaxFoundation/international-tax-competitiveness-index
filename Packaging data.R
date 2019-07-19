@@ -112,7 +112,9 @@ indexdata_final<-indexdata_final[,!names(indexdata_final) %in% out]
 names(indexdata_final)[names(indexdata_final) == 'ISO-3.x'] <- 'ISO-3'
 names(indexdata_final)[names(indexdata_final) == 'ISO-2.x'] <- 'ISO-2'
 
+
 indexdata_final<-indexdata_final[-c("ISO-2.y","ISO-3.y")]
+
 
 
 write.csv(subset(indexdata_final,indexdata_final$year==2014),file = "indexdata2014.csv",row.names=F)
