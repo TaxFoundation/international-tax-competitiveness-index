@@ -35,6 +35,7 @@ CFC_Rules<-read_csv("CFC Rules Data.csv")
 OECD_vars<-read_csv("OECDvars_data.csv")
 Cap_Allowances<-read_csv("cap_allowances_data.csv")
 vat_data<-read_csv("vat_data.csv")
+Property_Tax<-read_csv("Property_Tax.csv")
 
 
 indexdata2014<-read_csv("indexdata2014.csv")
@@ -94,26 +95,31 @@ indexdata_OECD_vars<-indexdata_OECD_vars[,!names(indexdata_OECD_vars) %in% Cap_A
 
 indexdata_cap_a_vars<-merge(indexdata_OECD_vars,Cap_Allowances,by=c("ISO-3.x","year"))
 
-#Join VAT data with indexdata2019
+#Join VAT data with indexdata_cap_a_vars
 
 #Remove variables from indexdata_old that are in VAT data
 
 vat_vars<-c("vatrate","threshold", "base")
 indexdata_cap_a_vars<-indexdata_cap_a_vars[,!names(indexdata_cap_a_vars) %in% vat_vars]
 
-#Join VAT data with indexdata_cap_a_vars####
-
 indexdata_VAT_vars<-merge(indexdata_cap_a_vars,vat_data,by=c("country","year"))
 
-indexdata_final<-indexdata_VAT_vars
+#Join Property tax data with indexdata_cap_a_vars
+prop_tax_vars<-c("propertytaxescollections")
+
+#Adjust years in Property tax data to account for two year lag
+Property_Tax$year<-Property_Tax$year+2
+Property_Tax<-Property_Tax[c("country","year","propertytaxescollections")]
+indexdata_VAT_vars<-indexdata_VAT_vars[,!names(indexdata_VAT_vars) %in% prop_tax_vars]
+indexdata_prop_tax_vars<-merge(indexdata_VAT_vars,Property_Tax,by=c("country","year"))
+
+
+indexdata_final<-indexdata_prop_tax_vars
 #Clean up ISO variables
 out<-c("ISO-2.y","ISO-3.y")
 indexdata_final<-indexdata_final[,!names(indexdata_final) %in% out]
 names(indexdata_final)[names(indexdata_final) == 'ISO-3.x'] <- 'ISO-3'
 names(indexdata_final)[names(indexdata_final) == 'ISO-2.x'] <- 'ISO-2'
-
-
-indexdata_final<-indexdata_final[-c("ISO-2.y","ISO-3.y")]
 
 
 
