@@ -31,8 +31,11 @@ using<-function(...,prompt=TRUE){
 using(readr)
 using(tidyverse)
 
+CFC_Rules<-read_csv("CFC Rules Data.csv")
 OECD_vars<-read_csv("OECDvars_data.csv")
 Cap_Allowances<-read_csv("cap_allowances_data.csv")
+vat_data<-read_csv("vat_data.csv")
+
 
 indexdata2014<-read_csv("indexdata2014.csv")
 indexdata2014$year<-2014
@@ -55,7 +58,6 @@ indexdata2019$year<-2019
 
 
 #Join CFC rules data with indexdata2019
-CFC_Rules<-read_csv("CFC Rules Data.csv")
 CFC_Rules<-CFC_Rules[-c(2:4,6:7)]
 
 CFC_Rules_var<-c("cfcrules")
@@ -63,12 +65,16 @@ indexdata2019<-indexdata2019[,!names(indexdata2019) %in% CFC_Rules_var]
 
 indexdata2019<-merge(indexdata2019,CFC_Rules,by=c("country"))
 
-#Join VAT data with indexdata2019
+
+
 
 
 indexdata_old<-rbind(indexdata2014,indexdata2015,indexdata2016,indexdata2017,indexdata2018,indexdata2019)
+
 #Rename progressivity variable
 indexdata_old$threshold_1->indexdata_old$progressivity
+
+
 
 #Remove variables from indexdata_old that are in OECD data
 OECDvars<-c("corprate","divrate", "incrate", "progressivity", "taxwedge")
@@ -88,18 +94,30 @@ indexdata_OECD_vars<-indexdata_OECD_vars[,!names(indexdata_OECD_vars) %in% Cap_A
 
 indexdata_cap_a_vars<-merge(indexdata_OECD_vars,Cap_Allowances,by=c("ISO-3.x","year"))
 
+#Join VAT data with indexdata2019
+
+#Remove variables from indexdata_old that are in VAT data
+
+vat_vars<-c("vatrate","threshold", "base")
+indexdata_cap_a_vars<-indexdata_cap_a_vars[,!names(indexdata_cap_a_vars) %in% vat_vars]
+
+#Join VAT data with indexdata_old####
+
+indexdata_VAT_vars<-merge(indexdata_cap_a_vars,vat_data,by=c("country","year"))
+
+indexdata_final<-indexdata_VAT_vars
 #Clean up ISO variables
 out<-c("ISO-2.y","ISO-3.y")
-indexdata_cap_a_vars<-indexdata_cap_a_vars[,!names(indexdata_cap_a_vars) %in% out]
-names(indexdata_cap_a_vars)[names(indexdata_cap_a_vars) == 'ISO-3.x'] <- 'ISO-3'
-names(indexdata_cap_a_vars)[names(indexdata_cap_a_vars) == 'ISO-2.x'] <- 'ISO-2'
+indexdata_final<-indexdata_final[,!names(indexdata_final) %in% out]
+names(indexdata_final)[names(indexdata_final) == 'ISO-3.x'] <- 'ISO-3'
+names(indexdata_final)[names(indexdata_final) == 'ISO-2.x'] <- 'ISO-2'
 
-indexdata_cap_a_vars<-indexdata_cap_a_vars[-c("ISO-2.y","ISO-3.y")]
+indexdata_final<-indexdata_final[-c("ISO-2.y","ISO-3.y")]
 
 
-write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2014),file = "indexdata2014.csv",row.names=F)
-write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2015),file = "indexdata2015.csv",row.names=F)
-write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2016),file = "indexdata2016.csv",row.names=F)
-write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2017),file = "indexdata2017.csv",row.names=F)
-write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2018),file = "indexdata2018.csv",row.names=F)
-write.csv(subset(indexdata_cap_a_vars,indexdata_cap_a_vars$year==2019),file = "indexdata2019.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2014),file = "indexdata2014.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2015),file = "indexdata2015.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2016),file = "indexdata2016.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2017),file = "indexdata2017.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2018),file = "indexdata2018.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2019),file = "indexdata2019.csv",row.names=F)
