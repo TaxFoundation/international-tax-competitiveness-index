@@ -102,12 +102,12 @@ USA <- data.frame(country,threshold,year)
 
 
 country<-c("Latvia","Latvia")
-threshold<-c("0","0")
+threshold<-c("100402","100604")
 year<-c("2014","2015")
 LVA <- data.frame(country,threshold,year)
 
 country<-c("Lithuania","Lithuania","Lithuania","Lithuania")
-threshold<-c("0","0","0","0")
+threshold<-c("101580","100897","100671","100223")
 year<-c("2014","2015","2016","2017")
 LTU <- data.frame(country,threshold,year)
 
