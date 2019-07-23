@@ -100,7 +100,7 @@ indexdata_VAT_vars<-indexdata_VAT_vars[,!names(indexdata_VAT_vars) %in% prop_tax
 indexdata_prop_tax_vars<-merge(indexdata_VAT_vars,Property_Tax,by=c("country","year"))
 
 #Join CFC rules data with indexdata2019
-CFC_Rules<-CFC_Rules[-c(2:4,6:7)]
+CFC_Rules<-CFC_Rules[-c(2:4,7:8)]
 
 CFC_Rules_var<-c("cfcrules")
 indexdata_prop_tax_vars<-indexdata_prop_tax_vars[,!names(indexdata_prop_tax_vars) %in% CFC_Rules_var]
@@ -126,3 +126,4 @@ write.csv(subset(indexdata_final,indexdata_final$year==2016),file = "indexdata20
 write.csv(subset(indexdata_final,indexdata_final$year==2017),file = "indexdata2017.csv",row.names=F)
 write.csv(subset(indexdata_final,indexdata_final$year==2018),file = "indexdata2018.csv",row.names=F)
 write.csv(subset(indexdata_final,indexdata_final$year==2019),file = "indexdata2019.csv",row.names=F)
+
