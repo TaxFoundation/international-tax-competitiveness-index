@@ -29,7 +29,15 @@ using<-function(...,prompt=TRUE){
 }
 
 using(readr)
-CFC_Rules <- read_csv("./source-data/CFC Rules.csv")
+CFC_Rules_2014 <- read_csv("./source-data/cfcrules2014.csv")
+CFC_Rules_2015 <- read_csv("./source-data/cfcrules2015.csv")
+CFC_Rules_2016 <- read_csv("./source-data/cfcrules2016.csv")
+CFC_Rules_2017 <- read_csv("./source-data/cfcrules2017.csv")
+CFC_Rules_2018 <- read_csv("./source-data/cfcrules2018.csv")
+CFC_Rules_2019 <- read_csv("./source-data/cfcrules2019.csv")
+
+CFC_Rules<-rbind(CFC_Rules_2014,CFC_Rules_2015,CFC_Rules_2016,CFC_Rules_2017,CFC_Rules_2018,CFC_Rules_2019)
+
 CFC_Rules$Score<-rowMeans(CFC_Rules[,2:4])
 
 #Load ISO Country Codes####
@@ -37,7 +45,7 @@ CFC_Rules$Score<-rowMeans(CFC_Rules[,2:4])
 ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
 colnames(ISO_Country_Codes)<-c("country","ISO-2","ISO-3")
 
-colnames(CFC_Rules)<-c("country","exists","active","exemption", "cfcrules")
+colnames(CFC_Rules)<-c("country","exists","active","exemption","year", "cfcrules")
 data<-merge(CFC_Rules,ISO_Country_Codes,by="country")
 
 write.csv(data, file = "CFC Rules Data.csv",row.names=F)

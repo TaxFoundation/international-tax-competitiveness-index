@@ -13,4 +13,4 @@ Good CFC regimes only tax passive income and provide exemptions. Zero is the bes
 
 ## Exemption: determines if the country has exemptions to its CFC regime
 
-    Equal to 1 if CFC rules do not have exemptions; equal to 0.5 if there are limited exemptions meaning the exemptions only apply to a narrow range of countries or situations; equal to zero if there are no CFC rules or if there is a broad set of exemptions.
+    Equal to 1 if CFC rules do not have exemptions; equal to zero if there are no CFC rules or if there are exemptions.

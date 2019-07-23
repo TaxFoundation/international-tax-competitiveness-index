@@ -56,20 +56,6 @@ indexdata2018$year<-2018
 indexdata2019<-read_csv("indexdata2019.csv")
 indexdata2019$year<-2019
 
-
-
-#Join CFC rules data with indexdata2019
-CFC_Rules<-CFC_Rules[-c(2:4,6:7)]
-
-CFC_Rules_var<-c("cfcrules")
-indexdata2019<-indexdata2019[,!names(indexdata2019) %in% CFC_Rules_var]
-
-indexdata2019<-merge(indexdata2019,CFC_Rules,by=c("country"))
-
-
-
-
-
 indexdata_old<-rbind(indexdata2014,indexdata2015,indexdata2016,indexdata2017,indexdata2018,indexdata2019)
 
 #Rename progressivity variable
@@ -113,8 +99,19 @@ Property_Tax<-Property_Tax[c("country","year","propertytaxescollections")]
 indexdata_VAT_vars<-indexdata_VAT_vars[,!names(indexdata_VAT_vars) %in% prop_tax_vars]
 indexdata_prop_tax_vars<-merge(indexdata_VAT_vars,Property_Tax,by=c("country","year"))
 
+#Join CFC rules data with indexdata2019
+CFC_Rules<-CFC_Rules[-c(2:4,7:8)]
 
-indexdata_final<-indexdata_prop_tax_vars
+CFC_Rules_var<-c("cfcrules")
+indexdata_prop_tax_vars<-indexdata_prop_tax_vars[,!names(indexdata_prop_tax_vars) %in% CFC_Rules_var]
+
+indexdata_CFC_var<-merge(indexdata_prop_tax_vars,CFC_Rules,by=c("country","year"))
+
+
+
+indexdata_final<-indexdata_CFC_var
+
+
 #Clean up ISO variables
 out<-c("ISO-2.y","ISO-3.y")
 indexdata_final<-indexdata_final[,!names(indexdata_final) %in% out]
@@ -129,3 +126,4 @@ write.csv(subset(indexdata_final,indexdata_final$year==2016),file = "indexdata20
 write.csv(subset(indexdata_final,indexdata_final$year==2017),file = "indexdata2017.csv",row.names=F)
 write.csv(subset(indexdata_final,indexdata_final$year==2018),file = "indexdata2018.csv",row.names=F)
 write.csv(subset(indexdata_final,indexdata_final$year==2019),file = "indexdata2019.csv",row.names=F)
+
