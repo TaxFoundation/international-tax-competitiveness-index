@@ -31,29 +31,29 @@ using<-function(...,prompt=TRUE){
 using(readr)
 using(tidyverse)
 
-CFC_Rules<-read_csv("CFC Rules Data.csv")
-OECD_vars<-read_csv("OECDvars_data.csv")
-Cap_Allowances<-read_csv("cap_allowances_data.csv")
-vat_data<-read_csv("vat_data.csv")
-Property_Tax<-read_csv("Property_Tax.csv")
+CFC_Rules<-read_csv("./intermediate-outputs/CFC Rules Data.csv")
+OECD_vars<-read_csv("./intermediate-outputs/OECDvars_data.csv")
+Cap_Allowances<-read_csv("./intermediate-outputs/cap_allowances_data.csv")
+vat_data<-read_csv("./intermediate-outputs/vat_data.csv")
+Property_Tax<-read_csv("./intermediate-outputs/Property_Tax.csv")
 
 
-indexdata2014<-read_csv("indexdata2014.csv")
+indexdata2014<-read_csv("./source-data/indexdata2014.csv")
 indexdata2014$year<-2014
 
-indexdata2015<-read_csv("indexdata2015.csv")
+indexdata2015<-read_csv("./source-data/indexdata2015.csv")
 indexdata2015$year<-2015
 
-indexdata2016<-read_csv("indexdata2016.csv")
+indexdata2016<-read_csv("./source-data/indexdata2016.csv")
 indexdata2016$year<-2016
 
-indexdata2017<-read_csv("indexdata2017.csv")
+indexdata2017<-read_csv("./source-data/indexdata2017.csv")
 indexdata2017$year<-2017
 
-indexdata2018<-read_csv("indexdata2018.csv")
+indexdata2018<-read_csv("./source-data/indexdata2018.csv")
 indexdata2018$year<-2018
 
-indexdata2019<-read_csv("indexdata2019.csv")
+indexdata2019<-read_csv("./source-data/indexdata2019.csv")
 indexdata2019$year<-2019
 
 indexdata_old<-rbind(indexdata2014,indexdata2015,indexdata2016,indexdata2017,indexdata2018,indexdata2019)
@@ -120,9 +120,9 @@ names(indexdata_final)[names(indexdata_final) == 'ISO-2.x'] <- 'ISO-2'
 
 
 
-write.csv(subset(indexdata_final,indexdata_final$year==2014),file = "final_indexdata2014.csv",row.names=F)
-write.csv(subset(indexdata_final,indexdata_final$year==2015),file = "final_indexdata2015.csv",row.names=F)
-write.csv(subset(indexdata_final,indexdata_final$year==2016),file = "final_indexdata2016.csv",row.names=F)
-write.csv(subset(indexdata_final,indexdata_final$year==2017),file = "final_indexdata2017.csv",row.names=F)
-write.csv(subset(indexdata_final,indexdata_final$year==2018),file = "final_indexdata2018.csv",row.names=F)
-write.csv(subset(indexdata_final,indexdata_final$year==2019),file = "final_indexdata2019.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2014),file = "./final-data/final_indexdata2014.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2015),file = "./final-data/final_indexdata2015.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2016),file = "./final-data/final_indexdata2016.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2017),file = "./final-data/final_indexdata2017.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2018),file = "./final-data/final_indexdata2018.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2019),file = "./final-data/final_indexdata2019.csv",row.names=F)

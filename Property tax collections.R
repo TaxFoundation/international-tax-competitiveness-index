@@ -182,5 +182,5 @@ Property_Tax<-merge(Property_Tax_Rev,Cap_Stock_12_17,by=c("isocode","year"))
 Property_Tax$propertytaxescollections<-(Property_Tax$propertytaxescollections/Property_Tax$Cap_Stock)*100
 Property_Tax<-Property_Tax[c("country","year","propertytaxescollections","isocode")]
 colnames(Property_Tax)<-c("country","year","propertytaxescollections","ISO-3") 
-write.csv(Property_Tax, file = "Property_Tax.csv", row.names = FALSE)
+write.csv(Property_Tax, file = "./intermediate-outputs/Property_Tax.csv", row.names = FALSE)
 

@@ -40,17 +40,17 @@ using(readxl)
 
 #Load Data
 #2014
-rawdata2014 <- read_csv("final_indexdata2014.csv")
+rawdata2014 <- read_csv("./final-data/final_indexdata2014.csv")
 #2015
-rawdata2015 <- read_csv("final_indexdata2015.csv")
+rawdata2015 <- read_csv("./final-data/final_indexdata2015.csv")
 #2016
-rawdata2016 <- read_csv("final_indexdata2016.csv")
+rawdata2016 <- read_csv("./final-data/final_indexdata2016.csv")
 #2017
-rawdata2017 <- read_csv("final_indexdata2017.csv")
+rawdata2017 <- read_csv("./final-data/final_indexdata2017.csv")
 #2018
-rawdata2018 <- read_csv("final_indexdata2018.csv")
+rawdata2018 <- read_csv("./final-data/final_indexdata2018.csv")
 #2019
-rawdata2019 <- read_csv("final_indexdata2019.csv")
+rawdata2019 <- read_csv("./final-data/final_indexdata2019.csv")
 
 #Combined Data
 rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018,rawdata2019)
@@ -547,7 +547,7 @@ cortest2<-ALTfinalcategories[ALTfinalcategories$year == 2015,]
 cor(cortest2[c(4,6,8,10,12,14)])     
 #Left off here
 
-write.csv(Final2018, file = "data2018run.csv")
+write.csv(Final2019, file = "./final-outputs/data2019run.csv")
 
 Australia<-finalcategories[finalcategories$country=="Australia",]
 Austria<-finalcategories[finalcategories$country=="Austria",]
@@ -587,24 +587,24 @@ United_States<-finalcategories[finalcategories$country=="United States",]
 
 
 #Changes from 2017 index
-M <- merge(Final2018,Final2017,by="country")
+M <- merge(Final2019,Final2018,by="country")
 
 Changes <- M[,grepl("*\\.x$",names(M))] - M[,grepl("*\\.y$",names(M))]
 
 Changes<-cbind(M[,1,drop=FALSE],Changes)
 
-#Compare 2016, 2017, and 2018 results
-Table2_Changes<-merge(Final2017,Final2018,by="country")
+#Compare 2017, 2018, and 2019 results
+Table2_Changes<-merge(Final2018,Final2019,by="country")
 Table2_Changes<-Table2_Changes[c(1,13,14,26,27)]
-colnames(Table2_Changes)<-c("country", "2017 Rank","2017 Score","2018 Rank","2018 Score")
-Table2_Changes<-merge(Final2016,Table2_Changes,by="country")
+colnames(Table2_Changes)<-c("country", "2018 Rank","2018 Score","2019 Rank","2019 Score")
+Table2_Changes<-merge(Final2017,Table2_Changes,by="country")
 Table2_Changes<-Table2_Changes[c(1,13:18)]
-colnames(Table2_Changes)<-c("Country","2016 Rank","2016 Score", "2017 Rank","2017 Score","2018 Rank","2018 Score")
-Table2_Changes$'Change in Rank'<-(Table2_Changes$`2018 Rank`-Table2_Changes$`2017 Rank`)*(-1)
-Table2_Changes$'Change in Score'<-Table2_Changes$`2018 Score`-Table2_Changes$`2017 Score`
+colnames(Table2_Changes)<-c("Country","2017 Rank","2017 Score", "2018 Rank","2018 Score","2019 Rank","2019 Score")
+Table2_Changes$'Change in Rank'<-(Table2_Changes$`2019 Rank`-Table2_Changes$`2018 Rank`)*(-1)
+Table2_Changes$'Change in Score'<-Table2_Changes$`2019 Score`-Table2_Changes$`2018 Score`
 write.csv(Table2_Changes,"Table 2 Changes from Previous Years.csv")
 
+subcategories_2019<-subset(subcategories,year==2019)
 subcategories_2018<-subset(subcategories,year==2018)
-subcategories_2017<-subset(subcategories,year==2017)
 
-write.csv(subcategories_2018,"subcategories 2018.csv")
+write.csv(subcategories_2019,"./final-outputs/subcategories 2019.csv")

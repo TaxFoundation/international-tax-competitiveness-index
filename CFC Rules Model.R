@@ -48,4 +48,4 @@ colnames(ISO_Country_Codes)<-c("country","ISO-2","ISO-3")
 colnames(CFC_Rules)<-c("country","exists","active","exemption","year", "cfcrules")
 data<-merge(CFC_Rules,ISO_Country_Codes,by="country")
 
-write.csv(data, file = "CFC Rules Data.csv",row.names=F)
+write.csv(data, file = "./intermediate-outputs/CFC Rules Data.csv",row.names=F)
