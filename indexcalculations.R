@@ -54,11 +54,14 @@ rawdata2019 <- read_csv("final_indexdata2019.csv")
 
 #Combined Data
 rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018,rawdata2019)
+names(rawdata)
 
 #Rename Estate tax variable
 rawdata$estate.inheritance.tax<-rawdata$`estate/inheritance tax`
-rawdata<-rawdata[-24]
-#Order variables for easy working
+out<-c("estate/inheritance tax")
+rawdata<-rawdata[,!names(rawdata) %in% out]
+
+#Order variables for easier working
 rawdata<-rawdata[c("ISO-3","ISO-2","country","year",
           "corprate","losscarryback" ,"losscarryforward","pdvmachines","pdvbuildings","pdvintangibles","inventory",
           "patentbox","rndcredit","corptime","profitpayments","otherpayments",
@@ -140,10 +143,6 @@ flip<-c("corprate","patentbox","rndcredit","corptime","profitpayments","otherpay
         "propertytaxes","propertytaxescollections","netwealth","estate.inheritance.tax","transfertaxes","Assettaxes","capitalduties",
         "financialtrans","capgainsrate","divrate","incrate","progressivity","taxwedge","laborpayments","labortime",
         "divwithhold","intwithhold","roywithhold","cfcrules","countrylimitations","thincap")
-
-names(rawdata)
-
-flip<-c(3,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,29,30,31,32,33,34,37,38,39,41,42,43)
 
 
 flipfunc <- function(x) {
@@ -364,7 +363,6 @@ ALTscale<-function(x){
 #Rank Function
 
 rank1<-function(x){
-  
   ranks<-rank(-x,ties.method= "min")
   return(ranks)
 }
@@ -377,7 +375,7 @@ subcategories<-data.frame(country=rawdata$country,
                                 score2)
 )
 
-  #Alt Subcategory Scores
+#Alt Subcategory Scores
 
 #    ALTsubcategories<-data.frame(country=rawdata$country,
 #                              ddply(ALTsubcategories[-1],
@@ -526,7 +524,7 @@ check<-rawdata[rawdata$country == "Greece",]
 
 #Does the normalization technique drive the results?
 
-cor(ALTfinalcategories$final[ALTfinalcategories$year == 2016],finalcategories$final[finalcategories$year == 2016])
+cor(ALTfinalcategories$final[ALTfinalcategories$year == 2019],finalcategories$final[finalcategories$year == 2019])
 
 #not really. 98 percent correlation between the two
 

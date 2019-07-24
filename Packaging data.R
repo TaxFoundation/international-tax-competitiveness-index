@@ -126,4 +126,3 @@ write.csv(subset(indexdata_final,indexdata_final$year==2016),file = "final_index
 write.csv(subset(indexdata_final,indexdata_final$year==2017),file = "final_indexdata2017.csv",row.names=F)
 write.csv(subset(indexdata_final,indexdata_final$year==2018),file = "final_indexdata2018.csv",row.names=F)
 write.csv(subset(indexdata_final,indexdata_final$year==2019),file = "final_indexdata2019.csv",row.names=F)
-
