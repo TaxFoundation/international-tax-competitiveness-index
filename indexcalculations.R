@@ -40,17 +40,17 @@ using(readxl)
 
 #Load Data
 #2014
-rawdata2014 <- read_csv("indexdata2014.csv")
+rawdata2014 <- read_csv("final_indexdata2014.csv")
 #2015
-rawdata2015 <- read_csv("indexdata2015.csv")
+rawdata2015 <- read_csv("final_indexdata2015.csv")
 #2016
-rawdata2016 <- read_csv("indexdata2016.csv")
+rawdata2016 <- read_csv("final_indexdata2016.csv")
 #2017
-rawdata2017 <- read_csv("indexdata2017.csv")
+rawdata2017 <- read_csv("final_indexdata2017.csv")
 #2018
-rawdata2018 <- read_csv("indexdata2018.csv")
+rawdata2018 <- read_csv("final_indexdata2018.csv")
 #2019
-rawdata2019 <- read_csv("indexdata2019.csv")
+rawdata2019 <- read_csv("final_indexdata2019.csv")
 
 #Combined Data
 rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018,rawdata2019)

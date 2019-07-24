@@ -120,10 +120,10 @@ names(indexdata_final)[names(indexdata_final) == 'ISO-2.x'] <- 'ISO-2'
 
 
 
-write.csv(subset(indexdata_final,indexdata_final$year==2014),file = "indexdata2014.csv",row.names=F)
-write.csv(subset(indexdata_final,indexdata_final$year==2015),file = "indexdata2015.csv",row.names=F)
-write.csv(subset(indexdata_final,indexdata_final$year==2016),file = "indexdata2016.csv",row.names=F)
-write.csv(subset(indexdata_final,indexdata_final$year==2017),file = "indexdata2017.csv",row.names=F)
-write.csv(subset(indexdata_final,indexdata_final$year==2018),file = "indexdata2018.csv",row.names=F)
-write.csv(subset(indexdata_final,indexdata_final$year==2019),file = "indexdata2019.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2014),file = "final_indexdata2014.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2015),file = "final_indexdata2015.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2016),file = "final_indexdata2016.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2017),file = "final_indexdata2017.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2018),file = "final_indexdata2018.csv",row.names=F)
+write.csv(subset(indexdata_final,indexdata_final$year==2019),file = "final_indexdata2019.csv",row.names=F)
 
