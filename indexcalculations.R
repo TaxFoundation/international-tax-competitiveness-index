@@ -547,6 +547,8 @@ calc.relimp(importance, rela= TRUE)
 
 cortest2<-ALTfinalcategories[ALTfinalcategories$year == 2015,]
 cor(cortest2[c(4,6,8,10,12,14)])     
+#Left off here
+
 write.csv(Final2018, file = "data2018run.csv")
 
 Australia<-finalcategories[finalcategories$country=="Australia",]
