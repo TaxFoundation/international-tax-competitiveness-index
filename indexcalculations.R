@@ -52,9 +52,24 @@ rawdata2018 <- read_csv("./final-data/final_indexdata2018.csv")
 #2019
 rawdata2019 <- read_csv("./final-data/final_indexdata2019.csv")
 
+###FIX THIS BEFORE FINAL###
+rawdata2019$taxtreaties<-rawdata2018$taxtreaties
 #Combined Data
 rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018,rawdata2019)
-names(rawdata)
+
+rawdata$patentbox<-as.numeric(rawdata$patentbox)
+rawdata$rndcredit<-as.numeric(rawdata$rndcredit)
+rawdata$netwealth<-as.numeric(rawdata$netwealth)
+rawdata$`estate/inheritance tax`<-as.numeric(rawdata$`estate/inheritance tax`)
+rawdata$transfertaxes<-as.numeric(rawdata$transfertaxes)
+rawdata$Assettaxes<-as.numeric(rawdata$Assettaxes)
+rawdata$capitalduties<-as.numeric(rawdata$capitalduties)
+rawdata$financialtrans<-as.numeric(rawdata$financialtrans)
+rawdata$capgainsindex<-as.numeric(rawdata$capgainsindex)
+rawdata$threshold_1<-as.numeric(rawdata$threshold_1)
+rawdata$taxtreaties<-as.numeric(rawdata$taxtreaties)
+rawdata$countrylimitations<-as.numeric(rawdata$countrylimitations)
+
 
 #Rename Estate tax variable
 rawdata$estate.inheritance.tax<-rawdata$`estate/inheritance tax`
@@ -247,7 +262,7 @@ consumptiontaxcomplexity<-c("consumptiontime")
 realpropertyindex<-c("propertytaxes","propertytaxescollections")
 wealthtaxesindex<-c("netwealth","estate.inheritance.tax")
 capitaltaxesindex<-c("transfertaxes","Assettaxes","capitalduties","financialtrans")
-capgainsdividindex<-c("capgainsrate","capgainsindex","divrate")
+capgainsdividindex<-c("capgainsrate","divrate")
 incometaxindex<-c("incrate","progressivity","taxwedge")
 incomecomplexindex<-c("laborpayments","labortime")
 terrindex<-c("dividendexempt","capgainsexemption","countrylimitations")
@@ -602,7 +617,7 @@ Table2_Changes<-Table2_Changes[c(1,13:18)]
 colnames(Table2_Changes)<-c("Country","2017 Rank","2017 Score", "2018 Rank","2018 Score","2019 Rank","2019 Score")
 Table2_Changes$'Change in Rank'<-(Table2_Changes$`2019 Rank`-Table2_Changes$`2018 Rank`)*(-1)
 Table2_Changes$'Change in Score'<-Table2_Changes$`2019 Score`-Table2_Changes$`2018 Score`
-write.csv(Table2_Changes,"Table 2 Changes from Previous Years.csv")
+write.csv(Table2_Changes,"./final-outputs/Table 2 Changes from Previous Years.csv")
 
 subcategories_2019<-subset(subcategories,year==2019)
 subcategories_2018<-subset(subcategories,year==2018)
