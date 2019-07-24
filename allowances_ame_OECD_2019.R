@@ -423,6 +423,5 @@ data<-data[-c(3:23)]
 
 #colnames(data)<-c("ISO-3","year","pdvmachines","pdvbuildings", "pdvintangibles")
 #data<-merge(data,ISO_Country_Codes,by="ISO-3")
-
-write.csv(data, file = "cap_allowances_data.csv",row.names=F)
+write.csv(data, file = "./intermediate-outputs/cap_allowances_data.csv",row.names=F)
 

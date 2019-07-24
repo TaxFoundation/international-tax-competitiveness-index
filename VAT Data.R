@@ -56,7 +56,7 @@ colnames(vat_rates)<-c("country","year","vatrate")
 vat_rates$country <- str_remove_all(vat_rates$country, "[*]")
 
 
-write.csv(vat_rates,"vatrates.csv",row.names = FALSE)
+write.csv(vat_rates,"./intermediate-outputs/vatrates.csv",row.names = FALSE)
 
 #VAT Thresholds
 vat_thresholds_2018 <- read_excel("source-data/vat-gst-annual-turnover-concessions-ctt-trends.xlsx", sheet = "2018", range = "A4:e42")
@@ -113,7 +113,7 @@ LTU <- data.frame(country,threshold,year)
 
 vat_thresholds<-rbind(vat_thresholds,USA,LVA,LTU)
 
-write.csv(vat_thresholds,"vat_thresholds.csv",row.names = FALSE)
+write.csv(vat_thresholds,"./intermediate-outputs/vat_thresholds.csv",row.names = FALSE)
 
 
 #Vat Base
@@ -141,17 +141,17 @@ vat_base[is.na(vat_base)] <- 0
 
 vat_base<-subset(vat_base,vat_base$country!="0")
 
-write.csv(vat_base,"vat_base.csv",row.names = FALSE)
+write.csv(vat_base,"./intermediate-outputs/vat_base.csv",row.names = FALSE)
 
 
 
 #Combine files
-vat_base <- read_csv("vat_base.csv")
-vat_rates <- read_csv("vatrates.csv")
-vat_thresholds <- read_csv("vat_thresholds.csv")
+vat_base <- read_csv("./intermediate-outputs/vat_base.csv")
+vat_rates <- read_csv("./intermediate-outputs/vatrates.csv")
+vat_thresholds <- read_csv("./intermediate-outputs/vat_thresholds.csv")
 
 
 vat_data<-merge(vat_rates,vat_thresholds,by=c("country","year"))
 vat_data<-merge(vat_data,vat_base,by=c("country","year"))
 
-write.csv(vat_data,file = "vat_data.csv",row.names=F)
+write.csv(vat_data,file = "./intermediate-outputs/vat_data.csv",row.names=F)
