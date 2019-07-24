@@ -75,11 +75,11 @@ indexdata_OECD_vars<-merge(indexdata_old,OECD_vars,by=c("country","year"))
 #Join cap allowances data with indexdata2019#
 
 Cap_Allowances_Vars<-c("pdvmachines","pdvbuildings", "pdvintangibles")
-colnames(Cap_Allowances)<-c("ISO-3.x","year","pdvmachines","pdvbuildings", "pdvintangibles")
+colnames(Cap_Allowances)<-c("ISO-3","year","pdvmachines","pdvbuildings", "pdvintangibles")
 
 indexdata_OECD_vars<-indexdata_OECD_vars[,!names(indexdata_OECD_vars) %in% Cap_Allowances_Vars]
 
-indexdata_cap_a_vars<-merge(indexdata_OECD_vars,Cap_Allowances,by=c("ISO-3.x","year"))
+indexdata_cap_a_vars<-merge(indexdata_OECD_vars,Cap_Allowances,by=c("ISO-3","year"))
 
 #Join VAT data with indexdata_cap_a_vars
 
