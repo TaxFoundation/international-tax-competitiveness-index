@@ -195,6 +195,10 @@
 
 ### **countrylimitations**: Deloitte, Tax Guides and Highlights,” 2019, https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-sloveniahighlights-2019.pdf.
 
+## Sweden
+
+### **losscarryback**: Business Sweden, "Corporate taxes in Sweden," April 2018, https://www.business-sweden.se/globalassets/invest-new/reports-and-documents/corporate-taxes-in-sweden.pdf.
+
 ## Turkey
 
 ### **inventory**: PwC, "Worldwide Tax Summaries: Corporate Taxes 2017/18," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2017-18-europe.pdf.
