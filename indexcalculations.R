@@ -102,13 +102,13 @@ normalize <-function(x){
 #standardize all the scores into a new dataframe called "zscores," This does this by year.
 zscores<-data.frame(country=rawdata$country,
                     year=rawdata$year,
-                    ddply(rawdata[4:46],
+                    ddply(rawdata[4:45],
                           .(year),
                           scale)
 )
 ALTscores<-data.frame(country=rawdata$country,
                       year=rawdata$year,
-                      ddply(rawdata[4:46],
+                      ddply(rawdata[4:45],
                             .(year),
                             normalize)
 )
