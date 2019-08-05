@@ -215,7 +215,6 @@ for (i in flip) {
     #26 financialtransactiontaxes
   #Capital Gains and Dividends
     #27 capgainsrates
-    #28 capgainsindex
     #29 divrate
   #income taxes
     #30 incrate
@@ -227,6 +226,7 @@ for (i in flip) {
   #territoriality
     #35 dividendexemption
     #36 capgainsexemption
+    #42 countrylimitations
   #withholding taxes
     #37 divwithholding
     #38 intwithholding
@@ -234,7 +234,6 @@ for (i in flip) {
     #40 treaties
   #regulations
     #41 cfcrules
-    #42 terrrelig
     #43 thincap
 
 
