@@ -56,7 +56,6 @@ rawdata2019 <- read_csv("./final-data/final_indexdata2019.csv")
 #Combined Data
 rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018,rawdata2019)
 
-write.csv(rawdata,"./final-outputs/Raw Data 2019.csv")
 
 rawdata$patentbox<-as.numeric(rawdata$patentbox)
 rawdata$rndcredit<-as.numeric(rawdata$rndcredit)
@@ -88,6 +87,8 @@ rawdata<-rawdata[c("ISO-3","ISO-2","country","year",
           "dividendexempt","capgainsexemption","divwithhold","intwithhold",
           "roywithhold","taxtreaties","cfcrules","countrylimitations", 
           "thincap")]
+
+write.csv(rawdata,"./final-outputs/Raw Data 2019.csv")
 
 #temporary NA's as zeros
 #rawdata[is.na(rawdata)] <- 0
