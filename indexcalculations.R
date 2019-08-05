@@ -67,7 +67,6 @@ rawdata$Assettaxes<-as.numeric(rawdata$Assettaxes)
 rawdata$capitalduties<-as.numeric(rawdata$capitalduties)
 rawdata$financialtrans<-as.numeric(rawdata$financialtrans)
 rawdata$capgainsindex<-as.numeric(rawdata$capgainsindex)
-rawdata$threshold_1<-as.numeric(rawdata$threshold_1)
 rawdata$taxtreaties<-as.numeric(rawdata$taxtreaties)
 rawdata$countrylimitations<-as.numeric(rawdata$countrylimitations)
 
@@ -85,8 +84,7 @@ rawdata<-rawdata[c("ISO-3","ISO-2","country","year",
           "consumptiontime",
           "propertytaxes","propertytaxescollections","netwealth","estate.inheritance.tax","transfertaxes",
           "Assettaxes","capitalduties","financialtrans","capgainsrate","divrate","capgainsindex",
-          "incrate","progressivity","taxwedge",
-          "threshold_1","laborpayments","labortime",
+          "incrate","progressivity","taxwedge","laborpayments","labortime",
           "dividendexempt","capgainsexemption","divwithhold","intwithhold",
           "roywithhold","taxtreaties","cfcrules","countrylimitations", 
           "thincap")]
@@ -237,21 +235,7 @@ for (i in flip) {
     #41 cfcrules
     #42 terrrelig
     #43 thincap
-#corporaterateindex<-c(3)
-#costrecoveryindex<-c(4:9)
-#incentivesindex<-c(10:14)
-#consumptiontaxrateindex<-c(15)
-#consumptiontaxbaseindex<-c(16:17)
-#consumptiontaxcomplexity<-c(18)
-#realpropertyindex<-c(19:20)
-#wealthtaxesindex<-c(21:22)
-#capitaltaxesindex<-c(23:26)
-#capgainsdividindex<-c(27:29)
-#incometaxindex<-c(30:32)
-#incomecomplexindex<-c(33:34)
-#terrindex<-c(35:36)
-#withholdingindex<-c(37:40)
-#regsindex<-c(41:43)
+
 
 corporaterateindex<-c("corprate")
 costrecoveryindex<-c("losscarryback","losscarryforward","pdvmachines","pdvbuildings","pdvintangibles","inventory")
@@ -313,12 +297,6 @@ ALTsubcategories$intregulations<-apply((ALTscores[regsindex]*(1/length(regsindex
 #Each category contains three subcategories
 
 #Same thing as above
-#corporateindex<-c(3:5)
-#consumptionindex<-c(6:8)
-#propertyindex<-c(9:11)
-#incomeindex<-c(12:14)
-#internationalindex<-c(15:17)
-
 corporateindex<-c("corporaterate","costrecovery","incentives")
 consumptionindex<-c("consumptiontaxrate","consumptiontaxbase","consumptiontaxcomplexity")
 propertyindex<-c("realpropertytax","wealthtaxes","capitaltaxes")
