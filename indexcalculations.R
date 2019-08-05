@@ -52,8 +52,7 @@ rawdata2018 <- read_csv("./final-data/final_indexdata2018.csv")
 #2019
 rawdata2019 <- read_csv("./final-data/final_indexdata2019.csv")
 
-###FIX THIS BEFORE FINAL###
-rawdata2019$taxtreaties<-rawdata2018$taxtreaties
+
 #Combined Data
 rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018,rawdata2019)
 
@@ -91,7 +90,7 @@ rawdata<-rawdata[c("ISO-3","ISO-2","country","year",
           "thincap")]
 
 #temporary NA's as zeros
-rawdata[is.na(rawdata)] <- 0
+#rawdata[is.na(rawdata)] <- 0
 
 #ALT Min-Max Test
 normalize <-function(x){
@@ -116,10 +115,9 @@ ALTscores<-data.frame(country=rawdata$country,
 
 #drops the extra "year" variable left over
 zscores<-zscores[-3]
-
-#Alt Scoring Technique
-
 ALTscores<-ALTscores[-3]
+
+
 
 #Multiply variables that need to be flipped by -1 (There is likely a better way to do this)
 #List of variables flipped for reference:
@@ -584,6 +582,7 @@ Italy<-finalcategories[finalcategories$country=="Italy",]
 Japan<-finalcategories[finalcategories$country=="Japan",]
 Korea<-finalcategories[finalcategories$country=="Korea",]
 Latvia<-finalcategories[finalcategories$country=="Latvia",]
+Lithuania<-finalcategories[finalcategories$country=="Lithuania",]
 Luxembourg<-finalcategories[finalcategories$country=="Luxembourg",]
 Mexico<-finalcategories[finalcategories$country=="Mexico",]
 Netherlands<-finalcategories[finalcategories$country=="Netherlands",]
@@ -601,7 +600,7 @@ United_Kingdom<-finalcategories[finalcategories$country=="United Kingdom",]
 United_States<-finalcategories[finalcategories$country=="United States",]
 
 
-#Changes from 2017 index
+#Changes from 2018 index
 M <- merge(Final2019,Final2018,by="country")
 
 Changes <- M[,grepl("*\\.x$",names(M))] - M[,grepl("*\\.y$",names(M))]
