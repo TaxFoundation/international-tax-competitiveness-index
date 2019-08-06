@@ -143,5 +143,5 @@ keep<-c("country","internationalrank","international","territorialrank","territo
 Table7_International<-Table7_International[keep]
 colnames(Table7_International)<-c("Country","Overall Rank","Overall Score", "Div/Cap Gains Exemption Rank","Div/Cap Gains Exemption Score","Withholding Taxes Rank","Withholding Taxes Score","Regulations Rank","Regulations Score")
 
-write.csv(Table7_International,"./final-outputs/Table 8 International.csv",row.names=F)
+write.csv(Table7_International,"./final-outputs/Table 7 International.csv",row.names=F)
 
