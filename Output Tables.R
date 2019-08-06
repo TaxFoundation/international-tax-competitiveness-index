@@ -120,3 +120,15 @@ Table5_Consumption<-Table5_Consumption[keep]
 colnames(Table5_Consumption)<-c("Country","Overall Rank","Overall Score", "Rate Rank","Rate Score","Base Rank","Base Score","Complexity Rank","Complexity Score")
 
 write.csv(Table5_Consumption,"./final-outputs/Table 5 Consumption.csv",row.names=F)
+
+###Table 6 Property####
+Table6_Property<-subcategories_2019
+Table6_Property<-merge(Table6_Property,Final2019,by=c("country"))
+
+#names(Table6_Property)
+
+keep<-c("country","propertyrank","property","realpropertytaxrank","realpropertytax","wealthtaxesrank","wealthtaxes","capitaltaxesrank","capitaltaxes")
+Table6_Property<-Table6_Property[keep]
+colnames(Table6_Property)<-c("Country","Overall Rank","Overall Score", "Real Property Taxes Rank","Real Property Taxes Score","Wealth/Estate Taxes Rank","Wealth/Estate Taxes Score","Capital/Transaction Taxes Rank","Capital/Transaction Taxes Score")
+
+write.csv(Table6_Property,"./final-outputs/Table 6 Property.csv",row.names=F)
