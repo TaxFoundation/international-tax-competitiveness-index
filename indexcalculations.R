@@ -35,9 +35,6 @@ using(tidyverse)
 using(readxl)
 
 
-#Clears all datasets and variables from memory
-
-
 #Load Data
 #2014
 rawdata2014 <- read_csv("./final-data/final_indexdata2014.csv")
