@@ -101,10 +101,22 @@ write.csv(Table3_Corporate,"./final-outputs/Table 3 Corporate.csv",row.names=F)
 Table4_Individual<-subcategories_2019
 Table4_Individual<-merge(Table4_Individual,Final2019,by=c("country"))
 
-names(Table4_Individual)
+#names(Table4_Individual)
 
 keep<-c("country","incomerank","income","capgainsanddividendsrank","capgainsanddividends","incometaxrank","incometax","incometaxcomplexityrank","incometaxcomplexity")
 Table4_Individual<-Table4_Individual[keep]
 colnames(Table4_Individual)<-c("Country","Overall Rank","Overall Score", "Capital Gains/Dividends Rank","Capital Gains/Dividends Score","Income Tax Rank","Income Tax Score","Complexity Rank","Complexity Score")
 
 write.csv(Table4_Individual,"./final-outputs/Table 4 Individual.csv",row.names=F)
+
+###Table 5 Consumption####
+Table5_Consumption<-subcategories_2019
+Table5_Consumption<-merge(Table5_Consumption,Final2019,by=c("country"))
+
+#names(Table5_Consumption)
+
+keep<-c("country","consumptionrank","consumption","consumptiontaxraterank","consumptiontaxrate","consumptiontaxbaserank","consumptiontaxbase","consumptiontaxcomplexityrank","consumptiontaxcomplexity")
+Table5_Consumption<-Table5_Consumption[keep]
+colnames(Table5_Consumption)<-c("Country","Overall Rank","Overall Score", "Rate Rank","Rate Score","Base Rank","Base Score","Complexity Rank","Complexity Score")
+
+write.csv(Table5_Consumption,"./final-outputs/Table 5 Consumption.csv",row.names=F)
