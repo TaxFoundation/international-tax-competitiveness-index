@@ -80,6 +80,16 @@ corprate<-get_dataset("Table_II1",filter= list(c(OECD_Countries),c("COMB_CIT_RAT
 corprate<-corprate[c(1,4,5)]
 colnames(corprate)<-c("Country","Year","corprate")
 corprate$corprate<-corprate$corprate/100
+
+#Fix France 2019 CIT rate - source: https://www.pwc.com/us/en/tax-services/publications/insights/assets/pwc-france-proposes-digital-tax-delay-in-corporate-rate-reduction.pdf
+
+corprate<-corprate[which(corprate$corprate!=0.3202300),]
+
+France<-data.frame("FRA","2019","0.3443")
+colnames(France)<-c("Country","Year","corprate")
+
+corprate<-rbind(corprate,France)
+
 #divrate####
 #Table_II4#
 #dataset<-("Table_II4")
