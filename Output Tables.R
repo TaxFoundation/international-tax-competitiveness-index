@@ -36,3 +36,18 @@ using(readxl)
 
 
 #Clears all datasets and variables from memory
+
+
+
+###Table 1####
+
+
+###Table 2 Compare 2017, 2018, and 2019 results####
+Table2_Changes<-merge(Final2018,Final2019,by="country")
+Table2_Changes<-Table2_Changes[c(1,13,14,26,27)]
+colnames(Table2_Changes)<-c("country", "2018 Rank","2018 Score","2019 Rank","2019 Score")
+Table2_Changes<-merge(Final2017,Table2_Changes,by="country")
+Table2_Changes<-Table2_Changes[c(1,13:18)]
+colnames(Table2_Changes)<-c("Country","2017 Rank","2017 Score", "2018 Rank","2018 Score","2019 Rank","2019 Score")
+Table2_Changes$'Change in Rank'<-(Table2_Changes$`2019 Rank`-Table2_Changes$`2018 Rank`)*(-1)
+Table2_Changes$'Change in Score'<-Table2_Changes$`2019 Score`-Table2_Changes$`2018 Score`
