@@ -88,7 +88,7 @@ rawdata<-rawdata[c("ISO-3","ISO-2","country","year",
           "roywithhold","taxtreaties","cfcrules","countrylimitations", 
           "thincap")]
 
-write.csv(rawdata,"./final-outputs/Raw Data 2019.csv")
+write.csv(rawdata,"./final-outputs/Raw Data 2019.csv",row.names=F)
 
 #temporary NA's as zeros
 #rawdata[is.na(rawdata)] <- 0
@@ -540,7 +540,7 @@ cortest2<-ALTfinalcategories[ALTfinalcategories$year == 2015,]
 cor(cortest2[c(4,6,8,10,12,14)])     
 #Left off here
 
-write.csv(Final2019, file = "./final-outputs/data2019run.csv")
+write.csv(Final2019, file = "./final-outputs/data2019run.csv",row.names=F)
 
 Australia<-finalcategories[finalcategories$country=="Australia",]
 Austria<-finalcategories[finalcategories$country=="Austria",]
@@ -596,9 +596,9 @@ Table2_Changes<-Table2_Changes[c(1,13:18)]
 colnames(Table2_Changes)<-c("Country","2017 Rank","2017 Score", "2018 Rank","2018 Score","2019 Rank","2019 Score")
 Table2_Changes$'Change in Rank'<-(Table2_Changes$`2019 Rank`-Table2_Changes$`2018 Rank`)*(-1)
 Table2_Changes$'Change in Score'<-Table2_Changes$`2019 Score`-Table2_Changes$`2018 Score`
-write.csv(Table2_Changes,"./final-outputs/Table 2 Changes from Previous Years.csv")
+write.csv(Table2_Changes,"./final-outputs/Table 2 Changes from Previous Years.csv",row.names=F)
 
 subcategories_2019<-subset(subcategories,year==2019)
 subcategories_2018<-subset(subcategories,year==2018)
 
-write.csv(subcategories_2019,"./final-outputs/subcategories 2019.csv")
+write.csv(subcategories_2019,"./final-outputs/subcategories 2019.csv",row.names=F)
