@@ -68,10 +68,32 @@ write.csv(Table_1_Results,"./final-outputs/Table 1 Results.csv",row.names=F)
 
 ###Table 2 Compare 2017, 2018, and 2019 results####
 Table2_Changes<-merge(Final2018,Final2019,by="country")
-Table2_Changes<-Table2_Changes[c(1,13,14,26,27)]
+keep<-c("country","finalrank.x","final.x","finalrank.y","final.y")
+
+Table2_Changes<-Table2_Changes[keep]
+
 colnames(Table2_Changes)<-c("country", "2018 Rank","2018 Score","2019 Rank","2019 Score")
+
 Table2_Changes<-merge(Final2017,Table2_Changes,by="country")
-Table2_Changes<-Table2_Changes[c(1,13:18)]
+keep<-c("country","finalrank","final","2018 Rank","2018 Score","2019 Rank","2019 Score")
+
+Table2_Changes<-Table2_Changes[keep]
+
 colnames(Table2_Changes)<-c("Country","2017 Rank","2017 Score", "2018 Rank","2018 Score","2019 Rank","2019 Score")
+
 Table2_Changes$'Change in Rank'<-(Table2_Changes$`2019 Rank`-Table2_Changes$`2018 Rank`)*(-1)
 Table2_Changes$'Change in Score'<-Table2_Changes$`2019 Score`-Table2_Changes$`2018 Score`
+
+write.csv(Table2_Changes,"./final-outputs/Table 2 Changes.csv",row.names=F)
+
+###Table 3 Corporate####
+Table3_Corporate<-subcategories_2019
+Table3_Corporate<-merge(Table3_Corporate,Final2019,by=c("country"))
+
+keep<-c("country","corporaterank","corporate","corporateraterank","corporaterate","costrecoveryrank","costrecovery","incentivesrank","incentives")
+Table3_Corporate<-Table3_Corporate[keep]
+colnames(Table3_Corporate)<-c("Country","Overall Rank","Overall Score", "Rate Rank","Rate Score","Cost Recovery Rank","Cost Recovery Score","Incentives/Complexity Rank","Incentives/Complexity Score")
+
+write.csv(Table3_Corporate,"./final-outputs/Table 3 Corporate.csv",row.names=F)
+
+
