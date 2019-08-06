@@ -52,10 +52,10 @@ rawdata2018 <- read_csv("./final-data/final_indexdata2018.csv")
 #2019
 rawdata2019 <- read_csv("./final-data/final_indexdata2019.csv")
 
-###FIX THIS BEFORE FINAL###
-rawdata2019$taxtreaties<-rawdata2018$taxtreaties
+
 #Combined Data
 rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018,rawdata2019)
+
 
 rawdata$patentbox<-as.numeric(rawdata$patentbox)
 rawdata$rndcredit<-as.numeric(rawdata$rndcredit)
@@ -66,7 +66,6 @@ rawdata$Assettaxes<-as.numeric(rawdata$Assettaxes)
 rawdata$capitalduties<-as.numeric(rawdata$capitalduties)
 rawdata$financialtrans<-as.numeric(rawdata$financialtrans)
 rawdata$capgainsindex<-as.numeric(rawdata$capgainsindex)
-rawdata$threshold_1<-as.numeric(rawdata$threshold_1)
 rawdata$taxtreaties<-as.numeric(rawdata$taxtreaties)
 rawdata$countrylimitations<-as.numeric(rawdata$countrylimitations)
 
@@ -84,14 +83,15 @@ rawdata<-rawdata[c("ISO-3","ISO-2","country","year",
           "consumptiontime",
           "propertytaxes","propertytaxescollections","netwealth","estate.inheritance.tax","transfertaxes",
           "Assettaxes","capitalduties","financialtrans","capgainsrate","divrate","capgainsindex",
-          "incrate","progressivity","taxwedge",
-          "threshold_1","laborpayments","labortime",
+          "incrate","progressivity","taxwedge","laborpayments","labortime",
           "dividendexempt","capgainsexemption","divwithhold","intwithhold",
           "roywithhold","taxtreaties","cfcrules","countrylimitations", 
           "thincap")]
 
+write.csv(rawdata,"./final-outputs/Raw Data 2019.csv")
+
 #temporary NA's as zeros
-rawdata[is.na(rawdata)] <- 0
+#rawdata[is.na(rawdata)] <- 0
 
 #ALT Min-Max Test
 normalize <-function(x){
@@ -103,23 +103,22 @@ normalize <-function(x){
 #standardize all the scores into a new dataframe called "zscores," This does this by year.
 zscores<-data.frame(country=rawdata$country,
                     year=rawdata$year,
-                    ddply(rawdata[4:46],
+                    ddply(rawdata[4:45],
                           .(year),
                           scale)
 )
 ALTscores<-data.frame(country=rawdata$country,
                       year=rawdata$year,
-                      ddply(rawdata[4:46],
+                      ddply(rawdata[4:45],
                             .(year),
                             normalize)
 )
 
 #drops the extra "year" variable left over
 zscores<-zscores[-3]
-
-#Alt Scoring Technique
-
 ALTscores<-ALTscores[-3]
+
+
 
 #Multiply variables that need to be flipped by -1 (There is likely a better way to do this)
 #List of variables flipped for reference:
@@ -216,7 +215,6 @@ for (i in flip) {
     #26 financialtransactiontaxes
   #Capital Gains and Dividends
     #27 capgainsrates
-    #28 capgainsindex
     #29 divrate
   #income taxes
     #30 incrate
@@ -228,6 +226,7 @@ for (i in flip) {
   #territoriality
     #35 dividendexemption
     #36 capgainsexemption
+    #42 countrylimitations
   #withholding taxes
     #37 divwithholding
     #38 intwithholding
@@ -235,23 +234,8 @@ for (i in flip) {
     #40 treaties
   #regulations
     #41 cfcrules
-    #42 terrrelig
     #43 thincap
-#corporaterateindex<-c(3)
-#costrecoveryindex<-c(4:9)
-#incentivesindex<-c(10:14)
-#consumptiontaxrateindex<-c(15)
-#consumptiontaxbaseindex<-c(16:17)
-#consumptiontaxcomplexity<-c(18)
-#realpropertyindex<-c(19:20)
-#wealthtaxesindex<-c(21:22)
-#capitaltaxesindex<-c(23:26)
-#capgainsdividindex<-c(27:29)
-#incometaxindex<-c(30:32)
-#incomecomplexindex<-c(33:34)
-#terrindex<-c(35:36)
-#withholdingindex<-c(37:40)
-#regsindex<-c(41:43)
+
 
 corporaterateindex<-c("corprate")
 costrecoveryindex<-c("losscarryback","losscarryforward","pdvmachines","pdvbuildings","pdvintangibles","inventory")
@@ -313,12 +297,6 @@ ALTsubcategories$intregulations<-apply((ALTscores[regsindex]*(1/length(regsindex
 #Each category contains three subcategories
 
 #Same thing as above
-#corporateindex<-c(3:5)
-#consumptionindex<-c(6:8)
-#propertyindex<-c(9:11)
-#incomeindex<-c(12:14)
-#internationalindex<-c(15:17)
-
 corporateindex<-c("corporaterate","costrecovery","incentives")
 consumptionindex<-c("consumptiontaxrate","consumptiontaxbase","consumptiontaxcomplexity")
 propertyindex<-c("realpropertytax","wealthtaxes","capitaltaxes")
@@ -584,6 +562,7 @@ Italy<-finalcategories[finalcategories$country=="Italy",]
 Japan<-finalcategories[finalcategories$country=="Japan",]
 Korea<-finalcategories[finalcategories$country=="Korea",]
 Latvia<-finalcategories[finalcategories$country=="Latvia",]
+Lithuania<-finalcategories[finalcategories$country=="Lithuania",]
 Luxembourg<-finalcategories[finalcategories$country=="Luxembourg",]
 Mexico<-finalcategories[finalcategories$country=="Mexico",]
 Netherlands<-finalcategories[finalcategories$country=="Netherlands",]
@@ -601,7 +580,7 @@ United_Kingdom<-finalcategories[finalcategories$country=="United Kingdom",]
 United_States<-finalcategories[finalcategories$country=="United States",]
 
 
-#Changes from 2017 index
+#Changes from 2018 index
 M <- merge(Final2019,Final2018,by="country")
 
 Changes <- M[,grepl("*\\.x$",names(M))] - M[,grepl("*\\.y$",names(M))]
