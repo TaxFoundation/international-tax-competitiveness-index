@@ -66,7 +66,7 @@ colnames(Table_1_Results)<-c("Country",
 
 write.csv(Table_1_Results,"./final-outputs/Table 1 Results.csv",row.names=F)
 
-###Table 2 Compare 2017, 2018, and 2019 results####
+###Table 2 Changes####
 Table2_Changes<-merge(Final2018,Final2019,by="country")
 keep<-c("country","finalrank.x","final.x","finalrank.y","final.y")
 
@@ -97,3 +97,14 @@ colnames(Table3_Corporate)<-c("Country","Overall Rank","Overall Score", "Rate Ra
 write.csv(Table3_Corporate,"./final-outputs/Table 3 Corporate.csv",row.names=F)
 
 
+###Table 4 Individual####
+Table4_Individual<-subcategories_2019
+Table4_Individual<-merge(Table4_Individual,Final2019,by=c("country"))
+
+names(Table4_Individual)
+
+keep<-c("country","incomerank","income","capgainsanddividendsrank","capgainsanddividends","incometaxrank","incometax","incometaxcomplexityrank","incometaxcomplexity")
+Table4_Individual<-Table4_Individual[keep]
+colnames(Table4_Individual)<-c("Country","Overall Rank","Overall Score", "Capital Gains/Dividends Rank","Capital Gains/Dividends Score","Income Tax Rank","Income Tax Score","Complexity Rank","Complexity Score")
+
+write.csv(Table4_Individual,"./final-outputs/Table 4 Individual.csv",row.names=F)
