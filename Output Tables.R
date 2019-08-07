@@ -34,7 +34,7 @@ using(dplyr)
 using(tidyverse)
 using(readxl)
 using(xlsx)
-
+using(scales)
 
 #Read in relevant spreadsheets
 
@@ -331,8 +331,14 @@ TableC_Consumption<-TableC_Consumption_raw[keep]
 TableC_Consumption$vatrate<-paste((formatC(round(TableC_Consumption$vatrate,digits=1),format = "f",digits=1)),"%",sep="")
 
 #threshold
-TableC_Consumption$threshold<-paste((formatC(round(TableC_Consumption$threshold,digits=1),format = "f",digits=1)),"%",sep="")
+TableC_Consumption$threshold<-dollar(TableC_Consumption$threshold,largest_with_cents = 10^10)
 
+#base
+TableC_Consumption$base<-TableC_Consumption$base*100
+TableC_Consumption$base<-paste((formatC(round(TableC_Consumption$base,digits=1),format = "f",digits=1)),"%",sep="")
+
+#consumptiontime
+TableC_Consumption$consumptiontime<-formatC(round(TableC_Consumption$consumptiontime,digits=0),format = "f",digits=0)
 
 #fix US and Canada to add footnote markers
 TableC_Consumption$vatrate[4]<-paste0(TableC_Consumption$vatrate[4]," (b)")
@@ -379,3 +385,7 @@ notes_4<-c("(c) The United States' rate is the combined weighted average state a
            "",
            "",
            "")
+TableC_Consumption<-rbind(headers,columns,TableC_Consumption,notes_1,notes_2,notes_3,notes_4)
+
+write.csv(TableC_Consumption,"./final-outputs/Appendix-Table-CSV/Table C Consumption.csv",row.names = F)
+write.xlsx(TableC_Consumption,"./final-outputs/Table C Consumption.xlsx")
