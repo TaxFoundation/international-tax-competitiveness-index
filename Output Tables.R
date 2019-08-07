@@ -531,3 +531,85 @@ TableD_Property<-rbind(headers,columns,TableD_Property,notes_1,notes_2,notes_3,n
 
 write.csv(TableD_Property,"./final-outputs/Appendix-Table-CSV/Table D Property.csv",row.names = F)
 write.xlsx(TableD_Property,"./final-outputs/Table D Property.xlsx")
+
+#Table E International####
+#Raw Data
+TableE_International_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
+names(TableE_International_raw)
+
+keep<-c("country","dividendexempt","capgainsexemption","divwithhold","intwithhold","roywithhold","taxtreaties","cfcrules","countrylimitations","thincap")
+TableE_International_raw<-TableE_International_raw[keep]
+TableE_International_raw$cfc_income<-TableE_International_raw$cfcrules
+TableE_International_raw$cfc_exemption<-TableE_International_raw$cfcrules
+
+#Text Data
+TableE_International_text<-read_csv("./source-data/TableE_International.csv")
+
+
+colnames(TableE_International_text)<-c("country","dividendexempt","capgainsexemption","countrylimitations","divwithhold","intwithhold","roywithhold",  
+                                  "taxtreaties","cfcrules","cfc_exemption","cfc_income","thincap")
+TableE_International_text<-TableE_International_text[3:38,]
+
+
+#Replace raw data with text data for select columns
+replace<-c("countrylimitations","cfcrules","cfc_exemption","cfc_income","thincap")
+TableE_International_text<-TableE_International_text[replace]
+TableE_International<-TableE_International_raw[,!names(TableE_International_raw) %in% replace]
+TableE_International<-cbind(TableE_International,TableE_International_text)
+
+TableE_International<-TableE_International[c("country","dividendexempt","capgainsexemption","countrylimitations","divwithhold","intwithhold",  
+                                   "roywithhold","taxtreaties","cfcrules","cfc_exemption","cfc_income","thincap")]
+
+#Format variables
+#dividendexempt
+TableE_International$dividendexempt<-TableE_International$dividendexempt*100
+TableE_International$dividendexempt<-paste((formatC(round(TableE_International$dividendexempt,digits=1),format = "f",digits=1)),"%",sep="")
+
+
+#capgainsexemption
+TableE_International$capgainsexemption<-TableE_International$capgainsexemption*100
+TableE_International$capgainsexemption<-paste((formatC(round(TableE_International$capgainsexemption,digits=1),format = "f",digits=1)),"%",sep="")
+
+#divwithhold
+TableE_International$divwithhold<-TableE_International$divwithhold*100
+TableE_International$divwithhold<-paste((formatC(round(TableE_International$divwithhold,digits=1),format = "f",digits=1)),"%",sep="")
+
+#intwithhold
+TableE_International$intwithhold<-TableE_International$intwithhold*100
+TableE_International$intwithhold<-paste((formatC(round(TableE_International$intwithhold,digits=1),format = "f",digits=1)),"%",sep="")
+
+#roywithhold
+TableE_International$roywithhold<-TableE_International$roywithhold*100
+TableE_International$roywithhold<-paste((formatC(round(TableE_International$roywithhold,digits=1),format = "f",digits=1)),"%",sep="")
+
+
+headers<-c("",
+           "Participation Exemption",
+           "",
+           "",
+           "Withholding Taxes",
+           "",
+           "",
+           "",
+           "Base Erosion Protections",
+           "",
+           "",
+           "")
+
+columns<-c("Country",
+           "Dividend Exemption",
+           "Capital Gains Exemption",
+           "Country Limitations",
+           "Dividend Withholding Tax",
+           "Interest Withholding Tax",
+           "Royalties Withholding Tax",
+           "Number of Tax Treaties",
+           "Controlled Foreign Corporation Rules",
+           "Controlled Foreign Corporation Rules: Exemptions",
+           "Controlled Foreign Corporation Rules: Income",
+           "Interest Deduction Limitations")
+
+TableE_International<-rbind(headers,columns,TableE_International)
+
+write.csv(TableE_International,"./final-outputs/Appendix-Table-CSV/Table E International.csv",row.names = F)
+write.xlsx(TableE_International,"./final-outputs/Table E International.xlsx")
