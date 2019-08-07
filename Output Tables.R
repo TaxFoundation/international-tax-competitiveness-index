@@ -231,6 +231,89 @@ columns<-c("Country",
            "Corporate Complexity (Other Yearly Payments)")
 
 TableA_Corporate<-rbind(headers,columns,TableA_Corporate)
-TableA_Corporate<-as.data.frame(TableA_Corporate)
+
 write.csv(TableA_Corporate,"./final-outputs/Appendix-Table-CSV/Table A Corporate.csv",row.names = F)
 write.xlsx(TableA_Corporate,"./final-outputs/Table A Corporate.xlsx",row.names = F)
+
+#Table B Individual####
+
+#Raw Data
+TableB_Individual_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
+names(TableB_Individual_raw)
+
+keep<-c("country","incrate","progressivity","taxwedge","laborpayments","labortime","capgainsrate","divrate")
+TableB_Individual<-TableB_Individual_raw[keep]
+
+
+#Format variables
+#incrate
+TableB_Individual$incrate<-TableB_Individual$incrate*100
+TableB_Individual$incrate<-paste((formatC(round(TableB_Individual$incrate,digits=1),format = "f",digits=1)),"%",sep="")
+
+#progressivity
+TableB_Individual$progressivity<-(formatC(round(TableB_Individual$progressivity,digits=1),format = "f",digits=1))
+
+#taxwedge
+TableB_Individual$taxwedge<-(formatC(round(TableB_Individual$taxwedge,digits=1),format = "f",digits=1))
+
+#laborpayments
+TableB_Individual$laborpayments<-(formatC(round(TableB_Individual$laborpayments,digits=0),format = "f",digits=0))
+
+#labortime
+TableB_Individual$labortime<-(formatC(round(TableB_Individual$labortime,digits=0),format = "f",digits=0))
+
+#capgainsrate
+TableB_Individual$capgainsrate<-TableB_Individual$capgainsrate*100
+TableB_Individual$capgainsrate<-paste((formatC(round(TableB_Individual$capgainsrate,digits=1),format = "f",digits=1)),"%",sep="")
+
+#divrate
+TableB_Individual$divrate<-TableB_Individual$divrate*100
+TableB_Individual$divrate<-paste((formatC(round(TableB_Individual$divrate,digits=1),format = "f",digits=1)),"%",sep="")
+
+headers<-c("",
+           "Ordinary Income Taxes and Payroll Taxes",
+           "",
+           "",
+           "Income Tax Complexity",
+           "",
+           "Capital Gains/Dividends",
+           "",
+           "")
+columns<-c("Country",
+           "Top Marginal Income Rate",
+           "Top Income Tax Rate Threshold (a)",
+           "Ratio of Marginal to Average Tax Wedge",
+           "Income Tax Complexity (Payments)",
+           "Income Tax Complexity (Time)",
+           "Top Marginal Capital Gains Rate (b)",
+           "Top Marginal Dividends Tax Rate (b)")
+notes_1<-c("Notes:",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+
+notes_2<-c("(a) Multiple of the average income at which the highest tax bracket applies.",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+
+notes_3<-c("(b) After any imputation, credit, or offset.",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+TableB_Individual<-rbind(headers,columns,TableB_Individual,notes_1,notes_2,notes_3)
+
+write.csv(TableB_Individual,"./final-outputs/Appendix-Table-CSV/Table B Individual.csv",row.names = F)
+write.xlsx(TableB_Individual,"./final-outputs/Table B Individual.xlsx")
