@@ -389,3 +389,145 @@ TableC_Consumption<-rbind(headers,columns,TableC_Consumption,notes_1,notes_2,not
 
 write.csv(TableC_Consumption,"./final-outputs/Appendix-Table-CSV/Table C Consumption.csv",row.names = F)
 write.xlsx(TableC_Consumption,"./final-outputs/Table C Consumption.xlsx")
+
+#Table D Property####
+#Raw Data
+TableD_Property_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
+#names(TableD_Property_raw)
+
+keep<-c("country","propertytaxes","propertytaxescollections","netwealth","estate.inheritance.tax","transfertaxes","Assettaxes","capitalduties","financialtrans")
+TableD_Property_raw<-TableD_Property_raw[keep]
+TableD_Property_raw$deductible<-if_else(TableD_Property_raw$propertytaxes==0.5,1,0)
+
+#Text Data
+TableD_Property_text<-read_csv("./source-data/TableD_Property.csv")
+
+
+colnames(TableD_Property_text)<-c("country","propertytaxes","deductible","propertytaxescollections","netwealth","estate.inheritance.tax",  
+                                  "transfertaxes","Assettaxes","capitalduties","financialtrans")
+TableD_Property_text<-TableD_Property_text[3:38,]
+
+
+#Replace raw data with text data for select columns
+replace<-c("propertytaxes","estate.inheritance.tax","transfertaxes","Assettaxes")
+TableD_Property_text<-TableD_Property_text[replace]
+TableD_Property<-TableD_Property_raw[,!names(TableD_Property_raw) %in% replace]
+TableD_Property<-cbind(TableD_Property,TableD_Property_text)
+
+TableD_Property<-TableD_Property[c("country","propertytaxes","deductible","propertytaxescollections","netwealth","estate.inheritance.tax",  
+                                   "transfertaxes","Assettaxes","capitalduties","financialtrans")]
+
+#Format variables
+#deductible
+TableD_Property$deductible<-if_else(TableD_Property$deductible==1,"Yes","No")
+
+#propertytaxescollections
+TableD_Property$propertytaxescollections<-paste((formatC(round(TableD_Property$propertytaxescollections,digits=1),format = "f",digits=1)),"%",sep="")
+
+#netwealth
+TableD_Property$netwealth<-if_else(TableD_Property$netwealth==1,"Yes","No")
+
+#capitalduties
+TableD_Property$capitalduties<-if_else(TableD_Property$capitalduties==1,"Yes","No")
+
+#financialtrans
+TableD_Property$financialtrans<-if_else(TableD_Property$financialtrans==1,"Yes","No")
+
+
+headers<-c("",
+           "Real Property Taxes",
+           "",
+           "",
+           "Wealth/Estate Taxes",
+           "",
+           "Capital/Asset Taxes",
+           "",
+           "",
+           "")
+
+columns<-c("Country",
+           "Real Property or Land Tax",
+           "Real Property Taxes Deductible",
+           "Real Property Taxes as % of Capital Stock",
+           "Net Wealth Tax",
+           "Estate/Inheritance Tax",
+           "Transfer Taxes",
+           "Asset Taxes",
+           "Capital Duties",
+           "Financial Transaction Tax")
+notes_1<-c("Notes:",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+
+notes_2<-c("(a) Applies to some real estate (vacation homes).",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+
+notes_3<-c("(b) Tax on the imputed rent of properties. Applies to machinery.",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+notes_4<-c("(c) The Land Appreciation Tax is levied like a capital gains tax on the sale of property.",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+notes_5<-c("(d) The Land Appreciation Tax is levied like a capital gains tax on the sale of property.",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+notes_6<-c("(e) The purchaser of real property is subject to a purchase tax.",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+notes_7<-c("(f) Nine U.S. states levy a tax on intangible personal property.",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+TableD_Property<-rbind(headers,columns,TableD_Property,notes_1,notes_2,notes_3,notes_4,notes_5,notes_6,notes_7)
+
+write.csv(TableD_Property,"./final-outputs/Appendix-Table-CSV/Table D Property.csv",row.names = F)
+write.xlsx(TableD_Property,"./final-outputs/Table D Property.xlsx")
