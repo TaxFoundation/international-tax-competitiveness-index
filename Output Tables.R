@@ -145,3 +145,39 @@ colnames(Table7_International)<-c("Country","Overall Rank","Overall Score", "Div
 
 write.csv(Table7_International,"./final-outputs/Table 7 International.csv",row.names=F)
 
+###Table A Coprorate####
+TableA_Corporate<-rawdata_2019
+
+names(TableA_Corporate)
+
+keep<-c("country","corprate","losscarryback","losscarryforward","pdvmachines","pdvbuildings","pdvintangibles","inventory","patentbox","rndcredit","corptime","profitpayments","otherpayments")
+TableA_Corporate<-TableA_Corporate[keep]
+
+headers<-c("",
+           "Corporate Rate",
+           "Cost Recovery",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "Tax Incentives and Complexity","","","","")
+columns<-c("Country",
+           "Top Marginal Corporate Tax Rate",
+           "Loss Carryback (Number of Years)",
+           "Loss Carryforward (Number of Years)",
+           "Machinery",
+           "Industrial Buildings",
+           "Intangibles",
+           "Inventory (Best Available)",
+           "Patent Box",
+           "Research and Development Credit or Super Deduction",
+           "Corporate Complexity (Time)",
+           "Corporate COmplexity (Yearly Profit Payments)",
+           "Corporate COmplexity (Other Yearly Payments")
+
+TableA_Corporate<-rbind(headers,columns,TableA_Corporate)
+
+write.csv(TableA_Corporate,"./final-outputs/Table A Corporate.csv",row.names=F)
+
+
