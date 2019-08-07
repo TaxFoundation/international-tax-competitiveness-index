@@ -43,12 +43,22 @@ vat_rates <- read_excel("source-data/vat-gst-rates-ctt-trends.xlsx",
 
 vat_rates<-vat_rates[-c(3:13)]
 
+#US VAT rate equivalent
 columns <- names(vat_rates)
 values<-c("United States","","7.2","7.3","7.3","7.4","7.4","7.4")
 US <- data.frame(columns, values)
 US<-spread(US,columns,values)
 
 vat_rates<-rbind(vat_rates,US)
+
+#Canada VAT rate equivalent
+columns <- names(vat_rates)
+values<-c("Canada","","15.6","10.6","10.6","12.4","12.4","7.4")
+Canada <- data.frame(columns, values)
+Canada<-spread(Canada,columns,values)
+
+vat_rates<-subset(vat_rates,vat_rates$X__1!="Canada*")
+vat_rates<-rbind(vat_rates,Canada)
 
 vat_rates<-vat_rates[-c(2)]
 vat_rates<-melt(vat_rates,id.vars=c("X__1"))
