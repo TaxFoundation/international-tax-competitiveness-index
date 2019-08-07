@@ -239,7 +239,7 @@ write.xlsx(TableA_Corporate,"./final-outputs/Table A Corporate.xlsx",row.names =
 
 #Raw Data
 TableB_Individual_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
-names(TableB_Individual_raw)
+#names(TableB_Individual_raw)
 
 keep<-c("country","incrate","progressivity","taxwedge","laborpayments","labortime","capgainsrate","divrate")
 TableB_Individual<-TableB_Individual_raw[keep]
@@ -317,3 +317,17 @@ TableB_Individual<-rbind(headers,columns,TableB_Individual,notes_1,notes_2,notes
 
 write.csv(TableB_Individual,"./final-outputs/Appendix-Table-CSV/Table B Individual.csv",row.names = F)
 write.xlsx(TableB_Individual,"./final-outputs/Table B Individual.xlsx")
+
+#Table C Consumption####
+#Raw Data
+TableC_Consumption_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
+names(TableC_Consumption_raw)
+
+keep<-c("country","vatrate","threshold","base","consumptiontime")
+TableC_Consumption<-TableC_Consumption_raw[keep]
+
+#Format variables
+#vatrate
+
+TableC_Consumption$vatrate<-TableC_Consumption$vatrate*100
+TableC_Consumption$vatrate<-paste((formatC(round(TableC_Consumption$vatrate,digits=1),format = "f",digits=1)),"%",sep="")
