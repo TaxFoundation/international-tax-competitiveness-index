@@ -33,6 +33,7 @@ using(plyr)
 using(dplyr)
 using(tidyverse)
 using(readxl)
+using(xlsx)
 
 
 #Read in relevant spreadsheets
@@ -146,12 +147,65 @@ colnames(Table7_International)<-c("Country","Overall Rank","Overall Score", "Div
 write.csv(Table7_International,"./final-outputs/Table 7 International.csv",row.names=F)
 
 ###Table A Coprorate####
-TableA_Corporate<-rawdata_2019
 
-names(TableA_Corporate)
+#Raw Data
+TableA_Corporate_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
+
 
 keep<-c("country","corprate","losscarryback","losscarryforward","pdvmachines","pdvbuildings","pdvintangibles","inventory","patentbox","rndcredit","corptime","profitpayments","otherpayments")
-TableA_Corporate<-TableA_Corporate[keep]
+TableA_Corporate_raw<-TableA_Corporate_raw[keep]
+
+
+#Text Data
+TableA_Corporate_text<-read_csv("./source-data/TableA_Corporate.csv")
+colnames(TableA_Corporate_text)<-names(TableA_Corporate_raw)
+TableA_Corporate_text<-TableA_Corporate_text[3:38,]
+
+
+
+#Replace raw data with text data for select columns
+replace<-c("losscarryback","losscarryforward","inventory","rndcredit")
+TableA_Corporate_text<-TableA_Corporate_text[replace]
+TableA_Corporate<-TableA_Corporate_raw[,!names(TableA_Corporate_raw) %in% replace]
+TableA_Corporate<-cbind(TableA_Corporate,TableA_Corporate_text)
+
+TableA_Corporate<-TableA_Corporate[c("country","corprate","losscarryback","losscarryforward",
+                                     "pdvmachines","pdvbuildings","pdvintangibles","inventory",
+                                     "patentbox","rndcredit","corptime","profitpayments","otherpayments")]
+
+
+
+#Format variables
+#corprate
+TableA_Corporate$corprate<-TableA_Corporate$corprate*100
+TableA_Corporate$corprate<-paste((formatC(round(TableA_Corporate$corprate,digits=1),format = "f",digits=1)),"%",sep="")
+
+#pdvmachines
+TableA_Corporate$pdvmachines<-TableA_Corporate$pdvmachines*100
+TableA_Corporate$pdvmachines<-paste((formatC(round(TableA_Corporate$pdvmachines,digits=1),format = "f",digits=1)),"%",sep="")
+
+#pdvbuildings
+TableA_Corporate$pdvbuildings<-TableA_Corporate$pdvbuildings*100
+TableA_Corporate$pdvbuildings<-paste((formatC(round(TableA_Corporate$pdvbuildings,digits=1),format = "f",digits=1)),"%",sep="")
+
+#pdvintangibles
+TableA_Corporate$pdvintangibles<-TableA_Corporate$pdvintangibles*100
+TableA_Corporate$pdvintangibles<-paste((formatC(round(TableA_Corporate$pdvintangibles,digits=1),format = "f",digits=1)),"%",sep="")
+
+#patentbox
+TableA_Corporate$patentbox<-if_else(TableA_Corporate$patentbox==0,"No","Yes")
+
+#corptime
+TableA_Corporate$corptime<-formatC(round(TableA_Corporate$corptime,digits=0),format = "f",digits=0)
+
+
+#profitpayments
+TableA_Corporate$profitpayments<-formatC(round(TableA_Corporate$profitpayments,digits=0),format = "f",digits=0)
+
+
+#otherpayments
+TableA_Corporate$otherpayments<-formatC(round(TableA_Corporate$otherpayments,digits=0),format = "f",digits=0)
+
 
 headers<-c("",
            "Corporate Rate",
@@ -171,13 +225,12 @@ columns<-c("Country",
            "Intangibles",
            "Inventory (Best Available)",
            "Patent Box",
-           "Research and Development Credit or Super Deduction",
+           "Research and Development Credit and/or Super Deduction",
            "Corporate Complexity (Time)",
-           "Corporate COmplexity (Yearly Profit Payments)",
-           "Corporate COmplexity (Other Yearly Payments")
+           "Corporate Complexity (Yearly Profit Payments)",
+           "Corporate Complexity (Other Yearly Payments)")
 
 TableA_Corporate<-rbind(headers,columns,TableA_Corporate)
-
-write.csv(TableA_Corporate,"./final-outputs/Table A Corporate.csv",row.names=F)
-
-
+TableA_Corporate<-as.data.frame(TableA_Corporate)
+write.csv(TableA_Corporate,"./final-outputs/Appendix-Table-CSV/Table A Corporate.csv",row.names = F)
+write.xlsx(TableA_Corporate,"./final-outputs/Table A Corporate.xlsx",row.names = F)
