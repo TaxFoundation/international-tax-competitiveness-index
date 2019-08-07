@@ -51,9 +51,9 @@ US<-spread(US,columns,values)
 
 vat_rates<-rbind(vat_rates,US)
 
-#Canada VAT rate equivalent
+#Canada VAT rate equivalent - https://www.retailcouncil.org/resources/quick-facts/sales-tax-rates-by-province/
 columns <- names(vat_rates)
-values<-c("Canada","","15.6","10.6","10.6","12.4","12.4","12.4")
+values<-c("Canada","","15.6","10.6","10.6","12.4","12.4","11.1")
 Canada <- data.frame(columns, values)
 Canada<-spread(Canada,columns,values)
 

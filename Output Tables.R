@@ -34,7 +34,7 @@ using(dplyr)
 using(tidyverse)
 using(readxl)
 using(xlsx)
-
+using(scales)
 
 #Read in relevant spreadsheets
 
@@ -321,13 +321,71 @@ write.xlsx(TableB_Individual,"./final-outputs/Table B Individual.xlsx")
 #Table C Consumption####
 #Raw Data
 TableC_Consumption_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
-names(TableC_Consumption_raw)
+#names(TableC_Consumption_raw)
 
 keep<-c("country","vatrate","threshold","base","consumptiontime")
 TableC_Consumption<-TableC_Consumption_raw[keep]
 
 #Format variables
 #vatrate
-
-TableC_Consumption$vatrate<-TableC_Consumption$vatrate*100
 TableC_Consumption$vatrate<-paste((formatC(round(TableC_Consumption$vatrate,digits=1),format = "f",digits=1)),"%",sep="")
+
+#threshold
+TableC_Consumption$threshold<-dollar(TableC_Consumption$threshold,largest_with_cents = 10^10)
+
+#base
+TableC_Consumption$base<-TableC_Consumption$base*100
+TableC_Consumption$base<-paste((formatC(round(TableC_Consumption$base,digits=1),format = "f",digits=1)),"%",sep="")
+
+#consumptiontime
+TableC_Consumption$consumptiontime<-formatC(round(TableC_Consumption$consumptiontime,digits=0),format = "f",digits=0)
+
+#fix US and Canada to add footnote markers
+TableC_Consumption$vatrate[4]<-paste0(TableC_Consumption$vatrate[4]," (b)")
+TableC_Consumption$vatrate[36]<-paste0(TableC_Consumption$vatrate[36]," (c)")
+
+headers<-c("",
+           "Consumption Tax Rate",
+           "Consumption Tax Base",
+           "",
+           "Consumption Tax Complexity")
+columns<-c("Country",
+           "VAT/Sales Tax Rate",
+           "VAT/Sales Tax Threshold (a)",
+           "VAT/Sales Tax Base as a Percent of Total Consumption",
+           "Complexity (Hours to Comply")
+notes_1<-c("Notes:",
+           "",
+           "",
+           "",
+           "")
+
+notes_2<-c("(a) In U.S. dollars (Purchasing Power Parity).",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+
+notes_3<-c("(b) The Canadian rate is the average of the total sales tax rate for the provinces and includes Goods and Services Tax, Provincial Sales Tax, and Retail Sales Tax where applicable.",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+notes_4<-c("(c) The United States' rate is the combined weighted average state and local sales tax rate.",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "",
+           "")
+TableC_Consumption<-rbind(headers,columns,TableC_Consumption,notes_1,notes_2,notes_3,notes_4)
+
+write.csv(TableC_Consumption,"./final-outputs/Appendix-Table-CSV/Table C Consumption.csv",row.names = F)
+write.xlsx(TableC_Consumption,"./final-outputs/Table C Consumption.xlsx")
