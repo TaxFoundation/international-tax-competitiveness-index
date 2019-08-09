@@ -111,7 +111,7 @@ divrate$divrate<-divrate$divrate/100
 #dstruc$VAR_DESC
 #dstruc$CL_TABLE_I7_TAX
 
-incrate<-get_dataset("Table_I7",filter= list(c(OECD_Countries),c("TOP_TRATE")), start_time = 2013)
+incrate<-get_dataset("Table_I7",filter= list(c(OECD_Countries),c("PER_ARATE")), start_time = 2013)
 incrate<-incrate[c(1,5,6)]
 colnames(incrate)<-c("Country","Year","incrate")
 incrate$Year<-as.numeric(incrate$Year)
