@@ -56,6 +56,10 @@ Table_1_Results<-Table_1_Results[keep]
 #Sort by rank
 Table_1_Results<-Table_1_Results[order(Table_1_Results$finalrank),]
 
+#Format columns
+Table_1_Results$final<-formatC(round(Table_1_Results$final,digits=1),format = "f",digits=1)
+
+
 colnames(Table_1_Results)<-c("Country",
                              "Overall Rank",
                              "Overall Score",
@@ -64,6 +68,7 @@ colnames(Table_1_Results)<-c("Country",
                              "Consumption Taxes Rank", 
                              "Property Taxes Rank", 
                              "International Tax Rules Rank")
+
 
 write.csv(Table_1_Results,"./final-outputs/Table 1 Results.csv",row.names=F)
 
