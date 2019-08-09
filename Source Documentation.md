@@ -4,83 +4,83 @@
 
 ### **CORPORATE TAXES**
 
-### **corprate**: OECD, "OECD Tax Database, Table II.1 Statutory corporate income tax rate," https://stats.oecd.org/index.aspx?DataSetCode=Table_II1.
+### **corprate**: OECD, "OECD Tax Database, Table II.1 Statutory corporate income tax rate," updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=Table_II1.
 
 ### **losscarryback**: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
 
 ### **losscarryforward**: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
 
-### **pdvmachines**: EY, “Worldwide Corporate Tax Guide 2018,“ https://www.ey.com/Publication/vwLUAssets/EY-2018-worldwide-corporate-tax-guide/$FILE/EY-2018-worldwide-corporate-tax-guide.pdf. EY, “Worldwide Capital and Fixed Assets Guide,” 2018, https://www.ey.com/Publication/vwLUAssets/ey-2018-worldwide-capital-and-fixed-assets-guide/$FILE/ey-2018-worldwide-capital-and-fixed-assets-guide.pdf. Deloitte, “Tax Guides and Highlights,” 2018, https://dits.deloitte.com/#TaxGuides. PKF, “International Worldwide Tax Guide 2018-2019,” https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2018-19/. Prior years based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/4635/". Calculations based on Elke Asen and Daniel Bunn, "Capital Cost Recovery across the OECD, 2019," Tax Foundation, April 2, 2019, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
+### **pdvmachines**: EY, “Worldwide Corporate Tax Guide 2018,“ https://www.ey.com/Publication/vwLUAssets/EY-2018-worldwide-corporate-tax-guide/$FILE/EY-2018-worldwide-corporate-tax-guide.pdf; EY, “Worldwide Capital and Fixed Assets Guide 2018,”  https://www.ey.com/Publication/vwLUAssets/ey-2018-worldwide-capital-and-fixed-assets-guide/$FILE/ey-2018-worldwide-capital-and-fixed-assets-guide.pdf; Deloitte, “Tax Guides and Highlights,” 2018, https://dits.deloitte.com/#TaxGuides; and PKF, “International Worldwide Tax Guide 2018-2019,” https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2018-19/. Years prior to 2018 are based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/id/eprint/4635". Calculations based on Elke Asen and Daniel Bunn, "Capital Cost Recovery across the OECD, 2019," Tax Foundation, April 2, 2019, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
 
-### **pdvbuildings**: EY, “Worldwide Corporate Tax Guide 2018,“ https://www.ey.com/Publication/vwLUAssets/EY-2018-worldwide-corporate-tax-guide/$FILE/EY-2018-worldwide-corporate-tax-guide.pdf. EY, “Worldwide Capital and Fixed Assets Guide,” 2018, https://www.ey.com/Publication/vwLUAssets/ey-2018-worldwide-capital-and-fixed-assets-guide/$FILE/ey-2018-worldwide-capital-and-fixed-assets-guide.pdf. Deloitte, “Tax Guides and Highlights,” 2018, https://dits.deloitte.com/#TaxGuides. PKF, “International Worldwide Tax Guide 2018-2019,” https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2018-19/. Prior years based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/4635/". Calculations based on Elke Asen and Daniel Bunn, "Capital Cost Recovery across the OECD, 2019," Tax Foundation, April 2, 2019, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
+### **pdvbuildings**: EY, “Worldwide Corporate Tax Guide 2018,“ https://www.ey.com/Publication/vwLUAssets/EY-2018-worldwide-corporate-tax-guide/$FILE/EY-2018-worldwide-corporate-tax-guide.pdf; EY, “Worldwide Capital and Fixed Assets Guide 2018,”  https://www.ey.com/Publication/vwLUAssets/ey-2018-worldwide-capital-and-fixed-assets-guide/$FILE/ey-2018-worldwide-capital-and-fixed-assets-guide.pdf; Deloitte, “Tax Guides and Highlights,” 2018, https://dits.deloitte.com/#TaxGuides; and PKF, “International Worldwide Tax Guide 2018-2019,” https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2018-19/. Years prior to 2018 are based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/id/eprint/4635". Calculations based on Elke Asen and Daniel Bunn, "Capital Cost Recovery across the OECD, 2019," Tax Foundation, April 2, 2019, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
 
-### **pdvintangibles**: EY, “Worldwide Corporate Tax Guide 2018,“ https://www.ey.com/Publication/vwLUAssets/EY-2018-worldwide-corporate-tax-guide/$FILE/EY-2018-worldwide-corporate-tax-guide.pdf. EY, “Worldwide Capital and Fixed Assets Guide,” 2018, https://www.ey.com/Publication/vwLUAssets/ey-2018-worldwide-capital-and-fixed-assets-guide/$FILE/ey-2018-worldwide-capital-and-fixed-assets-guide.pdf. Deloitte, “Tax Guides and Highlights,” 2018, https://dits.deloitte.com/#TaxGuides. PKF, “International Worldwide Tax Guide 2018-2019,” https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2018-19/. Prior years based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/4635/". Calculations based on Elke Asen and Daniel Bunn, "Capital Cost Recovery across the OECD, 2019," Tax Foundation, April 2, 2019, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/. 
+### **pdvintangibles**: EY, “Worldwide Corporate Tax Guide 2018,“ https://www.ey.com/Publication/vwLUAssets/EY-2018-worldwide-corporate-tax-guide/$FILE/EY-2018-worldwide-corporate-tax-guide.pdf; EY, “Worldwide Capital and Fixed Assets Guide 2018,”  https://www.ey.com/Publication/vwLUAssets/ey-2018-worldwide-capital-and-fixed-assets-guide/$FILE/ey-2018-worldwide-capital-and-fixed-assets-guide.pdf; Deloitte, “Tax Guides and Highlights,” 2018, https://dits.deloitte.com/#TaxGuides; and PKF, “International Worldwide Tax Guide 2018-2019,” https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2018-19/. Years prior to 2018 are based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/id/eprint/4635". Calculations based on Elke Asen and Daniel Bunn, "Capital Cost Recovery across the OECD, 2019," Tax Foundation, April 2, 2019, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
 
-### **inventory**: EY, “Worldwide Corporate Tax Guide 2018,“ https://www.ey.com/Publication/vwLUAssets/EY-2018-worldwide-corporate-tax-guide/$FILE/EY-2018-worldwide-corporate-tax-guide.pdf. EY, “Worldwide Capital and Fixed Assets Guide,” 2018, https://www.ey.com/Publication/vwLUAssets/ey-2018-worldwide-capital-and-fixed-assets-guide/$FILE/ey-2018-worldwide-capital-and-fixed-assets-guide.pdf. Deloitte, “Tax Guides and Highlights,” 2018, https://dits.deloitte.com/#TaxGuides. PKF, “International Worldwide Tax Guide 2018-2019,” https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2018-19/. Prior years based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/4635/".
+### **inventory**: EY, “Worldwide Corporate Tax Guide 2018,“ https://www.ey.com/Publication/vwLUAssets/EY-2018-worldwide-corporate-tax-guide/$FILE/EY-2018-worldwide-corporate-tax-guide.pdf; EY, “Worldwide Capital and Fixed Assets Guide 2018,”  https://www.ey.com/Publication/vwLUAssets/ey-2018-worldwide-capital-and-fixed-assets-guide/$FILE/ey-2018-worldwide-capital-and-fixed-assets-guide.pdf; Deloitte, “Tax Guides and Highlights,” 2018, https://dits.deloitte.com/#TaxGuides; and PKF, “International Worldwide Tax Guide 2018-2019,” https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2018-19/. Years prior to 2018 are based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/id/eprint/4635". 
 
-### **patentbox**: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf. OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes. Gary Guenther, "Patent Boxes: A Primer," Congressional Research Service, https://fas.org/sgp/crs/misc/R44829.pdf. 
+### **patentbox**: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes; and Gary Guenther, "Patent Boxes: A Primer," Congressional Research Service, May 1 ,2017, https://fas.org/sgp/crs/misc/R44829.pdf.
 
-### **rndcredit**: Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380. PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
+### **rndcredit**: Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; and PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
 
-### **corptime**: PwC, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
+### **corptime**: PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools. 
 
-### **profitpayments**: PwC, "Paying Taxes 2019," https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
+### **profitpayments**: PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools. 
 
-### **otherpayments**: PwC, "Paying Taxes 2019," https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
+### **otherpayments**: PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools. 
 
 
 ### **INCOME TAXES**
 
-### **incrate**: OECD, "OECD Tax Database, Table I.7. Top statutory personal income tax rate and top marginal tax rates for employees," https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7. 
+### **incrate**: OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rate and top marginal tax rates for employees, 2000-2018,” updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
 
-### **threshold**: OECD, "OECD Tax Database, Table I.7. Top statutory personal income tax rate and top marginal tax rates for employees," https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
+### **threshold**: OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rate and top marginal tax rates for employees, 2000-2018,” updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
 
-### **taxwedge**: OECD, "OECD Tax Database, Table I.4. Marginal personal income tax and social security contribution rates on gross labour income," https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I4. OECD, "OECD Tax Database, Table I.5. Average personal income tax and social security contribution rates on gross labour income," https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I5.
+### **taxwedge**: OECD, "OECD Tax Database, Table I.4. Marginal personal income tax and social security contribution rates on gross labour income," updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I4. OECD; and "OECD Tax Database, Table I.5. Average personal income tax and social security contribution rates on gross labour income," updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I5.
  
-### **laborpayments**: PwC, "Paying Taxes 2019," https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
+### **laborpayments**: PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
 
-### **labortime**: PwC, "Paying Taxes 2019," https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
+### **labortime**: PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
 
-### **capgainsrate**: EY, "Worldwide Personal Tax and Immigration Guide 2018-19," https://www.ey.com/Publication/vwLUAssets/ey-2018-19-worldwide-personal-tax-and-immigration-guide/$FILE/ey-2018-19-worldwide-personal-tax-and-immigration-guide.pdf. Includes surtaxes for some countries.
+### **capgainsrate**: EY, "Worldwide Personal Tax and Immigration Guide 2018-19," https://www.ey.com/Publication/vwLUAssets/ey-2018-19-worldwide-personal-tax-and-immigration-guide/$FILE/ey-2018-19-worldwide-personal-tax-and-immigration-guide.pdf. Includes surtaxes if applicable.
 
-### **divrate**: OECD, "OECD Tax Database, Table II.4. Overall statutory tax rates on dividend income," https://stats.oecd.org/index.aspx?DataSetCode=TABLE_II4.
+### **divrate**: OECD, “OECD Tax Database, Table II.4 - Overall statutory tax rates on dividend income,” updated April 2019, https://stats.oecd.org/Index.aspx?DataSetCode=TABLE_II4.
 
 
 ### **CONSUMPTION TAXES**
 
-### **vatrate**: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/.
+### **vatrate**: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. 
 
 ### **threshold**: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/.
 
-### **base**: OECD, "Consumption Tax Trends 2018," Dec 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page1.
+### **base**: OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92. 
 
-### **consumptiontime**: PwC, "Paying Taxes 2019," https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
+### **consumptiontime**: PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
 
 
 ### **PROPERTY TAXES**
 
-### **propertytaxes**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+### **propertytaxes**: Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
-### **propertytaxescollections**: OECD, "OECD Revenue Statistics - OECD countries: Comparative tables," https://stats.oecd.org/index.aspx?DataSetCode=rev. IMF, "Investment and Capital Stock Dataset," https://www.imf.org/external/np/fad/publicinvestment/#5.
+### **propertytaxescollections**: OECD, "OECD Revenue Statistics - OECD Countries: Comparative tables," updated December 2018, https://stats.oecd.org/index.aspx?DataSetCode=rev; IMF, "Investment and Capital Stock Dataset," https://www.imf.org/external/np/fad/publicinvestment/#5; and IMF, "International Financial Statistics (IFS), Gross Domestic Product and Components selected indicators," https://data.imf.org/regular.aspx?key=61545852. The IMF dataset ‘Investment and Capital Stock’ ends in 2015. Thus, the variable ‘Capital Formation’ in IMF’s IFS database was used to construct the years 2016 and 2017 (that is the year with the most recent property tax revenue data). 
 
-### **netwealth**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+### **netwealth**: Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; EY, “2018 Worldwide Estate and Inheritance Tax Guide 2018,” https://www.ey.com/Publication/vwLUAssets/ey-worldwide-estate-and-inheritance-tax-guide-2018/$FILE/ey-worldwide-estate-and-inheritance-tax-guide-2018.pdf; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
-### **estate/inheritance tax**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+### **estate/inheritance tax**: EY, “Worldwide Estate and Inheritance Tax Guide 2018,” https://www.ey.com/Publication/vwLUAssets/ey-worldwide-estate-and-inheritance-tax-guide-2018/$FILE/ey-worldwide-estate-and-inheritance-tax-guide-2018.pdf.
 
-### **transfertaxes**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+### **transfertaxes**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
 ### **Assettaxes**: Bloomberg Tax, "Country Guides - Other Taxes" and "Country Guides - Special Industries," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
-### **capitalduties**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+### **capitalduties**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
-### **financialtrans**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. Bloomberg Tax, "Country Guides - Special Industries," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+### **financialtrans**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides - Special Industries," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
 
 ### **INTERNATIONAL TAX RULES**
 
-### **dividendexempt**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf. KPMG, "EU Country Profiles," https://home.kpmg/xx/en/home/services/tax/regional-tax-centers/eu-tax-centre/eu-country-profiles.html.
+### **dividendexempt**: Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; and KPMG, "EU Country Profiles," https://home.kpmg/xx/en/home/services/tax/regional-tax-centers/eu-tax-centre/eu-country-profiles.html.
 
-### **capgainsexemption**: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf. KPMG, "EU Country Profiles," https://home.kpmg/xx/en/home/services/tax/regional-tax-centers/eu-tax-centre/eu-country-profiles.html.
+### **capgainsexemption**: Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; and KPMG, "EU Country Profiles," https://home.kpmg/xx/en/home/services/tax/regional-tax-centers/eu-tax-centre/eu-country-profiles.html.
 
 ### **countrylimitations**: EY, "Worldwide Corporate Tax Guide: 2019," https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf.
 
@@ -90,11 +90,11 @@
 
 ### **roywithhold**: Deloitte, "Withholding Tax Rates 2019," https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-withholding-tax-rates.pdf.
 
-### **taxtreaties**: EY, "Worldwide Corporate Tax Guide: 2019," https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf.
+### **taxtreaties**: EY, "Worldwide Corporate Tax Guide: 2019," https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf. Tax treaties with former countries, such as USSR, Yugoslavia, and Czechoslovakia, are not counted as one. Every country the treaty applies to is counted individually.
 
-### **cfcrules**: Daniel Bunn, Kyle Pomerleau, and Sebastian Dueñas, "Anti-Base Erosion Provisions and Territorial Tax Systems in OECD Countries," May 2, 2019, https://taxfoundation.org/anti-base-erosion-provisions-territorial-tax-systems-oecd-countries/. Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380. PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf. Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides.
+### **cfcrules**: Daniel Bunn, Kyle Pomerleau, and Sebastian Dueñas, "Anti-Base Erosion Provisions and Territorial Tax Systems in OECD Countries," Tax Foundation, May 2, 2019, https://taxfoundation.org/anti-base-erosion-provisions-territorial-tax-systems-oecd-countries/; Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; and Deloitte, “Tax Guides and Highlights," 2019, https://dits.deloitte.com/#TaxGuides.
 
-### **thincap**: Daniel Bunn, Kyle Pomerleau, and Sebastian Dueñas, "Anti-Base Erosion Provisions and Territorial Tax Systems in OECD Countries," May 2, 2019, https://taxfoundation.org/anti-base-erosion-provisions-territorial-tax-systems-oecd-countries/. Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380. Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides.
+### **thincap**: Daniel Bunn, Kyle Pomerleau, and Sebastian Dueñas, "Anti-Base Erosion Provisions and Territorial Tax Systems in OECD Countries," Tax Foundation, May 2, 2019, https://taxfoundation.org/anti-base-erosion-provisions-territorial-tax-systems-oecd-countries/; Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; and Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides.
 
 #
 #
@@ -102,7 +102,7 @@
 
 ## Belgium
 
-### **netwealth**: KPMG, "Belgium – New Tax on Resident and Nonresident Individuals’ Securities Accounts," Feb 8, 2016, https://home.kpmg/xx/en/home/insights/2018/02/flash-alert-2018-024.html.
+### **netwealth**: KPMG, "Belgium – New Tax on Resident and Nonresident Individuals’ Securities Accounts," Feb. 8, 2016, https://home.kpmg/xx/en/home/insights/2018/02/flash-alert-2018-024.html.
 
 ## Chile
 
@@ -211,4 +211,7 @@
 
 ### **capgainsexemption**: Kyle Pomerleau, "A Hybrid Approach: The Treatment of Foreign Profits under the Tax Cuts and Jobs Act," Tax Foundation, May 3, 2018, https://taxfoundation.org/treatment-foreign-profits-tax-cuts-jobs-act/.
 
-### **vatrate**: Janelle Cammenga, "State and Local Sales Tax Rates, 2019," Jan 30, 2019, https://taxfoundation.org/sales-tax-rates-2019/.
+### **vatrate**: The U.S. sales tax rate is the average of all U.S.
+state sales tax rates (weighted by population), see Janelle Cammenga, "State and Local Sales Tax Rates, 2019," Tax Foundation, Jan. 30, 2019, https://taxfoundation.org/sales-tax-rates-2019/.
+
+### **base**: OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92. This paper does not provide the measure for the United States. The U.S. sales tax revenue ratio was calculated as the ratio of the implicit sales tax base to state personal income.
