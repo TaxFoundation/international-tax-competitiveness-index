@@ -37,11 +37,11 @@ using(readxl)
 
 cbt<-read.csv("./source-data/CBT_tax_database_web_2019_all_ame.csv", header = TRUE, fill = TRUE, sep = ",")
 
-
+# not copying 2018 to 2019 to make it consistent with other variables that are lagged
 # copy 2018 cbt data to 2019
-year2019_preliminary<-cbt[cbt$year==2018,]
-year2019_preliminary$year <- 2019
-cbt <- rbind(cbt, year2019_preliminary)
+# year2019_preliminary<-cbt[cbt$year==2018,]
+# year2019_preliminary$year <- 2019
+# cbt <- rbind(cbt, year2019_preliminary)
 
 # gdp data
 gdp <- read.csv("./source-data/USDA_ERSInternationalMacroeconomicDataSet_GDP.csv", header = TRUE, fill = TRUE, sep = ",", fileEncoding = "UTF-8-BOM", check.names=FALSE)
@@ -414,6 +414,8 @@ data[c('machines')][data$country == "USA" & data$year == 2018,] <- (data[c('mach
 data[c('machines')][data$country == "USA" & data$year == 2019,] <- (data[c('machines')][data$country == "USA" & data$year == 2019,] * 0.00) + 1.00
 
 data<-data[-c(3:23)]
+
+data$year<-data$year+1
 
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
