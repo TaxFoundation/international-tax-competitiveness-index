@@ -109,9 +109,9 @@ Table4_Individual<-merge(Table4_Individual,Final2019,by=c("country"))
 
 #names(Table4_Individual)
 
-keep<-c("country","incomerank","income","capgainsanddividendsrank","capgainsanddividends","incometaxrank","incometax","incometaxcomplexityrank","incometaxcomplexity")
+keep<-c("country","incomerank","income","incometaxrank","incometax","incometaxcomplexityrank","incometaxcomplexity","capgainsanddividendsrank","capgainsanddividends")
 Table4_Individual<-Table4_Individual[keep]
-colnames(Table4_Individual)<-c("Country","Overall Rank","Overall Score", "Capital Gains/Dividends Rank","Capital Gains/Dividends Score","Income Tax Rank","Income Tax Score","Complexity Rank","Complexity Score")
+colnames(Table4_Individual)<-c("Country","Overall Rank","Overall Score","Income Tax Rank","Income Tax Score","Complexity Rank","Complexity Score", "Capital Gains/Dividends Rank","Capital Gains/Dividends Score")
 
 write.csv(Table4_Individual,"./final-outputs/Table 4 Individual.csv",row.names=F)
 
@@ -139,7 +139,7 @@ colnames(Table6_Property)<-c("Country","Overall Rank","Overall Score", "Real Pro
 
 write.csv(Table6_Property,"./final-outputs/Table 6 Property.csv",row.names=F)
 
-###Table 7 Property####
+###Table 7 International####
 Table7_International<-subcategories_2019
 Table7_International<-merge(Table7_International,Final2019,by=c("country"))
 
@@ -285,7 +285,7 @@ headers<-c("",
            "",
            "")
 columns<-c("Country",
-           "Top Marginal Income Rate",
+           "Top Marginal Income Tax Rate",
            "Top Income Tax Rate Threshold (a)",
            "Ratio of Marginal to Average Tax Wedge",
            "Income Tax Complexity (Payments)",
@@ -445,7 +445,7 @@ headers<-c("",
            "",
            "Wealth/Estate Taxes",
            "",
-           "Capital/Asset Taxes",
+           "Capital/Transaction Taxes",
            "",
            "",
            "")
@@ -502,7 +502,7 @@ notes_4<-c("(c) The Land Appreciation Tax is levied like a capital gains tax on 
            "",
            "",
            "")
-notes_5<-c("(d) The Land Appreciation Tax is levied like a capital gains tax on the sale of property.",
+notes_5<-c("(d) Levied by local governments. A few cities tax capital improvements.",
            "",
            "",
            "",
@@ -563,7 +563,7 @@ TableE_International<-TableE_International_raw[,!names(TableE_International_raw)
 TableE_International<-cbind(TableE_International,TableE_International_text)
 
 TableE_International<-TableE_International[c("country","dividendexempt","capgainsexemption","countrylimitations","divwithhold","intwithhold",  
-                                   "roywithhold","taxtreaties","cfcrules","cfc_exemption","cfc_income","thincap")]
+                                   "roywithhold","taxtreaties","cfcrules","cfc_income","cfc_exemption","thincap")]
 
 #Format variables
 #dividendexempt
@@ -596,7 +596,7 @@ headers<-c("",
            "",
            "",
            "",
-           "Base Erosion Protections",
+           "International Tax Regulations",
            "",
            "",
            "")
@@ -610,8 +610,8 @@ columns<-c("Country",
            "Royalties Withholding Tax",
            "Number of Tax Treaties",
            "Controlled Foreign Corporation Rules",
-           "Controlled Foreign Corporation Rules: Exemptions",
            "Controlled Foreign Corporation Rules: Income",
+           "Controlled Foreign Corporation Rules: Exemptions",
            "Interest Deduction Limitations")
 
 TableE_International<-rbind(headers,columns,TableE_International)
