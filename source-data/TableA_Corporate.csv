@@ -1,39 +1,38 @@
-﻿,,,,,,,,,,,,
-,Corporate Rate,Cost Recovery,,,,,,Tax Incentives and Complexity,,,,
+﻿,Corporate Rate,Cost Recovery,,,,,,Tax Incentives and Complexity,,,,
 Country,Top Marginal Corporate Tax Rate,Loss Carryback (Number of Years),Loss Carryforward (Number of Years,Machinery,Industrial Buildings,Intangibles,Inventory (Best Available),Patent Box,Research and Development Credit and/or Super Deductions,Corporate Complexity (Time),Corporate Complexity (Yearly Profit Payments),Corporate Complexity (Other Yearly Payments)
-Australia,30.0%,0,No Limit,85.1%,47.9%,54.8%,Average Cost,No,Credit,37,1,6
-Austria,25.0%,0,"No Limit, capped at 75% of taxable income",81.3%,39.1%,73.8%,LIFO,No,Credit,46,1,8
-Belgium,29.6%,0,No Limit,88.2%,62.2%,80.3%,LIFO,Yes,Credit,21,1,8
-Canada,26.8%,3,20,100.0%,42.6%,49.0%,Average Cost,No,Credit,45,1,4
-Chile,25.0%,0,No Limit,63.3%,33.8%,0.0%,Average Cost,No,Credit,48,1,5
-Czech Republic,19.0%,0,5,87.4%,54.3%,84.1%,Average Cost,No,Super Deduction,53,1,5
-Denmark,22.0%,0,"No Limit, capped at 60% of taxable income",82.7%,47.9%,81.3%,FIFO,No,Super Deduction,27,3,6
-Estonia,20.0%,No Limit,No Limit,100.0%,100.0%,100.0%,LIFO,No,None,5,1,7
-Finland,20.0%,0,10,82.7%,51.9%,73.8%,FIFO,No,None,18,1,4
-France,34.4%,"1, limited to EUR 1 million","No limit, capped at 50% of taxable income for companies with revenue above 1 million Euros",85.8%,54.8%,87.0%,Average Cost,Yes,Credit,28,1,6
-Germany,29.8%,"1, limited to EUR 1 million","No Limit, capped at EUR 1 million plus 60% of taxable income",73.8%,39.1%,87.0%,LIFO,No,None,41,2,6
-Greece,29.0%,0,5,73.8%,47.9%,73.8%,LIFO,No,Super Deduction,78,1,6
-Hungary,9.0%,0,"5, capped at 50% of taxable income",81.6%,27.9%,87.0%,Average Cost,Yes,Super Deduction,35,2,7
-Iceland ,20.0%,0,10,86.0%,60.2%,81.2%,Average Cost,No,Credit,40,1,7
-Ireland,12.5%,1,No Limit,78.7%,47.9%,54.8%,FIFO,Yes,Credit,12,1,7
-Israel,23.0%,0,No Limit,87.0%,39.1%,78.7%,Average Cost,Yes,None,110,2,14
-Italy,27.8%,0,"No Limit, capped at 80% of taxable income",76.0%,46.3%,96.5%,LIFO,Yes,Credit,39,2,11
-Japan,29.7%,0,"10, capped at 50% of taxable income",77.0%,27.9%,78.7%,Average Cost,No,Credit,38,3,13
-Korea,27.5%,"1, limited to small and medium-sized enterprises","10, capped at 60% of taxable income for companies other than small and medium-sized enterprises.",92.2%,54.8%,73.8%,LIFO,Yes,Credit,83,2,8
-Latvia,20.0%,No Limit,No Limit,100.0%,100.0%,100.0%,LIFO,No,None,23,1,5
-Lithuania,,0,"No Limit, capped at 70% of taxable income",91.8%,83.8%,98.0%,LIFO,Yes,Super Deduction,18,1,8
-Luxembourg,26.0%,0,17,86.4%,47.9%,87.0%,LIFO,Yes,None,19,5,6
-Mexico,30.0%,0,10,73.8%,54.8%,73.8%,LIFO,No,Credit,102,1,3
-Netherlands,25.0%,1,9,96.5%,33.8%,73.8%,LIFO,Yes,Credit,21,1,7
-New Zealand,28.0%,0,No Limit,74.7%,31.0%,73.8%,Average Cost,No,Credit,34,1,4
-Norway,23.0%,0,No Limit,78.2%,37.4%,73.8%,FIFO,No,Credit,24,1,3
-Poland,19.0%,0,"5, capped at 50% of total loss per year",73.8%,33.8%,87.0%,LIFO,Yes,Super Deduction,59,1,4
-Portugal,31.5%,0,"5, capped at 70% of taxable income",88.8%,54.8%,73.8%,Average Cost,Yes,Both,63,1,6
-Slovak Republic,21.0%,0,4,87.4%,65.3%,87.0%,Average Cost,Yes,Super Deduction,46,1,6
-Slovenia,19.0%,0,"No limit, capped at 50% of taxable income",87.0%,39.1%,73.8%,Average Cost,No,None,74,1,8
-Spain,25.0%,0,No Limit,77.9%,39.1%,73.8%,Average Cost,Yes,Credit,33,1,7
-Sweden    ,22.0%,1.5,No Limit,86.0%,47.9%,86.0%,FIFO,No,None,50,1,4
-Switzerland,21.1%,0,7,86.0%,55.5%,90.5%,LIFO,No,None,15,2,10
-Turkey,22.0%,0,5,87.6%,47.9%,63.2%,Average Cost,Yes,Credit,24,1,8
-United Kingdom,19.0%,1,"No Limit, capped at GBP 5 million plus 50% of taxable income",75.9%,27.9%,82.7%,FIFO,Yes,Credit,32,1,6
-United States,25.8%,0,"No Limit, capped at 80% of taxable income",100.0%,35.0%,63.3%,LIFO,No,Credit,87,2,5
+Australia,30.00%,0,No Limit,85.10%,47.90%,54.80%,Average Cost,No,Credit,37,1,6
+Austria,25.00%,0,"No Limit, capped at 75% of taxable income",81.30%,39.10%,73.80%,LIFO,No,Credit,46,1,8
+Belgium,29.60%,0,No Limit,88.20%,62.20%,80.30%,LIFO,Yes,Credit,21,1,8
+Canada,26.80%,3,20,100.00%,42.60%,49.00%,Average Cost,No,Credit,45,1,4
+Chile,25.00%,0,No Limit,63.30%,33.80%,0.00%,Average Cost,No,Credit,48,1,5
+Czech Republic,19.00%,0,5,87.40%,54.30%,84.10%,Average Cost,No,Super Deduction,53,1,5
+Denmark,22.00%,0,"No Limit, capped at 60% of taxable income",82.70%,47.90%,81.30%,FIFO,No,Super Deduction,27,3,6
+Estonia,20.00%,No Limit,No Limit,100.00%,100.00%,100.00%,LIFO,No,None,5,1,7
+Finland,20.00%,0,10,82.70%,51.90%,73.80%,FIFO,No,None,18,1,4
+France,34.40%,"1, limited to EUR 1 million","No Limit, capped at 50% of taxable income for companies with revenue above 1 million Euros",85.80%,54.80%,87.00%,Average Cost,Yes,Credit,28,1,6
+Germany,29.80%,"1, limited to EUR 1 million","No Limit, capped at EUR 1 million plus 60% of taxable income",73.80%,39.10%,87.00%,LIFO,No,None,41,2,6
+Greece,29.00%,0,5,73.80%,47.90%,73.80%,LIFO,No,Super Deduction,78,1,6
+Hungary,9.00%,0,"5, capped at 50% of taxable income",81.60%,27.90%,87.00%,Average Cost,Yes,Super Deduction,35,2,7
+Iceland ,20.00%,0,10,86.00%,60.20%,81.20%,Average Cost,No,Credit,40,1,7
+Ireland,12.50%,1,No Limit,78.70%,47.90%,54.80%,FIFO,Yes,Credit,12,1,7
+Israel,23.00%,0,No Limit,87.00%,39.10%,78.70%,Average Cost,Yes,None,110,2,14
+Italy,27.80%,0,"No Limit, capped at 80% of taxable income",76.00%,46.30%,96.50%,LIFO,Yes,Credit,39,2,11
+Japan,29.70%,0,"10, capped at 50% of taxable income",77.00%,27.90%,78.70%,Average Cost,No,Credit,38,3,13
+Korea,27.50%,"1, limited to small and medium-sized enterprises","10, capped at 60% of taxable income for companies other than small and medium-sized enterprises.",92.20%,54.80%,73.80%,LIFO,Yes,Credit,83,2,8
+Latvia,20.00%,No Limit,No Limit,100.00%,100.00%,100.00%,LIFO,No,None,23,1,5
+Lithuania,,0,"No Limit, capped at 70% of taxable income",91.80%,83.80%,98.00%,LIFO,Yes,Super Deduction,18,1,8
+Luxembourg,26.00%,0,17,86.40%,47.90%,87.00%,LIFO,Yes,None,19,5,6
+Mexico,30.00%,0,10,73.80%,54.80%,73.80%,LIFO,No,Credit,102,1,3
+Netherlands,25.00%,1,9,96.50%,33.80%,73.80%,LIFO,Yes,Credit,21,1,7
+New Zealand,28.00%,0,No Limit,74.70%,31.00%,73.80%,Average Cost,No,Credit,34,1,4
+Norway,23.00%,0,No Limit,78.20%,37.40%,73.80%,FIFO,No,Credit,24,1,3
+Poland,19.00%,0,"5, capped at 50% of total loss per year",73.80%,33.80%,87.00%,LIFO,Yes,Super Deduction,59,1,4
+Portugal,31.50%,0,"5, capped at 70% of taxable income",88.80%,54.80%,73.80%,Average Cost,Yes,Both,63,1,6
+Slovak Republic,21.00%,0,4,87.40%,65.30%,87.00%,Average Cost,Yes,Super Deduction,46,1,6
+Slovenia,19.00%,0,"No Limit, capped at 50% of taxable income",87.00%,39.10%,73.80%,Average Cost,No,None,74,1,8
+Spain,25.00%,0,No Limit,77.90%,39.10%,73.80%,Average Cost,Yes,Credit,33,1,7
+Sweden    ,22.00%,1.5,No Limit,86.00%,47.90%,86.00%,FIFO,No,None,50,1,4
+Switzerland,21.10%,0,7,86.00%,55.50%,90.50%,LIFO,No,None,15,2,10
+Turkey,22.00%,0,5,87.60%,47.90%,63.20%,Average Cost,Yes,Credit,24,1,8
+United Kingdom,19.00%,1,"No Limit, capped at GBP 5 million plus 50% of taxable income",75.90%,27.90%,82.70%,FIFO,Yes,Credit,32,1,6
+United States,25.80%,0,"No Limit, capped at 80% of taxable income",100.00%,35.00%,63.30%,LIFO,No,Credit,87,2,5
