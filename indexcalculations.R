@@ -310,6 +310,10 @@ categories$income<-apply((subcategories[incomeindex]*(1/length(incomeindex))),1,
 categories$international<-apply((subcategories[internationalindex]*(1/length(internationalindex))),1,sum)
 categories$final<-apply((categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
+write.csv(subset(categories,categories$year==2019),file = "./final-outputs/categories_score.csv",row.names=F)
+
+
+
 #ALT Scoring method
 
 ALTcategories<-data.frame(country=rawdata$country,
@@ -326,7 +330,7 @@ ALTcategories$final<-apply((ALTcategories[3:7]*(1/length(categories[3:7]))),1,su
 
 #Define a function that applies the final score
 
-#Method 1 (uses P Values to normalize)
+#Method 1 (uses P Values to normalize)# Unused function!!!
 
 score1<-function(x){
   normal<-apply(x[-1],2,function(x) {pnorm(x)})
@@ -355,14 +359,17 @@ rank1<-function(x){
   ranks<-rank(-x,ties.method= "min")
   return(ranks)
 }
+write.csv(subset(subcategories,subcategories$year==2019),file = "./final-outputs/subcategories_zscore.csv",row.names=F)
+
 
 #Subcategory Scores
-
 subcategories<-data.frame(country=rawdata$country,
-                          ddply(subcategories[-1],
-                                .(year),
-                                score2)
+                           ddply(subcategories[-1],
+                                 .(year),
+                                 score2)
 )
+
+
 
 #Alt Subcategory Scores
 
