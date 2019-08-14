@@ -208,7 +208,7 @@ TableA_Corporate_raw<-TableA_Corporate_raw[keep]
 #Text Data
 TableA_Corporate_text<-read_csv("./source-data/TableA_Corporate.csv")
 colnames(TableA_Corporate_text)<-names(TableA_Corporate_raw)
-TableA_Corporate_text<-TableA_Corporate_text[3:38,]
+TableA_Corporate_text<-TableA_Corporate_text[2:37,]
 
 
 
@@ -454,7 +454,7 @@ TableD_Property_text<-read_csv("./source-data/TableD_Property.csv")
 
 colnames(TableD_Property_text)<-c("country","propertytaxes","deductible","propertytaxescollections","netwealth","estate.inheritance.tax",  
                                   "transfertaxes","Assettaxes","capitalduties","financialtrans")
-TableD_Property_text<-TableD_Property_text[3:38,]
+TableD_Property_text<-TableD_Property_text[2:37,]
 
 
 #Replace raw data with text data for select columns
@@ -597,7 +597,7 @@ TableE_International_text<-read_csv("./source-data/TableE_International.csv")
 
 colnames(TableE_International_text)<-c("country","dividendexempt","capgainsexemption","countrylimitations","divwithhold","intwithhold","roywithhold",  
                                   "taxtreaties","cfcrules","cfc_exemption","cfc_income","thincap")
-TableE_International_text<-TableE_International_text[3:38,]
+TableE_International_text<-TableE_International_text[2:37,]
 
 
 #Replace raw data with text data for select columns
