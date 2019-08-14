@@ -608,3 +608,4 @@ write.csv(Final2018, file = "./final-outputs/data2018run.csv",row.names=F)
 write.csv(Final2019, file = "./final-outputs/data2019run.csv",row.names=F)
 
 write.csv(finalsubcategories_2019,"./final-outputs/subcategories 2019.csv",row.names=F)
+write.csv(finalcategories,"./final-outputs/final categories 2014-2019.csv",row.names=F)
