@@ -87,8 +87,8 @@ Table2_Changes<-Table2_Changes[keep]
 
 colnames(Table2_Changes)<-c("Country","2017 Rank","2017 Score", "2018 Rank","2018 Score","2019 Rank","2019 Score")
 
-Table2_Changes$'Change in Rank'<-(Table2_Changes$`2019 Rank`-Table2_Changes$`2018 Rank`)*(-1)
-Table2_Changes$'Change in Score'<-Table2_Changes$`2019 Score`-Table2_Changes$`2018 Score`
+Table2_Changes$'Change in Rank from 2018 to 2019'<-(Table2_Changes$`2019 Rank`-Table2_Changes$`2018 Rank`)*(-1)
+Table2_Changes$'Change in Score from 2018 to 2019'<-Table2_Changes$`2019 Score`-Table2_Changes$`2018 Score`
 
 #Format Columns
 
