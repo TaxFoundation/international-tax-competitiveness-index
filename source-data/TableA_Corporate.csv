@@ -18,7 +18,7 @@ Ireland,12.50%,1,No Limit,78.70%,47.90%,54.80%,FIFO,Yes,Credit,12,1,7
 Israel,23.00%,0,No Limit,87.00%,39.10%,78.70%,Average Cost,Yes,None,110,2,14
 Italy,27.80%,0,"No Limit, capped at 80% of taxable income",76.00%,46.30%,96.50%,LIFO,Yes,Credit,39,2,11
 Japan,29.70%,0,"10, capped at 50% of taxable income",77.00%,27.90%,78.70%,Average Cost,No,Credit,38,3,13
-Korea,27.50%,"1, limited to small and medium-sized enterprises","10, capped at 60% of taxable income for companies other than small and medium-sized enterprises.",92.20%,54.80%,73.80%,LIFO,Yes,Credit,83,2,8
+Korea,27.50%,"1, limited to small and medium-sized enterprises","10, capped at 60% of taxable income for companies other than small and medium-sized enterprises",92.20%,54.80%,73.80%,LIFO,Yes,Credit,83,2,8
 Latvia,20.00%,No Limit,No Limit,100.00%,100.00%,100.00%,LIFO,No,None,23,1,5
 Lithuania,,0,"No Limit, capped at 70% of taxable income",91.80%,83.80%,98.00%,LIFO,Yes,Super Deduction,18,1,8
 Luxembourg,26.00%,0,17,86.40%,47.90%,87.00%,LIFO,Yes,None,19,5,6
