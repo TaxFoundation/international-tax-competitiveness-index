@@ -536,11 +536,16 @@ cor(ALTfinalcategories$final[ALTfinalcategories$year == 2019],finalcategories$fi
 
 #normal scoring techniques:
 
-cortest1<-finalcategories[finalcategories$year == 2015,]
-subcortest1<-finalsubcategories[finalsubcategories$year == 2015,]
+cortest1<-finalcategories[finalcategories$year == 2019,]
+subcortest1<-finalsubcategories[finalsubcategories$year == 2019,]
 subcortest1<-cbind(subcortest1,cortest1[14])
 cor(cortest1[c(4,6,8,10,12,14)])
-cor(subcortest1[c(seq(4,32,2),33)])
+categories_correl<-data.frame(cor(cortest1[c(4,6,8,10,12,14)]))
+write.csv(categories_correl,"./final-outputs/Categories correlation.csv")
+
+subcategories_correl<-data.frame(cor(subcortest1[c(seq(4,32,2),35)]))
+write.csv(subcategories_correl,"./final-outputs/Subategories correlation.csv")
+
 
 
 importance<-lm(cortest1$final ~ cortest1$corporate + cortest1$income + cortest1$consumption + cortest1$property + cortest1$international)
