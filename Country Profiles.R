@@ -398,3 +398,5 @@ country_profiles<-rbind(columns,Australia,Austria,Belgium,Canada,Chile,CzechRepu
                         Portugal,SlovakRepublic,Slovenia,Spain,Sweden,Switzerland,Turkey,UnitedKingdom,UnitedStates)
 country_profiles<-as.data.frame(country_profiles[-1,])
 colnames(country_profiles)<-columns
+write.csv(country_profiles, file = "./final-outputs/country_profiles.csv",row.names=F)
+
