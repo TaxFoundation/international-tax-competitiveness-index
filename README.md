@@ -71,6 +71,11 @@ These two steps can be repeated for each reform scenario.
 
 If there is a particularly interesting reform scenario that you would like to have included in the git, you can save a new version of the final_indexdata2019.csv file with an identifier like FRANCE_final_indexdata2019.csv and a corresponding FRANCE_indexcalculations.r with an edited line 50 to run that scenario. You could then create a pull request that we will review to determine if the scenario is something we would like to include in the repository.
 
+##Adding a country to the index
+If you would like to research the tax system of a particular country and add it to the index, you can do so by following the methodology behind each variable (the sources document will be helpful in this endeavor) and adding the country and variable values to the spreadsheets in the /final-data folder. Optimally, you will add values for each variable and each year back to 2014. Once the spreadsheets in the /final-data folder have been edited with a new row of data for the country you are adding, you can run the indexcalculations.r file and explore the results.
+
+If you have fully researched the data values for all the variables for the country for each year of the index and created a file with those sources, you could then create a pull request that we will review to determine if we would like to include the additional country in the repository and, potentially, the next version of the index.
+
 ## Methodology
 
 The ITCI is a relative ranking of the competitiveness and neutrality of the tax code in each of the 36 OECD countries. It utilizes over 40 variables across five categories: corporate tax, individual taxes, consumption taxes, property taxes, and international tax rules. Each category has multiple subcategories, and each subcategory holds a number of the 40 variables. For example, the consumption tax category contains three subcategories: rate, base, and complexity. The consumption tax base subcategory then has two variables: consumption tax as a percentage of total consumption and VAT threshold.
