@@ -33,7 +33,7 @@
 
 ### **incrate**: OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rate and top marginal tax rates for employees, 2000-2018,” updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
 
-### **threshold**: OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rate and top marginal tax rates for employees, 2000-2018,” updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
+### **progressivity**: OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rate and top marginal tax rates for employees, 2000-2018,” updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
 
 ### **taxwedge**: OECD, "OECD Tax Database, Table I.4. Marginal personal income tax and social security contribution rates on gross labour income," updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I4. OECD; and "OECD Tax Database, Table I.5. Average personal income tax and social security contribution rates on gross labour income," updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I5.
  

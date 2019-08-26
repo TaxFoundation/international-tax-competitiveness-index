@@ -1,8 +1,75 @@
 # International Tax Competitiveness Index
-
 The Tax Foundation’s [International Tax Competitiveness Index](https://taxfoundation.org/publications/international-tax-competitiveness-index/) (ITCI) measures the degree to which the 36 OECD countries’ tax systems promote competitiveness through low tax burdens on business investment and neutrality through a well-structured tax code. The ITCI considers more than forty variables across five categories: Corporate Taxes, Individual Taxes, Consumption Taxes, Property Taxes, and International Tax Rules.
 
 The ITCI attempts to display not only which countries provide the best tax environment for investment but also the best tax environment to start and grow a business.
+
+##Explanation of Files in Repository
+### /main directory
+Location of the .R code files, readme, and source documentation.
+
+### /source-data
+Location of input files to several .R code files including:
+-VAT Data.r
+-Property tax collections.r
+-OECD data scraper.r
+-CFC rules model.r
+-allowances_ame_OECD_2019.r
+-Packaging data.r
+
+### /intermediate-outputs
+Location of some of the input files to Packaging data.r
+
+### /final-data
+Location of output files from Packaging data.r which are input files to indexcalculations.r.
+
+### /final-outputs
+Location of the output files from indexcalculations.r and Output Tables.r
+
+#R code files
+##OECD data scraper.r
+This code pulls down data from the OECD portal for the following variables:
+-corprate
+-divrate
+-incrate
+-progressivity
+-taxwedge
+
+##VAT Data.r
+This code organizes and combines VAT rate and threshold data.
+
+##Property tax collections.r
+This code uses IMF capital stock data and OECD property tax revenue data to produce the propertytaxescollections variable.
+
+##CFC Rules Model.r
+This code takes the CFC rules input files and creates the cfcrules variable as a composite of the three features of CFC rules systems.
+
+##allowances_ame_OECD_2019.r
+This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Fdundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The output is the data for the following variables:
+-pdvmachines
+-pdvbuildings
+-pdvintangibles
+
+##Packaging data.r
+This file combines the source data and intermediate output data. The outputs are complete datasets for 2014-2019 stored in /final-data.
+
+##indexcalculations.r
+This file is the main file for calculating index scores and ranks.
+
+##Output Tables.r
+This file creates the tables used in the report.
+
+##Designing your own reform scenario
+If you would like to see how a reform might impact a country's rank and score in the index, you only need to adjust a handful of files.
+
+After downloading the repository, you can run the indexcalculations.r code to get the baseline rankings and scores from this year's version of the index. You may want to save the baseline output to a new folder so that the results will not be overwritten in the next step.
+
+Next, you can create your reform scenario by manipulating the files in the /final-data folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the final_indexdata2019.csv file to change the corprate variable for France to be 15 percent. 
+
+Once that change is made and the file is saved, you can run the indexcalculations.r file again and note the changes relative to the previous baseline.
+
+These two steps can be repeated for each reform scenario.
+
+If there is a particularly interesting reform scenario that you would like to have included in the git, you can save a new version of the final_indexdata2019.csv file with an identifier like FRANCE_final_indexdata2019.csv and a corresponding FRANCE_indexcalculations.r with an edited line 50 to run that scenario. You could then create a pull request that we will review to determine if the scenario is something we would like to include in the repository.
 
 ## Methodology
 
@@ -37,6 +104,7 @@ Second, the adjusted initial final scores for each country are scaled to 100, re
 ## Explanation of Data
 
 A more thorough description of these data and how the Tax Foundation uses them is contained within the [International Tax Competitiveness Index](https://taxfoundation.org/publications/international-tax-competitiveness-index/)
+
 
 | Name | Description |
 | --- | --- |
