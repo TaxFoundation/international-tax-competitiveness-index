@@ -41,6 +41,8 @@
 
 ### **labortime**: PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
 
+### **capgainsindex**: This variable is no longer used
+
 ### **capgainsrate**: EY, "Worldwide Personal Tax and Immigration Guide 2018-19," https://www.ey.com/Publication/vwLUAssets/ey-2018-19-worldwide-personal-tax-and-immigration-guide/$FILE/ey-2018-19-worldwide-personal-tax-and-immigration-guide.pdf. Includes surtaxes if applicable.
 
 ### **divrate**: OECD, “OECD Tax Database, Table II.4 - Overall statutory tax rates on dividend income,” updated April 2019, https://stats.oecd.org/Index.aspx?DataSetCode=TABLE_II4.
