@@ -213,7 +213,6 @@
 
 ### **capgainsexemption**: Kyle Pomerleau, "A Hybrid Approach: The Treatment of Foreign Profits under the Tax Cuts and Jobs Act," Tax Foundation, May 3, 2018, https://taxfoundation.org/treatment-foreign-profits-tax-cuts-jobs-act/.
 
-### **vatrate**: The U.S. sales tax rate is the average of all U.S.
-state sales tax rates (weighted by population), see Janelle Cammenga, "State and Local Sales Tax Rates, 2019," Tax Foundation, Jan. 30, 2019, https://taxfoundation.org/sales-tax-rates-2019/.
+### **vatrate**: The U.S. sales tax rate is the average of all U.S. state sales tax rates (weighted by population), see Janelle Cammenga, "State and Local Sales Tax Rates, 2019," Tax Foundation, Jan. 30, 2019, https://taxfoundation.org/sales-tax-rates-2019/.
 
 ### **base**: OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92. This paper does not provide the measure for the United States. The U.S. sales tax revenue ratio was calculated as the ratio of the implicit sales tax base to state personal income.
