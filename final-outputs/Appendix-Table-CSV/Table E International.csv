@@ -37,14 +37,15 @@ Interest deductions limited if interest payments both exceed €3 million and 30% 
 "Lithuania","100.0%","100.0%","Black-list countries are excluded","15.0%","10.0%","10.0%","54","Yes","Passive","CFC exempt if country included in white list and not receiving special tax treatment or taxed subject to a corporate rate of more than 11.25%","4:1 debt-to-equity ratio applies
 Interest deductions limited to the higher of €3 million or 30% of EBITDA
 Rule does not apply if entity's debt-to-equity ratio is not (or at most 2 percentage-points) lower than the group-consolidated ratio"
-"Luxembourg","100.0%","100.0%","None","15.0%","0.0%","0.0%","82","Yes","All Income Associated with Non-genuine Arrangements","CFC exempt if i) not an artificial arrangement or ii) accounting profits below €750,000 or less than 10% of operating costs","Informal 85:15 debt-to-equity ratio applies
+"Luxembourg","100.0%","100.0%","None","15.0%","0.0%","0.0%","82","Yes","All Income Associated with Non-genuine Arrangements","CFC exempt if i) not an artificial arrangement or ii) accounting profits  below €750,000 or less than 10% of operating costs","Informal 85:15 debt-to-equity ratio applies
 Interest deductions limited to the higher of 30% of EBITDA or €3 million (financial institutions exempt)"
-"Mexico","0.0%","0.0%","N/A","10.0%","35.0%","35.0%","59","Yes","All Income","None","3:1 debt-to-equity ratio applies"
+"Mexico","0.0%","0.0%","N/A","10.0%","35.0%","35.0%","59","Yes","All Income","None","3:1 debt-to-equity ratio applies."
 "Netherlands","100.0%","100.0%","None","15.0%","0.0%","0.0%","97","Yes","Passive","CFC exempt if not an artificial arrangement","Interest deductions limited to the higher of €1 million or 30% of EBITDA"
 "New Zealand","100.0%","100.0%","None","30.0%","15.0%","15.0%","40","Yes","Passive","Limited exemption for certain Australian CFCs","Numerous restrictions on debt-to-equity ratio apply"
 "Norway","97.0%","100.0%","EEA member states","25.0%","0.0%","0.0%","87","Yes","All Income","CFC exempt if located in EEA country and not an artificial arrangement or located in tax treaty country","Interest deductions limited to 25% of EBITDA"
 "Poland","100.0%","0.0%","EU member states and EEA member states and Switzerland","19.0%","20.0%","20.0%","85","Yes","All Income","CFC exempt if located in EU or EEA and not an artificial arrangement","Interest deductions limited to the higher of PLN 3 million or 30% of EBITDA"
-"Portugal","100.0%","100.0%","Black-list countries are excluded","25.0%","25.0%","25.0%","77","Yes","All Income","CFC exempt if located in EU and EEA countries and not an artificial arrangement
+"Portugal","100.0%","100.0%","Black-list countries are excluded","25.0%","25.0%","25.0%","77","Yes","All Income","CFC exempt if located in EU and EEA countries and not an artificial arrangement
+
 Other exemptions can apply","Interest deductions limited to the higher of €1 million or 30% of EBITDA"
 "Slovak Republic","100.0%","100.0%","Tax treaty countries","35.0%","19.0%","19.0%","70","Yes","All Income Associated with Non-genuine Arrangements","None","Interest deductions limited to 25% of EBITDA (financial institutions exempted)"
 "Slovenia","95.0%","47.5%","Black-list countries are excluded","15.0%","15.0%","15.0%","59","Yes","Passive","Substantial economic activities exemption","4:1 debt-to-equity ratio applies"
