@@ -1,4 +1,4 @@
-#main index code
+#output tables code
 rm(list=ls())
 gc()
 

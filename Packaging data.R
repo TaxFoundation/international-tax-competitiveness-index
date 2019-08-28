@@ -58,10 +58,6 @@ indexdata2019$year<-2019
 
 indexdata_old<-rbind(indexdata2014,indexdata2015,indexdata2016,indexdata2017,indexdata2018,indexdata2019)
 
-#Rename progressivity variable
-indexdata_old$threshold_1->indexdata_old$progressivity
-
-
 
 #Remove variables from indexdata_old that are in OECD data
 OECDvars<-c("corprate","divrate", "incrate", "progressivity", "taxwedge")
@@ -69,10 +65,10 @@ indexdata_old<-indexdata_old[,!names(indexdata_old) %in% OECDvars]
 
 #Join OECD data with indexdata_old####
 
-indexdata_OECD_vars<-merge(indexdata_old,OECD_vars,by=c("country","year"))
+indexdata_OECD_vars<-merge(indexdata_old,OECD_vars,by=c("country","ISO-2","ISO-3","year"))
 
 
-#Join cap allowances data with indexdata2019#
+#Join cap allowances data with indexdata2019####
 
 Cap_Allowances_Vars<-c("pdvmachines","pdvbuildings", "pdvintangibles")
 colnames(Cap_Allowances)<-c("ISO-3","year","pdvmachines","pdvbuildings", "pdvintangibles")
@@ -81,7 +77,7 @@ indexdata_OECD_vars<-indexdata_OECD_vars[,!names(indexdata_OECD_vars) %in% Cap_A
 
 indexdata_cap_a_vars<-merge(indexdata_OECD_vars,Cap_Allowances,by=c("ISO-3","year"))
 
-#Join VAT data with indexdata_cap_a_vars
+#Join VAT data with indexdata_cap_a_vars####
 
 #Remove variables from indexdata_old that are in VAT data
 
@@ -90,7 +86,7 @@ indexdata_cap_a_vars<-indexdata_cap_a_vars[,!names(indexdata_cap_a_vars) %in% va
 
 indexdata_VAT_vars<-merge(indexdata_cap_a_vars,vat_data,by=c("country","year"))
 
-#Join Property tax data with indexdata_cap_a_vars
+#Join Property tax data with indexdata_cap_a_vars####
 prop_tax_vars<-c("propertytaxescollections")
 
 #Adjust years in Property tax data to account for two year lag
@@ -99,7 +95,7 @@ Property_Tax<-Property_Tax[c("country","year","propertytaxescollections")]
 indexdata_VAT_vars<-indexdata_VAT_vars[,!names(indexdata_VAT_vars) %in% prop_tax_vars]
 indexdata_prop_tax_vars<-merge(indexdata_VAT_vars,Property_Tax,by=c("country","year"))
 
-#Join CFC rules data with indexdata2019
+#Join CFC rules data with indexdata2019####
 CFC_Rules<-CFC_Rules[-c(2:4,7:8)]
 
 CFC_Rules_var<-c("cfcrules")
@@ -111,14 +107,13 @@ indexdata_CFC_var<-merge(indexdata_prop_tax_vars,CFC_Rules,by=c("country","year"
 
 indexdata_final<-indexdata_CFC_var
 
-
-#Clean up ISO variables
-out<-c("ISO-2.y","ISO-3.y")
-indexdata_final<-indexdata_final[,!names(indexdata_final) %in% out]
-names(indexdata_final)[names(indexdata_final) == 'ISO-3.x'] <- 'ISO-3'
-names(indexdata_final)[names(indexdata_final) == 'ISO-2.x'] <- 'ISO-2'
-
-
+#Reorder columns ####
+indexdata_final<-indexdata_final[c("ISO-2","ISO-3","country","year",
+                               "corprate","losscarryback","losscarryforward","pdvmachines","pdvbuildings","pdvintangibles","inventory","patentbox","rndcredit","corptime","profitpayments","otherpayments",
+                               "incrate","progressivity","taxwedge","laborpayments","labortime","capgainsrate","capgainsindex","divrate",
+                               "vatrate","threshold","base","consumptiontime",
+                               "propertytaxes", "propertytaxescollections","netwealth","estate/inheritance tax","transfertaxes","Assettaxes","capitalduties","financialtrans",
+                               "dividendexempt","capgainsexemption","countrylimitations","divwithhold","intwithhold","roywithhold","taxtreaties","cfcrules","thincap"   )]
 
 write.csv(subset(indexdata_final,indexdata_final$year==2014),file = "./final-data/final_indexdata2014.csv",row.names=F)
 write.csv(subset(indexdata_final,indexdata_final$year==2015),file = "./final-data/final_indexdata2015.csv",row.names=F)

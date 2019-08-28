@@ -1,4 +1,4 @@
-#main index code
+#country profiles code
 rm(list=ls())
 gc()
 
@@ -28,7 +28,6 @@ using<-function(...,prompt=TRUE){
   }
 }
 
-# Sets the working directory. This sets it to the "index" folder on my desktop
 using(plyr)
 using(dplyr)
 using(tidyverse)
