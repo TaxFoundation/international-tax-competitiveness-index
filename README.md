@@ -1,20 +1,20 @@
 # International Tax Competitiveness Index
-The Tax Foundation’s [International Tax Competitiveness Index](https://taxfoundation.org/publications/international-tax-competitiveness-index/) (ITCI) measures the degree to which the 36 OECD countries’ tax systems promote competitiveness through low tax burdens on business investment and neutrality through a well-structured tax code. The ITCI considers more than forty variables across five categories: Corporate Taxes, Individual Taxes, Consumption Taxes, Property Taxes, and International Tax Rules.
+The Tax Foundation’s [_International Tax Competitiveness Index_](https://taxfoundation.org/publications/international-tax-competitiveness-index/) (_ITCI_) measures the degree to which the 36 OECD countries’ tax systems promote competitiveness through low tax burdens on business investment and neutrality through a well-structured tax code. The ITCI considers more than forty variables across five categories: Corporate Taxes, Individual Taxes, Consumption Taxes, Property Taxes, and International Tax Rules.
 
 The ITCI attempts to display not only which countries provide the best tax environment for investment but also the best tax environment to start and grow a business.
 
-##Explanation of Files in Repository
+## Explanation of Files in Repository
 ### /main directory
 Location of the .R code files, readme, and source documentation.
 
 ### /source-data
-Location of input files to several .R code files including:
--VAT Data.r
--Property tax collections.r
--OECD data scraper.r
--CFC rules model.r
--allowances_ame_OECD_2019.r
--Packaging data.r
+Location of **input** files to several .R code files including:
+1. VAT Data.r
+2. Property tax collections.r
+3. OECD data scraper.r
+4. CFC rules model.r
+5. allowances_ame_OECD_2019.r
+6. Packaging data.r
 
 ### /intermediate-outputs
 Location of some of the input files to Packaging data.r
@@ -25,40 +25,40 @@ Location of output files from Packaging data.r which are input files to indexcal
 ### /final-outputs
 Location of the output files from indexcalculations.r and Output Tables.r
 
-#R code files
-##OECD data scraper.r
+## R code files
+### OECD data scraper.r
 This code pulls down data from the OECD portal for the following variables:
--corprate
--divrate
--incrate
--progressivity
--taxwedge
+1. corprate
+2. divrate
+3. incrate
+4. progressivity
+5. taxwedge
 
-##VAT Data.r
+### VAT Data.r
 This code organizes and combines VAT rate and threshold data.
 
-##Property tax collections.r
+### Property tax collections.r
 This code uses IMF capital stock data and OECD property tax revenue data to produce the propertytaxescollections variable.
 
-##CFC Rules Model.r
+### CFC Rules Model.r
 This code takes the CFC rules input files and creates the cfcrules variable as a composite of the three features of CFC rules systems.
 
-##allowances_ame_OECD_2019.r
+### allowances_ame_OECD_2019.r
 This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Fdundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The output is the data for the following variables:
--pdvmachines
--pdvbuildings
--pdvintangibles
+1. pdvmachines
+2. pdvbuildings
+3. pdvintangibles
 
-##Packaging data.r
+### Packaging data.r
 This file combines the source data and intermediate output data. The outputs are complete datasets for 2014-2019 stored in /final-data.
 
-##indexcalculations.r
+### indexcalculations.r
 This file is the main file for calculating index scores and ranks.
 
-##Output Tables.r
+### Output Tables.r
 This file creates the tables used in the report.
 
-##Designing your own reform scenario
+## Designing your own reform scenario
 If you would like to see how a reform might impact a country's rank and score in the index, you only need to adjust a handful of files.
 
 After downloading the repository, you can run the indexcalculations.r code to get the baseline rankings and scores from this year's version of the index. You may want to save the baseline output to a new folder so that the results will not be overwritten in the next step.
@@ -71,7 +71,7 @@ These two steps can be repeated for each reform scenario.
 
 If there is a particularly interesting reform scenario that you would like to have included in the git, you can save a new version of the final_indexdata2019.csv file with an identifier like FRANCE_final_indexdata2019.csv and a corresponding FRANCE_indexcalculations.r with an edited line 50 to run that scenario. You could then create a pull request that we will review to determine if the scenario is something we would like to include in the repository.
 
-##Adding a country to the index
+## Adding a country to the index
 If you would like to research the tax system of a particular country and add it to the index, you can do so by following the methodology behind each variable (the sources document will be helpful in this endeavor) and adding the country and variable values to the spreadsheets in the /final-data folder. Optimally, you will add values for each variable and each year back to 2014. Once the spreadsheets in the /final-data folder have been edited with a new row of data for the country you are adding, you can run the indexcalculations.r file and explore the results.
 
 If you have fully researched the data values for all the variables for the country for each year of the index and created a file with those sources, you could then create a pull request that we will review to determine if we would like to include the additional country in the repository and, potentially, the next version of the index.
@@ -96,11 +96,11 @@ The next step is to combine variable scores to calculate subcategory scores. Wit
 From here, two transformations occur. First, to eliminate any negative values, the inverse of the lowest z-score plus one in each subcategory is added to each country’s z-score. For example, France has the worst z-score for the corporate income tax rate subcategory (-1.99). Thus, 1.99 plus 1 (2.99) is added to each country’s z-score (the adjusted z-score). This sets the worst score in each subcategory to 1.
 Second, the adjusted subcategory scores for each country are scaled to 100, relative to the country with the best score in each subcategory. This is done by taking each country’s adjusted z-score and dividing it by the best adjusted z-score in each category. For example, Hungary, which has the lowest corporate tax rate, has the best adjusted corporate rate subcategory z-score of 5.66, and receives a final subcategory score of 100.
 
-###Calculating Category Scores
+### Calculating Category Scores
 The same method is used to create the category scores. First, the z-score for subcategories are averaged to create the initial category score. Then, the inverse of the worst z-score plus one in each category is added to each country’s z-score. For example, Japan has the worst initial corporate category score of -0.84. Thus, 0.84 plus 1 (1.84) is added to each country’s initial category score (the adjusted initial category score). This sets the worst score in each category to 1.
 Second, the adjusted initial category scores for each country are scaled to 100, relative to the country with the best score in each category. This is done by taking each country’s adjusted initial category score and dividing it by the best adjusted initial category score in each category. For example, Latvia, which has the best corporate category score, has the best adjusted category score of 3.05, and receives a final category score of 100.
 
-###Calculating the Final Scores
+### Calculating the Final Scores
 The same method is used to create the final score. First, the initial category scores are averaged to create the initial final score. Then, the inverse of the worst initial final score plus one is added to each country’s initial final score. For example, France has the worst initial final score of -0.53. Thus, 0.53 plus 1 (1.53) is added to each country’s initial final score (the adjusted initial final score). This sets the worst score in each category to 1.
 
 Second, the adjusted initial final scores for each country are scaled to 100, relative to the country with the best score in each category. This is done by taking each country’s adjusted initial final score and dividing it by the best adjusted initial final score in each category. For example, Estonia, which has the best final score, has the best adjusted final score of 2.34, and receives a final category score of 100.
@@ -108,7 +108,7 @@ Second, the adjusted initial final scores for each country are scaled to 100, re
 
 ## Explanation of Data
 
-A more thorough description of these data and how the Tax Foundation uses them is contained within the [International Tax Competitiveness Index](https://taxfoundation.org/publications/international-tax-competitiveness-index/)
+A more thorough description of these data and how the Tax Foundation uses them is contained within the [*International Tax Competitiveness Index*](https://taxfoundation.org/publications/international-tax-competitiveness-index/)
 
 
 | Name | Description |
@@ -155,4 +155,4 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `country limitations` | Indicates whether country has certain exemptions to a territorial tax system based on the source of the foreign income. Existence of exemptions are marked as `1`; no exemptions are marked `0`.  |
 | `thincap` | Indicates whether a country puts thin capitalization resitrictions on companies' debt-to-asset ratios. Countries with restrictions are marked as `1`; those without are marked `0`. |
 
-The ITCI uses the most up-to-date data available as of July 2019.
+The _ITCI_ uses the most up-to-date data available as of July 2019.
