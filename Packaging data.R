@@ -115,8 +115,6 @@ indexdata_final<-indexdata_final[c("ISO-2","ISO-3","country","year",
                                "propertytaxes", "propertytaxescollections","netwealth","estate/inheritance tax","transfertaxes","Assettaxes","capitalduties","financialtrans",
                                "dividendexempt","capgainsexemption","countrylimitations","divwithhold","intwithhold","roywithhold","taxtreaties","cfcrules","thincap"   )]
 
-
-
 write.csv(subset(indexdata_final,indexdata_final$year==2014),file = "./final-data/final_indexdata2014.csv",row.names=F)
 write.csv(subset(indexdata_final,indexdata_final$year==2015),file = "./final-data/final_indexdata2015.csv",row.names=F)
 write.csv(subset(indexdata_final,indexdata_final$year==2016),file = "./final-data/final_indexdata2016.csv",row.names=F)
