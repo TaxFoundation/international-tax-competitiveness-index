@@ -380,7 +380,7 @@ TableC_Consumption<-TableC_Consumption_raw[keep]
 TableC_Consumption$vatrate<-paste((formatC(round(TableC_Consumption$vatrate,digits=1),format = "f",digits=1)),"%",sep="")
 
 #threshold
-TableC_Consumption$threshold<-dollar(TableC_Consumption$threshold,largest_with_cents = 10^10)
+TableC_Consumption$threshold<-dollar(TableC_Consumption$threshold,largest_with_cents = 1)
 
 #base
 TableC_Consumption$base<-TableC_Consumption$base*100
