@@ -1,7 +1,7 @@
 # International Tax Competitiveness Index
-The Tax Foundation’s [_International Tax Competitiveness Index_](https://taxfoundation.org/publications/international-tax-competitiveness-index/) (_ITCI_) measures the degree to which the 36 OECD countries’ tax systems promote competitiveness through low tax burdens on business investment and neutrality through a well-structured tax code. The ITCI considers more than forty variables across five categories: Corporate Taxes, Individual Taxes, Consumption Taxes, Property Taxes, and International Tax Rules.
+The Tax Foundation’s [_International Tax Competitiveness Index_](https://taxfoundation.org/publications/international-tax-competitiveness-index/) (_ITCI_) measures the degree to which the 36 OECD countries’ tax systems promote competitiveness through low tax burdens on business investment and neutrality through a well-structured tax code. The _ITCI_ considers more than 40 variables across five categories: Corporate Taxes, Individual Taxes, Consumption Taxes, Property Taxes, and International Tax Rules.
 
-The ITCI attempts to display not only which countries provide the best tax environment for investment but also the best tax environment to start and grow a business.
+The _ITCI_ attempts to display not only which countries provide the best tax environment for investment but also the best tax environment to start and grow a business.
 
 ## Explanation of Files in Repository
 ### /main directory
@@ -44,7 +44,7 @@ This code uses IMF capital stock data and OECD property tax revenue data to prod
 This code takes the CFC rules input files and creates the cfcrules variable as a composite of the three features of CFC rules systems. See CFC Rules Model.md for more information.
 
 ### allowances_ame_OECD_2019.r
-This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Fdundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The output is the data for the following variables:
+This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Foundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The output is the data for the following variables:
 1. pdvmachines
 2. pdvbuildings
 3. pdvintangibles
@@ -53,15 +53,15 @@ This code takes the Oxford Centre for Business Taxation tax database data (and a
 This file combines the source data and intermediate output data. The outputs are complete datasets for 2014-2019 stored in /final-data.
 
 ### indexcalculations.r
-This file is the main file for calculating index scores and ranks.
+This file is the main file for calculating _Index_ scores and ranks.
 
 ### Output Tables.r
 This file creates the tables used in the report.
 
 ## Designing your own reform scenario
-If you would like to see how a reform might impact a country's rank and score in the index, you only need to adjust a handful of files.
+If you would like to see how a reform might impact a country's rank and score in the _Index_, you only need to adjust a handful of files.
 
-After downloading the repository, you can run the indexcalculations.r code to get the baseline rankings and scores from this year's version of the index. You may want to save the baseline output to a new folder so that the results will not be overwritten in the next step.
+After downloading the repository, you can run the indexcalculations.r code to get the baseline rankings and scores from this year's version of the _Index_. You may want to save the baseline output to a new folder so that the results will not be overwritten in the next step.
 
 Next, you can create your reform scenario by manipulating the files in the /final-data folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the final_indexdata2019.csv file to change the corprate variable for France to be 15 percent. 
 
@@ -69,18 +69,18 @@ Once that change is made and the file is saved, you can run the indexcalculation
 
 These two steps can be repeated for each reform scenario.
 
-If there is a particularly interesting reform scenario that you would like to have included in the git, you can save a new version of the final_indexdata2019.csv file with an identifier like FRANCE_final_indexdata2019.csv and a corresponding FRANCE_indexcalculations.r with an edited line 50 to run that scenario. You could then create a pull request that we will review to determine if the scenario is something we would like to include in the repository.
+If there is a particularly interesting reform scenario that you would like to have included in the GitHub repository, you can save a new version of the final_indexdata2019.csv file with an identifier like FRANCE_final_indexdata2019.csv and a corresponding FRANCE_indexcalculations.r with an edited line 50 to run that scenario. You could then create a pull request that we will review to determine if the scenario is something we would like to include in the repository.
 
-## Adding a country to the index
-If you would like to research the tax system of a particular country and add it to the index, you can do so by following the methodology behind each variable (the sources document will be helpful in this endeavor) and adding the country and variable values to the spreadsheets in the /final-data folder. Optimally, you will add values for each variable and each year back to 2014. Once the spreadsheets in the /final-data folder have been edited with a new row of data for the country you are adding, you can run the indexcalculations.r file and explore the results.
+## Adding a country to the _Index_
+If you would like to research the tax system of a particular country and add it to the _Index_, you can do so by following the methodology behind each variable (the sources document will be helpful in this endeavor) and adding the country and variable values to the spreadsheets in the /final-data folder. Optimally, you will add values for each variable and each year back to 2014. Once the spreadsheets in the /final-data folder have been edited with a new row of data for the country you are adding, you can run the indexcalculations.r file and explore the results.
 
-If you have fully researched the data values for all the variables for the country for each year of the index and created a file with those sources, you could then create a pull request that we will review to determine if we would like to include the additional country in the repository and, potentially, the next version of the index.
+If you have fully researched the data values for all the variables for the country for each year of the _Index_ and created a file with those sources, you could then create a pull request that we will review to determine if we would like to include the additional country in the repository and, potentially, the next version of the _Index_.
 
 ## Methodology
 
-The ITCI is a relative ranking of the competitiveness and neutrality of the tax code in each of the 36 OECD countries. It utilizes over 40 variables across five categories: corporate tax, individual taxes, consumption taxes, property taxes, and international tax rules. Each category has multiple subcategories, and each subcategory holds a number of the 40 variables. For example, the consumption tax category contains three subcategories: rate, base, and complexity. The consumption tax base subcategory then has two variables: consumption tax as a percentage of total consumption and VAT threshold.
+The _ITCI_ is a relative ranking of the competitiveness and neutrality of the tax code in each of the 36 OECD countries. It utilizes over 40 variables across five categories: corporate tax, individual taxes, consumption taxes, property taxes, and international tax rules. Each category has multiple subcategories, and each subcategory holds a number of the 40 variables. For example, the consumption tax category contains three subcategories: rate, base, and complexity. The consumption tax base subcategory then has two variables: consumption tax as a percentage of total consumption and VAT threshold.
 
-The ITCI is designed to measure a country’s tax code on its relative competitiveness rather than on an absolute measurement. This means that a score of 100 does not signify the absolute best possible tax code but the best tax code among the 36 OECD countries. Each country’s score on the ITCI represents its relative distance from the best country’s score.
+The _ITCI_ is designed to measure a country’s tax code on its relative competitiveness rather than on an absolute measurement. This means that a score of 100 does not signify the absolute best possible tax code but the best tax code among the 36 OECD countries. Each country’s score on the _ITCI_ represents its relative distance from the best country’s score.
 
 
 ### The Calculation of the Variable, Subcategory, Category, and Final Score
@@ -90,7 +90,7 @@ To compare each variable, it is necessary to standardize them, because each vari
 
 The score for the corporate tax rate demonstrates this process. Of the 36 OECD countries, the average corporate income tax rate is 23.6 percent, and the standard deviation is 5.4 percentage points. The United States’ corporate tax rate normalized score is -0.42,  or 0.42 standard deviations less competitive than the average OECD country. In contrast, Ireland’s tax rate of 12.5 percent is 2.03 standard deviations more competitive than the average OECD country.
 
-The next step is to combine variable scores to calculate subcategory scores. Within subcategories, each individual variable’s score is equally weighted and added together. For instance, the subcategory of cost recovery includes six variables: loss carryback, loss carryforward, the present discounted value of depreciation schedules for machines, industrial buildings, and intangibles, and inventory accounting method. The scores for each of these six variables are multiplied by 1/6, or 16.6 percent, to give them equal weight, and then added together. The result is the cost recovery subcategory score.
+The next step is to combine variable scores to calculate subcategory scores. Within subcategories, each individual variable’s score is equally weighted and added together. For instance, the subcategory of cost recovery includes six variables: loss carryback, loss carryforward, the present discounted value of depreciation schedules for machines, industrial buildings, intangibles, and inventory accounting method. The scores for each of these six variables are multiplied by 1/6, or 16.6 percent, to give them equal weight, and then added together. The result is the cost recovery subcategory score.
 
 ### Calculating Subcategory Scores
 From here, two transformations occur. First, to eliminate any negative values, the inverse of the lowest z-score plus one in each subcategory is added to each country’s z-score. For example, France has the worst z-score for the corporate income tax rate subcategory (-1.99). Thus, 1.99 plus 1 (2.99) is added to each country’s z-score (the adjusted z-score). This sets the worst score in each subcategory to 1.
@@ -107,11 +107,11 @@ Second, the adjusted initial final scores for each country are scaled to 100, re
 
 ## What Drives the Final Score?
 
-Because the Index is constructed to compare 36 countries along 43 different variables, it is possible that even despite the methods described above that certain variables, subcategories, or categories could be more highly correlated with the final score.
-To evaluate this tendency, this section reviews the correlation coefficients between the components of the index and the final score.
+Because the _Index_ is constructed to compare 36 countries along 43 different variables, it is possible that even despite the methods described above that certain variables, subcategories, or categories could be more highly correlated with the final score.
+To evaluate this tendency, this section reviews the correlation coefficients between the components of the _Index_ and the final score.
 
 ### Specific Categories
-The following table shows the correlation coefficients between the category scores and the final score are shown. The average of these correlations is 0.6 with the weakest correlate being Consumption Taxes (0.38) and the strongest correlate being Corporate Taxes (0.69).
+The following table shows the correlation coefficients between the category scores and the final score. The average of these correlations is 0.6 with the weakest correlate being Consumption Taxes (0.38) and the strongest correlate being Corporate Taxes (0.69).
 
 | Category |	Correlation Coefficient with The Final Score |
 |---|---|
@@ -122,7 +122,7 @@ The following table shows the correlation coefficients between the category scor
 |International Tax Rules|	0.66|
  
 ### Specific Subcategories
-The next table shows the correlation coefficients between the subcategory scores and the final score are shown. The average of these correlations is 0.42 with the weakest correlate being Consumption Tax Rate (0.12) and the strongest correlate being Real Property Taxes (0.65).
+The next table shows the correlation coefficients between the subcategory scores and the final score. The average of these correlations is 0.42 with the weakest correlate being Consumption Tax Rate (0.12) and the strongest correlate being Real Property Taxes (0.65).
 
 | Subcategory	| Correlation Coefficient with The Final Score|
 |---|---|
@@ -143,7 +143,7 @@ The next table shows the correlation coefficients between the subcategory scores
 |International Tax Regulations|	0.38
 
 ### The Methodology
-The method used to construct the index relies heavily on normalizing variables using z-scores, scaled around zero. To test whether this method significantly alters the final score, we also calculated the index by normalizing variables on a scale of 0 to 10. Though the final results are not perfectly identical, the correlation between the final score developed using z-scores and the alternative normalization method is 0.98 for the 2019 scores.
+The method used to construct the _Index_ relies heavily on normalizing variables using z-scores, scaled around zero. To test whether this method significantly alters the final score, we also calculated the _Index_ by normalizing variables on a scale of 0 to 10. Though the final results are not perfectly identical, the correlation between the final score developed using z-scores and the alternative normalization method is 0.98 for the 2019 scores.
 
 
 
@@ -179,7 +179,7 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `capgainsindex` | Whether a country indexes basis for purposes of capital gains tax. No longer in use.|
 | `divrate` |  The total top marginal dividend tax rate after any imputation or credit system. |
 | `vatrate` | The national (or average) consumption tax rate (either sales tax or VAT) for a country. |
-| `threshold` | The upper sales limit in US dollars for which a corporation does not need to pay consumption taxes. |
+| `threshold` | The upper sales limit in U.S. dollars for which a corporation does not need to pay consumption taxes. |
 | `base` | The ratio of consumption taxes collected to potential collections if consumption tax rates were applied equally across all goods/services. This ratio measures exemptions to the taxes and/or noncompliance. |
 | `consumptiontime` | Complexity of consumption taxes measured by average time in hours needed for corporations to comply with a country's consumption tax requirements. |
 | `propertytaxes` | Indicates whether capital additions to land are taxed. Fully taxing land and improvements is marked `1`; allowing deductions of taxes on improvements from corporate income taxes is marked `0.5`; taxing only land or not having a property tax is marked `0`. |
@@ -198,6 +198,6 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `roywithhold` | Required withholding for tax payments on royalties to be paid to foreign investors or businesses. |
 | `taxtreaties` | Number of foreign nations with which a country has tax treaties. |
 | `cfcrules` | Indicates existence and strictness of Controlled Foreign Corporation (CFC) rules. This combines measures of whether CFC rules exist, whether they tax passive or active income, and whether they provide exemptions. Countries without CFC rules are marked `0`; those with the strictest are marked `1`, countries in between have various scores. |
-| `thincap` | Indicates whether a country puts thin capitalization resitrictions on companies' debt-to-asset ratios. Countries that limit interest deductions with only transfer pricing regulations are scored as `0`. Countries with debt-to-equity ratios receive a score of `0.5`, and countries with interest-to-pretax-earning limits receive a score of `1`.|
+| `thincap` | Indicates whether a country puts thin capitalization restrictions on companies' debt-to-asset ratios. Countries that limit interest deductions with only transfer pricing regulations are scored as `0`. Countries with debt-to-equity ratios receive a score of `0.5`, and countries with interest-to-pretax-earning limits receive a score of `1`.|
 
 The _ITCI_ uses the most up-to-date data available as of July 2019.
