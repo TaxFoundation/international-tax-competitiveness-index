@@ -41,7 +41,7 @@ This code organizes and combines VAT rate and threshold data.
 This code uses IMF capital stock data and OECD property tax revenue data to produce the propertytaxescollections variable.
 
 ### CFC Rules Model.r
-This code takes the CFC rules input files and creates the cfcrules variable as a composite of the three features of CFC rules systems.
+This code takes the CFC rules input files and creates the cfcrules variable as a composite of the three features of CFC rules systems. See CFC Rules Model.md for more information.
 
 ### allowances_ame_OECD_2019.r
 This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Fdundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The output is the data for the following variables:
@@ -105,6 +105,47 @@ The same method is used to create the final score. First, the initial category s
 
 Second, the adjusted initial final scores for each country are scaled to 100, relative to the country with the best score in each category. This is done by taking each country’s adjusted initial final score and dividing it by the best adjusted initial final score in each category. For example, Estonia, which has the best final score, has the best adjusted final score of 2.34, and receives a final category score of 100.
 
+## What Drives the Final Score?
+
+Because the Index is constructed to compare 36 countries along 43 different variables, it is possible that even despite the methods described above that certain variables, subcategories, or categories could be more highly correlated with the final score.
+To evaluate this tendency, this section reviews the correlation coefficients between the components of the index and the final score.
+
+### Specific Categories
+The following table shows the correlation coefficients between the category scores and the final score are shown. The average of these correlations is 0.6 with the weakest correlate being Consumption Taxes (0.38) and the strongest correlate being Corporate Taxes (0.69).
+
+| Category |	Correlation Coefficient with The Final Score |
+|---|---|
+|Corporate Taxes|	0.69|
+|Individual Income Taxes|	0.63|
+|Consumption Taxes|	0.38|
+|Property Taxes	|0.68|
+|International Tax Rules|	0.66|
+ 
+### Specific Subcategories
+The next table shows the correlation coefficients between the subcategory scores and the final score are shown. The average of these correlations is 0.42 with the weakest correlate being Consumption Tax Rate (0.12) and the strongest correlate being Real Property Taxes (0.65).
+
+| Subcategory	| Correlation Coefficient with The Final Score|
+|---|---|
+|Corporate Rate	|0.37
+|Cost Recovery|	0.54
+|Incentives/Complexity	|0.54
+|Capital Gains and Dividends	|0.42
+|Income Taxes	|0.42
+|Income Tax Complexity|	0.40
+|Consumption Tax Rate|	0.12
+|Consumption Tax Base	|0.30
+|Consumption Tax Complexity|	0.37
+|Real Property Taxes|	0.65
+|Wealth/Estate Taxes|	0.49
+|Capital/Transaction Taxes|	0.48
+|Dividends/Capital Gains Exemption|	0.47
+|Withholding Taxes|	0.41
+|International Tax Regulations|	0.38
+
+### The Methodology
+The method used to construct the index relies heavily on normalizing variables using z-scores, scaled around zero. To test whether this method significantly alters the final score, we also calculated the index by normalizing variables on a scale of 0 to 10. Though the final results are not perfectly identical, the correlation between the final score developed using z-scores and the alternative normalization method is 0.98 for the 2019 scores.
+
+
 
 ## Explanation of Data
 
@@ -113,7 +154,10 @@ A more thorough description of these data and how the Tax Foundation uses them i
 
 | Name | Description |
 | --- | --- |
+| `ISO-2` | Country 2-character ISO Code |
+| `ISO-3` | Country 3-character ISO Code |
 | `country` | Name of each OECD nation in the Index, in English. |
+| `year` | Year |
 | `corprate` | The top marginal corporate tax rate in a given nation. |
 | `losscarryback` | Number of years a corporation may apply current losses against previous tax bills, allowing for tax rebates. |
 | `losscarryforward` | Number of years a corporation may apply current losses against future tax bills, lowering those years' taxable income. |
@@ -128,17 +172,18 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `otherpayments` | Complexity of tax system measured by number of other yearly tax payments. |
 | `incrate` | The top marginal income tax rate. |
 | `progressivity` | Measure of progressivity of individual income tax rates as a ratio of minimum income level at which the top rate applies to the average income. |
-| `taxwedge` | Total tax cost of labor in a country (includes individual income tax and payroll tax). |
+| `taxwedge` | The tax wedge is the total tax cost of labor in a country (includes individual income tax and payroll tax). This is the average of the ratio of the marginal tax wedge to the average tax wedge for employees at the 67th, 100th, 133rd, and 167th percentiles. |
 | `laborpayments` | Complexity of tax system measured by number of yearly labor tax payments. |
 | `labortime` | Complexity of tax system measured by average time in hours needed to comply with a country's labor tax requirements. |
 | `capgainsrate` | Tax rate for capital gains. |
+| `capgainsindex` | Whether a country indexes basis for purposes of capital gains tax. No longer in use.|
 | `divrate` |  The total top marginal dividend tax rate after any imputation or credit system. |
 | `vatrate` | The national (or average) consumption tax rate (either sales tax or VAT) for a country. |
 | `threshold` | The upper sales limit in US dollars for which a corporation does not need to pay consumption taxes. |
 | `base` | The ratio of consumption taxes collected to potential collections if consumption tax rates were applied equally across all goods/services. This ratio measures exemptions to the taxes and/or noncompliance. |
 | `consumptiontime` | Complexity of consumption taxes measured by average time in hours needed for corporations to comply with a country's consumption tax requirements. |
 | `propertytaxes` | Indicates whether capital additions to land are taxed. Fully taxing land and improvements is marked `1`; allowing deductions of taxes on improvements from corporate income taxes is marked `0.5`; taxing only land or not having a property tax is marked `0`. |
-| `propertytaxescollections` | Property taxes collected in a country as a percentage of GDP. |
+| `propertytaxescollections` | Property taxes collected in a country as a percentage of capital stock. |
 | `netwealth` | Indicates the existence of taxes on net wealth. Countries with wealth taxes are marked `1`; those without are marked `0`. |
 | `estate/inheritance tax` | Indicates the existence of taxes on estates or inheritances. Countries with such taxes are marked `1`; those without are marked `0`. |
 | `transfertaxes` | Indicates the existence of taxes on the transfer (buying and selling) of real property. Countries with property transfer taxes are marked `1`; those without are marked `0`. |
@@ -147,12 +192,12 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `financialtrans` | Indicates the existence of a tax on the transfer of financial assets. Countries with financial transfer taxes are marked `1`; those without are marked `0`. |
 | `dividendexempt` | Percentage of dividends paid from foreign subsidiaries which are exempt from local taxes. |
 | `capgainsexemption` | Indicates whether capital gains from foreign investments are exempted from local taxes. Fully exempt is marked as `1`; non-exempt is marked as `0`. |
+| `country limitations` | Indicates whether country has certain exemptions to a territorial tax system based on the source of the foreign income. Existence of exemptions are marked as `1`; no exemptions are marked `0`.  |
 | `divwithhold` | Required withholding for tax payments on dividends to be paid to foreign investors or businesses. |
 | `intwithhold` | Required withholding for tax payments on interest to be paid to foreign investors or businesses. |
 | `roywithhold` | Required withholding for tax payments on royalties to be paid to foreign investors or businesses. |
 | `taxtreaties` | Number of foreign nations with which a country has tax treaties. |
-| `cfcrules` | Indicates existence of controlled foreign corporation rules. Countries with CFC rules are marked `1`; those without are marked `0`. |
-| `country limitations` | Indicates whether country has certain exemptions to a territorial tax system based on the source of the foreign income. Existence of exemptions are marked as `1`; no exemptions are marked `0`.  |
-| `thincap` | Indicates whether a country puts thin capitalization resitrictions on companies' debt-to-asset ratios. Countries with restrictions are marked as `1`; those without are marked `0`. |
+| `cfcrules` | Indicates existence and strictness of Controlled Foreign Corporation (CFC) rules. This combines measures of whether CFC rules exist, whether they tax passive or active income, and whether they provide exemptions. Countries without CFC rules are marked `0`; those with the strictest are marked `1`, countries in between have various scores. |
+| `thincap` | Indicates whether a country puts thin capitalization resitrictions on companies' debt-to-asset ratios. Countries that limit interest deductions with only transfer pricing regulations are scored as `0`. Countries with debt-to-equity ratios receive a score of `0.5`, and countries with interest-to-pretax-earning limits receive a score of `1`.|
 
 The _ITCI_ uses the most up-to-date data available as of July 2019.
