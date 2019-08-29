@@ -9,45 +9,49 @@ Location of the .R code files, readme, and source documentation.
 
 ### /source-data
 Location of **input** files to several .R code files including:
-1. VAT Data.r
-2. Property tax collections.r
-3. OECD data scraper.r
-4. CFC rules model.r
-5. allowances_ame_OECD_2019.r
-6. Packaging data.r
+1. `VAT Data.r`
+2. `Property tax collections.r`
+3. `OECD data scraper.r`
+4. `CFC rules model.r`
+5. `allowances_ame_OECD_2019.r`
+6. `Packaging data.r`
+7. `reordering_columns.r`
 
 ### /intermediate-outputs
-Location of some of the input files to Packaging data.r
+Location of some of the input files to `Packaging data.r`
 
 ### /final-data
-Location of output files from Packaging data.r which are input files to indexcalculations.r.
+Location of output files from Packaging data.r which are input files to `indexcalculations.r`.
 
 ### /final-outputs
-Location of the output files from indexcalculations.r and Output Tables.r
+Location of the output files from `indexcalculations.r` and `Output Tables.r`.
 
-## R code files
+## R code files in main directory
 ### OECD data scraper.r
 This code pulls down data from the OECD portal for the following variables:
-1. corprate
-2. divrate
-3. incrate
-4. progressivity
-5. taxwedge
+1. `corprate`
+2. `divrate`
+3. `incrate`
+4. `progressivity`
+5. `taxwedge`
 
 ### VAT Data.r
-This code organizes and combines VAT rate and threshold data.
+This code organizes and combines data for:
+1. `vatrate` 
+2. `threshold`
+3. `base`
 
 ### Property tax collections.r
-This code uses IMF capital stock data and OECD property tax revenue data to produce the propertytaxescollections variable.
+This code uses IMF capital stock data and OECD property tax revenue data to produce the `propertytaxescollections` variable.
 
 ### CFC Rules Model.r
-This code takes the CFC rules input files and creates the cfcrules variable as a composite of the three features of CFC rules systems. See CFC Rules Model.md for more information.
+This code takes the CFC rules input files and creates the `cfcrules` variable as a composite of the three features of CFC rules systems. See `CFC Rules Model.md` in the main directory for more information.
 
 ### allowances_ame_OECD_2019.r
-This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Foundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The output is the data for the following variables:
-1. pdvmachines
-2. pdvbuildings
-3. pdvintangibles
+This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Foundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The main input file is `CBT_tax_database_web_2019_all_ame.csv`. Descriptions of the variables in that file can be found in `tax-data-description-17.doc`. Both the input file and the description of the variables can be found in /source-data. The output from `allowances_ame_OECD_2019.r` is the data for the following variables:
+1. `pdvmachines`
+2. `pdvbuildings`
+3. `pdvintangibles`
 
 ### Packaging data.r
 This file combines the source data and intermediate output data. The outputs are complete datasets for 2014-2019 stored in /final-data.
@@ -58,21 +62,24 @@ This file is the main file for calculating _Index_ scores and ranks.
 ### Output Tables.r
 This file creates the tables used in the report.
 
+### reordering_columns.r
+This file re-orders the columns for the `indexdata` .csv files in /source-data. This is only useful if the columns in those files are out of order with respect to the ordering of the variable descriptions below.
+
 ## Designing your own reform scenario
 If you would like to see how a reform might impact a country's rank and score in the _Index_, you only need to adjust a handful of files.
 
-After downloading the repository, you can run the indexcalculations.r code to get the baseline rankings and scores from this year's version of the _Index_. You may want to save the baseline output to a new folder so that the results will not be overwritten in the next step.
+After downloading the repository, you can run the `indexcalculations.r` code to get the baseline rankings and scores from this year's version of the _Index_. You may want to save the baseline output to a new folder so that the results will not be overwritten in the next step.
 
-Next, you can create your reform scenario by manipulating the files in the /final-data folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the final_indexdata2019.csv file to change the corprate variable for France to be 15 percent. 
+Next, you can create your reform scenario by manipulating the files in the /final-data folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the `final_indexdata2019.csv` file to change the corprate variable for France to be 15 percent. 
 
-Once that change is made and the file is saved, you can run the indexcalculations.r file again and note the changes relative to the previous baseline.
+Once that change is made and the file is saved, you can run the `indexcalculations.r` file again and note the changes relative to the previous baseline.
 
 These two steps can be repeated for each reform scenario.
 
-If there is a particularly interesting reform scenario that you would like to have included in the GitHub repository, you can save a new version of the final_indexdata2019.csv file with an identifier like FRANCE_final_indexdata2019.csv and a corresponding FRANCE_indexcalculations.r with an edited line 50 to run that scenario. You could then create a pull request that we will review to determine if the scenario is something we would like to include in the repository.
+If there is a particularly interesting reform scenario that you would like to have included in the GitHub repository, you can save a new version of the `final_indexdata2019.csv` file with an identifier like `FRANCE_final_indexdata2019.csv` and a corresponding `FRANCE_indexcalculations.r` with an edited line 50 to run that scenario. You could then create a pull request that we will review to determine if the scenario is something we would like to include in the repository.
 
 ## Adding a country to the _Index_
-If you would like to research the tax system of a particular country and add it to the _Index_, you can do so by following the methodology behind each variable (the sources document will be helpful in this endeavor) and adding the country and variable values to the spreadsheets in the /final-data folder. Optimally, you will add values for each variable and each year back to 2014. Once the spreadsheets in the /final-data folder have been edited with a new row of data for the country you are adding, you can run the indexcalculations.r file and explore the results.
+If you would like to research the tax system of a particular country and add it to the _Index_, you can do so by following the methodology behind each variable (the information in `Source Documentation.md` in the main directory will be helpful in this endeavor) and adding the country and variable values to the spreadsheets in the /final-data folder. Optimally, you will add values for each variable and each year back to 2014. Once the spreadsheets in the /final-data folder have been edited with a new row of data for the country you are adding, you can run the indexcalculations.r file and explore the results.
 
 If you have fully researched the data values for all the variables for the country for each year of the _Index_ and created a file with those sources, you could then create a pull request that we will review to determine if we would like to include the additional country in the repository and, potentially, the next version of the _Index_.
 
