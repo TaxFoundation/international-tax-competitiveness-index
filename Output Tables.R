@@ -345,7 +345,7 @@ notes_1<-c("Notes:",
            "",
            "")
 
-notes_2<-c("(a) Multiple of the average income at which the highest tax bracket applies.",
+notes_2<-c("(a) Multiple of the average income at which the highest tax bracket applies, in U.S. dollars in Purchasing Power Parity (PPP).",
            "",
            "",
            "",
@@ -409,7 +409,7 @@ notes_1<-c("Notes:",
            "",
            "")
 
-notes_2<-c("(a) In U.S. dollars (Purchasing Power Parity).",
+notes_2<-c("(a) In U.S. dollars (PPP).",
            "",
            "",
            "",
