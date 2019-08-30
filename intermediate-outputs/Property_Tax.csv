@@ -1,4 +1,4 @@
-"country","year","propertytaxescollections","ISO-3"
+"country","year","property_tax_collections","ISO_3"
 "Australia","2012",0.896235839368787,"AUS"
 "Australia","2013",0.912845158231682,"AUS"
 "Australia","2014",0.919434914575111,"AUS"

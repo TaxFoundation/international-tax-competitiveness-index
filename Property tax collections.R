@@ -96,9 +96,9 @@ IMF_Capital_Stock_Data<-subset(IMF_Capital_Stock_Data,IMF_Capital_Stock_Data$yea
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
 ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
-colnames(ISO_Country_Codes)<-c("country","ISO-2","ISO-3")
-ISO_OECD<-subset(ISO_Country_Codes,ISO_Country_Codes$`ISO-3`%in%OECD_Countries)
-ISO_2_OECD<-print(ISO_OECD$`ISO-2`)
+colnames(ISO_Country_Codes)<-c("country","ISO_2","ISO_3")
+ISO_OECD<-subset(ISO_Country_Codes,ISO_Country_Codes$ISO_3%in%OECD_Countries)
+ISO_2_OECD<-print(ISO_OECD$ISO_2)
 
 
 databaseID <- 'IFS'
@@ -109,23 +109,23 @@ queryfilter <- list(CL_FREQ="A", CL_AREA_IFS=ISO_2_OECD, CL_INDICATOR_IFS =c("NF
 
 GFCF_2014<- data.frame(CompactDataMethod(databaseID, queryfilter, '2014-01-01', '2014-12-31', checkquery))
 GFCF_2014<-data.frame(GFCF_2014$X.REF_AREA,unnest(GFCF_2014$Obs))
-colnames(GFCF_2014)<-c("ISO-2","year","Gross_Fixed_Cap_Form")
+colnames(GFCF_2014)<-c("ISO_2","year","Gross_Fixed_Cap_Form")
 
 
 GFCF_2015<- data.frame(CompactDataMethod(databaseID, queryfilter, '2015-01-01', '2015-12-31', checkquery))
 GFCF_2015<-data.frame(GFCF_2015$X.REF_AREA,unnest(GFCF_2015$Obs))
-colnames(GFCF_2015)<-c("ISO-2","year","Gross_Fixed_Cap_Form")
+colnames(GFCF_2015)<-c("ISO_2","year","Gross_Fixed_Cap_Form")
 
 GFCF_2016<- data.frame(CompactDataMethod(databaseID, queryfilter, '2016-01-01', '2016-12-31', checkquery))
 GFCF_2016<-data.frame(GFCF_2016$X.REF_AREA,unnest(GFCF_2016$Obs))
-colnames(GFCF_2016)<-c("ISO-2","year","Gross_Fixed_Cap_Form")
+colnames(GFCF_2016)<-c("ISO_2","year","Gross_Fixed_Cap_Form")
 
 GFCF_2017<- data.frame(CompactDataMethod(databaseID, queryfilter, '2017-01-01', '2017-12-31', checkquery))
 GFCF_2017<-data.frame(GFCF_2017$X.REF_AREA,unnest(GFCF_2017$Obs))
-colnames(GFCF_2017)<-c("ISO-2","year","Gross_Fixed_Cap_Form")
+colnames(GFCF_2017)<-c("ISO_2","year","Gross_Fixed_Cap_Form")
 
 GFCF<-rbind(GFCF_2014,GFCF_2015,GFCF_2016,GFCF_2017)
-GFCF<-merge(GFCF,ISO_Country_Codes,by="ISO-2")
+GFCF<-merge(GFCF,ISO_Country_Codes,by="ISO_2")
 GFCF$Gross_Fixed_Cap_Form<-as.numeric(GFCF$Gross_Fixed_Cap_Form)
 
 #Depreciate capital stock and add GFCF
@@ -165,22 +165,22 @@ dataset_list<-get_datasets()
 
 Property_Tax_Rev<-get_dataset("REV",filter=list(c("NES"),c("4100"),c("TAXNAT"),c(OECD_Countries)), start_time = 2012)
 Property_Tax_Rev<-Property_Tax_Rev[c("COU","obsTime","obsValue")]
-colnames(Property_Tax_Rev)<-c("isocode","year","propertytaxescollections")
+colnames(Property_Tax_Rev)<-c("isocode","year","property_tax_collections")
 
 #Missing country/years are simply prior year values
 isocode<-c("AUS","GRC","MEX")
 year<-c("2017","2017","2017")
-propertytaxescollections<-c("29.232000","3.672000","40.356644")
-missing<-data.frame(isocode,year,propertytaxescollections)
+property_tax_collections<-c("29.232000","3.672000","40.356644")
+missing<-data.frame(isocode,year,property_tax_collections)
 
 Property_Tax_Rev<-rbind(Property_Tax_Rev,missing)
-Property_Tax_Rev$propertytaxescollections<-as.numeric(Property_Tax_Rev$propertytaxescollections)
-Property_Tax_Rev$propertytaxescollections<-(Property_Tax_Rev$propertytaxescollections)*1000
+Property_Tax_Rev$property_tax_collections<-as.numeric(Property_Tax_Rev$property_tax_collections)
+Property_Tax_Rev$property_tax_collections<-(Property_Tax_Rev$property_tax_collections)*1000
 
 #Merge Property Tax Revenues data with Capital Stock Data
 Property_Tax<-merge(Property_Tax_Rev,Cap_Stock_12_17,by=c("isocode","year"))
-Property_Tax$propertytaxescollections<-(Property_Tax$propertytaxescollections/Property_Tax$Cap_Stock)*100
-Property_Tax<-Property_Tax[c("country","year","propertytaxescollections","isocode")]
-colnames(Property_Tax)<-c("country","year","propertytaxescollections","ISO-3") 
+Property_Tax$property_tax_collections<-(Property_Tax$property_tax_collections/Property_Tax$Cap_Stock)*100
+Property_Tax<-Property_Tax[c("country","year","property_tax_collections","isocode")]
+colnames(Property_Tax)<-c("country","year","property_tax_collections","ISO_3") 
 write.csv(Property_Tax, file = "./intermediate-outputs/Property_Tax.csv", row.names = FALSE)
 
