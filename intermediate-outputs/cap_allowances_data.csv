@@ -1,4 +1,4 @@
-"country","year","machines","buildings","intangibles"
+"country","year","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery"
 "AUS",1981,NA,NA,NA
 "AUS",1982,NA,NA,NA
 "AUS",1983,0.869865253929667,0.338474732816403,NA
