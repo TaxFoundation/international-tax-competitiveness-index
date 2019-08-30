@@ -38,7 +38,7 @@ using(scales)
 variable_names<-c("ISO_2","ISO_3","country",
                 "corporate_rate","loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments",
                 "top_income_rate","threshold_top_income_rate","tax_wedge","labor_payments","labor_time","capital_gains_rate","index_capital_gains","dividends_rate",
-                "vat_rate","threshold_vat","base_vat","consumption_time",
+                "vat_rate","vat_threshold","vat_base","consumption_time",
                 "property_tax", "collections_property_tax","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax",
                 "dividends_exemption","capital_gains_exemption","country_limitations","dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties","controlled_foreign_corporation_rules","thin_capitalization_rules")
 
