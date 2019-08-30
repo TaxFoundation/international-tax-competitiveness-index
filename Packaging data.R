@@ -107,12 +107,13 @@ indexdata_CFC_var<-merge(indexdata_prop_tax_vars,CFC_Rules,by=c("country","year"
 indexdata_final<-indexdata_CFC_var
 names(indexdata_final)
 #Reorder columns ####
-indexdata_final<-indexdata_final[c("ISO_2","ISO_3","country",
+indexdata_final<-indexdata_final[c("ISO_2","ISO_3","country","year",
                                    "corporate_rate","loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments",
                                    "top_income_rate","threshold_top_income_rate","tax_wedge","labor_payments","labor_time","capital_gains_rate","index_capital_gains","dividends_rate",
                                    "vat_rate","vat_threshold","vat_base","consumption_time",
                                    "property_tax", "property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax",
                                    "dividends_exemption","capital_gains_exemption","country_limitations","dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties","cfc_rules","thin_capitalization_rules")]
+
 
 write.csv(subset(indexdata_final,indexdata_final$year==2014),file = "./final-data/final_indexdata2014.csv",row.names=F)
 write.csv(subset(indexdata_final,indexdata_final$year==2015),file = "./final-data/final_indexdata2015.csv",row.names=F)
