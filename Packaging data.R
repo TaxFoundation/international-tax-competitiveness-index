@@ -70,8 +70,8 @@ indexdata_OECD_vars<-merge(indexdata_old,OECD_vars,by=c("country","ISO_2","ISO_3
 
 #Join cap allowances data with indexdata2019####
 
-Cap_Allowances_Vars<-c("pdvmachines","pdvbuildings", "pdvintangibles")
-colnames(Cap_Allowances)<-c("ISO_3","year","pdvmachines","pdvbuildings", "pdvintangibles")
+Cap_Allowances_Vars<-c("machines_cost_recovery","buildings_cost_recovery", "intangibles_cost_recovery")
+colnames(Cap_Allowances)<-c("ISO_3","year","machines_cost_recovery","buildings_cost_recovery", "intangibles_cost_recovery")
 
 indexdata_OECD_vars<-indexdata_OECD_vars[,!names(indexdata_OECD_vars) %in% Cap_Allowances_Vars]
 
