@@ -50,7 +50,7 @@ subcategories_2019 <- read_csv("./final-outputs/subcategories 2019.csv")
 Table_1_Results<-Final2019
 
 #Select variables
-keep<-c("country","finalrank","final","corporaterank","incomerank","consumptionrank","propertyrank","internationalrank")
+keep<-c("country","final_rank","final","corporate_rank","income_rank","consumption_rank","property_rank","international_rank")
 Table_1_Results<-Table_1_Results[keep]
 
 #Sort by rank
@@ -74,14 +74,14 @@ write.csv(Table_1_Results,"./final-outputs/Table 1 Results.csv",row.names=F)
 
 ###Table 2 Changes####
 Table2_Changes<-merge(Final2018,Final2019,by="country")
-keep<-c("country","finalrank.x","final.x","finalrank.y","final.y")
+keep<-c("country","final_rank.x","final.x","final_rank.y","final.y")
 
 Table2_Changes<-Table2_Changes[keep]
 
 colnames(Table2_Changes)<-c("country", "2018 Rank","2018 Score","2019 Rank","2019 Score")
 
 Table2_Changes<-merge(Final2017,Table2_Changes,by="country")
-keep<-c("country","finalrank","final","2018 Rank","2018 Score","2019 Rank","2019 Score")
+keep<-c("country","final_rank","final","2018 Rank","2018 Score","2019 Rank","2019 Score")
 
 Table2_Changes<-Table2_Changes[keep]
 
@@ -104,7 +104,7 @@ write.csv(Table2_Changes,"./final-outputs/Table 2 Changes.csv",row.names=F)
 Table3_Corporate<-subcategories_2019
 Table3_Corporate<-merge(Table3_Corporate,Final2019,by=c("country"))
 
-keep<-c("country","corporaterank","corporate","corporateraterank","corporaterate","costrecoveryrank","costrecovery","incentivesrank","incentives")
+keep<-c("country","corporate_rank","corporate","corporate_rate_rank","corporate_rate","cost_recovery_rank","cost_recovery","incentives_rank","incentives")
 Table3_Corporate<-Table3_Corporate[keep]
 colnames(Table3_Corporate)<-c("Country","Overall Rank","Overall Score", "Rate Rank","Rate Score","Cost Recovery Rank","Cost Recovery Score","Incentives/Complexity Rank","Incentives/Complexity Score")
 
@@ -124,7 +124,7 @@ Table4_Individual<-merge(Table4_Individual,Final2019,by=c("country"))
 
 #names(Table4_Individual)
 
-keep<-c("country","incomerank","income","incometaxrank","incometax","incometaxcomplexityrank","incometaxcomplexity","capgainsanddividendsrank","capgainsanddividends")
+keep<-c("country","incomerank","income","income_tax_rank","income_tax","income_tax_complexity_rank","income_tax_complexity","capital_gains_and_dividends_rank","capital_gains_and_dividends")
 Table4_Individual<-Table4_Individual[keep]
 colnames(Table4_Individual)<-c("Country","Overall Rank","Overall Score","Income Tax Rank","Income Tax Score","Complexity Rank","Complexity Score", "Capital Gains/Dividends Rank","Capital Gains/Dividends Score")
 
