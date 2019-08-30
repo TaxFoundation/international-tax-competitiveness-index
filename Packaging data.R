@@ -87,11 +87,11 @@ indexdata_cap_a_vars<-indexdata_cap_a_vars[,!names(indexdata_cap_a_vars) %in% va
 indexdata_VAT_vars<-merge(indexdata_cap_a_vars,vat_data,by=c("country","year"))
 
 #Join Property tax data with indexdata_cap_a_vars####
-prop_tax_vars<-c("propertytaxescollections")
+prop_tax_vars<-c("property_tax_collections")
 
 #Adjust years in Property tax data to account for two year lag
 Property_Tax$year<-Property_Tax$year+2
-Property_Tax<-Property_Tax[c("country","year","propertytaxescollections")]
+Property_Tax<-Property_Tax[c("country","year","property_tax_collections")]
 indexdata_VAT_vars<-indexdata_VAT_vars[,!names(indexdata_VAT_vars) %in% prop_tax_vars]
 indexdata_prop_tax_vars<-merge(indexdata_VAT_vars,Property_Tax,by=c("country","year"))
 
