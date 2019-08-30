@@ -98,7 +98,7 @@ indexdata_prop_tax_vars<-merge(indexdata_VAT_vars,Property_Tax,by=c("country","y
 #Join CFC rules data with indexdata2019####
 CFC_Rules<-CFC_Rules[-c(2:4,7:8)]
 
-CFC_Rules_var<-c("cfcrules")
+CFC_Rules_var<-c("cfc_rules")
 indexdata_prop_tax_vars<-indexdata_prop_tax_vars[,!names(indexdata_prop_tax_vars) %in% CFC_Rules_var]
 
 indexdata_CFC_var<-merge(indexdata_prop_tax_vars,CFC_Rules,by=c("country","year"))
