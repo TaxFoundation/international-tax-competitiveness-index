@@ -1,4 +1,4 @@
-"ISO-3","year","corporate_rate","dividends_rate","top_income_rate","threshold_top_income_rate","tax_wedge","country","ISO-2"
+"ISO_3","year","corporate_rate","dividends_rate","top_income_rate","threshold_top_income_rate","tax_wedge","country","ISO_2"
 "AUS","2014","0.3",0.27121,0.465,2.32037,1.41658992852871,"Australia","AU"
 "AUS","2015","0.3",0.27121,0.465,2.266751,1.40290200146597,"Australia","AU"
 "AUS","2016","0.3",0.27121,0.49,2.229938,1.42302741528584,"Australia","AU"
