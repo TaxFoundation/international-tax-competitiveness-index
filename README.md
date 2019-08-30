@@ -76,8 +76,6 @@ Once that change is made and the file is saved, you can run the `indexcalculatio
 
 These two steps can be repeated for each reform scenario.
 
-If there is a particularly interesting reform scenario that you would like to have included in the GitHub repository, you can save a new version of the `final_indexdata2019.csv` file with an identifier like `FRANCE_final_indexdata2019.csv` and a corresponding `FRANCE_indexcalculations.r` with an edited line 50 to run that scenario. You could then create a pull request that we will review to determine if the scenario is something we would like to include in the repository.
-
 ## Adding a country to the _Index_
 If you would like to research the tax system of a particular country and add it to the _Index_, you can do so by following the methodology behind each variable (the information in `Source Documentation.md` in the main directory will be helpful in this endeavor) and adding the country and variable values to the spreadsheets in the /final-data folder. Optimally, you will add values for each variable and each year back to 2014. Once the spreadsheets in the /final-data folder have been edited with a new row of data for the country you are adding, you can run the indexcalculations.r file and explore the results.
 
