@@ -57,7 +57,7 @@ rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018,rawda
 rawdata$patent_box<-as.numeric(rawdata$patent_box)
 rawdata$r_and_d_credit<-as.numeric(rawdata$r_and_d_credit)
 rawdata$net_wealth<-as.numeric(rawdata$net_wealth)
-rawdata$`estate/inheritance tax`<-as.numeric(rawdata$`estate/inheritance tax`)
+rawdata$estate_or_inheritance_tax<-as.numeric(rawdata$estate_or_inheritance_tax)
 rawdata$transfer_tax<-as.numeric(rawdata$transfer_tax)
 rawdata$asset_tax<-as.numeric(rawdata$asset_tax)
 rawdata$capital_duties<-as.numeric(rawdata$capital_duties)
@@ -66,11 +66,6 @@ rawdata$index_capital_gains<-as.numeric(rawdata$index_capital_gains)
 rawdata$tax_treaties<-as.numeric(rawdata$tax_treaties)
 rawdata$country_limitations<-as.numeric(rawdata$country_limitations)
 
-
-#Rename Estate tax variable
-rawdata$estate_or_inheritance_tax<-rawdata$`estate/inheritance tax`
-out<-c("estate/inheritance tax")
-rawdata<-rawdata[,!names(rawdata) %in% out]
 
 #Order variables for easier working
 rawdata<-rawdata[c("ISO_2","ISO_3","country","year",
