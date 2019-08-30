@@ -1,4 +1,4 @@
-"country","year","corporaterank","corporate","consumptionrank","consumption","propertyrank","property","incomerank","income","internationalrank","international","finalrank","final","ISO-2","ISO-3"
+"country","year","corporate_rank","corporate","consumption_rank","consumption","property_rank","property","income_rank","income","international_rank","international","final_rank","final","ISO_2","ISO_3"
 "Australia",2014,27,57.6588129702275,7,75.7859240324492,3,88.3113527641169,18,65.3794716272972,19,67.4551080738548,9,75.3228933757346,"AU","AUS"
 "Australia",2017,24,53.320431968361,8,78.0528339937275,3,88.0509864275279,19,69.0424742302045,17,67.7237949340696,9,75.0276566757534,"AU","AUS"
 "Australia",2019,28,49.2685694176014,8,83.556095686895,3,87.1765679754323,15,70.9070871583033,12,83.2810474272463,7,76.3837295335645,"AU","AUS"

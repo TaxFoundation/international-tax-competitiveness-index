@@ -75,7 +75,7 @@ rawdata<-rawdata[c("ISO_2","ISO_3","country","year",
                  "property_tax", "property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax",
                  "dividends_exemption","capital_gains_exemption","country_limitations","dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties","cfc_rules","thin_capitalization_rules")]
 
-#ALT Min-Max Test
+#alternate_ Min-Max Test
 normalize <-function(x){
   normal <- apply(x,2, function(x){(x-min(x))/(max(x)-min(x))*10})
   
@@ -89,7 +89,7 @@ zscores<-data.frame(country=rawdata$country,
                           .(year),
                           scale)
 )
-ALTscores<-data.frame(country=rawdata$country,
+alternate_scores<-data.frame(country=rawdata$country,
                       year=rawdata$year,
                       ddply(rawdata[4:45],
                             .(year),
@@ -98,7 +98,7 @@ ALTscores<-data.frame(country=rawdata$country,
 
 #drops the extra "year" variable left over
 zscores<-zscores[-3]
-ALTscores<-ALTscores[-3]
+alternate_scores<-alternate_scores[-3]
 
 
 
@@ -145,7 +145,7 @@ flipfunc <- function(x) {
   x*(-1)
 }
 
-ALTflip <- function(x){
+alternate_flip <- function(x){
   (x-10)*-1
 }
 
@@ -155,7 +155,7 @@ zscores[i]<-apply(zscores[i], 2, flipfunc)
 
 #Alt Scoring Method
 for (i in flip) {
-  ALTscores[i]<-apply(ALTscores[i], 2, ALTflip)
+  alternate_scores[i]<-apply(alternate_scores[i], 2, alternate_flip)
 }
 
 
@@ -253,26 +253,26 @@ subcategories$territorial<-apply((zscores[territorial_index]*(1/length(territori
 subcategories$withholding_taxes<-apply((zscores[withholding_index]*(1/length(withholding_index))),1,sum)
 subcategories$international_regulations<-apply((zscores[international_regulations_index]*(1/length(international_regulations_index))),1,sum)
 
-#ALT Scoring Technique
+#alternate_ Scoring Technique
 
-ALTsubcategories<-data.frame(country=ALTscores$country,
-                             year=ALTscores$year)
+alternate_subcategories<-data.frame(country=alternate_scores$country,
+                             year=alternate_scores$year)
 
-ALTsubcategories$corporate_rate<-apply((ALTscores[corporate_rate_index]*(1/length(corporate_rate_index))),1,sum)
-ALTsubcategories$cost_recovery<-apply((ALTscores[cost_recovery_index]*(1/length(cost_recovery_index))),1,sum)
-ALTsubcategories$incentives<-apply((ALTscores[incentives_index]*(1/length(incentives_index))),1,sum)
-ALTsubcategories$consumption_tax_rate<-apply((ALTscores[consumption_tax_rate_index]*(1/length(consumption_tax_rate_index))),1,sum)
-ALTsubcategories$consumption_tax_base<-apply((ALTscores[consumption_tax_base_index]*(1/length(consumption_tax_base_index))),1,sum)
-ALTsubcategories$consumption_tax_complexity<-apply((ALTscores[consumption_tax_complexity]*(1/length(consumption_tax_complexity))),1,sum)
-ALTsubcategories$real_property_tax<-apply((ALTscores[real_property_index]*(1/length(real_property_index))),1,sum)
-ALTsubcategories$wealth_taxes<-apply((ALTscores[wealth_taxes_index]*(1/length(wealth_taxes_index))),1,sum)
-ALTsubcategories$capital_taxes<-apply((ALTscores[capital_taxes_index]*(1/length(capital_taxes_index))),1,sum)
-ALTsubcategories$capital_gains_and_dividends<-apply((ALTscores[capital_gains_and_dividends_index]*(1/length(capital_gains_and_dividends_index))),1,sum)
-ALTsubcategories$income_tax<-apply((ALTscores[income_tax_index]*(1/length(income_tax_index))),1,sum)
-ALTsubcategories$income_tax_complexity<-apply((ALTscores[income_tax_complexity_index]*(1/length(income_tax_complexity_index))),1,sum)
-ALTsubcategories$territorial<-apply((ALTscores[territorial_index]*(1/length(territorial_index))),1,sum)
-ALTsubcategories$withholding_taxes<-apply((ALTscores[withholding_index]*(1/length(withholding_index))),1,sum)
-ALTsubcategories$international_regulations<-apply((ALTscores[international_regulations_index]*(1/length(international_regulations_index))),1,sum)
+alternate_subcategories$corporate_rate<-apply((alternate_scores[corporate_rate_index]*(1/length(corporate_rate_index))),1,sum)
+alternate_subcategories$cost_recovery<-apply((alternate_scores[cost_recovery_index]*(1/length(cost_recovery_index))),1,sum)
+alternate_subcategories$incentives<-apply((alternate_scores[incentives_index]*(1/length(incentives_index))),1,sum)
+alternate_subcategories$consumption_tax_rate<-apply((alternate_scores[consumption_tax_rate_index]*(1/length(consumption_tax_rate_index))),1,sum)
+alternate_subcategories$consumption_tax_base<-apply((alternate_scores[consumption_tax_base_index]*(1/length(consumption_tax_base_index))),1,sum)
+alternate_subcategories$consumption_tax_complexity<-apply((alternate_scores[consumption_tax_complexity]*(1/length(consumption_tax_complexity))),1,sum)
+alternate_subcategories$real_property_tax<-apply((alternate_scores[real_property_index]*(1/length(real_property_index))),1,sum)
+alternate_subcategories$wealth_taxes<-apply((alternate_scores[wealth_taxes_index]*(1/length(wealth_taxes_index))),1,sum)
+alternate_subcategories$capital_taxes<-apply((alternate_scores[capital_taxes_index]*(1/length(capital_taxes_index))),1,sum)
+alternate_subcategories$capital_gains_and_dividends<-apply((alternate_scores[capital_gains_and_dividends_index]*(1/length(capital_gains_and_dividends_index))),1,sum)
+alternate_subcategories$income_tax<-apply((alternate_scores[income_tax_index]*(1/length(income_tax_index))),1,sum)
+alternate_subcategories$income_tax_complexity<-apply((alternate_scores[income_tax_complexity_index]*(1/length(income_tax_complexity_index))),1,sum)
+alternate_subcategories$territorial<-apply((alternate_scores[territorial_index]*(1/length(territorial_index))),1,sum)
+alternate_subcategories$withholding_taxes<-apply((alternate_scores[withholding_index]*(1/length(withholding_index))),1,sum)
+alternate_subcategories$international_regulations<-apply((alternate_scores[international_regulations_index]*(1/length(international_regulations_index))),1,sum)
 
 #Final Categories and Final Score with Ranks
 #Each category contains three subcategories
@@ -299,17 +299,17 @@ write.csv(subset(categories,categories$year==2019),file = "./final-outputs/categ
 
 
 
-#ALT Scoring method
+#alternate_ Scoring method
 
-ALTcategories<-data.frame(country=rawdata$country,
+alternate_categories<-data.frame(country=rawdata$country,
                           year=rawdata$year)
 
-ALTcategories$corporate<-apply((ALTsubcategories[corporate_index]*(1/length(corporate_index))),1,sum)
-ALTcategories$consumption<-apply((ALTsubcategories[consumption_index]*(1/length(consumption_index))),1,sum)
-ALTcategories$property<-apply((ALTsubcategories[property_index]*(1/length(property_index))),1,sum)
-ALTcategories$income<-apply((ALTsubcategories[income_index]*(1/length(income_index))),1,sum)
-ALTcategories$international<-apply((ALTsubcategories[international_index]*(1/length(international_index))),1,sum)
-ALTcategories$final<-apply((ALTcategories[3:7]*(1/length(categories[3:7]))),1,sum)
+alternate_categories$corporate<-apply((alternate_subcategories[corporate_index]*(1/length(corporate_index))),1,sum)
+alternate_categories$consumption<-apply((alternate_subcategories[consumption_index]*(1/length(consumption_index))),1,sum)
+alternate_categories$property<-apply((alternate_subcategories[property_index]*(1/length(property_index))),1,sum)
+alternate_categories$income<-apply((alternate_subcategories[income_index]*(1/length(income_index))),1,sum)
+alternate_categories$international<-apply((alternate_subcategories[international_index]*(1/length(international_index))),1,sum)
+alternate_categories$final<-apply((alternate_categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
 #normalize all category and subcategory scores
 
@@ -333,7 +333,7 @@ score2<-function(x){
 
 #Alt Scaling Method
 
-ALTscale<-function(x){
+alternate_scale<-function(x){
   s<-apply(x[-1],2,function(x) {(x/(max(x))*100)})
   return(s)
 }
@@ -358,10 +358,10 @@ subcategories<-data.frame(country=rawdata$country,
 
 #Alt Subcategory Scores
 
-#    ALTsubcategories<-data.frame(country=rawdata$country,
-#                              ddply(ALTsubcategories[-1],
+#    alternate_subcategories<-data.frame(country=rawdata$country,
+#                              ddply(alternate_subcategories[-1],
 #                                    .(year),
-#                                    ALTscale)
+#                                    alternate_scale)
 #    )
 
 
@@ -387,9 +387,9 @@ subcategories<-ddply(subcategories,
                      international_regulationsrank = rank(-international_regulations,ties.method = "min")
 )
 
-#ALT Scoring method
+#alternate_ Scoring method
 
-ALTsubcategories<-ddply(ALTsubcategories, 
+alternate_subcategories<-ddply(alternate_subcategories, 
                         .(year),
                         transform,
                         corporate_raterank = rank(-corporate_rate,ties.method = "min"),
@@ -417,12 +417,12 @@ categories<-data.frame(country=rawdata$country,
                         score2)
 )
 
-#ALT Category Scores
+#alternate_ Category Scores
 
-#    ALTcategories<-data.frame(country=rawdata$country,
-#                           ddply(ALTcategories[-1],
+#    alternate_categories<-data.frame(country=rawdata$country,
+#                           ddply(alternate_categories[-1],
 #                                 .(year),
-#                                 ALTscale)
+#                                 alternate_scale)
 #    )
 
 #Add Ranks
@@ -430,80 +430,80 @@ categories<-data.frame(country=rawdata$country,
 categories<-ddply(categories, 
                   .(year),
                   transform,
-                  corporaterank = rank(-corporate,ties.method = "min"),
-                  consumptionrank = rank(-consumption,ties.method = "min"),
-                  propertyrank = rank(-property,ties.method = "min"),
-                  incomerank = rank(-income,ties.method = "min"),
-                  internationalrank = rank(-international,ties.method = "min"),
-                  finalrank = rank(-final,ties.method = "min")                      
+                  corporate_rank = rank(-corporate,ties.method = "min"),
+                  consumption_rank = rank(-consumption,ties.method = "min"),
+                  property_rank = rank(-property,ties.method = "min"),
+                  income_rank = rank(-income,ties.method = "min"),
+                  international_rank = rank(-international,ties.method = "min"),
+                  final_rank = rank(-final,ties.method = "min")                      
 )
 
 
-#ALT scoring method
+#alternate_ scoring method
 
-ALTcategories<-ddply(ALTcategories, 
+alternate_categories<-ddply(alternate_categories, 
                      .(year),
                      transform,
-                     corporaterank = rank(-corporate,ties.method = "min"),
-                     consumptionrank = rank(-consumption,ties.method = "min"),
-                     propertyrank = rank(-property,ties.method = "min"),
-                     incomerank = rank(-income,ties.method = "min"),
-                     internationalrank = rank(-international,ties.method = "min"),
-                     finalrank = rank(-final,ties.method = "min")                      
+                     corporate_rank = rank(-corporate,ties.method = "min"),
+                     consumption_rank = rank(-consumption,ties.method = "min"),
+                     property_rank = rank(-property,ties.method = "min"),
+                     income_rank = rank(-income,ties.method = "min"),
+                     international_rank = rank(-international,ties.method = "min"),
+                     final_rank = rank(-final,ties.method = "min")                      
 )
 
 #Create the final two files. One for subcategory ranks, the other for final ranks. 
 
-finalcategories<-data.frame(country=zscores$country,
+final_categories<-data.frame(country=zscores$country,
                             year=zscores$year)
 
 for (x in 1:((length(categories)-2)/2)){
-  finalcategories[length(finalcategories)+1]<-categories[x+8]
-  finalcategories[length(finalcategories)+1]<-categories[x+2]
+  final_categories[length(final_categories)+1]<-categories[x+8]
+  final_categories[length(final_categories)+1]<-categories[x+2]
 }
 
-finalsubcategories<-data.frame(country=zscores$country,
+final_subcategories<-data.frame(country=zscores$country,
                                year=zscores$year)
 
 for (x in 1:((length(subcategories)-2)/2)){
-  finalsubcategories[length(finalsubcategories)+1]<-subcategories[x+((length(subcategories)-0)/2)+1]
-  finalsubcategories[length(finalsubcategories)+1]<-subcategories[x+2]
+  final_subcategories[length(final_subcategories)+1]<-subcategories[x+((length(subcategories)-0)/2)+1]
+  final_subcategories[length(final_subcategories)+1]<-subcategories[x+2]
 }
 
-#ALT Scoring Method:
+#alternate_ Scoring Method:
 
-ALTfinalcategories<-data.frame(country=ALTscores$country,
-                               year=ALTscores$year)
+alternate_final_categories<-data.frame(country=alternate_scores$country,
+                               year=alternate_scores$year)
 
-for (x in 1:((length(ALTcategories)-2)/2)){
-  ALTfinalcategories[length(ALTfinalcategories)+1]<-ALTcategories[x+8]
-  ALTfinalcategories[length(ALTfinalcategories)+1]<-ALTcategories[x+2]
+for (x in 1:((length(alternate_categories)-2)/2)){
+  alternate_final_categories[length(alternate_final_categories)+1]<-alternate_categories[x+8]
+  alternate_final_categories[length(alternate_final_categories)+1]<-alternate_categories[x+2]
 }
 
-ALTfinalsubcategories<-data.frame(country=ALTscores$country,
-                                  year=ALTscores$year)
+alternate_final_subcategories<-data.frame(country=alternate_scores$country,
+                                  year=alternate_scores$year)
 
-for (x in 1:((length(ALTsubcategories)-2)/2)){
-  ALTfinalsubcategories[length(ALTfinalsubcategories)+1]<-ALTsubcategories[x+((length(ALTsubcategories)-0)/2)+1]
-  ALTfinalsubcategories[length(ALTfinalsubcategories)+1]<-ALTsubcategories[x+2]
+for (x in 1:((length(alternate_subcategories)-2)/2)){
+  alternate_final_subcategories[length(alternate_final_subcategories)+1]<-alternate_subcategories[x+((length(alternate_subcategories)-0)/2)+1]
+  alternate_final_subcategories[length(alternate_final_subcategories)+1]<-alternate_subcategories[x+2]
 }
 
-#rm(zscores, categories, subcategories, ALTscores, ALTcategories, ALTsubcategories)
+#rm(zscores, categories, subcategories, alternate_scores, alternate_categories, alternate_subcategories)
 
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
 ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
 colnames(ISO_Country_Codes)<-c("country","ISO_2","ISO_3")
 
-finalcategories<-merge(finalcategories,ISO_Country_Codes,by=c("country"))
-finalsubcategories<-merge(finalsubcategories,ISO_Country_Codes,by=c("country"))
+final_categories<-merge(final_categories,ISO_Country_Codes,by=c("country"))
+final_subcategories<-merge(final_subcategories,ISO_Country_Codes,by=c("country"))
 
-Final2014<-finalcategories[finalcategories$year==2014,]
-Final2015<-finalcategories[finalcategories$year==2015,]
-Final2016<-finalcategories[finalcategories$year==2016,]
-Final2017<-finalcategories[finalcategories$year==2017,]
-Final2018<-finalcategories[finalcategories$year==2018,]
-Final2019<-finalcategories[finalcategories$year==2019,]
+final_2014<-final_categories[final_categories$year==2014,]
+final_2015<-final_categories[final_categories$year==2015,]
+final_2016<-final_categories[final_categories$year==2016,]
+final_2017<-final_categories[final_categories$year==2017,]
+final_2018<-final_categories[final_categories$year==2018,]
+final_2019<-final_categories[final_categories$year==2019,]
 
 #Data Check
 
@@ -513,7 +513,7 @@ check<-rawdata[rawdata$country == "Greece",]
 
 #Does the normalization technique drive the results?
 
-cor(ALTfinalcategories$final[ALTfinalcategories$year == 2019],finalcategories$final[finalcategories$year == 2019])
+cor(alternate_final_categories$final[alternate_final_categories$year == 2019],final_categories$final[final_categories$year == 2019])
 
 #not really. 98 percent correlation between the two
 
@@ -521,8 +521,8 @@ cor(ALTfinalcategories$final[ALTfinalcategories$year == 2019],finalcategories$fi
 
 #normal scoring techniques:
 
-cortest1<-finalcategories[finalcategories$year == 2019,]
-subcortest1<-finalsubcategories[finalsubcategories$year == 2019,]
+cortest1<-final_categories[final_categories$year == 2019,]
+subcortest1<-final_subcategories[final_subcategories$year == 2019,]
 subcortest1<-cbind(subcortest1,cortest1[14])
 cor(cortest1[c(4,6,8,10,12,14)])
 categories_correl<-data.frame(cor(cortest1[c(4,6,8,10,12,14)]))
@@ -533,54 +533,54 @@ write.csv(subcategories_correl,"./final-outputs/Subategories correlation.csv")
 
 
 
-importance<-lm(cortest1$final ~ cortest1$corporate + cortest1$income + cortest1$consumption + cortest1$property + cortest1$international)
-calc.relimp(importance, rela= TRUE)
+#importance<-lm(cortest1$final ~ cortest1$corporate + cortest1$income + cortest1$consumption + cortest1$property + cortest1$international)
+#calc.relimp(importance, rela= TRUE)
 #alternative scoring techniques:
 
-cortest2<-ALTfinalcategories[ALTfinalcategories$year == 2015,]
+cortest2<-alternate_final_categories[alternate_final_categories$year == 2015,]
 cor(cortest2[c(4,6,8,10,12,14)])     
 
 
-Australia<-finalcategories[finalcategories$country=="Australia",]
-Austria<-finalcategories[finalcategories$country=="Austria",]
-Belgium<-finalcategories[finalcategories$country=="Belgium",]
-Canada<-finalcategories[finalcategories$country=="Canada",]
-Chile<-finalcategories[finalcategories$country=="Chile",]
-Czech_Republic<-finalcategories[finalcategories$country=="Czech Republic",]
-Denmark<-finalcategories[finalcategories$country=="Denmark",]
-Estonia<-finalcategories[finalcategories$country=="Estonia",]
-Finland<-finalcategories[finalcategories$country=="Finland",]
-France<-finalcategories[finalcategories$country=="France",]
-Germany<-finalcategories[finalcategories$country=="Germany",]
-Greece<-finalcategories[finalcategories$country=="Greece",]
-Hungary<-finalcategories[finalcategories$country=="Hungary",]
-Iceland<-finalcategories[finalcategories$country=="Iceland",]
-Ireland<-finalcategories[finalcategories$country=="Ireland",]
-Israel<-finalcategories[finalcategories$country=="Israel",]
-Italy<-finalcategories[finalcategories$country=="Italy",]
-Japan<-finalcategories[finalcategories$country=="Japan",]
-Korea<-finalcategories[finalcategories$country=="Korea",]
-Latvia<-finalcategories[finalcategories$country=="Latvia",]
-Lithuania<-finalcategories[finalcategories$country=="Lithuania",]
-Luxembourg<-finalcategories[finalcategories$country=="Luxembourg",]
-Mexico<-finalcategories[finalcategories$country=="Mexico",]
-Netherlands<-finalcategories[finalcategories$country=="Netherlands",]
-New_Zealand<-finalcategories[finalcategories$country=="New Zealand",]
-Norway<-finalcategories[finalcategories$country=="Norway",]
-Poland<-finalcategories[finalcategories$country=="Poland",]
-Portugal<-finalcategories[finalcategories$country=="Portugal",]
-Slovak_Republic<-finalcategories[finalcategories$country=="Slovak Republic",]
-Slovenia<-finalcategories[finalcategories$country=="Slovenia",]
-Spain<-finalcategories[finalcategories$country=="Spain",]
-Sweden<-finalcategories[finalcategories$country=="Sweden",]
-Switzerland<-finalcategories[finalcategories$country=="Switzerland",]
-Turkey<-finalcategories[finalcategories$country=="Turkey",]
-United_Kingdom<-finalcategories[finalcategories$country=="United Kingdom",]
-United_States<-finalcategories[finalcategories$country=="United States",]
+Australia<-final_categories[final_categories$country=="Australia",]
+Austria<-final_categories[final_categories$country=="Austria",]
+Belgium<-final_categories[final_categories$country=="Belgium",]
+Canada<-final_categories[final_categories$country=="Canada",]
+Chile<-final_categories[final_categories$country=="Chile",]
+Czech_Republic<-final_categories[final_categories$country=="Czech Republic",]
+Denmark<-final_categories[final_categories$country=="Denmark",]
+Estonia<-final_categories[final_categories$country=="Estonia",]
+Finland<-final_categories[final_categories$country=="Finland",]
+France<-final_categories[final_categories$country=="France",]
+Germany<-final_categories[final_categories$country=="Germany",]
+Greece<-final_categories[final_categories$country=="Greece",]
+Hungary<-final_categories[final_categories$country=="Hungary",]
+Iceland<-final_categories[final_categories$country=="Iceland",]
+Ireland<-final_categories[final_categories$country=="Ireland",]
+Israel<-final_categories[final_categories$country=="Israel",]
+Italy<-final_categories[final_categories$country=="Italy",]
+Japan<-final_categories[final_categories$country=="Japan",]
+Korea<-final_categories[final_categories$country=="Korea",]
+Latvia<-final_categories[final_categories$country=="Latvia",]
+Lithuania<-final_categories[final_categories$country=="Lithuania",]
+Luxembourg<-final_categories[final_categories$country=="Luxembourg",]
+Mexico<-final_categories[final_categories$country=="Mexico",]
+Netherlands<-final_categories[final_categories$country=="Netherlands",]
+New_Zealand<-final_categories[final_categories$country=="New Zealand",]
+Norway<-final_categories[final_categories$country=="Norway",]
+Poland<-final_categories[final_categories$country=="Poland",]
+Portugal<-final_categories[final_categories$country=="Portugal",]
+Slovak_Republic<-final_categories[final_categories$country=="Slovak Republic",]
+Slovenia<-final_categories[final_categories$country=="Slovenia",]
+Spain<-final_categories[final_categories$country=="Spain",]
+Sweden<-final_categories[final_categories$country=="Sweden",]
+Switzerland<-final_categories[final_categories$country=="Switzerland",]
+Turkey<-final_categories[final_categories$country=="Turkey",]
+United_Kingdom<-final_categories[final_categories$country=="United Kingdom",]
+United_States<-final_categories[final_categories$country=="United States",]
 
 
 #Changes from 2018 index
-M <- merge(Final2019,Final2018,by="country")
+M <- merge(final_2019,final_2018,by="country")
 #drop ISO variables
 drop_iso<-names(M) %in% c("ISO_2.x","ISO_3.x","ISO_2.y","ISO_3.y")
 M<-M[!drop_iso]
@@ -589,13 +589,13 @@ Changes <- M[,grepl("*\\.x$",names(M))] - M[,grepl("*\\.y$",names(M))]
 
 Changes<-cbind(M[,1,drop=FALSE],Changes)
 
-finalsubcategories_2019<-subset(finalsubcategories,year==2019)
+final_subcategories_2019<-subset(final_subcategories,year==2019)
 
 
 write.csv(rawdata,"./final-outputs/Raw Data 2019.csv",row.names=F)
-write.csv(Final2017, file = "./final-outputs/data2017run.csv",row.names=F)
-write.csv(Final2018, file = "./final-outputs/data2018run.csv",row.names=F)
-write.csv(Final2019, file = "./final-outputs/data2019run.csv",row.names=F)
+write.csv(final_2017, file = "./final-outputs/data2017run.csv",row.names=F)
+write.csv(final_2018, file = "./final-outputs/data2018run.csv",row.names=F)
+write.csv(final_2019, file = "./final-outputs/data2019run.csv",row.names=F)
 
-write.csv(finalsubcategories_2019,"./final-outputs/subcategories 2019.csv",row.names=F)
-write.csv(finalcategories,"./final-outputs/final categories 2014-2019.csv",row.names=F)
+write.csv(final_subcategories_2019,"./final-outputs/subcategories 2019.csv",row.names=F)
+write.csv(final_categories,"./final-outputs/final categories 2014-2019.csv",row.names=F)
