@@ -63,8 +63,8 @@ rawdata$asset_tax<-as.numeric(rawdata$asset_tax)
 rawdata$capital_duties<-as.numeric(rawdata$capital_duties)
 rawdata$financial_transaction_tax<-as.numeric(rawdata$financial_transaction_tax)
 rawdata$index_capital_gains<-as.numeric(rawdata$index_capital_gains)
-rawdata$taxtreaties<-as.numeric(rawdata$taxtreaties)
-rawdata$countrylimitations<-as.numeric(rawdata$countrylimitations)
+rawdata$tax_treaties<-as.numeric(rawdata$tax_treaties)
+rawdata$country_limitations<-as.numeric(rawdata$country_limitations)
 
 
 #Rename Estate tax variable
@@ -137,17 +137,17 @@ ALTscores<-ALTscores[-3]
 #32 tax_wedge
 #33 labor_payments
 #34 labor_time
-#37 divwithhold
-#38 intwithhold
-#39 roywithhold
-#41 cfcrules
-#42 countrylimitations
-#43 thincap
+#37 dividends_withholding_tax
+#38 interest_withholding_tax
+#39 royalties_withholding_tax
+#41 cfc_rules
+#42 country_limitations
+#43 thin_capitalization_rules
 
 flip<-c("corporate_rate","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments","vat_rate","vat_threshold","consumption_time",
         "property_tax","property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties",
         "financial_transaction_tax","capital_gains_rate","dividends_rate","top_income_rate","threshold_top_income_rate","tax_wedge","labor_payments","labor_time",
-        "divwithhold","intwithhold","roywithhold","cfcrules","countrylimitations","thincap")
+        "dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","cfc_rules","country_limitations","thin_capitalization_rules")
 
 
 flipfunc <- function(x) {
@@ -215,17 +215,17 @@ for (i in flip) {
     #33 labor_payments
     #34 labor_time
   #territoriality
-    #35 dividendexemption
-    #36 capgainsexemption
-    #42 countrylimitations
+    #35 dividends_exemptionion
+    #36 capital_gains_exemption
+    #42 country_limitations
   #withholding taxes
-    #37 divwithholding
-    #38 intwithholding
-    #39 roywithholding
+    #37 dividends_withholding_taxing
+    #38 interest_withholding_taxing
+    #39 royalties_withholding_taxing
     #40 treaties
   #regulations
-    #41 cfcrules
-    #43 thincap
+    #41 cfc_rules
+    #43 thin_capitalization_rules
 
 
 corporaterateindex<-c("corporate_rate")
@@ -240,9 +240,9 @@ capitaltaxesindex<-c("transfer_tax","asset_tax","capital_duties","financial_tran
 capgainsdividindex<-c("capital_gains_rate","dividends_rate")
 incometaxindex<-c("top_income_rate","threshold_top_income_rate","tax_wedge")
 incomecomplexindex<-c("labor_payments","labor_time")
-terrindex<-c("dividendexempt","capgainsexemption","countrylimitations")
-withholdingindex<-c("divwithhold","intwithhold","roywithhold","taxtreaties")
-regsindex<-c("cfcrules","thincap")
+terrindex<-c("dividends_exemption","capital_gains_exemption","country_limitations")
+withholdingindex<-c("dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties")
+regsindex<-c("cfc_rules","thin_capitalization_rules")
 
 subcategories<-data.frame(country=zscores$country,
                           year=zscores$year)
