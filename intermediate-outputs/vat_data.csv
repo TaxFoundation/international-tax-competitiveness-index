@@ -1,4 +1,4 @@
-"country","year","vatrate","threshold","base"
+"country","year","vat_rate","vat_threshold","vat_base"
 "Australia",2014,10,48730.6403375008,0.484352186885038
 "Australia",2015,10,48730.6403375008,0.495545496897089
 "Australia",2016,10,50335.5704697987,0.495677137783973
