@@ -65,17 +65,17 @@ indexdata_old<-indexdata_old[,!names(indexdata_old) %in% OECDvars]
 
 #Join OECD data with indexdata_old####
 
-indexdata_OECD_vars<-merge(indexdata_old,OECD_vars,by=c("country","ISO-2","ISO-3","year"))
+indexdata_OECD_vars<-merge(indexdata_old,OECD_vars,by=c("country","ISO_2","ISO_3","year"))
 
 
 #Join cap allowances data with indexdata2019####
 
 Cap_Allowances_Vars<-c("pdvmachines","pdvbuildings", "pdvintangibles")
-colnames(Cap_Allowances)<-c("ISO-3","year","pdvmachines","pdvbuildings", "pdvintangibles")
+colnames(Cap_Allowances)<-c("ISO_3","year","pdvmachines","pdvbuildings", "pdvintangibles")
 
 indexdata_OECD_vars<-indexdata_OECD_vars[,!names(indexdata_OECD_vars) %in% Cap_Allowances_Vars]
 
-indexdata_cap_a_vars<-merge(indexdata_OECD_vars,Cap_Allowances,by=c("ISO-3","year"))
+indexdata_cap_a_vars<-merge(indexdata_OECD_vars,Cap_Allowances,by=c("ISO_3","year"))
 
 #Join VAT data with indexdata_cap_a_vars####
 
@@ -108,7 +108,7 @@ indexdata_CFC_var<-merge(indexdata_prop_tax_vars,CFC_Rules,by=c("country","year"
 indexdata_final<-indexdata_CFC_var
 
 #Reorder columns ####
-indexdata_final<-indexdata_final[c("ISO-2","ISO-3","country","year",
+indexdata_final<-indexdata_final[c("ISO_2","ISO_3","country","year",
                                "corprate","losscarryback","losscarryforward","pdvmachines","pdvbuildings","pdvintangibles","inventory","patentbox","rndcredit","corptime","profitpayments","otherpayments",
                                "incrate","progressivity","taxwedge","laborpayments","labortime","capgainsrate","capgainsindex","divrate",
                                "vatrate","threshold","base","consumptiontime",
