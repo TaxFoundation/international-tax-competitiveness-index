@@ -75,10 +75,6 @@ rawdata<-rawdata[c("ISO_2","ISO_3","country","year",
                  "property_tax", "property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax",
                  "dividends_exemption","capital_gains_exemption","country_limitations","dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties","cfc_rules","thin_capitalization_rules")]
 
-
-#temporary NA's as zeros
-#rawdata[is.na(rawdata)] <- 0
-
 #ALT Min-Max Test
 normalize <-function(x){
   normal <- apply(x,2, function(x){(x-min(x))/(max(x)-min(x))*10})
@@ -108,36 +104,36 @@ ALTscores<-ALTscores[-3]
 
 #Multiply variables that need to be flipped by -1 (There is likely a better way to do this)
 #List of variables flipped for reference:
-#3 corporate_rate
-#10 patent_box
-#11 r_and_d_credit
-#12 corporate_time
-#13 profit_payments
-#14 other_payments
-#15 vat_rate
-#16 vat_threshold
-#18 consumption_time
-#19 property_tax
-#20 property_tax_collections
-#21 net_wealth
-#22 estate_or_inheritance_tax
-#23 transfer_tax
-#24 asset_tax
-#25 capital_duties
-#26 financial_transaction_tax
-#27 capital_gains_rate
-#29 dividends_rate
-#30 top_income_rate
-#31 threshold_top_income_rate
-#32 tax_wedge
-#33 labor_payments
-#34 labor_time
-#37 dividends_withholding_tax
-#38 interest_withholding_tax
-#39 royalties_withholding_tax
-#41 cfc_rules
-#42 country_limitations
-#43 thin_capitalization_rules
+# corporate_rate
+# patent_box
+# r_and_d_credit
+# corporate_time
+# profit_payments
+# other_payments
+# top_income_rate
+# threshold_top_income_rate
+# tax_wedge
+# labor_payments
+# labor_time
+# capital_gains_rate
+# dividends_rate
+# vat_rate
+# vat_threshold
+# consumption_time
+# property_tax
+# property_tax_collections
+# net_wealth
+# estate_or_inheritance_tax
+# transfer_tax
+# asset_tax
+# capital_duties
+# financial_transaction_tax
+# country_limitations
+# dividends_withholding_tax
+# interest_withholding_tax
+# royalties_withholding_tax
+# cfc_rules
+# thin_capitalization_rules
 
 flip<-c("corporate_rate","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments","vat_rate","vat_threshold","consumption_time",
         "property_tax","property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties",
@@ -167,137 +163,136 @@ for (i in flip) {
 
 #Categories and variables for Reference:
   #Corporate Rate
-    #3 corporate_rate
+    # corporate_rate
   #Cost Recovery
-    #4 loss_carryback
-    #5 loss_carryforward
-    #6 machines_cost_recovery
-    #7 buildings_cost_recovery
-    #8 intangibles_cost_recovery
-    #9 inventory
+    # loss_carryback
+    # loss_carryforward
+    # machines_cost_recovery
+    # buildings_cost_recovery
+    # intangibles_cost_recovery
+    # inventory
   #Incentives/Complexity
-    #10 patent_box
-    #11 r_and_d_credit
-    #12 corporate_time
-    #13 profit_payments
-    #14 other_payments
+    # patent_box
+    # r_and_d_credit
+    # corporate_time
+    # profit_payments
+    # other_payments
   #Consumption Tax Rate
-    #15 vat_rate
+    # vat_rate
   #Consumption Tax vat_base
-    #16 vat_threshold
-    #17 vat_base
+    # vat_threshold
+    # vat_base
   #Consumption Tax Complexity
-    #18 consumption_time
+    # consumption_time
   #Real Property Taxes
-    #19 property_tax
-    #20 propertycollections
+    # property_tax
+    # propertycollections
   #Wealth Taxes
-    #21 net_wealth
-    #22 estate/inheritance
+    # net_wealth
+    # estate_or_inheritance_tax
   #Capital Taxes
-    #23 transfer_tax
-    #24 asset_tax
-    #25 capital_duties
-    #26 financial_transaction_taxactiontaxes
+    # transfer_tax
+    # asset_tax
+    # capital_duties
+    # financial_transaction_taxactiontaxes
   #Capital Gains and Dividends
-    #27 capital_gains_rates
-    #29 dividends_rate
+    # capital_gains_rates
+    # dividends_rate
   #income taxes
-    #30 top_income_rate
-    #31 threshold_top_income_rate
-    #32 tax_wedge
+    # top_income_rate
+    # threshold_top_income_rate
+    # tax_wedge
   #income complexity
-    #33 labor_payments
-    #34 labor_time
+    # labor_payments
+    # labor_time
   #territoriality
-    #35 dividends_exemptionion
-    #36 capital_gains_exemption
-    #42 country_limitations
+    # dividends_exemptionion
+    # capital_gains_exemption
+    # country_limitations
   #withholding taxes
-    #37 dividends_withholding_taxing
-    #38 interest_withholding_taxing
-    #39 royalties_withholding_taxing
-    #40 treaties
+    # dividends_withholding_taxing
+    # interest_withholding_taxing
+    # royalties_withholding_taxing
+    # treaties
   #regulations
-    #41 cfc_rules
-    #43 thin_capitalization_rules
+    # cfc_rules
+    # thin_capitalization_rules
 
-
-corporaterateindex<-c("corporate_rate")
-costrecoveryindex<-c("loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory")
-incentivesindex<-c("patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments")
-consumptiontaxrateindex<-c("vat_rate")
-consumptiontaxvat_baseindex<-c("vat_threshold","vat_base")
-consumptiontaxcomplexity<-c("consumption_time")
-realpropertyindex<-c("property_tax","property_tax_collections")
-wealthtaxesindex<-c("net_wealth","estate_or_inheritance_tax")
-capitaltaxesindex<-c("transfer_tax","asset_tax","capital_duties","financial_transaction_tax")
-capgainsdividindex<-c("capital_gains_rate","dividends_rate")
-incometaxindex<-c("top_income_rate","threshold_top_income_rate","tax_wedge")
-incomecomplexindex<-c("labor_payments","labor_time")
-terrindex<-c("dividends_exemption","capital_gains_exemption","country_limitations")
-withholdingindex<-c("dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties")
-regsindex<-c("cfc_rules","thin_capitalization_rules")
+corporate_rate_index<-c("corporate_rate")
+cost_recovery_index<-c("loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory")
+incentives_index<-c("patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments")
+consumption_tax_rate_index<-c("vat_rate")
+consumption_tax_base_index<-c("vat_threshold","vat_base")
+consumption_tax_complexity<-c("consumption_time")
+real_property_index<-c("property_tax","property_tax_collections")
+wealth_taxes_index<-c("net_wealth","estate_or_inheritance_tax")
+capital_taxes_index<-c("transfer_tax","asset_tax","capital_duties","financial_transaction_tax")
+capital_gains_and_dividends_index<-c("capital_gains_rate","dividends_rate")
+income_tax_index<-c("top_income_rate","threshold_top_income_rate","tax_wedge")
+income_tax_complexity_index<-c("labor_payments","labor_time")
+territorial_index<-c("dividends_exemption","capital_gains_exemption","country_limitations")
+withholding_index<-c("dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties")
+international_regulations_index<-c("cfc_rules","thin_capitalization_rules")
 
 subcategories<-data.frame(country=zscores$country,
                           year=zscores$year)
 
-subcategories$corporaterate<-apply((zscores[corporaterateindex]*(1/length(corporaterateindex))),1,sum)
-subcategories$costrecovery<-apply((zscores[costrecoveryindex]*(1/length(costrecoveryindex))),1,sum)
-subcategories$incentives<-apply((zscores[incentivesindex]*(1/length(incentivesindex))),1,sum)
-subcategories$consumptiontaxrate<-apply((zscores[consumptiontaxrateindex]*(1/length(consumptiontaxrateindex))),1,sum)
-subcategories$consumptiontaxvat_base<-apply((zscores[consumptiontaxvat_baseindex]*(1/length(consumptiontaxvat_baseindex))),1,sum)
-subcategories$consumptiontaxcomplexity<-apply((zscores[consumptiontaxcomplexity]*(1/length(consumptiontaxcomplexity))),1,sum)
-subcategories$realpropertytax<-apply((zscores[realpropertyindex]*(1/length(realpropertyindex))),1,sum)
-subcategories$wealthtaxes<-apply((zscores[wealthtaxesindex]*(1/length(wealthtaxesindex))),1,sum)
-subcategories$capitaltaxes<-apply((zscores[capitaltaxesindex]*(1/length(capitaltaxesindex))),1,sum)
-subcategories$capgainsanddividends<-apply((zscores[capgainsdividindex]*(1/length(capgainsdividindex))),1,sum)
-subcategories$incometax<-apply((zscores[incometaxindex]*(1/length(incometaxindex))),1,sum)
-subcategories$incometaxcomplexity<-apply((zscores[incomecomplexindex]*(1/length(incomecomplexindex))),1,sum)
-subcategories$territorial<-apply((zscores[terrindex]*(1/length(terrindex))),1,sum)
-subcategories$withholdingtaxes<-apply((zscores[withholdingindex]*(1/length(withholdingindex))),1,sum)
-subcategories$intregulations<-apply((zscores[regsindex]*(1/length(regsindex))),1,sum)
+subcategories$corporate_rate<-apply((zscores[corporate_rate_index]*(1/length(corporate_rate_index))),1,sum)
+subcategories$cost_recovery<-apply((zscores[cost_recovery_index]*(1/length(cost_recovery_index))),1,sum)
+subcategories$incentives<-apply((zscores[incentives_index]*(1/length(incentives_index))),1,sum)
+subcategories$consumption_tax_rate<-apply((zscores[consumption_tax_rate_index]*(1/length(consumption_tax_rate_index))),1,sum)
+subcategories$consumption_tax_base<-apply((zscores[consumption_tax_base_index]*(1/length(consumption_tax_base_index))),1,sum)
+subcategories$consumption_tax_complexity<-apply((zscores[consumption_tax_complexity]*(1/length(consumption_tax_complexity))),1,sum)
+subcategories$real_property_tax<-apply((zscores[real_property_index]*(1/length(real_property_index))),1,sum)
+subcategories$wealth_taxes<-apply((zscores[wealth_taxes_index]*(1/length(wealth_taxes_index))),1,sum)
+subcategories$capital_taxes<-apply((zscores[capital_taxes_index]*(1/length(capital_taxes_index))),1,sum)
+subcategories$capital_gains_and_dividends<-apply((zscores[capital_gains_and_dividends_index]*(1/length(capital_gains_and_dividends_index))),1,sum)
+subcategories$income_tax<-apply((zscores[income_tax_index]*(1/length(income_tax_index))),1,sum)
+subcategories$income_tax_complexity<-apply((zscores[income_tax_complexity_index]*(1/length(income_tax_complexity_index))),1,sum)
+subcategories$territorial<-apply((zscores[territorial_index]*(1/length(territorial_index))),1,sum)
+subcategories$withholding_taxes<-apply((zscores[withholding_index]*(1/length(withholding_index))),1,sum)
+subcategories$international_regulations<-apply((zscores[international_regulations_index]*(1/length(international_regulations_index))),1,sum)
 
 #ALT Scoring Technique
 
 ALTsubcategories<-data.frame(country=ALTscores$country,
                              year=ALTscores$year)
 
-ALTsubcategories$corporaterate<-apply((ALTscores[corporaterateindex]*(1/length(corporaterateindex))),1,sum)
-ALTsubcategories$costrecovery<-apply((ALTscores[costrecoveryindex]*(1/length(costrecoveryindex))),1,sum)
-ALTsubcategories$incentives<-apply((ALTscores[incentivesindex]*(1/length(incentivesindex))),1,sum)
-ALTsubcategories$consumptiontaxrate<-apply((ALTscores[consumptiontaxrateindex]*(1/length(consumptiontaxrateindex))),1,sum)
-ALTsubcategories$consumptiontaxvat_base<-apply((ALTscores[consumptiontaxvat_baseindex]*(1/length(consumptiontaxvat_baseindex))),1,sum)
-ALTsubcategories$consumptiontaxcomplexity<-apply((ALTscores[consumptiontaxcomplexity]*(1/length(consumptiontaxcomplexity))),1,sum)
-ALTsubcategories$realpropertytax<-apply((ALTscores[realpropertyindex]*(1/length(realpropertyindex))),1,sum)
-ALTsubcategories$wealthtaxes<-apply((ALTscores[wealthtaxesindex]*(1/length(wealthtaxesindex))),1,sum)
-ALTsubcategories$capitaltaxes<-apply((ALTscores[capitaltaxesindex]*(1/length(capitaltaxesindex))),1,sum)
-ALTsubcategories$capgainsanddividends<-apply((ALTscores[capgainsdividindex]*(1/length(capgainsdividindex))),1,sum)
-ALTsubcategories$incometax<-apply((ALTscores[incometaxindex]*(1/length(incometaxindex))),1,sum)
-ALTsubcategories$incometaxcomplexity<-apply((ALTscores[incomecomplexindex]*(1/length(incomecomplexindex))),1,sum)
-ALTsubcategories$territorial<-apply((ALTscores[terrindex]*(1/length(terrindex))),1,sum)
-ALTsubcategories$withholdingtaxes<-apply((ALTscores[withholdingindex]*(1/length(withholdingindex))),1,sum)
-ALTsubcategories$intregulations<-apply((ALTscores[regsindex]*(1/length(regsindex))),1,sum)
+ALTsubcategories$corporate_rate<-apply((ALTscores[corporate_rate_index]*(1/length(corporate_rate_index))),1,sum)
+ALTsubcategories$cost_recovery<-apply((ALTscores[cost_recovery_index]*(1/length(cost_recovery_index))),1,sum)
+ALTsubcategories$incentives<-apply((ALTscores[incentives_index]*(1/length(incentives_index))),1,sum)
+ALTsubcategories$consumption_tax_rate<-apply((ALTscores[consumption_tax_rate_index]*(1/length(consumption_tax_rate_index))),1,sum)
+ALTsubcategories$consumption_tax_base<-apply((ALTscores[consumption_tax_base_index]*(1/length(consumption_tax_base_index))),1,sum)
+ALTsubcategories$consumption_tax_complexity<-apply((ALTscores[consumption_tax_complexity]*(1/length(consumption_tax_complexity))),1,sum)
+ALTsubcategories$real_property_tax<-apply((ALTscores[real_property_index]*(1/length(real_property_index))),1,sum)
+ALTsubcategories$wealth_taxes<-apply((ALTscores[wealth_taxes_index]*(1/length(wealth_taxes_index))),1,sum)
+ALTsubcategories$capital_taxes<-apply((ALTscores[capital_taxes_index]*(1/length(capital_taxes_index))),1,sum)
+ALTsubcategories$capital_gains_and_dividends<-apply((ALTscores[capital_gains_and_dividends_index]*(1/length(capital_gains_and_dividends_index))),1,sum)
+ALTsubcategories$income_tax<-apply((ALTscores[income_tax_index]*(1/length(income_tax_index))),1,sum)
+ALTsubcategories$income_tax_complexity<-apply((ALTscores[income_tax_complexity_index]*(1/length(income_tax_complexity_index))),1,sum)
+ALTsubcategories$territorial<-apply((ALTscores[territorial_index]*(1/length(territorial_index))),1,sum)
+ALTsubcategories$withholding_taxes<-apply((ALTscores[withholding_index]*(1/length(withholding_index))),1,sum)
+ALTsubcategories$international_regulations<-apply((ALTscores[international_regulations_index]*(1/length(international_regulations_index))),1,sum)
 
 #Final Categories and Final Score with Ranks
 #Each category contains three subcategories
 
 #Same thing as above
-corporateindex<-c("corporaterate","costrecovery","incentives")
-consumptionindex<-c("consumptiontaxrate","consumptiontaxvat_base","consumptiontaxcomplexity")
-propertyindex<-c("realpropertytax","wealthtaxes","capitaltaxes")
-incomeindex<-c("capgainsanddividends","incometax","incometaxcomplexity")
-internationalindex<-c("territorial","withholdingtaxes","intregulations")
+corporate_index<-c("corporate_rate","cost_recovery","incentives")
+consumption_index<-c("consumption_tax_rate","consumption_tax_base","consumption_tax_complexity")
+property_index<-c("real_property_tax","wealth_taxes","capital_taxes")
+income_index<-c("capital_gains_and_dividends","income_tax","income_tax_complexity")
+international_index<-c("territorial","withholding_taxes","international_regulations")
 
 
 categories<-data.frame(country=rawdata$country,
                        year=rawdata$year)
 
-categories$corporate<-apply((subcategories[corporateindex]*(1/length(corporateindex))),1,sum)
-categories$consumption<-apply((subcategories[consumptionindex]*(1/length(consumptionindex))),1,sum)
-categories$property<-apply((subcategories[propertyindex]*(1/length(propertyindex))),1,sum)
-categories$income<-apply((subcategories[incomeindex]*(1/length(incomeindex))),1,sum)
-categories$international<-apply((subcategories[internationalindex]*(1/length(internationalindex))),1,sum)
+categories$corporate<-apply((subcategories[corporate_index]*(1/length(corporate_index))),1,sum)
+categories$consumption<-apply((subcategories[consumption_index]*(1/length(consumption_index))),1,sum)
+categories$property<-apply((subcategories[property_index]*(1/length(property_index))),1,sum)
+categories$income<-apply((subcategories[income_index]*(1/length(income_index))),1,sum)
+categories$international<-apply((subcategories[international_index]*(1/length(international_index))),1,sum)
 categories$final<-apply((categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
 write.csv(subset(categories,categories$year==2019),file = "./final-outputs/categories_score.csv",row.names=F)
@@ -309,11 +304,11 @@ write.csv(subset(categories,categories$year==2019),file = "./final-outputs/categ
 ALTcategories<-data.frame(country=rawdata$country,
                           year=rawdata$year)
 
-ALTcategories$corporate<-apply((ALTsubcategories[corporateindex]*(1/length(corporateindex))),1,sum)
-ALTcategories$consumption<-apply((ALTsubcategories[consumptionindex]*(1/length(consumptionindex))),1,sum)
-ALTcategories$property<-apply((ALTsubcategories[propertyindex]*(1/length(propertyindex))),1,sum)
-ALTcategories$income<-apply((ALTsubcategories[incomeindex]*(1/length(incomeindex))),1,sum)
-ALTcategories$international<-apply((ALTsubcategories[internationalindex]*(1/length(internationalindex))),1,sum)
+ALTcategories$corporate<-apply((ALTsubcategories[corporate_index]*(1/length(corporate_index))),1,sum)
+ALTcategories$consumption<-apply((ALTsubcategories[consumption_index]*(1/length(consumption_index))),1,sum)
+ALTcategories$property<-apply((ALTsubcategories[property_index]*(1/length(property_index))),1,sum)
+ALTcategories$income<-apply((ALTsubcategories[income_index]*(1/length(income_index))),1,sum)
+ALTcategories$international<-apply((ALTsubcategories[international_index]*(1/length(international_index))),1,sum)
 ALTcategories$final<-apply((ALTcategories[3:7]*(1/length(categories[3:7]))),1,sum)
 
 #normalize all category and subcategory scores
@@ -375,21 +370,21 @@ subcategories<-data.frame(country=rawdata$country,
 subcategories<-ddply(subcategories, 
                      .(year),
                      transform,
-                     corporateraterank = rank(-corporaterate,ties.method = "min"),
-                     costrecoveryrank = rank(-costrecovery,ties.method = "min"),
+                     corporate_raterank = rank(-corporate_rate,ties.method = "min"),
+                     cost_recoveryrank = rank(-cost_recovery,ties.method = "min"),
                      incentivesrank = rank(-incentives,ties.method = "min"),
-                     consumptiontaxraterank = rank(-consumptiontaxrate,ties.method = "min"),
-                     consumptiontaxvat_baserank = rank(-consumptiontaxvat_base,ties.method = "min"),
-                     consumptiontaxcomplexityrank = rank(-consumptiontaxcomplexity,ties.method = "min"),
-                     realpropertytaxrank = rank(-realpropertytax,ties.method = "min"),
-                     wealthtaxesrank = rank(-wealthtaxes,ties.method = "min"),
-                     capitaltaxesrank = rank(-capitaltaxes,ties.method = "min"),
-                     capgainsanddividendsrank = rank(-capgainsanddividends,ties.method = "min"),
-                     incometaxrank = rank(-incometax,ties.method = "min"),
-                     incometaxcomplexityrank = rank(-incometaxcomplexity,ties.method = "min"),
+                     consumption_tax_raterank = rank(-consumption_tax_rate,ties.method = "min"),
+                     consumption_tax_baserank = rank(-consumption_tax_base,ties.method = "min"),
+                     consumption_tax_complexityrank = rank(-consumption_tax_complexity,ties.method = "min"),
+                     real_property_taxrank = rank(-real_property_tax,ties.method = "min"),
+                     wealth_taxesrank = rank(-wealth_taxes,ties.method = "min"),
+                     capital_taxesrank = rank(-capital_taxes,ties.method = "min"),
+                     capital_gains_and_dividendsrank = rank(-capital_gains_and_dividends,ties.method = "min"),
+                     income_taxrank = rank(-income_tax,ties.method = "min"),
+                     income_tax_complexityrank = rank(-income_tax_complexity,ties.method = "min"),
                      territorialrank = rank(-territorial,ties.method = "min"),
-                     withholdingtaxesrank = rank(-withholdingtaxes,ties.method = "min"),
-                     intregulationsrank = rank(-intregulations,ties.method = "min")
+                     withholding_taxesrank = rank(-withholding_taxes,ties.method = "min"),
+                     international_regulationsrank = rank(-international_regulations,ties.method = "min")
 )
 
 #ALT Scoring method
@@ -397,21 +392,21 @@ subcategories<-ddply(subcategories,
 ALTsubcategories<-ddply(ALTsubcategories, 
                         .(year),
                         transform,
-                        corporateraterank = rank(-corporaterate,ties.method = "min"),
-                        costrecoveryrank = rank(-costrecovery,ties.method = "min"),
+                        corporate_raterank = rank(-corporate_rate,ties.method = "min"),
+                        cost_recoveryrank = rank(-cost_recovery,ties.method = "min"),
                         incentivesrank = rank(-incentives,ties.method = "min"),
-                        consumptiontaxraterank = rank(-consumptiontaxrate,ties.method = "min"),
-                        consumptiontaxvat_baserank = rank(-consumptiontaxvat_base,ties.method = "min"),
-                        consumptiontaxcomplexityrank = rank(-consumptiontaxcomplexity,ties.method = "min"),
-                        realpropertytaxrank = rank(-realpropertytax,ties.method = "min"),
-                        wealthtaxesrank = rank(-wealthtaxes,ties.method = "min"),
-                        capitaltaxesrank = rank(-capitaltaxes,ties.method = "min"),
-                        capgainsanddividendsrank = rank(-capgainsanddividends,ties.method = "min"),
-                        incometaxrank = rank(-incometax,ties.method = "min"),
-                        incometaxcomplexityrank = rank(-incometaxcomplexity,ties.method = "min"),
+                        consumption_tax_raterank = rank(-consumption_tax_rate,ties.method = "min"),
+                        consumption_tax_baserank = rank(-consumption_tax_base,ties.method = "min"),
+                        consumption_tax_complexityrank = rank(-consumption_tax_complexity,ties.method = "min"),
+                        real_property_taxrank = rank(-real_property_tax,ties.method = "min"),
+                        wealth_taxesrank = rank(-wealth_taxes,ties.method = "min"),
+                        capital_taxesrank = rank(-capital_taxes,ties.method = "min"),
+                        capital_gains_and_dividendsrank = rank(-capital_gains_and_dividends,ties.method = "min"),
+                        income_taxrank = rank(-income_tax,ties.method = "min"),
+                        income_tax_complexityrank = rank(-income_tax_complexity,ties.method = "min"),
                         territorialrank = rank(-territorial,ties.method = "min"),
-                        withholdingtaxesrank = rank(-withholdingtaxes,ties.method = "min"),
-                        intregulationsrank = rank(-intregulations,ties.method = "min")
+                        withholding_taxesrank = rank(-withholding_taxes,ties.method = "min"),
+                        international_regulationsrank = rank(-international_regulations,ties.method = "min")
 )
 
 #Category Scores
