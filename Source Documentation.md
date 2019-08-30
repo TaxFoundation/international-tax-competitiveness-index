@@ -101,6 +101,8 @@
 #
 #
 
+## Australia
+### **capgainsrate** Only 50% of capital gains are taxable, thus the applicable top personal income tax is effectively 24.5% instead of 49%.
 
 ## Belgium
 
@@ -130,6 +132,9 @@
 ### **Assettaxes**: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
 
 ### **countrylimitations**: PwC, "Corporate - Group taxation," http://taxsummaries.pwc.com/ID/France-Corporate-Group-taxation.
+
+## Germany
+### **capgainsrate** On top of the 25% flat tax rate, there is a solidarity surcharge of 5.5% of the tax amount, leading to an effective tax rate of 26.4%.
 
 ## Greece
 

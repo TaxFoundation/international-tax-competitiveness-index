@@ -180,7 +180,7 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `taxwedge` | The tax wedge is the total tax cost of labor in a country (includes individual income tax and payroll tax). This is the average of the ratio of the marginal tax wedge to the average tax wedge for employees at the 67th, 100th, 133rd, and 167th percentiles. |
 | `laborpayments` | Complexity of tax system measured by number of yearly labor tax payments. |
 | `labortime` | Complexity of tax system measured by average time in hours needed to comply with a country's labor tax requirements. |
-| `capgainsrate` | Tax rate for capital gains. |
+| `capgainsrate` | Tax rate for capital gains fter any imputation, credit or offset.  When the capital gains tax rate varies by type of asset sold, the tax rate applying to the sale of listed shares after an extended period of time is used. |
 | `capgainsindex` | Whether a country indexes basis for purposes of capital gains tax. No longer in use.|
 | `divrate` |  The total top marginal dividend tax rate after any imputation or credit system. |
 | `vatrate` | The national (or average) consumption tax rate (either sales tax or VAT) for a country. |
