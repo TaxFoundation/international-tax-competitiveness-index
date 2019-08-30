@@ -81,7 +81,7 @@ indexdata_cap_a_vars<-merge(indexdata_OECD_vars,Cap_Allowances,by=c("ISO_3","yea
 
 #Remove variables from indexdata_old that are in VAT data
 
-vat_vars<-c("vatrate","threshold", "base")
+vat_vars<-c("vat_rate","vat_threshold", "vat_base")
 indexdata_cap_a_vars<-indexdata_cap_a_vars[,!names(indexdata_cap_a_vars) %in% vat_vars]
 
 indexdata_VAT_vars<-merge(indexdata_cap_a_vars,vat_data,by=c("country","year"))
