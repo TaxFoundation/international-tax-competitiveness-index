@@ -54,8 +54,8 @@ rawdata2019 <- read_csv("./final-data/final_indexdata2019.csv")
 rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018,rawdata2019)
 
 
-rawdata$patentbox<-as.numeric(rawdata$patentbox)
-rawdata$rndcredit<-as.numeric(rawdata$rndcredit)
+rawdata$patent_box<-as.numeric(rawdata$patent_box)
+rawdata$r_and_d_credit<-as.numeric(rawdata$r_and_d_credit)
 rawdata$netwealth<-as.numeric(rawdata$netwealth)
 rawdata$`estate/inheritance tax`<-as.numeric(rawdata$`estate/inheritance tax`)
 rawdata$transfertaxes<-as.numeric(rawdata$transfertaxes)
@@ -73,9 +73,9 @@ out<-c("estate/inheritance tax")
 rawdata<-rawdata[,!names(rawdata) %in% out]
 
 #Order variables for easier working
-rawdata<-rawdata[c("ISO-3","ISO-2","country","year",
-          "corprate","losscarryback" ,"losscarryforward","pdvmachines","pdvbuildings","pdvintangibles","inventory",
-          "patentbox","rndcredit","corptime","profitpayments","otherpayments",
+rawdata<-rawdata[c("ISO_3","ISO_2","country","year",
+          "corporate_rate","loss_carryback" ,"loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory",
+          "patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments",
           "vatrate","threshold","base",
           "consumptiontime",
           "propertytaxes","propertytaxescollections","netwealth","estate.inheritance.tax","transfertaxes",
@@ -118,12 +118,12 @@ ALTscores<-ALTscores[-3]
 
 #Multiply variables that need to be flipped by -1 (There is likely a better way to do this)
 #List of variables flipped for reference:
-#3 corprate
-#10 patentbox
-#11 rndcredit
-#12 corptime
-#13 profitpayments
-#14 otherpayments
+#3 corporate_rate
+#10 patent_box
+#11 r_and_d_credit
+#12 corporate_time
+#13 profit_payments
+#14 other_payments
 #15 vatrate
 #16 threshold
 #18 consumptiontime
@@ -149,7 +149,7 @@ ALTscores<-ALTscores[-3]
 #42 countrylimitations
 #43 thincap
 
-flip<-c("corprate","patentbox","rndcredit","corptime","profitpayments","otherpayments","vatrate","threshold","consumptiontime",
+flip<-c("corporate_rate","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments","vatrate","threshold","consumptiontime",
         "propertytaxes","propertytaxescollections","netwealth","estate.inheritance.tax","transfertaxes","Assettaxes","capitalduties",
         "financialtrans","capgainsrate","divrate","incrate","progressivity","taxwedge","laborpayments","labortime",
         "divwithhold","intwithhold","roywithhold","cfcrules","countrylimitations","thincap")
@@ -177,20 +177,20 @@ for (i in flip) {
 
 #Categories and variables for Reference:
   #Corporate Rate
-    #3 corprate
+    #3 corporate_rate
   #Cost Recovery
-    #4 losscarryback
-    #5 losscarryforward
-    #6 pdvmachines
-    #7 pdvbuildings
-    #8 pdvintangibles
+    #4 loss_carryback
+    #5 loss_carryforward
+    #6 machines_cost_recovery
+    #7 buildings_cost_recovery
+    #8 intangibles_cost_recovery
     #9 inventory
   #Incentives/Complexity
-    #10 patentbox
-    #11 rndcredit
-    #12 corptime
-    #13 profitpayments
-    #14 otherpayments
+    #10 patent_box
+    #11 r_and_d_credit
+    #12 corporate_time
+    #13 profit_payments
+    #14 other_payments
   #Consumption Tax Rate
     #15 vatrate
   #Consumption Tax Base
@@ -233,9 +233,9 @@ for (i in flip) {
     #43 thincap
 
 
-corporaterateindex<-c("corprate")
-costrecoveryindex<-c("losscarryback","losscarryforward","pdvmachines","pdvbuildings","pdvintangibles","inventory")
-incentivesindex<-c("patentbox","rndcredit","corptime","profitpayments","otherpayments")
+corporaterateindex<-c("corporate_rate")
+costrecoveryindex<-c("loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory")
+incentivesindex<-c("patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments")
 consumptiontaxrateindex<-c("vatrate")
 consumptiontaxbaseindex<-c("threshold","base")
 consumptiontaxcomplexity<-c("consumptiontime")
@@ -508,7 +508,7 @@ for (x in 1:((length(ALTsubcategories)-2)/2)){
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
 ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
-colnames(ISO_Country_Codes)<-c("country","ISO-2","ISO-3")
+colnames(ISO_Country_Codes)<-c("country","ISO_2","ISO_3")
 
 finalcategories<-merge(finalcategories,ISO_Country_Codes,by=c("country"))
 finalsubcategories<-merge(finalsubcategories,ISO_Country_Codes,by=c("country"))
@@ -597,7 +597,7 @@ United_States<-finalcategories[finalcategories$country=="United States",]
 #Changes from 2018 index
 M <- merge(Final2019,Final2018,by="country")
 #drop ISO variables
-drop_iso<-names(M) %in% c("ISO-2.x","ISO-3.x","ISO-2.y","ISO-3.y")
+drop_iso<-names(M) %in% c("ISO_2.x","ISO_3.x","ISO_2.y","ISO_3.y")
 M<-M[!drop_iso]
 
 Changes <- M[,grepl("*\\.x$",names(M))] - M[,grepl("*\\.y$",names(M))]
