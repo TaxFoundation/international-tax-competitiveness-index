@@ -62,7 +62,7 @@ rawdata$transfer_tax<-as.numeric(rawdata$transfer_tax)
 rawdata$asset_tax<-as.numeric(rawdata$asset_tax)
 rawdata$capital_duties<-as.numeric(rawdata$capital_duties)
 rawdata$financial_transaction_tax<-as.numeric(rawdata$financial_transaction_tax)
-rawdata$capgainsindex<-as.numeric(rawdata$capgainsindex)
+rawdata$index_capital_gains<-as.numeric(rawdata$index_capital_gains)
 rawdata$taxtreaties<-as.numeric(rawdata$taxtreaties)
 rawdata$countrylimitations<-as.numeric(rawdata$countrylimitations)
 
@@ -130,13 +130,13 @@ ALTscores<-ALTscores[-3]
 #24 asset_tax
 #25 capital_duties
 #26 financial_transaction_tax
-#27 capgainsrate
-#29 divrate
-#30 incrate
-#31 progressivity
-#32 taxwedge
-#33 laborpayments
-#34 labortime
+#27 capital_gains_rate
+#29 dividends_rate
+#30 top_income_rate
+#31 threshold_top_income_rate
+#32 tax_wedge
+#33 labor_payments
+#34 labor_time
 #37 divwithhold
 #38 intwithhold
 #39 roywithhold
@@ -146,7 +146,7 @@ ALTscores<-ALTscores[-3]
 
 flip<-c("corporate_rate","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments","vat_rate","vat_threshold","consumption_time",
         "property_tax","property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties",
-        "financial_transaction_tax","capgainsrate","divrate","incrate","progressivity","taxwedge","laborpayments","labortime",
+        "financial_transaction_tax","capital_gains_rate","dividends_rate","top_income_rate","threshold_top_income_rate","tax_wedge","labor_payments","labor_time",
         "divwithhold","intwithhold","roywithhold","cfcrules","countrylimitations","thincap")
 
 
@@ -205,15 +205,15 @@ for (i in flip) {
     #25 capital_duties
     #26 financial_transaction_taxactiontaxes
   #Capital Gains and Dividends
-    #27 capgainsrates
-    #29 divrate
+    #27 capital_gains_rates
+    #29 dividends_rate
   #income taxes
-    #30 incrate
-    #31 progressivity
-    #32 taxwedge
+    #30 top_income_rate
+    #31 threshold_top_income_rate
+    #32 tax_wedge
   #income complexity
-    #33 laborpayments
-    #34 labortime
+    #33 labor_payments
+    #34 labor_time
   #territoriality
     #35 dividendexemption
     #36 capgainsexemption
@@ -237,9 +237,9 @@ consumptiontaxcomplexity<-c("consumption_time")
 realpropertyindex<-c("property_tax","property_tax_collections")
 wealthtaxesindex<-c("net_wealth","estate_or_inheritance_tax")
 capitaltaxesindex<-c("transfer_tax","asset_tax","capital_duties","financial_transaction_tax")
-capgainsdividindex<-c("capgainsrate","divrate")
-incometaxindex<-c("incrate","progressivity","taxwedge")
-incomecomplexindex<-c("laborpayments","labortime")
+capgainsdividindex<-c("capital_gains_rate","dividends_rate")
+incometaxindex<-c("top_income_rate","threshold_top_income_rate","tax_wedge")
+incomecomplexindex<-c("labor_payments","labor_time")
 terrindex<-c("dividendexempt","capgainsexemption","countrylimitations")
 withholdingindex<-c("divwithhold","intwithhold","roywithhold","taxtreaties")
 regsindex<-c("cfcrules","thincap")
