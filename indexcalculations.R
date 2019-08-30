@@ -56,19 +56,19 @@ rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018,rawda
 
 rawdata$patent_box<-as.numeric(rawdata$patent_box)
 rawdata$r_and_d_credit<-as.numeric(rawdata$r_and_d_credit)
-rawdata$netwealth<-as.numeric(rawdata$netwealth)
+rawdata$net_wealth<-as.numeric(rawdata$net_wealth)
 rawdata$`estate/inheritance tax`<-as.numeric(rawdata$`estate/inheritance tax`)
-rawdata$transfertaxes<-as.numeric(rawdata$transfertaxes)
-rawdata$Assettaxes<-as.numeric(rawdata$Assettaxes)
-rawdata$capitalduties<-as.numeric(rawdata$capitalduties)
-rawdata$financialtrans<-as.numeric(rawdata$financialtrans)
+rawdata$transfer_tax<-as.numeric(rawdata$transfer_tax)
+rawdata$asset_tax<-as.numeric(rawdata$asset_tax)
+rawdata$capital_duties<-as.numeric(rawdata$capital_duties)
+rawdata$financial_transaction_tax<-as.numeric(rawdata$financial_transaction_tax)
 rawdata$capgainsindex<-as.numeric(rawdata$capgainsindex)
 rawdata$taxtreaties<-as.numeric(rawdata$taxtreaties)
 rawdata$countrylimitations<-as.numeric(rawdata$countrylimitations)
 
 
 #Rename Estate tax variable
-rawdata$estate.inheritance.tax<-rawdata$`estate/inheritance tax`
+rawdata$estate_or_inheritance_tax<-rawdata$`estate/inheritance tax`
 out<-c("estate/inheritance tax")
 rawdata<-rawdata[,!names(rawdata) %in% out]
 
@@ -122,14 +122,14 @@ ALTscores<-ALTscores[-3]
 #15 vat_rate
 #16 vat_threshold
 #18 consumption_time
-#19 propertytaxes
-#20 propertytaxcollections
-#21 netwealth
-#22 estate.inheritance.tax
-#23 transfertaxes
-#24 Assettaxes
-#25 capitalduties
-#26 financialtrans
+#19 property_tax
+#20 property_tax_collections
+#21 net_wealth
+#22 estate_or_inheritance_tax
+#23 transfer_tax
+#24 asset_tax
+#25 capital_duties
+#26 financial_transaction_tax
 #27 capgainsrate
 #29 divrate
 #30 incrate
@@ -145,8 +145,8 @@ ALTscores<-ALTscores[-3]
 #43 thincap
 
 flip<-c("corporate_rate","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments","vat_rate","vat_threshold","consumption_time",
-        "propertytaxes","propertytaxescollections","netwealth","estate.inheritance.tax","transfertaxes","Assettaxes","capitalduties",
-        "financialtrans","capgainsrate","divrate","incrate","progressivity","taxwedge","laborpayments","labortime",
+        "property_tax","property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties",
+        "financial_transaction_tax","capgainsrate","divrate","incrate","progressivity","taxwedge","laborpayments","labortime",
         "divwithhold","intwithhold","roywithhold","cfcrules","countrylimitations","thincap")
 
 
@@ -194,16 +194,16 @@ for (i in flip) {
   #Consumption Tax Complexity
     #18 consumption_time
   #Real Property Taxes
-    #19 propertytaxes
+    #19 property_tax
     #20 propertycollections
   #Wealth Taxes
-    #21 netwealth
+    #21 net_wealth
     #22 estate/inheritance
   #Capital Taxes
-    #23 Transfertaxes
-    #24 assettaxes
-    #25 capitalduties
-    #26 financialtransactiontaxes
+    #23 transfer_tax
+    #24 asset_tax
+    #25 capital_duties
+    #26 financial_transaction_taxactiontaxes
   #Capital Gains and Dividends
     #27 capgainsrates
     #29 divrate
@@ -234,9 +234,9 @@ incentivesindex<-c("patent_box","r_and_d_credit","corporate_time","profit_paymen
 consumptiontaxrateindex<-c("vat_rate")
 consumptiontaxvat_baseindex<-c("vat_threshold","vat_base")
 consumptiontaxcomplexity<-c("consumption_time")
-realpropertyindex<-c("propertytaxes","propertytaxescollections")
-wealthtaxesindex<-c("netwealth","estate.inheritance.tax")
-capitaltaxesindex<-c("transfertaxes","Assettaxes","capitalduties","financialtrans")
+realpropertyindex<-c("property_tax","property_tax_collections")
+wealthtaxesindex<-c("net_wealth","estate_or_inheritance_tax")
+capitaltaxesindex<-c("transfer_tax","asset_tax","capital_duties","financial_transaction_tax")
 capgainsdividindex<-c("capgainsrate","divrate")
 incometaxindex<-c("incrate","progressivity","taxwedge")
 incomecomplexindex<-c("laborpayments","labortime")
