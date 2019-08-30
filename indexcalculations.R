@@ -75,8 +75,8 @@ rawdata<-rawdata[,!names(rawdata) %in% out]
 #Order variables for easier working
 rawdata<-rawdata[c("ISO_2","ISO_3","country",
                  "corporate_rate","loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments",
-                 "top_income_rate","threshold_top_income_rate","tax_wedge","labor_payments","labor_time","capital_gains_rate","index_capital_gains","dividends_rate",
-                 "vat_rate","vat_threshold","vat_base","consumption_time",
+                 "top_income_rate","vat_threshold_top_income_rate","tax_wedge","labor_payments","labor_time","capital_gains_rate","index_capital_gains","dividends_rate",
+                 "vat_rate","vat_vat_threshold","vat_base","consumption_time",
                  "property_tax", "property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax",
                  "dividends_exemption","capital_gains_exemption","country_limitations","dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties","cfc_rules","thin_capitalization_rules")]
 
@@ -119,9 +119,9 @@ ALTscores<-ALTscores[-3]
 #12 corporate_time
 #13 profit_payments
 #14 other_payments
-#15 vatrate
-#16 threshold
-#18 consumptiontime
+#15 vat_rate
+#16 vat_threshold
+#18 consumption_time
 #19 propertytaxes
 #20 propertytaxcollections
 #21 netwealth
@@ -144,7 +144,7 @@ ALTscores<-ALTscores[-3]
 #42 countrylimitations
 #43 thincap
 
-flip<-c("corporate_rate","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments","vatrate","threshold","consumptiontime",
+flip<-c("corporate_rate","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments","vat_rate","vat_threshold","consumption_time",
         "propertytaxes","propertytaxescollections","netwealth","estate.inheritance.tax","transfertaxes","Assettaxes","capitalduties",
         "financialtrans","capgainsrate","divrate","incrate","progressivity","taxwedge","laborpayments","labortime",
         "divwithhold","intwithhold","roywithhold","cfcrules","countrylimitations","thincap")
@@ -187,12 +187,12 @@ for (i in flip) {
     #13 profit_payments
     #14 other_payments
   #Consumption Tax Rate
-    #15 vatrate
-  #Consumption Tax Base
-    #16 threshold
-    #17 base
+    #15 vat_rate
+  #Consumption Tax vat_base
+    #16 vat_threshold
+    #17 vat_base
   #Consumption Tax Complexity
-    #18 consumptiontime
+    #18 consumption_time
   #Real Property Taxes
     #19 propertytaxes
     #20 propertycollections
@@ -231,9 +231,9 @@ for (i in flip) {
 corporaterateindex<-c("corporate_rate")
 costrecoveryindex<-c("loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory")
 incentivesindex<-c("patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments")
-consumptiontaxrateindex<-c("vatrate")
-consumptiontaxbaseindex<-c("threshold","base")
-consumptiontaxcomplexity<-c("consumptiontime")
+consumptiontaxrateindex<-c("vat_rate")
+consumptiontaxvat_baseindex<-c("vat_threshold","vat_base")
+consumptiontaxcomplexity<-c("consumption_time")
 realpropertyindex<-c("propertytaxes","propertytaxescollections")
 wealthtaxesindex<-c("netwealth","estate.inheritance.tax")
 capitaltaxesindex<-c("transfertaxes","Assettaxes","capitalduties","financialtrans")
@@ -251,7 +251,7 @@ subcategories$corporaterate<-apply((zscores[corporaterateindex]*(1/length(corpor
 subcategories$costrecovery<-apply((zscores[costrecoveryindex]*(1/length(costrecoveryindex))),1,sum)
 subcategories$incentives<-apply((zscores[incentivesindex]*(1/length(incentivesindex))),1,sum)
 subcategories$consumptiontaxrate<-apply((zscores[consumptiontaxrateindex]*(1/length(consumptiontaxrateindex))),1,sum)
-subcategories$consumptiontaxbase<-apply((zscores[consumptiontaxbaseindex]*(1/length(consumptiontaxbaseindex))),1,sum)
+subcategories$consumptiontaxvat_base<-apply((zscores[consumptiontaxvat_baseindex]*(1/length(consumptiontaxvat_baseindex))),1,sum)
 subcategories$consumptiontaxcomplexity<-apply((zscores[consumptiontaxcomplexity]*(1/length(consumptiontaxcomplexity))),1,sum)
 subcategories$realpropertytax<-apply((zscores[realpropertyindex]*(1/length(realpropertyindex))),1,sum)
 subcategories$wealthtaxes<-apply((zscores[wealthtaxesindex]*(1/length(wealthtaxesindex))),1,sum)
@@ -272,7 +272,7 @@ ALTsubcategories$corporaterate<-apply((ALTscores[corporaterateindex]*(1/length(c
 ALTsubcategories$costrecovery<-apply((ALTscores[costrecoveryindex]*(1/length(costrecoveryindex))),1,sum)
 ALTsubcategories$incentives<-apply((ALTscores[incentivesindex]*(1/length(incentivesindex))),1,sum)
 ALTsubcategories$consumptiontaxrate<-apply((ALTscores[consumptiontaxrateindex]*(1/length(consumptiontaxrateindex))),1,sum)
-ALTsubcategories$consumptiontaxbase<-apply((ALTscores[consumptiontaxbaseindex]*(1/length(consumptiontaxbaseindex))),1,sum)
+ALTsubcategories$consumptiontaxvat_base<-apply((ALTscores[consumptiontaxvat_baseindex]*(1/length(consumptiontaxvat_baseindex))),1,sum)
 ALTsubcategories$consumptiontaxcomplexity<-apply((ALTscores[consumptiontaxcomplexity]*(1/length(consumptiontaxcomplexity))),1,sum)
 ALTsubcategories$realpropertytax<-apply((ALTscores[realpropertyindex]*(1/length(realpropertyindex))),1,sum)
 ALTsubcategories$wealthtaxes<-apply((ALTscores[wealthtaxesindex]*(1/length(wealthtaxesindex))),1,sum)
@@ -289,7 +289,7 @@ ALTsubcategories$intregulations<-apply((ALTscores[regsindex]*(1/length(regsindex
 
 #Same thing as above
 corporateindex<-c("corporaterate","costrecovery","incentives")
-consumptionindex<-c("consumptiontaxrate","consumptiontaxbase","consumptiontaxcomplexity")
+consumptionindex<-c("consumptiontaxrate","consumptiontaxvat_base","consumptiontaxcomplexity")
 propertyindex<-c("realpropertytax","wealthtaxes","capitaltaxes")
 incomeindex<-c("capgainsanddividends","incometax","incometaxcomplexity")
 internationalindex<-c("territorial","withholdingtaxes","intregulations")
@@ -384,7 +384,7 @@ subcategories<-ddply(subcategories,
                      costrecoveryrank = rank(-costrecovery,ties.method = "min"),
                      incentivesrank = rank(-incentives,ties.method = "min"),
                      consumptiontaxraterank = rank(-consumptiontaxrate,ties.method = "min"),
-                     consumptiontaxbaserank = rank(-consumptiontaxbase,ties.method = "min"),
+                     consumptiontaxvat_baserank = rank(-consumptiontaxvat_base,ties.method = "min"),
                      consumptiontaxcomplexityrank = rank(-consumptiontaxcomplexity,ties.method = "min"),
                      realpropertytaxrank = rank(-realpropertytax,ties.method = "min"),
                      wealthtaxesrank = rank(-wealthtaxes,ties.method = "min"),
@@ -406,7 +406,7 @@ ALTsubcategories<-ddply(ALTsubcategories,
                         costrecoveryrank = rank(-costrecovery,ties.method = "min"),
                         incentivesrank = rank(-incentives,ties.method = "min"),
                         consumptiontaxraterank = rank(-consumptiontaxrate,ties.method = "min"),
-                        consumptiontaxbaserank = rank(-consumptiontaxbase,ties.method = "min"),
+                        consumptiontaxvat_baserank = rank(-consumptiontaxvat_base,ties.method = "min"),
                         consumptiontaxcomplexityrank = rank(-consumptiontaxcomplexity,ties.method = "min"),
                         realpropertytaxrank = rank(-realpropertytax,ties.method = "min"),
                         wealthtaxesrank = rank(-wealthtaxes,ties.method = "min"),
