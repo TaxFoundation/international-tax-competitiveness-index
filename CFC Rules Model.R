@@ -38,25 +38,7 @@ CFC_Rules_2019 <- read_csv("./source-data/cfcrules2019.csv")
 
 CFC_Rules<-rbind(CFC_Rules_2014,CFC_Rules_2015,CFC_Rules_2016,CFC_Rules_2017,CFC_Rules_2018,CFC_Rules_2019)
 
-#Load ISO Country Codes####
-#Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
-ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
-colnames(ISO_Country_Codes)<-c("country","ISO_2","ISO_3")
-
-CFC_Rules<-merge(CFC_Rules,ISO_Country_Codes,by="country")
-
-colnames(CFC_Rules)<-c("country","exists","active","exemption","year","ISO_2","ISO_3")
-CFC_Rules<-CFC_Rules[c("ISO_2","ISO_3","country","year","exists","active","exemption")]
-write.csv(data, file = "./source-data/cfcrules2014.csv",row.names=F)
-write.csv(data, file = "./source-data/cfcrules2014.csv",row.names=F)
-write.csv(data, file = "./source-data/cfcrules2014.csv",row.names=F)
-write.csv(data, file = "./source-data/cfcrules2014.csv",row.names=F)
-write.csv(data, file = "./source-data/cfcrules2014.csv",row.names=F)
-write.csv(data, file = "./source-data/cfcrules2014.csv",row.names=F)
+CFC_Rules$cfc_rules<-rowMeans(CFC_Rules[,5:7])
 
 
-
-CFC_Rules$cfc_rules<-rowMeans(CFC_Rules[,2:4])
-
-
-write.csv(data, file = "./intermediate-outputs/CFC Rules Data.csv",row.names=F)
+write.csv(CFC_Rules, file = "./intermediate-outputs/CFC Rules Data.csv",row.names=F)
