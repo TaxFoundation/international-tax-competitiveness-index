@@ -302,7 +302,7 @@ columns<-c("Country",
 
 TableA_Corporate<-rbind(headers,columns,TableA_Corporate)
 
-write.csv(TableA_Corporate,"./final-outputs/Appendix-Table-CSV/Table A Corporate.csv",row.names = F)
+write.csv(TableA_Corporate,"./final-outputs/Table A Corporate.csv",row.names = F)
 
 #Table B Individual####
 
@@ -390,7 +390,7 @@ notes_3<-c("(b) After any imputation, credit, or offset.",
            "")
 TableB_Individual<-rbind(headers,columns,TableB_Individual,notes_1,notes_2,notes_3)
 
-write.csv(TableB_Individual,"./final-outputs/Appendix-Table-CSV/Table B Individual.csv",row.names = F)
+write.csv(TableB_Individual,"./final-outputs/Table B Individual.csv",row.names = F)
 
 #Table C Consumption####
 #Raw Data
@@ -464,7 +464,7 @@ notes_4<-c("(c) The United States' rate is the combined weighted average state a
            "")
 TableC_Consumption<-rbind(headers,columns,TableC_Consumption,notes_1,notes_2,notes_3,notes_4)
 
-write.csv(TableC_Consumption,"./final-outputs/Appendix-Table-CSV/Table C Consumption.csv",row.names = F)
+write.csv(TableC_Consumption,"./final-outputs/Table C Consumption.csv",row.names = F)
 
 #Table D Property####
 #Raw Data
@@ -626,7 +626,7 @@ notes_7<-c("(f) Nine U.S. states levy a tax on intangible personal property.",
            "")
 TableD_Property<-rbind(headers,columns,TableD_Property,notes_1,notes_2,notes_3,notes_4,notes_5,notes_6,notes_7)
 
-write.csv(TableD_Property,"./final-outputs/Appendix-Table-CSV/Table D Property.csv",row.names = F)
+write.csv(TableD_Property,"./final-outputs/Table D Property.csv",row.names = F)
 
 #Table E International####
 #Raw Data
@@ -736,4 +736,4 @@ columns<-c("Country",
 
 TableE_International<-rbind(headers,columns,TableE_International)
 
-write.csv(TableE_International,"./final-outputs/Appendix-Table-CSV/Table E International.csv",row.names = F)
+write.csv(TableE_International,"./final-outputs/Table E International.csv",row.names = F)
