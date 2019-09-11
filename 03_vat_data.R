@@ -38,7 +38,7 @@ using(stringr)
 
 #VAT Rates####
 
-vat_rates <- read_excel("source-data/vat-gst-rates-ctt-trends.xlsx", 
+vat_rates <- read_excel("source-data/oecd_vat_gst_rates_ctt_trends.xlsx", 
                                        range = "A4:s39")
 
 vat_rates<-vat_rates[-c(3:13)]
@@ -69,9 +69,9 @@ vat_rates$country <- str_remove_all(vat_rates$country, "[*]")
 write.csv(vat_rates,"./intermediate-outputs/vat_rates.csv",row.names = FALSE)
 
 #VAT Thresholds ####
-vat_thresholds_2018 <- read_excel("source-data/vat-gst-annual-turnover-concessions-ctt-trends.xlsx", sheet = "2018", range = "A4:e42")
-vat_thresholds_2016 <- read_excel("source-data/vat-gst-annual-turnover-concessions-ctt-trends.xlsx", sheet = "2016", range = "a4:e41")
-vat_thresholds_2014 <- read_excel("source-data/vat-gst-annual-turnover-concessions-ctt-trends.xlsx", sheet = "2014", range = "a4:d37")
+vat_thresholds_2018 <- read_excel("source-data/oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx", sheet = "2018", range = "A4:e42")
+vat_thresholds_2016 <- read_excel("source-data/oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx", sheet = "2016", range = "a4:e41")
+vat_thresholds_2014 <- read_excel("source-data/oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx", sheet = "2014", range = "a4:d37")
 
 
 
@@ -110,7 +110,7 @@ vat_threshold<-c("0","0","0","0","0","0")
 year<-c("2014","2015","2016","2017","2018","2019")
 USA <- data.frame(country,vat_threshold,year)
 
-#Check source C:\Github\international-tax-competitiveness-index\source-data\VAT Thresholds_LVA and LTU_Previous Years.xlsx
+#Check source C:\Github\international-tax-competitiveness-index\source-data\vat_thresholds_lva_ltu_previous_years.xlsx
 country<-c("Latvia","Latvia")
 vat_threshold<-c("100402","100604")
 year<-c("2014","2015")
@@ -128,7 +128,7 @@ write.csv(vat_thresholds,"./intermediate-outputs/vat_thresholds.csv",row.names =
 
 #Vat Base ####
 #Source data: https://doi.org/10.1787/888933890122
-vat_base <- read_excel("source-data/vat-revenue-ratio-calculations.xlsx", 
+vat_base <- read_excel("source-data/oecd_vat_revenue_ratio_calculations.xlsx", 
                                              sheet = "Sheet1", range = "A7:U43")
 vat_base <- vat_base[-c(2:18)]
 
