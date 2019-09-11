@@ -471,43 +471,64 @@ write.csv(TableC_Consumption,"./final-outputs/Appendix-Table-CSV/Table C Consump
 TableD_Property_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
 #names(TableD_Property_raw)
 
-keep<-c("country","propertytaxes","propertytaxescollections","netwealth","estate.inheritance.tax","transfertaxes","Assettaxes","capitalduties","financialtrans")
+keep<-c("country","property_tax", 
+        "property_tax_collections",
+        "net_wealth",
+        "estate_or_inheritance_tax",
+        "transfer_tax",
+        "asset_tax",
+        "capital_duties",
+        "financial_transaction_tax")
 TableD_Property_raw<-TableD_Property_raw[keep]
-TableD_Property_raw$deductible<-if_else(TableD_Property_raw$propertytaxes==0.5,1,0)
+TableD_Property_raw$property_taxes_deductible<-if_else(TableD_Property_raw$property_tax==0.5,1,0)
 
 #Text Data
 TableD_Property_text<-read_csv("./source-data/TableD_Property.csv")
 
 
-colnames(TableD_Property_text)<-c("country","propertytaxes","deductible","propertytaxescollections","netwealth","estate.inheritance.tax",  
-                                  "transfertaxes","Assettaxes","capitalduties","financialtrans")
+colnames(TableD_Property_text)<-c("country","property_tax",
+                                  "property_taxes_deductible",
+                                  "property_tax_collections",
+                                  "net_wealth",
+                                  "estate_or_inheritance_tax",
+                                  "transfer_tax",
+                                  "asset_tax",
+                                  "capital_duties",
+                                  "financial_transaction_tax")
 TableD_Property_text<-TableD_Property_text[2:37,]
 
 
 #Replace raw data with text data for select columns
-replace<-c("propertytaxes","estate.inheritance.tax","transfertaxes","Assettaxes")
+replace<-c("property_tax","estate_or_inheritance_tax","transfer_tax","asset_tax")
 TableD_Property_text<-TableD_Property_text[replace]
 TableD_Property<-TableD_Property_raw[,!names(TableD_Property_raw) %in% replace]
 TableD_Property<-cbind(TableD_Property,TableD_Property_text)
 
-TableD_Property<-TableD_Property[c("country","propertytaxes","deductible","propertytaxescollections","netwealth","estate.inheritance.tax",  
-                                   "transfertaxes","Assettaxes","capitalduties","financialtrans")]
+TableD_Property<-TableD_Property[c("country","property_tax", 
+                                   "property_taxes_deductible",
+                                   "property_tax_collections",
+                                   "net_wealth",
+                                   "estate_or_inheritance_tax",
+                                   "transfer_tax",
+                                   "asset_tax",
+                                   "capital_duties",
+                                   "financial_transaction_tax")]
 
 #Format variables
-#deductible
-TableD_Property$deductible<-if_else(TableD_Property$deductible==1,"Yes","No")
+#property_taxes_deductible
+TableD_Property$property_taxes_deductible<-if_else(TableD_Property$property_taxes_deductible==1,"Yes","No")
 
-#propertytaxescollections
-TableD_Property$propertytaxescollections<-paste((formatC(round(TableD_Property$propertytaxescollections,digits=1),format = "f",digits=1)),"%",sep="")
+#property_tax_collections
+TableD_Property$property_tax_collections<-paste((formatC(round(TableD_Property$property_tax_collections,digits=1),format = "f",digits=1)),"%",sep="")
 
-#netwealth
-TableD_Property$netwealth<-if_else(TableD_Property$netwealth==1,"Yes","No")
+#net_wealth
+TableD_Property$net_wealth<-if_else(TableD_Property$net_wealth==1,"Yes","No")
 
-#capitalduties
-TableD_Property$capitalduties<-if_else(TableD_Property$capitalduties==1,"Yes","No")
+#capital_duties
+TableD_Property$capital_duties<-if_else(TableD_Property$capital_duties==1,"Yes","No")
 
-#financialtrans
-TableD_Property$financialtrans<-if_else(TableD_Property$financialtrans==1,"Yes","No")
+#financial_transaction_tax
+TableD_Property$financial_transaction_tax<-if_else(TableD_Property$financial_transaction_tax==1,"Yes","No")
 
 
 headers<-c("",
@@ -523,7 +544,7 @@ headers<-c("",
 
 columns<-c("Country",
            "Real Property or Land Tax",
-           "Real Property Taxes Deductible",
+           "Real Property Taxes property_taxes_deductible",
            "Real Property Taxes as % of Capital Stock",
            "Net Wealth Tax",
            "Estate/Inheritance Tax",
@@ -606,7 +627,6 @@ notes_7<-c("(f) Nine U.S. states levy a tax on intangible personal property.",
 TableD_Property<-rbind(headers,columns,TableD_Property,notes_1,notes_2,notes_3,notes_4,notes_5,notes_6,notes_7)
 
 write.csv(TableD_Property,"./final-outputs/Appendix-Table-CSV/Table D Property.csv",row.names = F)
-write.xlsx(TableD_Property,"./final-outputs/Table D Property.xlsx")
 
 #Table E International####
 #Raw Data
