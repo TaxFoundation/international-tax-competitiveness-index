@@ -178,9 +178,10 @@ property_tax_revenue$property_tax_collections<-as.numeric(property_tax_revenue$p
 property_tax_revenue$property_tax_collections<-(property_tax_revenue$property_tax_collections)*1000
 
 #Merge Property Tax Revenues data with Capital Stock Data
-Property_Tax<-merge(property_tax_revenue,capital_stock_12_17,by=c("isocode","year"))
-Property_Tax$property_tax_collections<-(Property_Tax$property_tax_collections/Property_Tax$capital_stock)*100
-Property_Tax<-Property_Tax[c("country","year","property_tax_collections","isocode")]
-colnames(Property_Tax)<-c("country","year","property_tax_collections","ISO_3") 
-write.csv(Property_Tax, file = "./intermediate-outputs/property_tax_data.csv", row.names = FALSE)
+property_tax<-merge(property_tax_revenue,capital_stock_12_17,by=c("isocode","year"))
+property_tax$property_tax_collections<-(property_tax$property_tax_collections/property_tax$capital_stock)*100
+property_tax<-property_tax[c("country","year","property_tax_collections","isocode")]
+colnames(property_tax)<-c("country","year","property_tax_collections","ISO_3")
+property_tax<-property_tax[c("ISO_3","country","year","property_tax_collections")]
+write.csv(property_tax, file = "./intermediate-outputs/property_tax_data.csv", row.names = FALSE)
 
