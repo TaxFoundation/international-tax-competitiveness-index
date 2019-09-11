@@ -164,4 +164,15 @@ vat_thresholds <- read_csv("./intermediate-outputs/vat_thresholds.csv")
 vat_data<-merge(vat_rates,vat_thresholds,by=c("country","year"))
 vat_data<-merge(vat_data,vat_base,by=c("country","year"))
 
+#Load ISO Country Codes####
+#Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
+
+iso_country_codes <- read_csv("./source-data/iso_country_codes.csv")
+colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
+
+vat_data<-merge(vat_data,iso_country_codes,by=c("country"))
+vat_data<-vat_data[c("ISO_2","ISO_3","country","year","vat_rate","vat_threshold","vat_base")]
+
+
+
 write.csv(vat_data,file = "./intermediate-outputs/vat_data.csv",row.names=F)
