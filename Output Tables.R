@@ -310,34 +310,40 @@ write.csv(TableA_Corporate,"./final-outputs/Appendix-Table-CSV/Table A Corporate
 TableB_Individual_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
 #names(TableB_Individual_raw)
 
-keep<-c("country","incrate","progressivity","taxwedge","laborpayments","labortime","capgainsrate","divrate")
+keep<-c("country","top_income_rate",
+        "threshold_top_income_rate",
+        "tax_wedge",
+        "labor_payments",
+        "labor_time",
+        "capital_gains_rate",
+        "dividends_rate")
 TableB_Individual<-TableB_Individual_raw[keep]
 
 
 #Format variables
-#incrate
-TableB_Individual$incrate<-TableB_Individual$incrate*100
-TableB_Individual$incrate<-paste((formatC(round(TableB_Individual$incrate,digits=1),format = "f",digits=1)),"%",sep="")
+#top_income_rate
+TableB_Individual$top_income_rate<-TableB_Individual$top_income_rate*100
+TableB_Individual$top_income_rate<-paste((formatC(round(TableB_Individual$top_income_rate,digits=1),format = "f",digits=1)),"%",sep="")
 
-#progressivity
-TableB_Individual$progressivity<-(formatC(round(TableB_Individual$progressivity,digits=1),format = "f",digits=1))
+#threshold_top_income_rate
+TableB_Individual$threshold_top_income_rate<-(formatC(round(TableB_Individual$threshold_top_income_rate,digits=1),format = "f",digits=1))
 
-#taxwedge
-TableB_Individual$taxwedge<-(formatC(round(TableB_Individual$taxwedge,digits=1),format = "f",digits=1))
+#tax_wedge
+TableB_Individual$tax_wedge<-(formatC(round(TableB_Individual$tax_wedge,digits=1),format = "f",digits=1))
 
-#laborpayments
-TableB_Individual$laborpayments<-(formatC(round(TableB_Individual$laborpayments,digits=0),format = "f",digits=0))
+#labor_payments
+TableB_Individual$labor_payments<-(formatC(round(TableB_Individual$labor_payments,digits=0),format = "f",digits=0))
 
-#labortime
-TableB_Individual$labortime<-(formatC(round(TableB_Individual$labortime,digits=0),format = "f",digits=0))
+#labor_time
+TableB_Individual$labor_time<-(formatC(round(TableB_Individual$labor_time,digits=0),format = "f",digits=0))
 
-#capgainsrate
-TableB_Individual$capgainsrate<-TableB_Individual$capgainsrate*100
-TableB_Individual$capgainsrate<-paste((formatC(round(TableB_Individual$capgainsrate,digits=1),format = "f",digits=1)),"%",sep="")
+#capital_gains_rate
+TableB_Individual$capital_gains_rate<-TableB_Individual$capital_gains_rate*100
+TableB_Individual$capital_gains_rate<-paste((formatC(round(TableB_Individual$capital_gains_rate,digits=1),format = "f",digits=1)),"%",sep="")
 
-#divrate
-TableB_Individual$divrate<-TableB_Individual$divrate*100
-TableB_Individual$divrate<-paste((formatC(round(TableB_Individual$divrate,digits=1),format = "f",digits=1)),"%",sep="")
+#dividends_rate
+TableB_Individual$dividends_rate<-TableB_Individual$dividends_rate*100
+TableB_Individual$dividends_rate<-paste((formatC(round(TableB_Individual$dividends_rate,digits=1),format = "f",digits=1)),"%",sep="")
 
 headers<-c("",
            "Ordinary Income Taxes and Payroll Taxes",
@@ -385,7 +391,6 @@ notes_3<-c("(b) After any imputation, credit, or offset.",
 TableB_Individual<-rbind(headers,columns,TableB_Individual,notes_1,notes_2,notes_3)
 
 write.csv(TableB_Individual,"./final-outputs/Appendix-Table-CSV/Table B Individual.csv",row.names = F)
-write.xlsx(TableB_Individual,"./final-outputs/Table B Individual.xlsx")
 
 #Table C Consumption####
 #Raw Data
