@@ -35,7 +35,7 @@ using(countrycode)
 using(tidyverse)
 using(readxl)
 
-cbt<-read.csv("./source-data/CBT_tax_database_web_2019_all_ame.csv", header = TRUE, fill = TRUE, sep = ",")
+cbt<-read.csv("./source-data/cost_recovery_data.csv", header = TRUE, fill = TRUE, sep = ",")
 
 # not copying 2018 to 2019 to make it consistent with other variables that are lagged
 # copy 2018 cbt data to 2019
@@ -44,7 +44,7 @@ cbt<-read.csv("./source-data/CBT_tax_database_web_2019_all_ame.csv", header = TR
 # cbt <- rbind(cbt, year2019_preliminary)
 
 # gdp data
-gdp <- read.csv("./source-data/USDA_ERSInternationalMacroeconomicDataSet_GDP.csv", header = TRUE, fill = TRUE, sep = ",", fileEncoding = "UTF-8-BOM", check.names=FALSE)
+gdp <- read.csv("./source-data/usda_gdp_data.csv", header = TRUE, fill = TRUE, sep = ",", fileEncoding = "UTF-8-BOM", check.names=FALSE)
 gdp <- melt(gdp, id.vars = c("Country"))
 gdp$Country <- countrycode(gdp$Country, 'country.name', 'iso3c')
 names(gdp)[names(gdp) == 'Country'] <- 'country'
@@ -54,9 +54,9 @@ names(gdp)[names(gdp) == 'value'] <- 'gdp'
 #Alternative GDP source data 
 #GDP Data cleaning
 #Read in USDA data
-USDA_Projected<- read_excel("./source-data/ProjectedRealGDPValues.xlsx", range = "A11:K232")
+USDA_Projected<- read_excel("./source-data/projected_usda_ers_gdp_data.xlsx", range = "A11:K232")
 USDA_Projected<-USDA_Projected[,-c(2:8)]
-USDA_Historical<-read_excel("./source-data/HistoricalRealGDPValues.xls", range = "A11:AL232")
+USDA_Historical<-read_excel("./source-data/historical_usda_ers_gdp_data.xls", range = "A11:AL232")
 gdp<-merge(USDA_Historical,USDA_Projected,by="Country")
 colnames(gdp)[1]<-"Country"
 gdp<-na.omit(gdp)
