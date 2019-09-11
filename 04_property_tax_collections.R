@@ -40,7 +40,7 @@ using(stringr)
 
 #IMF Capital Stock Data
 
-IMF_Capital_Stock_Data <- read_excel("source-data/IMF Capital Stock Data.xlsx", 
+IMF_Capital_Stock_Data <- read_excel("source-data/imf_capital_stock_data.xlsx", 
                                      sheet = "Data")
 
 IMF_Capital_Stock_Data<-subset(IMF_Capital_Stock_Data,IMF_Capital_Stock_Data$year>2011)
