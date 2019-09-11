@@ -83,7 +83,7 @@ corporate_rate<-corporate_rate[c(1,4,5)]
 colnames(corporate_rate)<-c("Country","Year","corporate_rate")
 corporate_rate$corporate_rate<-corporate_rate$corporate_rate/100
 
-#Fix France 2019 CIT rate - source: https://www.pwc.com/us/en/tax-services/publications/insights/assets/pwc-france-proposes-digital-tax-delay-in-corporate-rate-reduction.pdf
+#Fix France 2019 CIT rate - source: https://home.kpmg/us/en/home/insights/2019/07/tnf-france-revised-phase-down-of-corporate-income-tax-rate-enacted.html
 
 corporate_rate<-corporate_rate[which(corporate_rate$corporate_rate!=0.3202300),]
 
