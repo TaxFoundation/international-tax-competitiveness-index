@@ -37,7 +37,7 @@ using(scales)
 
 #Creat .csv file from Country Profiles document
 
-columns<-c("country","ISO-2","ISO-3","Ranking","Strength1","Strength2","Strength3","Weakness1","Weakness2","Weakness3")
+columns<-c("country","ISO_2","ISO_3","ranking","strength_1","strength_2","strength_3","weakness_1","weakness_2","weakness_3")
 
 #Australia####
 Australia<-c("Australia","AU","AUS",
@@ -89,8 +89,8 @@ Chile<-c("Chile","CL","CHL",
          "Chile has poor treatment of corporate investments in machinery and buildings and does not allow companies to write off investment in intangibles.",
          "Chile has a worldwide tax system, while most countries have territorial provisions.")
 
-#CzechRepublic####
-CzechRepublic<-c("Czech Republic","CZ","CZE",
+#Czech_Republic####
+Czech_Republic<-c("Czech Republic","CZ","CZE",
                  "The Czech Republic ranks 10th overall on the 2019 International Tax Competitiveness Index, two spots better than in 2018.",
                  "The corporate rate of 19 percent is below the OECD average (23.6 percent), with above-average cost recovery provisions.",
                  "Taxes on labor are minimally distortive.",
@@ -272,8 +272,8 @@ Netherlands<-c("Netherlands",	"NL",	"NLD",
              "Companies are severely limited in the amount of net operating losses they can use to offset future profits or reduce past taxable income.")
 
 
-#NewZealand####
-NewZealand<-c("New Zealand",	"NZ",	"NZL",
+#New_Zealand####
+New_Zealand<-c("New Zealand",	"NZ",	"NZL",
              "New Zealand ranks 2nd overall on the 2019 International Tax Competitiveness Index, one spot better than in 2018.",
              "New Zealand allows corporate losses to be carried forward indefinitely, allowing businesses to be taxed on their average profitability.",
              "The VAT of 15 percent applies to nearly the entire potential tax base.",
@@ -312,8 +312,8 @@ Portugal<-c("Portugal",	"PT",	"PRT",
             "Companies are severely limited in the amount of net operating losses they can use to offset future profits and are unable to use losses to reduce past taxable income.",
             "The VAT of 23 percent applies to less than half of the potential tax base.")
 
-#SlovakRepublic####
-SlovakRepublic<-c("Slovak Republic",	"SK",	"SVK",
+#Slovak_Republic####
+Slovak_Republic<-c("Slovak Republic",	"SK",	"SVK",
                   "The Slovak Republic ranks 11th overall on the 2019 International Tax Competitiveness Index, one spot worse than in 2018.",
                   "The personal income rate on dividends is very low at 7 percent (compared to an OECD average of 23.8 percent).",
                   "The Slovak Republic has better-than-average tax treatment of business investment in machinery, buildings, and intangibles.",
@@ -371,8 +371,8 @@ Turkey<-c("Turkey",	"TR",	"TUR",
           "Turkey's VAT rate of 18 percent applies to just 40 percent of the potential tax base.",
           "Turkey has multiple distortionary property taxes with separate levies on real estate, estates, and financial transactions.")
 
-#UnitedKingdom####
-UnitedKingdom<-c("United Kingdom",	"GB",	"GBR",
+#United_Kingdom####
+United_Kingdom<-c("United Kingdom",	"GB",	"GBR",
              "The United Kingdom ranks 25th overall on the 2019 International Tax Competitiveness Index, one place better than in 2018.",
              "The corporate income tax rate is 19 percent, below the OECD average (23.6 percent).",
              "The UK has a territorial tax system exempting both foreign dividend and capital gains income without any country limitations.",
@@ -381,8 +381,8 @@ UnitedKingdom<-c("United Kingdom",	"GB",	"GBR",
              "Corporations are severely limited in the investment costs they are able to write off, particularly for industrial buildings.",
              "The VAT of 20 percent applies to less than half of the potential consumption tax base.")
 
-#UnitedStates####
-UnitedStates<-c("United States",	"US",	"USA",
+#United_States####
+United_States<-c("United States",	"US",	"USA",
              "The United States ranks 21st overall on the 2019 International Tax Competitiveness Index, the same as in 2018.",
              "The U.S. provides full expensing for business investments in machinery.",
              "The U.S. allows for Last-In-First-Out treatment of the cost of inventory.",
@@ -391,10 +391,10 @@ UnitedStates<-c("United States",	"US",	"USA",
              "The U.S. has a partial territorial system and does not exempt foreign capital gains income-it ranks as one of the most onerous international tax systems of any OECD nation.",
              "The real property tax burden is among the highest in the OECD.")
 
-country_profiles<-rbind(columns,Australia,Austria,Belgium,Canada,Chile,CzechRepublic,Denmark,Estonia,
+country_profiles<-rbind(columns,Australia,Austria,Belgium,Canada,Chile,Czech_Republic,Denmark,Estonia,
                         Finland,France,Germany,Greece,Hungary,Iceland,Ireland,Israel,Italy,Japan,
-                        Korea,Latvia,Lithuania,Luxembourg,Mexico,Netherlands,NewZealand,Norway,Poland,
-                        Portugal,SlovakRepublic,Slovenia,Spain,Sweden,Switzerland,Turkey,UnitedKingdom,UnitedStates)
+                        Korea,Latvia,Lithuania,Luxembourg,Mexico,Netherlands,New_Zealand,Norway,Poland,
+                        Portugal,Slovak_Republic,Slovenia,Spain,Sweden,Switzerland,Turkey,United_Kingdom,United_States)
 country_profiles<-as.data.frame(country_profiles[-1,])
 colnames(country_profiles)<-columns
 write.csv(country_profiles, file = "./final-outputs/country_profiles.csv",row.names=F)

@@ -70,7 +70,7 @@ OECD_Countries<-c("AUS",
                   "GBR",
                   "USA")
 
-#corprate####
+#corporate_rate####
 #Table_II1#
 dataset_list<-get_datasets()
 #dataset<-("Table_II1")
@@ -78,34 +78,22 @@ dataset_list<-get_datasets()
 #str(dstruc, max.level = 1)
 #dstruc$VAR_DESC
 
-corprate<-get_dataset("Table_II1",filter= list(c(OECD_Countries),c("COMB_CIT_RATE")), start_time = 2014)
-corprate<-corprate[c(1,4,5)]
-colnames(corprate)<-c("Country","Year","corprate")
-corprate$corprate<-corprate$corprate/100
+corporate_rate<-get_dataset("Table_II1",filter= list(c(OECD_Countries),c("COMB_CIT_RATE")), start_time = 2014)
+corporate_rate<-corporate_rate[c(1,4,5)]
+colnames(corporate_rate)<-c("Country","Year","corporate_rate")
+corporate_rate$corporate_rate<-corporate_rate$corporate_rate/100
 
 #Fix France 2019 CIT rate - source: https://www.pwc.com/us/en/tax-services/publications/insights/assets/pwc-france-proposes-digital-tax-delay-in-corporate-rate-reduction.pdf
 
-corprate<-corprate[which(corprate$corprate!=0.3202300),]
+corporate_rate<-corporate_rate[which(corporate_rate$corporate_rate!=0.3202300),]
 
 France<-data.frame("FRA","2019","0.3443")
-colnames(France)<-c("Country","Year","corprate")
+colnames(France)<-c("Country","Year","corporate_rate")
 
-corprate<-rbind(corprate,France)
+corporate_rate<-rbind(corporate_rate,France)
 
-#divrate####
-#Table_II4#
-#dataset<-("Table_II4")
-#dstruc<-get_data_structure(dataset)
-#str(dstruc, max.level = 1)
-#dstruc$VAR_DESC
-#dstruc$CL_TABLE_II4_STAT_DIV_TAX
 
-divrate<-get_dataset("Table_II4",filter= list(c(OECD_Countries),c("NET_PERS_TAX")), start_time = 2014)
-divrate<-divrate[c(1,4,5)]
-colnames(divrate)<-c("Country","Year","divrate")
-divrate$divrate<-divrate$divrate/100
-
-#incrate####
+#top_income_rate####
 #Table_I7#
 #dataset<-("Table_I7")
 #dstruc<-get_data_structure(dataset)
@@ -113,16 +101,16 @@ divrate$divrate<-divrate$divrate/100
 #dstruc$VAR_DESC
 #dstruc$CL_TABLE_I7_TAX
 
-incrate<-get_dataset("Table_I7",filter= list(c(OECD_Countries),c("PER_ARATE")), start_time = 2013)
-incrate<-incrate[c(1,5,6)]
-colnames(incrate)<-c("Country","Year","incrate")
-incrate$Year<-as.numeric(incrate$Year)
-incrate$Year<-incrate$Year+1
-incrate$incrate<-incrate$incrate/100
+top_income_rate<-get_dataset("Table_I7",filter= list(c(OECD_Countries),c("PER_ARATE")), start_time = 2013)
+top_income_rate<-top_income_rate[c(1,5,6)]
+colnames(top_income_rate)<-c("Country","Year","top_income_rate")
+top_income_rate$Year<-as.numeric(top_income_rate$Year)
+top_income_rate$Year<-top_income_rate$Year+1
+top_income_rate$top_income_rate<-top_income_rate$top_income_rate/100
 
 
 
-#progressivity####
+#threshold_top_income_rate####
 #Table_I7#
 #dataset<-("Table_I7")
 #dstruc<-get_data_structure(dataset)
@@ -132,12 +120,12 @@ incrate$incrate<-incrate$incrate/100
 
 threshold<-get_dataset("Table_I7",filter= list(c(OECD_Countries),c("THRESHOLD")), start_time = 2013)
 threshold<-threshold[c(1,5,6)]
-colnames(threshold)<-c("Country","Year","progressivity")
+colnames(threshold)<-c("Country","Year","threshold_top_income_rate")
 threshold$Year<-as.numeric(threshold$Year)
 threshold$Year<-threshold$Year+1
 
-#taxwedge####
-#martaxwedge
+#tax_wedge####
+#martax_wedge
 #Table_I4#
 #dataset<-("Table_I4")
 #dstruc<-get_data_structure(dataset)
@@ -146,21 +134,21 @@ threshold$Year<-threshold$Year+1
 #dstruc$INCOMEAW
 #dstruc$CL_TABLE_I4_MARGRATES
 
-martaxwedge<-get_dataset("Table_I4",filter= list(c(OECD_Countries),c("67","100","133","167"),c("TOT_TAX_WEDGE")), start_time = 2013)
+martax_wedge<-get_dataset("Table_I4",filter= list(c(OECD_Countries),c("67","100","133","167"),c("TOT_TAX_WEDGE")), start_time = 2013)
 
-martaxwedge<-martaxwedge[c(1,2,5,6)]
-colnames(martaxwedge)<-c("Country","Income","Year","martaxwedge")
-martaxwedge<-spread(martaxwedge,Year,martaxwedge)
+martax_wedge<-martax_wedge[c(1,2,5,6)]
+colnames(martax_wedge)<-c("Country","Income","Year","martax_wedge")
+martax_wedge<-spread(martax_wedge,Year,martax_wedge)
 
-martaxwedge2013<-aggregate(martaxwedge$`2013`,by=list(martaxwedge$Country),FUN=mean)
-martaxwedge2014<-aggregate(martaxwedge$`2014`,by=list(martaxwedge$Country),FUN=mean)
-martaxwedge2015<-aggregate(martaxwedge$`2015`,by=list(martaxwedge$Country),FUN=mean)
-martaxwedge2016<-aggregate(martaxwedge$`2016`,by=list(martaxwedge$Country),FUN=mean)
-martaxwedge2017<-aggregate(martaxwedge$`2017`,by=list(martaxwedge$Country),FUN=mean)
-martaxwedge2018<-aggregate(martaxwedge$`2018`,by=list(martaxwedge$Country),FUN=mean)
+martax_wedge2013<-aggregate(martax_wedge$`2013`,by=list(martax_wedge$Country),FUN=mean)
+martax_wedge2014<-aggregate(martax_wedge$`2014`,by=list(martax_wedge$Country),FUN=mean)
+martax_wedge2015<-aggregate(martax_wedge$`2015`,by=list(martax_wedge$Country),FUN=mean)
+martax_wedge2016<-aggregate(martax_wedge$`2016`,by=list(martax_wedge$Country),FUN=mean)
+martax_wedge2017<-aggregate(martax_wedge$`2017`,by=list(martax_wedge$Country),FUN=mean)
+martax_wedge2018<-aggregate(martax_wedge$`2018`,by=list(martax_wedge$Country),FUN=mean)
 
 
-#avgtaxwedge
+#avgtax_wedge
 #Table_I5#
 #dataset<-("Table_I5")
 #dstruc<-get_data_structure(dataset)
@@ -169,53 +157,65 @@ martaxwedge2018<-aggregate(martaxwedge$`2018`,by=list(martaxwedge$Country),FUN=m
 #dstruc$INCOMEAW
 #dstruc$CL_TABLE_I4_MARGRATES
 
-avgtaxwedge<-get_dataset("Table_I5",filter= list(c(OECD_Countries),c("67","100","133","167"),c("TOT_TAX_WEDGE")), start_time = 2013)
+avgtax_wedge<-get_dataset("Table_I5",filter= list(c(OECD_Countries),c("67","100","133","167"),c("TOT_TAX_WEDGE")), start_time = 2013)
 
-avgtaxwedge<-avgtaxwedge[c(1,2,5,6)]
-colnames(avgtaxwedge)<-c("Country","Income","Year","avgtaxwedge")
-avgtaxwedge<-spread(avgtaxwedge,Year,avgtaxwedge)
-
-
-avgtaxwedge2013<-aggregate(avgtaxwedge$`2013`,by=list(avgtaxwedge$Country),FUN=mean)
-avgtaxwedge2014<-aggregate(avgtaxwedge$`2014`,by=list(avgtaxwedge$Country),FUN=mean)
-avgtaxwedge2015<-aggregate(avgtaxwedge$`2015`,by=list(avgtaxwedge$Country),FUN=mean)
-avgtaxwedge2016<-aggregate(avgtaxwedge$`2016`,by=list(avgtaxwedge$Country),FUN=mean)
-avgtaxwedge2017<-aggregate(avgtaxwedge$`2017`,by=list(avgtaxwedge$Country),FUN=mean)
-avgtaxwedge2018<-aggregate(avgtaxwedge$`2018`,by=list(avgtaxwedge$Country),FUN=mean)
-
-countries<-avgtaxwedge2018$Group.1
+avgtax_wedge<-avgtax_wedge[c(1,2,5,6)]
+colnames(avgtax_wedge)<-c("Country","Income","Year","avgtax_wedge")
+avgtax_wedge<-spread(avgtax_wedge,Year,avgtax_wedge)
 
 
-taxwedge2013<-martaxwedge2013$x/avgtaxwedge2013$x
-taxwedge2014<-martaxwedge2014$x/avgtaxwedge2014$x
-taxwedge2015<-martaxwedge2015$x/avgtaxwedge2015$x
-taxwedge2016<-martaxwedge2016$x/avgtaxwedge2016$x
-taxwedge2017<-martaxwedge2017$x/avgtaxwedge2017$x
-taxwedge2018<-martaxwedge2018$x/avgtaxwedge2018$x
+avgtax_wedge2013<-aggregate(avgtax_wedge$`2013`,by=list(avgtax_wedge$Country),FUN=mean)
+avgtax_wedge2014<-aggregate(avgtax_wedge$`2014`,by=list(avgtax_wedge$Country),FUN=mean)
+avgtax_wedge2015<-aggregate(avgtax_wedge$`2015`,by=list(avgtax_wedge$Country),FUN=mean)
+avgtax_wedge2016<-aggregate(avgtax_wedge$`2016`,by=list(avgtax_wedge$Country),FUN=mean)
+avgtax_wedge2017<-aggregate(avgtax_wedge$`2017`,by=list(avgtax_wedge$Country),FUN=mean)
+avgtax_wedge2018<-aggregate(avgtax_wedge$`2018`,by=list(avgtax_wedge$Country),FUN=mean)
 
-taxwedge<-data.frame(countries,taxwedge2013,taxwedge2014,taxwedge2015,taxwedge2016,taxwedge2017,taxwedge2018)
+countries<-avgtax_wedge2018$Group.1
 
-colnames(taxwedge)<-c("Country","2013","2014","2015","2016","2017","2018")
-taxwedge<-gather(taxwedge,"Year","taxwedge","2013","2014","2015","2016","2017","2018")
-taxwedge$Year<-as.numeric(taxwedge$Year)
-taxwedge$Year<-taxwedge$Year+1
 
+tax_wedge2013<-martax_wedge2013$x/avgtax_wedge2013$x
+tax_wedge2014<-martax_wedge2014$x/avgtax_wedge2014$x
+tax_wedge2015<-martax_wedge2015$x/avgtax_wedge2015$x
+tax_wedge2016<-martax_wedge2016$x/avgtax_wedge2016$x
+tax_wedge2017<-martax_wedge2017$x/avgtax_wedge2017$x
+tax_wedge2018<-martax_wedge2018$x/avgtax_wedge2018$x
+
+tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,tax_wedge2016,tax_wedge2017,tax_wedge2018)
+
+colnames(tax_wedge)<-c("Country","2013","2014","2015","2016","2017","2018")
+tax_wedge<-gather(tax_wedge,"Year","tax_wedge","2013","2014","2015","2016","2017","2018")
+tax_wedge$Year<-as.numeric(tax_wedge$Year)
+tax_wedge$Year<-tax_wedge$Year+1
+
+#dividends_rate####
+#Table_II4#
+#dataset<-("Table_II4")
+#dstruc<-get_data_structure(dataset)
+#str(dstruc, max.level = 1)
+#dstruc$VAR_DESC
+#dstruc$CL_TABLE_II4_STAT_DIV_TAX
+
+dividends_rate<-get_dataset("Table_II4",filter= list(c(OECD_Countries),c("NET_PERS_TAX")), start_time = 2014)
+dividends_rate<-dividends_rate[c(1,4,5)]
+colnames(dividends_rate)<-c("Country","Year","dividends_rate")
+dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
 
 
 #End OECD data scraper#
 #Output
 
-OECDvars_data<-merge(corprate,divrate,by=c("Country","Year"))
-OECDvars_data<-merge(OECDvars_data,incrate,by=c("Country","Year"))
+OECDvars_data<-merge(corporate_rate,dividends_rate,by=c("Country","Year"))
+OECDvars_data<-merge(OECDvars_data,top_income_rate,by=c("Country","Year"))
 OECDvars_data<-merge(OECDvars_data,threshold,by=c("Country","Year"))
-OECDvars_data<-merge(OECDvars_data,taxwedge,by=c("Country","Year"))
+OECDvars_data<-merge(OECDvars_data,tax_wedge,by=c("Country","Year"))
 
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
 ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
-colnames(ISO_Country_Codes)<-c("country","ISO-2","ISO-3")
+colnames(ISO_Country_Codes)<-c("country","ISO_2","ISO_3")
 
-colnames(OECDvars_data)<-c("ISO-3","year","corprate","divrate", "incrate", "progressivity", "taxwedge")
-OECDvars_data<-merge(OECDvars_data,ISO_Country_Codes,by="ISO-3")
+colnames(OECDvars_data)<-c("ISO_3","year","corporate_rate","dividends_rate", "top_income_rate", "threshold_top_income_rate", "tax_wedge")
+OECDvars_data<-merge(OECDvars_data,ISO_Country_Codes,by="ISO_3")
 
 write.csv(OECDvars_data, file = "./intermediate-outputs/OECDvars_data.csv", row.names = FALSE)

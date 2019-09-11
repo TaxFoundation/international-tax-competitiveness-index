@@ -29,29 +29,29 @@ Location of the output files from `indexcalculations.r` and `Output Tables.r`.
 ## R code files in main directory
 ### OECD data scraper.r
 This code pulls down data from the OECD portal for the following variables:
-1. `corprate`
-2. `divrate`
-3. `incrate`
-4. `progressivity`
-5. `taxwedge`
+1. `corporate_rate`
+2. `dividends_rate`
+3. `top_income_rate`
+4. `threshold_top_income_rate`
+5. `tax_wedge`
 
 ### VAT Data.r
 This code organizes and combines data for:
-1. `vatrate` 
-2. `threshold`
-3. `base`
+1. `vat_rate` 
+2. `vat_threshold`
+3. `vat_base`
 
 ### Property tax collections.r
-This code uses IMF capital stock data and OECD property tax revenue data to produce the `propertytaxescollections` variable.
+This code uses IMF capital stock data and OECD property tax revenue data to produce the `property_tax_collections` variable.
 
 ### CFC Rules Model.r
-This code takes the CFC rules input files and creates the `cfcrules` variable as a composite of the three features of CFC rules systems. See `CFC Rules Model.md` in the main directory for more information.
+This code takes the CFC rules input files and creates the `cfc_rules` variable as a composite of the three features of CFC rules systems. See `CFC Rules Model.md` in the main directory for more information.
 
 ### allowances_ame_OECD_2019.r
 This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Foundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The main input file is `CBT_tax_database_web_2019_all_ame.csv`. Descriptions of the variables in that file can be found in `tax-data-description-17.doc`. Both the input file and the description of the variables can be found in /source-data. The output from `allowances_ame_OECD_2019.r` is the data for the following variables:
-1. `pdvmachines`
-2. `pdvbuildings`
-3. `pdvintangibles`
+1. `machines_cost_recovery`
+2. `buildings_cost_recovery`
+3. `buildings_cost_recovery`
 
 ### Packaging data.r
 This file combines the source data and intermediate output data. The outputs are complete datasets for 2014-2019 stored in /final-data.
@@ -70,7 +70,7 @@ If you would like to see how a reform might impact a country's rank and score in
 
 After downloading the repository, you can run the `indexcalculations.r` code to get the baseline rankings and scores from this year's version of the _Index_. You may want to save the baseline output to a new folder so that the results will not be overwritten in the next step.
 
-Next, you can create your reform scenario by manipulating the files in the /final-data folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the `final_indexdata2019.csv` file to change the corprate variable for France to be 15 percent. 
+Next, you can create your reform scenario by manipulating the files in the /final-data folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the `final_indexdata2019.csv` file to change the corporate_rate variable for France to be 15 percent. 
 
 Once that change is made and the file is saved, you can run the `indexcalculations.r` file again and note the changes relative to the previous baseline.
 
@@ -159,50 +159,50 @@ A more thorough description of these data and how the Tax Foundation uses them i
 
 | Name | Description |
 | --- | --- |
-| `ISO-2` | Country 2-character ISO Code |
-| `ISO-3` | Country 3-character ISO Code |
+| `ISO_2` | Country 2-character ISO Code |
+| `ISO_3` | Country 3-character ISO Code |
 | `country` | Name of each OECD nation in the Index, in English. |
 | `year` | Year |
-| `corprate` | The top marginal corporate tax rate in a given nation. |
-| `losscarryback` | Number of years a corporation may apply current losses against previous tax bills, allowing for tax rebates. |
-| `losscarryforward` | Number of years a corporation may apply current losses against future tax bills, lowering those years' taxable income. |
-| `pdvmachines` | Percentage of the present value cost of machinery that corporations can write off over the depreciable life of the asset. |
-| `pdvbuildings` | Percentage of the present value cost of buildings that corporations can write off over the depreciable life of the asset. |
-| `pdvintangibles` | Percentage of the present value cost of intangibles that corporations can write off over the depreciable life of the asset. |
+| `corporate_rate` | The top marginal corporate tax rate in a given nation. |
+| `loss_carryback` | Number of years a corporation may apply current losses against previous tax bills, allowing for tax rebates. |
+| `loss_carryforward` | Number of years a corporation may apply current losses against future tax bills, lowering those years' taxable income. |
+| `machines_cost_recovery` | Percentage of the present value cost of machinery that corporations can write off over the depreciable life of the asset. |
+| `buildings_cost_recovery` | Percentage of the present value cost of buildings that corporations can write off over the depreciable life of the asset. |
+| `buildings_cost_recovery` | Percentage of the present value cost of intangibles that corporations can write off over the depreciable life of the asset. |
 | `inventory` | Score given based on a country's allowable inventory cost accounting methods. Countries that allow Last In, First Out (LIFO) score `1`; countries that allow Average Cost of Inventory score `0.5`; countries that only allow First In, First Out (FIFO) score `0`. |
-| `patentbox` | Indicates which countries have patent boxes, which create lower tax rates for income generated through patented products. Countries without patent boxes are marked with `0`, countries with patent boxes are marked as `1`. |
-| `rndcredit` | Indicates which countries offer research and development tax credits. Countries without such credits are marked `0`; those with R&D credits are marked `1`. |
-| `corptime` | Complexity of tax system measured by average time in hours needed to comply with a country's corporate tax requirements. |
-| `profitpayments` | Complexity of tax system measured by number of yearly profit payments. |
-| `otherpayments` | Complexity of tax system measured by number of other yearly tax payments. |
-| `incrate` | The top marginal income tax rate. |
-| `progressivity` | Measure of progressivity of individual income tax rates as a ratio of minimum income level at which the top rate applies to the average income. |
-| `taxwedge` | The tax wedge is the total tax cost of labor in a country (includes individual income tax and payroll tax). This is the average of the ratio of the marginal tax wedge to the average tax wedge for employees at the 67th, 100th, 133rd, and 167th percentiles. |
-| `laborpayments` | Complexity of tax system measured by number of yearly labor tax payments. |
-| `labortime` | Complexity of tax system measured by average time in hours needed to comply with a country's labor tax requirements. |
-| `capgainsrate` | Tax rate for capital gains. |
-| `capgainsindex` | Whether a country indexes basis for purposes of capital gains tax. No longer in use.|
-| `divrate` |  The total top marginal dividend tax rate after any imputation or credit system. |
-| `vatrate` | The national (or average) consumption tax rate (either sales tax or VAT) for a country. |
-| `threshold` | The upper sales limit in U.S. dollars for which a corporation does not need to pay consumption taxes. |
-| `base` | The ratio of consumption taxes collected to potential collections if consumption tax rates were applied equally across all goods/services. This ratio measures exemptions to the taxes and/or noncompliance. |
-| `consumptiontime` | Complexity of consumption taxes measured by average time in hours needed for corporations to comply with a country's consumption tax requirements. |
-| `propertytaxes` | Indicates whether capital additions to land are taxed. Fully taxing land and improvements is marked `1`; allowing deductions of taxes on improvements from corporate income taxes is marked `0.5`; taxing only land or not having a property tax is marked `0`. |
-| `propertytaxescollections` | Property taxes collected in a country as a percentage of capital stock. |
-| `netwealth` | Indicates the existence of taxes on net wealth. Countries with wealth taxes are marked `1`; those without are marked `0`. |
-| `estate/inheritance tax` | Indicates the existence of taxes on estates or inheritances. Countries with such taxes are marked `1`; those without are marked `0`. |
-| `transfertaxes` | Indicates the existence of taxes on the transfer (buying and selling) of real property. Countries with property transfer taxes are marked `1`; those without are marked `0`. |
-| `Assettaxes` | Indicates the existence of a tax on net corporate assets. Countries with an asset tax are marked `1`; those without are marked `0`. |
-| `capitalduties` | Indicates the existence of a tax on the issuance of shares of stock. Countries with a capital duties tax are marked `1`; those without are marked `0`. |
-| `financialtrans` | Indicates the existence of a tax on the transfer of financial assets. Countries with financial transfer taxes are marked `1`; those without are marked `0`. |
-| `dividendexempt` | Percentage of dividends paid from foreign subsidiaries which are exempt from local taxes. |
-| `capgainsexemption` | Indicates whether capital gains from foreign investments are exempted from local taxes. Fully exempt is marked as `1`; non-exempt is marked as `0`. |
-| `country limitations` | Indicates whether country has certain exemptions to a territorial tax system based on the source of the foreign income. Existence of exemptions are marked as `1`; no exemptions are marked `0`.  |
-| `divwithhold` | Required withholding for tax payments on dividends to be paid to foreign investors or businesses. |
-| `intwithhold` | Required withholding for tax payments on interest to be paid to foreign investors or businesses. |
-| `roywithhold` | Required withholding for tax payments on royalties to be paid to foreign investors or businesses. |
-| `taxtreaties` | Number of foreign nations with which a country has tax treaties. |
-| `cfcrules` | Indicates existence and strictness of Controlled Foreign Corporation (CFC) rules. This combines measures of whether CFC rules exist, whether they tax passive or active income, and whether they provide exemptions. Countries without CFC rules are marked `0`; those with the strictest are marked `1`, countries in between have various scores. |
-| `thincap` | Indicates whether a country puts thin capitalization restrictions on companies' debt-to-asset ratios. Countries that limit interest deductions with only transfer pricing regulations are scored as `0`. Countries with debt-to-equity ratios receive a score of `0.5`, and countries with interest-to-pretax-earning limits receive a score of `1`.|
+| `patent_box` | Indicates which countries have patent boxes, which create lower tax rates for income generated through patented products. Countries without patent boxes are marked with `0`, countries with patent boxes are marked as `1`. |
+| `r_and_d_credit` | Indicates which countries offer research and development tax credits. Countries without such credits are marked `0`; those with R&D credits are marked `1`. |
+| `corporate_time` | Complexity of tax system measured by average time in hours needed to comply with a country's corporate tax requirements. |
+| `profit_payments` | Complexity of tax system measured by number of yearly profit payments. |
+| `other_payments` | Complexity of tax system measured by number of other yearly tax payments. |
+| `top_income_rate` | The top marginal income tax rate. |
+| `threshold_top_income_rate` | Measure of threshold_top_income_rate of individual income tax rates as a ratio of minimum income level at which the top rate applies to the average income. |
+| `tax_wedge` | The tax wedge is the total tax cost of labor in a country (includes individual income tax and payroll tax). This is the average of the ratio of the marginal tax wedge to the average tax wedge for employees at the 67th, 100th, 133rd, and 167th percentiles. |
+| `labor_payments` | Complexity of tax system measured by number of yearly labor tax payments. |
+| `labor_time` | Complexity of tax system measured by average time in hours needed to comply with a country's labor tax requirements. |
+| `capital_gains_rate` | Tax rate for capital gains fter any imputation, credit or offset.  When the capital gains tax rate varies by type of asset sold, the tax rate applying to the sale of listed shares after an extended period of time is used. |
+| `index_capital_gains` | Whether a country indexes basis for purposes of capital gains tax. No longer in use.|
+| `dividends_rate` |  The total top marginal dividend tax rate after any imputation or credit system. |
+| `vat_rate` | The national (or average) consumption tax rate (either sales tax or VAT) for a country. |
+| `vat_threshold` | The upper sales limit in U.S. dollars for which a corporation does not need to pay consumption taxes. |
+| `vat_base` | The ratio of consumption taxes collected to potential collections if consumption tax rates were applied equally across all goods/services. This ratio measures exemptions to the taxes and/or noncompliance. |
+| `consumption_time` | Complexity of consumption taxes measured by average time in hours needed for corporations to comply with a country's consumption tax requirements. |
+| `property_tax` | Indicates whether capital additions to land are taxed. Fully taxing land and improvements is marked `1`; allowing deductions of taxes on improvements from corporate income taxes is marked `0.5`; taxing only land or not having a property tax is marked `0`. |
+| `property_tax_collections` | Property taxes collected in a country as a percentage of capital stock. |
+| `net_wealth` | Indicates the existence of taxes on net wealth. Countries with wealth taxes are marked `1`; those without are marked `0`. |
+| `estate_or_inheritance_tax` | Indicates the existence of taxes on estates or inheritances. Countries with such taxes are marked `1`; those without are marked `0`. |
+| `transfer_tax` | Indicates the existence of taxes on the transfer (buying and selling) of real property. Countries with property transfer taxes are marked `1`; those without are marked `0`. |
+| `asset_tax` | Indicates the existence of a tax on net corporate assets. Countries with an asset tax are marked `1`; those without are marked `0`. |
+| `capital_duties` | Indicates the existence of a tax on the issuance of shares of stock. Countries with a capital duties tax are marked `1`; those without are marked `0`. |
+| `financial_transaction_tax` | Indicates the existence of a tax on the transfer of financial assets. Countries with financial transfer taxes are marked `1`; those without are marked `0`. |
+| `dividends_exemption` | Percentage of dividends paid from foreign subsidiaries which are exempt from local taxes. |
+| `capital_gains_exemption` | Indicates whether capital gains from foreign investments are exempted from local taxes. Fully exempt is marked as `1`; non-exempt is marked as `0`. |
+| `country_limitations` | Indicates whether country has certain exemptions to a territorial tax system based on the source of the foreign income. Existence of exemptions are marked as `1`; no exemptions are marked `0`.  |
+| `dividends_withholding_tax` | Required withholding for tax payments on dividends to be paid to foreign investors or businesses. |
+| `interest_withholding_tax` | Required withholding for tax payments on interest to be paid to foreign investors or businesses. |
+| `royalties_withholding_tax` | Required withholding for tax payments on royalties to be paid to foreign investors or businesses. |
+| `tax_treaties` | Number of foreign nations with which a country has tax treaties. |
+| `cfc_rules` | Indicates existence and strictness of Controlled Foreign Corporation (CFC) rules. This combines measures of whether CFC rules exist, whether they tax passive or active income, and whether they provide exemptions. Countries without CFC rules are marked `0`; those with the strictest are marked `1`, countries in between have various scores. |
+| `thin_capitalization_rules` | Indicates whether a country puts thin capitalization restrictions on companies' debt-to-asset ratios. Countries that limit interest deductions with only transfer pricing regulations are scored as `0`. Countries with debt-to-equity ratios receive a score of `0.5`, and countries with interest-to-pretax-earning limits receive a score of `1`.|
 
 The _ITCI_ uses the most up-to-date data available as of July 2019.

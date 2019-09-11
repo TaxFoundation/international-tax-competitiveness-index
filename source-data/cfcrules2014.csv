@@ -1,37 +1,37 @@
-﻿country,cfcyesno,cfcall,cfcexempt,year
-Australia,1,0,0,2014
-Austria,0,0,0,2014
-Belgium,0,0,0,2014
-Canada,1,0,0,2014
-Chile,0,0,0,2014
-Czech Republic,0,0,0,2014
-Denmark,1,1,0,2014
-Estonia,0,1,0,2014
-Finland,1,1,0,2014
-France,1,1,0,2014
-Germany,1,0,0,2014
-Greece,1,0,0,2014
-Hungary,1,1,0,2014
-Iceland ,1,1,0,2014
-Ireland,0,0,0,2014
-Israel,1,0,1,2014
-Italy,1,1,0,2014
-Japan,1,1,0,2014
-Korea,1,1,0,2014
-Latvia,0,0,0,2014
-Lithuania,1,0,0,2014
-Luxembourg,0,0,0,2014
-Mexico,1,1,1,2014
-Netherlands,0,0,0,2014
-New Zealand,1,0,0,2014
-Norway,1,1,0,2014
-Poland,0,0,0,2014
-Portugal,1,1,0,2014
-Slovak Republic,0,0,0,2014
-Slovenia,0,0,0,2014
-Spain,1,0,0,2014
-Sweden    ,1,1,0,2014
-Switzerland,0,0,0,2014
-Turkey,1,1,1,2014
-United Kingdom,1,1,0,2014
-United States,1,0,0,2014
+"ISO_2","ISO_3","country","year","exists","active","exemption"
+"AU","AUS","Australia",2014,1,0,0
+"AT","AUT","Austria",2014,0,0,0
+"BE","BEL","Belgium",2014,0,0,0
+"CA","CAN","Canada",2014,1,0,0
+"CL","CHL","Chile",2014,0,0,0
+"CZ","CZE","Czech Republic",2014,0,0,0
+"DK","DNK","Denmark",2014,1,1,0
+"EE","EST","Estonia",2014,0,1,0
+"FI","FIN","Finland",2014,1,1,0
+"FR","FRA","France",2014,1,1,0
+"DE","DEU","Germany",2014,1,0,0
+"GR","GRC","Greece",2014,1,0,0
+"HU","HUN","Hungary",2014,1,1,0
+"IS","ISL","Iceland",2014,1,1,0
+"IE","IRL","Ireland",2014,0,0,0
+"IL","ISR","Israel",2014,1,0,1
+"IT","ITA","Italy",2014,1,1,0
+"JP","JPN","Japan",2014,1,1,0
+"KR","KOR","Korea",2014,1,1,0
+"LV","LVA","Latvia",2014,0,0,0
+"LT","LTU","Lithuania",2014,1,0,0
+"LU","LUX","Luxembourg",2014,0,0,0
+"MX","MEX","Mexico",2014,1,1,1
+"NL","NLD","Netherlands",2014,0,0,0
+"NZ","NZL","New Zealand",2014,1,0,0
+"NO","NOR","Norway",2014,1,1,0
+"PL","POL","Poland",2014,0,0,0
+"PT","PRT","Portugal",2014,1,1,0
+"SK","SVK","Slovak Republic",2014,0,0,0
+"SI","SVN","Slovenia",2014,0,0,0
+"ES","ESP","Spain",2014,1,0,0
+"SE","SWE","Sweden",2014,1,1,0
+"CH","CHE","Switzerland",2014,0,0,0
+"TR","TUR","Turkey",2014,1,1,1
+"GB","GBR","United Kingdom",2014,1,1,0
+"US","USA","United States",2014,1,0,0

@@ -60,45 +60,44 @@ indexdata_old<-rbind(indexdata2014,indexdata2015,indexdata2016,indexdata2017,ind
 
 
 #Remove variables from indexdata_old that are in OECD data
-OECDvars<-c("corprate","divrate", "incrate", "progressivity", "taxwedge")
+OECDvars<-c("corporate_rate","top_income_rate", "threshold_top_income_rate", "tax_wedge","dividends_rate" )
 indexdata_old<-indexdata_old[,!names(indexdata_old) %in% OECDvars]
 
 #Join OECD data with indexdata_old####
 
-indexdata_OECD_vars<-merge(indexdata_old,OECD_vars,by=c("country","ISO-2","ISO-3","year"))
+indexdata_OECD_vars<-merge(indexdata_old,OECD_vars,by=c("country","ISO_2","ISO_3","year"))
 
 
 #Join cap allowances data with indexdata2019####
 
-Cap_Allowances_Vars<-c("pdvmachines","pdvbuildings", "pdvintangibles")
-colnames(Cap_Allowances)<-c("ISO-3","year","pdvmachines","pdvbuildings", "pdvintangibles")
+Cap_Allowances_Vars<-c("machines_cost_recovery","buildings_cost_recovery", "intangibles_cost_recovery")
+colnames(Cap_Allowances)<-c("ISO_3","year","machines_cost_recovery","buildings_cost_recovery", "intangibles_cost_recovery")
 
 indexdata_OECD_vars<-indexdata_OECD_vars[,!names(indexdata_OECD_vars) %in% Cap_Allowances_Vars]
-
-indexdata_cap_a_vars<-merge(indexdata_OECD_vars,Cap_Allowances,by=c("ISO-3","year"))
+indexdata_cap_a_vars<-merge(indexdata_OECD_vars,Cap_Allowances,by=c("ISO_3","year"))
 
 #Join VAT data with indexdata_cap_a_vars####
 
 #Remove variables from indexdata_old that are in VAT data
 
-vat_vars<-c("vatrate","threshold", "base")
+vat_vars<-c("vat_rate","vat_threshold", "vat_base")
 indexdata_cap_a_vars<-indexdata_cap_a_vars[,!names(indexdata_cap_a_vars) %in% vat_vars]
 
 indexdata_VAT_vars<-merge(indexdata_cap_a_vars,vat_data,by=c("country","year"))
 
 #Join Property tax data with indexdata_cap_a_vars####
-prop_tax_vars<-c("propertytaxescollections")
+prop_tax_vars<-c("property_tax_collections")
 
 #Adjust years in Property tax data to account for two year lag
 Property_Tax$year<-Property_Tax$year+2
-Property_Tax<-Property_Tax[c("country","year","propertytaxescollections")]
+Property_Tax<-Property_Tax[c("country","year","property_tax_collections")]
 indexdata_VAT_vars<-indexdata_VAT_vars[,!names(indexdata_VAT_vars) %in% prop_tax_vars]
 indexdata_prop_tax_vars<-merge(indexdata_VAT_vars,Property_Tax,by=c("country","year"))
 
 #Join CFC rules data with indexdata2019####
 CFC_Rules<-CFC_Rules[-c(2:4,7:8)]
 
-CFC_Rules_var<-c("cfcrules")
+CFC_Rules_var<-c("cfc_rules")
 indexdata_prop_tax_vars<-indexdata_prop_tax_vars[,!names(indexdata_prop_tax_vars) %in% CFC_Rules_var]
 
 indexdata_CFC_var<-merge(indexdata_prop_tax_vars,CFC_Rules,by=c("country","year"))
@@ -106,14 +105,15 @@ indexdata_CFC_var<-merge(indexdata_prop_tax_vars,CFC_Rules,by=c("country","year"
 
 
 indexdata_final<-indexdata_CFC_var
-
+names(indexdata_final)
 #Reorder columns ####
-indexdata_final<-indexdata_final[c("ISO-2","ISO-3","country","year",
-                               "corprate","losscarryback","losscarryforward","pdvmachines","pdvbuildings","pdvintangibles","inventory","patentbox","rndcredit","corptime","profitpayments","otherpayments",
-                               "incrate","progressivity","taxwedge","laborpayments","labortime","capgainsrate","capgainsindex","divrate",
-                               "vatrate","threshold","base","consumptiontime",
-                               "propertytaxes", "propertytaxescollections","netwealth","estate/inheritance tax","transfertaxes","Assettaxes","capitalduties","financialtrans",
-                               "dividendexempt","capgainsexemption","countrylimitations","divwithhold","intwithhold","roywithhold","taxtreaties","cfcrules","thincap"   )]
+indexdata_final<-indexdata_final[c("ISO_2","ISO_3","country","year",
+                                   "corporate_rate","loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments",
+                                   "top_income_rate","threshold_top_income_rate","tax_wedge","labor_payments","labor_time","capital_gains_rate","index_capital_gains","dividends_rate",
+                                   "vat_rate","vat_threshold","vat_base","consumption_time",
+                                   "property_tax", "property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax",
+                                   "dividends_exemption","capital_gains_exemption","country_limitations","dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties","cfc_rules","thin_capitalization_rules")]
+
 
 write.csv(subset(indexdata_final,indexdata_final$year==2014),file = "./final-data/final_indexdata2014.csv",row.names=F)
 write.csv(subset(indexdata_final,indexdata_final$year==2015),file = "./final-data/final_indexdata2015.csv",row.names=F)
