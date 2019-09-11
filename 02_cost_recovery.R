@@ -391,8 +391,8 @@ data$year<-data$year+1
 iso_country_codes <- read_csv("./source-data/iso_country_codes.csv")
 colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
 
-colnames(data)<-c("ISO_3","year","machines_cost_recovery_cost_recovery","buildings_cost_recovery_cost_recovery", "intangibles_cost_recovery_cost_recovery")
+colnames(data)<-c("ISO_3","year","machines_cost_recovery","buildings_cost_recovery", "intangibles_cost_recovery")
 data<-merge(data,iso_country_codes,by="ISO_3")
-data<-data[c("ISO_2","ISO_3","country","year","machines_cost_recovery_cost_recovery","buildings_cost_recovery_cost_recovery","intangibles_cost_recovery_cost_recovery")]
+data<-data[c("ISO_2","ISO_3","country","year","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery")]
 write.csv(data, file = "./intermediate-outputs/cost_recovery_data.csv",row.names=F)
 
