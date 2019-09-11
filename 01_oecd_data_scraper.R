@@ -218,4 +218,4 @@ colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
 colnames(OECDvars_data)<-c("ISO_3","year","corporate_rate","dividends_rate", "top_income_rate", "threshold_top_income_rate", "tax_wedge")
 OECDvars_data<-merge(OECDvars_data,iso_country_codes,by="ISO_3")
 
-write.csv(OECDvars_data, file = "./intermediate-outputs/OECDvars_data.csv", row.names = FALSE)
+write.csv(OECDvars_data, file = "./intermediate-outputs/oecd_variables_data.csv", row.names = FALSE)
