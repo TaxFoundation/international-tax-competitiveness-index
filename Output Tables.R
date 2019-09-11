@@ -54,7 +54,7 @@ keep<-c("country","final_rank","final","corporate_rank","income_rank","consumpti
 Table_1_Results<-Table_1_Results[keep]
 
 #Sort by rank
-Table_1_Results<-Table_1_Results[order(Table_1_Results$finalrank),]
+Table_1_Results<-Table_1_Results[order(Table_1_Results$final_rank),]
 
 #Format columns
 Table_1_Results$final<-formatC(round(Table_1_Results$final,digits=1),format = "f",digits=1)
@@ -124,7 +124,7 @@ Table4_Individual<-merge(Table4_Individual,Final2019,by=c("country"))
 
 #names(Table4_Individual)
 
-keep<-c("country","incomerank","income","income_tax_rank","income_tax","income_tax_complexity_rank","income_tax_complexity","capital_gains_and_dividends_rank","capital_gains_and_dividends")
+keep<-c("country","income_rank","income","income_tax_rank","income_tax","income_tax_complexity_rank","income_tax_complexity","capital_gains_and_dividends_rank","capital_gains_and_dividends")
 Table4_Individual<-Table4_Individual[keep]
 colnames(Table4_Individual)<-c("Country","Overall Rank","Overall Score","Income Tax Rank","Income Tax Score","Complexity Rank","Complexity Score", "Capital Gains/Dividends Rank","Capital Gains/Dividends Score")
 
@@ -142,7 +142,7 @@ Table5_Consumption<-merge(Table5_Consumption,Final2019,by=c("country"))
 
 #names(Table5_Consumption)
 
-keep<-c("country","consumptionrank","consumption","consumptiontaxraterank","consumptiontaxrate","consumptiontaxbaserank","consumptiontaxbase","consumptiontaxcomplexityrank","consumptiontaxcomplexity")
+keep<-c("country","consumption_rank","consumption","consumption_tax_rate_rank","consumption_tax_rate","consumption_tax_base_rank","consumption_tax_base","consumption_tax_complexity_rank","consumption_tax_complexity")
 Table5_Consumption<-Table5_Consumption[keep]
 colnames(Table5_Consumption)<-c("Country","Overall Rank","Overall Score", "Rate Rank","Rate Score","Base Rank","Base Score","Complexity Rank","Complexity Score")
 
@@ -162,7 +162,7 @@ Table6_Property<-merge(Table6_Property,Final2019,by=c("country"))
 
 #names(Table6_Property)
 
-keep<-c("country","propertyrank","property","realpropertytaxrank","realpropertytax","wealthtaxesrank","wealthtaxes","capitaltaxesrank","capitaltaxes")
+keep<-c("country","property_rank","property","real_property_tax_rank","real_property_tax","wealth_taxes_rank","wealth_taxes","capital_taxes_rank","capital_taxes")
 Table6_Property<-Table6_Property[keep]
 colnames(Table6_Property)<-c("Country","Overall Rank","Overall Score", "Real Property Taxes Rank","Real Property Taxes Score","Wealth/Estate Taxes Rank","Wealth/Estate Taxes Score","Capital/Transaction Taxes Rank","Capital/Transaction Taxes Score")
 
@@ -182,7 +182,7 @@ Table7_International<-merge(Table7_International,Final2019,by=c("country"))
 
 #names(Table7_International)
 
-keep<-c("country","internationalrank","international","territorialrank","territorial","withholdingtaxesrank","withholdingtaxes","intregulationsrank","intregulations")
+keep<-c("country","international_rank","international","territorial_rank","territorial","withholding_taxes_rank","withholding_taxes","international_regulations_rank","international_regulations")
 Table7_International<-Table7_International[keep]
 colnames(Table7_International)<-c("Country","Overall Rank","Overall Score", "Div/Cap Gains Exemption Rank","Div/Cap Gains Exemption Score","Withholding Taxes Rank","Withholding Taxes Score","Regulations Rank","Regulations Score")
 
@@ -201,7 +201,19 @@ write.csv(Table7_International,"./final-outputs/Table 7 International.csv",row.n
 TableA_Corporate_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
 
 
-keep<-c("country","corprate","losscarryback","losscarryforward","pdvmachines","pdvbuildings","pdvintangibles","inventory","patentbox","rndcredit","corptime","profitpayments","otherpayments")
+keep<-c("country",
+        "corporate_rate",
+        "loss_carryback",
+        "loss_carryforward",
+        "machines_cost_recovery",
+        "buildings_cost_recovery",
+        "intangibles_cost_recovery",
+        "inventory",
+        "patent_box",
+        "r_and_d_credit",
+        "corporate_time",
+        "profit_payments",
+        "other_payments")
 TableA_Corporate_raw<-TableA_Corporate_raw[keep]
 
 
@@ -213,47 +225,56 @@ TableA_Corporate_text<-TableA_Corporate_text[2:37,]
 
 
 #Replace raw data with text data for select columns
-replace<-c("losscarryback","losscarryforward","inventory","rndcredit")
+replace<-c("loss_carryback","loss_carryforward","inventory","r_and_d_credit")
 TableA_Corporate_text<-TableA_Corporate_text[replace]
 TableA_Corporate<-TableA_Corporate_raw[,!names(TableA_Corporate_raw) %in% replace]
 TableA_Corporate<-cbind(TableA_Corporate,TableA_Corporate_text)
 
-TableA_Corporate<-TableA_Corporate[c("country","corprate","losscarryback","losscarryforward",
-                                     "pdvmachines","pdvbuildings","pdvintangibles","inventory",
-                                     "patentbox","rndcredit","corptime","profitpayments","otherpayments")]
+TableA_Corporate<-TableA_Corporate[c("country","corporate_rate",
+                                     "loss_carryback",
+                                     "loss_carryforward",
+                                     "machines_cost_recovery",
+                                     "buildings_cost_recovery",
+                                     "intangibles_cost_recovery",
+                                     "inventory",
+                                     "patent_box",
+                                     "r_and_d_credit",
+                                     "corporate_time",
+                                     "profit_payments",
+                                     "other_payments")]
 
 
 
 #Format variables
-#corprate
-TableA_Corporate$corprate<-TableA_Corporate$corprate*100
-TableA_Corporate$corprate<-paste((formatC(round(TableA_Corporate$corprate,digits=1),format = "f",digits=1)),"%",sep="")
+#corporate_rate
+TableA_Corporate$corporate_rate<-TableA_Corporate$corporate_rate*100
+TableA_Corporate$corporate_rate<-paste((formatC(round(TableA_Corporate$corporate_rate,digits=1),format = "f",digits=1)),"%",sep="")
 
-#pdvmachines
-TableA_Corporate$pdvmachines<-TableA_Corporate$pdvmachines*100
-TableA_Corporate$pdvmachines<-paste((formatC(round(TableA_Corporate$pdvmachines,digits=1),format = "f",digits=1)),"%",sep="")
+#machines_cost_recovery
+TableA_Corporate$machines_cost_recovery<-TableA_Corporate$machines_cost_recovery*100
+TableA_Corporate$machines_cost_recovery<-paste((formatC(round(TableA_Corporate$machines_cost_recovery,digits=1),format = "f",digits=1)),"%",sep="")
 
-#pdvbuildings
-TableA_Corporate$pdvbuildings<-TableA_Corporate$pdvbuildings*100
-TableA_Corporate$pdvbuildings<-paste((formatC(round(TableA_Corporate$pdvbuildings,digits=1),format = "f",digits=1)),"%",sep="")
+#buildings_cost_recovery
+TableA_Corporate$buildings_cost_recovery<-TableA_Corporate$buildings_cost_recovery*100
+TableA_Corporate$buildings_cost_recovery<-paste((formatC(round(TableA_Corporate$buildings_cost_recovery,digits=1),format = "f",digits=1)),"%",sep="")
 
-#pdvintangibles
-TableA_Corporate$pdvintangibles<-TableA_Corporate$pdvintangibles*100
-TableA_Corporate$pdvintangibles<-paste((formatC(round(TableA_Corporate$pdvintangibles,digits=1),format = "f",digits=1)),"%",sep="")
+#intangibles_cost_recovery
+TableA_Corporate$intangibles_cost_recovery<-TableA_Corporate$intangibles_cost_recovery*100
+TableA_Corporate$intangibles_cost_recovery<-paste((formatC(round(TableA_Corporate$intangibles_cost_recovery,digits=1),format = "f",digits=1)),"%",sep="")
 
-#patentbox
-TableA_Corporate$patentbox<-if_else(TableA_Corporate$patentbox==0,"No","Yes")
+#patent_box
+TableA_Corporate$patent_box<-if_else(TableA_Corporate$patent_box==0,"No","Yes")
 
-#corptime
-TableA_Corporate$corptime<-formatC(round(TableA_Corporate$corptime,digits=0),format = "f",digits=0)
-
-
-#profitpayments
-TableA_Corporate$profitpayments<-formatC(round(TableA_Corporate$profitpayments,digits=0),format = "f",digits=0)
+#corporate_time
+TableA_Corporate$corporate_time<-formatC(round(TableA_Corporate$corporate_time,digits=0),format = "f",digits=0)
 
 
-#otherpayments
-TableA_Corporate$otherpayments<-formatC(round(TableA_Corporate$otherpayments,digits=0),format = "f",digits=0)
+#profit_payments
+TableA_Corporate$profit_payments<-formatC(round(TableA_Corporate$profit_payments,digits=0),format = "f",digits=0)
+
+
+#other_payments
+TableA_Corporate$other_payments<-formatC(round(TableA_Corporate$other_payments,digits=0),format = "f",digits=0)
 
 
 headers<-c("",
@@ -282,7 +303,6 @@ columns<-c("Country",
 TableA_Corporate<-rbind(headers,columns,TableA_Corporate)
 
 write.csv(TableA_Corporate,"./final-outputs/Appendix-Table-CSV/Table A Corporate.csv",row.names = F)
-write.xlsx(TableA_Corporate,"./final-outputs/Table A Corporate.xlsx",row.names = F)
 
 #Table B Individual####
 
