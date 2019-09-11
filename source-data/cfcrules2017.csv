@@ -1,37 +1,37 @@
-﻿country,cfcyesno,cfcall,cfcexempt,year
-Australia,1,0,0,2017
-Austria,0,0,0,2017
-Belgium,0,0,0,2017
-Canada,1,0,0,2017
-Chile,1,0,1,2017
-Czech Republic,0,0,0,2017
-Denmark,1,1,0,2017
-Estonia,1,1,0,2017
-Finland,1,1,0,2017
-France,1,1,0,2017
-Germany,1,0,0,2017
-Greece,1,0,0,2017
-Hungary,1,1,0,2017
-Iceland ,1,1,0,2017
-Ireland,0,0,0,2017
-Israel,1,0,1,2017
-Italy,1,1,0,2017
-Japan,1,1,0,2017
-Korea,1,1,0,2017
-Latvia,0,0,0,2017
-Lithuania,1,0,0,2017
-Luxembourg,0,0,0,2017
-Mexico,1,1,1,2017
-Netherlands,0,0,0,2017
-New Zealand,1,0,0,2017
-Norway,1,1,0,2017
-Poland,1,1,0,2017
-Portugal,1,1,0,2017
-Slovak Republic,0,0,0,2017
-Slovenia,0,0,0,2017
-Spain,1,0,0,2017
-Sweden    ,1,1,0,2017
-Switzerland,0,0,0,2017
-Turkey,1,1,1,2017
-United Kingdom,1,1,0,2017
-United States,1,0,0,2017
+"ISO_2","ISO_3","country","year","exists","active","exemption"
+"AU","AUS","Australia",2017,1,0,0
+"AT","AUT","Austria",2017,0,0,0
+"BE","BEL","Belgium",2017,0,0,0
+"CA","CAN","Canada",2017,1,0,0
+"CL","CHL","Chile",2017,1,0,1
+"CZ","CZE","Czech Republic",2017,0,0,0
+"DK","DNK","Denmark",2017,1,1,0
+"EE","EST","Estonia",2017,1,1,0
+"FI","FIN","Finland",2017,1,1,0
+"FR","FRA","France",2017,1,1,0
+"DE","DEU","Germany",2017,1,0,0
+"GR","GRC","Greece",2017,1,0,0
+"HU","HUN","Hungary",2017,1,1,0
+"IS","ISL","Iceland",2017,1,1,0
+"IE","IRL","Ireland",2017,0,0,0
+"IL","ISR","Israel",2017,1,0,1
+"IT","ITA","Italy",2017,1,1,0
+"JP","JPN","Japan",2017,1,1,0
+"KR","KOR","Korea",2017,1,1,0
+"LV","LVA","Latvia",2017,0,0,0
+"LT","LTU","Lithuania",2017,1,0,0
+"LU","LUX","Luxembourg",2017,0,0,0
+"MX","MEX","Mexico",2017,1,1,1
+"NL","NLD","Netherlands",2017,0,0,0
+"NZ","NZL","New Zealand",2017,1,0,0
+"NO","NOR","Norway",2017,1,1,0
+"PL","POL","Poland",2017,1,1,0
+"PT","PRT","Portugal",2017,1,1,0
+"SK","SVK","Slovak Republic",2017,0,0,0
+"SI","SVN","Slovenia",2017,0,0,0
+"ES","ESP","Spain",2017,1,0,0
+"SE","SWE","Sweden",2017,1,1,0
+"CH","CHE","Switzerland",2017,0,0,0
+"TR","TUR","Turkey",2017,1,1,1
+"GB","GBR","United Kingdom",2017,1,1,0
+"US","USA","United States",2017,1,0,0
