@@ -1,8 +1,9 @@
-Note: This document is a reproduction of the data description file that accompanied the 2017 version of the Oxford University Centre for Business Taxation CBT Tax Database. The database is used as part of the _International Tax Competitiveness Index_ for the variables `machines_cost_recovery`, `buildings_cost_recovery`, and `intangibles_cost_recovery`. The source for these data are in the `source-data` folder in the file named `CBT_tax_database_web_2019_all_ame.csv`. The code file `allowances_ame_OECD_2019.R` transforms the cost recovery variables into present discounted value variables.
+Note: This document is a reproduction of the data description file that accompanied the 2017 version of the Oxford University Centre for Business Taxation (CBT) Tax Database. The database is used as part of the _International Tax Competitiveness Index_ for the variables `machines_cost_recovery`, `buildings_cost_recovery`, and `intangibles_cost_recovery`. The source for these data are in the `source-data` folder in the file named `CBT_tax_database_web_2019_all_ame.csv`. The code file `allowances_ame_OECD_2019.R` transforms the cost recovery variables into present discounted value variables.
+
+At some point the file addresses for many of the files linked to in this document were changed or the files were taken down, so the links do not work as they should. This document is reproduced here somewhat as an archival element and also because the variable explanations are relevant to the _ITCI_.
 
 For these variables in the _Index_, years prior to 2018 are based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/id/eprint/4635". Calculations for 2018 and 2019 are based on Elke Asen and Daniel Bunn, "Capital Cost Recovery across the OECD, 2019," Tax Foundation, April 2, 2019, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
 
-At some point the file addresses for many of the files linked to in this document were changed or the files were taken down, so the links do not work as they should. This document is reproduced here somewhat as an archival element and also because the variable explanations are relevant to the _ITCI_.
 
 # CBT Tax Database
 # Data Description
