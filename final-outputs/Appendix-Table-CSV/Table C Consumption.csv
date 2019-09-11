@@ -1,4 +1,4 @@
-"country","vatrate","threshold","base","consumptiontime"
+"country","vat_rate","vat_threshold","vat_base","consumption_time"
 "","Consumption Tax Rate","Consumption Tax Base","","Consumption Tax Complexity"
 "Country","VAT/Sales Tax Rate","VAT/Sales Tax Threshold (a)","VAT/Sales Tax Base as a Percent of Total Consumption","Complexity (Hours to Comply"
 "Australia","10.0%","$50,951","49.6%","50"
@@ -38,6 +38,6 @@
 "United Kingdom","20.0%","$119,167","43.8%","25"
 "United States","7.4% (c)","$0","40.0%","33"
 "Notes:","","","",""
-"(a) In U.S. dollars (Purchasing Power Parity).","","","",""
+"(a) In U.S. dollars (PPP).","","","",""
 "(b) The Canadian rate is the average of the total sales tax rate for the provinces and includes Goods and Services Tax, Provincial Sales Tax, and Retail Sales Tax where applicable.","","","",""
 "(c) The United States' rate is the combined weighted average state and local sales tax rate.","","","",""

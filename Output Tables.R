@@ -397,26 +397,29 @@ write.csv(TableB_Individual,"./final-outputs/Appendix-Table-CSV/Table B Individu
 TableC_Consumption_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
 #names(TableC_Consumption_raw)
 
-keep<-c("country","vatrate","threshold","base","consumptiontime")
+keep<-c("country","vat_rate",
+        "vat_threshold",
+        "vat_base",
+        "consumption_time")
 TableC_Consumption<-TableC_Consumption_raw[keep]
 
 #Format variables
-#vatrate
-TableC_Consumption$vatrate<-paste((formatC(round(TableC_Consumption$vatrate,digits=1),format = "f",digits=1)),"%",sep="")
+#vat_rate
+TableC_Consumption$vat_rate<-paste((formatC(round(TableC_Consumption$vat_rate,digits=1),format = "f",digits=1)),"%",sep="")
 
-#threshold
-TableC_Consumption$threshold<-dollar(TableC_Consumption$threshold,largest_with_cents = 1)
+#vat_threshold
+TableC_Consumption$vat_threshold<-dollar(TableC_Consumption$vat_threshold,largest_with_cents = 1)
 
-#base
-TableC_Consumption$base<-TableC_Consumption$base*100
-TableC_Consumption$base<-paste((formatC(round(TableC_Consumption$base,digits=1),format = "f",digits=1)),"%",sep="")
+#vat_base
+TableC_Consumption$vat_base<-TableC_Consumption$vat_base*100
+TableC_Consumption$vat_base<-paste((formatC(round(TableC_Consumption$vat_base,digits=1),format = "f",digits=1)),"%",sep="")
 
-#consumptiontime
-TableC_Consumption$consumptiontime<-formatC(round(TableC_Consumption$consumptiontime,digits=0),format = "f",digits=0)
+#consumption_time
+TableC_Consumption$consumption_time<-formatC(round(TableC_Consumption$consumption_time,digits=0),format = "f",digits=0)
 
 #fix US and Canada to add footnote markers
-TableC_Consumption$vatrate[4]<-paste0(TableC_Consumption$vatrate[4]," (b)")
-TableC_Consumption$vatrate[36]<-paste0(TableC_Consumption$vatrate[36]," (c)")
+TableC_Consumption$vat_rate[4]<-paste0(TableC_Consumption$vat_rate[4]," (b)")
+TableC_Consumption$vat_rate[36]<-paste0(TableC_Consumption$vat_rate[36]," (c)")
 
 headers<-c("",
            "Consumption Tax Rate",
@@ -462,7 +465,6 @@ notes_4<-c("(c) The United States' rate is the combined weighted average state a
 TableC_Consumption<-rbind(headers,columns,TableC_Consumption,notes_1,notes_2,notes_3,notes_4)
 
 write.csv(TableC_Consumption,"./final-outputs/Appendix-Table-CSV/Table C Consumption.csv",row.names = F)
-write.xlsx(TableC_Consumption,"./final-outputs/Table C Consumption.xlsx")
 
 #Table D Property####
 #Raw Data
