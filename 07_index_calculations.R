@@ -37,38 +37,38 @@ using(readxl)
 
 #Load Data
 #2014
-rawdata2014 <- read_csv("./final-data/final_indexdata2014.csv")
+raw_data_2014 <- read_csv("./final-data/final_index_data_2014.csv")
 #2015
-rawdata2015 <- read_csv("./final-data/final_indexdata2015.csv")
+raw_data_2015 <- read_csv("./final-data/final_index_data_2015.csv")
 #2016
-rawdata2016 <- read_csv("./final-data/final_indexdata2016.csv")
+raw_data_2016 <- read_csv("./final-data/final_index_data_2016.csv")
 #2017
-rawdata2017 <- read_csv("./final-data/final_indexdata2017.csv")
+raw_data_2017 <- read_csv("./final-data/final_index_data_2017.csv")
 #2018
-rawdata2018 <- read_csv("./final-data/final_indexdata2018.csv")
+raw_data_2018 <- read_csv("./final-data/final_index_data_2018.csv")
 #2019
-rawdata2019 <- read_csv("./final-data/final_indexdata2019.csv")
+raw_data_2019 <- read_csv("./final-data/final_index_data_2019.csv")
 
 
 #Combined Data
-rawdata<-rbind(rawdata2014,rawdata2015,rawdata2016,rawdata2017,rawdata2018,rawdata2019)
+raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,raw_data_2017,raw_data_2018,raw_data_2019)
 
 
-rawdata$patent_box<-as.numeric(rawdata$patent_box)
-rawdata$r_and_d_credit<-as.numeric(rawdata$r_and_d_credit)
-rawdata$net_wealth<-as.numeric(rawdata$net_wealth)
-rawdata$estate_or_inheritance_tax<-as.numeric(rawdata$estate_or_inheritance_tax)
-rawdata$transfer_tax<-as.numeric(rawdata$transfer_tax)
-rawdata$asset_tax<-as.numeric(rawdata$asset_tax)
-rawdata$capital_duties<-as.numeric(rawdata$capital_duties)
-rawdata$financial_transaction_tax<-as.numeric(rawdata$financial_transaction_tax)
-rawdata$index_capital_gains<-as.numeric(rawdata$index_capital_gains)
-rawdata$tax_treaties<-as.numeric(rawdata$tax_treaties)
-rawdata$country_limitations<-as.numeric(rawdata$country_limitations)
+raw_data$patent_box<-as.numeric(raw_data$patent_box)
+raw_data$r_and_d_credit<-as.numeric(raw_data$r_and_d_credit)
+raw_data$net_wealth<-as.numeric(raw_data$net_wealth)
+raw_data$estate_or_inheritance_tax<-as.numeric(raw_data$estate_or_inheritance_tax)
+raw_data$transfer_tax<-as.numeric(raw_data$transfer_tax)
+raw_data$asset_tax<-as.numeric(raw_data$asset_tax)
+raw_data$capital_duties<-as.numeric(raw_data$capital_duties)
+raw_data$financial_transaction_tax<-as.numeric(raw_data$financial_transaction_tax)
+raw_data$index_capital_gains<-as.numeric(raw_data$index_capital_gains)
+raw_data$tax_treaties<-as.numeric(raw_data$tax_treaties)
+raw_data$country_limitations<-as.numeric(raw_data$country_limitations)
 
 
 #Order variables for easier working
-rawdata<-rawdata[c("ISO_2","ISO_3","country","year",
+raw_data<-raw_data[c("ISO_2","ISO_3","country","year",
                  "corporate_rate","loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments",
                  "top_income_rate","threshold_top_income_rate","tax_wedge","labor_payments","labor_time","capital_gains_rate","index_capital_gains","dividends_rate",
                  "vat_rate","vat_threshold","vat_base","consumption_time",
@@ -83,15 +83,15 @@ normalize <-function(x){
 }   
 
 #standardize all the scores into a new dataframe called "zscores," This does this by year.
-zscores<-data.frame(country=rawdata$country,
-                    year=rawdata$year,
-                    ddply(rawdata[4:45],
+zscores<-data.frame(country=raw_data$country,
+                    year=raw_data$year,
+                    ddply(raw_data[4:45],
                           .(year),
                           scale)
 )
-alternate_scores<-data.frame(country=rawdata$country,
-                      year=rawdata$year,
-                      ddply(rawdata[4:45],
+alternate_scores<-data.frame(country=raw_data$country,
+                      year=raw_data$year,
+                      ddply(raw_data[4:45],
                             .(year),
                             normalize)
 )
@@ -285,8 +285,8 @@ income_index<-c("capital_gains_and_dividends","income_tax","income_tax_complexit
 international_index<-c("territorial","withholding_taxes","international_regulations")
 
 
-categories<-data.frame(country=rawdata$country,
-                       year=rawdata$year)
+categories<-data.frame(country=raw_data$country,
+                       year=raw_data$year)
 
 categories$corporate<-apply((subcategories[corporate_index]*(1/length(corporate_index))),1,sum)
 categories$consumption<-apply((subcategories[consumption_index]*(1/length(consumption_index))),1,sum)
@@ -301,8 +301,8 @@ write.csv(subset(categories,categories$year==2019),file = "./final-outputs/categ
 
 #alternate_ Scoring method
 
-alternate_categories<-data.frame(country=rawdata$country,
-                          year=rawdata$year)
+alternate_categories<-data.frame(country=raw_data$country,
+                          year=raw_data$year)
 
 alternate_categories$corporate<-apply((alternate_subcategories[corporate_index]*(1/length(corporate_index))),1,sum)
 alternate_categories$consumption<-apply((alternate_subcategories[consumption_index]*(1/length(consumption_index))),1,sum)
@@ -344,11 +344,11 @@ rank1<-function(x){
   ranks<-rank(-x,ties.method= "min")
   return(ranks)
 }
-write.csv(subset(subcategories,subcategories$year==2019),file = "./final-outputs/subcategories_zscore.csv",row.names=F)
+write.csv(subset(subcategories,subcategories$year==2019),file = "./final-outputs/subcategories_z_score.csv",row.names=F)
 
 
 #Subcategory Scores
-subcategories<-data.frame(country=rawdata$country,
+subcategories<-data.frame(country=raw_data$country,
                            ddply(subcategories[-1],
                                  .(year),
                                  score2)
@@ -358,7 +358,7 @@ subcategories<-data.frame(country=rawdata$country,
 
 #Alt Subcategory Scores
 
-#    alternate_subcategories<-data.frame(country=rawdata$country,
+#    alternate_subcategories<-data.frame(country=raw_data$country,
 #                              ddply(alternate_subcategories[-1],
 #                                    .(year),
 #                                    alternate_scale)
@@ -411,7 +411,7 @@ alternate_subcategories<-ddply(alternate_subcategories,
 
 #Category Scores
 
-categories<-data.frame(country=rawdata$country,
+categories<-data.frame(country=raw_data$country,
                        ddply(categories[-1],
                        .(year),
                         score2)
@@ -419,7 +419,7 @@ categories<-data.frame(country=rawdata$country,
 
 #alternate_ Category Scores
 
-#    alternate_categories<-data.frame(country=rawdata$country,
+#    alternate_categories<-data.frame(country=raw_data$country,
 #                           ddply(alternate_categories[-1],
 #                                 .(year),
 #                                 alternate_scale)
@@ -492,11 +492,11 @@ for (x in 1:((length(alternate_subcategories)-2)/2)){
 
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
-ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
-colnames(ISO_Country_Codes)<-c("country","ISO_2","ISO_3")
+iso_country_codes <- read_csv("./source-data/ISO Country Codes.csv")
+colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
 
-final_categories<-merge(final_categories,ISO_Country_Codes,by=c("country"))
-final_subcategories<-merge(final_subcategories,ISO_Country_Codes,by=c("country"))
+final_categories<-merge(final_categories,iso_country_codes,by=c("country"))
+final_subcategories<-merge(final_subcategories,iso_country_codes,by=c("country"))
 
 final_2014<-final_categories[final_categories$year==2014,]
 final_2015<-final_categories[final_categories$year==2015,]
@@ -507,7 +507,7 @@ final_2019<-final_categories[final_categories$year==2019,]
 
 #Data Check
 
-check<-rawdata[rawdata$country == "Greece",]
+check<-raw_data[raw_data$country == "Greece",]
 
 #Checking Sensitivity
 
@@ -526,10 +526,10 @@ subcortest1<-final_subcategories[final_subcategories$year == 2019,]
 subcortest1<-cbind(subcortest1,cortest1[14])
 cor(cortest1[c(4,6,8,10,12,14)])
 categories_correl<-data.frame(cor(cortest1[c(4,6,8,10,12,14)]))
-write.csv(categories_correl,"./final-outputs/Categories correlation.csv")
+write.csv(categories_correl,"./final-outputs/categories_correlation.csv")
 
-subcategories_correl<-data.frame(cor(subcortest1[c(seq(4,32,2),35)]))
-write.csv(subcategories_correl,"./final-outputs/Subategories correlation.csv")
+subcategories_correl<-data.frame(cor(subcortest1[c(seq(4,32,2),33)]))
+write.csv(subcategories_correl,"./final-outputs/subategories_correlation.csv")
 
 
 
@@ -592,10 +592,10 @@ Changes<-cbind(M[,1,drop=FALSE],Changes)
 final_subcategories_2019<-subset(final_subcategories,year==2019)
 
 
-write.csv(rawdata,"./final-outputs/Raw Data 2019.csv",row.names=F)
-write.csv(final_2017, file = "./final-outputs/data2017run.csv",row.names=F)
-write.csv(final_2018, file = "./final-outputs/data2018run.csv",row.names=F)
-write.csv(final_2019, file = "./final-outputs/data2019run.csv",row.names=F)
+write.csv(raw_data,"./final-outputs/raw_data_2019.csv",row.names=F)
+write.csv(final_2017, file = "./final-outputs/data_2017_run.csv",row.names=F)
+write.csv(final_2018, file = "./final-outputs/data_2018_run.csv",row.names=F)
+write.csv(final_2019, file = "./final-outputs/data_2019_run.csv",row.names=F)
 
-write.csv(final_subcategories_2019,"./final-outputs/subcategories 2019.csv",row.names=F)
-write.csv(final_categories,"./final-outputs/final categories 2014-2019.csv",row.names=F)
+write.csv(final_subcategories_2019,"./final-outputs/subcategories_2019.csv",row.names=F)
+write.csv(final_categories,"./final-outputs/final_categories_2014_2019.csv",row.names=F)
