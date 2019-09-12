@@ -38,6 +38,7 @@ using<-function(...,prompt=TRUE){
 using(OECD)
 using(readxl)
 using(plyr)
+using(dplyr)
 using(reshape2)
 using(countrycode)
 using(tidyverse)

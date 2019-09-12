@@ -1,53 +1,18 @@
 #main index code
-rm(list=ls())
-gc()
-
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
-
-using<-function(...,prompt=TRUE){
-  libs<-sapply(substitute(list(...))[-1],deparse)
-  req<-unlist(lapply(libs,require,character.only=TRUE))
-  need<-libs[req==FALSE]
-  n<-length(need)
-  installAndRequire<-function(){
-    install.packages(need)
-    lapply(need,require,character.only=TRUE)
-  }
-  if(n>0){
-    libsmsg<-if(n>2) paste(paste(need[1:(n-1)],collapse=", "),",",sep="") else need[1]
-    if(n>1){
-      libsmsg<-paste(libsmsg," and ", need[n],sep="")
-    }
-    libsmsg<-paste("The following packages count not be found: ",libsmsg,"n\r\n\rInstall missing packages?",collapse="")
-    if(prompt==FALSE){
-      installAndRequire()
-    }else if(winDialog(type=c("yesno"),libsmsg)=="YES"){
-      installAndRequire()
-    }
-  }
-}
-
-# Sets the working directory. This sets it to the "index" folder on my desktop
-using(plyr)
-using(dplyr)
-using(tidyverse)
-using(readxl)
-
 
 #Load Data
 #2014
-raw_data_2014 <- read_csv("./final-data/final_index_data_2014.csv")
+raw_data_2014 <- read_csv(paste(final_data,"final_index_data_2014.csv",sep=""))
 #2015
-raw_data_2015 <- read_csv("./final-data/final_index_data_2015.csv")
+raw_data_2015 <- read_csv(paste(final_data,"final_index_data_2015.csv",sep=""))
 #2016
-raw_data_2016 <- read_csv("./final-data/final_index_data_2016.csv")
+raw_data_2016 <- read_csv(paste(final_data,"final_index_data_2016.csv",sep=""))
 #2017
-raw_data_2017 <- read_csv("./final-data/final_index_data_2017.csv")
+raw_data_2017 <- read_csv(paste(final_data,"final_index_data_2017.csv",sep=""))
 #2018
-raw_data_2018 <- read_csv("./final-data/final_index_data_2018.csv")
+raw_data_2018 <- read_csv(paste(final_data,"final_index_data_2018.csv",sep=""))
 #2019
-raw_data_2019 <- read_csv("./final-data/final_index_data_2019.csv")
+raw_data_2019 <- read_csv(paste(final_data,"final_index_data_2019.csv",sep=""))
 
 
 #Combined Data
@@ -295,7 +260,7 @@ categories$income<-apply((subcategories[income_index]*(1/length(income_index))),
 categories$international<-apply((subcategories[international_index]*(1/length(international_index))),1,sum)
 categories$final<-apply((categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
-write.csv(subset(categories,categories$year==2019),file = "./final-outputs/categories_score.csv",row.names=F)
+write.csv(subset(categories,categories$year==2019),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
 
 
 
@@ -344,7 +309,7 @@ rank1<-function(x){
   ranks<-rank(-x,ties.method= "min")
   return(ranks)
 }
-write.csv(subset(subcategories,subcategories$year==2019),file = "./final-outputs/subcategories_z_score.csv",row.names=F)
+write.csv(subset(subcategories,subcategories$year==2019),file = paste(final_outputs,"subcategories_z_score.csv",sep=""),row.names=F)
 
 
 #Subcategory Scores
@@ -490,11 +455,6 @@ for (x in 1:((length(alternate_subcategories)-2)/2)){
 
 #rm(zscores, categories, subcategories, alternate_scores, alternate_categories, alternate_subcategories)
 
-#Load ISO Country Codes####
-#Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
-iso_country_codes <- read_csv("./source-data/ISO Country Codes.csv")
-colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
-
 final_categories<-merge(final_categories,iso_country_codes,by=c("country"))
 final_subcategories<-merge(final_subcategories,iso_country_codes,by=c("country"))
 
@@ -526,10 +486,10 @@ subcortest1<-final_subcategories[final_subcategories$year == 2019,]
 subcortest1<-cbind(subcortest1,cortest1[14])
 cor(cortest1[c(4,6,8,10,12,14)])
 categories_correl<-data.frame(cor(cortest1[c(4,6,8,10,12,14)]))
-write.csv(categories_correl,"./final-outputs/categories_correlation.csv")
+write.csv(categories_correl,paste(final_outputs,"categories_correlation.csv",sep=""))
 
 subcategories_correl<-data.frame(cor(subcortest1[c(seq(4,32,2),33)]))
-write.csv(subcategories_correl,"./final-outputs/subategories_correlation.csv")
+write.csv(subcategories_correl,paste(final_outputs,"subategories_correlation.csv",sep=""))
 
 
 
@@ -592,10 +552,10 @@ Changes<-cbind(M[,1,drop=FALSE],Changes)
 final_subcategories_2019<-subset(final_subcategories,year==2019)
 
 
-write.csv(raw_data,"./final-outputs/raw_data_2019.csv",row.names=F)
-write.csv(final_2017, file = "./final-outputs/data_2017_run.csv",row.names=F)
-write.csv(final_2018, file = "./final-outputs/data_2018_run.csv",row.names=F)
-write.csv(final_2019, file = "./final-outputs/data_2019_run.csv",row.names=F)
+write.csv(raw_data,paste(final_outputs,"raw_data_2019.csv",sep=""),row.names=F)
+write.csv(final_2017, file = paste(final_outputs,"data_2017_run.csv",sep=""),row.names=F)
+write.csv(final_2018, file = paste(final_outputs,"data_2018_run.csv",sep=""),row.names=F)
+write.csv(final_2019, file = paste(final_outputs,"data_2019_run.csv",sep=""),row.names=F)
 
-write.csv(final_subcategories_2019,"./final-outputs/subcategories_2019.csv",row.names=F)
-write.csv(final_categories,"./final-outputs/final_categories_2014_2019.csv",row.names=F)
+write.csv(final_subcategories_2019,paste(final_outputs,"subcategories_2019.csv",sep=""),row.names=F)
+write.csv(final_categories,paste(final_outputs,"final_categories_2014_2019.csv",sep=""),row.names=F)
