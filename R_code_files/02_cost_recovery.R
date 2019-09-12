@@ -1,32 +1,4 @@
-# capital allowance model
-
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
-# Clears all datasets and variables from memory
-rm(list=ls())
-
-using<-function(...,prompt=TRUE){
-  libs<-sapply(substitute(list(...))[-1],deparse)
-  req<-unlist(lapply(libs,require,character.only=TRUE))
-  need<-libs[req==FALSE]
-  n<-length(need)
-  installAndRequire<-function(){
-    install.packages(need)
-    lapply(need,require,character.only=TRUE)
-  }
-  if(n>0){
-    libsmsg<-if(n>2) paste(paste(need[1:(n-1)],collapse=", "),",",sep="") else need[1]
-    if(n>1){
-      libsmsg<-paste(libsmsg," and ", need[n],sep="")
-    }
-    libsmsg<-paste("The following packages count not be found: ",libsmsg,"n\r\n\rInstall missing packages?",collapse="")
-    if(prompt==FALSE){
-      installAndRequire()
-    }else if(winDialog(type=c("yesno"),libsmsg)=="YES"){
-      installAndRequire()
-    }
-  }
-}
+# Cost recovery variables model
 
 using(OECD)
 using(plyr)
@@ -35,8 +7,7 @@ using(countrycode)
 using(tidyverse)
 using(readxl)
 
-cbt<-read.csv("./source-data/cost_recovery_data.csv", header = TRUE, fill = TRUE, sep = ",")
-
+cbt<-read.csv(paste(source_data,"cost_recovery_data.csv",sep=""), header = TRUE, fill = TRUE, sep = ",")
 
 # merge GDP with CBT tax data
 data <- cbt
@@ -118,72 +89,7 @@ OECD_Countries<-c("AUS",
                   "LVA",
                   "LTU")
 
-#Defining OECD_Europe Countries
-Europe_OECD_Countries<-c("AUT",
-                     "BEL",
-                     "BGR",
-                     "CZE",
-                     "HRV",
-                     "DNK",
-                     "EST",
-                     "FIN",
-                     "FRA",
-                     "DEU",
-                     "GRC",
-                     "HUN",
-                     "IRL",
-                     "ISL",
-                     "ITA",
-                     "LVA",
-                     "LTU",
-                     "LUX",
-                     "NLD",
-                     "NOR",
-                     "POL",
-                     "PRT",
-                     "ROU",
-                     "SVK",
-                     "SVN",
-                     "ESP",
-                     "SWE",
-                     "CHE",
-                     "TUR",
-                     "GBR")
-
-#Defining OECD_EU Countries
-EU_OECD_Countries<-c("AUT",
-                         "BEL",
-                         "BGR",
-                         "CZE",
-                         "HRV",
-                         "DNK",
-                         "EST",
-                         "FIN",
-                         "FRA",
-                         "DEU",
-                         "GRC",
-                         "HUN",
-                         "IRL",
-                         "ITA",
-                         "LVA",
-                         "LTU",
-                         "LUX",
-                         "NLD",
-                         "POL",
-                         "PRT",
-                         "ROU",
-                         "SVK",
-                         "SVN",
-                         "ESP",
-                         "SWE",
-                         "GBR")
-
-#Gross fixed capital formation (GFCF)
-#investment<-read.csv("investment.csv", header = TRUE, fill = TRUE, sep = ",")
-#investment <- investment[c("country", "year", "investment")]
-#data <- merge(data, investment, by = c("country", "year"))
-#write.csv(data, file = "data2.csv")
-
+#Define functions for present discounted value calculations
 SL<-function(rate,i){
   pdv<-((rate*(1+i))/i)*(1-(1^(1/rate)/(1+i)^(1/rate)))
   return(pdv)
@@ -388,11 +294,11 @@ data$year<-data$year+1
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
 
-iso_country_codes <- read_csv("./source-data/iso_country_codes.csv")
+iso_country_codes <- read_csv(paste(source_data,"iso_country_codes.csv",sep=""))
 colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
 
 colnames(data)<-c("ISO_3","year","machines_cost_recovery","buildings_cost_recovery", "intangibles_cost_recovery")
 data<-merge(data,iso_country_codes,by="ISO_3")
 data<-data[c("ISO_2","ISO_3","country","year","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery")]
-write.csv(data, file = "./intermediate-outputs/cost_recovery_data.csv",row.names=F)
+write.csv(data, file = paste(intermediate_outputs,"cost_recovery_data.csv",sep=""),row.names=F)
 
