@@ -25,7 +25,10 @@ Location of output files from `06_packaging_data.R` which are input files to `07
 ### /final-outputs
 Location of the output files from `07_index_calculations.R` and `08_output_tables.R`.
 
-## R code files in main directory
+## R code files in `/R_code_files`
+### `00_master_file.R`
+This code defines important variables and functions and can run the other code files in the repository.
+
 ### `01_oecd_data_scraper.R`
 This code pulls down data from the OECD portal for the following variables:
 1. `corporate_rate`
@@ -67,9 +70,9 @@ This file creates the country profiles table used in the webtool.
 ## Designing your own reform scenario
 If you would like to see how a reform might impact a country's rank and score in the _Index_, you only need to adjust a handful of files.
 
-After downloading the repository, you can run the `07_index_calculations.R` code to get the baseline rankings and scores from this year's version of the _Index_. You may want to save the baseline output to a new folder so that the results will not be overwritten in the next step.
+After downloading the repository you should edit the directory variables in `00_master_file.R` to ensure that the downloaded files paths match where they are located on your computer. Then you can run the `00_master_file.R` code up through `#Run code files####`. At that point you can run `source("07_index_calculations.R")` to produce the baseline rankings and scores from this year's version of the _Index_. You may want to save the baseline output `data_2019_run.csv` to a new folder so that the results will not be overwritten in the next step.
 
-Next, you can create your reform scenario by manipulating the files in the /final-data folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the `final_index_data_2019.csv` file to change the corporate_rate variable for France to be 15 percent. 
+Next, you can create your reform scenario by manipulating the files in the `/final_data` folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the `final_index_data_2019.csv` file to change the corporate_rate variable for France to be 15 percent. 
 
 Once that change is made and the file is saved, you can run the `07_index_calculations.R` file again and note the changes relative to the previous baseline.
 
@@ -81,11 +84,9 @@ If you would like to research the tax system of a particular country and add it 
 If you have fully researched the data values for all the variables for the country for each year of the _Index_ and created a file with those sources, you could then create a pull request that we will review to determine if we would like to include the additional country in the repository and, potentially, the next version of the _Index_.
 
 ## Methodology
-
 The _ITCI_ is a relative ranking of the competitiveness and neutrality of the tax code in each of the 36 OECD countries. It utilizes over 40 variables across five categories: corporate tax, individual taxes, consumption taxes, property taxes, and international tax rules. Each category has multiple subcategories, and each subcategory holds a number of the 40 variables. For example, the consumption tax category contains three subcategories: rate, base, and complexity. The consumption tax base subcategory then has two variables: consumption tax as a percentage of total consumption and VAT threshold.
 
 The _ITCI_ is designed to measure a country’s tax code on its relative competitiveness rather than on an absolute measurement. This means that a score of 100 does not signify the absolute best possible tax code but the best tax code among the 36 OECD countries. Each country’s score on the _ITCI_ represents its relative distance from the best country’s score.
-
 
 ### The Calculation of the Variable, Subcategory, Category, and Final Score
 First, the standard deviation and average of each variable is calculated. The standard deviation measures the average difference of a country’s tax variables from the mean among all 36 countries.  For example, the average corporate income tax rate across the 36 OECD countries is about 23.6 percent, with a standard deviation of 5.4 percentage points. This means that on average, an OECD country’s corporate tax rate is 5.4 percentage points off from the mean rate of 23.6 percent.
@@ -110,7 +111,6 @@ The same method is used to create the final score. First, the initial category s
 Second, the adjusted initial final scores for each country are scaled to 100, relative to the country with the best score in each category. This is done by taking each country’s adjusted initial final score and dividing it by the best adjusted initial final score in each category. For example, Estonia, which has the best final score, has the best adjusted final score of 2.34, and receives a final category score of 100.
 
 ## What Drives the Final Score?
-
 Because the _Index_ is constructed to compare 36 countries along 43 different variables, it is possible that even despite the methods described above that certain variables, subcategories, or categories could be more highly correlated with the final score.
 To evaluate this tendency, this section reviews the correlation coefficients between the components of the _Index_ and the final score.
 
@@ -149,10 +149,7 @@ The next table shows the correlation coefficients between the subcategory scores
 ### The Methodology
 The method used to construct the _Index_ relies heavily on normalizing variables using z-scores, scaled around zero. To test whether this method significantly alters the final score, we also calculated the _Index_ by normalizing variables on a scale of 0 to 10. Though the final results are not perfectly identical, the correlation between the final score developed using z-scores and the alternative normalization method is 0.98 for the 2019 scores.
 
-
-
 ## Explanation of Data
-
 A more thorough description of these data and how the Tax Foundation uses them is contained within the [*International Tax Competitiveness Index*](https://taxfoundation.org/publications/international-tax-competitiveness-index/)
 
 
