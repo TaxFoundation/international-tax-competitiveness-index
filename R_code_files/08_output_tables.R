@@ -1,50 +1,13 @@
 #output tables code
-rm(list=ls())
-gc()
-
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
-
-using<-function(...,prompt=TRUE){
-  libs<-sapply(substitute(list(...))[-1],deparse)
-  req<-unlist(lapply(libs,require,character.only=TRUE))
-  need<-libs[req==FALSE]
-  n<-length(need)
-  installAndRequire<-function(){
-    install.packages(need)
-    lapply(need,require,character.only=TRUE)
-  }
-  if(n>0){
-    libsmsg<-if(n>2) paste(paste(need[1:(n-1)],collapse=", "),",",sep="") else need[1]
-    if(n>1){
-      libsmsg<-paste(libsmsg," and ", need[n],sep="")
-    }
-    libsmsg<-paste("The following packages count not be found: ",libsmsg,"n\r\n\rInstall missing packages?",collapse="")
-    if(prompt==FALSE){
-      installAndRequire()
-    }else if(winDialog(type=c("yesno"),libsmsg)=="YES"){
-      installAndRequire()
-    }
-  }
-}
-
-# Sets the working directory. This sets it to the "index" folder on my desktop
-using(plyr)
-using(dplyr)
-using(tidyverse)
-using(readxl)
-using(xlsx)
-using(scales)
-
 #Read in relevant spreadsheets
 
-raw_data_2019 <- read_csv("./final-outputs/raw_data_2019.csv")
+raw_data_2019 <- read_csv(paste(final_outputs,"raw_data_2019.csv",sep=""))
 
-final_2017 <- read_csv("./final-outputs/data_2017_run.csv")
-final_2018 <- read_csv("./final-outputs/data_2018_run.csv")
-final_2019 <- read_csv("./final-outputs/data_2019_run.csv")
+final_2017 <- read_csv(paste(final_outputs,"data_2017_run.csv",sep=""))
+final_2018 <- read_csv(paste(final_outputs,"data_2018_run.csv",sep=""))
+final_2019 <- read_csv(paste(final_outputs,"data_2019_run.csv",sep=""))
 
-subcategories_2019 <- read_csv("./final-outputs/subcategories_2019.csv")
+subcategories_2019 <- read_csv(paste(final_outputs,"subcategories_2019.csv",sep=""))
 
 ###Table 1 Results####
 table_1_results<-final_2019
@@ -70,7 +33,7 @@ colnames(table_1_results)<-c("Country",
                              "International Tax Rules Rank")
 
 
-write.csv(table_1_results,"./final-outputs/table_1_results.csv",row.names=F)
+write.csv(table_1_results,paste(final_outputs,"table_1_results.csv",sep=""),row.names=F)
 
 ###Table 2 Changes####
 table_2_changes<-merge(final_2018,final_2019,by="country")
@@ -98,7 +61,7 @@ table_2_changes$`2019 Score`<-formatC(round(table_2_changes$`2019 Score`,digits=
 table_2_changes$`Change in Score`<-formatC(round(table_2_changes$`Change in Score`,digits=1),format = "f",digits=1)
 
 
-write.csv(table_2_changes,"./final-outputs/table_2_changes.csv",row.names=F)
+write.csv(table_2_changes,paste(final_outputs,"table_2_changes.csv",sep=""),row.names=F)
 
 ###Table 3 Corporate####
 table_3_corporate<-subcategories_2019
@@ -115,7 +78,7 @@ table_3_corporate$`Rate Score`<-formatC(round(table_3_corporate$`Rate Score`,dig
 table_3_corporate$`Cost Recovery Score`<-formatC(round(table_3_corporate$`Cost Recovery Score`,digits=1),format = "f",digits=1)
 table_3_corporate$`Incentives/Complexity Score`<-formatC(round(table_3_corporate$`Incentives/Complexity Score`,digits=1),format = "f",digits=1)
 
-write.csv(table_3_corporate,"./final-outputs/table_3_corporate.csv",row.names=F)
+write.csv(table_3_corporate,paste(final_outputs,"table_3_corporate.csv",sep=""),row.names=F)
 
 
 ###Table 4 Individual####
@@ -134,7 +97,7 @@ table_4_individual$`Complexity Score`<-formatC(round(table_4_individual$`Complex
 table_4_individual$`Capital Gains/Dividends Score`<-formatC(round(table_4_individual$`Capital Gains/Dividends Score`,digits=1),format = "f",digits=1)
 
 
-write.csv(table_4_individual,"./final-outputs/table_4_individual.csv",row.names=F)
+write.csv(table_4_individual,paste(final_outputs,"table_4_individual.csv",sep=""),row.names=F)
 
 ###Table 5 Consumption####
 table_5_consumption<-subcategories_2019
@@ -154,7 +117,7 @@ table_5_consumption$`Complexity Score`<-formatC(round(table_5_consumption$`Compl
 
 
 
-write.csv(table_5_consumption,"./final-outputs/table_5_consumption.csv",row.names=F)
+write.csv(table_5_consumption,paste(final_outputs,"table_5_consumption.csv",sep=""),row.names=F)
 
 ###Table 6 Property####
 table_6_property<-subcategories_2019
@@ -174,7 +137,7 @@ table_6_property$`Capital/Transaction Taxes Score`<-formatC(round(table_6_proper
 
 
 
-write.csv(table_6_property,"./final-outputs/table_6_property.csv",row.names=F)
+write.csv(table_6_property,paste(final_outputs,"table_6_property.csv",sep=""),row.names=F)
 
 ###Table 7 International####
 table_7_international<-subcategories_2019
@@ -193,7 +156,7 @@ table_7_international$`Withholding Taxes Score`<-formatC(round(table_7_internati
 table_7_international$`Regulations Score`<-formatC(round(table_7_international$`Regulations Score`,digits=1),format = "f",digits=1)
 
 
-write.csv(table_7_international,"./final-outputs/table_7_international.csv",row.names=F)
+write.csv(table_7_international,paste(final_outputs,"table_7_international.csv",sep=""),row.names=F)
 
 ###Table A Coprorate####
 
@@ -218,7 +181,7 @@ table_a_corporate_raw<-table_a_corporate_raw[keep]
 
 
 #Text Data
-table_a_corporate_text<-read_csv("./source-data/table_a_corporate.csv")
+table_a_corporate_text<-read_csv(paste(source_data,"table_a_corporate.csv",sep=""))
 colnames(table_a_corporate_text)<-names(table_a_corporate_raw)
 table_a_corporate_text<-table_a_corporate_text[2:37,]
 
@@ -302,7 +265,7 @@ columns<-c("Country",
 
 table_a_corporate<-rbind(headers,columns,table_a_corporate)
 
-write.csv(table_a_corporate,"./final-outputs/table_a_corporate.csv",row.names = F)
+write.csv(table_a_corporate,paste(final_outputs,"table_a_corporate.csv",sep=""),row.names = F)
 
 #Table B Individual####
 
@@ -390,7 +353,7 @@ notes_3<-c("(b) After any imputation, credit, or offset.",
            "")
 table_b_individual<-rbind(headers,columns,table_b_individual,notes_1,notes_2,notes_3)
 
-write.csv(table_b_individual,"./final-outputs/table_b_individual.csv",row.names = F)
+write.csv(table_b_individual,paste(final_outputs,"table_b_individual.csv",sep=""),row.names = F)
 
 #Table C Consumption####
 #Raw Data
@@ -464,7 +427,7 @@ notes_4<-c("(c) The United States' rate is the combined weighted average state a
            "")
 table_c_consumption<-rbind(headers,columns,table_c_consumption,notes_1,notes_2,notes_3,notes_4)
 
-write.csv(table_c_consumption,"./final-outputs/table_c_consumption.csv",row.names = F)
+write.csv(table_c_consumption,paste(final_outputs,"table_c_consumption.csv",sep=""),row.names = F)
 
 #Table D Property####
 #Raw Data
@@ -483,7 +446,7 @@ table_d_property_raw<-table_d_property_raw[keep]
 table_d_property_raw$property_taxes_deductible<-if_else(table_d_property_raw$property_tax==0.5,1,0)
 
 #Text Data
-table_d_property_text<-read_csv("./source-data/table_d_property.csv")
+table_d_property_text<-read_csv(paste(source_data,"table_d_property.csv",sep=""))
 
 
 colnames(table_d_property_text)<-c("country","property_tax",
@@ -626,7 +589,7 @@ notes_7<-c("(f) Nine U.S. states levy a tax on intangible personal property.",
            "")
 table_d_property<-rbind(headers,columns,table_d_property,notes_1,notes_2,notes_3,notes_4,notes_5,notes_6,notes_7)
 
-write.csv(table_d_property,"./final-outputs/table_d_property.csv",row.names = F)
+write.csv(table_d_property,paste(final_outputs,"table_d_property.csv",sep=""),row.names = F)
 
 #Table E International####
 #Raw Data
@@ -648,7 +611,7 @@ table_e_international_raw$cfc_income<-table_e_international_raw$cfc_rules
 table_e_international_raw$cfc_exemption<-table_e_international_raw$cfc_rules
 
 #Text Data
-table_e_international_text<-read_csv("./source-data/table_e_international.csv")
+table_e_international_text<-read_csv(paste(source_data,"table_e_international.csv",sep=""))
 
 
 colnames(table_e_international_text)<-c("country",
@@ -736,5 +699,5 @@ columns<-c("Country",
 
 table_e_international<-rbind(headers,columns,table_e_international)
 
-write.csv(table_e_international,"./final-outputs/table_e_international.csv",row.names = F)
+write.csv(table_e_international,paste(final_outputs,"table_e_international.csv",sep=""),row.names = F)
 
