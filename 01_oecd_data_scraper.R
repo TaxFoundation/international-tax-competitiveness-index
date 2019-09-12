@@ -83,7 +83,7 @@ corporate_rate<-corporate_rate[c(1,4,5)]
 colnames(corporate_rate)<-c("Country","Year","corporate_rate")
 corporate_rate$corporate_rate<-corporate_rate$corporate_rate/100
 
-#Fix France 2019 CIT rate - source: https://www.pwc.com/us/en/tax-services/publications/insights/assets/pwc-france-proposes-digital-tax-delay-in-corporate-rate-reduction.pdf
+#Fix France 2019 CIT rate - source: https://home.kpmg/us/en/home/insights/2019/07/tnf-france-revised-phase-down-of-corporate-income-tax-rate-enacted.html
 
 corporate_rate<-corporate_rate[which(corporate_rate$corporate_rate!=0.3202300),]
 
@@ -212,10 +212,10 @@ OECDvars_data<-merge(OECDvars_data,tax_wedge,by=c("Country","Year"))
 
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
-ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
-colnames(ISO_Country_Codes)<-c("country","ISO_2","ISO_3")
+iso_country_codes <- read_csv("./source-data/iso_country_codes.csv")
+colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
 
 colnames(OECDvars_data)<-c("ISO_3","year","corporate_rate","dividends_rate", "top_income_rate", "threshold_top_income_rate", "tax_wedge")
-OECDvars_data<-merge(OECDvars_data,ISO_Country_Codes,by="ISO_3")
+OECDvars_data<-merge(OECDvars_data,iso_country_codes,by="ISO_3")
 
-write.csv(OECDvars_data, file = "./intermediate-outputs/OECDvars_data.csv", row.names = FALSE)
+write.csv(OECDvars_data, file = "./intermediate-outputs/oecd_variables_data.csv", row.names = FALSE)

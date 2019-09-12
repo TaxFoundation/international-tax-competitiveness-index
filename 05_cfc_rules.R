@@ -29,16 +29,16 @@ using<-function(...,prompt=TRUE){
 }
 
 using(readr)
-CFC_Rules_2014 <- read_csv("./source-data/cfcrules2014.csv")
-CFC_Rules_2015 <- read_csv("./source-data/cfcrules2015.csv")
-CFC_Rules_2016 <- read_csv("./source-data/cfcrules2016.csv")
-CFC_Rules_2017 <- read_csv("./source-data/cfcrules2017.csv")
-CFC_Rules_2018 <- read_csv("./source-data/cfcrules2018.csv")
-CFC_Rules_2019 <- read_csv("./source-data/cfcrules2019.csv")
+CFC_Rules_2014 <- read_csv("./source-data/cfc_rules_2014.csv")
+CFC_Rules_2015 <- read_csv("./source-data/cfc_rules_2015.csv")
+CFC_Rules_2016 <- read_csv("./source-data/cfc_rules_2016.csv")
+CFC_Rules_2017 <- read_csv("./source-data/cfc_rules_2017.csv")
+CFC_Rules_2018 <- read_csv("./source-data/cfc_rules_2018.csv")
+CFC_Rules_2019 <- read_csv("./source-data/cfc_rules_2019.csv")
 
 CFC_Rules<-rbind(CFC_Rules_2014,CFC_Rules_2015,CFC_Rules_2016,CFC_Rules_2017,CFC_Rules_2018,CFC_Rules_2019)
 
 CFC_Rules$cfc_rules<-rowMeans(CFC_Rules[,5:7])
 
 
-write.csv(CFC_Rules, file = "./intermediate-outputs/CFC Rules Data.csv",row.names=F)
+write.csv(CFC_Rules, file = "./intermediate-outputs/cfc_rules_data.csv",row.names=F)

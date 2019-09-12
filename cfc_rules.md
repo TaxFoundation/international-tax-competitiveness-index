@@ -1,5 +1,5 @@
 # CFC Rules Model
-This simple model creates the  `cfc_rules` variable. The inputs are the `cfcrules2014-2019` files in the `/source-data` folder and the output is the `CFC Rules Data.csv` file in the `/intermediate-outputs` folder.
+The averaging function in `05_cfc_rules.R` creates the  `cfc_rules` variable. The inputs are the `cfc_rules_2014.csv`,`cfc_rules_2015.csv`,`cfc_rules_2016.csv`,`cfc_rules_2017.csv`,`cfc_rules_2018.csv`,`cfc_rules_2019.csv` files in the `/source-data` folder and the output is the `cfc_rules_data.csv` file in the `/intermediate-outputs` folder.
 
 Each country’s score in this subcomponent is based on three aspects of controlled foreign corporation (CFC) rules: 
 1. Whether a country has CFC regulations; 

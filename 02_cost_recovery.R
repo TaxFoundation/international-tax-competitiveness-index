@@ -35,43 +35,11 @@ using(countrycode)
 using(tidyverse)
 using(readxl)
 
-cbt<-read.csv("./source-data/CBT_tax_database_web_2019_all_ame.csv", header = TRUE, fill = TRUE, sep = ",")
-
-# not copying 2018 to 2019 to make it consistent with other variables that are lagged
-# copy 2018 cbt data to 2019
-# year2019_preliminary<-cbt[cbt$year==2018,]
-# year2019_preliminary$year <- 2019
-# cbt <- rbind(cbt, year2019_preliminary)
-
-# gdp data
-gdp <- read.csv("./source-data/USDA_ERSInternationalMacroeconomicDataSet_GDP.csv", header = TRUE, fill = TRUE, sep = ",", fileEncoding = "UTF-8-BOM", check.names=FALSE)
-gdp <- melt(gdp, id.vars = c("Country"))
-gdp$Country <- countrycode(gdp$Country, 'country.name', 'iso3c')
-names(gdp)[names(gdp) == 'Country'] <- 'country'
-names(gdp)[names(gdp) == 'variable'] <- 'year'
-names(gdp)[names(gdp) == 'value'] <- 'gdp'
-
-#Alternative GDP source data 
-#GDP Data cleaning
-#Read in USDA data
-USDA_Projected<- read_excel("./source-data/ProjectedRealGDPValues.xlsx", range = "A11:K232")
-USDA_Projected<-USDA_Projected[,-c(2:8)]
-USDA_Historical<-read_excel("./source-data/HistoricalRealGDPValues.xls", range = "A11:AL232")
-gdp<-merge(USDA_Historical,USDA_Projected,by="Country")
-colnames(gdp)[1]<-"Country"
-gdp<-na.omit(gdp)
-gdp <- subset(gdp, Country!="AsiaLessJapan" & Country!="EastAsiaLessJapan")
-
-gdp <- melt(gdp, id.vars = c("Country"))
-gdp$Country <- countrycode(gdp$Country, 'country.name', 'iso3c')
-names(gdp)[names(gdp) == 'Country'] <- 'country'
-names(gdp)[names(gdp) == 'variable'] <- 'year'
-names(gdp)[names(gdp) == 'value'] <- 'gdp'
-gdp<-na.omit(gdp)
+cbt<-read.csv("./source-data/cost_recovery_data.csv", header = TRUE, fill = TRUE, sep = ",")
 
 
 # merge GDP with CBT tax data
-data <- merge(cbt, gdp, by = c("country", "year"))
+data <- cbt
 
 # drop non OECD countries
 # Note: we dont have data on latvia
@@ -413,17 +381,18 @@ data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2017,] <-
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2018,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2018,] * 0.00) + 1.00
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2019,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2019,] * 0.00) + 1.00
 
-data<-data[-c(3:23)]
+data<-data[-c(3:22)]
 
 data$year<-data$year+1
 
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
 
-#ISO_Country_Codes <- read_csv("./source-data/ISO Country Codes.csv")
-#colnames(ISO_Country_Codes)<-c("country","ISO_2","ISO_3")
+iso_country_codes <- read_csv("./source-data/iso_country_codes.csv")
+colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
 
-#colnames(data)<-c("ISO_3","year","machines_cost_recovery_cost_recovery","buildings_cost_recovery_cost_recovery", "intangibles_cost_recovery_cost_recovery")
-#data<-merge(data,ISO_Country_Codes,by="ISO_3")
-write.csv(data, file = "./intermediate-outputs/cap_allowances_data.csv",row.names=F)
+colnames(data)<-c("ISO_3","year","machines_cost_recovery","buildings_cost_recovery", "intangibles_cost_recovery")
+data<-merge(data,iso_country_codes,by="ISO_3")
+data<-data[c("ISO_2","ISO_3","country","year","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery")]
+write.csv(data, file = "./intermediate-outputs/cost_recovery_data.csv",row.names=F)
 
