@@ -183,10 +183,11 @@ OECDvars_data<-merge(OECDvars_data,tax_wedge,by=c("Country","Year"))
 
 #Load ISO Country Codes####
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
-iso_country_codes <- read_csv("./source-data/iso_country_codes.csv")
+iso_country_codes <- read_csv(paste(source_data,"iso_country_codes.csv",sep=""))
+
 colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
 
 colnames(OECDvars_data)<-c("ISO_3","year","corporate_rate","dividends_rate", "top_income_rate", "threshold_top_income_rate", "tax_wedge")
 OECDvars_data<-merge(OECDvars_data,iso_country_codes,by="ISO_3")
 
-write.csv(OECDvars_data, file = "./intermediate-outputs/oecd_variables_data.csv", row.names = FALSE)
+write.csv(OECDvars_data, file = paste(intermediate_outputs,"oecd_variables_data.csv",sep=""), row.names = FALSE)
