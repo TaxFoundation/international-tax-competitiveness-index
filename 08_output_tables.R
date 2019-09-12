@@ -468,8 +468,8 @@ write.csv(table_c_consumption,"./final-outputs/table_c_consumption.csv",row.name
 
 #Table D Property####
 #Raw Data
-TableD_Property_raw<-subset(raw_data_2019,raw_data_2019$year==2019)
-#names(TableD_Property_raw)
+table_d_property_raw<-subset(raw_data_2019,raw_data_2019$year==2019)
+#names(table_d_property_raw)
 
 keep<-c("country","property_tax", 
         "property_tax_collections",
@@ -479,14 +479,14 @@ keep<-c("country","property_tax",
         "asset_tax",
         "capital_duties",
         "financial_transaction_tax")
-TableD_Property_raw<-TableD_Property_raw[keep]
-TableD_Property_raw$property_taxes_deductible<-if_else(TableD_Property_raw$property_tax==0.5,1,0)
+table_d_property_raw<-table_d_property_raw[keep]
+table_d_property_raw$property_taxes_deductible<-if_else(table_d_property_raw$property_tax==0.5,1,0)
 
 #Text Data
-TableD_Property_text<-read_csv("./source-data/TableD_Property.csv")
+table_d_property_text<-read_csv("./source-data/table_d_property.csv")
 
 
-colnames(TableD_Property_text)<-c("country","property_tax",
+colnames(table_d_property_text)<-c("country","property_tax",
                                   "property_taxes_deductible",
                                   "property_tax_collections",
                                   "net_wealth",
@@ -495,16 +495,16 @@ colnames(TableD_Property_text)<-c("country","property_tax",
                                   "asset_tax",
                                   "capital_duties",
                                   "financial_transaction_tax")
-TableD_Property_text<-TableD_Property_text[2:37,]
+table_d_property_text<-table_d_property_text[2:37,]
 
 
 #Replace raw data with text data for select columns
 replace<-c("property_tax","estate_or_inheritance_tax","transfer_tax","asset_tax")
-TableD_Property_text<-TableD_Property_text[replace]
-TableD_Property<-TableD_Property_raw[,!names(TableD_Property_raw) %in% replace]
-TableD_Property<-cbind(TableD_Property,TableD_Property_text)
+table_d_property_text<-table_d_property_text[replace]
+table_d_property<-table_d_property_raw[,!names(table_d_property_raw) %in% replace]
+table_d_property<-cbind(table_d_property,table_d_property_text)
 
-TableD_Property<-TableD_Property[c("country","property_tax", 
+table_d_property<-table_d_property[c("country","property_tax", 
                                    "property_taxes_deductible",
                                    "property_tax_collections",
                                    "net_wealth",
@@ -516,19 +516,19 @@ TableD_Property<-TableD_Property[c("country","property_tax",
 
 #Format variables
 #property_taxes_deductible
-TableD_Property$property_taxes_deductible<-if_else(TableD_Property$property_taxes_deductible==1,"Yes","No")
+table_d_property$property_taxes_deductible<-if_else(table_d_property$property_taxes_deductible==1,"Yes","No")
 
 #property_tax_collections
-TableD_Property$property_tax_collections<-paste((formatC(round(TableD_Property$property_tax_collections,digits=1),format = "f",digits=1)),"%",sep="")
+table_d_property$property_tax_collections<-paste((formatC(round(table_d_property$property_tax_collections,digits=1),format = "f",digits=1)),"%",sep="")
 
 #net_wealth
-TableD_Property$net_wealth<-if_else(TableD_Property$net_wealth==1,"Yes","No")
+table_d_property$net_wealth<-if_else(table_d_property$net_wealth==1,"Yes","No")
 
 #capital_duties
-TableD_Property$capital_duties<-if_else(TableD_Property$capital_duties==1,"Yes","No")
+table_d_property$capital_duties<-if_else(table_d_property$capital_duties==1,"Yes","No")
 
 #financial_transaction_tax
-TableD_Property$financial_transaction_tax<-if_else(TableD_Property$financial_transaction_tax==1,"Yes","No")
+table_d_property$financial_transaction_tax<-if_else(table_d_property$financial_transaction_tax==1,"Yes","No")
 
 
 headers<-c("",
@@ -624,9 +624,9 @@ notes_7<-c("(f) Nine U.S. states levy a tax on intangible personal property.",
            "",
            "",
            "")
-TableD_Property<-rbind(headers,columns,TableD_Property,notes_1,notes_2,notes_3,notes_4,notes_5,notes_6,notes_7)
+table_d_property<-rbind(headers,columns,table_d_property,notes_1,notes_2,notes_3,notes_4,notes_5,notes_6,notes_7)
 
-write.csv(TableD_Property,"./final-outputs/Table D Property.csv",row.names = F)
+write.csv(table_d_property,"./final-outputs/table_d_property.csv",row.names = F)
 
 #Table E International####
 #Raw Data
