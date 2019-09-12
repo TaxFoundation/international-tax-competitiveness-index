@@ -246,11 +246,6 @@ data<-data[-c(3:22)]
 
 data$year<-data$year+1
 
-#Load ISO Country Codes####
-#Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
-
-iso_country_codes <- read_csv(paste(source_data,"iso_country_codes.csv",sep=""))
-colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
 
 colnames(data)<-c("ISO_3","year","machines_cost_recovery","buildings_cost_recovery", "intangibles_cost_recovery")
 data<-merge(data,iso_country_codes,by="ISO_3")
