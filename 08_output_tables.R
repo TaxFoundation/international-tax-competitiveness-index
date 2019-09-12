@@ -38,7 +38,7 @@ using(scales)
 
 #Read in relevant spreadsheets
 
-rawdata_2019 <- read_csv("./final-outputs/raw_data_2019.csv")
+raw_data_2019 <- read_csv("./final-outputs/raw_data_2019.csv")
 
 final_2017 <- read_csv("./final-outputs/data_2017_run.csv")
 final_2018 <- read_csv("./final-outputs/data_2018_run.csv")
@@ -198,7 +198,7 @@ write.csv(table_7_international,"./final-outputs/table_7_international.csv",row.
 ###Table A Coprorate####
 
 #Raw Data
-TableA_Corporate_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
+table_a_corporate_raw<-subset(raw_data_2019,raw_data_2019$year==2019)
 
 
 keep<-c("country",
@@ -214,23 +214,23 @@ keep<-c("country",
         "corporate_time",
         "profit_payments",
         "other_payments")
-TableA_Corporate_raw<-TableA_Corporate_raw[keep]
+table_a_corporate_raw<-table_a_corporate_raw[keep]
 
 
 #Text Data
-TableA_Corporate_text<-read_csv("./source-data/TableA_Corporate.csv")
-colnames(TableA_Corporate_text)<-names(TableA_Corporate_raw)
-TableA_Corporate_text<-TableA_Corporate_text[2:37,]
+table_a_corporate_text<-read_csv("./source-data/table_a_corporate.csv")
+colnames(table_a_corporate_text)<-names(table_a_corporate_raw)
+table_a_corporate_text<-table_a_corporate_text[2:37,]
 
 
 
 #Replace raw data with text data for select columns
 replace<-c("loss_carryback","loss_carryforward","inventory","r_and_d_credit")
-TableA_Corporate_text<-TableA_Corporate_text[replace]
-TableA_Corporate<-TableA_Corporate_raw[,!names(TableA_Corporate_raw) %in% replace]
-TableA_Corporate<-cbind(TableA_Corporate,TableA_Corporate_text)
+table_a_corporate_text<-table_a_corporate_text[replace]
+table_a_corporate<-table_a_corporate_raw[,!names(table_a_corporate_raw) %in% replace]
+table_a_corporate<-cbind(table_a_corporate,table_a_corporate_text)
 
-TableA_Corporate<-TableA_Corporate[c("country","corporate_rate",
+table_a_corporate<-table_a_corporate[c("country","corporate_rate",
                                      "loss_carryback",
                                      "loss_carryforward",
                                      "machines_cost_recovery",
@@ -247,34 +247,34 @@ TableA_Corporate<-TableA_Corporate[c("country","corporate_rate",
 
 #Format variables
 #corporate_rate
-TableA_Corporate$corporate_rate<-TableA_Corporate$corporate_rate*100
-TableA_Corporate$corporate_rate<-paste((formatC(round(TableA_Corporate$corporate_rate,digits=1),format = "f",digits=1)),"%",sep="")
+table_a_corporate$corporate_rate<-table_a_corporate$corporate_rate*100
+table_a_corporate$corporate_rate<-paste((formatC(round(table_a_corporate$corporate_rate,digits=1),format = "f",digits=1)),"%",sep="")
 
 #machines_cost_recovery
-TableA_Corporate$machines_cost_recovery<-TableA_Corporate$machines_cost_recovery*100
-TableA_Corporate$machines_cost_recovery<-paste((formatC(round(TableA_Corporate$machines_cost_recovery,digits=1),format = "f",digits=1)),"%",sep="")
+table_a_corporate$machines_cost_recovery<-table_a_corporate$machines_cost_recovery*100
+table_a_corporate$machines_cost_recovery<-paste((formatC(round(table_a_corporate$machines_cost_recovery,digits=1),format = "f",digits=1)),"%",sep="")
 
 #buildings_cost_recovery
-TableA_Corporate$buildings_cost_recovery<-TableA_Corporate$buildings_cost_recovery*100
-TableA_Corporate$buildings_cost_recovery<-paste((formatC(round(TableA_Corporate$buildings_cost_recovery,digits=1),format = "f",digits=1)),"%",sep="")
+table_a_corporate$buildings_cost_recovery<-table_a_corporate$buildings_cost_recovery*100
+table_a_corporate$buildings_cost_recovery<-paste((formatC(round(table_a_corporate$buildings_cost_recovery,digits=1),format = "f",digits=1)),"%",sep="")
 
 #intangibles_cost_recovery
-TableA_Corporate$intangibles_cost_recovery<-TableA_Corporate$intangibles_cost_recovery*100
-TableA_Corporate$intangibles_cost_recovery<-paste((formatC(round(TableA_Corporate$intangibles_cost_recovery,digits=1),format = "f",digits=1)),"%",sep="")
+table_a_corporate$intangibles_cost_recovery<-table_a_corporate$intangibles_cost_recovery*100
+table_a_corporate$intangibles_cost_recovery<-paste((formatC(round(table_a_corporate$intangibles_cost_recovery,digits=1),format = "f",digits=1)),"%",sep="")
 
 #patent_box
-TableA_Corporate$patent_box<-if_else(TableA_Corporate$patent_box==0,"No","Yes")
+table_a_corporate$patent_box<-if_else(table_a_corporate$patent_box==0,"No","Yes")
 
 #corporate_time
-TableA_Corporate$corporate_time<-formatC(round(TableA_Corporate$corporate_time,digits=0),format = "f",digits=0)
+table_a_corporate$corporate_time<-formatC(round(table_a_corporate$corporate_time,digits=0),format = "f",digits=0)
 
 
 #profit_payments
-TableA_Corporate$profit_payments<-formatC(round(TableA_Corporate$profit_payments,digits=0),format = "f",digits=0)
+table_a_corporate$profit_payments<-formatC(round(table_a_corporate$profit_payments,digits=0),format = "f",digits=0)
 
 
 #other_payments
-TableA_Corporate$other_payments<-formatC(round(TableA_Corporate$other_payments,digits=0),format = "f",digits=0)
+table_a_corporate$other_payments<-formatC(round(table_a_corporate$other_payments,digits=0),format = "f",digits=0)
 
 
 headers<-c("",
@@ -300,14 +300,14 @@ columns<-c("Country",
            "Corporate Complexity (Yearly Profit Payments)",
            "Corporate Complexity (Other Yearly Payments)")
 
-TableA_Corporate<-rbind(headers,columns,TableA_Corporate)
+table_a_corporate<-rbind(headers,columns,table_a_corporate)
 
-write.csv(TableA_Corporate,"./final-outputs/Table A Corporate.csv",row.names = F)
+write.csv(table_a_corporate,"./final-outputs/table_a_corporate.csv",row.names = F)
 
 #Table B Individual####
 
 #Raw Data
-TableB_Individual_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
+TableB_Individual_raw<-subset(raw_data_2019,raw_data_2019$year==2019)
 #names(TableB_Individual_raw)
 
 keep<-c("country","top_income_rate",
@@ -394,7 +394,7 @@ write.csv(TableB_Individual,"./final-outputs/Table B Individual.csv",row.names =
 
 #Table C Consumption####
 #Raw Data
-TableC_Consumption_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
+TableC_Consumption_raw<-subset(raw_data_2019,raw_data_2019$year==2019)
 #names(TableC_Consumption_raw)
 
 keep<-c("country","vat_rate",
@@ -468,7 +468,7 @@ write.csv(TableC_Consumption,"./final-outputs/Table C Consumption.csv",row.names
 
 #Table D Property####
 #Raw Data
-TableD_Property_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
+TableD_Property_raw<-subset(raw_data_2019,raw_data_2019$year==2019)
 #names(TableD_Property_raw)
 
 keep<-c("country","property_tax", 
@@ -630,7 +630,7 @@ write.csv(TableD_Property,"./final-outputs/Table D Property.csv",row.names = F)
 
 #Table E International####
 #Raw Data
-TableE_International_raw<-subset(rawdata_2019,rawdata_2019$year==2019)
+TableE_International_raw<-subset(raw_data_2019,raw_data_2019$year==2019)
 names(TableE_International_raw)
 
 keep<-c("country",
