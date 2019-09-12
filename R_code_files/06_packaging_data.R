@@ -1,58 +1,28 @@
 #Packaging Data
 
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
-# Clears all datasets and variables from memory
-rm(list=ls())
-
-using<-function(...,prompt=TRUE){
-  libs<-sapply(substitute(list(...))[-1],deparse)
-  req<-unlist(lapply(libs,require,character.only=TRUE))
-  need<-libs[req==FALSE]
-  n<-length(need)
-  installAndRequire<-function(){
-    install.packages(need)
-    lapply(need,require,character.only=TRUE)
-  }
-  if(n>0){
-    libsmsg<-if(n>2) paste(paste(need[1:(n-1)],collapse=", "),",",sep="") else need[1]
-    if(n>1){
-      libsmsg<-paste(libsmsg," and ", need[n],sep="")
-    }
-    libsmsg<-paste("The following packages count not be found: ",libsmsg,"n\r\n\rInstall missing packages?",collapse="")
-    if(prompt==FALSE){
-      installAndRequire()
-    }else if(winDialog(type=c("yesno"),libsmsg)=="YES"){
-      installAndRequire()
-    }
-  }
-}
-
-using(readr)
-using(tidyverse)
-oecd_variables<-read_csv("./intermediate-outputs/oecd_variables_data.csv")
-cost_recovery<-read_csv("./intermediate-outputs/cost_recovery_data.csv")
-vat_data<-read_csv("./intermediate-outputs/vat_data.csv")
-property_tax<-read_csv("./intermediate-outputs/property_tax_data.csv")
-cfc_rules<-read_csv("./intermediate-outputs/cfc_rules_data.csv")
+oecd_variables<-read_csv(paste(intermediate_outputs,"oecd_variables_data.csv",sep=""))
+cost_recovery<-read_csv(paste(intermediate_outputs,"cost_recovery_data.csv",sep=""))
+vat_data<-read_csv(paste(intermediate_outputs,"vat_data.csv",sep=""))
+property_tax<-read_csv(paste(intermediate_outputs,"property_tax_data.csv",sep=""))
+cfc_rules<-read_csv(paste(intermediate_outputs,"cfc_rules_data.csv",sep=""))
 
 
-index_data2014<-read_csv("./source-data/index_data_2014.csv")
+index_data2014<-read_csv(paste(source_data,"index_data_2014.csv",sep=""))
 index_data2014$year<-2014
 
-index_data2015<-read_csv("./source-data/index_data_2015.csv")
+index_data2015<-read_csv(paste(source_data,"index_data_2015.csv",sep=""))
 index_data2015$year<-2015
 
-index_data2016<-read_csv("./source-data/index_data_2016.csv")
+index_data2016<-read_csv(paste(source_data,"index_data_2016.csv",sep=""))
 index_data2016$year<-2016
 
-index_data2017<-read_csv("./source-data/index_data_2017.csv")
+index_data2017<-read_csv(paste(source_data,"index_data_2017.csv",sep=""))
 index_data2017$year<-2017
 
-index_data2018<-read_csv("./source-data/index_data_2018.csv")
+index_data2018<-read_csv(paste(source_data,"index_data_2018.csv",sep=""))
 index_data2018$year<-2018
 
-index_data2019<-read_csv("./source-data/index_data_2019.csv")
+index_data2019<-read_csv(paste(source_data,"index_data_2019.csv",sep=""))
 index_data2019$year<-2019
 
 index_data_old<-rbind(index_data2014,index_data2015,index_data2016,index_data2017,index_data2018,index_data2019)
@@ -124,9 +94,9 @@ index_data_final<-index_data_final[c("ISO_2","ISO_3","country","year",
 
 
 
-write.csv(subset(index_data_final,index_data_final$year==2014),file = "./final-data/final_index_data_2014.csv",row.names=F)
-write.csv(subset(index_data_final,index_data_final$year==2015),file = "./final-data/final_index_data_2015.csv",row.names=F)
-write.csv(subset(index_data_final,index_data_final$year==2016),file = "./final-data/final_index_data_2016.csv",row.names=F)
-write.csv(subset(index_data_final,index_data_final$year==2017),file = "./final-data/final_index_data_2017.csv",row.names=F)
-write.csv(subset(index_data_final,index_data_final$year==2018),file = "./final-data/final_index_data_2018.csv",row.names=F)
-write.csv(subset(index_data_final,index_data_final$year==2019),file = "./final-data/final_index_data_2019.csv",row.names=F)
+write.csv(subset(index_data_final,index_data_final$year==2014),file = paste(final_data,"final_index_data_2014.csv",sep=""),row.names=F)
+write.csv(subset(index_data_final,index_data_final$year==2015),file = paste(final_data,"final_index_data_2015.csv",sep=""),row.names=F)
+write.csv(subset(index_data_final,index_data_final$year==2016),file = paste(final_data,"final_index_data_2016.csv",sep=""),row.names=F)
+write.csv(subset(index_data_final,index_data_final$year==2017),file = paste(final_data,"final_index_data_2017.csv",sep=""),row.names=F)
+write.csv(subset(index_data_final,index_data_final$year==2018),file = paste(final_data,"final_index_data_2018.csv",sep=""),row.names=F)
+write.csv(subset(index_data_final,index_data_final$year==2019),file = paste(final_data,"final_index_data_2019.csv",sep=""),row.names=F)
