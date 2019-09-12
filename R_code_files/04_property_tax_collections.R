@@ -1,89 +1,14 @@
 # Property Tax Collections Source Data
 
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
-# Clears all datasets and variables from memory
-rm(list=ls())
-
-using<-function(...,prompt=TRUE){
-  libs<-sapply(substitute(list(...))[-1],deparse)
-  req<-unlist(lapply(libs,require,character.only=TRUE))
-  need<-libs[req==FALSE]
-  n<-length(need)
-  installAndRequire<-function(){
-    install.packages(need)
-    lapply(need,require,character.only=TRUE)
-  }
-  if(n>0){
-    libsmsg<-if(n>2) paste(paste(need[1:(n-1)],collapse=", "),",",sep="") else need[1]
-    if(n>1){
-      libsmsg<-paste(libsmsg," and ", need[n],sep="")
-    }
-    libsmsg<-paste("The following packages count not be found: ",libsmsg,"n\r\n\rInstall missing packages?",collapse="")
-    if(prompt==FALSE){
-      installAndRequire()
-    }else if(winDialog(type=c("yesno"),libsmsg)=="YES"){
-      installAndRequire()
-    }
-  }
-}
-
-using(OECD)
-using(IMFData)
-using(plyr)
-using(reshape2)
-using(countrycode)
-using(tidyverse)
-using(readxl)
-using(stringr)
-
-
 #IMF Capital Stock Data
 
-imf_capital_stock_data <- read_excel("source-data/imf_capital_stock_data.xlsx", 
+imf_capital_stock_data <- read_excel(paste(source_data,"imf_capital_stock_data.xlsx",sep=""), 
                                      sheet = "Data")
 
 imf_capital_stock_data<-subset(imf_capital_stock_data,imf_capital_stock_data$year>2011)
 
-OECD_Countries<-c("AUS",
-                  "AUT",
-                  "BEL",
-                  "CAN",
-                  "CHL",
-                  "CZE",
-                  "DNK",
-                  "EST",
-                  "FIN",
-                  "FRA",
-                  "DEU",
-                  "GRC",
-                  "HUN",
-                  "ISL",
-                  "IRL",
-                  "ISR",
-                  "ITA",
-                  "JPN",
-                  "KOR",
-                  "LVA",
-                  "LUX",
-                  "LTU",
-                  "MEX",
-                  "NLD",
-                  "NZL",
-                  "NOR",
-                  "POL",
-                  "PRT",
-                  "SVK",
-                  "SVN",
-                  "ESP",
-                  "SWE",
-                  "CHE",
-                  "TUR",
-                  "GBR",
-                  "USA")
 
-
-imf_capital_stock_data<-subset(imf_capital_stock_data,imf_capital_stock_data$isocode%in% OECD_Countries)
+imf_capital_stock_data<-subset(imf_capital_stock_data,imf_capital_stock_data$isocode%in% oecd_countries)
 imf_capital_stock_data$capital_stock<-imf_capital_stock_data$kpriv_n
 imf_capital_stock_data$capital_stock<-as.numeric(imf_capital_stock_data$capital_stock)
 imf_capital_stock_data$capital_stock<-(imf_capital_stock_data$capital_stock)*1000
@@ -93,11 +18,7 @@ imf_capital_stock_data<-imf_capital_stock_data[c("isocode","country","year","cap
 imf_capital_stock_data<-subset(imf_capital_stock_data,imf_capital_stock_data$year!=2015)
 
 
-#Load ISO Country Codes####
-#Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
-iso_country_codes <- read_csv("./source-data/iso_country_codes.csv")
-colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
-ISO_OECD<-subset(iso_country_codes,iso_country_codes$ISO_3%in%OECD_Countries)
+ISO_OECD<-subset(iso_country_codes,iso_country_codes$ISO_3%in%oecd_countries)
 ISO_2_OECD<-print(ISO_OECD$ISO_2)
 
 
@@ -163,7 +84,7 @@ dataset_list<-get_datasets()
 #dstruc$TRANSACT
 #dstruc$GOV
 
-property_tax_revenue<-get_dataset("REV",filter=list(c("NES"),c("4100"),c("TAXNAT"),c(OECD_Countries)), start_time = 2012)
+property_tax_revenue<-get_dataset("REV",filter=list(c("NES"),c("4100"),c("TAXNAT"),c(oecd_countries)), start_time = 2012)
 property_tax_revenue<-property_tax_revenue[c("COU","obsTime","obsValue")]
 colnames(property_tax_revenue)<-c("isocode","year","property_tax_collections")
 
@@ -183,5 +104,5 @@ property_tax$property_tax_collections<-(property_tax$property_tax_collections/pr
 property_tax<-property_tax[c("country","year","property_tax_collections","isocode")]
 colnames(property_tax)<-c("country","year","property_tax_collections","ISO_3")
 property_tax<-property_tax[c("ISO_3","country","year","property_tax_collections")]
-write.csv(property_tax, file = "./intermediate-outputs/property_tax_data.csv", row.names = FALSE)
+write.csv(property_tax, file = paste(intermediate_outputs,"property_tax_data.csv",sep=""), row.names = FALSE)
 

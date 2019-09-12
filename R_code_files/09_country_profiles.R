@@ -1,39 +1,5 @@
 #country profiles code
-rm(list=ls())
-gc()
 
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
-
-using<-function(...,prompt=TRUE){
-  libs<-sapply(substitute(list(...))[-1],deparse)
-  req<-unlist(lapply(libs,require,character.only=TRUE))
-  need<-libs[req==FALSE]
-  n<-length(need)
-  installAndRequire<-function(){
-    install.packages(need)
-    lapply(need,require,character.only=TRUE)
-  }
-  if(n>0){
-    libsmsg<-if(n>2) paste(paste(need[1:(n-1)],collapse=", "),",",sep="") else need[1]
-    if(n>1){
-      libsmsg<-paste(libsmsg," and ", need[n],sep="")
-    }
-    libsmsg<-paste("The following packages count not be found: ",libsmsg,"n\r\n\rInstall missing packages?",collapse="")
-    if(prompt==FALSE){
-      installAndRequire()
-    }else if(winDialog(type=c("yesno"),libsmsg)=="YES"){
-      installAndRequire()
-    }
-  }
-}
-
-using(plyr)
-using(dplyr)
-using(tidyverse)
-using(readxl)
-using(xlsx)
-using(scales)
 
 #Creat .csv file from Country Profiles document
 
@@ -397,5 +363,4 @@ country_profiles<-rbind(columns,Australia,Austria,Belgium,Canada,Chile,Czech_Rep
                         Portugal,Slovak_Republic,Slovenia,Spain,Sweden,Switzerland,Turkey,United_Kingdom,United_States)
 country_profiles<-as.data.frame(country_profiles[-1,])
 colnames(country_profiles)<-columns
-write.csv(country_profiles, file = "./final-outputs/country_profiles.csv",row.names=F)
-
+write.csv(country_profiles, file = paste(final_outputs,"country_profiles.csv",sep=""),row.names=F)

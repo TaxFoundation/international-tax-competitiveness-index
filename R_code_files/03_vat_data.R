@@ -1,44 +1,8 @@
 # VAT Source Data
 
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
-# Clears all datasets and variables from memory
-rm(list=ls())
-
-using<-function(...,prompt=TRUE){
-  libs<-sapply(substitute(list(...))[-1],deparse)
-  req<-unlist(lapply(libs,require,character.only=TRUE))
-  need<-libs[req==FALSE]
-  n<-length(need)
-  installAndRequire<-function(){
-    install.packages(need)
-    lapply(need,require,character.only=TRUE)
-  }
-  if(n>0){
-    libsmsg<-if(n>2) paste(paste(need[1:(n-1)],collapse=", "),",",sep="") else need[1]
-    if(n>1){
-      libsmsg<-paste(libsmsg," and ", need[n],sep="")
-    }
-    libsmsg<-paste("The following packages count not be found: ",libsmsg,"n\r\n\rInstall missing packages?",collapse="")
-    if(prompt==FALSE){
-      installAndRequire()
-    }else if(winDialog(type=c("yesno"),libsmsg)=="YES"){
-      installAndRequire()
-    }
-  }
-}
-
-using(OECD)
-using(plyr)
-using(reshape2)
-using(countrycode)
-using(tidyverse)
-using(readxl)
-using(stringr)
-
 #VAT Rates####
 
-vat_rates <- read_excel("source-data/oecd_vat_gst_rates_ctt_trends.xlsx", 
+vat_rates <- read_excel(paste(source_data,"oecd_vat_gst_rates_ctt_trends.xlsx",sep=""), 
                                        range = "A4:s39")
 
 vat_rates<-vat_rates[-c(3:13)]
@@ -66,12 +30,12 @@ colnames(vat_rates)<-c("country","year","vat_rate")
 vat_rates$country <- str_remove_all(vat_rates$country, "[*]")
 
 
-write.csv(vat_rates,"./intermediate-outputs/vat_rates.csv",row.names = FALSE)
+write.csv(vat_rates,paste(intermediate_outputs,"vat_rates.csv",sep=""),row.names = FALSE)
 
 #VAT Thresholds ####
-vat_thresholds_2018 <- read_excel("source-data/oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx", sheet = "2018", range = "A4:e42")
-vat_thresholds_2016 <- read_excel("source-data/oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx", sheet = "2016", range = "a4:e41")
-vat_thresholds_2014 <- read_excel("source-data/oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx", sheet = "2014", range = "a4:d37")
+vat_thresholds_2018 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx",sep=""), sheet = "2018", range = "A4:e42")
+vat_thresholds_2016 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx",sep=""), sheet = "2016", range = "a4:e41")
+vat_thresholds_2014 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx",sep=""), sheet = "2014", range = "a4:d37")
 
 
 
@@ -110,7 +74,7 @@ vat_threshold<-c("0","0","0","0","0","0")
 year<-c("2014","2015","2016","2017","2018","2019")
 USA <- data.frame(country,vat_threshold,year)
 
-#Check source C:\Github\international-tax-competitiveness-index\source-data\vat_thresholds_lva_ltu_previous_years.xlsx
+#Check source
 country<-c("Latvia","Latvia")
 vat_threshold<-c("100402","100604")
 year<-c("2014","2015")
@@ -123,12 +87,12 @@ LTU <- data.frame(country,vat_threshold,year)
 
 vat_thresholds<-rbind(vat_thresholds,USA,LVA,LTU)
 
-write.csv(vat_thresholds,"./intermediate-outputs/vat_thresholds.csv",row.names = FALSE)
+write.csv(vat_thresholds,paste(intermediate_outputs,"vat_thresholds.csv",sep=""),row.names = FALSE)
 
 
 #Vat Base ####
 #Source data: https://doi.org/10.1787/888933890122
-vat_base <- read_excel("source-data/oecd_vat_revenue_ratio_calculations.xlsx", 
+vat_base <- read_excel(paste(source_data,"oecd_vat_revenue_ratio_calculations.xlsx",sep=""), 
                                              sheet = "Sheet1", range = "A7:U43")
 vat_base <- vat_base[-c(2:18)]
 
@@ -149,30 +113,25 @@ colnames(vat_base)<-c("country","year","vat_base")
 #Change NAs to zeros
 vat_base[is.na(vat_base)] <- 0
 
-vat_base<-subset(vat_base,vat_base$country!="0")
+vat_base<-subset(vat_base,country!="0")
 
-write.csv(vat_base,"./intermediate-outputs/vat_base.csv",row.names = FALSE)
+write.csv(vat_base,paste(intermediate_outputs,"vat_base.csv",sep=""),row.names = FALSE)
 
 
 
 #Combine files ####
-vat_base <- read_csv("./intermediate-outputs/vat_base.csv")
-vat_rates <- read_csv("./intermediate-outputs/vat_rates.csv")
-vat_thresholds <- read_csv("./intermediate-outputs/vat_thresholds.csv")
+vat_base <- read_csv(paste(intermediate_outputs,"vat_base.csv",sep=""))
+vat_rates <- read_csv(paste(intermediate_outputs,"vat_rates.csv",sep=""))
+vat_thresholds <- read_csv(paste(intermediate_outputs,"vat_thresholds.csv",sep=""))
 
 
 vat_data<-merge(vat_rates,vat_thresholds,by=c("country","year"))
 vat_data<-merge(vat_data,vat_base,by=c("country","year"))
-
-#Load ISO Country Codes####
-#Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
-
-iso_country_codes <- read_csv("./source-data/iso_country_codes.csv")
-colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
 
 vat_data<-merge(vat_data,iso_country_codes,by=c("country"))
 vat_data<-vat_data[c("ISO_2","ISO_3","country","year","vat_rate","vat_threshold","vat_base")]
 
 
 
-write.csv(vat_data,file = "./intermediate-outputs/vat_data.csv",row.names=F)
+write.csv(vat_data,file = paste(intermediate_outputs,"vat_data.csv",sep=""),row.names=F)
+
