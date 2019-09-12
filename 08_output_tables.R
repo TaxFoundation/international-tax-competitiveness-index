@@ -630,8 +630,8 @@ write.csv(table_d_property,"./final-outputs/table_d_property.csv",row.names = F)
 
 #Table E International####
 #Raw Data
-TableE_International_raw<-subset(raw_data_2019,raw_data_2019$year==2019)
-names(TableE_International_raw)
+table_e_international_raw<-subset(raw_data_2019,raw_data_2019$year==2019)
+names(table_e_international_raw)
 
 keep<-c("country",
         "dividends_exemption",
@@ -643,15 +643,15 @@ keep<-c("country",
         "tax_treaties",
         "cfc_rules",
         "thin_capitalization_rules")
-TableE_International_raw<-TableE_International_raw[keep]
-TableE_International_raw$cfc_income<-TableE_International_raw$cfc_rules
-TableE_International_raw$cfc_exemption<-TableE_International_raw$cfc_rules
+table_e_international_raw<-table_e_international_raw[keep]
+table_e_international_raw$cfc_income<-table_e_international_raw$cfc_rules
+table_e_international_raw$cfc_exemption<-table_e_international_raw$cfc_rules
 
 #Text Data
-TableE_International_text<-read_csv("./source-data/TableE_International.csv")
+table_e_international_text<-read_csv("./source-data/table_e_international.csv")
 
 
-colnames(TableE_International_text)<-c("country",
+colnames(table_e_international_text)<-c("country",
                                        "dividends_exemption",
                                        "capital_gains_exemption",
                                        "country_limitations",
@@ -663,16 +663,16 @@ colnames(TableE_International_text)<-c("country",
                                        "cfc_income",
                                        "cfc_exemption",
                                        "thin_capitalization_rules")
-TableE_International_text<-TableE_International_text[2:37,]
+table_e_international_text<-table_e_international_text[2:37,]
 
 
 #Replace raw data with text data for select columns
 replace<-c("country_limitations","cfc_rules","cfc_exemption","cfc_income","thin_capitalization_rules")
-TableE_International_text<-TableE_International_text[replace]
-TableE_International<-TableE_International_raw[,!names(TableE_International_raw) %in% replace]
-TableE_International<-cbind(TableE_International,TableE_International_text)
+table_e_international_text<-table_e_international_text[replace]
+table_e_international<-table_e_international_raw[,!names(table_e_international_raw) %in% replace]
+table_e_international<-cbind(table_e_international,table_e_international_text)
 
-TableE_International<-TableE_International[c("country",
+table_e_international<-table_e_international[c("country",
                                              "dividends_exemption",
                                              "capital_gains_exemption",
                                              "country_limitations",
@@ -687,25 +687,25 @@ TableE_International<-TableE_International[c("country",
 
 #Format variables
 #dividends_exemption
-TableE_International$dividends_exemption<-TableE_International$dividends_exemption*100
-TableE_International$dividends_exemption<-paste((formatC(round(TableE_International$dividends_exemption,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_international$dividends_exemption<-table_e_international$dividends_exemption*100
+table_e_international$dividends_exemption<-paste((formatC(round(table_e_international$dividends_exemption,digits=1),format = "f",digits=1)),"%",sep="")
 
 
 #capital_gains_exemption
-TableE_International$capital_gains_exemption<-TableE_International$capital_gains_exemption*100
-TableE_International$capital_gains_exemption<-paste((formatC(round(TableE_International$capital_gains_exemption,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_international$capital_gains_exemption<-table_e_international$capital_gains_exemption*100
+table_e_international$capital_gains_exemption<-paste((formatC(round(table_e_international$capital_gains_exemption,digits=1),format = "f",digits=1)),"%",sep="")
 
 #dividends_withholding_tax
-TableE_International$dividends_withholding_tax<-TableE_International$dividends_withholding_tax*100
-TableE_International$dividends_withholding_tax<-paste((formatC(round(TableE_International$dividends_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_international$dividends_withholding_tax<-table_e_international$dividends_withholding_tax*100
+table_e_international$dividends_withholding_tax<-paste((formatC(round(table_e_international$dividends_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
 
 #interest_withholding_tax
-TableE_International$interest_withholding_tax<-TableE_International$interest_withholding_tax*100
-TableE_International$interest_withholding_tax<-paste((formatC(round(TableE_International$interest_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_international$interest_withholding_tax<-table_e_international$interest_withholding_tax*100
+table_e_international$interest_withholding_tax<-paste((formatC(round(table_e_international$interest_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
 
 #royalties_withholding_tax
-TableE_International$royalties_withholding_tax<-TableE_International$royalties_withholding_tax*100
-TableE_International$royalties_withholding_tax<-paste((formatC(round(TableE_International$royalties_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_international$royalties_withholding_tax<-table_e_international$royalties_withholding_tax*100
+table_e_international$royalties_withholding_tax<-paste((formatC(round(table_e_international$royalties_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
 
 
 headers<-c("",
@@ -734,6 +734,6 @@ columns<-c("Country",
            "Controlled Foreign Corporation Rules: Exemptions",
            "Interest Deduction Limitations")
 
-TableE_International<-rbind(headers,columns,TableE_International)
+table_e_international<-rbind(headers,columns,table_e_international)
 
-write.csv(TableE_International,"./final-outputs/Table E International.csv",row.names = F)
+write.csv(table_e_international,"./final-outputs/table_e_international.csv",row.names = F)
