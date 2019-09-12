@@ -5,7 +5,10 @@ The _ITCI_ attempts to display not only which countries provide the best tax env
 
 ## Explanation of Files in Repository
 ### /main directory
-Location of the .R code files, readme, and source documentation.
+Location of the readme, and source documentation.
+
+### /R_code_files
+Location of the .R code files
 
 ### /source-data
 Location of **input** files to several .R code files including:
