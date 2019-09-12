@@ -1,8 +1,8 @@
-#Clean up working environment
+#Clean up working environment####
 rm(list=ls())
 gc()
 
-#Directory Variables
+#Directory Variables####
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 R_code_files<-"C:/Github/international-tax-competitiveness-index/R_code_files/"
 source_data<-"C:/Github/international-tax-competitiveness-index/source_data/"
@@ -10,7 +10,7 @@ intermediate_outputs<-"C:/Github/international-tax-competitiveness-index/interme
 final_outputs<-"C:/Github/international-tax-competitiveness-index/final_outputs/"
 
 
-#Define Using function
+#Define Using function####
 using<-function(...,prompt=TRUE){
   libs<-sapply(substitute(list(...))[-1],deparse)
   req<-unlist(lapply(libs,require,character.only=TRUE))
@@ -33,7 +33,55 @@ using<-function(...,prompt=TRUE){
     }
   }
 }
-#Run code files
+
+#Load libraries####
+using(OECD)
+using(readxl)
+using(plyr)
+using(reshape2)
+using(countrycode)
+using(tidyverse)
+using(stringr)
+
+#Define list of OECD countries####
+oecd_countries<-c("AUS",
+                  "AUT",
+                  "BEL",
+                  "CAN",
+                  "CHL",
+                  "CZE",
+                  "DNK",
+                  "EST",
+                  "FIN",
+                  "FRA",
+                  "DEU",
+                  "GRC",
+                  "HUN",
+                  "ISL",
+                  "IRL",
+                  "ISR",
+                  "ITA",
+                  "JPN",
+                  "KOR",
+                  "LVA",
+                  "LUX",
+                  "LTU",
+                  "MEX",
+                  "NLD",
+                  "NZL",
+                  "NOR",
+                  "POL",
+                  "PRT",
+                  "SVK",
+                  "SVN",
+                  "ESP",
+                  "SWE",
+                  "CHE",
+                  "TUR",
+                  "GBR",
+                  "USA")
+
+#Run code files####
 source("01_oecd_data_scraper.R")
 source("02_cost_recovery.R")
 source("03_vat_data.R")

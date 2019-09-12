@@ -1,12 +1,5 @@
 # Cost recovery variables model
 
-using(OECD)
-using(plyr)
-using(reshape2)
-using(countrycode)
-using(tidyverse)
-using(readxl)
-
 cbt<-read.csv(paste(source_data,"cost_recovery_data.csv",sep=""), header = TRUE, fill = TRUE, sep = ",")
 
 # merge GDP with CBT tax data
@@ -50,44 +43,6 @@ data <- data[which(data$country=="AUS"
                    | data$country=="TUR"
                    | data$country=="GBR"
                    | data$country=="USA"),]
-
-#Defining OECD Countries
-OECD_Countries<-c("AUS",
-                  "AUT",
-                  "BEL",
-                  "CAN",
-                  "CHL",
-                  "CZE",
-                  "DNK",
-                  "EST",
-                  "FIN",
-                  "FRA",
-                  "DEU",
-                  "GRC",
-                  "HUN",
-                  "ISL",
-                  "IRL",
-                  "ISR",
-                  "ITA",
-                  "JPN",
-                  "KOR",
-                  "LUX",
-                  "MEX",
-                  "NLD",
-                  "NZL",
-                  "NOR",
-                  "POL",
-                  "PRT",
-                  "SVK",
-                  "SVN",
-                  "ESP",
-                  "SWE",
-                  "CHE",
-                  "TUR",
-                  "GBR",
-                  "USA",
-                  "LVA",
-                  "LTU")
 
 #Define functions for present discounted value calculations
 SL<-function(rate,i){
