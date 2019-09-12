@@ -737,3 +737,4 @@ columns<-c("Country",
 table_e_international<-rbind(headers,columns,table_e_international)
 
 write.csv(table_e_international,"./final-outputs/table_e_international.csv",row.names = F)
+
