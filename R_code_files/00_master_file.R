@@ -9,7 +9,6 @@ source_data<-"C:/Github/international-tax-competitiveness-index/source_data/"
 intermediate_outputs<-"C:/Github/international-tax-competitiveness-index/intermediate_outputs/"
 final_outputs<-"C:/Github/international-tax-competitiveness-index/final_outputs/"
 
-
 #Define Using function####
 using<-function(...,prompt=TRUE){
   libs<-sapply(substitute(list(...))[-1],deparse)
@@ -42,6 +41,7 @@ using(reshape2)
 using(countrycode)
 using(tidyverse)
 using(stringr)
+using(IMFData)
 
 #Define list of OECD countries####
 oecd_countries<-c("AUS",
@@ -81,6 +81,11 @@ oecd_countries<-c("AUS",
                   "GBR",
                   "USA")
 
+#Read in ISO Country Codes####
+#Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
+iso_country_codes <- read_csv(paste(source_data,"iso_country_codes.csv",sep=""))
+colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
+                              
 #Run code files####
 source("01_oecd_data_scraper.R")
 source("02_cost_recovery.R")
