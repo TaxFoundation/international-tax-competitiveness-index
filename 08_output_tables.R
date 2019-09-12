@@ -38,29 +38,29 @@ using(scales)
 
 #Read in relevant spreadsheets
 
-rawdata_2019 <- read_csv("./final-outputs/Raw Data 2019.csv")
+rawdata_2019 <- read_csv("./final-outputs/raw_data_2019.csv")
 
-Final2017 <- read_csv("./final-outputs/data2017run.csv")
-Final2018 <- read_csv("./final-outputs/data2018run.csv")
-Final2019 <- read_csv("./final-outputs/data2019run.csv")
+final_2017 <- read_csv("./final-outputs/data_2017_run.csv")
+final_2018 <- read_csv("./final-outputs/data_2018_run.csv")
+final_2019 <- read_csv("./final-outputs/data_2019_run.csv")
 
-subcategories_2019 <- read_csv("./final-outputs/subcategories 2019.csv")
+subcategories_2019 <- read_csv("./final-outputs/subcategories_2019.csv")
 
 ###Table 1 Results####
-Table_1_Results<-Final2019
+table_1_results<-final_2019
 
 #Select variables
 keep<-c("country","final_rank","final","corporate_rank","income_rank","consumption_rank","property_rank","international_rank")
-Table_1_Results<-Table_1_Results[keep]
+table_1_results<-table_1_results[keep]
 
 #Sort by rank
-Table_1_Results<-Table_1_Results[order(Table_1_Results$final_rank),]
+table_1_results<-table_1_results[order(table_1_results$final_rank),]
 
 #Format columns
-Table_1_Results$final<-formatC(round(Table_1_Results$final,digits=1),format = "f",digits=1)
+table_1_results$final<-formatC(round(table_1_results$final,digits=1),format = "f",digits=1)
 
 
-colnames(Table_1_Results)<-c("Country",
+colnames(table_1_results)<-c("Country",
                              "Overall Rank",
                              "Overall Score",
                              "Corporate Tax Rank", 
@@ -70,57 +70,57 @@ colnames(Table_1_Results)<-c("Country",
                              "International Tax Rules Rank")
 
 
-write.csv(Table_1_Results,"./final-outputs/Table 1 Results.csv",row.names=F)
+write.csv(table_1_results,"./final-outputs/table_1_results.csv",row.names=F)
 
 ###Table 2 Changes####
-Table2_Changes<-merge(Final2018,Final2019,by="country")
+table_2_changes<-merge(final_2018,final_2019,by="country")
 keep<-c("country","final_rank.x","final.x","final_rank.y","final.y")
 
-Table2_Changes<-Table2_Changes[keep]
+table_2_changes<-table_2_changes[keep]
 
-colnames(Table2_Changes)<-c("country", "2018 Rank","2018 Score","2019 Rank","2019 Score")
+colnames(table_2_changes)<-c("country", "2018 Rank","2018 Score","2019 Rank","2019 Score")
 
-Table2_Changes<-merge(Final2017,Table2_Changes,by="country")
+table_2_changes<-merge(final_2017,table_2_changes,by="country")
 keep<-c("country","final_rank","final","2018 Rank","2018 Score","2019 Rank","2019 Score")
 
-Table2_Changes<-Table2_Changes[keep]
+table_2_changes<-table_2_changes[keep]
 
-colnames(Table2_Changes)<-c("Country","2017 Rank","2017 Score", "2018 Rank","2018 Score","2019 Rank","2019 Score")
+colnames(table_2_changes)<-c("Country","2017 Rank","2017 Score", "2018 Rank","2018 Score","2019 Rank","2019 Score")
 
-Table2_Changes$'Change in Rank from 2018 to 2019'<-(Table2_Changes$`2019 Rank`-Table2_Changes$`2018 Rank`)*(-1)
-Table2_Changes$'Change in Score from 2018 to 2019'<-Table2_Changes$`2019 Score`-Table2_Changes$`2018 Score`
+table_2_changes$'Change in Rank from 2018 to 2019'<-(table_2_changes$`2019 Rank`-table_2_changes$`2018 Rank`)*(-1)
+table_2_changes$'Change in Score from 2018 to 2019'<-table_2_changes$`2019 Score`-table_2_changes$`2018 Score`
 
 #Format Columns
 
-Table2_Changes$`2017 Score`<-formatC(round(Table2_Changes$`2017 Score`,digits=1),format = "f",digits=1)
-Table2_Changes$`2018 Score`<-formatC(round(Table2_Changes$`2018 Score`,digits=1),format = "f",digits=1)
-Table2_Changes$`2019 Score`<-formatC(round(Table2_Changes$`2019 Score`,digits=1),format = "f",digits=1)
-Table2_Changes$`Change in Score`<-formatC(round(Table2_Changes$`Change in Score`,digits=1),format = "f",digits=1)
+table_2_changes$`2017 Score`<-formatC(round(table_2_changes$`2017 Score`,digits=1),format = "f",digits=1)
+table_2_changes$`2018 Score`<-formatC(round(table_2_changes$`2018 Score`,digits=1),format = "f",digits=1)
+table_2_changes$`2019 Score`<-formatC(round(table_2_changes$`2019 Score`,digits=1),format = "f",digits=1)
+table_2_changes$`Change in Score`<-formatC(round(table_2_changes$`Change in Score`,digits=1),format = "f",digits=1)
 
 
-write.csv(Table2_Changes,"./final-outputs/Table 2 Changes.csv",row.names=F)
+write.csv(table_2_changes,"./final-outputs/table_2_changes.csv",row.names=F)
 
 ###Table 3 Corporate####
-Table3_Corporate<-subcategories_2019
-Table3_Corporate<-merge(Table3_Corporate,Final2019,by=c("country"))
+table_3_corporate<-subcategories_2019
+table_3_corporate<-merge(table_3_corporate,final_2019,by=c("country"))
 
 keep<-c("country","corporate_rank","corporate","corporate_rate_rank","corporate_rate","cost_recovery_rank","cost_recovery","incentives_rank","incentives")
-Table3_Corporate<-Table3_Corporate[keep]
-colnames(Table3_Corporate)<-c("Country","Overall Rank","Overall Score", "Rate Rank","Rate Score","Cost Recovery Rank","Cost Recovery Score","Incentives/Complexity Rank","Incentives/Complexity Score")
+table_3_corporate<-table_3_corporate[keep]
+colnames(table_3_corporate)<-c("Country","Overall Rank","Overall Score", "Rate Rank","Rate Score","Cost Recovery Rank","Cost Recovery Score","Incentives/Complexity Rank","Incentives/Complexity Score")
 
 #Format Columns
 
-Table3_Corporate$`Overall Score`<-formatC(round(Table3_Corporate$`Overall Score`,digits=1),format = "f",digits=1)
-Table3_Corporate$`Rate Score`<-formatC(round(Table3_Corporate$`Rate Score`,digits=1),format = "f",digits=1)
-Table3_Corporate$`Cost Recovery Score`<-formatC(round(Table3_Corporate$`Cost Recovery Score`,digits=1),format = "f",digits=1)
-Table3_Corporate$`Incentives/Complexity Score`<-formatC(round(Table3_Corporate$`Incentives/Complexity Score`,digits=1),format = "f",digits=1)
+table_3_corporate$`Overall Score`<-formatC(round(table_3_corporate$`Overall Score`,digits=1),format = "f",digits=1)
+table_3_corporate$`Rate Score`<-formatC(round(table_3_corporate$`Rate Score`,digits=1),format = "f",digits=1)
+table_3_corporate$`Cost Recovery Score`<-formatC(round(table_3_corporate$`Cost Recovery Score`,digits=1),format = "f",digits=1)
+table_3_corporate$`Incentives/Complexity Score`<-formatC(round(table_3_corporate$`Incentives/Complexity Score`,digits=1),format = "f",digits=1)
 
-write.csv(Table3_Corporate,"./final-outputs/Table 3 Corporate.csv",row.names=F)
+write.csv(table_3_corporate,"./final-outputs/table_3_corporate.csv",row.names=F)
 
 
 ###Table 4 Individual####
 Table4_Individual<-subcategories_2019
-Table4_Individual<-merge(Table4_Individual,Final2019,by=c("country"))
+Table4_Individual<-merge(Table4_Individual,final_2019,by=c("country"))
 
 #names(Table4_Individual)
 
@@ -138,7 +138,7 @@ write.csv(Table4_Individual,"./final-outputs/Table 4 Individual.csv",row.names=F
 
 ###Table 5 Consumption####
 Table5_Consumption<-subcategories_2019
-Table5_Consumption<-merge(Table5_Consumption,Final2019,by=c("country"))
+Table5_Consumption<-merge(Table5_Consumption,final_2019,by=c("country"))
 
 #names(Table5_Consumption)
 
@@ -158,7 +158,7 @@ write.csv(Table5_Consumption,"./final-outputs/Table 5 Consumption.csv",row.names
 
 ###Table 6 Property####
 Table6_Property<-subcategories_2019
-Table6_Property<-merge(Table6_Property,Final2019,by=c("country"))
+Table6_Property<-merge(Table6_Property,final_2019,by=c("country"))
 
 #names(Table6_Property)
 
@@ -178,7 +178,7 @@ write.csv(Table6_Property,"./final-outputs/Table 6 Property.csv",row.names=F)
 
 ###Table 7 International####
 Table7_International<-subcategories_2019
-Table7_International<-merge(Table7_International,Final2019,by=c("country"))
+Table7_International<-merge(Table7_International,final_2019,by=c("country"))
 
 #names(Table7_International)
 
