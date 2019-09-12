@@ -119,81 +119,81 @@ write.csv(table_3_corporate,"./final-outputs/table_3_corporate.csv",row.names=F)
 
 
 ###Table 4 Individual####
-Table4_Individual<-subcategories_2019
-Table4_Individual<-merge(Table4_Individual,final_2019,by=c("country"))
+table_4_individual<-subcategories_2019
+table_4_individual<-merge(table_4_individual,final_2019,by=c("country"))
 
-#names(Table4_Individual)
+#names(table_4_individual)
 
 keep<-c("country","income_rank","income","income_tax_rank","income_tax","income_tax_complexity_rank","income_tax_complexity","capital_gains_and_dividends_rank","capital_gains_and_dividends")
-Table4_Individual<-Table4_Individual[keep]
-colnames(Table4_Individual)<-c("Country","Overall Rank","Overall Score","Income Tax Rank","Income Tax Score","Complexity Rank","Complexity Score", "Capital Gains/Dividends Rank","Capital Gains/Dividends Score")
+table_4_individual<-table_4_individual[keep]
+colnames(table_4_individual)<-c("Country","Overall Rank","Overall Score","Income Tax Rank","Income Tax Score","Complexity Rank","Complexity Score", "Capital Gains/Dividends Rank","Capital Gains/Dividends Score")
 
-Table4_Individual$`Overall Score`<-formatC(round(Table4_Individual$`Overall Score`,digits=1),format = "f",digits=1)
-Table4_Individual$`Income Tax Score`<-formatC(round(Table4_Individual$`Income Tax Score`,digits=1),format = "f",digits=1)
-Table4_Individual$`Complexity Score`<-formatC(round(Table4_Individual$`Complexity Score`,digits=1),format = "f",digits=1)
-Table4_Individual$`Capital Gains/Dividends Score`<-formatC(round(Table4_Individual$`Capital Gains/Dividends Score`,digits=1),format = "f",digits=1)
+table_4_individual$`Overall Score`<-formatC(round(table_4_individual$`Overall Score`,digits=1),format = "f",digits=1)
+table_4_individual$`Income Tax Score`<-formatC(round(table_4_individual$`Income Tax Score`,digits=1),format = "f",digits=1)
+table_4_individual$`Complexity Score`<-formatC(round(table_4_individual$`Complexity Score`,digits=1),format = "f",digits=1)
+table_4_individual$`Capital Gains/Dividends Score`<-formatC(round(table_4_individual$`Capital Gains/Dividends Score`,digits=1),format = "f",digits=1)
 
 
-write.csv(Table4_Individual,"./final-outputs/Table 4 Individual.csv",row.names=F)
+write.csv(table_4_individual,"./final-outputs/table_4_individual.csv",row.names=F)
 
 ###Table 5 Consumption####
-Table5_Consumption<-subcategories_2019
-Table5_Consumption<-merge(Table5_Consumption,final_2019,by=c("country"))
+table_5_consumption<-subcategories_2019
+table_5_consumption<-merge(table_5_consumption,final_2019,by=c("country"))
 
-#names(Table5_Consumption)
+#names(table_5_consumption)
 
 keep<-c("country","consumption_rank","consumption","consumption_tax_rate_rank","consumption_tax_rate","consumption_tax_base_rank","consumption_tax_base","consumption_tax_complexity_rank","consumption_tax_complexity")
-Table5_Consumption<-Table5_Consumption[keep]
-colnames(Table5_Consumption)<-c("Country","Overall Rank","Overall Score", "Rate Rank","Rate Score","Base Rank","Base Score","Complexity Rank","Complexity Score")
+table_5_consumption<-table_5_consumption[keep]
+colnames(table_5_consumption)<-c("Country","Overall Rank","Overall Score", "Rate Rank","Rate Score","Base Rank","Base Score","Complexity Rank","Complexity Score")
 
 
-Table5_Consumption$`Overall Score`<-formatC(round(Table5_Consumption$`Overall Score`,digits=1),format = "f",digits=1)
-Table5_Consumption$`Rate Score`<-formatC(round(Table5_Consumption$`Rate Score`,digits=1),format = "f",digits=1)
-Table5_Consumption$`Base Score`<-formatC(round(Table5_Consumption$`Base Score`,digits=1),format = "f",digits=1)
-Table5_Consumption$`Complexity Score`<-formatC(round(Table5_Consumption$`Complexity Score`,digits=1),format = "f",digits=1)
+table_5_consumption$`Overall Score`<-formatC(round(table_5_consumption$`Overall Score`,digits=1),format = "f",digits=1)
+table_5_consumption$`Rate Score`<-formatC(round(table_5_consumption$`Rate Score`,digits=1),format = "f",digits=1)
+table_5_consumption$`Base Score`<-formatC(round(table_5_consumption$`Base Score`,digits=1),format = "f",digits=1)
+table_5_consumption$`Complexity Score`<-formatC(round(table_5_consumption$`Complexity Score`,digits=1),format = "f",digits=1)
 
 
 
-write.csv(Table5_Consumption,"./final-outputs/Table 5 Consumption.csv",row.names=F)
+write.csv(table_5_consumption,"./final-outputs/table_5_consumption.csv",row.names=F)
 
 ###Table 6 Property####
-Table6_Property<-subcategories_2019
-Table6_Property<-merge(Table6_Property,final_2019,by=c("country"))
+table_6_property<-subcategories_2019
+table_6_property<-merge(table_6_property,final_2019,by=c("country"))
 
-#names(Table6_Property)
+#names(table_6_property)
 
 keep<-c("country","property_rank","property","real_property_tax_rank","real_property_tax","wealth_taxes_rank","wealth_taxes","capital_taxes_rank","capital_taxes")
-Table6_Property<-Table6_Property[keep]
-colnames(Table6_Property)<-c("Country","Overall Rank","Overall Score", "Real Property Taxes Rank","Real Property Taxes Score","Wealth/Estate Taxes Rank","Wealth/Estate Taxes Score","Capital/Transaction Taxes Rank","Capital/Transaction Taxes Score")
+table_6_property<-table_6_property[keep]
+colnames(table_6_property)<-c("Country","Overall Rank","Overall Score", "Real Property Taxes Rank","Real Property Taxes Score","Wealth/Estate Taxes Rank","Wealth/Estate Taxes Score","Capital/Transaction Taxes Rank","Capital/Transaction Taxes Score")
 
 
-Table6_Property$`Overall Score`<-formatC(round(Table6_Property$`Overall Score`,digits=1),format = "f",digits=1)
-Table6_Property$`Real Property Taxes Score`<-formatC(round(Table6_Property$`Real Property Taxes Score`,digits=1),format = "f",digits=1)
-Table6_Property$`Wealth/Estate Taxes Score`<-formatC(round(Table6_Property$`Wealth/Estate Taxes Score`,digits=1),format = "f",digits=1)
-Table6_Property$`Capital/Transaction Taxes Score`<-formatC(round(Table6_Property$`Capital/Transaction Taxes Score`,digits=1),format = "f",digits=1)
+table_6_property$`Overall Score`<-formatC(round(table_6_property$`Overall Score`,digits=1),format = "f",digits=1)
+table_6_property$`Real Property Taxes Score`<-formatC(round(table_6_property$`Real Property Taxes Score`,digits=1),format = "f",digits=1)
+table_6_property$`Wealth/Estate Taxes Score`<-formatC(round(table_6_property$`Wealth/Estate Taxes Score`,digits=1),format = "f",digits=1)
+table_6_property$`Capital/Transaction Taxes Score`<-formatC(round(table_6_property$`Capital/Transaction Taxes Score`,digits=1),format = "f",digits=1)
 
 
 
-write.csv(Table6_Property,"./final-outputs/Table 6 Property.csv",row.names=F)
+write.csv(table_6_property,"./final-outputs/table_6_property.csv",row.names=F)
 
 ###Table 7 International####
-Table7_International<-subcategories_2019
-Table7_International<-merge(Table7_International,final_2019,by=c("country"))
+table_7_international<-subcategories_2019
+table_7_international<-merge(table_7_international,final_2019,by=c("country"))
 
-#names(Table7_International)
+#names(table_7_international)
 
 keep<-c("country","international_rank","international","territorial_rank","territorial","withholding_taxes_rank","withholding_taxes","international_regulations_rank","international_regulations")
-Table7_International<-Table7_International[keep]
-colnames(Table7_International)<-c("Country","Overall Rank","Overall Score", "Div/Cap Gains Exemption Rank","Div/Cap Gains Exemption Score","Withholding Taxes Rank","Withholding Taxes Score","Regulations Rank","Regulations Score")
+table_7_international<-table_7_international[keep]
+colnames(table_7_international)<-c("Country","Overall Rank","Overall Score", "Div/Cap Gains Exemption Rank","Div/Cap Gains Exemption Score","Withholding Taxes Rank","Withholding Taxes Score","Regulations Rank","Regulations Score")
 
 
-Table7_International$`Overall Score`<-formatC(round(Table7_International$`Overall Score`,digits=1),format = "f",digits=1)
-Table7_International$`Div/Cap Gains Exemption Score`<-formatC(round(Table7_International$`Div/Cap Gains Exemption Score`,digits=1),format = "f",digits=1)
-Table7_International$`Withholding Taxes Score`<-formatC(round(Table7_International$`Withholding Taxes Score`,digits=1),format = "f",digits=1)
-Table7_International$`Regulations Score`<-formatC(round(Table7_International$`Regulations Score`,digits=1),format = "f",digits=1)
+table_7_international$`Overall Score`<-formatC(round(table_7_international$`Overall Score`,digits=1),format = "f",digits=1)
+table_7_international$`Div/Cap Gains Exemption Score`<-formatC(round(table_7_international$`Div/Cap Gains Exemption Score`,digits=1),format = "f",digits=1)
+table_7_international$`Withholding Taxes Score`<-formatC(round(table_7_international$`Withholding Taxes Score`,digits=1),format = "f",digits=1)
+table_7_international$`Regulations Score`<-formatC(round(table_7_international$`Regulations Score`,digits=1),format = "f",digits=1)
 
 
-write.csv(Table7_International,"./final-outputs/Table 7 International.csv",row.names=F)
+write.csv(table_7_international,"./final-outputs/table_7_international.csv",row.names=F)
 
 ###Table A Coprorate####
 
