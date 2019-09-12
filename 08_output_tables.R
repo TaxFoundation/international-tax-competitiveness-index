@@ -394,32 +394,32 @@ write.csv(table_b_individual,"./final-outputs/table_b_individual.csv",row.names 
 
 #Table C Consumption####
 #Raw Data
-TableC_Consumption_raw<-subset(raw_data_2019,raw_data_2019$year==2019)
-#names(TableC_Consumption_raw)
+table_c_consumption_raw<-subset(raw_data_2019,raw_data_2019$year==2019)
+#names(table_c_consumption_raw)
 
 keep<-c("country","vat_rate",
         "vat_threshold",
         "vat_base",
         "consumption_time")
-TableC_Consumption<-TableC_Consumption_raw[keep]
+table_c_consumption<-table_c_consumption_raw[keep]
 
 #Format variables
 #vat_rate
-TableC_Consumption$vat_rate<-paste((formatC(round(TableC_Consumption$vat_rate,digits=1),format = "f",digits=1)),"%",sep="")
+table_c_consumption$vat_rate<-paste((formatC(round(table_c_consumption$vat_rate,digits=1),format = "f",digits=1)),"%",sep="")
 
 #vat_threshold
-TableC_Consumption$vat_threshold<-dollar(TableC_Consumption$vat_threshold,largest_with_cents = 1)
+table_c_consumption$vat_threshold<-dollar(table_c_consumption$vat_threshold,largest_with_cents = 1)
 
 #vat_base
-TableC_Consumption$vat_base<-TableC_Consumption$vat_base*100
-TableC_Consumption$vat_base<-paste((formatC(round(TableC_Consumption$vat_base,digits=1),format = "f",digits=1)),"%",sep="")
+table_c_consumption$vat_base<-table_c_consumption$vat_base*100
+table_c_consumption$vat_base<-paste((formatC(round(table_c_consumption$vat_base,digits=1),format = "f",digits=1)),"%",sep="")
 
 #consumption_time
-TableC_Consumption$consumption_time<-formatC(round(TableC_Consumption$consumption_time,digits=0),format = "f",digits=0)
+table_c_consumption$consumption_time<-formatC(round(table_c_consumption$consumption_time,digits=0),format = "f",digits=0)
 
 #fix US and Canada to add footnote markers
-TableC_Consumption$vat_rate[4]<-paste0(TableC_Consumption$vat_rate[4]," (b)")
-TableC_Consumption$vat_rate[36]<-paste0(TableC_Consumption$vat_rate[36]," (c)")
+table_c_consumption$vat_rate[4]<-paste0(table_c_consumption$vat_rate[4]," (b)")
+table_c_consumption$vat_rate[36]<-paste0(table_c_consumption$vat_rate[36]," (c)")
 
 headers<-c("",
            "Consumption Tax Rate",
@@ -462,9 +462,9 @@ notes_4<-c("(c) The United States' rate is the combined weighted average state a
            "",
            "",
            "")
-TableC_Consumption<-rbind(headers,columns,TableC_Consumption,notes_1,notes_2,notes_3,notes_4)
+table_c_consumption<-rbind(headers,columns,table_c_consumption,notes_1,notes_2,notes_3,notes_4)
 
-write.csv(TableC_Consumption,"./final-outputs/Table C Consumption.csv",row.names = F)
+write.csv(table_c_consumption,"./final-outputs/table_c_consumption.csv",row.names = F)
 
 #Table D Property####
 #Raw Data
