@@ -149,7 +149,7 @@ colnames(vat_base)<-c("country","year","vat_base")
 #Change NAs to zeros
 vat_base[is.na(vat_base)] <- 0
 
-vat_base<-subset(vat_base,vat_base$country!="0")
+vat_base<-subset(vat_base,country!="0")
 
 write.csv(vat_base,"./intermediate-outputs/vat_base.csv",row.names = FALSE)
 
@@ -176,3 +176,4 @@ vat_data<-vat_data[c("ISO_2","ISO_3","country","year","vat_rate","vat_threshold"
 
 
 write.csv(vat_data,file = "./intermediate-outputs/vat_data.csv",row.names=F)
+
