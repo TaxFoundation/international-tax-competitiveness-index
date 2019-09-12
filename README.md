@@ -35,7 +35,7 @@ This code pulls down data from the OECD portal for the following variables:
 5. `tax_wedge`
 
 ### `02_cost_recovery.R`
-This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Foundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The main input file is `CBT_tax_database_web_2019_all_ame.csv`. Descriptions of the variables in that file can be found in `tax-data-description-17.doc`. Both the input file and the description of the variables can be found in /source-data. The output from `allowances_ame_OECD_2019.r` is the data for the following variables:
+This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Foundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The main input file is `cost_recovery_data.csv`. Descriptions of the variables in that file can be found in `oxford_cbt_tax_database_data_description.md`. Both the input file and the description of the variables can be found in /source-data. The output from `02_cost_recovery.R` is the data for the following variables:
 1. `machines_cost_recovery`
 2. `buildings_cost_recovery`
 3. `buildings_cost_recovery`
@@ -69,7 +69,7 @@ If you would like to see how a reform might impact a country's rank and score in
 
 After downloading the repository, you can run the `07_index_calculations.R` code to get the baseline rankings and scores from this year's version of the _Index_. You may want to save the baseline output to a new folder so that the results will not be overwritten in the next step.
 
-Next, you can create your reform scenario by manipulating the files in the /final-data folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the `final_indexdata2019.csv` file to change the corporate_rate variable for France to be 15 percent. 
+Next, you can create your reform scenario by manipulating the files in the /final-data folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the `final_index_data_2019.csv` file to change the corporate_rate variable for France to be 15 percent. 
 
 Once that change is made and the file is saved, you can run the `07_index_calculations.R` file again and note the changes relative to the previous baseline.
 
