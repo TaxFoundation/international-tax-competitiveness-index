@@ -1,1 +1,2 @@
-﻿Scenario,corporate_rank,consumption_rank
+﻿country,year,corporate_rank,corporate,consumption_rank,consumption,property_rank,property,income_rank,income,international_rank,international,final_rank,final,ISO_2,ISO_3
+Lithuania,2019,3,85.62077599,24,62.24764557,7,79.65434962,3,96.78866568,17,76.994179,4,81.52362844,LT,LTU
