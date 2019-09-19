@@ -1,6 +1,7 @@
-﻿country,year,corporate_rank,corporate,consumption_rank,consumption,property_rank,property,income_rank,income,international_rank,international,final_rank,final,ISO_2,ISO_3,Scenario
-Lithuania,2019,3,85.62077599,24,62.24764557,7,79.65434962,3,96.78866568,17,76.994179,4,81.52362844,LT,LTU,Baseline
-Lithuania,2019,3,85.62077599,24,62.24764557,7,79.65434962,3,95.19833961,17,76.994179,4,81.13228159,LT,LTU,2019 Reforms
-Lithuania,2019,3,85.62077599,24,62.24764557,7,79.65434962,6,88.05244084,17,76.994179,4,79.34456106,LT,LTU,Parliament 1
-Lithuania,2019,3,85.62077599,24,62.24764557,7,79.65434962,3,90.97525729,17,76.994179,4,80.0822296,LT,LTU,Parliament 2
-Lithuania,2019,3,85.62077599,24,62.24764557,7,79.65434962,3,90.98942693,17,76.994179,4,80.07074417,LT,LTU,President
+﻿country,year,corporate_rank,corporate,consumption_rank,consumption,property_rank,property,income_rank,income,international_rank,international,final_rank,final,ISO_2,ISO_3,Scenario,Description
+Lithuania,2019,3,85.62077599,24,62.24764557,7,79.65434962,3,96.78866568,17,76.994179,4,81.52362844,LT,LTU,Baseline,2018 top PIT rate and threshold
+Lithuania,2019,3,85.62077599,24,62.24764557,7,79.65434962,3,95.19833961,17,76.994179,4,81.13228159,LT,LTU,2019 Reforms,2019 progressive tax top rate (27 percent) and threshold
+Lithuania,2019,3,85.62077599,24,62.24764557,7,79.65434962,6,88.05244084,17,76.994179,4,79.34456106,LT,LTU,Parliament 1,32 percent top PIT rate and 10 times average wage top PIT threshold
+Lithuania,2019,3,85.62077599,24,62.24764557,7,79.65434962,3,90.97525729,17,76.994179,4,80.0822296,LT,LTU,Parliament 2,32 percent top PIT rate and 5 times average wage top PIT threshold
+Lithuania,2019,3,85.62077599,24,62.24764557,7,79.65434962,3,90.98942693,17,76.994179,4,80.07074417,LT,LTU,President,27 percent top capital gains rate and 20 percent dividends rate
+Lithuania,2019,3,85.62077599,24,62.24764557,7,79.65434962,7,82.28180184,17,76.994179,5,77.8939028,LT,LTU,Worst case,Combination of Parliament 1 and President
