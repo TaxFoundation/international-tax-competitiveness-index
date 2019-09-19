@@ -538,7 +538,7 @@ Turkey<-final_categories[final_categories$country=="Turkey",]
 United_Kingdom<-final_categories[final_categories$country=="United Kingdom",]
 United_States<-final_categories[final_categories$country=="United States",]
 
-write.csv(Lithuania,paste(final_outputs,"Lithuania.csv",sep=""),row.names=F))
+write.csv(Lithuania,paste(final_outputs,"Lithuania.csv",sep=""),row.names=F)
 
 #Changes from 2018 index
 M <- merge(final_2019,final_2018,by="country")
