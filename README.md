@@ -44,7 +44,7 @@ This code pulls down data from the OECD portal for the following variables:
 This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Foundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The main input file is `cost_recovery_data.csv`. Descriptions of the variables in that file can be found in `oxford_cbt_tax_database_data_description.md`. Both the input file and the description of the variables can be found in /source-data. The output from `02_cost_recovery.R` is the data for the following variables:
 1. `machines_cost_recovery`
 2. `buildings_cost_recovery`
-3. `buildings_cost_recovery`
+3. `intangibles_cost_recovery`
 
 ### `03_vat_data.R`
 This code organizes and combines data for:
@@ -167,7 +167,7 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `loss_carryforward` | Number of years a corporation may apply current losses against future tax bills, lowering those years' taxable income. |
 | `machines_cost_recovery` | Percentage of the present value cost of machinery that corporations can write off over the depreciable life of the asset. |
 | `buildings_cost_recovery` | Percentage of the present value cost of buildings that corporations can write off over the depreciable life of the asset. |
-| `buildings_cost_recovery` | Percentage of the present value cost of intangibles that corporations can write off over the depreciable life of the asset. |
+| `intangibles_cost_recovery` | Percentage of the present value cost of intangibles that corporations can write off over the depreciable life of the asset. |
 | `inventory` | Score given based on a country's allowable inventory cost accounting methods. Countries that allow Last In, First Out (LIFO) score `1`; countries that allow Average Cost of Inventory score `0.5`; countries that only allow First In, First Out (FIFO) score `0`. |
 | `patent_box` | Indicates which countries have patent boxes, which create lower tax rates for income generated through patented products. Countries without patent boxes are marked with `0`, countries with patent boxes are marked as `1`. |
 | `r_and_d_credit` | Indicates which countries offer research and development tax credits. Countries without such credits are marked `0`; those with R&D credits are marked `1`. |
