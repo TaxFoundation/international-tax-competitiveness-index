@@ -559,4 +559,4 @@ write.csv(final_2019, file = paste(final_outputs,"data_2019_run.csv",sep=""),row
 
 write.csv(final_subcategories_2019,paste(final_outputs,"subcategories_2019.csv",sep=""),row.names=F)
 write.csv(final_categories,paste(final_outputs,"final_categories_2014_2019.csv",sep=""),row.names=F)
-write.csv(United_Kingdom,paste(United_Kingdom,"United_Kingdom.csv",sep=""),row.names=F))
+write.csv(United_Kingdom,paste(final_outputs,"United_Kingdom.csv",sep=""),row.names=F)
