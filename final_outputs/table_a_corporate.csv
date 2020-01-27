@@ -14,7 +14,7 @@
 "Spain","25.0%","1, limited to EUR 1 million","No Limit, capped at EUR 1 million plus 60% of taxable income","77.9%","39.1%","73.8%","LIFO","Yes","None","33","1","7"
 "Finland","20.0%","0","5","82.7%","51.9%","73.8%","LIFO","No","Super Deduction","18","1","4"
 "France","34.4%","0","5, capped at 50% of taxable income","85.8%","54.8%","87.0%","Average Cost","Yes","Super Deduction","28","1","6"
-"United Kingdom","19.0%","0","10","75.9%","27.9%","82.7%","Average Cost","Yes","Credit","32","1","6"
+"United Kingdom","19.0%","0","10","100.0%","100.0%","100.0%","Average Cost","Yes","Credit","32","1","6"
 "Greece","28.0%","1","No Limit","73.8%","47.9%","73.8%","FIFO","No","Credit","78","1","6"
 "Hungary","9.0%","0","No Limit","81.6%","27.9%","87.0%","Average Cost","Yes","None","35","2","7"
 "Ireland","12.5%","0","No Limit, capped at 80% of taxable income","78.7%","47.9%","54.8%","LIFO","Yes","Credit","12","1","7"
