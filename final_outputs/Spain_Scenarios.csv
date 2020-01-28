@@ -1,2 +1,4 @@
 ﻿country,year,corporate_rank,corporate,consumption_rank,consumption,property_rank,property,income_rank,income,international_rank,international,final_rank,final,ISO_2,ISO_3,Scenario
 Spain,2019,22,53.8918644,14,74.22430445,32,43.17111742,14,71.6474547,19,74.8862187,23,60.31001061,ES,ESP,Baseline
+Spain,2019,22,53.8918644,14,74.22430447,32,43.17111742,18,68.23066916,19,74.88621872,26,59.4522207,ES,ESP,Top income rate and capital gains rate increases
+Spain,2019,22,53.8918644,14,74.22430447,32,43.17111742,18,68.23066916,25,65.71394563,26,57.27290394,ES,ESP,Top income rate and capital gains rate increases and CFC rules change due to minimum tax
