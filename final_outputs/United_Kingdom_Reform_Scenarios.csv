@@ -1,5 +1,6 @@
 country,year,corporate_rank,corporate,consumption_rank,consumption,property_rank,property,income_rank,income,international_rank,international,final_rank,final,ISO_2,ISO_3,Scenario
 United Kingdom,2019,15,61.56927221,22,64.73777251,31,44.62843286,22,64.103081,10,85.22390625,25,60.06964556,GB,GBR,Baseline
 United Kingdom,2019,14,63.74591591,22,64.73777252,31,44.62843286,22,64.10308101,10,85.22390626,23,60.63958247,GB,GBR,Unlimited Loss Carryforwards
-,2019,5,78.01349317,22,64.73777252,31,44.62843286,22,64.10308101,10,85.22390626,21,64.35011548,GB,GBR,Full Expensing + Unlimited Loss Carryforwards
-,2019,6,75.80657755,22,64.73777252,31,44.62843286,22,64.10308101,10,85.22390626,22,63.77898159,GB,GBR,Full Expensing (alone)
+United Kingdom,2019,5,78.01349317,22,64.73777252,31,44.62843286,22,64.10308101,10,85.22390626,21,64.35011548,GB,GBR,Full Expensing + Unlimited Loss Carryforwards
+United Kingdom,2019,6,75.80657755,22,64.73777252,31,44.62843286,22,64.10308101,10,85.22390626,22,63.77898159,GB,GBR,Full Expensing (alone)
+United Kingdom,2019,5,78.01349317,22,64.73777252,31,44.62843286,9,79.34423785,10,85.22390626,15,68.18115417,GB,GBR,Corporate reforms + Two band system on dividends and personal income
