@@ -551,6 +551,7 @@ Changes<-cbind(M[,1,drop=FALSE],Changes)
 
 final_subcategories_2019<-subset(final_subcategories,year==2019)
 
+write.csv(United_Kingdom,paste(final_outputs,"United_Kingdom.csv",sep=""),row.names=F)
 
 write.csv(raw_data,paste(final_outputs,"raw_data_2019.csv",sep=""),row.names=F)
 write.csv(final_2017, file = paste(final_outputs,"data_2017_run.csv",sep=""),row.names=F)
