@@ -12,7 +12,7 @@ raw_data_2017 <- read_csv(paste(final_data,"final_index_data_2017.csv",sep=""))
 #2018
 raw_data_2018 <- read_csv(paste(final_data,"final_index_data_2018.csv",sep=""))
 #2019
-raw_data_2019 <- read_csv(paste(final_data,"final_index_data_2019.csv",sep=""))
+raw_data_2019 <- read_csv(paste(final_data,"final_index_data_2019_baseline.csv",sep=""))
 
 
 #Combined Data

@@ -1,0 +1,4 @@
+Scenario,Overall Rank,Corporate Tax Rank,Individual Taxes Rank,Consumption Taxes Rank,Property Taxes Rank,International Tax Rules Rank
+Baseline,25,15,22,22,31,10
+Option A,6,5,9,16,10,10
+Option B,15,14,17,20,25,10
