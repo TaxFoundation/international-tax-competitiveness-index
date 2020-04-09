@@ -54,7 +54,7 @@
 
 ### `vat_threshold`: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/.
 
-### `vat_base`: OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92. 
+### `vat_base`: OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92; https://doi.org/10.1787/888933890122. 
 
 ### `consumption_time`: PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
 
