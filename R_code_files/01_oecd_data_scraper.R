@@ -4,7 +4,7 @@
 
 #corporate_rate####
 #Table_II1#
-dataset_list<-get_datasets()
+#dataset_list<-get_datasets()
 #dataset<-("Table_II1")
 #dstruc<-get_data_structure(dataset)
 #str(dstruc, max.level = 1)
@@ -104,7 +104,6 @@ avgtax_wedge2017<-aggregate(avgtax_wedge$`2017`,by=list(avgtax_wedge$Country),FU
 avgtax_wedge2018<-aggregate(avgtax_wedge$`2018`,by=list(avgtax_wedge$Country),FUN=mean)
 
 countries<-avgtax_wedge2018$Group.1
-
 
 tax_wedge2013<-martax_wedge2013$x/avgtax_wedge2013$x
 tax_wedge2014<-martax_wedge2014$x/avgtax_wedge2014$x
