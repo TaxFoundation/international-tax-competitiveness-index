@@ -102,11 +102,14 @@
 #
 
 ## Australia
-### `capital_gains_rate` Only 50% of capital gains are taxable, thus the applicable top personal income tax is effectively 24.5% instead of 49%.
+### `capital_gains_rate` Only 50% of capital gains are taxable, thus the applicable top personal income tax is effectively 22.5% instead of 45%.
 
 ## Belgium
 
 ### `net_wealth`: KPMG, "Belgium – New Tax on Resident and Nonresident Individuals’ Securities Accounts," Feb. 8, 2016, https://home.kpmg/xx/en/home/insights/2018/02/flash-alert-2018-024.html.
+
+## Canada
+### `capital_gains_rate` Only 50% of capital gains are taxable. The applicable top personal income tax on capital gains is the average of top marginal combined rates on ordinary income among the provinces divided in half.
 
 ## Chile
 
