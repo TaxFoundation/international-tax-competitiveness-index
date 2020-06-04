@@ -109,6 +109,7 @@
 ### `net_wealth`: KPMG, "Belgium – New Tax on Resident and Nonresident Individuals’ Securities Accounts," Feb. 8, 2016, https://home.kpmg/xx/en/home/insights/2018/02/flash-alert-2018-024.html.
 
 ## Canada
+
 ### `capital_gains_rate` Only 50% of capital gains are taxable. The applicable top personal income tax on capital gains is the average of top marginal combined rates on ordinary income among the provinces divided in half.
 
 ## Chile
@@ -172,6 +173,10 @@
 
 ### `capital_gains_rate`: Includes a 3% surtax.
 
+## Korea
+
+### `capital_gains_rate`: Is measured as 0% due to the specific tax exemptions for certain types of capital gains.
+
 ## Latvia
 
 ### `cfc_rules` (cfcexemption): PwC, "Corporate - Significant developments," http://taxsummaries.pwc.com/ID/Latvia-Corporate-Significant-developments.
@@ -184,9 +189,15 @@
 
 ### `country_limitations`: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides.
 
+## Luxzembourg
+
+### `capital_gains_rate`: Is measured as 0% due to the tax exemptions for capital gains from non-substantial shareholdings.
+
 ## Netherlands
 
 ### `r_and_d_credit`: OECD, "R&D Tax Incentives: Netherlands, 2018," https://www.oecd.org/sti/rd-tax-stats-netherlands.pdf.
+
+### `capital_gains_rate`: Is measured as 30% which is the rate that applies to Box 3 Income.
 
 ## Norway
 
@@ -200,9 +211,11 @@
 
 ## Slovakia
 
-### `capital_gains_rate`: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. EU, "Taxation Trends in the European Union: 2016," https://ec.europa.eu/taxation_customs/sites/taxation/files/resources/documents/taxation/gen_info/economic_analysis/tax_structures/2016/econ_analysis_report_2016.pdf.
+### `capital_gains_rate`: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. EU, "Taxation Trends in the European Union: 2016," https://ec.europa.eu/taxation_customs/sites/taxation/files/resources/documents/taxation/gen_info/economic_analysis/tax_structures/2016/econ_analysis_report_2016.pdf. It is measured as 0% due to general exemption.
 
 ## Slovenia
+
+### `capital_gains_rate`: Is measured as 0% which is the rate that applies to securities held for 20 years.
 
 ### `country_limitations`: Deloitte, Tax Guides and Highlights,” 2019, https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-sloveniahighlights-2019.pdf.
 
