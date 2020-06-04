@@ -78,7 +78,6 @@ martax_wedge2015<-aggregate(martax_wedge$`2015`,by=list(martax_wedge$Country),FU
 martax_wedge2016<-aggregate(martax_wedge$`2016`,by=list(martax_wedge$Country),FUN=mean)
 martax_wedge2017<-aggregate(martax_wedge$`2017`,by=list(martax_wedge$Country),FUN=mean)
 martax_wedge2018<-aggregate(martax_wedge$`2018`,by=list(martax_wedge$Country),FUN=mean)
-martax_wedge2019<-aggregate(martax_wedge$`2019`,by=list(martax_wedge$Country),FUN=mean)
 
 
 #avgtax_wedge
@@ -103,9 +102,8 @@ avgtax_wedge2015<-aggregate(avgtax_wedge$`2015`,by=list(avgtax_wedge$Country),FU
 avgtax_wedge2016<-aggregate(avgtax_wedge$`2016`,by=list(avgtax_wedge$Country),FUN=mean)
 avgtax_wedge2017<-aggregate(avgtax_wedge$`2017`,by=list(avgtax_wedge$Country),FUN=mean)
 avgtax_wedge2018<-aggregate(avgtax_wedge$`2018`,by=list(avgtax_wedge$Country),FUN=mean)
-avgtax_wedge2019<-aggregate(avgtax_wedge$`2019`,by=list(avgtax_wedge$Country),FUN=mean)
 
-countries<-avgtax_wedge2019$Group.1
+countries<-avgtax_wedge2018$Group.1
 
 tax_wedge2013<-martax_wedge2013$x/avgtax_wedge2013$x
 tax_wedge2014<-martax_wedge2014$x/avgtax_wedge2014$x
@@ -113,13 +111,11 @@ tax_wedge2015<-martax_wedge2015$x/avgtax_wedge2015$x
 tax_wedge2016<-martax_wedge2016$x/avgtax_wedge2016$x
 tax_wedge2017<-martax_wedge2017$x/avgtax_wedge2017$x
 tax_wedge2018<-martax_wedge2018$x/avgtax_wedge2018$x
-tax_wedge2019<-martax_wedge2019$x/avgtax_wedge2019$x
 
-tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,
-                      tax_wedge2016,tax_wedge2017,tax_wedge2018,tax_wedge2019)
+tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,tax_wedge2016,tax_wedge2017,tax_wedge2018)
 
-colnames(tax_wedge)<-c("Country","2013","2014","2015","2016","2017","2018","2019")
-tax_wedge<-gather(tax_wedge,"Year","tax_wedge","2013","2014","2015","2016","2017","2018","2019")
+colnames(tax_wedge)<-c("Country","2013","2014","2015","2016","2017","2018")
+tax_wedge<-gather(tax_wedge,"Year","tax_wedge","2013","2014","2015","2016","2017","2018")
 tax_wedge$Year<-as.numeric(tax_wedge$Year)
 tax_wedge$Year<-tax_wedge$Year+1
 
@@ -135,7 +131,7 @@ dividends_rate<-get_dataset("Table_II4",filter= list(c(oecd_countries),c("NET_PE
 dividends_rate<-dividends_rate[c(1,4,5)]
 colnames(dividends_rate)<-c("Country","Year","dividends_rate")
 dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
-#Japan is missing from the 2020 data###
+
 
 #End OECD data scraper#
 #Output
