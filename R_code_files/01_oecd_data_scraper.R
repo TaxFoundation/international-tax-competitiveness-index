@@ -15,15 +15,6 @@ corporate_rate<-corporate_rate[c(1,4,5)]
 colnames(corporate_rate)<-c("Country","Year","corporate_rate")
 corporate_rate$corporate_rate<-corporate_rate$corporate_rate/100
 
-#Fix France 2019 CIT rate - source: https://home.kpmg/us/en/home/insights/2019/07/tnf-france-revised-phase-down-of-corporate-income-tax-rate-enacted.html
-
-corporate_rate<-corporate_rate[which(corporate_rate$corporate_rate!=0.3202300),]
-
-France<-data.frame("FRA","2019","0.3443")
-colnames(France)<-c("Country","Year","corporate_rate")
-
-corporate_rate<-rbind(corporate_rate,France)
-
 
 #top_income_rate####
 #Table_I7#
