@@ -119,6 +119,8 @@
 
 ## Czech Republic
 
+### `loss_carryback`: As of June 1, the Czech Republic was considering the introduction of a 2-year loss carryback provision, see Bloomberg Tax, "Czech Republic Lower House Considers Bill to Amend Various Tax Laws Due to Coronavirus," May 28, 2020. However, as the law was not implemented on June 1, it is not included in this year's _International Index_.
+
 ### `country_limitations`: Bloomberg Tax, "Country Guides - Czech Republic - Corporate Tax Computation and Administration," https://www.bloomberglaw.com/product/tax/document/21069792808.
 
 ## Denmark:
