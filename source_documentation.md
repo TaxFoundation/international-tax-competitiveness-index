@@ -207,6 +207,8 @@
 
 ## Poland
 
+### `loss_carryback`: Poland introduced a temporary 1-year loss carryback as part of its COVID-19 response. However, businesses are only eligible if their 2020 revenues are 50 percent below their 2019 revenues. As a result, the measure is not included in the _2020 ITCI_.
+
 ### `cfc_rules` (cfcexemption): PwC, "Corporate - Significant developments," http://taxsummaries.pwc.com/ID/Latvia-Corporate-Significant-developments.
 
 ### `patent_box`: Bloomberg, "Country Guide - Corporate Tax Computation and Administartion," https://www.bloomberglaw.com/product/tax/document/25153077800. 
