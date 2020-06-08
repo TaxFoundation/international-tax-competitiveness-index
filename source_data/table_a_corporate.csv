@@ -2,7 +2,7 @@
 Country,Top Marginal Corporate Tax Rate,Loss Carryback (Number of Years),Loss Carryforward (Number of Years),Machinery,Industrial Buildings,Intangibles,Inventory (Best Available),Patent Box,Research and Development Credit and/or Super Deductions,Corporate Complexity (Time),Corporate Complexity (Yearly Profit Payments),Corporate Complexity (Other Yearly Payments)
 Australia,30.00%,0,No Limit,85.10%,47.90%,54.80%,Average Cost,No,Credit,37,1,6
 Austria,25.00%,0,"No Limit, capped at 75% of taxable income",81.30%,39.10%,73.80%,LIFO,No,Credit,46,1,8
-Belgium,29.60%,0,No Limit,88.20%,62.20%,80.30%,LIFO,Yes,Credit,21,1,8
+Belgium,29.60%,0,"No Limit, capped at 70% of taxable income exceeding EUR 1 million",88.20%,62.20%,80.30%,LIFO,Yes,Credit,21,1,8
 Canada,26.80%,3,20,100.00%,42.60%,49.00%,Average Cost,No,Credit,45,1,4
 Chile,25.00%,0,No Limit,63.30%,33.80%,0.00%,Average Cost,No,Credit,48,1,5
 Czech Republic,19.00%,0,5,87.40%,54.30%,84.10%,Average Cost,No,Super Deduction,53,1,5
