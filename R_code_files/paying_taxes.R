@@ -2,7 +2,7 @@
 
 #Import data
 pwc_paying_taxes <- read_excel(paste(source_data,"pwc_paying_taxes.xlsx",sep=""),
-                               range = "B1:AR191")
+                               range = "B1:BH191")
 
 #Rename variables
 pwc_paying_taxes<-
@@ -50,7 +50,23 @@ pwc_paying_taxes<-
      profit_payments_2014 = `2014__4`,
      labor_payments_2014 = `2014__5`,
      other_payments_2014 = `2014__6`,
-     total_payments_2014 = `2014__7`
+     total_payments_2014 = `2014__7`,
+     corporate_time_2013 = `2013`,
+     labor_time_2013 = `2013__1`,
+     consumption_time_2013 = `2013__2`,
+     total_time_2013 = `2013__3`,
+     profit_payments_2013 = `2013__4`,
+     labor_payments_2013 = `2013__5`,
+     other_payments_2013 = `2013__6`,
+     total_payments_2013 = `2013__7`,
+     corporate_time_2012 = `2012`,
+     labor_time_2012 = `2012__1`,
+     consumption_time_2012 = `2012__2`,
+     total_time_2012 = `2012__3`,
+     profit_payments_2012 = `2012__4`,
+     labor_payments_2012 = `2012__5`,
+     other_payments_2012 = `2012__6`,
+     total_payments_2012 = `2012__7`
   )
 
 #Drop redundant row
@@ -158,7 +174,48 @@ pwc_paying_taxes_2014<-  pwc_paying_taxes_2014 %>%
          other_payments = other_payments_2014,
          total_payments = total_payments_2014)
 
-pwc_paying_taxes<-rbind(pwc_paying_taxes_2014,
+#2013####
+pwc_paying_taxes_2013<-pwc_paying_taxes %>%
+  select(country:income,corporate_time_2013:total_payments_2013,ISO_2,ISO_3)%>%
+  gather(variable,value,corporate_time_2013:total_payments_2013)
+pwc_paying_taxes_2013$year<-2013
+
+pwc_paying_taxes_2013<-pwc_paying_taxes_2013%>%
+  spread(variable,value)
+
+pwc_paying_taxes_2013<-  pwc_paying_taxes_2013 %>%
+  rename(corporate_time = corporate_time_2013,
+         labor_time = labor_time_2013,
+         consumption_time = consumption_time_2013,
+         total_time = total_time_2013,
+         profit_payments = profit_payments_2013,
+         labor_payments = labor_payments_2013,
+         other_payments = other_payments_2013,
+         total_payments = total_payments_2013)
+
+#2012####
+pwc_paying_taxes_2012<-pwc_paying_taxes %>%
+  select(country:income,corporate_time_2012:total_payments_2012,ISO_2,ISO_3)%>%
+  gather(variable,value,corporate_time_2012:total_payments_2012)
+pwc_paying_taxes_2012$year<-2012
+
+pwc_paying_taxes_2012<-pwc_paying_taxes_2012%>%
+  spread(variable,value)
+
+pwc_paying_taxes_2012<-  pwc_paying_taxes_2012 %>%
+  rename(corporate_time = corporate_time_2012,
+         labor_time = labor_time_2012,
+         consumption_time = consumption_time_2012,
+         total_time = total_time_2012,
+         profit_payments = profit_payments_2012,
+         labor_payments = labor_payments_2012,
+         other_payments = other_payments_2012,
+         total_payments = total_payments_2012)
+
+#Join####
+pwc_paying_taxes<-rbind(pwc_paying_taxes_2012,
+                        pwc_paying_taxes_2013,
+                        pwc_paying_taxes_2014,
                           pwc_paying_taxes_2015,
                           pwc_paying_taxes_2016,
                           pwc_paying_taxes_2017,
