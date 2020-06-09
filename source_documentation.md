@@ -4,11 +4,11 @@
 
 ### **CORPORATE TAXES**
 
-### `corporate_rate`: OECD, "OECD Tax Database, Table II.1 Statutory corporate income tax rate," updated April 2020, https://stats.oecd.org/index.aspx?DataSetCode=Table_II1.
+### `corporate_rate`: OECD, "OECD Tax Database, Table II.1 Statutory corporate income tax rate," updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=Table_II1.
 
-### `loss_carryback`: PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/australia/corporate/deductions.
+### `loss_carryback`: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
 
-### `loss_carryforward`: PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/australia/corporate/deductions.
+### `loss_carryforward`: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
 
 ### `machines_cost_recovery`: EY, “Worldwide Corporate Tax Guide 2018,“ https://www.ey.com/Publication/vwLUAssets/EY-2018-worldwide-corporate-tax-guide/$FILE/EY-2018-worldwide-corporate-tax-guide.pdf; EY, “Worldwide Capital and Fixed Assets Guide 2018,”  https://www.ey.com/Publication/vwLUAssets/ey-2018-worldwide-capital-and-fixed-assets-guide/$FILE/ey-2018-worldwide-capital-and-fixed-assets-guide.pdf; Deloitte, “Tax Guides and Highlights,” 2018, https://dits.deloitte.com/#TaxGuides; and PKF, “International Worldwide Tax Guide 2018-2019,” https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2018-19/. Years prior to 2018 are based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/id/eprint/4635". Calculations based on Elke Asen and Daniel Bunn, "Capital Cost Recovery across the OECD, 2019," Tax Foundation, April 2, 2019, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
 
@@ -18,7 +18,7 @@
 
 ### `inventory`: EY, “Worldwide Corporate Tax Guide 2018,“ https://www.ey.com/Publication/vwLUAssets/EY-2018-worldwide-corporate-tax-guide/$FILE/EY-2018-worldwide-corporate-tax-guide.pdf; EY, “Worldwide Capital and Fixed Assets Guide 2018,”  https://www.ey.com/Publication/vwLUAssets/ey-2018-worldwide-capital-and-fixed-assets-guide/$FILE/ey-2018-worldwide-capital-and-fixed-assets-guide.pdf; Deloitte, “Tax Guides and Highlights,” 2018, https://dits.deloitte.com/#TaxGuides; and PKF, “International Worldwide Tax Guide 2018-2019,” https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2018-19/. Years prior to 2018 are based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/id/eprint/4635". 
 
-### `patent_box`: OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes; and PwC, "Worldwide Tax Summaries: Corporate - Tax credits and incentives," https://taxsummaries.pwc.com/australia/corporate/tax-credits-and-incentives.
+### `patent_box`: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes; and Gary Guenther, "Patent Boxes: A Primer," Congressional Research Service, May 1 ,2017, https://fas.org/sgp/crs/misc/R44829.pdf.
 
 ### `r_and_d_credit`: Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; and PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
 
@@ -102,11 +102,15 @@
 #
 
 ## Australia
-### `capital_gains_rate` Only 50% of capital gains are taxable, thus the applicable top personal income tax is effectively 24.5% instead of 49%.
+### `capital_gains_rate` Only 50% of capital gains are taxable, thus the applicable top personal income tax is effectively 22.5% instead of 45%.
 
 ## Belgium
 
 ### `net_wealth`: KPMG, "Belgium – New Tax on Resident and Nonresident Individuals’ Securities Accounts," Feb. 8, 2016, https://home.kpmg/xx/en/home/insights/2018/02/flash-alert-2018-024.html.
+
+## Canada
+
+### `capital_gains_rate` Only 50% of capital gains are taxable. The applicable top personal income tax on capital gains is the average of top marginal combined rates on ordinary income among the provinces divided in half.
 
 ## Chile
 
@@ -114,6 +118,8 @@
 
 
 ## Czech Republic
+
+### `loss_carryback`: As of June 1, the Czech Republic was considering the introduction of a 2-year loss carryback provision, see Bloomberg Tax, "Czech Republic Lower House Considers Bill to Amend Various Tax Laws Due to Coronavirus," May 28, 2020. However, as the law was not implemented on June 1, it is not included in this year's _International Index_.
 
 ### `country_limitations`: Bloomberg Tax, "Country Guides - Czech Republic - Corporate Tax Computation and Administration," https://www.bloomberglaw.com/product/tax/document/21069792808.
 
@@ -169,6 +175,10 @@
 
 ### `capital_gains_rate`: Includes a 3% surtax.
 
+## Korea
+
+### `capital_gains_rate`: Is measured as 0% due to the specific tax exemptions for certain types of capital gains.
+
 ## Latvia
 
 ### `cfc_rules` (cfcexemption): PwC, "Corporate - Significant developments," http://taxsummaries.pwc.com/ID/Latvia-Corporate-Significant-developments.
@@ -181,21 +191,23 @@
 
 ### `country_limitations`: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides.
 
+## Luxzembourg
+
+### `capital_gains_rate`: Is measured as 0% due to the tax exemptions for capital gains from non-substantial shareholdings.
+
 ## Netherlands
 
 ### `r_and_d_credit`: OECD, "R&D Tax Incentives: Netherlands, 2018," https://www.oecd.org/sti/rd-tax-stats-netherlands.pdf.
 
-## New Zealand
-
-### `loss_carryback`: Inland Revenue, "COVID-19 Temporary loss carry-back scheme," https://www.ird.govt.nz/covid-19/business-and-organisations/temporary-loss-carry-back-scheme/.
+### `capital_gains_rate`: Is measured as 30% which is the rate that applies to Box 3 Income.
 
 ## Norway
-
-### `loss_carryback`: KPMG, "Norway: Legislation adopted, financial and tax relief relating to coronavirus (COVID-19)," March 22, 2020, https://home.kpmg/us/en/home/insights/2020/03/tnf-norway-legislation-adopted-financial-tax-relief-coronavirus.html.
 
 ### `capital_gains_rate`: EU, "Taxation Trends in the European Union," https://ec.europa.eu/taxation_customs/sites/taxation/files/taxation_trends_report_2019.pdf. 
 
 ## Poland
+
+### `loss_carryback`: Poland introduced a temporary 1-year loss carryback as part of its COVID-19 response. However, businesses are only eligible if their 2020 revenues are 50 percent below their 2019 revenues. As a result, the measure is not included in the _2020 ITCI_.
 
 ### `cfc_rules` (cfcexemption): PwC, "Corporate - Significant developments," http://taxsummaries.pwc.com/ID/Latvia-Corporate-Significant-developments.
 
@@ -203,9 +215,11 @@
 
 ## Slovakia
 
-### `capital_gains_rate`: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. EU, "Taxation Trends in the European Union: 2016," https://ec.europa.eu/taxation_customs/sites/taxation/files/resources/documents/taxation/gen_info/economic_analysis/tax_structures/2016/econ_analysis_report_2016.pdf.
+### `capital_gains_rate`: Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. EU, "Taxation Trends in the European Union: 2016," https://ec.europa.eu/taxation_customs/sites/taxation/files/resources/documents/taxation/gen_info/economic_analysis/tax_structures/2016/econ_analysis_report_2016.pdf. It is measured as 0% due to general exemption.
 
 ## Slovenia
+
+### `capital_gains_rate`: Is measured as 0% which is the rate that applies to securities held for 20 years.
 
 ### `country_limitations`: Deloitte, Tax Guides and Highlights,” 2019, https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-sloveniahighlights-2019.pdf.
 
@@ -218,10 +232,6 @@
 ### `inventory`: PwC, "Worldwide Tax Summaries: Corporate Taxes 2017/18," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2017-18-europe.pdf.
 
 ## United States
-
-### `loss_carryforward`: Garrett Watson, "A Review of Net Operating Loss Tax Provisions in the CARES Act and Next Steps for Phase 4 Relief," Tax Foundation, April 14, 2020, https://taxfoundation.org/phase-4-relief-legislation-net-operating-loss-cares-act/.
-
-### `loss_carryback`: Garrett Watson, "A Review of Net Operating Loss Tax Provisions in the CARES Act and Next Steps for Phase 4 Relief," Tax Foundation, April 14, 2020, https://taxfoundation.org/phase-4-relief-legislation-net-operating-loss-cares-act/.
 
 ### `capital_gains_rate`: Erica York, "An Overview of Capital Gains Taxes," Tax Foundation, April 16, 2019, https://taxfoundation.org/capital-gains-taxes/. The 2013 maximum rate includes the effect of the 3.8% tax on net investment income and 3% itemized deduction phaseout, computed as 25.102=20+3.8+.03*(39.6+3.8), see U.S. Department of the Treasury," https://www.treasury.gov/resource-center/tax-policy/tax-analysis/Documents/Taxes-Paid-on-Capital-Gains-for-Returns-with-Positive-Net-Capital-Gains.pdf.
 
