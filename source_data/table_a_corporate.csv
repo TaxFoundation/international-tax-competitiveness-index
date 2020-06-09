@@ -35,4 +35,4 @@ Sweden    ,22.00%,1.5,No Limit,86.00%,47.90%,86.00%,FIFO,No,None,50,1,4
 Switzerland,21.10%,0,7,86.00%,55.50%,90.50%,LIFO,No,None,15,2,10
 Turkey,22.00%,0,5,87.60%,47.90%,63.20%,Average Cost,Yes,Credit,24,1,8
 United Kingdom,19.00%,1,"No Limit, capped at 50% of taxable income exceeding GBP 5 million",75.90%,27.90%,82.70%,FIFO,Yes,Credit,32,1,6
-United States,25.80%,0,"No Limit, capped at 80% of taxable income",100.00%,35.00%,63.30%,LIFO,No,Credit,87,2,5
+United States,25.80%,5,No Limit,100.00%,35.00%,63.30%,LIFO,No,Credit,87,2,5
