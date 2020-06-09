@@ -31,7 +31,7 @@ Portugal,31.50%,0,"5, capped at 70% of taxable income",88.80%,54.80%,73.80%,Aver
 Slovak Republic,21.00%,0,"5, capped at 50% of taxable income",87.40%,65.30%,87.00%,Average Cost,Yes,Super Deduction,46,1,6
 Slovenia,19.00%,0,"No Limit, capped at 63% of taxable income",87.00%,39.10%,73.80%,Average Cost,No,None,74,1,8
 Spain,25.00%,0,"No Limit, capped at 70% of taxable income exceeding EUR 1 million (additional revenue-based restrictions apply)",77.90%,39.10%,73.80%,Average Cost,Yes,Credit,33,1,7
-Sweden    ,22.00%,1.5,No Limit,86.00%,47.90%,86.00%,FIFO,No,None,50,1,4
+Sweden    ,22.00%,1.5 (tax allocation reserve),No Limit,86.00%,47.90%,86.00%,FIFO,No,None,50,1,4
 Switzerland,21.10%,0,7,86.00%,55.50%,90.50%,LIFO,No,None,15,2,10
 Turkey,22.00%,0,5,87.60%,47.90%,63.20%,Average Cost,Yes,Credit,24,1,8
 United Kingdom,19.00%,1,"No Limit, capped at 50% of taxable income exceeding GBP 5 million",75.90%,27.90%,82.70%,FIFO,Yes,Credit,32,1,6
