@@ -29,7 +29,7 @@ index_data_old<-rbind(index_data2014,index_data2015,index_data2016,index_data201
 
 
 #Remove variables from index_data_old that are in OECD data
-oecd_variables_list<-c("corporate_rate","top_income_rate", "threshold_top_income_rate", "tax_wedge","dividends_rate" )
+oecd_variables_list<-c("corporate_rate", "r_and_d_credit", "top_income_rate", "threshold_top_income_rate", "tax_wedge","dividends_rate" )
 index_data_old<-index_data_old[,!names(index_data_old) %in% oecd_variables_list]
 
 #Join OECD data with index_data_old####

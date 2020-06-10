@@ -20,7 +20,7 @@
 
 ### `patent_box`: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes; and Gary Guenther, "Patent Boxes: A Primer," Congressional Research Service, May 1 ,2017, https://fas.org/sgp/crs/misc/R44829.pdf.
 
-### `r_and_d_credit`: Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; and PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
+### `r_and_d_credit`: OECD, "R&D Tax Incentive Indicators: Implied tax subsidy rates on R&D expenditures," https://stats.oecd.org/Index.aspx?DataSetCode=RDSUB.
 
 ### `corporate_time`: PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools. 
 
