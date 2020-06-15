@@ -15,15 +15,6 @@ corporate_rate<-corporate_rate[c(1,4,5)]
 colnames(corporate_rate)<-c("Country","Year","corporate_rate")
 corporate_rate$corporate_rate<-corporate_rate$corporate_rate/100
 
-#Fix France 2019 CIT rate - source: https://home.kpmg/us/en/home/insights/2019/07/tnf-france-revised-phase-down-of-corporate-income-tax-rate-enacted.html
-
-corporate_rate<-corporate_rate[which(corporate_rate$corporate_rate!=0.3202300),]
-
-France<-data.frame("FRA","2019","0.3443")
-colnames(France)<-c("Country","Year","corporate_rate")
-
-corporate_rate<-rbind(corporate_rate,France)
-
 
 #r_and_d_credit####
 #RDTAXSUB#
@@ -114,6 +105,7 @@ martax_wedge2016<-aggregate(martax_wedge$`2016`,by=list(martax_wedge$Country),FU
 martax_wedge2017<-aggregate(martax_wedge$`2017`,by=list(martax_wedge$Country),FUN=mean)
 martax_wedge2018<-aggregate(martax_wedge$`2018`,by=list(martax_wedge$Country),FUN=mean)
 martax_wedge2019<-aggregate(martax_wedge$`2019`,by=list(martax_wedge$Country),FUN=mean)
+
 
 #avgtax_wedge
 #Table_I5#
