@@ -18,6 +18,8 @@
 
 ### `inventory`: PwC, "Worldwide Tax Summaries: Corporate - Income Determination," https://taxsummaries.pwc.com/australia/corporate/income-determination; and EY, “Worldwide Corporate Tax Guide 2019,“ https://www.ey.com/en_gl/tax-guides/worldwide-corporate-tax-guide-2019.
 
+### `allowance_corporate_equity`: PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/turkey/corporate/deductions; Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, November 2019, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2019_effective_tax_levels_revised_en.pdf; and OECD, "Tax Policy Reforms 2019," Sep. 5, 2019, https://www.oecd.org/tax/tax-policy-reforms-26173433.htm.
+
 ### `patent_box`: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes; and Gary Guenther, "Patent Boxes: A Primer," Congressional Research Service, May 1 ,2017, https://fas.org/sgp/crs/misc/R44829.pdf.
 
 ### `r_and_d_credit`: OECD, "R&D Tax Incentive Indicators: Implied tax subsidy rates on R&D expenditures," https://stats.oecd.org/Index.aspx?DataSetCode=RDSUB.
