@@ -15,14 +15,39 @@ corporate_rate<-corporate_rate[c(1,4,5)]
 colnames(corporate_rate)<-c("Country","Year","corporate_rate")
 corporate_rate$corporate_rate<-corporate_rate$corporate_rate/100
 
-#Fix France 2019 CIT rate - source: https://home.kpmg/us/en/home/insights/2019/07/tnf-france-revised-phase-down-of-corporate-income-tax-rate-enacted.html
 
-corporate_rate<-corporate_rate[which(corporate_rate$corporate_rate!=0.3202300),]
+#r_and_d_credit####
+#RDTAXSUB#
+#dataset<-("RDSUB")
+#dstruc<-get_data_structure(dataset)
+#str(dstruc, max.level = 1)
+#dstruc$VAR_DESC
 
-France<-data.frame("FRA","2019","0.3443")
-colnames(France)<-c("Country","Year","corporate_rate")
+r_and_d_credit <- get_dataset("RDSUB",filter= list(c(oecd_countries), c("SME","LARGE"), c("PROFITABLE", "LOSS-MAKING")), start_time = 2013)
+r_and_d_credit <- r_and_d_credit[c(1,2,3,5,6)]
+colnames(r_and_d_credit) <- c("Country","Size","Profit", "Year","r_and_d_credit")
+r_and_d_credit$Year <- as.numeric(r_and_d_credit$Year)
+r_and_d_credit$r_and_d_credit <- as.numeric(r_and_d_credit$r_and_d_credit)
 
-corporate_rate<-rbind(corporate_rate,France)
+r_and_d_credit <- spread(r_and_d_credit,Year,r_and_d_credit)
+
+r_and_d_credit2013 <- aggregate(r_and_d_credit$`2013`,by=list(r_and_d_credit$Country),FUN=mean)
+r_and_d_credit2014 <- aggregate(r_and_d_credit$`2014`,by=list(r_and_d_credit$Country),FUN=mean)
+r_and_d_credit2015 <- aggregate(r_and_d_credit$`2015`,by=list(r_and_d_credit$Country),FUN=mean)
+r_and_d_credit2016 <- aggregate(r_and_d_credit$`2016`,by=list(r_and_d_credit$Country),FUN=mean)
+r_and_d_credit2017 <- aggregate(r_and_d_credit$`2017`,by=list(r_and_d_credit$Country),FUN=mean)
+r_and_d_credit2018 <- aggregate(r_and_d_credit$`2018`,by=list(r_and_d_credit$Country),FUN=mean)
+r_and_d_credit2019 <- aggregate(r_and_d_credit$`2019`,by=list(r_and_d_credit$Country),FUN=mean)
+
+countries <- r_and_d_credit2019$Group.1
+
+r_and_d_credit <- data.frame(countries, r_and_d_credit2013$x, r_and_d_credit2014$x, r_and_d_credit2015$x,
+                             r_and_d_credit2016$x, r_and_d_credit2017$x, r_and_d_credit2018$x, r_and_d_credit2019$x)
+
+colnames(r_and_d_credit) <- c("Country","2013","2014","2015","2016","2017","2018","2019")
+r_and_d_credit <- gather(r_and_d_credit,"Year","r_and_d_credit","2013","2014","2015","2016","2017","2018","2019")
+r_and_d_credit$Year <- as.numeric(r_and_d_credit$Year)
+r_and_d_credit$Year <- r_and_d_credit$Year+1
 
 
 #top_income_rate####
@@ -41,7 +66,6 @@ top_income_rate$Year<-top_income_rate$Year+1
 top_income_rate$top_income_rate<-top_income_rate$top_income_rate/100
 
 
-
 #threshold_top_income_rate####
 #Table_I7#
 #dataset<-("Table_I7")
@@ -56,7 +80,9 @@ colnames(threshold)<-c("Country","Year","threshold_top_income_rate")
 threshold$Year<-as.numeric(threshold$Year)
 threshold$Year<-threshold$Year+1
 
+
 #tax_wedge####
+
 #martax_wedge
 #Table_I4#
 #dataset<-("Table_I4")
@@ -96,7 +122,6 @@ avgtax_wedge<-avgtax_wedge[c(1,2,5,6)]
 colnames(avgtax_wedge)<-c("Country","Income","Year","avgtax_wedge")
 avgtax_wedge<-spread(avgtax_wedge,Year,avgtax_wedge)
 
-
 avgtax_wedge2013<-aggregate(avgtax_wedge$`2013`,by=list(avgtax_wedge$Country),FUN=mean)
 avgtax_wedge2014<-aggregate(avgtax_wedge$`2014`,by=list(avgtax_wedge$Country),FUN=mean)
 avgtax_wedge2015<-aggregate(avgtax_wedge$`2015`,by=list(avgtax_wedge$Country),FUN=mean)
@@ -123,6 +148,7 @@ tax_wedge<-gather(tax_wedge,"Year","tax_wedge","2013","2014","2015","2016","2017
 tax_wedge$Year<-as.numeric(tax_wedge$Year)
 tax_wedge$Year<-tax_wedge$Year+1
 
+
 #dividends_rate####
 #Table_II4#
 #dataset<-("Table_II4")
@@ -137,15 +163,18 @@ colnames(dividends_rate)<-c("Country","Year","dividends_rate")
 dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
 #Japan is missing from the 2020 data###
 
+
 #End OECD data scraper#
-#Output
 
-OECDvars_data<-merge(corporate_rate,dividends_rate,by=c("Country","Year"))
-OECDvars_data<-merge(OECDvars_data,top_income_rate,by=c("Country","Year"))
-OECDvars_data<-merge(OECDvars_data,threshold,by=c("Country","Year"))
-OECDvars_data<-merge(OECDvars_data,tax_wedge,by=c("Country","Year"))
+#Output####
 
-colnames(OECDvars_data)<-c("ISO_3","year","corporate_rate","dividends_rate", "top_income_rate", "threshold_top_income_rate", "tax_wedge")
-OECDvars_data<-merge(OECDvars_data,iso_country_codes,by="ISO_3")
+OECDvars_data <- merge(corporate_rate, r_and_d_credit, by=c("Country","Year"))
+OECDvars_data <- merge(OECDvars_data, dividends_rate, by=c("Country","Year"))
+OECDvars_data <- merge(OECDvars_data, top_income_rate, by=c("Country","Year"))
+OECDvars_data <- merge(OECDvars_data, threshold, by=c("Country","Year"))
+OECDvars_data <- merge(OECDvars_data, tax_wedge, by=c("Country","Year"))
+
+colnames(OECDvars_data) <- c("ISO_3","year","corporate_rate","r_and_d_credit", "dividends_rate", "top_income_rate", "threshold_top_income_rate", "tax_wedge")
+OECDvars_data <- merge(OECDvars_data,iso_country_codes,by="ISO_3")
 
 write.csv(OECDvars_data, file = paste(intermediate_outputs,"oecd_variables_data.csv",sep=""), row.names = FALSE)
