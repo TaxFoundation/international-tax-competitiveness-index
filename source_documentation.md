@@ -4,11 +4,12 @@
 
 ### **CORPORATE TAXES**
 
-### `corporate_rate`: OECD, "OECD Tax Database, Table II.1 Statutory corporate income tax rate," updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=Table_II1.
+### `corporate_rate`: OECD, "OECD Tax Database, Table II.1 Statutory corporate income tax rate," updated April 2020, https://stats.oecd.org/index.aspx?DataSetCode=Table_II1.
 
-### `loss_carryback`: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
+### `loss_carryback`: PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/australia/corporate/deductions.
 
-### `loss_carryforward`: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
+
+### `loss_carryforward`: PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/australia/corporate/deductions.
 
 ### `machines_cost_recovery`: Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, November 2019, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2019_effective_tax_levels_revised_en.pdf; EY, "Worldwide Capital and Fixed Assets Guide," https://www.ey.com/Publication/vwLUAssets/ey-2019-worldwide-capital-fixed-assets-guide/$FILE/ey-2019-worldwide-capital-fixed-assets-guide.pdf; EY, "Worldwide Corporate Tax Guide," https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf; PwC, "Worldwide Tax Summaries," https://taxsummaries.pwc.com/; PKF, "International Worldwide Tax Guide 2019-20," July 2019, https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2019-20/. Years prior to 2018 are based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/id/eprint/4635". Calculations based on Elke Asen, "Capital Cost Recovery across the OECD," Tax Foundation, April 8, 2020, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
 
@@ -20,7 +21,7 @@
 
 ### `allowance_corporate_equity`: PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/turkey/corporate/deductions; Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, November 2019, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2019_effective_tax_levels_revised_en.pdf; and OECD, "Tax Policy Reforms 2019," Sep. 5, 2019, https://www.oecd.org/tax/tax-policy-reforms-26173433.htm.
 
-### `patent_box`: PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes; and Gary Guenther, "Patent Boxes: A Primer," Congressional Research Service, May 1 ,2017, https://fas.org/sgp/crs/misc/R44829.pdf.
+### `patent_box`: OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes; and PwC, "Worldwide Tax Summaries: Corporate - Tax credits and incentives," https://taxsummaries.pwc.com/australia/corporate/tax-credits-and-incentives.
 
 ### `r_and_d_credit`: OECD, "R&D Tax Incentive Indicators: Implied tax subsidy rates on R&D expenditures," https://stats.oecd.org/Index.aspx?DataSetCode=RDSUB.
 
@@ -203,7 +204,13 @@
 
 ### `capital_gains_rate`: Is measured as 30% which is the rate that applies to Box 3 Income.
 
+## New Zealand
+
+### `loss_carryback`: Inland Revenue, "COVID-19 Temporary loss carry-back scheme," https://www.ird.govt.nz/covid-19/business-and-organisations/temporary-loss-carry-back-scheme/.
+
 ## Norway
+
+### `loss_carryback`: KPMG, "Norway: Legislation adopted, financial and tax relief relating to coronavirus (COVID-19)," March 22, 2020, https://home.kpmg/us/en/home/insights/2020/03/tnf-norway-legislation-adopted-financial-tax-relief-coronavirus.html.
 
 ### `capital_gains_rate`: EU, "Taxation Trends in the European Union," https://ec.europa.eu/taxation_customs/sites/taxation/files/taxation_trends_report_2019.pdf. 
 
@@ -234,6 +241,10 @@
 ### `inventory`: PwC, "Worldwide Tax Summaries: Corporate Taxes 2017/18," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2017-18-europe.pdf.
 
 ## United States
+
+### `loss_carryforward`: Garrett Watson, "A Review of Net Operating Loss Tax Provisions in the CARES Act and Next Steps for Phase 4 Relief," Tax Foundation, April 14, 2020, https://taxfoundation.org/phase-4-relief-legislation-net-operating-loss-cares-act/.
+
+### `loss_carryback`: Garrett Watson, "A Review of Net Operating Loss Tax Provisions in the CARES Act and Next Steps for Phase 4 Relief," Tax Foundation, April 14, 2020, https://taxfoundation.org/phase-4-relief-legislation-net-operating-loss-cares-act/.
 
 ### `capital_gains_rate`: Erica York, "An Overview of Capital Gains Taxes," Tax Foundation, April 16, 2019, https://taxfoundation.org/capital-gains-taxes/. The 2013 maximum rate includes the effect of the 3.8% tax on net investment income and 3% itemized deduction phaseout, computed as 25.102=20+3.8+.03*(39.6+3.8), see U.S. Department of the Treasury," https://www.treasury.gov/resource-center/tax-policy/tax-analysis/Documents/Taxes-Paid-on-Capital-Gains-for-Returns-with-Positive-Net-Capital-Gains.pdf.
 
