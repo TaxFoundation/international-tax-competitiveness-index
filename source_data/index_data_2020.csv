@@ -1,8 +1,8 @@
 ISO_2,ISO_3,country,corporate_rate,loss_carryback,loss_carryforward,machines_cost_recovery,buildings_cost_recovery,intangibles_cost_recovery,inventory,patent_box,r_and_d_credit,corporate_time,profit_payments,other_payments,top_income_rate,threshold_top_income_rate,tax_wedge,labor_payments,labor_time,capital_gains_rate,index_capital_gains,dividends_rate,vat_rate,vat_threshold,vat_base,consumption_time,property_tax,property_tax_collections,net_wealth,estate_or_inheritance_tax,transfer_tax,asset_tax,capital_duties,financial_transaction_tax,dividends_exemption,capital_gains_exemption,country_limitations,dividends_withholding_tax,interest_withholding_tax,royalties_withholding_tax,tax_treaties,cfc_rules,thin_capitalization_rules
-AU,AUS,Australia,NA,0,100,0.851,0.479,0.548,0.5,0,1,37,1,6,NA,NA,NA,4,18,0.245,NA,NA,NA,NA,NA,50,0,NA,0,0,1,0,0,0,1,1,0,0.3,0.1,0.3,44,NA,0.5
+AU,AUS,Australia,NA,0,100,0.851,0.479,0.548,0.5,0,1,37,1,6,NA,NA,NA,4,18,0.225,NA,NA,NA,NA,NA,50,0,NA,0,0,1,0,0,0,1,1,0,0.3,0.1,0.3,44,NA,0.5
 AT,AUT,Austria,NA,0,75,0.813,0.391,0.738,1,0,1,46,1,8,NA,NA,NA,3,50,0.275,NA,NA,NA,NA,NA,35,1,NA,0,0,1,1,0,0,1,1,0,0.275,0,0.2,89,NA,0.5
 BE,BEL,Belgium,NA,0,100,0.882,0.622,0.803,1,1,1,21,1,8,NA,NA,NA,2,40,0,NA,NA,NA,NA,NA,75,0.5,NA,1,1,1,0,0,1,1,1,0,0.3,0.3,0.3,95,NA,1
-CA,CAN,Canada,NA,3,20,1,0.426,0.49,0.5,0,1,45,1,4,NA,NA,NA,3,36,0.2675,NA,NA,NA,NA,NA,50,0.5,NA,0,0,1,1,1,0,1,0.5,1,0.25,0.25,0.25,94,NA,0.5
+CA,CAN,Canada,NA,3,20,1,0.426,0.49,0.5,0,1,45,1,4,NA,NA,NA,3,36,0.25169,NA,NA,NA,NA,NA,50,0.5,NA,0,0,1,1,1,0,1,0.5,1,0.25,0.25,0.25,94,NA,0.5
 CL,CHL,Chile,NA,0,100,0.633,0.338,0,0.5,0,1,48,1,5,NA,NA,NA,1,124.5,0.35,NA,NA,NA,NA,NA,123.5,1,NA,0,1,0,1,0,0,0,0,1,0.35,0.35,0.3,33,NA,0.5
 CZ,CZE,Czech Republic,NA,0,5,0.874,0.543,0.841,0.5,0,1,53,1,5,NA,NA,NA,2,75,0.15,NA,NA,NA,NA,NA,102,1,NA,0,1,1,0,0,0,1,1,1,0.15,0.15,0.15,89,NA,0.5
 DK,DNK,Denmark,NA,0,60,0.827,0.479,0.813,0,0,1,27,3,6,NA,NA,NA,1,65,0.42,NA,NA,NA,NA,NA,40,0.5,NA,0,1,0,0,0,0,1,1,1,0.27,0.22,0.22,75,NA,1
@@ -10,11 +10,11 @@ EE,EST,Estonia,NA,100,100,1,1,1,1,0,0,5,1,7,NA,NA,NA,0,31,0.2,NA,NA,NA,NA,NA,14,
 FI,FIN,Finland,NA,0,10,0.827,0.519,0.738,0,0,0,18,1,4,NA,NA,NA,3,48,0.34,NA,NA,NA,NA,NA,24,0.5,NA,0,1,1,0,0,1,1,1,1,0.2,0,0.2,76,NA,1
 FR,FRA,France,NA,1,50,0.858,0.548,0.87,0.5,1,1,28,1,6,NA,NA,NA,2,80,0.3,NA,NA,NA,NA,NA,31,1,NA,1,1,1,1,0,1,0.95,0.88,1,0.3,0,0.333,122,NA,1
 DE,DEU,Germany,NA,1,60,0.738,0.391,0.87,1,0,0,41,2,6,NA,NA,NA,1,134,0.26375,NA,NA,NA,NA,NA,43,1,NA,0,1,1,0,0,0,0.95,0.95,0,0.26375,0,0.15825,96,NA,1
-GR,GRC,Greece,NA,0,5,0.738,0.479,0.738,1,0,1,78,1,6,NA,NA,NA,1,46,0.25,NA,NA,NA,NA,NA,69,1,NA,0,1,1,0,1,0,1,0,1,0.1,0.15,0.2,57,NA,1
+GR,GRC,Greece,NA,0,5,0.738,0.479,0.738,1,0,1,78,1,6,NA,NA,NA,1,46,0.15,NA,NA,NA,NA,NA,69,1,NA,0,1,1,0,1,0,1,0,1,0.1,0.15,0.2,57,NA,1
 HU,HUN,Hungary,NA,0,2.5,0.816,0.279,0.87,0.5,1,1,35,2,7,NA,NA,NA,2,146,0.15,NA,NA,NA,NA,NA,96,1,NA,0,1,1,1,0,1,1,1,0,0,0,0,81,NA,1
 IS,ISL,Iceland,NA,0,10,0.86,0.602,0.812,0.5,0,1,40,1,7,NA,NA,NA,13,60,0.22,NA,NA,NA,NA,NA,40,1,NA,0,1,0,1,0,0,1,1,0,0.2,0.12,0.2,45,NA,1
 IE,IRL,Ireland,NA,1,100,0.787,0.479,0.548,0,1,1,12,1,7,NA,NA,NA,1,40,0.33,NA,NA,NA,NA,NA,30,0.5,NA,0,1,1,0,0,0,0,1,1,0.2,0.2,0.2,73,NA,0
-IL,ISR,Israel,NA,0,100,0.87,0.391,0.787,0.5,1,0,110,2,14,NA,NA,NA,12,60,0.28,NA,NA,NA,NA,NA,69,1,NA,0,0,1,0,0,0,0,0,1,0.3,0.23,0.23,56,NA,0
+IL,ISR,Israel,NA,0,100,0.87,0.391,0.787,0.5,1,0,110,2,14,NA,NA,NA,12,60,0.25,NA,NA,NA,NA,NA,69,1,NA,0,0,1,0,0,0,0,0,1,0.3,0.23,0.23,56,NA,0
 IT,ITA,Italy,NA,0,80,0.76,0.463,0.965,1,1,1,39,2,11,NA,NA,NA,1,169,0.26,NA,NA,NA,NA,NA,30,1,NA,1,1,1,0,1,1,0.95,0.95,1,0.26,0.26,0.225,100,NA,1
 JP,JPN,Japan,NA,0,5,0.77,0.279,0.787,0.5,0,1,38,3,13,NA,NA,NA,14,70.5,0.204,NA,NA,NA,NA,NA,21,1,NA,0,1,1,1,1,0,0.95,0,0,0.2,0.2,0.2,69,NA,0.5
 KR,KOR,Korea,NA,0.5,6,0.922,0.548,0.738,1,1,1,83,2,8,NA,NA,NA,2,80,0,NA,NA,NA,NA,NA,25,1,NA,0,1,1,0,1,1,0,0,1,0.22,0.22,0.22,93,NA,1
