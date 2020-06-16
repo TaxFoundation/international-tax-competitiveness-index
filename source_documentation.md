@@ -57,7 +57,7 @@
 
 ### `vat_threshold`: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/.
 
-### `vat_base`: OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92; https://doi.org/10.1787/888933890122. 
+### `vat_base`: For years up to 2016 the source for the VAT Revenue Ratio is OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92; https://doi.org/10.1787/888933890122. For the years 2017 and 2018, the VAT Revenue Ratio was calculated using the following formula in line with the OECD's calculations: VRR = VAT Revenue/[(Consumption - VAT revenue) x standard VAT rate]. Consumption = Final Consumption Expenditure (Heading P3) in the OECD national accounts. VAT rates used are standard rates applicable as at 1 January of each year. For Canada, the VRR calculation includes federal VAT only. For the years up to 2016, the OECD adjusted the annual final consumption expenditure in national accounts for Canada, Japan and New Zealand to ensure matching between the fiscal year for the VAT revenue and the civil year for final consumption figures. This adjustment was not made for the years 2017 and 2018. For Australia and Greece there was no 2018 VAT revenue data available as of June 1, 2020, and thus their 2017 VAT Revenue Ratios were copied to 2018.
 
 ### `consumption_time`: PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
 
