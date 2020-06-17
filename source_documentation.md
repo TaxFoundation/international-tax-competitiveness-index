@@ -53,9 +53,9 @@
 
 ### **CONSUMPTION TAXES**
 
-### `vat_rate`: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. Pwc, "Quick Charts: Value-added tax (VAT) rates," https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates.
+### `vat_rate`: For years up to 2019 the source for the VAT rates is OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. For 2020, the source is Pwc, "Quick Charts: Value-added tax (VAT) rates," https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates.
 
-### `vat_threshold`: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/.
+### `vat_threshold`: For years up to 2019 the source for the VAT Revenue Ratio is OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. For 2020 the VAT registration thresholds were researched individually, based on the following sources: Avalara, "EU VAT registration thresholds 2020," https://www.avalara.com/vatlive/en/eu-vat-rules/eu-vat-number-registration/vat-registration-threshold.html; European Commission, "Taxes in Europe Database," https://ec.europa.eu/taxation_customs/tedb/splSearchForm.html; and EY, "Worldwide VAT, GST and Sales Tax Guide 2020," Apr. 24, 2020, https://www.ey.com/en_gl/tax-guides/worldwide-vat--gst-and-sales-tax-guide-2020.
 
 ### `vat_base`: For years up to 2016 the source for the VAT Revenue Ratio is OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92; https://doi.org/10.1787/888933890122. For the years 2017 and 2018, the VAT Revenue Ratio was calculated using the following formula in line with the OECD's calculations: VRR = VAT Revenue/[(Consumption - VAT revenue) x standard VAT rate]. Consumption = Final Consumption Expenditure (Heading P3) in the OECD national accounts. VAT rates used are standard rates applicable as at 1 January of each year. For Canada, the VRR calculation includes federal VAT only. For the years up to 2016, the OECD adjusted the annual final consumption expenditure in national accounts for Canada, Japan and New Zealand to ensure matching between the fiscal year for the VAT revenue and the civil year for final consumption figures. This adjustment was not made for the years 2017 and 2018. For Australia and Greece there was no 2018 VAT revenue data available as of June 1, 2020, and thus their 2017 VAT Revenue Ratios were copied to 2018.
 
@@ -114,6 +114,8 @@
 ## Canada
 
 ### `vat_rate`: The Canadian PST/GST/HST tax rate is the average of all Canadian province tax rates (weighted by population), see Retail Council of Canada, "Sales Tax Rates by Province," https://www.retailcouncil.org/resources/quick-facts/sales-tax-rates-by-province/.
+
+### `vat_base`: For Canada, the VRR calculation includes federal VAT only.
 
 ### `capital_gains_rate` Only 50% of capital gains are taxable. The applicable top personal income tax on capital gains is the average of top marginal combined rates on ordinary income among the provinces divided in half.
 
@@ -201,6 +203,8 @@
 ### `capital_gains_rate`: Is measured as 0% due to the tax exemptions for capital gains from non-substantial shareholdings.
 
 ## Netherlands
+
+### `vat_threshold`: As of January 1, 2020, the Netherlands have a small business scheme, which allows businesses with a revenue below EUR 20,000 to be exempt from paying VAT, see Business.gov.nl, "Small businesses scheme (KOR)," https://business.gov.nl/subsidy/small-businesses-scheme/.
 
 ### `r_and_d_credit`: OECD, "R&D Tax Incentives: Netherlands, 2018," https://www.oecd.org/sti/rd-tax-stats-netherlands.pdf.
 
