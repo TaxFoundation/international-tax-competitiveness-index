@@ -2,7 +2,7 @@
 
 **All sources are the same for all countries unless otherwise noted below.**
 
-### **Corporate Taxes**
+## **Corporate Taxes**
 
 * **`corporate_rate`** OECD, "OECD Tax Database, Table II.1 Statutory corporate income tax rate," updated April 2020, https://stats.oecd.org/index.aspx?DataSetCode=Table_II1.
 
@@ -32,7 +32,7 @@
 * **`other_payments`** PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools. 
 
 
-### **Income Taxes**
+## **Income Taxes**
 
 * **`top_income_rate`** OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rate and top marginal tax rates for employees, 2000-2018,” updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
 
@@ -51,7 +51,7 @@
 * **`dividends_rate`** OECD, “OECD Tax Database, Table II.4 - Overall statutory tax rates on dividend income,” updated April 2019, https://stats.oecd.org/Index.aspx?DataSetCode=TABLE_II4.
 
 
-### **Consumption Taxes**
+## **Consumption Taxes**
 
 * **`vat_rate`** For years up to 2019 the source for the VAT rates is OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. For 2020, the source is Pwc, "Quick Charts: Value-added tax (VAT) rates," https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates.
 
@@ -62,7 +62,7 @@
 * **`consumption_time`** PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
 
 
-### **Property Taxes**
+## **Property Taxes**
 
 * **`property_tax`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
@@ -81,7 +81,7 @@
 * **`financial_transaction_tax`** Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides - Special Industries," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
 
-### **International Tax Rules**
+## **International Tax Rules**
 
 * **`dividends_exemption`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; and KPMG, "EU Country Profiles," https://home.kpmg/xx/en/home/services/tax/regional-tax-centers/eu-tax-centre/eu-country-profiles.html.
 
