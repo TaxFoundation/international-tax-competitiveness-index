@@ -112,7 +112,7 @@ vat_base <- read_excel(paste(source_data,"oecd_vat_revenue_ratio_calculations.xl
 vat_base <- vat_base[-c(2:16)]
 
 columns <- names(vat_base)
-values<-c("United States","0.397","0.397","0.397","0.397","0.4","0.4","0.4")
+values<-c("United States","0.341","0.354","0.358","0.351","0.347","0.341","0.339")
 US <- data.frame(columns, values)
 US <- spread(US, columns, values)
 
