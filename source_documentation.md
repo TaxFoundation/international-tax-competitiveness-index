@@ -53,7 +53,7 @@
 
 ### **CONSUMPTION TAXES**
 
-### `vat_rate`: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. 
+### `vat_rate`: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. Pwc, "Quick Charts: Value-added tax (VAT) rates," https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates.
 
 ### `vat_threshold`: OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/.
 
@@ -112,6 +112,8 @@
 ### `net_wealth`: KPMG, "Belgium – New Tax on Resident and Nonresident Individuals’ Securities Accounts," Feb. 8, 2016, https://home.kpmg/xx/en/home/insights/2018/02/flash-alert-2018-024.html.
 
 ## Canada
+
+### `vat_rate`: The Canadian PST/GST/HST tax rate is the average of all Canadian province tax rates (weighted by population), see Retail Council of Canada, "Sales Tax Rates by Province," https://www.retailcouncil.org/resources/quick-facts/sales-tax-rates-by-province/.
 
 ### `capital_gains_rate` Only 50% of capital gains are taxable. The applicable top personal income tax on capital gains is the average of top marginal combined rates on ordinary income among the provinces divided in half.
 
@@ -252,6 +254,6 @@
 
 ### `capital_gains_exemption`: Kyle Pomerleau, "A Hybrid Approach: The Treatment of Foreign Profits under the Tax Cuts and Jobs Act," Tax Foundation, May 3, 2018, https://taxfoundation.org/treatment-foreign-profits-tax-cuts-jobs-act/.
 
-### `vat_rate`: The U.S. sales tax rate is the average of all U.S. state sales tax rates (weighted by population), see Janelle Cammenga, "State and Local Sales Tax Rates, 2019," Tax Foundation, Jan. 30, 2019, https://taxfoundation.org/sales-tax-rates-2019/.
+### `vat_rate`: The U.S. sales tax rate is the average of all U.S. state sales tax rates (weighted by population), see Janelle Cammenga, "State and Local Sales Tax Rates, 2020," Tax Foundation, Jan. 15, 2020, https://taxfoundation.org/publications/state-and-local-sales-tax-rates/.
 
 ### `vat_base`: OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92. This paper does not provide the measure for the United States. The U.S. sales tax revenue ratio was calculated as the ratio of the implicit sales tax base to state personal income.
