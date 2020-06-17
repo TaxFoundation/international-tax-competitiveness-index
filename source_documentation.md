@@ -1,15 +1,15 @@
 # Source Documentation for _International Tax Competitiveness Index_
 
-## All sources are the same for all countries unless otherwise noted below.
+**All sources are the same for all countries unless otherwise noted below.**
 
-### **CORPORATE TAXES**
+### **Corporate Taxes**
 
-### `corporate_rate`: OECD, "OECD Tax Database, Table II.1 Statutory corporate income tax rate," updated April 2020, https://stats.oecd.org/index.aspx?DataSetCode=Table_II1.
+* **`corporate_rate`**: OECD, "OECD Tax Database, Table II.1 Statutory corporate income tax rate," updated April 2020, https://stats.oecd.org/index.aspx?DataSetCode=Table_II1.
 
-### `loss_carryback`: PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/australia/corporate/deductions.
+* `loss_carryback`: PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/australia/corporate/deductions.
 
 
-### `loss_carryforward`: PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/australia/corporate/deductions.
+* `loss_carryforward`: PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/australia/corporate/deductions.
 
 ### `machines_cost_recovery`: Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, November 2019, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2019_effective_tax_levels_revised_en.pdf; EY, "Worldwide Capital and Fixed Assets Guide," https://www.ey.com/Publication/vwLUAssets/ey-2019-worldwide-capital-fixed-assets-guide/$FILE/ey-2019-worldwide-capital-fixed-assets-guide.pdf; EY, "Worldwide Corporate Tax Guide," https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf; PwC, "Worldwide Tax Summaries," https://taxsummaries.pwc.com/; PKF, "International Worldwide Tax Guide 2019-20," July 2019, https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2019-20/. Years prior to 2018 are based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/id/eprint/4635". Calculations based on Elke Asen, "Capital Cost Recovery across the OECD," Tax Foundation, April 8, 2020, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
 
