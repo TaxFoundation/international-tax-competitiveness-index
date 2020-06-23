@@ -15,9 +15,9 @@ Greece,Tax on Real Property,No,1.50%,No,Inheritance and Gift Tax,Real Estate Tra
 Hungary,Tax on Real Property,No,0.50%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,No,Yes
 Iceland ,Tax on Real Property,No,1.50%,No,Inheritance and Gift Tax,No,Bank Tax,No,No
 Ireland,Tax on Real Property,Yes,0.50%,No,Inheritance and Gift Tax,Stamp Duty on Transfer of Real Property,No,No,No
-Israel,Tax on Sale of Real Property (c),No,1.80%,No,None,Real Estate Transfer Tax (e),No,No,No
+Israel,Tax on Sale of Real Property (c),Yes,1.80%,No,None,Real Estate Transfer Tax (e),No,No,No
 Italy,Tax on Real Property,No,0.70%,Yes,Inheritance and Gift Tax,Real Property Transfer Tax,No,Yes,Yes
-Japan,Tax on Real Property,No,1.40%,No,Inheritance and Gift Tax,Real Property Transfer Tax,Yes,Yes,No
+Japan,Tax on Real Property,Yes,1.40%,No,Inheritance and Gift Tax,Real Property Transfer Tax,Yes,Yes,No
 Korea,Tax on Real Property,No,0.20%,No,Inheritance and Gift Tax,Real Property Transfer Tax,No,Yes,Yes
 Latvia,Tax on Real Property,Yes,0.50%,No,None,Stamp Duty on Transfer of Real Property,No,No,No
 Lithuania,Tax on Real Property,Yes,,No,Inheritance Tax; Gifts are subject to Income Tax,No,No,No,No
