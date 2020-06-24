@@ -3,12 +3,12 @@ Country,"Property Taxes, Real Property/Land Tax",Real Property Taxes Deductible 
 Australia,Land Tax Levied by Individual States (a),Yes,1.20%,No,None,Stamp Duty on Transfer of Real Property,No,No,No
 Austria,Tax on Real Property,No,0.10%,No,None,Real Estate Transfer Tax,Bank Tax,No,No
 Belgium,Tax on Real Property (b),Yes,0.70%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,No,Yes
-Canada,Tax on Real Property,Yes,2.10%,No,None,Real Estate and Real Property Transfer Tax,Bank Tax in certain provinces,Yes,No
+Canada,Tax on Real Property,Yes,2.10%,No,None,Real Estate Transfer Tax,Bank Tax in certain provinces,Yes,No
 Chile,Tax on Real Property,Yes,0.60%,No,Inheritance and Gift Tax,No,Yearly Fee on tax-adjusted equity,No,No
 Czech Republic,Tax on Real Property,Yes,0.20%,No,Inheritances and gifts are subject to Income Tax,Real Estate Transfer Tax,No,No,No
-Denmark,Tax on Real Property,Yes,0.90%,No,Inheritance and Gift Tax,No,No,No,No
+Denmark,Tax on Real Property,Yes,0.90%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,No,No
 Estonia,Land Tax,Land tax is deductible,0.20%,No,None,No,No,No,No
-Finland,Tax on Real Property,Yes,0.50%,No,Inheritance and Gift Tax,Real Property Transfer Tax,No,No,Yes
+Finland,Tax on Real Property,Yes,0.50%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,No,Yes
 France,Tax on Real Property,Yes,1.70%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,No,Yes
 Germany,Tax on Real Property,Yes,0.30%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,No,No
 Greece,Tax on Real Property,No,1.50%,No,Inheritance and Gift Tax,Real Estate Transfer Tax and Stamp Tax,No,Yes,No
@@ -16,14 +16,14 @@ Hungary,Tax on Real Property,No,0.50%,No,Inheritance and Gift Tax,Real Estate Tr
 Iceland ,Tax on Real Property,No,1.50%,No,Inheritance Tax,No,Bank Tax,No,No
 Ireland,Tax on Real Property,Yes,0.50%,No,Inheritance and Gift Tax,Stamp Duty on Transfer of Real Property,No,No,No
 Israel,Tax on Sale of Real Property (c),Yes,1.80%,No,None,Real Estate Transfer Tax (e),No,No,No
-Italy,Tax on Real Property,No,0.70%,Yes,Inheritance and Gift Tax,Real Property Transfer Tax,No,Yes,Yes
-Japan,Tax on Real Property,Yes,1.40%,No,Inheritance and Gift Tax,Real Property Transfer Tax,Yes,Yes,No
-Korea,Tax on Real Property,No,0.20%,No,Inheritance and Gift Tax,Real Property Transfer Tax,No,Yes,Yes
+Italy,Tax on Real Property,No,0.70%,Yes,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
+Japan,Tax on Real Property,Yes,1.40%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Yes,Yes,No
+Korea,Tax on Real Property,No,0.20%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
 Latvia,Tax on Real Property,Yes,0.50%,No,None,Stamp Duty on Transfer of Real Property,No,No,No
 Lithuania,Tax on Real Property,Yes,,No,Inheritance Tax,No,No,No,No
-Luxembourg,Tax on Real Property,Yes,0.10%,No,Inheritance and Gift Tax,Real Property Transfer Tax,Tax on Corporate Net Assets,No,No
+Luxembourg,Tax on Real Property,Yes,0.10%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Tax on Corporate Net Assets,No,No
 Mexico,Tax on Real Property,Yes,0.20%,No,"Income Tax can apply to estates, some Gifts are subject to Income Tax, and Real Estate Transfer Tax can apply",Real Estate Transfer Tax,No,No,No
-Netherlands,Tax on Real Property,Yes,0.70%,Yes,Inheritance and Gift Tax,Real Property Transfer Tax,No,No,No
+Netherlands,Tax on Real Property,Yes,0.70%,Yes,Inheritance and Gift Tax,Real Estate Transfer Tax,No,No,No
 New Zealand,Land Value Tax (d),No,2.10%,No,None,No,No,No,No
 Norway,Tax on Real Property,Yes,0.30%,Yes,None,Stamp Duty on Transfer of Real Property,Bank Tax,No,No
 Poland,Tax on Real Property,Yes,1.60%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,Yes,Yes
@@ -33,9 +33,9 @@ Slovenia,Tax on Real Property,No,0.40%,No,Inheritance and Gift Tax,Real Estate T
 Spain,Tax on Real Property,No,0.60%,Yes,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,No
 Sweden    ,Tax on Real Property,Yes,0.60%,No,None,Stamp Duty on Transfer of Real Property,No,No,No
 Switzerland,Tax on Real Property,Yes,0.10%,Yes,Many cantons levy both Estate and Gift Taxes,Real Estate Transfer Tax,Yes,Yes,Yes
-Turkey,Tax on Real Property,Yes,0.30%,No,Inheritance and Gift Tax,Real Property Transfer Tax,No,Yes,Yes
+Turkey,Tax on Real Property,Yes,0.30%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
 United Kingdom,Tax on Real Property,Yes,2.50%,No,Inheritance and Gift Tax,Stamp Duty on Transfer of Real Property,Bank Tax,No,Yes
-United States,Tax on Real Property,Yes,2.10%,No,Inheritance and Gift Tax,Real Property Transfer Tax,Intangible Property Taxes (f),No,Yes
+United States,Tax on Real Property,Yes,2.10%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Intangible Property Taxes (f),No,Yes
 ,,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,
