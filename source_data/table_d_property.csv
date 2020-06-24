@@ -17,7 +17,7 @@ Iceland ,Tax on Real Property,No,1.50%,No,Inheritance Tax,No,Bank Tax,No,No
 Ireland,Tax on Real Property,Yes,0.50%,No,Inheritance and Gift Tax,Stamp Duty on Transfer of Real Property,No,No,No
 Israel,Tax on Sale of Real Property (c),Yes,1.80%,No,None,Real Estate Transfer Tax (e),No,No,No
 Italy,Tax on Real Property,No,0.70%,Yes,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
-Japan,Tax on Real Property,Yes,1.40%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Yes,Yes,No
+Japan,Tax on Real Property,Yes,1.40%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Fixed assets tax,Yes,No
 Korea,Tax on Real Property,No,0.20%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
 Latvia,Tax on Real Property,Yes,0.50%,No,None,Stamp Duty on Transfer of Real Property,No,No,No
 Lithuania,Tax on Real Property,Yes,,No,Inheritance Tax,No,No,No,No
@@ -32,10 +32,10 @@ Slovak Republic,Tax on Real Property,Yes,0.40%,No,None,No,Bank Tax,No,No
 Slovenia,Tax on Real Property,No,0.40%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,No,No
 Spain,Tax on Real Property,No,0.60%,Yes,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,No
 Sweden    ,Tax on Real Property,Yes,0.60%,No,None,Stamp Duty on Transfer of Real Property,No,No,No
-Switzerland,Tax on Real Property,Yes,0.10%,Yes,Many cantons levy both Estate and Gift Taxes,Real Estate Transfer Tax,Yes,Yes,Yes
+Switzerland,Tax on Real Property,Yes,0.10%,Yes,Many cantons levy both Estate and Gift Taxes,Real Estate Transfer Tax,Cantonal/Community Equity Tax,Yes,Yes
 Turkey,Tax on Real Property,Yes,0.30%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
 United Kingdom,Tax on Real Property,Yes,2.50%,No,Inheritance and Gift Tax,Stamp Duty on Transfer of Real Property,Bank Tax,No,Yes
-United States,Tax on Real Property,Yes,2.10%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Intangible Property Taxes (f),No,Yes
+United States,Tax on Real Property,Yes,2.10%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Tangible Property Taxes and Capital Stock Taxes,No,Yes
 ,,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,
@@ -45,4 +45,4 @@ Notes: (a) Tax applies to some real estate (vacation homes). (b) Tax on the impu
 ,,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,
-Notes: (e) The purchaser of real property is subject to a purchase tax. (f) Nine U.S. states levy a tax on intangible personal property.,,,,,,,,,
+Notes: (e) The purchaser of real property is subject to a purchase tax.,,,,,,,,,
