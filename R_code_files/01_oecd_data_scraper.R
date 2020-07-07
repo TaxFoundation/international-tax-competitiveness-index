@@ -17,7 +17,7 @@ colnames(corporate_rate)<-c("country","year","corporate_rate")
 #Missing country/years are simply prior year values - Japan missing on July 7, 2020
 country<-c("JPN")
 year<-c("2020")
-corporate_rate_JPN<-c("0.2974")
+corporate_rate_JPN<-c("29.74")
 missing<-data.frame(country,year,corporate_rate_JPN)
 colnames(missing)<-c("country","year","corporate_rate")
 
@@ -174,7 +174,7 @@ colnames(dividends_rate)<-c("country","year","dividends_rate")
 #Missing country/years are simply prior year values - Japan missing on July 7, 2020
 country<-c("JPN")
 year<-c("2020")
-dividends_rate_JPN<-c("0.2032")
+dividends_rate_JPN<-c("20.32")
 missing<-data.frame(country,year,dividends_rate_JPN)
 colnames(missing)<-c("country","year","dividends_rate")
 
