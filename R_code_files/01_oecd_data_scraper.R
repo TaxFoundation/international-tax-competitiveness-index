@@ -169,8 +169,18 @@ tax_wedge$Year<-tax_wedge$Year+1
 dividends_rate<-get_dataset("Table_II4",filter= list(c(oecd_countries),c("NET_PERS_TAX")), start_time = 2014)
 dividends_rate<-dividends_rate[c(1,4,5)]
 colnames(dividends_rate)<-c("Country","Year","dividends_rate")
+
+
+#Missing country/years are simply prior year values - Japan missing on July 7, 2020
+Country<-c("JPN")
+Year<-c("2020")
+dividends_rate_JPN<-c("0.2032")
+missing<-data.frame(Country,Year,dividends_rate_JPN)
+colnames(missing)<-c("Country","Year","dividends_rate")
+
+dividends_rate<-rbind(dividends_rate,missing)
+dividends_rate$dividends_rate<-as.numeric(dividends_rate$dividends_rate)
 dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
-#Japan is missing from the 2020 data###
 
 
 #End OECD data scraper#
