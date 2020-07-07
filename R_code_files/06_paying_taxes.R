@@ -79,100 +79,24 @@ pwc_paying_taxes<-merge(pwc_paying_taxes,iso_country_codes,by=c("country"),all=T
 pwc_paying_taxes<-subset(pwc_paying_taxes,pwc_paying_taxes$ISO_3 %in% oecd_countries)
 
 #Transpose data year by year####
-#2018####
-pwc_paying_taxes_2018<-pwc_paying_taxes %>%
-  select(country:total_payments_2018,ISO_2,ISO_3)%>%
-  gather(variable,value,corporate_time_2018:total_payments_2018)
-pwc_paying_taxes_2018$year<-2018
+#2012####
+pwc_paying_taxes_2012<-pwc_paying_taxes %>%
+  select(country:income,corporate_time_2012:total_payments_2012,ISO_2,ISO_3)%>%
+  gather(variable,value,corporate_time_2012:total_payments_2012)
+pwc_paying_taxes_2012$year<-2012
 
-pwc_paying_taxes_2018<-pwc_paying_taxes_2018%>%
-    spread(variable,value)
-
-pwc_paying_taxes_2018<-  pwc_paying_taxes_2018 %>%
-  rename(corporate_time = corporate_time_2018,
-    labor_time = labor_time_2018,
-    consumption_time = consumption_time_2018,
-    total_time = total_time_2018,
-    profit_payments = profit_payments_2018,
-    labor_payments = labor_payments_2018,
-    other_payments = other_payments_2018,
-    total_payments = total_payments_2018)
-
-#2017####
-pwc_paying_taxes_2017<-pwc_paying_taxes %>%
-  select(country:income, corporate_time_2017:total_payments_2017,ISO_2,ISO_3)%>%
-  gather(variable,value,corporate_time_2017:total_payments_2017)
-pwc_paying_taxes_2017$year<-2017
-
-pwc_paying_taxes_2017<-pwc_paying_taxes_2017%>%
+pwc_paying_taxes_2012<-pwc_paying_taxes_2012%>%
   spread(variable,value)
 
-pwc_paying_taxes_2017<-  pwc_paying_taxes_2017 %>%
-  rename(corporate_time = corporate_time_2017,
-         labor_time = labor_time_2017,
-         consumption_time = consumption_time_2017,
-         total_time = total_time_2017,
-         profit_payments = profit_payments_2017,
-         labor_payments = labor_payments_2017,
-         other_payments = other_payments_2017,
-         total_payments = total_payments_2017)
-
-#2016####
-pwc_paying_taxes_2016<-pwc_paying_taxes %>%
-  select(country:income, corporate_time_2016:total_payments_2016,ISO_2,ISO_3)%>%
-  gather(variable,value,corporate_time_2016:total_payments_2016)
-pwc_paying_taxes_2016$year<-2016
-
-pwc_paying_taxes_2016<-pwc_paying_taxes_2016%>%
-  spread(variable,value)
-
-pwc_paying_taxes_2016<-  pwc_paying_taxes_2016 %>%
-  rename(corporate_time = corporate_time_2016,
-         labor_time = labor_time_2016,
-         consumption_time = consumption_time_2016,
-         total_time = total_time_2016,
-         profit_payments = profit_payments_2016,
-         labor_payments = labor_payments_2016,
-         other_payments = other_payments_2016,
-         total_payments = total_payments_2016)
-
-#2015####
-pwc_paying_taxes_2015<-pwc_paying_taxes %>%
-  select(country:income,corporate_time_2015:total_payments_2015,ISO_2,ISO_3)%>%
-  gather(variable,value,corporate_time_2015:total_payments_2015)
-pwc_paying_taxes_2015$year<-2015
-
-pwc_paying_taxes_2015<-pwc_paying_taxes_2015%>%
-  spread(variable,value)
-
-pwc_paying_taxes_2015<-  pwc_paying_taxes_2015 %>%
-  rename(corporate_time = corporate_time_2015,
-         labor_time = labor_time_2015,
-         consumption_time = consumption_time_2015,
-         total_time = total_time_2015,
-         profit_payments = profit_payments_2015,
-         labor_payments = labor_payments_2015,
-         other_payments = other_payments_2015,
-         total_payments = total_payments_2015)
-
-#2014####
-pwc_paying_taxes_2014<-pwc_paying_taxes %>%
-  select(country:income,corporate_time_2014:total_payments_2014,ISO_2,ISO_3)%>%
-  gather(variable,value,corporate_time_2014:total_payments_2014)
-pwc_paying_taxes_2014$year<-2014
-
-pwc_paying_taxes_2014<-pwc_paying_taxes_2014%>%
-  spread(variable,value)
-
-pwc_paying_taxes_2014<-  pwc_paying_taxes_2014 %>%
-  rename(corporate_time = corporate_time_2014,
-         labor_time = labor_time_2014,
-         consumption_time = consumption_time_2014,
-         total_time = total_time_2014,
-         profit_payments = profit_payments_2014,
-         labor_payments = labor_payments_2014,
-         other_payments = other_payments_2014,
-         total_payments = total_payments_2014)
+pwc_paying_taxes_2012<-  pwc_paying_taxes_2012 %>%
+  rename(corporate_time = corporate_time_2012,
+         labor_time = labor_time_2012,
+         consumption_time = consumption_time_2012,
+         total_time = total_time_2012,
+         profit_payments = profit_payments_2012,
+         labor_payments = labor_payments_2012,
+         other_payments = other_payments_2012,
+         total_payments = total_payments_2012)
 
 #2013####
 pwc_paying_taxes_2013<-pwc_paying_taxes %>%
@@ -193,24 +117,102 @@ pwc_paying_taxes_2013<-  pwc_paying_taxes_2013 %>%
          other_payments = other_payments_2013,
          total_payments = total_payments_2013)
 
-#2012####
-pwc_paying_taxes_2012<-pwc_paying_taxes %>%
-  select(country:income,corporate_time_2012:total_payments_2012,ISO_2,ISO_3)%>%
-  gather(variable,value,corporate_time_2012:total_payments_2012)
-pwc_paying_taxes_2012$year<-2012
+#2014####
+pwc_paying_taxes_2014<-pwc_paying_taxes %>%
+  select(country:income,corporate_time_2014:total_payments_2014,ISO_2,ISO_3)%>%
+  gather(variable,value,corporate_time_2014:total_payments_2014)
+pwc_paying_taxes_2014$year<-2014
 
-pwc_paying_taxes_2012<-pwc_paying_taxes_2012%>%
+pwc_paying_taxes_2014<-pwc_paying_taxes_2014%>%
   spread(variable,value)
 
-pwc_paying_taxes_2012<-  pwc_paying_taxes_2012 %>%
-  rename(corporate_time = corporate_time_2012,
-         labor_time = labor_time_2012,
-         consumption_time = consumption_time_2012,
-         total_time = total_time_2012,
-         profit_payments = profit_payments_2012,
-         labor_payments = labor_payments_2012,
-         other_payments = other_payments_2012,
-         total_payments = total_payments_2012)
+pwc_paying_taxes_2014<-  pwc_paying_taxes_2014 %>%
+  rename(corporate_time = corporate_time_2014,
+         labor_time = labor_time_2014,
+         consumption_time = consumption_time_2014,
+         total_time = total_time_2014,
+         profit_payments = profit_payments_2014,
+         labor_payments = labor_payments_2014,
+         other_payments = other_payments_2014,
+         total_payments = total_payments_2014)
+
+
+
+#2015####
+pwc_paying_taxes_2015<-pwc_paying_taxes %>%
+  select(country:income,corporate_time_2015:total_payments_2015,ISO_2,ISO_3)%>%
+  gather(variable,value,corporate_time_2015:total_payments_2015)
+pwc_paying_taxes_2015$year<-2015
+
+pwc_paying_taxes_2015<-pwc_paying_taxes_2015%>%
+  spread(variable,value)
+
+pwc_paying_taxes_2015<-  pwc_paying_taxes_2015 %>%
+  rename(corporate_time = corporate_time_2015,
+         labor_time = labor_time_2015,
+         consumption_time = consumption_time_2015,
+         total_time = total_time_2015,
+         profit_payments = profit_payments_2015,
+         labor_payments = labor_payments_2015,
+         other_payments = other_payments_2015,
+         total_payments = total_payments_2015)
+
+#2016####
+pwc_paying_taxes_2016<-pwc_paying_taxes %>%
+  select(country:income, corporate_time_2016:total_payments_2016,ISO_2,ISO_3)%>%
+  gather(variable,value,corporate_time_2016:total_payments_2016)
+pwc_paying_taxes_2016$year<-2016
+
+pwc_paying_taxes_2016<-pwc_paying_taxes_2016%>%
+  spread(variable,value)
+
+pwc_paying_taxes_2016<-  pwc_paying_taxes_2016 %>%
+  rename(corporate_time = corporate_time_2016,
+         labor_time = labor_time_2016,
+         consumption_time = consumption_time_2016,
+         total_time = total_time_2016,
+         profit_payments = profit_payments_2016,
+         labor_payments = labor_payments_2016,
+         other_payments = other_payments_2016,
+         total_payments = total_payments_2016)
+
+#2017####
+pwc_paying_taxes_2017<-pwc_paying_taxes %>%
+  select(country:income, corporate_time_2017:total_payments_2017,ISO_2,ISO_3)%>%
+  gather(variable,value,corporate_time_2017:total_payments_2017)
+pwc_paying_taxes_2017$year<-2017
+
+pwc_paying_taxes_2017<-pwc_paying_taxes_2017%>%
+  spread(variable,value)
+
+pwc_paying_taxes_2017<-  pwc_paying_taxes_2017 %>%
+  rename(corporate_time = corporate_time_2017,
+         labor_time = labor_time_2017,
+         consumption_time = consumption_time_2017,
+         total_time = total_time_2017,
+         profit_payments = profit_payments_2017,
+         labor_payments = labor_payments_2017,
+         other_payments = other_payments_2017,
+         total_payments = total_payments_2017)
+
+#2018####
+pwc_paying_taxes_2018<-pwc_paying_taxes %>%
+  select(country:total_payments_2018,ISO_2,ISO_3)%>%
+  gather(variable,value,corporate_time_2018:total_payments_2018)
+pwc_paying_taxes_2018$year<-2018
+
+pwc_paying_taxes_2018<-pwc_paying_taxes_2018%>%
+  spread(variable,value)
+
+pwc_paying_taxes_2018<-  pwc_paying_taxes_2018 %>%
+  rename(corporate_time = corporate_time_2018,
+         labor_time = labor_time_2018,
+         consumption_time = consumption_time_2018,
+         total_time = total_time_2018,
+         profit_payments = profit_payments_2018,
+         labor_payments = labor_payments_2018,
+         other_payments = other_payments_2018,
+         total_payments = total_payments_2018)
 
 #Join####
 pwc_paying_taxes<-rbind(pwc_paying_taxes_2012,
