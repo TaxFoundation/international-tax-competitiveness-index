@@ -83,7 +83,9 @@
 
 ## **International Tax Rules**
 
-* **`dividends_exemption`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; and KPMG, "EU Country Profiles," https://home.kpmg/xx/en/home/services/tax/regional-tax-centers/eu-tax-centre/eu-country-profiles.html.
+* **`dividends_exemption`** Bloomberg Tax, "XX"; Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; 
+
+PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; and KPMG, "EU Country Profiles," https://home.kpmg/xx/en/home/services/tax/regional-tax-centers/eu-tax-centre/eu-country-profiles.html.
 
 * **`capital_gains_exemption`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; and KPMG, "EU Country Profiles," https://home.kpmg/xx/en/home/services/tax/regional-tax-centers/eu-tax-centre/eu-country-profiles.html.
 
@@ -119,6 +121,8 @@
 * **`vat_rate`** The Canadian PST/GST/HST tax rate is the average of all Canadian province tax rates (weighted by population), see Retail Council of Canada, "Sales Tax Rates by Province," https://www.retailcouncil.org/resources/quick-facts/sales-tax-rates-by-province/.
 
 * **`vat_base`** For Canada, the VRR calculation includes federal VAT only.
+
+* **`capital_gains_exemption`** Only 50% of capital gains are taxable, see PwC, "Worldwide Tax Summaries: Corporate - Income Determination," https://taxsummaries.pwc.com/canada/corporate/income-determination.
 
 ## Czech Republic
 

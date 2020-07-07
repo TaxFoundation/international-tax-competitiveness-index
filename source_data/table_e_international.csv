@@ -8,17 +8,17 @@ Belgium,100.00%,100.00%,None,30%,30%,30%,95,Yes,None,All Income Associated with 
 Canada,100.00%,50.00%,Countries with a tax treaty or Tax Information Exchange Agreement,25%,25%,25%,94,Yes,Multiple rules may exempt CFC from taxation,Passive,1.5:1 debt-to-equity ratio applies
 Chile,0.00%,0.00%,N/A,35%,35%,30%,33,Yes,None,Passive,"3:1 debt-to-equity ratio applies
 A surtax for excessive-indebtedness can apply"
-Czech Republic,100.00%,100.00%,EU member states and EEA member states,15%,15%,15%,89,Yes,CFC with substantive economic activities exempted,Passive,4:1 debt-to-equity ratio (6:1 debt-to-equity ratio for certain financial services companies) applies
+Czech Republic,100.00%,100.00%,EU member states and EEA member states or double tax treaty,15%,15%,15%,89,Yes,CFC with substantive economic activities exempted,Passive,4:1 debt-to-equity ratio (6:1 debt-to-equity ratio for certain financial services companies) applies
 Denmark,100.00%,100.00%,EU member states and EEA member states or double tax treaty,27%,22%,22%,75,Yes,Foreign subsidiaries are exempt if less than 1/3 of their income is financial income,All Income,"4:1 debt-to-equity ratio applies
 Interest deductions are limited to 2.7% of assets
 Interest and depreciation deduction limited to 30% of EBITDA
 Other rules can apply"
 Estonia,100.00%,100.00%,EU member states and EEA member states and Switzerland,0%,0%,10%,58,Yes,"CFC exempt if profits below €750,000 or passive income below €75,000",All Income Associated with Non-genuine Arrangements,Interest deductions limited to the higher of €3 million or 30% of EBITDA
-Finland,100.00%,100.00%,EU member states and EEA member states,20%,0%,20%,76,Yes,"CFC exempt if i) located in EU or EEA and not an artificial arrangement; ii) industrial, manufacturing, and shipping business; or iii) Finland has a double-tax treaty with the foreign country (excluding tax treaty countries mentioned in a ""black list"")",All Income,"Interest deductions limited to 25% of EBITDA
+Finland,100.00%,100.00%,EU member states and EEA member states or double tax treaty,20%,0%,20%,76,Yes,"CFC exempt if i) located in EU or EEA and not an artificial arrangement; ii) industrial, manufacturing, and shipping business; or iii) Finland has a double-tax treaty with the foreign country (excluding tax treaty countries mentioned in a ""black list"")",All Income,"Interest deductions limited to 25% of EBITDA
 Net interest expenses between non-related parties limited to €3 million"
 France,95.00%,88.00%,Black-list countries are excluded,30%,0%,33%,122,Yes,"CFC exempt if located in EU or EEA and not an artificial arrangement, or if CFC carries out trading or manufacturing activity",All Income,Interest deductions limited to the higher of €3 million or 30% of EBITDA
 Germany,95.00%,95.00%,None,26%,0%,16%,96,Yes,CFC exempt if located in EU or EEA and not an artificial arrangement,Passive,Interest deductions limited to the higher of €3 million or 30% of EBITDA
-Greece,100.00%,0.00%,EU member states,10%,15%,20%,57,Yes,CFC exempt if located in EU or EEA country with exchange of information agreement and not an artificial arrangement,Passive,Interest deductions limited to the higher of €3 million or 30% of EBITDA
+Greece,100.00%,100.00%,EU member states,10%,15%,20%,57,Yes,CFC exempt if located in EU or EEA country with exchange of information agreement and not an artificial arrangement,Passive,Interest deductions limited to the higher of €3 million or 30% of EBITDA
 Hungary,100.00%,100.00%,None,0%,0%,0%,81,Yes,CFC exempt if i) real economic activity; ii) below certain profit threshold and ratio; or iii) located in country with treaty allowing for an exemption,Passive,Interest deductions limited to the higher of €3 million or 30% of EBITDA
 Iceland ,100.00%,100.00%,None,20%,12%,20%,45,Yes,CFC exempt if located in EEA countries or has a double-tax treaty with Iceland and not an artificial arrangement,All Income,"Interest deductions limited to 30% of EBITDA
 Rule does not apply if total interest paid does not exceed ISK 100 million 
