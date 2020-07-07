@@ -13,8 +13,17 @@
 corporate_rate<-get_dataset("Table_II1",filter= list(c(oecd_countries),c("COMB_CIT_RATE")), start_time = 2014)
 corporate_rate<-corporate_rate[c(1,4,5)]
 colnames(corporate_rate)<-c("Country","Year","corporate_rate")
-corporate_rate$corporate_rate<-corporate_rate$corporate_rate/100
 
+#Missing country/years are simply prior year values - Japan missing on July 7, 2020
+Country<-c("JPN")
+Year<-c("2020")
+corporate_rate_JPN<-c("0.2974")
+missing<-data.frame(Country,Year,corporate_rate_JPN)
+colnames(missing)<-c("Country","Year","corporate_rate")
+
+corporate_rate<-rbind(corporate_rate,missing)
+corporate_rate$corporate_rate<-as.numeric(corporate_rate$corporate_rate)
+corporate_rate$corporate_rate<-corporate_rate$corporate_rate/100
 
 #r_and_d_credit####
 #RDTAXSUB#
