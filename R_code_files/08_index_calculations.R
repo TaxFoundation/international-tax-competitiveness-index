@@ -246,7 +246,7 @@ corporate_index<-c("corporate_rate","cost_recovery","incentives")
 consumption_index<-c("consumption_tax_rate","consumption_tax_base","consumption_tax_complexity")
 property_index<-c("real_property_tax","wealth_taxes","capital_taxes")
 income_index<-c("capital_gains_and_dividends","income_tax","income_tax_complexity")
-international_index<-c("territorial","withholding_taxes","international_regulations")
+international_index<-c("territorial","withholding_taxes","tax_treaties","international_regulations")
 
 
 categories<-data.frame(country=raw_data$country,
@@ -374,6 +374,7 @@ alternate_subcategories<-ddply(alternate_subcategories,
                         tax_treaties_rank = rank(-tax_treaties,ties.method = "min"),
                         international_regulations_rank = rank(-international_regulations,ties.method = "min")
 )
+
 
 #Category Scores####
 
