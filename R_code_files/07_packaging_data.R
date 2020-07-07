@@ -30,7 +30,6 @@ index_data2020$year<-2020
 
 index_data_old<-rbind(index_data2014,index_data2015,index_data2016,index_data2017,index_data2018,index_data2019,index_data2020)
 
-
 #Join PwC data with index_data_property_tax_variables####
 
 #Remove variables from index_data_old that are in PwC paying taxes data
@@ -49,10 +48,10 @@ index_data_paying_taxes_variables<-merge(index_data_old,paying_taxes,by=c("ISO_2
 
 #Remove variables from index_data_old that are in OECD data
 oecd_variables_list<-c("corporate_rate", "r_and_d_credit", "top_income_rate", "threshold_top_income_rate", "tax_wedge","dividends_rate" )
-index_data_old<-index_data_old[,!names(index_data_old) %in% oecd_variables_list]
+index_data_paying_taxes_variables<-index_data_paying_taxes_variables[,!names(index_data_paying_taxes_variables) %in% oecd_variables_list]
 
 
-index_data_oecd_variables<-merge(index_data_old,oecd_variables,by=c("country","ISO_2","ISO_3","year"))
+index_data_oecd_variables<-merge(index_data_paying_taxes_variables,oecd_variables,by=c("country","ISO_2","ISO_3","year"))
 
 
 #Join cost recovery data with index_data2019####
@@ -97,7 +96,7 @@ names(index_data_final)
 index_data_final<-index_data_final[c("ISO_2","ISO_3","country","year",
                                    "corporate_rate","loss_carryback","loss_carryforward",
                                    "machines_cost_recovery","buildings_cost_recovery",
-                                   "intangibles_cost_recovery","inventory","patent_box",
+                                   "intangibles_cost_recovery","inventory","allowance_corporate_equity","patent_box",
                                    "r_and_d_credit","corporate_time","profit_payments","other_payments",
                                    "top_income_rate","threshold_top_income_rate","tax_wedge",
                                    "labor_payments","labor_time","capital_gains_rate",
@@ -119,3 +118,4 @@ write.csv(subset(index_data_final,index_data_final$year==2016),file = paste(fina
 write.csv(subset(index_data_final,index_data_final$year==2017),file = paste(final_data,"final_index_data_2017.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2018),file = paste(final_data,"final_index_data_2018.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2019),file = paste(final_data,"final_index_data_2019.csv",sep=""),row.names=F)
+write.csv(subset(index_data_final,index_data_final$year==2020),file = paste(final_data,"final_index_data_2020.csv",sep=""),row.names=F)
