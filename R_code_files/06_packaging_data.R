@@ -5,7 +5,7 @@ cost_recovery<-read_csv(paste(intermediate_outputs,"cost_recovery_data.csv",sep=
 vat_data<-read_csv(paste(intermediate_outputs,"vat_data.csv",sep=""))
 property_tax<-read_csv(paste(intermediate_outputs,"property_tax_data.csv",sep=""))
 cfc_rules<-read_csv(paste(intermediate_outputs,"cfc_rules_data.csv",sep=""))
-
+paying_taxes<-read_csv(paste(intermediate_outputs,"pwc_paying_taxes.csv",sep=""))
 
 index_data2014<-read_csv(paste(source_data,"index_data_2014.csv",sep=""))
 index_data2014$year<-2014
@@ -25,14 +25,32 @@ index_data2018$year<-2018
 index_data2019<-read_csv(paste(source_data,"index_data_2019.csv",sep=""))
 index_data2019$year<-2019
 
-index_data_old<-rbind(index_data2014,index_data2015,index_data2016,index_data2017,index_data2018,index_data2019)
+index_data2020<-read_csv(paste(source_data,"index_data_2020.csv",sep=""))
+index_data2020$year<-2020
 
+index_data_old<-rbind(index_data2014,index_data2015,index_data2016,index_data2017,index_data2018,index_data2019,index_data2020)
+
+
+#Join PwC data with index_data_property_tax_variables####
+
+#Remove variables from index_data_old that are in PwC paying taxes data
+pwc_variables_list<-c("corporate_time","labor_time", "consumption_time", 
+                      "profit_payments","labor_payments", "other_payments" )
+index_data_old<-index_data_old[,!names(
+  index_data_old) %in% pwc_variables_list]
+
+#Adjust years in pwc data to account for two year lag
+paying_taxes$year<-paying_taxes$year+2
+index_data_paying_taxes_variables<-merge(index_data_old,paying_taxes,by=c("ISO_2", "ISO_3","country","year"))
+
+
+
+#Join OECD data with index_data_old####
 
 #Remove variables from index_data_old that are in OECD data
 oecd_variables_list<-c("corporate_rate", "r_and_d_credit", "top_income_rate", "threshold_top_income_rate", "tax_wedge","dividends_rate" )
 index_data_old<-index_data_old[,!names(index_data_old) %in% oecd_variables_list]
 
-#Join OECD data with index_data_old####
 
 index_data_oecd_variables<-merge(index_data_old,oecd_variables,by=c("country","ISO_2","ISO_3","year"))
 
@@ -61,6 +79,7 @@ property_tax$year<-property_tax$year+2
 property_tax<-property_tax[c("ISO_3","country","year","property_tax_collections")]
 index_data_vat_variables<-index_data_vat_variables[,!names(index_data_vat_variables) %in% property_tax_variables]
 index_data_property_tax_variables<-merge(index_data_vat_variables,property_tax,by=c("ISO_3","country","year"))
+
 
 #Join CFC rules data with index_data2019####
 cfc_rules<-cfc_rules[-c(5:7)]
