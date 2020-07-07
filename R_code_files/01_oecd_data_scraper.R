@@ -59,7 +59,7 @@ r_and_d_credit$Year <- r_and_d_credit$Year+1
 #dstruc$CL_TABLE_I7_TAX
 
 top_income_rate<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("PER_ARATE")), start_time = 2013)
-top_income_rate<-top_income_rate[c(1,5,6)]
+top_income_rate<-top_income_rate[c(1,6,7)]
 colnames(top_income_rate)<-c("Country","Year","top_income_rate")
 top_income_rate$Year<-as.numeric(top_income_rate$Year)
 top_income_rate$Year<-top_income_rate$Year+1
@@ -75,7 +75,7 @@ top_income_rate$top_income_rate<-top_income_rate$top_income_rate/100
 #dstruc$CL_TABLE_I7_TAX
 
 threshold<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("THRESHOLD")), start_time = 2013)
-threshold<-threshold[c(1,5,6)]
+threshold<-threshold[c(1,6,7)]
 colnames(threshold)<-c("Country","Year","threshold_top_income_rate")
 threshold$Year<-as.numeric(threshold$Year)
 threshold$Year<-threshold$Year+1
@@ -166,7 +166,7 @@ dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
 
 #End OECD data scraper#
 
-#Output####
+#output####
 
 OECDvars_data <- merge(corporate_rate, r_and_d_credit, by=c("Country","Year"))
 OECDvars_data <- merge(OECDvars_data, dividends_rate, by=c("Country","Year"))
