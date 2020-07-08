@@ -89,11 +89,11 @@
 
 * **`country_limitations`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guide: Corporate Tax Computation and Administration," https://www.bloomberglaw.com/product/tax/bbna/chart/3/10077/21525eb9dc338759f0fa06be8c529e10.
 
-* **`dividends_withholding_tax`** Deloitte, "Withholding Tax Rates 2019," https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-withholding-tax-rates.pdf.
+* **`dividends_withholding_tax`** Deloitte, "Domestic rates: Withholding tax," https://dits.deloitte.com/#DomesticRatesSubMenu.
 
-* **`interest_withholding_tax`** Deloitte, "Withholding Tax Rates 2019," https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-withholding-tax-rates.pdf.
+* **`interest_withholding_tax`** Deloitte, "Domestic rates: Withholding tax," https://dits.deloitte.com/#DomesticRatesSubMenu.
 
-* **`royalties_withholding_tax`** Deloitte, "Withholding Tax Rates 2019," https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-withholding-tax-rates.pdf.
+* **`royalties_withholding_tax`** Deloitte, "Domestic rates: Withholding tax," https://dits.deloitte.com/#DomesticRatesSubMenu.
 
 * **`tax_treaties`** EY, "Worldwide Corporate Tax Guide: 2019," https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf. Tax treaties with former countries, such as USSR, Yugoslavia, and Czechoslovakia, are not counted as one. Every country the treaty applies to is counted individually.
 
@@ -150,6 +150,8 @@
 ## Iceland
 
 * **`inventory`** PwC, "Worldwide Tax Summaries: Corporate Taxes 2017/18," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2017-18-europe.pdf.
+
+* **`royalties_withholding_tax`** 20% rate applies to corporations, see PwC, "Worldwide Tax Summaries: Corporate - Withholding taxes," https://taxsummaries.pwc.com/iceland/corporate/withholding-taxes.
 
 ## Ireland
 
