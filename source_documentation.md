@@ -83,13 +83,11 @@
 
 ## **International Tax Rules**
 
-* **`dividends_exemption`** Bloomberg Tax, "XX"; Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; 
+* **`dividends_exemption`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guide: Corporate Tax Computation and Administration," https://www.bloomberglaw.com/product/tax/bbna/chart/3/10077/21525eb9dc338759f0fa06be8c529e10.
 
-PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; and KPMG, "EU Country Profiles," https://home.kpmg/xx/en/home/services/tax/regional-tax-centers/eu-tax-centre/eu-country-profiles.html.
+* **`capital_gains_exemption`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guide: Corporate Tax Computation and Administration," https://www.bloomberglaw.com/product/tax/bbna/chart/3/10077/21525eb9dc338759f0fa06be8c529e10.
 
-* **`capital_gains_exemption`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; and KPMG, "EU Country Profiles," https://home.kpmg/xx/en/home/services/tax/regional-tax-centers/eu-tax-centre/eu-country-profiles.html.
-
-* **`country_limitations`** EY, "Worldwide Corporate Tax Guide: 2019," https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf.
+* **`country_limitations`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guide: Corporate Tax Computation and Administration," https://www.bloomberglaw.com/product/tax/bbna/chart/3/10077/21525eb9dc338759f0fa06be8c529e10.
 
 * **`dividends_withholding_tax`** Deloitte, "Withholding Tax Rates 2019," https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-withholding-tax-rates.pdf.
 
@@ -128,13 +126,10 @@ PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/
 
 * **`loss_carryback`** As of June 1, the Czech Republic was considering the introduction of a 2-year loss carryback provision, see Bloomberg Tax, "Czech Republic Lower House Considers Bill to Amend Various Tax Laws Due to Coronavirus," May 28, 2020. However, as the law was not implemented on June 1, it is not included in this year's _International Index_.
 
-* **`country_limitations`** Bloomberg Tax, "Country Guides - Czech Republic - Corporate Tax Computation and Administration," https://www.bloomberglaw.com/product/tax/document/21069792808.
-
 ## Denmark:
 
 * **`capital_gains_rate`** PwC, "Individual - Taxes on personal income," http://taxsummaries.pwc.com/ID/Denmark-Individual-Taxes-on-personal-income.
 
-* **`country_limitations`** Deloitte, “Tax Guides and Highlights,” 2019, https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-denmarkhighlights-2019.pdf.
 
 ## Finland
 
@@ -144,15 +139,9 @@ PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/
 
 * **`asset_tax`** PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
 
-* **`country_limitations`** PwC, "Corporate - Group taxation," http://taxsummaries.pwc.com/ID/France-Corporate-Group-taxation.
-
 ## Germany
 
 * **`capital_gains_rate`** On top of the 25% flat tax rate, there is a solidarity surcharge of 5.5% of the tax amount, leading to an effective tax rate of 26.4%.
-
-## Greece
-
-* **`country_limitations`** Bloomberg Tax, "Country Guides - Corporate Tax Computation and Administration," https://www.bloomberglaw.com/product/tax/document/25059413032.
 
 ## Hungary
 
@@ -163,8 +152,6 @@ PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/
 * **`inventory`** PwC, "Worldwide Tax Summaries: Corporate Taxes 2017/18," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2017-18-europe.pdf.
 
 ## Ireland
-
-* **`country_limitations`** Deloitte, “Tax Guides and Highlights,” 2019, https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-irelandhighlights-2019.pdf.
 
 * **`cfc_rules` (cfcexemption)** Thomson Reuters, "Ireland Enacts EU ATAD CFC Rules," Feb 7, 2019, https://tax.thomsonreuters.com/blog/ireland-enacts-eu-atad-cfc-rules/.
 
@@ -178,15 +165,11 @@ PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/
 
 ## Latvia
 
-* **`country_limitations`** Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides.
-
 * **`cfc_rules` (cfcexemption)** PwC, "Corporate - Significant developments," http://taxsummaries.pwc.com/ID/Latvia-Corporate-Significant-developments.
 
 ## Lithuania
 
 * **`capital_gains_rate`** Atlas Network, "Lithuanian Reforms Lower Tax Burden for 1.3 Million," July 13, 2018, https://www.atlasnetwork.org/news/article/lithuanian-reforms-lower-tax-burden-for-1.3-million.
-
-* **`country_limitations`** Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides.
 
 ## Luxembourg
 
@@ -201,6 +184,10 @@ PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/
 ## New Zealand
 
 * **`loss_carryback`** Inland Revenue, "COVID-19 Temporary loss carry-back scheme," https://www.ird.govt.nz/covid-19/business-and-organisations/temporary-loss-carry-back-scheme/.
+
+* **`dividends_exemption`** A dividend derived by a company resident in New Zealand from a foreign company is treated as exempt income, see PwC, "Worlwide Tax Summaries: Corporate - Income determination," https://taxsummaries.pwc.com/new-zealand/corporate/income-determination.
+
+* **`capital_gains_exemption`** A dividend derived by a company resident in New Zealand from a foreign company is treated as exempt income, see PwC, "Worlwide Tax Summaries: Corporate - Income determination," https://taxsummaries.pwc.com/new-zealand/corporate/income-determination.
 
 ## Norway
 
@@ -223,8 +210,6 @@ PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/
 ## Slovenia
 
 * **`capital_gains_rate`** Is measured as 0% which is the rate that applies to securities held for 20 years.
-
-* **`country_limitations`** Deloitte, Tax Guides and Highlights,” 2019, https://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-sloveniahighlights-2019.pdf.
 
 ## Sweden
 
