@@ -143,6 +143,11 @@
 
 * **`capital_gains_rate`** On top of the 25% flat tax rate, there is a solidarity surcharge of 5.5% of the tax amount, leading to an effective tax rate of 26.4%.
 
+## Greece
+
+* **`cfc_rules` (cfcactive)** Greece's CFC rules only apply to passive income, see Deloitte, "Tax guides and highlights: Greece," http://www2.deloitte.com/content/dam/Deloitte/global/Documents/Tax/dttl-tax-greecehighlights-2020.pdf?nc=1.
+
+
 ## Hungary
 
 * **`financial_transaction_tax`** More details at PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
