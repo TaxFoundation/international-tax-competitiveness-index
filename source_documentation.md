@@ -97,7 +97,7 @@
 
 * **`tax_treaties`** EY, "Worldwide Corporate Tax Guide: 2019," https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf. Tax treaties with former countries, such as USSR, Yugoslavia, and Czechoslovakia, are not counted as one. Every country the treaty applies to is counted individually.
 
-* **`cfc_rules`** Daniel Bunn, Kyle Pomerleau, and Sebastian Dueñas, "Anti-Base Erosion Provisions and Territorial Tax Systems in OECD Countries," Tax Foundation, May 2, 2019, https://taxfoundation.org/anti-base-erosion-provisions-territorial-tax-systems-oecd-countries/; Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf; and Deloitte, “Tax Guides and Highlights," 2019, https://dits.deloitte.com/#TaxGuides.
+* **`cfc_rules`** Bloomberg Tax, "Country Guides: Anti-Avoidance Provisions - Controlled Foreign Company (CFC) Rules," https://www.bloomberglaw.com/product/tax/bbna/chart/3/10077/347a743114754ceca09f7ec4b7015426; and PwC, "Worldwide Tax Summaries: Corporate - Group taxation," https://taxsummaries.pwc.com/australia/corporate/group-taxation.
 
 * **`thin_capitalization_rules`** Daniel Bunn, Kyle Pomerleau, and Sebastian Dueñas, "Anti-Base Erosion Provisions and Territorial Tax Systems in OECD Countries," Tax Foundation, May 2, 2019, https://taxfoundation.org/anti-base-erosion-provisions-territorial-tax-systems-oecd-countries/; Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; and Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides.
 
@@ -158,10 +158,6 @@
 
 * **`royalties_withholding_tax`** 20% rate applies to corporations, see PwC, "Worldwide Tax Summaries: Corporate - Withholding taxes," https://taxsummaries.pwc.com/iceland/corporate/withholding-taxes.
 
-## Ireland
-
-* **`cfc_rules` (cfcexemption)** Thomson Reuters, "Ireland Enacts EU ATAD CFC Rules," Feb 7, 2019, https://tax.thomsonreuters.com/blog/ireland-enacts-eu-atad-cfc-rules/.
-
 ## Israel
 
 * **`capital_gains_rate`** Includes a 3% surtax.
@@ -169,10 +165,6 @@
 ## Korea
 
 * **`capital_gains_rate`** Is measured as 0% due to the specific tax exemptions for certain types of capital gains.
-
-## Latvia
-
-* **`cfc_rules` (cfcexemption)** PwC, "Corporate - Significant developments," http://taxsummaries.pwc.com/ID/Latvia-Corporate-Significant-developments.
 
 ## Lithuania
 
@@ -205,8 +197,6 @@
 ## Poland
 
 * **`loss_carryback`** Poland introduced a temporary 1-year loss carryback as part of its COVID-19 response. However, businesses are only eligible if their 2020 revenues are 50 percent below their 2019 revenues. As a result, the measure is not included in the _2020 ITCI_.
-
-* **`cfc_rules` (cfcexemption)** PwC, "Corporate - Significant developments," http://taxsummaries.pwc.com/ID/Latvia-Corporate-Significant-developments.
 
 * **`patent_box`** Bloomberg, "Country Guide - Corporate Tax Computation and Administartion," https://www.bloomberglaw.com/product/tax/document/25153077800. 
 

@@ -32,7 +32,7 @@ Korea,0.00%,0.00%,N/A,22.00%,22.00%,22.00%,93,Yes,CFC rules don't apply to activ
 Interest deductions limited to 30% of EBITDA (financial institutions exempt)"
 Latvia,100.00%,100.00%,Black-list countries are excluded,0.00%,0.00%,0.00%,61,Yes,"CFC exempt if profits below €750,000 or passive income below €75,000 and CFC is not based or incorporated in a tax haven",All Income Associated with Non-genuine Arrangements,"4:1 debt-to-equity ratio applies (certain financial institutions exempt)
 Interest deductions limited if interest payments both exceed €3 million and 30% of EBITDA"
-Lithuania,100.00%,100.00%,Black-list countries are excluded,15.00%,10.00%,10.00%,54,Yes,CFC exempt if country included in white list and not receiving special tax treatment or taxed subject to a corporate rate of more than 11.25%,Passive,"4:1 debt-to-equity ratio applies
+Lithuania,100.00%,100.00%,Black-list countries are excluded,15.00%,10.00%,10.00%,54,Yes,CFC exempt if country included in white list and not receiving special tax treatment,Passive,"4:1 debt-to-equity ratio applies
 Interest deductions limited to the higher of €3 million or 30% of EBITDA
 Rule does not apply if entity's debt-to-equity ratio is not (or at most 2 percentage-points) lower than the group-consolidated ratio"
 Luxembourg,100.00%,100.00%,None,15.00%,0.00%,0.00%,82,Yes,"CFC exempt if i) not an artificial arrangement or ii) accounting profits below €750,000 or less than 10% of operating costs ",All Income Associated with Non-genuine Arrangements,"Informal 85:15 debt-to-equity ratio applies
@@ -40,13 +40,13 @@ Interest deductions limited to the higher of 30% of EBITDA or €3 million (fina
 Mexico,0.00%,0.00%,N/A,10.00%,35.00%,35.00%,59,Yes,None,All Income,3:1 debt-to-equity ratio applies
 Netherlands,100.00%,100.00%,None,15.00%,0.00%,0.00%,97,Yes,CFC exempt if not an artificial arrangement,Passive,Interest deductions limited to the higher of €1 million or 30% of EBITDA
 New Zealand,100.00%,100.00%,None,30.00%,15.00%,15.00%,40,Yes,Limited exemption for certain Australian CFCs,Passive,Numerous restrictions on debt-to-equity ratio apply
-Norway,97.00%,100.00%,Black-list countries are excluded,25.00%,0.00%,0.00%,87,Yes,CFC exempt if located in EEA country and not an artificial arrangement or located in tax treaty country,All Income,Interest deductions limited to 25% of EBITDA
-Poland,100.00%,0.00%,EU member states and EEA member states and Switzerland,19.00%,20.00%,20.00%,85,Yes,CFC exempt if located in EU or EEA and not an artificial arrangement,All Income,Interest deductions limited to the higher of PLN 3 million or 30% of EBITDA
+Norway,97.00%,100.00%,Black-list countries are excluded,25.00%,0.00%,0.00%,87,Yes,CFC exempt if located in EEA country and not an artificial arrangement or located in tax treaty country and not mainly passive income,All Income,Interest deductions limited to 25% of EBITDA
+Poland,100.00%,0.00%,EU member states and EEA member states and Switzerland,19.00%,20.00%,20.00%,85,Yes,CFC exempt if not an artificial arrangement,All Income,Interest deductions limited to the higher of PLN 3 million or 30% of EBITDA
 Portugal,100.00%,100.00%,Black-list countries are excluded,25.00%,25.00%,25.00%,77,Yes,"CFC exempt if located in EU and EEA countries and not an artificial arrangement
 Other exemptions can apply",All Income,Interest deductions limited to the higher of €1 million or 30% of EBITDA
 Slovak Republic,100.00%,100.00%,Countries with a tax treaty or Tax Information Exchange Agreement,35.00%,19.00%,19.00%,70,Yes,None,All Income Associated with Non-genuine Arrangements,Interest deductions limited to 25% of EBITDA (financial institutions exempted)
 Slovenia,95.00%,47.50%,Black-list countries are excluded,15.00%,15.00%,15.00%,59,Yes,Substantial economic activities exemption,Passive,4:1 debt-to-equity ratio applies
-Spain,100.00%,100.00%,Black-list countries are excluded,19.00%,19.00%,24.00%,93,Yes,CFC exempt if located in EU or EEA and not an artificial arrangement,Passive,Interest deductions limited to the higher of €1 million or 30% of EBITDA
+Spain,100.00%,100.00%,Black-list countries are excluded,19.00%,19.00%,24.00%,93,Yes,CFC exempt if located in EU and not an artificial arrangement,Passive,Interest deductions limited to the higher of €1 million or 30% of EBITDA
 Sweden    ,100.00%,100.00%,None,30.00%,0.00%,0.00%,81,Yes,CFC exempt if located in EEA and not an artificial arrangement or located in white list countries,All Income,Interest deductions limited to 30% of EBITDA
 Switzerland,100.00%,100.00%,None,35.00%,35.00%,0.00%,93,No,N/A,N/A,Debt-to-equity ratios apply and vary by asset class
 Turkey,100.00%,100.00%,None,15.00%,10.00%,20.00%,85,Yes,None,All Income,3:1 debt-to-equity ratio (6:1 for financial institutions) applies
