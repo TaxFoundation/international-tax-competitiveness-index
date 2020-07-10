@@ -129,7 +129,6 @@ for (i in flip) {
     # buildings_cost_recovery
     # intangibles_cost_recovery
     # inventory
-    # allowance_corporate_equity
   #Incentives/Complexity
     # patent_box
     # r_and_d_credit
@@ -180,7 +179,7 @@ for (i in flip) {
 
 corporate_rate_index<-c("corporate_rate")
 cost_recovery_index<-c("loss_carryback","loss_carryforward","machines_cost_recovery",
-                       "buildings_cost_recovery","intangibles_cost_recovery","inventory","allowance_corporate_equity")
+                       "buildings_cost_recovery","intangibles_cost_recovery","inventory")
 incentives_index<-c("patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments")
 consumption_tax_rate_index<-c("vat_rate")
 consumption_tax_base_index<-c("vat_threshold","vat_base")
