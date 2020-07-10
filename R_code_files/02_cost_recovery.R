@@ -295,5 +295,8 @@ colnames(data) <- c("ISO_3","year","machines_cost_recovery","buildings_cost_reco
 data <- merge(data, iso_country_codes, by="ISO_3")
 data <- data[c("ISO_2","ISO_3","country","year","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery")]
 
+data<-subset(data,data$year>2013)
+data<-subset(data,data$ISO_3%in%oecd_countries)
+
 #Write CSV output file
 write.csv(data, file = paste(intermediate_outputs,"cost_recovery_data.csv",sep=""),row.names=F)
