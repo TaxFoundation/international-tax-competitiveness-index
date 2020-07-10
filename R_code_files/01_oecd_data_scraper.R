@@ -159,15 +159,6 @@ dividends_rate<-get_dataset("Table_II4",filter= list(c(oecd_countries),c("NET_PE
 dividends_rate<-dividends_rate[c(1,4,5)]
 colnames(dividends_rate)<-c("country","year","dividends_rate")
 
-
-#Missing country/years are simply prior year values - Japan missing on July 7, 2020
-country<-c("JPN")
-year<-c("2020")
-dividends_rate_JPN<-c("20.32")
-missing<-data.frame(country,year,dividends_rate_JPN)
-colnames(missing)<-c("country","year","dividends_rate")
-
-dividends_rate<-rbind(dividends_rate,missing)
 dividends_rate$dividends_rate<-as.numeric(dividends_rate$dividends_rate)
 dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
 
