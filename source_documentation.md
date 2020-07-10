@@ -99,7 +99,7 @@
 
 * **`cfc_rules`** Bloomberg Tax, "Country Guides: Anti-Avoidance Provisions - Controlled Foreign Company (CFC) Rules," https://www.bloomberglaw.com/product/tax/bbna/chart/3/10077/347a743114754ceca09f7ec4b7015426; and PwC, "Worldwide Tax Summaries: Corporate - Group taxation," https://taxsummaries.pwc.com/australia/corporate/group-taxation.
 
-* **`thin_capitalization_rules`** Daniel Bunn, Kyle Pomerleau, and Sebastian Dueñas, "Anti-Base Erosion Provisions and Territorial Tax Systems in OECD Countries," Tax Foundation, May 2, 2019, https://taxfoundation.org/anti-base-erosion-provisions-territorial-tax-systems-oecd-countries/; Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; and Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides.
+* **`thin_capitalization_rules`** Bloomberg Tax, "Country Guides: Anti-Avoidance Provisions - Thin Capitalization/Other Interest Deductibility Rules," https://www.bloomberglaw.com/product/tax/bbna/chart/3/10077/a8a08d05c9450b676b4d835dbb64348c; and PwC, "Worldwide Tax Summaries: Corporate - Group taxation," https://taxsummaries.pwc.com/australia/corporate/group-taxation.
 
 #
 #
