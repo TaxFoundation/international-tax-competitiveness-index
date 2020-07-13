@@ -508,42 +508,64 @@ cortest2<-alternate_final_categories[alternate_final_categories$year == 2015,]
 cor(cortest2[c(4,6,8,10,12,14)])     
 
 
-Australia<-final_categories[final_categories$country=="Australia",]
-Austria<-final_categories[final_categories$country=="Austria",]
-Belgium<-final_categories[final_categories$country=="Belgium",]
-Canada<-final_categories[final_categories$country=="Canada",]
-Chile<-final_categories[final_categories$country=="Chile",]
-Czech_Republic<-final_categories[final_categories$country=="Czech Republic",]
-Denmark<-final_categories[final_categories$country=="Denmark",]
-Estonia<-final_categories[final_categories$country=="Estonia",]
-Finland<-final_categories[final_categories$country=="Finland",]
-France<-final_categories[final_categories$country=="France",]
-Germany<-final_categories[final_categories$country=="Germany",]
-Greece<-final_categories[final_categories$country=="Greece",]
-Hungary<-final_categories[final_categories$country=="Hungary",]
-Iceland<-final_categories[final_categories$country=="Iceland",]
-Ireland<-final_categories[final_categories$country=="Ireland",]
-Israel<-final_categories[final_categories$country=="Israel",]
-Italy<-final_categories[final_categories$country=="Italy",]
-Japan<-final_categories[final_categories$country=="Japan",]
-Korea<-final_categories[final_categories$country=="Korea",]
-Latvia<-final_categories[final_categories$country=="Latvia",]
-Lithuania<-final_categories[final_categories$country=="Lithuania",]
-Luxembourg<-final_categories[final_categories$country=="Luxembourg",]
-Mexico<-final_categories[final_categories$country=="Mexico",]
-Netherlands<-final_categories[final_categories$country=="Netherlands",]
-New_Zealand<-final_categories[final_categories$country=="New Zealand",]
-Norway<-final_categories[final_categories$country=="Norway",]
-Poland<-final_categories[final_categories$country=="Poland",]
-Portugal<-final_categories[final_categories$country=="Portugal",]
-Slovak_Republic<-final_categories[final_categories$country=="Slovak Republic",]
-Slovenia<-final_categories[final_categories$country=="Slovenia",]
-Spain<-final_categories[final_categories$country=="Spain",]
-Sweden<-final_categories[final_categories$country=="Sweden",]
-Switzerland<-final_categories[final_categories$country=="Switzerland",]
-Turkey<-final_categories[final_categories$country=="Turkey",]
-United_Kingdom<-final_categories[final_categories$country=="United Kingdom",]
-United_States<-final_categories[final_categories$country=="United States",]
+#Order variables for easier working
+
+names(final_categories)
+final_categories<-final_categories[c("ISO_2","ISO_3","country","year",
+                                     "final_rank","final",
+                                     "corporate_rank","corporate",
+                                     "income_rank","income",
+                                     "consumption_rank","consumption",
+                                     "property_rank","property",
+                                     "international_rank","international")]
+
+
+
+
+colnames(final_categories)<-c("ISO_2","ISO_3","Country","Year",
+                              "Final Rank","Final Score",
+                              "Corporate Rank","Corporate Score",
+                              "Income Rank","Income Score",
+                              "Consumption Rank","Consumption Score",
+                              "Property Rank","Property Score",
+                              "International Rank","International Score")
+
+Australia<-final_categories[final_categories$Country=="Australia",]
+Austria<-final_categories[final_categories$Country=="Austria",]
+Belgium<-final_categories[final_categories$Country=="Belgium",]
+Canada<-final_categories[final_categories$Country=="Canada",]
+Chile<-final_categories[final_categories$Country=="Chile",]
+Czech_Republic<-final_categories[final_categories$Country=="Czech Republic",]
+Denmark<-final_categories[final_categories$Country=="Denmark",]
+Estonia<-final_categories[final_categories$Country=="Estonia",]
+Finland<-final_categories[final_categories$Country=="Finland",]
+France<-final_categories[final_categories$Country=="France",]
+Germany<-final_categories[final_categories$Country=="Germany",]
+Greece<-final_categories[final_categories$Country=="Greece",]
+Hungary<-final_categories[final_categories$Country=="Hungary",]
+Iceland<-final_categories[final_categories$Country=="Iceland",]
+Ireland<-final_categories[final_categories$Country=="Ireland",]
+Israel<-final_categories[final_categories$Country=="Israel",]
+Italy<-final_categories[final_categories$Country=="Italy",]
+Japan<-final_categories[final_categories$Country=="Japan",]
+Korea<-final_categories[final_categories$Country=="Korea",]
+Latvia<-final_categories[final_categories$Country=="Latvia",]
+Lithuania<-final_categories[final_categories$Country=="Lithuania",]
+Luxembourg<-final_categories[final_categories$Country=="Luxembourg",]
+Mexico<-final_categories[final_categories$Country=="Mexico",]
+Netherlands<-final_categories[final_categories$Country=="Netherlands",]
+New_Zealand<-final_categories[final_categories$Country=="New Zealand",]
+Norway<-final_categories[final_categories$Country=="Norway",]
+Poland<-final_categories[final_categories$Country=="Poland",]
+Portugal<-final_categories[final_categories$Country=="Portugal",]
+Slovak_Republic<-final_categories[final_categories$Country=="Slovak Republic",]
+Slovenia<-final_categories[final_categories$Country=="Slovenia",]
+Spain<-final_categories[final_categories$Country=="Spain",]
+Sweden<-final_categories[final_categories$Country=="Sweden",]
+Switzerland<-final_categories[final_categories$Country=="Switzerland",]
+Turkey<-final_categories[final_categories$Country=="Turkey",]
+United_Kingdom<-final_categories[final_categories$Country=="United Kingdom",]
+United_States<-final_categories[final_categories$Country=="United States",]
 
 
 #Changes from 2018 index
@@ -567,3 +589,38 @@ write.csv(final_2020, file = paste(final_outputs,"data_2020_run.csv",sep=""),row
 
 write.csv(final_subcategories_2020,paste(final_outputs,"subcategories_2020.csv",sep=""),row.names=F)
 write.csv(final_categories,paste(final_outputs,"final_categories_2014_2020.csv",sep=""),row.names=F)
+
+#initial results csv files####
+
+#Austria - Hayek Institut
+write.csv(Austria, file = paste(initial_results,"Austria.csv",sep=""),row.names=F)
+
+#France - IREF
+write.csv(France, file = paste(initial_results,"France.csv",sep=""),row.names=F)
+
+#Germany - Prometheus
+write.csv(Germany, file = paste(initial_results,"Germany.csv",sep=""),row.names=F)
+
+#Greece - KEFiM
+write.csv(Greece, file = paste(initial_results,"Greece.csv",sep=""),row.names=F)
+
+#Italy - IBL
+write.csv(Italy, file = paste(initial_results,"Italy.csv",sep=""),row.names=F)
+
+#Lithuania - LFMI
+write.csv(Lithuania, file = paste(initial_results,"Lithuania.csv",sep=""),row.names=F)
+
+#Poland - FOR
+write.csv(Poland, file = paste(initial_results,"Poland.csv",sep=""),row.names=F)
+
+#Slovakia - INESS
+write.csv(Slovak_Republic, file = paste(initial_results,"Slovak_Republic.csv",sep=""),row.names=F)
+
+#Spain - IEE
+write.csv(Spain, file = paste(initial_results,"Spain.csv",sep=""),row.names=F)
+
+#Sweden - Timbro
+write.csv(Sweden, file = paste(initial_results,"Sweden.csv",sep=""),row.names=F)
+
+#UK - CPS/ASI
+write.csv(United_Kingdom, file = paste(initial_results,"United_Kingdom.csv",sep=""),row.names=F)

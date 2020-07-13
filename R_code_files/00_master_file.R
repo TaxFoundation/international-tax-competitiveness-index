@@ -9,6 +9,7 @@ source_data<-"C:/Github/international-tax-competitiveness-index/source_data/"
 intermediate_outputs<-"C:/Github/international-tax-competitiveness-index/intermediate_outputs/"
 final_data<-"C:/Github/international-tax-competitiveness-index/final_data/"
 final_outputs<-"C:/Github/international-tax-competitiveness-index/final_outputs/"
+initial_results<-"C:/Github/international-tax-competitiveness-index/initial_results/"
 
 #Define Using function####
 using<-function(...,prompt=TRUE){
