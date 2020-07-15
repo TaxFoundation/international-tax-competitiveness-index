@@ -291,7 +291,7 @@ data <- subset(data, select = c(country, year, buildings_cost_recovery, machines
 data$year <- data$year+1
 
 #Format output table
-colnames(data) <- c("ISO_3","year","machines_cost_recovery","buildings_cost_recovery", "intangibles_cost_recovery")
+colnames(data) <- c("ISO_3","year","buildings_cost_recovery", "machines_cost_recovery", "intangibles_cost_recovery")
 data <- merge(data, iso_country_codes, by="ISO_3")
 data <- data[c("ISO_2","ISO_3","country","year","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery")]
 
