@@ -594,17 +594,10 @@ notes_6<-c("(e) The purchaser of real property is subject to a purchase tax.",
            "",
            "",
            "")
-notes_7<-c("(f) Nine U.S. states levy a tax on intangible personal property.",
-           "",
-           "",
-           "",
-           "",
-           "",
-           "",
-           "",
-           "",
-           "")
-table_d_property<-rbind(headers,columns,table_d_property,notes_1,notes_2,notes_3,notes_4,notes_5,notes_6,notes_7)
+
+
+
+table_d_property<-rbind(headers,columns,table_d_property,notes_1,notes_2,notes_3,notes_4,notes_5,notes_6)
 
 write.csv(table_d_property,paste(final_outputs,"table_d_property.csv",sep=""),row.names = F)
 
