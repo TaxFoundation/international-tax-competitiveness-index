@@ -94,7 +94,7 @@ alternate_scores<-alternate_scores[-3]
 # cfc_rules
 # thin_capitalization_rules
 
-flip<-c("corporate_rate","r_and_d_credit","corporate_time","profit_payments","other_payments","vat_rate","vat_threshold","consumption_time",
+flip<-c("corporate_rate","r_and_d_credit","corporate_time","profit_payments","other_payments","vat_rate","vat_threshold","consumption_time","property_tax_collections",
         "capital_gains_rate","dividends_rate","top_income_rate","threshold_top_income_rate","tax_wedge","labor_payments","labor_time",
         "dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","cfc_rules","country_limitations","thin_capitalization_rules")
 
