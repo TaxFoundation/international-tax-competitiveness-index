@@ -95,7 +95,7 @@
 
 * **`royalties_withholding_tax`** Deloitte, "Domestic rates: Withholding tax," https://dits.deloitte.com/#DomesticRatesSubMenu.
 
-* **`tax_treaties`** EY, "Worldwide Corporate Tax Guide: 2019," https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf. Tax treaties with former countries, such as USSR, Yugoslavia, and Czechoslovakia, are not counted as one. Every country the treaty applies to is counted individually.
+* **`tax_treaties`** EY, "Worldwide Corporate Tax Guide: 2020," https://www.ey.com/en_gl/tax-guides/worldwide-corporate-tax-guide-2020. Tax treaties with former countries, such as USSR, Yugoslavia, and Czechoslovakia, are not counted as one. Every country the treaty applies to is counted individually.
 
 * **`cfc_rules`** Bloomberg Tax, "Country Guides: Anti-Avoidance Provisions - Controlled Foreign Company (CFC) Rules," https://www.bloomberglaw.com/product/tax/bbna/chart/3/10077/347a743114754ceca09f7ec4b7015426; and PwC, "Worldwide Tax Summaries: Corporate - Group taxation," https://taxsummaries.pwc.com/australia/corporate/group-taxation.
 
