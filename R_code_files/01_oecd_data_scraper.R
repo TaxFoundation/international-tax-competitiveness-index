@@ -59,7 +59,21 @@ r_and_d_credit$year <- r_and_d_credit$year+1
 top_income_rate<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("PER_ARATE")), start_time = 2013)
 top_income_rate<-top_income_rate[c(1,6,7)]
 colnames(top_income_rate)<-c("country","year","top_income_rate")
+
+#Correct Czech Republic Data
+country_CZE<-c("CZE","CZE","CZE","CZE","CZE","CZE","CZE")
+year_CZE<-c("2013","2014","2015","2016","2017","2018","2019")
+top_income_rate_CZE<-c("31.1","31.1","31.1","31.1","31.1","31.1","31.1")
+
+CZE<-data.frame(country_CZE,year_CZE,top_income_rate_CZE)
+colnames(CZE)<-c("country","year","top_income_rate")
+
+top_income_rate<-subset(top_income_rate,country!="CZE")
+top_income_rate<-rbind(top_income_rate,CZE)
+
 top_income_rate$year<-as.numeric(top_income_rate$year)
+top_income_rate$top_income_rate<-as.numeric(top_income_rate$top_income_rate)
+
 top_income_rate$year<-top_income_rate$year+1
 top_income_rate$top_income_rate<-top_income_rate$top_income_rate/100
 
