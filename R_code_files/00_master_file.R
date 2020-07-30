@@ -10,7 +10,7 @@ intermediate_outputs<-"C:/Github/international-tax-competitiveness-index/interme
 final_data<-"C:/Github/international-tax-competitiveness-index/final_data/"
 final_outputs<-"C:/Github/international-tax-competitiveness-index/final_outputs/"
 initial_results<-"C:/Github/international-tax-competitiveness-index/initial_results/"
-
+uk_reform_guide<-"C:/Github/international-tax-competitiveness-index/uk_reform_guide/"
 #Define Using function####
 using<-function(...,prompt=TRUE){
   libs<-sapply(substitute(list(...))[-1],deparse)
