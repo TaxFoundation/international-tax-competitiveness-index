@@ -35,7 +35,7 @@
 "Sweden","Tax on Real Property","Yes","0.3%","No","None","Stamp Duty on Transfer of Real Property","No","No","No"
 "Switzerland","Tax on Real Property","Yes","0.1%","Yes","Many cantons levy both Estate and Gift Taxes","Real Estate Transfer Tax","Cantonal/Community Equity Tax","Yes","Yes"
 "Turkey","Tax on Real Property","Yes","0.1%","No","Inheritance and Gift Tax","Real Estate Transfer Tax","No","Yes","Yes"
-"United Kingdom","Tax on Real Property","Yes","1.9%","No","Inheritance and Gift Tax","Stamp Duty on Transfer of Real Property","Bank Tax","No","Yes"
+"United Kingdom","Tax on Real Property","Yes","1.9%","No","Inheritance and Gift Tax","Stamp Duty on Transfer of Real Property","Bank Tax","No","No"
 "United States","Tax on Real Property","Yes","1.6%","No","Inheritance and Gift Tax","Real Estate Transfer Tax","Tangible Property Taxes and Capital Stock Taxes","No","No"
 "Notes:","","","","","","","","",""
 "(a) Applies to some real estate (vacation homes).","","","","","","","","",""
