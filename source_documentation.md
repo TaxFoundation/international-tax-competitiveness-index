@@ -64,21 +64,21 @@
 
 ## **Property Taxes**
 
-* **`property_tax`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+* **`property_tax`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; PwC, "Worldwide Tax Summaries: Corporate - Income Determination," https://taxsummaries.pwc.com/australia/corporate/deductions.
 
-* **`property_tax_collections`** OECD, "OECD Revenue Statistics - OECD Countries: Comparative tables," updated December 2020, https://stats.oecd.org/index.aspx?DataSetCode=rev; IMF, "Investment and Capital Stock Dataset," https://www.imf.org/external/np/fad/publicinvestment/#5; and IMF, "International Financial Statistics (IFS), Gross Domestic Product and Components selected indicators," https://data.imf.org/regular.aspx?key=61545852. The IMF dataset ‘Investment and Capital Stock’ ends in 2015. Thus, the variable ‘Capital Formation’ in IMF’s IFS database was used to construct the years 2016 and 2017 (that is the year with the most recent property tax revenue data). 
+* **`property_tax_collections`** OECD, “OECD Revenue Statistics - OECD Countries: Comparative tables,” updated December 2019, https://stats.oecd.org/index.aspx?DataSetCode=rev; IMF, “Investment and Capital Stock Dataset,” https://www.imf.org/external/np/fad/publicinvestment/#5; and IMF, “International Financial Statistics (IFS), Gross Domestic Product and Components selected indicators,” https://data.imf.org/regular.aspx?key=61545852. The IMF dataset “Investment and Capital Stock” ends in 2017. Thus, the variable “Capital Formation” in IMF’s IFS database was used to construct the years 2017 and 2018 (2018 is the year with the most recent property tax revenue data from the OECD). 
 
-* **`net_wealth`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; EY, “2018 Worldwide Estate and Inheritance Tax Guide 2018,” https://www.ey.com/Publication/vwLUAssets/ey-worldwide-estate-and-inheritance-tax-guide-2018/$FILE/ey-worldwide-estate-and-inheritance-tax-guide-2018.pdf; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+* **`net_wealth`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides;  EY, “Worldwide Estate and Inheritance Tax Guide 2019,” https://www.ey.com/en_gl/tax-guides/worldwide-estate-and-inheritance-tax-guide-2019; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
-* **`estate_or_inheritance_tax`** EY, “Worldwide Estate and Inheritance Tax Guide 2018,” https://www.ey.com/Publication/vwLUAssets/ey-worldwide-estate-and-inheritance-tax-guide-2018/$FILE/ey-worldwide-estate-and-inheritance-tax-guide-2018.pdf.
+* **`estate_or_inheritance_tax`** EY, “Worldwide Estate and Inheritance Tax Guide 2019,” https://www.ey.com/en_gl/tax-guides/worldwide-estate-and-inheritance-tax-guide-2019.
 
-* **`transfer_tax`** Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+* **`transfer_tax`** Deloitte, “Tax Guides and Highlights,”  https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
 * **`asset_tax`** Bloomberg Tax, "Country Guides - Other Taxes" and "Country Guides - Special Industries," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
-* **`capital_duties`** Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+* **`capital_duties`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
-* **`financial_transaction_tax`** Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides - Special Industries," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+* **`financial_transaction_tax`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; and BNY Mellon, “Financial Transaction Taxes (FTT): A Global Perspective,” The Bank of New York Mellon Corporation, January 2018, https://www.bnymellon.com/emea/en/_locale-assets/pdf/our-thinking/ftt-globalperspective-brochure-03-2018.pdf.
 
 
 ## **International Tax Rules**
@@ -108,10 +108,6 @@
 
 * **`capital_gains_rate`** Only 50% of capital gains are taxable, thus the applicable top personal income tax is effectively 22.5% instead of 45%.
 
-## Belgium
-
-* **`net_wealth`** KPMG, "Belgium – New Tax on Resident and Nonresident Individuals’ Securities Accounts," Feb. 8, 2016, https://home.kpmg/xx/en/home/insights/2018/02/flash-alert-2018-024.html.
-
 ## Canada
 
 * **`capital_gains_rate`** Only 50% of capital gains are taxable. The applicable top personal income tax on capital gains is the average of top marginal combined rates on ordinary income among the provinces divided in half.
@@ -137,7 +133,7 @@
 
 ## France
 
-* **`asset_tax`** PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
+* **`asset_tax`** PwC, "Worldwide Tax Summaries: Corporate Other Taxes," https://taxsummaries.pwc.com/france/corporate/other-taxes. Refers to the companies’ land contribution (Cotisation Foncière des Entreprises or CFE).
 
 ## Germany
 
@@ -150,7 +146,7 @@
 
 ## Hungary
 
-* **`financial_transaction_tax`** More details at PwC, "Worldwide Tax Summaries: Corporate Taxes 2018/19," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2018-19-2.pdf.
+* **`financial_transaction_tax`** More details at PwC, "Worldwide Tax Summaries: Corporate Other Taxes," https://taxsummaries.pwc.com/hungary/corporate/other-taxes.
 
 ## Iceland
 
