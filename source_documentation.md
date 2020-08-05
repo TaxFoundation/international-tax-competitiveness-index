@@ -25,48 +25,48 @@
 
 * **`r_and_d_credit`** OECD, "R&D Tax Incentive Indicators: Implied tax subsidy rates on R&D expenditures," https://stats.oecd.org/Index.aspx?DataSetCode=RDSUB.
 
-* **`corporate_time`** PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools. 
+* **`corporate_time`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools.
 
-* **`profit_payments`** PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools. 
+* **`profit_payments`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools.
 
-* **`other_payments`** PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools. 
+* **`other_payments`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools.
 
 
 ## **Income Taxes**
 
-* **`top_income_rate`** OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rate and top marginal tax rates for employees, 2000-2018,” updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
+* **`top_income_rate`** OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rate and top marginal tax rates for employees, 2000-2019,” updated April 30, 2020, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
 
-* **`threshold_top_income_rate`** OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rate and top marginal tax rates for employees, 2000-2018,” updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
+* **`threshold_top_income_rate`** OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rate and top marginal tax rates for employees, 2000-2019,” updated April 30, 2020, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
 
-* **`tax_wedge`** OECD, "OECD Tax Database, Table I.4. Marginal personal income tax and social security contribution rates on gross labour income," updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I4. OECD; and "OECD Tax Database, Table I.5. Average personal income tax and social security contribution rates on gross labour income," updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I5.
+* **`tax_wedge`** OECD, "OECD Tax Database, Table I.4. Marginal personal income tax and social security contribution rates on gross labour income," updated April 30, 2020, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I4; and OECD, "OECD Tax Database, Table I.5. Average personal income tax and social security contribution rates on gross labour income," updated April 2019, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I5.
  
-* **`labor_payments`** PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
+* **`labor_payments`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools.
 
-* **`labor_time`** PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
+* **`labor_time`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools.
 
-* **`capital_gains_rate`** EY, "Worldwide Personal Tax and Immigration Guide 2018-19," https://www.ey.com/Publication/vwLUAssets/ey-2018-19-worldwide-personal-tax-and-immigration-guide/$FILE/ey-2018-19-worldwide-personal-tax-and-immigration-guide.pdf. Includes surtaxes if applicable.
+* **`capital_gains_rate`** PwC, "Quick Charts: Capital gains tax (CGT) rates," https://taxsummaries.pwc.com/quick-charts/capital-gains-tax-cgt-rates; and EY, "Worldwide Personal Tax and Immigration Guide 2019–20," November 2019, https://www.ey.com/en_gl/tax-guides/worldwide-personal-tax-and-immigration-guide-2019-20. Includes surtaxes if applicable.
 
 * **`index_capital_gains`** This variable is no longer used.
 
-* **`dividends_rate`** OECD, “OECD Tax Database, Table II.4 - Overall statutory tax rates on dividend income,” updated April 2019, https://stats.oecd.org/Index.aspx?DataSetCode=TABLE_II4.
+* **`dividends_rate`** OECD, “OECD Tax Database, Table II.4 - Overall statutory tax rates on dividend income,” updated April 8, 2020, https://stats.oecd.org/Index.aspx?DataSetCode=TABLE_II4.
 
 
 ## **Consumption Taxes**
 
-* **`vat_rate`** For years up to 2019 the source for the VAT rates is OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. For 2020, the source is Pwc, "Quick Charts: Value-added tax (VAT) rates," https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates.
+* **`vat_rate`** For years up to 2019 the source for the VAT rates is OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. For 2020, the source is PwC, "Quick Charts: Value-added tax (VAT) rates," https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates.
 
-* **`vat_threshold`** For years up to 2019 the source for the VAT Revenue Ratio is OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. For 2020 the VAT registration thresholds were researched individually, based on the following sources: Avalara, "EU VAT registration thresholds 2020," https://www.avalara.com/vatlive/en/eu-vat-rules/eu-vat-number-registration/vat-registration-threshold.html; European Commission, "Taxes in Europe Database," https://ec.europa.eu/taxation_customs/tedb/splSearchForm.html; and EY, "Worldwide VAT, GST and Sales Tax Guide 2020," Apr. 24, 2020, https://www.ey.com/en_gl/tax-guides/worldwide-vat--gst-and-sales-tax-guide-2020.
+* **`vat_threshold`** For years up to 2019 the source for the VAT thresholds is OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. For 2020, the VAT registration thresholds were researched individually based on the following sources: Avalara, "EU VAT registration thresholds 2020," https://www.avalara.com/vatlive/en/eu-vat-rules/eu-vat-number-registration/vat-registration-threshold.html; European Commission, "Taxes in Europe Database," https://ec.europa.eu/taxation_customs/tedb/splSearchForm.html; and EY, "Worldwide VAT, GST and Sales Tax Guide 2020," April 24, 2020, https://www.ey.com/en_gl/tax-guides/worldwide-vat--gst-and-sales-tax-guide-2020.
 
-* **`vat_base`** For years up to 2016 the source for the VAT Revenue Ratio is OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92; https://doi.org/10.1787/888933890122. For the years 2017 and 2018, the VAT Revenue Ratio was calculated using the following formula in line with the OECD's calculations: VRR = VAT Revenue/[(Consumption - VAT revenue) x standard VAT rate]. Consumption = Final Consumption Expenditure (Heading P3) in the OECD national accounts. VAT rates used are standard rates applicable as at 1 January of each year. For Canada, the VRR calculation includes federal VAT only. For the years up to 2016, the OECD adjusted the annual final consumption expenditure in national accounts for Canada, Japan and New Zealand to ensure matching between the fiscal year for the VAT revenue and the civil year for final consumption figures. This adjustment was not made for the years 2017 and 2018. For Australia and Greece there was no 2018 VAT revenue data available as of June 1, 2020, and thus their 2017 VAT Revenue Ratios were copied to 2018.
+* **`vat_base`** For years up to 2016 the source for the VAT Revenue Ratio is OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92; https://doi.org/10.1787/888933890122. For the years 2017 and 2018, the VAT Revenue Ratio was calculated using the following formula in line with the OECD's calculations: VRR = VAT Revenue/[(Consumption - VAT revenue) x standard VAT rate]. Consumption = Final Consumption Expenditure (Heading P3) in the OECD national accounts. VAT rates used are standard rates applicable as of 1 January of each year. For Canada, the VRR calculation includes federal VAT only. For the years up to 2016, the OECD adjusted the annual final consumption expenditure in national accounts for Canada, Japan and New Zealand to ensure matching between the fiscal year for the VAT revenue and the civil year for final consumption figures. This adjustment was not made in the own calculations for the years 2017 and 2018. For Australia and Greece there was no 2018 VAT revenue data available as of June 1, 2020, and thus their 2017 VAT Revenue Ratios were copied to 2018.
 
-* **`consumption_time`** PwC and the World Bank Group, “Paying Taxes 2019,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2019.html#tools.
+* **`consumption_time`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools.
 
 
 ## **Property Taxes**
 
 * **`property_tax`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
-* **`property_tax_collections`** OECD, "OECD Revenue Statistics - OECD Countries: Comparative tables," updated December 2018, https://stats.oecd.org/index.aspx?DataSetCode=rev; IMF, "Investment and Capital Stock Dataset," https://www.imf.org/external/np/fad/publicinvestment/#5; and IMF, "International Financial Statistics (IFS), Gross Domestic Product and Components selected indicators," https://data.imf.org/regular.aspx?key=61545852. The IMF dataset ‘Investment and Capital Stock’ ends in 2015. Thus, the variable ‘Capital Formation’ in IMF’s IFS database was used to construct the years 2016 and 2017 (that is the year with the most recent property tax revenue data). 
+* **`property_tax_collections`** OECD, "OECD Revenue Statistics - OECD Countries: Comparative tables," updated December 2020, https://stats.oecd.org/index.aspx?DataSetCode=rev; IMF, "Investment and Capital Stock Dataset," https://www.imf.org/external/np/fad/publicinvestment/#5; and IMF, "International Financial Statistics (IFS), Gross Domestic Product and Components selected indicators," https://data.imf.org/regular.aspx?key=61545852. The IMF dataset ‘Investment and Capital Stock’ ends in 2015. Thus, the variable ‘Capital Formation’ in IMF’s IFS database was used to construct the years 2016 and 2017 (that is the year with the most recent property tax revenue data). 
 
 * **`net_wealth`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; EY, “2018 Worldwide Estate and Inheritance Tax Guide 2018,” https://www.ey.com/Publication/vwLUAssets/ey-worldwide-estate-and-inheritance-tax-guide-2018/$FILE/ey-worldwide-estate-and-inheritance-tax-guide-2018.pdf; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
@@ -154,8 +154,6 @@
 
 ## Iceland
 
-* **`inventory`** PwC, "Worldwide Tax Summaries: Corporate Taxes 2017/18," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2017-18-europe.pdf.
-
 * **`royalties_withholding_tax`** 20% rate applies to corporations, see PwC, "Worldwide Tax Summaries: Corporate - Withholding taxes," https://taxsummaries.pwc.com/iceland/corporate/withholding-taxes.
 
 ## Israel
@@ -186,7 +184,7 @@
 
 * **`dividends_exemption`** A dividend derived by a company resident in New Zealand from a foreign company is treated as exempt income, see PwC, "Worlwide Tax Summaries: Corporate - Income determination," https://taxsummaries.pwc.com/new-zealand/corporate/income-determination.
 
-* **`capital_gains_exemption`** A dividend derived by a company resident in New Zealand from a foreign company is treated as exempt income, see PwC, "Worlwide Tax Summaries: Corporate - Income determination," https://taxsummaries.pwc.com/new-zealand/corporate/income-determination.
+* **`capital_gains_exemption`** A capital gain derived by a company resident in New Zealand from a foreign company is treated as exempt income, see PwC, "Worlwide Tax Summaries: Corporate - Income determination," https://taxsummaries.pwc.com/new-zealand/corporate/income-determination.
 
 ## Norway
 
@@ -211,10 +209,6 @@
 ## Sweden
 
 * **`loss_carryback`** Business Sweden, "Corporate taxes in Sweden," April 2018, https://www.business-sweden.se/globalassets/invest-new/reports-and-documents/corporate-taxes-in-sweden.pdf.
-
-## Turkey
-
-* **`inventory`** PwC, "Worldwide Tax Summaries: Corporate Taxes 2017/18," https://www.pwc.com/gx/en/tax/corporate-tax/worldwide-tax-summaries/pwc-worldwide-tax-summaries-corporate-taxes-2017-18-europe.pdf.
 
 ## United States
 
