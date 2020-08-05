@@ -17,16 +17,17 @@ Location of **input** files to several .R code files including:
 3. `03_vat_data.R`
 4. `04_property_tax_collections.R`
 5. `05_cfc_rules.R`
-6. `06_packaging_data.R`
+6. `06_paying_taxes.R`
+7. `07_packaging_data.R`
 
 ### /intermediate-outputs
-Location of some of the input files to `06_packaging_data.R`
+Location of some of the input files to `07_packaging_data.R`
 
 ### /final-data
-Location of output files from `06_packaging_data.R` which are input files to `07_index_calculations.R`.
+Location of output files from `07_packaging_data.R` which are input files to `08_index_calculations.R`.
 
 ### /final-outputs
-Location of the output files from `07_index_calculations.R` and `08_output_tables.R`.
+Location of the output files from `08_index_calculations.R` and `10_output_tables.R`.
 
 ## R code files in `/R_code_files`
 ### `00_master_file.R`
@@ -35,19 +36,20 @@ This code defines important variables and functions and can run the other code f
 ### `01_oecd_data_scraper.R`
 This code pulls down data from the OECD portal for the following variables:
 1. `corporate_rate`
-2. `dividends_rate`
+2. `r_and_d_credit`
 3. `top_income_rate`
 4. `threshold_top_income_rate`
 5. `tax_wedge`
+6. `dividends_rate`
 
 ### `02_cost_recovery.R`
-This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Foundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The main input file is `cost_recovery_data.csv`. Descriptions of the variables in that file can be found in `oxford_cbt_tax_database_data_description.md`. Both the input file and the description of the variables can be found in /source-data. The output from `02_cost_recovery.R` is the data for the following variables:
+This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Foundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The main input file is `cost_recovery_data.csv`, which can be found in /source-data. Descriptions of the variables in that file can be found in `oxford_cbt_tax_database_data_description.md`, which is located in the main directory. The output from `02_cost_recovery.R` is the data for the following variables:
 1. `machines_cost_recovery`
 2. `buildings_cost_recovery`
 3. `intangibles_cost_recovery`
 
 ### `03_vat_data.R`
-This code organizes and combines data for:
+This code organizes and combines data for the following variables:
 1. `vat_rate` 
 2. `vat_threshold`
 3. `vat_base`
@@ -58,17 +60,28 @@ This code uses IMF capital stock data and OECD property tax revenue data to prod
 ### `05_cfc_rules.R`
 This code takes the CFC rules input files and creates the `cfc_rules` variable as a composite of the three features of CFC rules systems. See `CFC Rules Model.md` in the main directory for more information.
 
-### `06_packaging_data.R`
-This file combines the source data and intermediate output data. The outputs are complete datasets for 2014-2019 stored in /final-data.
+### `06_paying_taxes.R`
+This code organizes PwC's Paying Taxes data for the following variables:
+1. `corporate_time`
+2. `profit_payments`
+3. `other_payments`
+4. `labor_payments`
+5. `labor_time`
+4. `consumption_time`
 
-### `07_index_calculations.R`
+The input file is `pwc_paying_taxes.csv`, which can be found in /source-data.
+
+### `07_packaging_data.R`
+This file combines the source data and intermediate output data. The outputs are complete datasets for 2014-2020 stored in /final-data.
+
+### `08_index_calculations.R`
 This file is the main file for calculating _Index_ scores and ranks.
-
-### `08_output_tables.R`
-This file creates the tables used in the report.
 
 ### `09_country_profiles.R`
 This file creates the country profiles table used in the webtool.
+
+### `10_output_tables.R`
+This file creates the tables used in the report.
 
 ## Designing your own reform scenario
 If you would like to see how a reform might impact a country's rank and score in the _Index_, you only need to adjust a handful of files.
@@ -204,4 +217,4 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `cfc_rules` | Indicates existence and strictness of Controlled Foreign Corporation (CFC) rules. This combines measures of whether CFC rules exist, whether they tax passive or active income, and whether they provide exemptions. Countries without CFC rules are marked `0`; those with the strictest are marked `1`, countries in between have various scores. |
 | `thin_capitalization_rules` | Indicates whether a country puts thin capitalization restrictions on companies' debt-to-asset ratios. Countries that limit interest deductions with only transfer pricing regulations are scored as `0`. Countries with debt-to-equity ratios receive a score of `0.5`, and countries with interest-to-pretax-earning limits receive a score of `1`.|
 
-The _ITCI_ uses the most up-to-date data available as of July 2019.
+The _ITCI_ uses the most up-to-date data available as of July 2020.
