@@ -2,7 +2,7 @@ Note: This document is a reproduction of the data description file that accompan
 
 At some point the file addresses for many of the files linked to in this document were changed or the files were taken down, so the links do not work as they should. This document is reproduced here somewhat as an archival element and also because the variable explanations are relevant to the _ITCI_.
 
-For these variables in the _Index_, years prior to 2018 are based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/id/eprint/4635". Calculations for 2018 and 2019 are based on Elke Asen and Daniel Bunn, "Capital Cost Recovery across the OECD, 2019," Tax Foundation, April 2, 2019, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
+For these variables in the _Index_, years prior to 2018 are based on "Oxford University Centre for Business Taxation, 'CBT Tax Database 2017,' http://eureka.sbs.ox.ac.uk/id/eprint/4635". Calculations for 2018, 2019, and 2020 are based on Elke Asen, "Capital Cost Recovery across the OECD," Tax Foundation, Apr. 8, 2020, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
 
 
 # CBT Tax Database
