@@ -1,5 +1,5 @@
 # International Tax Competitiveness Index
-The Tax Foundation’s [_International Tax Competitiveness Index_](https://taxfoundation.org/publications/international-tax-competitiveness-index/) (_ITCI_) measures the degree to which the 36 OECD countries’ tax systems promote competitiveness through low tax burdens on business investment and neutrality through a well-structured tax code. The _ITCI_ considers more than 40 variables across five categories: Corporate Taxes, Individual Taxes, Consumption Taxes, Property Taxes, and International Tax Rules.
+The Tax Foundation’s [_International Tax Competitiveness Index_](https://taxfoundation.org/publications/international-tax-competitiveness-index/) (_ITCI_) measures the degree to which the 36 OECD countries’ tax systems promote competitiveness through low tax burdens on business investment and neutrality through a well-structured tax code. The _ITCI_ considers 41 variables across five categories: Corporate Taxes, Individual Taxes, Consumption Taxes, Property Taxes, and International Tax Rules.
 
 The _ITCI_ attempts to display not only which countries provide the best tax environment for investment but also the best tax environment to start and grow a business.
 
@@ -84,9 +84,9 @@ This file creates the country profiles table used in the webtool.
 This file creates the tables used in the report.
 
 ## Designing your own reform scenario
-If you would like to see how a reform might impact a country's rank and score in the _Index_, you only need to adjust a handful of files.
+If you would like to see how a reform might impact a country's rank and score in the _Index_, you need to adjust only a handful of files.
 
-After downloading the repository you should edit the directory variables in `00_master_file.R` to ensure that the downloaded files paths match where they are located on your computer. Then you can run the `00_master_file.R` code up through `#Run code files####`. At that point you can run `source("08_index_calculations.R")` to produce the baseline rankings and scores from this year's version of the _Index_. You may want to save the baseline output `data_2020_run.csv` to a new folder so that the results will not be overwritten in the next step.
+After downloading the repository you should edit the directory variables in `00_master_file.R` to ensure that the downloaded files paths match where they are located on your computer. Then you can run the `00_master_file.R` code up through `#Run code files####`. At that point you can run `source(“08_index_calculations.R”)` to produce the baseline rankings and scores from this year’s version of the _Index_. You may want to save the baseline output `data_2020_run.csv` to a new folder so that the results will not be overwritten in the next step.
 
 Next, you can create your reform scenario by manipulating the files in the `/final_data` folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the `final_index_data_2020.csv` file to change the corporate_rate variable for France to be 15 percent. 
 
@@ -120,7 +120,7 @@ From here, two transformations occur. First, to eliminate any negative values, t
 Second, the adjusted subcategory scores for each country are scaled to 100, relative to the country with the best score in each subcategory. This is done by taking each country’s adjusted z-score and dividing it by the best adjusted z-score in each category. For example, Hungary, which has the lowest corporate tax rate, has the best adjusted corporate rate subcategory z-score of 5.45, and receives a final subcategory score of 100.
 
 #### Calculating Category Scores
-The same method is used to create the category scores. First, the z-score for subcategories are averaged to create the initial category score. Then, the inverse of the worst z-score plus one in each category is added to each country’s z-score. For example, Japan has the worst initial corporate category score of -0.83. Thus, 0.83 plus 1 (1.83) is added to each country’s initial category score (the adjusted initial category score). This sets the worst score in each category to 1.
+The same method is used to create the category scores. First, the z-score for subcategories is averaged to create the initial category score. Then, the inverse of the worst z-score plus one in each category is added to each country’s z-score. For example, Japan has the worst initial corporate category score of -0.83. Thus, 0.83 plus 1 (1.83) is added to each country’s initial category score (the adjusted initial category score). This sets the worst score in each category to 1.
 
 Second, the adjusted initial category scores for each country are scaled to 100, relative to the country with the best score in each category. This is done by taking each country’s adjusted initial category score and dividing it by the best adjusted initial category score in each category. For example, Latvia, which has the best corporate category score, has the best adjusted category score of 3, and receives a final category score of 100.
 
@@ -130,13 +130,13 @@ The same method is used to create the final score. First, the initial category s
 Second, the adjusted initial final scores for each country are scaled to 100, relative to the country with the best score in each category. This is done by taking each country’s adjusted initial final score and dividing it by the best adjusted initial final score in each category. For example, Estonia, which has the best final score, has the best adjusted final score of 2.26, and receives a final category score of 100.
 
 ## What Drives the Final Score?
-Because the _Index_ is constructed to compare 36 countries along over 40 different variables, it is possible that even despite the methods described above that certain variables, subcategories, or categories could be more highly correlated with the final score.
+Because the _Index_ is constructed to compare 36 countries along 41 variables, it is possible that even despite the methods described above that certain variables, subcategories, or categories could be more highly correlated with the final score.
 To evaluate this tendency, this section reviews the correlation coefficients between the components of the _Index_ and the final score.
 
 ### Specific Categories
 The following table shows the correlation coefficients between the category scores and the final score. The average of these correlations is 0.55 with the weakest correlate being Consumption Taxes (0.38) and the strongest correlate being Individual Income Taxes (0.64).
 
-| Category |	Correlation Coefficient with The Final Score |
+| Category |	Correlation Coefficient with the Final Score |
 |---|---|
 |Corporate Taxes|	0.61|
 |Individual Income Taxes|	0.64|
@@ -170,7 +170,7 @@ The next table shows the correlation coefficients between the subcategory scores
 The method used to construct the _Index_ relies heavily on normalizing variables using z-scores, scaled around zero. To test whether this method significantly alters the final score, we also calculated the _Index_ by normalizing variables on a scale of 0 to 10. Though the final results are not perfectly identical, the correlation between the final score developed using z-scores and the alternative normalization method is 0.98 for the 2020 scores.
 
 ## Explanation of Data
-A more thorough description of these data and how the Tax Foundation uses them is contained within the [*International Tax Competitiveness Index*](https://taxfoundation.org/publications/international-tax-competitiveness-index/). When possible, the data is from the current year as of July (e.g., 2020 data for the _2020 Index_). If current data was not available, there is a time lag, as noted after each variable description.
+A more thorough description of these data and how the Tax Foundation uses them is contained within the [*International Tax Competitiveness Index*](https://taxfoundation.org/publications/international-tax-competitiveness-index/). When possible, the data is from the current year as of July (e.g., 2020 data for the _2020 Index_). If current data were not available, there is a time lag, as noted after each variable description.
 
 
 | Name | Description |
@@ -181,23 +181,23 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `year` | Year |
 | `corporate_rate` | The top marginal corporate tax rate in a given nation. No time lag. |
 | `loss_carryback` | Number of years a corporation may apply current losses against previous tax bills, allowing for tax rebates. No time lag. |
-| `loss_carryforward` | Number of years a corporation may apply current losses against future tax bills, lowering those years' taxable income. No time lag. |
+| `loss_carryforward` | Number of years a corporation may apply current losses against future tax bills, lowering those years’ taxable income. No time lag. |
 | `machines_cost_recovery` | Percentage of the present value cost of machinery that corporations can write off over the depreciable life of the asset. 1-year time lag. |
 | `buildings_cost_recovery` | Percentage of the present value cost of buildings that corporations can write off over the depreciable life of the asset. 1-year time lag. |
 | `intangibles_cost_recovery` | Percentage of the present value cost of intangibles that corporations can write off over the depreciable life of the asset. 1-year time lag. |
-| `inventory` | Score given based on a country's allowable inventory cost accounting methods. Countries that allow Last In, First Out (LIFO) score `1`; countries that allow Average Cost of Inventory score `0.5`; countries that only allow First In, First Out (FIFO) score `0`. No time lag. |
-| `allowance_corporate_equity` | Indicates which countries have an allowance for corporate equity (sometimes also referred to as "notional interest deduction"), which gives businesses a deduction based on their (additional) equity stock. Countries with allowances for corporate equity are marked with `1`, countries without them are marked as `0`. No time lag. |
-| `patent_box` | Indicates which countries have patent boxes, which create lower tax rates for corporate income generated through patented products. Countries without patent boxes are marked with `1`, countries with patent boxes are marked as `0`. No time lag. |
+| `inventory` | Score given based on a country’s allowable inventory cost accounting methods. Countries that allow Last In, First Out (LIFO) score `1`; countries that allow Average Cost of Inventory score `0.5`; countries that only allow First In, First Out (FIFO) score `0`. No time lag. |
+| `allowance_corporate_equity` | Indicates which countries have an allowance for corporate equity (sometimes also referred to as “notional interest deduction”), which gives businesses a deduction based on their (additional) equity stock. Countries with allowances for corporate equity are marked with `1`; countries without them are marked as `0`. No time lag. |
+| `patent_box` | Indicates which countries have patent boxes, which create lower tax rates for corporate income generated through patented products. Countries without patent boxes are marked with `1`; countries with patent boxes are marked as `0`. No time lag. |
 | `r_and_d_credit` | Indicates the extent to which countries offer research and development (R&D) tax credits or other expenditure-based R&D tax incentives, measured as the implied tax subsidy rates on R&D expenditures. The variable is the average of profitable and loss-making SMEs and large businesses. 1-year time lag. |
 | `corporate_time` | Complexity of tax system measured by average time in hours needed to comply with a country's corporate tax requirements. 2-year time lag. |
 | `profit_payments` | Complexity of tax system measured by number of yearly profit payments. 2-year time lag. |
 | `other_payments` | Complexity of tax system measured by number of other yearly tax payments. 2-year time lag. |
 | `top_income_rate` | The top marginal income tax rate. 1-year lag. |
 | `threshold_top_income_rate` | Measure to show at what level the top statutory personal income tax rate applies, expressed as a multiple of the average income. 1-year time lag. |
-| `tax_wedge` | The tax wedge is the total tax cost of labor in a country (includes individual income tax and payroll tax). This is the average of the ratio of the marginal tax wedge to the average tax wedge for employees at the 67th, 100th, 133rd, and 167th percentiles. 1-year time lag. |
+| `tax_wedge` | The total tax cost of labor in a country (includes individual income tax and payroll tax). This is the average of the ratio of the marginal tax wedge to the average tax wedge for employees at the 67th, 100th, 133rd, and 167th percentiles. 1-year time lag. |
 | `labor_payments` | Complexity of tax system measured by number of yearly labor tax payments. 2-year time lag. |
-| `labor_time` | Complexity of tax system measured by average time in hours needed to comply with a country's labor tax requirements. 2-year time lag. |
-| `capital_gains_rate` | Tax rate for capital gains after any imputation, credit or offset. When the capital gains tax rate varies by type of asset sold, the tax rate applying to the sale of listed shares after an extended period of time is used. No time lag. |
+| `labor_time` | Complexity of tax system measured by average time in hours needed to comply with a country’s labor tax requirements. 2-year time lag. |
+| `capital_gains_rate` | Tax rate for capital gains after any imputation, credit, or offset. When the capital gains tax rate varies by type of asset sold, the tax rate applying to the sale of listed shares after an extended period of time is used. No time lag. |
 | `index_capital_gains` | Whether a country indexes basis for purposes of capital gains tax. No longer in use. |
 | `dividends_rate` |  The total top marginal dividend tax rate after any imputation or credit system. No time lag. |
 | `vat_rate` | The national (or average) consumption tax rate (either sales tax or VAT) for a country. No time lag. |
@@ -214,12 +214,12 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `financial_transaction_tax` | Indicates the existence of a tax on the transfer of financial assets. Countries with financial transaction taxes are marked `0`; those without are marked `1`. No time lag. |
 | `dividends_exemption` | Percentage of dividends paid from foreign subsidiaries which are exempt from domestic taxes. No time lag. |
 | `capital_gains_exemption` | Percentage of capital gains from foreign investments which are exempted from domestic taxes. No time lag. |
-| `country_limitations` | Indicates whether country has certain exemptions to a territorial tax system based on the source of the foreign income. Existence of exemptions are marked as `1`; no exemptions are marked `0`. No time lag. |
+| `country_limitations` | Indicates whether a country has certain exemptions to a territorial tax system based on the source of the foreign income. Existence of exemptions are marked as `1`; no exemptions are marked `0`. No time lag. |
 | `dividends_withholding_tax` | Required withholding for tax payments on dividends to be paid to foreign investors or businesses. No time lag. |
 | `interest_withholding_tax` | Required withholding for tax payments on interest to be paid to foreign investors or businesses. No time lag. |
 | `royalties_withholding_tax` | Required withholding for tax payments on royalties to be paid to foreign investors or businesses. No time lag. |
 | `tax_treaties` | Number of foreign nations with which a country has tax treaties. 1-year time lag. |
 | `cfc_rules` | Indicates existence and strictness of Controlled Foreign Corporation (CFC) rules. This combines measures of whether CFC rules exist, whether they tax passive or active income, and whether they provide exemptions. Countries without CFC rules are marked `0`; those with the strictest are marked `1`, countries in between have various scores. No time lag. |
-| `thin_capitalization_rules` | Indicates whether a country puts thin capitalization restrictions on companies' debt-to-asset ratios. Countries that limit interest deductions with only transfer pricing regulations are scored as `0`. Countries with debt-to-equity ratios receive a score of `0.5`, and countries with interest-to-pretax-earning limits receive a score of `1`. No time lag. |
+| `thin_capitalization_rules` | Indicates whether a country puts thin capitalization restrictions on companies’ debt-to-asset ratios. Countries that limit interest deductions with only transfer pricing regulations are scored as `0`. Countries with debt-to-equity ratios receive a score of `0.5`, and countries with interest-to-pretax-earning limits receive a score of `1`. No time lag. |
 
 The _ITCI_ uses the most up-to-date data available as of July 2020.
