@@ -105,25 +105,25 @@ France<-c("France",	"FR",	"FRA",
 
 #Germany####
 Germany<-c("Germany",	"DE",	"DEU",
-           "Germany ranks 16th overall on the 2019 International Tax Competitiveness Index, the same as in 2018.",
+           "Germany ranks 15th overall on the 2020 International Tax Competitiveness Index, two places worse than in 2019.",
            "Inventory can receive Last-In-First-Out treatment, the most neutral treatment of inventory costs.",
            "Germany has a broad tax treaty network, with 96 countries.",
-           "The VAT rate of 19 percent is near the OECD average (19.1 percent) and the VAT compliance burden is relatively low. ",
+           "The VAT rate of 19 percent is near the OECD average (19.2 percent) and the VAT compliance burden is relatively low. ",
            "Germany has the fifth highest corporate income tax rate among OECD countries, at 29.9 percent.",
            "The personal income tax is complex with an associated compliance burden of 134 hours-the third highest among OECD countries.",
            "Companies are limited in the amount of net operating losses they can use to offset income on future or previous tax returns.")
 #Greece####
 Greece<-c("Greece","GR",	"GRC",
-          "Greece ranks 30th overall on the 2019 International Tax Competitiveness Index, one place better than in 2018.",
-          "The personal tax rate of 15 percent on dividends is below the OECD average of 23.8 percent.",
+          "Greece ranks 29th overall on the 2020 International Tax Competitiveness Index, the same as in 2019.",
+          "The personal tax rate of 5 percent on dividends is below the OECD average of 23.9 percent.",
           "Labor tax complexity is below the OECD average.",
           "Controlled Foreign Corporation rules in Greece are modest and only apply to passive income.",
-          "Greece has an above-average corporate tax rate of 28 percent (OECD average is 23.6 percent).",
+          "Greece has an above-average corporate tax rate of 24 percent (OECD average is 23.3 percent).",
           "Companies are severely limited in the amount of net operating losses they can use to offset future profits, and companies cannot use losses to reduce past taxable income.",
           "At 24 percent, Greece has one of the highest VAT rates in the OECD on one of the narrowest bases.")
 #Hungary####
 Hungary<-c("Hungary",	"HU",	"HUN",
-           "Hungary ranks 14th overall on the 2019 International Tax Competitiveness Index, one spot worse than in 2018.",
+           "Hungary ranks 14th overall on the 2020 International Tax Competitiveness Index, one spot better than in 2019.",
            "Hungary has the lowest corporate tax rate in the OECD, at 9 percent.",
            "Hungary has a flat personal income tax system.",
            "Controlled Foreign Corporation rules are better-than-average.",
@@ -133,8 +133,8 @@ Hungary<-c("Hungary",	"HU",	"HUN",
 
 #Iceland####
 Iceland<-c("Iceland",	"IS",	"ISL",
-           "Iceland ranks 22nd overall on the 2019 International Tax Competitiveness Index, three spots better than in 2018.",
-           "Iceland's corporate tax rate of 20 percent is below the OECD average of 23.6 percent.",
+           "Iceland ranks 30th overall on the 2020 International Tax Competitiveness Index, two spots worse than in 2019.",
+           "Iceland's corporate tax rate of 20 percent is below the OECD average of 23.3 percent.",
            "Corporate, consumption, and labor taxes are less complex than they are on average in the OECD.",
            "Iceland has a territorial tax system that fully exempts foreign dividends and capital gains with no country limitations.",
            "Companies are severely limited in the amount of net operating losses they can use to offset future profits, and companies cannot use losses to reduce past taxable income.",
@@ -143,7 +143,7 @@ Iceland<-c("Iceland",	"IS",	"ISL",
 
 #Ireland####
 Ireland<-c("Ireland",	"IE",	"IRL",
-           "Ireland ranks 17th overall on the 2019 International Tax Competitiveness Index, three spots worse than in 2018.",
+           "Ireland ranks 20th overall on the 2020 International Tax Competitiveness Index, one spot worse than in 2019.",
            "Ireland has a low corporate tax rate of 12.5 percent.",
            "Net operating losses can be carried back one year and carried forward indefinitely, allowing companies to be taxed on their average profitability.",
            "Ireland has no thin capitalization rules.",
@@ -152,65 +152,65 @@ Ireland<-c("Ireland",	"IE",	"IRL",
            "Corporations are limited in their ability to write off investments.")
 #Israel####
 Israel<-c("Israel",	"IL",	"ISR",
-          "Israel ranks 31st overall on the 2019 International Tax Competitiveness Index, one spot worse than in 2018.",
-          "Israel has a below-average corporate tax rate of 23 percent (OECD average is 23.6 percent) and allows net operating losses to be carried forward indefinitely.",
+          "Israel ranks 25th overall on the 2020 International Tax Competitiveness Index, six spots better than in 2019.",
+          "Israel has a below-average corporate tax rate of 23 percent (OECD average is 23.3 percent) and allows net operating losses to be carried forward indefinitely.",
           "The VAT rate is relatively low at 17 percent and applies to a broad base.",
           "Israel does not levy net wealth or estate taxes.",
           "On average, compliance with the corporate code takes 110 hours (compared to an OECD average of 42 hours).",
-          "The progressivity of Israel's taxes on labor means that it costs the economy $1.70 for every extra dollar of revenue that Israel raises from labor taxes.",
-          "Israel has a worldwide tax system and a relatively narrow tax treaty network, with 56 countries.")
+          "The steep progressivity of Israel's taxes on labor leads to efficiency costs.",
+          "Israel has a worldwide tax system and a relatively narrow tax treaty network, with 58 countries.")
 #Italy####
 Italy<-c("Italy",	"IT",	"ITA",
-         "Italy ranks 34th overall on the 2019 International Tax Competitiveness Index, one spot better than in 2018.",
+         "Italy ranks 36th overall on the 2020 International Tax Competitiveness Index, the same as in 2019.",
          "Italy has above-average cost recovery provisions for investments in intangibles.",
          "Last-In-First-Out treatment of the cost of inventory is allowed. ",
          "Italy has a broad tax treaty network, with 100 countries.",
          "Italy has multiple distortionary property taxes with separate levies on real estate, net wealth, estates, and financial transactions.",
          "The VAT rate of 22 percent applies to the third narrowest tax base in the OECD.",
-         "Compliance with the personal income tax system takes 169 hours on average, highest by far in the OECD.")
+         "Compliance with the personal income tax system takes 169 hours on average, highest by far in the OECD (the OECD average is 66 hours).")
 
 #Japan####
 Japan<-c("Japan",	"JP",	"JPN",
-         "Japan ranks 28th overall on the 2019 International Tax Competitiveness Index, the same as in 2018.",
-         "Japan has a low VAT rate of 8 percent applied to a broad base.",
+         "Japan ranks 26th overall on the 2020 International Tax Competitiveness Index, four places worse than in 2019.",
+         "Japan has a low VAT rate of 10 percent applied to a broad base.",
          "Corporate and consumption taxes are less complex than they are on average in the OECD.",
-         "Japan's personal income tax rate on dividends is 20.3 percent, below the OECD average of 23.8 percent.",
+         "Japan's personal income tax rate on dividends is 20.3 percent, below the OECD average of 23.9 percent.",
          "Japan has poor cost recovery provisions for business investments in machinery and buildings.",
          "Japan has a hybrid international tax system with a 95 percent exemption for foreign dividends and no exemption for foreign capital gains.",
          "Companies are severely limited in the amount of net operating losses they can use to offset future profits, and companies cannot use losses to reduce past taxable income.")
 #Korea####
 Korea<-c("Korea",	"KR",	"KOR",
-         "Korea ranks 26th overall on the 2019 International Tax Competitiveness Index, two spots worse than 2018.",
+         "Korea ranks 24th overall on the 2020 International Tax Competitiveness Index, one spot better than in 2019.",
          "Korea has a low VAT of 10 percent that is applied to a relatively broad base.",
          "Korea has a broad tax treaty network, with 93 countries.",
          "Business investments in machinery receive better-than-average treatment for corporate write-offs.",
          "Korea has multiple distortionary property taxes with separate levies on real estate, estates, and financial transactions.",
-         "The personal income tax rate on dividends is 40.3 percent (compared to an OECD average of 23.8 percent).",
+         "The personal income tax rate on dividends is 40.3 percent (compared to an OECD average of 23.9 percent).",
          "Companies are severely limited in the amount of net operating losses they can use to offset future profits or reduce past taxable income.")
 #Latvia####
 Latvia<-c("Latvia",	"LV",	"LVA",
-          "Latvia ranks 3rd overall on the 2019 International Tax Competitiveness Index, one spot worse than in 2018.",
+          "Latvia ranks 2nd overall on the 2020 International Tax Competitiveness Index, the same as in 2019.",
           "Latvia's corporate income tax system only taxes distributed earnings, allowing companies to reinvest their profits tax-free.",
           "Corporations can deduct property taxes when calculating taxable income.",
           "Latvia's taxes on labor are relatively flat, allowing the government to raise revenue from taxes on workers with very few distortions.",
-          "Latvia's network of tax treaties includes 61 countries, a relatively low number.",
+          "Latvia's network of tax treaties includes 62 countries, a relatively low number.",
           "The VAT of 21 percent applies to approximately half of the potential tax base.",
           "The threshold at which the VAT applies is nearly twice as high as the average VAT threshold for OECD countries.")
 #Lithuania####
 Lithuania<-c("Lithuania",	"LT",	"LTU",
-             "Lithuania ranks 4th overall on the 2019 International Tax Competitiveness Index, the same as in 2018.",
+             "Lithuania ranks 6th overall on the 2020 International Tax Competitiveness Index, one place worse than  in 2019.",
              "Business investments in machinery, buildings, and intangibles receive better-than-average tax treatment.",
-             "Lithuania's corporate tax rate is 15 percent, well below the OECD average of 23.6 percent.",
+             "Lithuania's corporate tax rate is 15 percent, well below the OECD average of 23.3 percent.",
              "Lithuania's taxes on labor are relatively flat, allowing the government to raise revenue from taxes on workers with very few distortions.",
              "Lithuania has tax treaties with just 54 countries, below the OECD average (77 countries).",
              "Lithuania has both a patent box and a super deduction for Research and Development expenditures.",
              "Multinational businesses face strict thin capitalization rules.")
 #Luxembourg####
 Luxembourg<-c("Luxembourg",	"LU",	"LUX",
-             "Luxembourg ranks 6th overall on the 2019 International Tax Competitiveness Index, one position worse than in 2018.",
+             "Luxembourg ranks 5th overall on the 2020 International Tax Competitiveness Index, one position better than in 2019.",
              "Business investments in machinery and intangibles receive better-than-average tax treatment.",
              "Luxembourg has a territorial tax system exempting both foreign dividends and capital gains, with no country limitations.",
-             "The tax treaty network extends to 82 countries.",
+             "The tax treaty network extends to 83 countries.",
              "Companies are limited in the amount of net operating losses they can use to offset future profits and are unable to use losses to offset past taxable income.",
              "Luxembourg has several distortionary property taxes with separate levies on real estate, estates, and assets.",
              "The income tax is relatively progressive with a combined top rate on personal income of 47.2 percent.")
@@ -218,39 +218,39 @@ Luxembourg<-c("Luxembourg",	"LU",	"LUX",
 #Mexico####
 
 Mexico<-c("Mexico",	"MX",	"MEX",
-          "Mexico ranks 29th overall on the 2019 International Tax Competitiveness Index, the same as in 2018.",
-          "The personal income tax rate on dividends is 17.1 percent, below the OECD average of 23.8 percent.",
+          "Mexico ranks 31st overall on the 2020 International Tax Competitiveness Index, one place worse than in 2019.",
+          "The personal income tax rate on dividends is 17.1 percent, below the OECD average of 23.9 percent.",
           "Corporations can deduct property taxes when calculating taxable income.",
           "Mexico allows for Last-In-First-Out treatment of the cost of inventory.",
-          "Compliance time associated with corporate and consumption taxes is approximately 100 hours.",
+          "Average compliance time associated with corporate and consumption taxes is estimated to be around 100 hours for each tax.",
           "Companies are limited in the amount of net operating losses they can use to offset future profits and are unable to use losses to offset past taxable income.",
-          "Mexico has a higher-than-average corporate tax rate of 30 percent (the OECD average is 23.6 percent).")
+          "Mexico has a higher-than-average corporate tax rate of 30 percent (the OECD average is 23.3 percent).")
 
 #Netherlands####
 Netherlands<-c("Netherlands",	"NL",	"NLD",
-             "The Netherlands ranks 9th overall on the 2019 International Tax Competitiveness Index, two places worse than in 2018.",
+             "The Netherlands ranks 17th overall on the 2020 International Tax Competitiveness Index, one place worse than in 2019.",
              "The Netherlands has above-average provisions for corporations to write off investments in machinery.",
-             "The Netherlands has a territorial tax system exempting both foreign dividends and capital gains and a broad tax treaty network, with 97 countries.",
+             "The Netherlands has a territorial tax system exempting both foreign dividends and capital gains and a broad tax treaty network, with 96 countries.",
              "Corporations can deduct property taxes when calculating taxable income.",
-             "The Netherlands has a progressive tax system with a combined top rate on personal income of 52.3 percent.",
+             "The Netherlands has a progressive tax system with a combined top rate on personal income of 54.4 percent.",
              "The VAT of 21 percent applies to approximately half of the potential tax base.",
-             "Companies are severely limited in the amount of net operating losses they can use to offset future profits or reduce past taxable income.")
+             "Companies are severely limited in the time period in which they can use net operating losses to offset future profits or reduce past taxable income.")
 
 
 #New_Zealand####
 New_Zealand<-c("New Zealand",	"NZ",	"NZL",
-             "New Zealand ranks 2nd overall on the 2019 International Tax Competitiveness Index, one spot better than in 2018.",
-             "New Zealand allows corporate losses to be carried forward indefinitely, allowing businesses to be taxed on their average profitability.",
-             "The VAT of 15 percent applies to nearly the entire potential tax base.",
+             "New Zealand ranks 3rd overall on the 2019 International Tax Competitiveness Index, the same as in 2019.",
+             "New Zealand allows corporate losses to be carried forward indefinitely and has introduced a temporary one-year carryback provision, allowing businesses to be taxed on their average profitability.",
+             "The VAT of 15 percent applies to nearly the entire potential consumption tax base.",
              "New Zealand property taxes apply just to the value of land rather than real estate or other improvements to the land.",
-             "New Zealand has an above-average corporate tax rate of 28 percent (the OECD average is 23.6 percent) and poor cost recovery provisions for business investments.",
+             "New Zealand has an above-average corporate tax rate of 28 percent (the OECD average is 23.3 percent) and poor cost recovery provisions for business investments.",
              "New Zealand has a narrow tax treaty network, with 40 countries.",
              "The cost of inventory can be accounted for using First-In-First-Out method or the average cost method (Last-In-First-Out is not permitted).")
 
 #Norway####
 Norway<-c("Norway",	"NO",	"NOR",
-          "Norway ranks 19th overall on the 2019 International Tax Competitiveness Index, the same as in 2018.",
-          "Norway allows corporate losses to be carried forward indefinitely, allowing businesses to be taxed on their average profitability.",
+          "Norway ranks 13th overall on the 2020 International Tax Competitiveness Index, one place better than  in 2019.",
+          "Norway allows corporate losses to be carried forward indefinitely and has introduced a temporary two-year carryback provision, allowing businesses to be taxed on their average profitability.",
           "Compliance time associated with corporate, consumption, and individual taxes is below average. ",
           "Norway has a territorial tax system, with a network of 87 tax treaties.",
           "Corporations are limited in their ability to write off investments.",
@@ -259,46 +259,46 @@ Norway<-c("Norway",	"NO",	"NOR",
 
 #Poland####
 Poland<-c("Poland",	"PL",	"POL",
-          "Poland ranks 35th overall on the 2019 International Tax Competitiveness Index, three places worse than in 2018.",
-          "Poland has a below-average corporate tax rate of 19 percent (OECD average is 23.6 percent).",
-          "Poland's taxes on labor are generally flat, allowing the government to raise revenue from taxes on workers with very few distortions.",
+          "Poland ranks 34th overall on the 2020 International Tax Competitiveness Index, one place better than in 2019.",
+          "Poland has a below-average corporate tax rate of 19 percent (OECD average is 23.3 percent).",
+          "Poland's taxes on labor are generally flat, allowing the government to raise revenue from taxes on workers with relative low efficiency costs.",
           "Poland has a territorial tax system with a network of 85 tax treaties.",
           "Poland has multiple distortionary property taxes with separate levies on real estate, estates, assets, and financial transactions.",
           "Companies are severely limited in the amount of net operating losses they can use to offset future profits and are unable to use losses to reduce past taxable income.",
-          "Companies can only write off 33.8 percent of the cost of industrial buildings (in present value).")
+          "Companies can only write off 33.8 percent of the cost of industrial buildings (in present value) (the OECD average is 48.3 percent).")
 
 #Portugal####
 Portugal<-c("Portugal",	"PT",	"PRT",
-            "Portugal ranks 33rd overall on the 2019 International Tax Competitiveness Index, one place better than in 2018.",
+            "Portugal ranks 33rd overall on the 2020 International Tax Competitiveness Index, the same as in 2019.",
             "Corporations can deduct their property taxes from their taxable income.",
             "Portugal has a territorial tax system, exempting foreign dividend and capital gains income for most countries.",
             "Portugal provides above-average capital cost write-offs for investments in machinery.",
-            "Portugal has a high corporate tax rate of 31.5 percent.",
+            "Portugal has a high corporate tax rate of 31.5 percent (the OECD average is 23.3 percent).",
             "Companies are severely limited in the amount of net operating losses they can use to offset future profits and are unable to use losses to reduce past taxable income.",
             "The VAT of 23 percent applies to less than half of the potential tax base.")
 
 #Slovak_Republic####
 Slovak_Republic<-c("Slovak Republic",	"SK",	"SVK",
-                  "The Slovak Republic ranks 11th overall on the 2019 International Tax Competitiveness Index, one spot worse than in 2018.",
-                  "The personal income rate on dividends is very low at 7 percent (compared to an OECD average of 23.8 percent).",
+                  "The Slovak Republic ranks 10th overall on the 2020 International Tax Competitiveness Index, one spot better than in 2019.",
+                  "The personal income rate on dividends is very low at 7 percent (compared to an OECD average of 23.9 percent).",
                   "The Slovak Republic has better-than-average tax treatment of business investment in machinery, buildings, and intangibles.",
                   "Corporations can deduct property taxes when calculating taxable income.",
                   "Companies are severely limited in the amount of net operating losses they can use to offset future profits and are unable to use losses to reduce past taxable income.",
-                  "The VAT of 20 percent applies to less than half of the potential tax base.",
+                  "The VAT of 20 percent applies to approximately half of the potential consumption tax base.",
                   "The Slovak Republic has both a patent box and a super deduction for Research and Development expenditures.")
 #Slovenia####
 Slovenia<-c("Slovenia",	"SI",	"SVN",
-            "Slovenia ranks 20th overall on the 2019 International Tax Competitiveness Index, three places worse than in 2018.",
-            "Slovenia has a 19 percent corporate tax rate, below the OECD average (23.6 percent).",
+            "Slovenia ranks 23rd overall on the 2020 International Tax Competitiveness Index, one place better than in 2019.",
+            "Slovenia has a 19 percent corporate tax rate, below the OECD average (23.3 percent).",
             "Slovenia's 22 percent VAT applies to a relatively broad base.",
             "Slovenia has better-than-average tax treatment of business investment in machinery.",
-            "Slovenia's progressive personal income tax system has a combined top rate of 61.1 percent.",
+            "Slovenia's progressive personal income tax system has a combined top rate of 61.1 percent (the OECD average is 46.1 percent).",
             "Slovenia has a relatively narrow tax treaty network, with 59 countries, and only a partial territorial tax system.",
             "Slovenia has multiple distortionary property taxes with separate levies on real estate, estates, and assets.")
 
 #Spain####
 Spain<-c("Spain",	"ES",	"ESP",
-         "Spain ranks 23rd overall on the 2019 International Tax Competitiveness Index, four places better than in 2018.",
+         "Spain ranks 27th overall on the 2020 International Tax Competitiveness Index, the same as in 2019.",
          "Spain provides for net operating losses to be carried forward indefinitely, allowing for corporations to be taxed on their average profitability.",
          "Spain has a territorial tax system that exempts both foreign dividends and capital gains income from taxation.",
          "The Spanish tax treaty network is made up of 93 countries.",
