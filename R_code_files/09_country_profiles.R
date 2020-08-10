@@ -211,7 +211,7 @@ Luxembourg<-c("Luxembourg",	"LU",	"LUX",
              "Business investments in machinery and intangibles receive better-than-average tax treatment.",
              "Luxembourg has a territorial tax system exempting both foreign dividends and capital gains, with no country limitations.",
              "The tax treaty network extends to 83 countries.",
-             "Companies are limited in the amount of net operating losses they can use to offset future profits and are unable to use losses to offset past taxable income.",
+             "Companies are limited in the time period in which they can use net operating losses to offset future profits and are unable to use losses to offset past taxable income.",
              "Luxembourg has several distortionary property taxes with separate levies on real estate, estates, and assets.",
              "The income tax is relatively progressive with a combined top rate on personal income of 47.2 percent.")
 
@@ -223,7 +223,7 @@ Mexico<-c("Mexico",	"MX",	"MEX",
           "Corporations can deduct property taxes when calculating taxable income.",
           "Mexico allows for Last-In-First-Out treatment of the cost of inventory.",
           "Average compliance time associated with corporate and consumption taxes is estimated to be around 100 hours for each tax.",
-          "Companies are limited in the amount of net operating losses they can use to offset future profits and are unable to use losses to offset past taxable income.",
+          "Companies are limited in the time period in which they can use net operating losses to offset future profits and are unable to use losses to offset past taxable income.",
           "Mexico has a higher-than-average corporate tax rate of 30 percent (the OECD average is 23.3 percent).")
 
 #Netherlands####
@@ -308,47 +308,47 @@ Spain<-c("Spain",	"ES",	"ESP",
 
 #Sweden####
 Sweden<-c("Sweden",	"SE",	"SWE",
-          "Sweden ranks 8th overall on the 2019 International Tax Competitiveness Index, the same as in 2018.",
+          "Sweden ranks 7th overall on the 2020 International Tax Competitiveness Index, the same as in 2019.",
           "Sweden provides for net operating losses to be carried forward indefinitely, allowing for corporations to be taxed on their average profitability.",
           "Sweden has a territorial tax system that exempts both foreign dividends and capital gains income from taxation without any country limitations.",
           "Sweden has a broad tax treaty network, with 81 countries.",
-          "Sweden's personal dividend tax rate is 30 percent, above the OECD average (23.8 percent).",
-          "Sweden has a progressive personal income tax and a combined top rate of 60.1 percent.",
+          "Sweden's personal dividend tax rate is 30 percent, above the OECD average (23.9 percent).",
+          "Sweden has a progressive personal income tax and a combined top rate of 60.2 percent.",
           "Sweden has Controlled Foreign Corporation rules that apply to both passive and active income.")
 
 #Switzerland####
 Switzerland<-c("Switzerland",	"CH",	"CHE",
-               "Switzerland ranks 5th overall on the 2019 International Tax Competitiveness Index, one place better than in 2018.",
+               "Switzerland ranks 4th overall on the 2020 International Tax Competitiveness Index, the same as in  2019.",
                "Switzerland has above-average cost recovery provisions for investments in machinery, buildings, and intangibles.",
                "Switzerland has a broad tax treaty network, with 93 countries.",
                "The Swiss VAT of 7.7 percent applies to a broad base and has very low compliance costs.",
                "Switzerland has multiple distortionary property taxes with separate levies on real estate, net wealth, estates, assets, and financial transactions.",
-               "Companies are limited in the amount of net operating losses they can use to offset future profits and are unable to use losses to reduce past taxable income.",
+               "Companies are limited in the time period in which they can use net operating losses to offset future profits and are unable to use losses to reduce past taxable income.",
                "Switzerland has a progressive income tax with a top rate of 41.7 percent, including payroll and personal income taxes.")
 
 #Turkey####
 Turkey<-c("Turkey",	"TR",	"TUR",
-          "Turkey ranks 13th overall on the 2019 International Tax Competitiveness Index, three places better than in 2018.",
+          "Turkey ranks 11th overall on the 2020 International Tax Competitiveness Index, one place worse than in 2019.",
           "Turkey has a territorial tax system exempting foreign dividends and capital gains income without any country limitations.",
-          "The personal income tax on dividends is 17.5 percent, below the OECD average (23.8 percent).",
+          "The personal income tax on dividends is 20 percent, below the OECD average (23.9 percent).",
           "Turkey has better-than-average tax treatment of business investment in machinery.",
-          "Companies are limited in the amount of net operating losses they can use to offset future profits and are unable to use losses to reduce past taxable income.",
+          "Companies are severely limited in the time period in which they can use net operating losses to offset future profits and are unable to use losses to reduce past taxable income.",
           "Turkey's VAT rate of 18 percent applies to just 40 percent of the potential tax base.",
           "Turkey has multiple distortionary property taxes with separate levies on real estate, estates, and financial transactions.")
 
 #United_Kingdom####
 United_Kingdom<-c("United Kingdom",	"GB",	"GBR",
-             "The United Kingdom ranks 25th overall on the 2019 International Tax Competitiveness Index, one place better than in 2018.",
-             "The corporate income tax rate is 19 percent, below the OECD average (23.6 percent).",
+             "The United Kingdom ranks 22nd overall on the 2020 International Tax Competitiveness Index, one place worse than in 2019.",
+             "The corporate income tax rate is 19 percent, below the OECD average (23.3 percent).",
              "The UK has a territorial tax system exempting both foreign dividend and capital gains income without any country limitations.",
-             "The UK tax treaty network with 129 countries is the broadest in the OECD.",
-             "The personal income tax rate on dividends is 38.1 percent, well above the OECD average (23.8 percent).",
+             "The UK tax treaty network with 130 countries is the broadest in the OECD.",
+             "The personal income tax rate on dividends is 38.1 percent, well above the OECD average (23.9 percent).",
              "Corporations are severely limited in the investment costs they are able to write off, particularly for industrial buildings.",
              "The VAT of 20 percent applies to less than half of the potential consumption tax base.")
 
 #United_States####
 United_States<-c("United States",	"US",	"USA",
-             "The United States ranks 21st overall on the 2019 International Tax Competitiveness Index, the same as in 2018.",
+             "The United States ranks 21st overall on the 2020 International Tax Competitiveness Index, one place worse than in 2019.",
              "The U.S. provides full expensing for business investments in machinery.",
              "The U.S. allows for Last-In-First-Out treatment of the cost of inventory.",
              "Corporations can deduct property taxes when calculating taxable income.",
