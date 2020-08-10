@@ -7,47 +7,46 @@ columns<-c("country","ISO_2","ISO_3","ranking","strength_1","strength_2","streng
 
 #Australia####
 Australia<-c("Australia","AU","AUS",
-             "Australia ranks 7th overall on the 2019 International Tax Competitiveness Index, an improvement from 9th in 2018.",
+             "Australia ranks 9th overall on the 2020 International Tax Competitiveness Index, the same as in 2019.",
              "Property taxes in Australia are assessed on the value of the land rather than real estate or other improvements to land.",
              "Australia's corporate and individual taxes have an integrated treatment of dividends, alleviating the burden of double taxation on distributed earnings.",
-             "Australia ranks well on consumption taxes due to its low VAT rate (but applies it to a relatively narrow base).",
-             "Australia's treaty network consists of just 44 countries, when the average among OECD countries is 77.",
-             "The corporate tax rate in Australia is 30 percent, above the OECD average (23.6 percent).",
+             "Australia ranks well on consumption taxes due to its low goods and services tax (GST) rate but applies it to a relatively narrow base.",
+             "Australia's treaty network consists of just 45 countries, when the average among OECD countries is 77.",
+             "The corporate tax rate in Australia is 30 percent, above the OECD average (23.3 percent).",
              "Corporations are limited in their ability to write off investments.")
 
 #Austria####
 Austria<-c("Austria","AT","AUT",
-           "Austria ranks 12th overall on the 2019 International Tax Competitiveness Index, one place worse than in 2018.",
-           "Austria's international tax system is very good with a (1) broad tax treaty network of 89 countries, (2) Controlled Foreign Corporation rules that only apply to subsidiaries that do not have substantial economic activity, and (3) thin capitalization rules that are less complex than in most countries.",
-           "The VAT in Austria applies to a broad base and has minimal complexity for compliance and reporting.",
+           "Austria ranks 12th overall on the 2020 International Tax Competitiveness Index, the same as in 2019.",
+           "Austria's international tax system is very competitive with a broad tax treaty network of 89 countries, Controlled Foreign Corporation rules that only apply to subsidiaries that do not have substantial economic activity, and thin capitalization rules that are less complex than in most countries.",
+           "The VAT in Austria applies to a broad base and has better-than-average complexity for compliance and reporting.",
            "There are no estate, inheritance, or wealth taxes.",
-           "Headline corporate rate of 25 percent is above the OECD average (23.6 percent).",
-           "Corporations are limited in their ability to write off investments.",
-           "The tax wedge on labor is the 5th highest among OECD countries.")
+           "The headline corporate rate of 25 percent is above the OECD average (23.3 percent).",
+           "Corporations are limited in their ability to write off investments, particularly buildings.",
+           "The tax wedge on labor is the 4th highest among OECD countries.")
 
 #Belgium####
 Belgium<-c("Belgium","BE","BEL",
-           "Belgium ranks 27th overall on the 2019 International Tax Competitiveness Index, five spots worse than in 2018.",
+           "Belgium ranks 19th overall on the 2020 International Tax Competitiveness Index, four spots better than in 2019.",
            "Belgium has a broad tax treaty network, with 95 countries, and a territorial tax system as it fully exempts foreign-sourced dividends and capital gains without any country limitations.",
            "Capital gains resulting from normal management of private wealth are exempt from tax.",
            "Belgium allows for Last-In-First-Out treatment of the cost of inventory and for businesses to write off a larger share of their investments than most other OECD countries.",
-           "The corporate rate of 29.6 percent is above average among OECD countries (23.6 percent).",
-           "Belgium levies estate, net wealth, and financial transaction taxes.",
-           "The Belgian tax wedge on labor is the highest among the OECD countries, with the average single worker facing a tax burden of 52.7 percent.")
-
+           "The corporate rate of 25 percent is above average among OECD countries (23.3 percent).",
+           "Belgium levies an estate tax and a financial transaction tax.",
+           "The Belgian tax wedge on labor is the highest among the OECD countries, with the average single worker facing a tax burden of 52.2 percent.")
 
 #Canada####
 Canada<-c("Canada","CA","CAN",
-          "Canada ranks 15th overall on the 2019 International Tax Competitiveness Index, five spots better than in 2018.",
+          "Canada ranks 18th overall on the 2020 International Tax Competitiveness Index, the same as in 2019.",
           "Consumption taxes are low, and the associated compliance burden is near the average for OECD countries.",
-          "Canada allows businesses to immediately write off investments in machinery and to write off a larger share of investments in buildings than most other OECD countries.",
+          "Canada allows businesses to immediately write off investments in machinery.",
           "Canada does not levy wealth, estate, or inheritance taxes.",
-          "The personal tax on dividends is 39.3 percent, well above the OECD average of 23.8 percent.",
-          "Canada taxes capital gains at a rate of 26.8 percent, while the OECD average is 19.6 percent.",
-          "The corporate rate of 26.8 percent is above average among OECD countries (23.6 percent).")
+          "The personal tax on dividends is 39.3 percent, well above the OECD average of 23.9 percent.",
+          "Canada taxes capital gains at a rate of 25.2 percent, while the OECD average is 19.2 percent.",
+          "The corporate rate of 26.5 percent is above average among OECD countries (23.3 percent).")
 #Chile####
 Chile<-c("Chile","CL","CHL",
-         "Chile ranks 32nd overall on the 2019 International Tax Competitiveness Index, one spot better than in 2018.",
+         "Chile ranks 35th overall on the 2020 International Tax Competitiveness Index, one spot worse than in 2019.",
          "The VAT is at the average for OECD countries, and applies to a broad base.",
          "Chile provides for net operating losses to be carried forward indefinitely, allowing for corporations to be taxed on their average profitability.",
          "Chile has the lowest tax wedge on labor among OECD countries, at 7 percent, compared to the average of 36.1 percent.",
@@ -57,8 +56,8 @@ Chile<-c("Chile","CL","CHL",
 
 #Czech_Republic####
 Czech_Republic<-c("Czech Republic","CZ","CZE",
-                 "The Czech Republic ranks 10th overall on the 2019 International Tax Competitiveness Index, two spots better than in 2018.",
-                 "The corporate rate of 19 percent is below the OECD average (23.6 percent), with above-average cost recovery provisions.",
+                 "The Czech Republic ranks 8th overall on the 2020 International Tax Competitiveness Index, the same as in 2019.",
+                 "The corporate rate of 19 percent is below the OECD average (23.3 percent), with above-average cost recovery provisions.",
                  "Taxes on labor are minimally distortive.",
                  "The Czech Republic has a territorial tax system, exempting both foreign dividend and capital gains income from other European countries.",
                  "Consumption taxes have a high compliance burden and apply to a relatively narrow base.",
@@ -66,17 +65,17 @@ Czech_Republic<-c("Czech Republic","CZ","CZE",
                  "The Czech Republic levies an estate tax and transfer taxes on real estate.")
 #Denmark####
 Denmark<-c("Denmark",	"DK",	"DNK",
-           "Denmark ranks 24th overall on the 2019 International Tax Competitiveness Index, one place worse than in 2018.",
+           "Denmark ranks 28th overall on the 2020 International Tax Competitiveness Index, two places worse than in 2019.",
            "Compliance times associated with corporate, consumption, and individual taxes are all below the OECD averages. ",
            "Denmark has a territorial tax system, exempting both foreign dividend and capital gains income for its treaty partners and other European countries.",
-           "Property taxes are modest, and Denmark allows costs associated with improvements to be deducted.",
-           "In addition to a top marginal tax rate of 55.9 percent, the personal income tax rates on dividends and capital gains are both at 42 percent, well above the OECD averages of 23.8 percent and 19.6 percent, respectively.",
+           "Property taxes are modest, and Denmark allows costs associated with improvements to be deducted against corporate income tax.",
+           "In addition to a top marginal tax rate of 55.6 percent, the personal income tax rates on dividends and capital gains are both at 42 percent, well above the OECD averages of 23.9 percent and 19.2 percent, respectively.",
            "Net operating losses can be carried forward indefinitely but are limited to 60 percent of taxable income.",
            "Denmark uses First-In-First-Out for assessing the cost of inventory for tax purposes.")
 
 #Estonia####
 Estonia<-c("Estonia",	"EE",	"EST",
-           "Estonia ranks 1st overall on the 2019 International Tax Competitiveness Index, the same as in 2018, and for the sixth consecutive year.",
+           "Estonia ranks 1st overall on the 2020 International Tax Competitiveness Index, the same as in 2019, and for the seventh consecutive year",
            "Estonia's corporate income tax system only taxes distributed earnings, allowing companies to reinvest their profits tax-free.",
            "The VAT applies to a broad base and has a low compliance burden.",
            "Property taxes only apply to the value of land.",
@@ -86,23 +85,23 @@ Estonia<-c("Estonia",	"EE",	"EST",
 
 #Finland####
 Finland<-c("Finland",	"FI",	"FIN",
-           "Finland ranks 18th overall on the 2019 International Tax Competitiveness Index, three places worse than in 2018.",
+           "Finland ranks 16th overall on the 2020 International Tax Competitiveness Index, one place better than in 2019.",
            "Finland has a relatively low corporate tax rate of 20 percent.",
            "The compliance burdens of corporate, consumption, and labor taxes are all below the OECD averages.",
-           "Finland has a territorial tax system and a broad tax treaty network with 86 countries.",
+           "Finland has a territorial tax system and a broad tax treaty network with 76 countries.",
            "Finland levies both an estate and a financial transactions tax.",
            "Companies are limited in their ability to carry forward net operating losses and are restricted to using First-In-First-Out as the cost accounting method for inventory.",
-           "Finland has a progressive tax system with a combined top rate on personal income of 58.4 percent.")
+           "Finland has a progressive tax system with a combined top rate on personal income of 58.5 percent (the OECD average is 46.1 percent).")
 
 #France####
 France<-c("France",	"FR",	"FRA",
-          "France ranks 36th overall on the 2019 International Tax Competitiveness Index, the same as in 2018, and for the sixth consecutive year.",
+          "France ranks 32nd overall on the 2020 International Tax Competitiveness Index, the same as in 2019",
           "France has above-average cost recovery provisions for investments in machinery, buildings, and intangibles.",
           "Corporate and consumption taxes have a relatively low compliance burden.",
           "France has a broad tax treaty network, with 122 countries.",
-          "France has multiple distortionary property taxes with separate levies on net real estate wealth, estates, assets, and financial transactions.",
+          "France has multiple distortionary property taxes with separate levies on estates, bank assets, and financial transactions.",
           "The tax burden on labor of 47.6 percent is among the highest for OECD countries.",
-          "At 34.4 percent, France has the highest corporate income tax rate among OECD countries.")
+          "At 32.02 percent, France has the highest corporate income tax rate among OECD countries.")
 
 #Germany####
 Germany<-c("Germany",	"DE",	"DEU",
