@@ -239,7 +239,7 @@ Netherlands<-c("Netherlands",	"NL",	"NLD",
 
 #New_Zealand####
 New_Zealand<-c("New Zealand",	"NZ",	"NZL",
-             "New Zealand ranks 3rd overall on the 2019 International Tax Competitiveness Index, the same as in 2019.",
+             "New Zealand ranks 3rd overall on the 2020 International Tax Competitiveness Index, the same as in 2019",
              "New Zealand allows corporate losses to be carried forward indefinitely and has introduced a temporary one-year carryback provision, allowing businesses to be taxed on their average profitability.",
              "The VAT of 15 percent applies to nearly the entire potential consumption tax base.",
              "New Zealand property taxes apply just to the value of land rather than real estate or other improvements to the land.",
