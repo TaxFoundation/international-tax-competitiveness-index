@@ -599,7 +599,7 @@ write.csv(Austria, file = paste(initial_results,"Austria.csv",sep=""),row.names=
 write.csv(France, file = paste(initial_results,"France.csv",sep=""),row.names=F)
 
 #Germany - Prometheus
-write.csv(Germany, file = paste(initial_results,"Germany.csv",sep=""),row.names=F)
+write.csv(Germany, file = paste(Germany,"Germany.csv",sep=""),row.names=F)
 
 #Greece - KEFiM
 write.csv(Greece, file = paste(initial_results,"Greece.csv",sep=""),row.names=F)
