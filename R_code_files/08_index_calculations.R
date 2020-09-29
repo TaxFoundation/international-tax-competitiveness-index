@@ -624,3 +624,6 @@ write.csv(Sweden, file = paste(initial_results,"Sweden.csv",sep=""),row.names=F)
 
 #UK - CPS/ASI
 write.csv(United_Kingdom, file = paste(initial_results,"United_Kingdom.csv",sep=""),row.names=F)
+
+#US - Biden
+write.csv(United_States, file = paste(biden,"United_States.csv",sep=""),row.names=F)
