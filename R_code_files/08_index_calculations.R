@@ -602,7 +602,7 @@ write.csv(France, file = paste(initial_results,"France.csv",sep=""),row.names=F)
 write.csv(Germany, file = paste(initial_results,"Germany.csv",sep=""),row.names=F)
 
 #Greece - KEFiM
-write.csv(Greece, file = paste(initial_results,"Greece.csv",sep=""),row.names=F)
+write.csv(Greece, file = paste(greece,"Greece.csv",sep=""),row.names=F)
 
 #Italy - IBL
 write.csv(Italy, file = paste(initial_results,"Italy.csv",sep=""),row.names=F)

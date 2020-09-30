@@ -10,6 +10,8 @@ intermediate_outputs<-"C:/Github/international-tax-competitiveness-index/interme
 final_data<-"C:/Github/international-tax-competitiveness-index/final_data/"
 final_outputs<-"C:/Github/international-tax-competitiveness-index/final_outputs/"
 initial_results<-"C:/Github/international-tax-competitiveness-index/initial_results/"
+greece<-"C:/Github/international-tax-competitiveness-index/greece/"
+
 
 #Define Using function####
 using<-function(...,prompt=TRUE){
