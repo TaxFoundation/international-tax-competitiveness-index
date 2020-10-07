@@ -589,38 +589,3 @@ write.csv(final_2020, file = paste(final_outputs,"data_2020_run.csv",sep=""),row
 
 write.csv(final_subcategories_2020,paste(final_outputs,"subcategories_2020.csv",sep=""),row.names=F)
 write.csv(final_categories,paste(final_outputs,"final_categories_2014_2020.csv",sep=""),row.names=F)
-
-#initial results csv files####
-
-#Austria - Hayek Institut
-write.csv(Austria, file = paste(initial_results,"Austria.csv",sep=""),row.names=F)
-
-#France - IREF
-write.csv(France, file = paste(initial_results,"France.csv",sep=""),row.names=F)
-
-#Germany - Prometheus
-write.csv(Germany, file = paste(initial_results,"Germany.csv",sep=""),row.names=F)
-
-#Greece - KEFiM
-write.csv(Greece, file = paste(initial_results,"Greece.csv",sep=""),row.names=F)
-
-#Italy - IBL
-write.csv(Italy, file = paste(initial_results,"Italy.csv",sep=""),row.names=F)
-
-#Lithuania - LFMI
-write.csv(Lithuania, file = paste(initial_results,"Lithuania.csv",sep=""),row.names=F)
-
-#Poland - FOR
-write.csv(Poland, file = paste(initial_results,"Poland.csv",sep=""),row.names=F)
-
-#Slovakia - INESS
-write.csv(Slovak_Republic, file = paste(initial_results,"Slovak_Republic.csv",sep=""),row.names=F)
-
-#Spain - IEE
-write.csv(Spain, file = paste(initial_results,"Spain.csv",sep=""),row.names=F)
-
-#Sweden - Timbro
-write.csv(Sweden, file = paste(initial_results,"Sweden.csv",sep=""),row.names=F)
-
-#UK - CPS/ASI
-write.csv(United_Kingdom, file = paste(initial_results,"United_Kingdom.csv",sep=""),row.names=F)
