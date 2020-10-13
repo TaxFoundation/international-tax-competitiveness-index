@@ -75,7 +75,7 @@ Denmark<-c("Denmark",	"DK",	"DNK",
 
 #Estonia####
 Estonia<-c("Estonia",	"EE",	"EST",
-           "Estonia ranks 1st overall on the 2020 International Tax Competitiveness Index, the same as in 2019, and for the seventh consecutive year",
+           "Estonia ranks 1st overall on the 2020 International Tax Competitiveness Index, the same as in 2019, and for the seventh consecutive year.",
            "Estonia's corporate income tax system only taxes distributed earnings, allowing companies to reinvest their profits tax-free.",
            "The VAT applies to a broad base and has a low compliance burden.",
            "Property taxes only apply to the value of land.",
@@ -95,7 +95,7 @@ Finland<-c("Finland",	"FI",	"FIN",
 
 #France####
 France<-c("France",	"FR",	"FRA",
-          "France ranks 32nd overall on the 2020 International Tax Competitiveness Index, the same as in 2019",
+          "France ranks 32nd overall on the 2020 International Tax Competitiveness Index, the same as in 2019.",
           "France has above-average cost recovery provisions for investments in machinery, buildings, and intangibles.",
           "Corporate and consumption taxes have a relatively low compliance burden.",
           "France has a broad tax treaty network, with 122 countries.",
@@ -239,7 +239,7 @@ Netherlands<-c("Netherlands",	"NL",	"NLD",
 
 #New_Zealand####
 New_Zealand<-c("New Zealand",	"NZ",	"NZL",
-             "New Zealand ranks 3rd overall on the 2020 International Tax Competitiveness Index, the same as in 2019",
+             "New Zealand ranks 3rd overall on the 2020 International Tax Competitiveness Index, the same as in 2019.",
              "New Zealand allows corporate losses to be carried forward indefinitely and has introduced a temporary one-year carryback provision, allowing businesses to be taxed on their average profitability.",
              "The VAT of 15 percent applies to nearly the entire potential consumption tax base.",
              "New Zealand property taxes apply just to the value of land rather than real estate or other improvements to the land.",
