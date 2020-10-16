@@ -519,6 +519,7 @@ final_categories<-final_categories[c("ISO_2","ISO_3","country","year",
                                      "property_rank","property",
                                      "international_rank","international")]
 
+#The following file is used for country profile pages and tax-competition.org; do not edit
 write.csv(final_categories,paste(final_outputs,"final_categories.csv",sep=""),row.names=F)
 
 
@@ -581,12 +582,16 @@ Changes<-cbind(M[,1,drop=FALSE],Changes)
 
 final_subcategories_2020<-subset(final_subcategories,year==2020)
 
-
+#The following file is used for country profile pages; do not edit
 write.csv(raw_data,paste(final_outputs,"raw_data_2020.csv",sep=""),row.names=F)
+
+
 write.csv(final_2017, file = paste(final_outputs,"data_2017_run.csv",sep=""),row.names=F)
 write.csv(final_2018, file = paste(final_outputs,"data_2018_run.csv",sep=""),row.names=F)
 write.csv(final_2019, file = paste(final_outputs,"data_2019_run.csv",sep=""),row.names=F)
 write.csv(final_2020, file = paste(final_outputs,"data_2020_run.csv",sep=""),row.names=F)
 
+#The following file is used for country profile pages; do not edit
 write.csv(final_subcategories_2020,paste(final_outputs,"subcategories_2020.csv",sep=""),row.names=F)
+
 write.csv(final_categories,paste(final_outputs,"final_categories_2014_2020.csv",sep=""),row.names=F)
