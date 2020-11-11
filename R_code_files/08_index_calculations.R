@@ -595,3 +595,6 @@ write.csv(final_2020, file = paste(final_outputs,"data_2020_run.csv",sep=""),row
 write.csv(final_subcategories_2020,paste(final_outputs,"subcategories_2020.csv",sep=""),row.names=F)
 
 write.csv(final_categories,paste(final_outputs,"final_categories_2014_2020.csv",sep=""),row.names=F)
+
+#France Reforms
+write.csv(France,paste(france_reforms,"France.csv",sep=""),row.names=F)
