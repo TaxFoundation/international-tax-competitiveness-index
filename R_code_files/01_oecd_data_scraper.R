@@ -138,8 +138,9 @@ tax_wedge2015<-martax_wedge2015$x/avgtax_wedge2015$x
 tax_wedge2016<-martax_wedge2016$x/avgtax_wedge2016$x
 tax_wedge2017<-martax_wedge2017$x/avgtax_wedge2017$x
 tax_wedge2018<-martax_wedge2018$x/avgtax_wedge2018$x
+tax_wedge2019<-martax_wedge2019$x/avgtax_wedge2019$x
 
-tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,tax_wedge2016,tax_wedge2017,tax_wedge2018)
+tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,tax_wedge2016,tax_wedge2017,tax_wedge2018,tax_wedge2019)
 
 colnames(tax_wedge)<-c("country","2013","2014","2015","2016","2017","2018","2019")
 tax_wedge<-gather(tax_wedge,"year","tax_wedge","2013","2014","2015","2016","2017","2018","2019")

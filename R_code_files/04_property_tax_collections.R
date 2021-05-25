@@ -101,12 +101,12 @@ property_tax_revenue<-property_tax_revenue[c("COU","obsTime","obsValue")]
 colnames(property_tax_revenue)<-c("isocode","year","property_tax_collections")
 
 #Missing country/years are simply prior year values
-isocode<-c("AUS","GRC","MEX")
-year<-c("2018","2018","2018")
-property_tax_collections<-c("30.344","3.653","44.680117")
-missing<-data.frame(isocode,year,property_tax_collections)
+#isocode<-c("AUS","GRC","MEX")
+#year<-c("2018","2018","2018")
+#property_tax_collections<-c("30.344","3.653","44.680117")
+#missing<-data.frame(isocode,year,property_tax_collections)
 
-property_tax_revenue<-rbind(property_tax_revenue,missing)
+#property_tax_revenue<-rbind(property_tax_revenue,missing)
 property_tax_revenue$property_tax_collections<-as.numeric(property_tax_revenue$property_tax_collections)
 property_tax_revenue$property_tax_collections<-(property_tax_revenue$property_tax_collections)*1000
 
