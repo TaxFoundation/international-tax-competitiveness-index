@@ -1,0 +1,37 @@
+ISO_2,ISO_3,country,vat_rate,vat_threshold,vat_base,consumption_time
+AU,AUS,Australia,NA,NA,NA,50
+AT,AUT,Austria,NA,NA,NA,35
+BE,BEL,Belgium,NA,NA,NA,75
+CA,CAN,Canada,NA,NA,NA,50
+CL,CHL,Chile,NA,NA,NA,123.5
+CZ,CZE,Czech Republic,NA,NA,NA,102
+DK,DNK,Denmark,NA,NA,NA,40
+EE,EST,Estonia,NA,NA,NA,14
+FI,FIN,Finland,NA,NA,NA,24
+FR,FRA,France,NA,NA,NA,31
+DE,DEU,Germany,NA,NA,NA,43
+GR,GRC,Greece,NA,NA,NA,69
+HU,HUN,Hungary,NA,NA,NA,96
+IS,ISL,Iceland,NA,NA,NA,40
+IE,IRL,Ireland,NA,NA,NA,30
+IL,ISR,Israel,NA,NA,NA,69
+IT,ITA,Italy,NA,NA,NA,30
+JP,JPN,Japan,NA,NA,NA,21
+KR,KOR,Korea,NA,NA,NA,25
+LV,LVA,Latvia,NA,NA,NA,66
+LT,LTU,Lithuania,NA,NA,NA,47
+LU,LUX,Luxembourg,NA,NA,NA,22
+MX,MEX,Mexico,NA,NA,NA,100
+NL,NLD,Netherlands,NA,NA,NA,34
+NZ,NZL,New Zealand,NA,NA,NA,47
+NO,NOR,Norway,NA,NA,NA,40
+PL,POL,Poland,NA,NA,NA,172
+PT,PRT,Portugal,NA,NA,NA,90
+SK,SVK,Slovak Republic,NA,NA,NA,84
+SI,SVN,Slovenia,NA,NA,NA,69
+ES,ESP,Spain,NA,NA,NA,30.5
+SE,SWE,Sweden,NA,NA,NA,36
+CH,CHE,Switzerland,NA,NA,NA,8
+TR,TUR,Turkey,NA,NA,NA,75
+GB,GBR,United Kingdom,NA,NA,NA,25
+US,USA,United States,NA,NA,NA,33
