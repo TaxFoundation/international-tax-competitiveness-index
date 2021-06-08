@@ -120,6 +120,8 @@
 
 ## Czech Republic
 
+* **`capital_gains_rate`** Capital gains included in personal income tax but exempt if shares of a joint stock company were held for at least three years (five years if limited liability company).
+
 * **`loss_carryback`** As of June 1, the Czech Republic was considering the introduction of a 2-year loss carryback provision; see Bloomberg Tax, "Czech Republic Lower House Considers Bill to Amend Various Tax Laws Due to Coronavirus," May 28, 2020. However, as the law was not implemented on June 1, it is not included in this year's _International Index_.
 
 ## Denmark:
@@ -212,7 +214,7 @@
 
 * **`loss_carryback`** Garrett Watson, "A Review of Net Operating Loss Tax Provisions in the CARES Act and Next Steps for Phase 4 Relief," Tax Foundation, Apr. 14, 2020, https://taxfoundation.org/phase-4-relief-legislation-net-operating-loss-cares-act/.
 
-* **`capital_gains_rate`** Erica York, "An Overview of Capital Gains Taxes," Tax Foundation, Apr. 16, 2019, https://taxfoundation.org/capital-gains-taxes/. The 2013 maximum rate includes the effect of the 3.8% tax on net investment income and 3% itemized deduction phaseout, computed as 25.102=20+3.8+.03*(39.6+3.8); see U.S. Department of the Treasury," https://www.treasury.gov/resource-center/tax-policy/tax-analysis/Documents/Taxes-Paid-on-Capital-Gains-for-Returns-with-Positive-Net-Capital-Gains.pdf.
+* **`capital_gains_rate`** Because average state and federal capital gains and dividends rates are similar, this measure is the combined federal and state-level dividends rates which is labeled "Net Personal Tax," in OECD, "Table II.4. Overall Statutory Tax Rates on Dividend Income," https://stats.oecd.org/Index.aspx?DataSetCode=TABLE_II4.
 
 * **`vat_rate`** The U.S. sales tax rate is the average of all U.S. state sales tax rates (weighted by population); see Janelle Cammenga, "State and Local Sales Tax Rates, 2020," Tax Foundation, Jan. 15, 2020, https://taxfoundation.org/publications/state-and-local-sales-tax-rates/.
 
