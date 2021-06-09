@@ -20,14 +20,6 @@ corporate_rate[c('corporate_rate')][corporate_rate$country == "TUR" & corporate_
 #Greece decreased its CIT rate to 22%
 corporate_rate[c('corporate_rate')][corporate_rate$country == "GRC" & corporate_rate$year == 2021,] <- 22
 
-#Japan's 2021 corporate tax rate is missing (use 2020 rate instead)
-country <- c("JPN")
-year <- c("2021")
-corporate_rate_JPN <- c("	29.74000")
-JPN <- data.frame(country,year,corporate_rate_JPN)
-colnames(JPN)<-c("country","year","corporate_rate")
-corporate_rate <- rbind(corporate_rate, JPN)
-
 corporate_rate$corporate_rate <- as.numeric(corporate_rate$corporate_rate)
 corporate_rate$corporate_rate <- corporate_rate$corporate_rate/100
 
@@ -189,14 +181,6 @@ tax_wedge[c('tax_wedge')][tax_wedge$country == "COL" & tax_wedge$year >=2014,] <
 dividends_rate<-get_dataset("Table_II4",filter= list(c(oecd_countries),c("NET_PERS_TAX")), start_time = 2014)
 dividends_rate<-dividends_rate[c(1,4,5)]
 colnames(dividends_rate)<-c("country","year","dividends_rate")
-
-#Japan's 2021 dividend tax rate is missing (use 2020 rate instead)
-country <- c("JPN")
-year <- c("2021")
-dividends_rate_JPN <- c("20.320000")
-JPN <- data.frame(country,year,dividends_rate_JPN)
-colnames(JPN)<-c("country","year","dividends_rate")
-dividends_rate <- rbind(dividends_rate, JPN)
 
 dividends_rate$dividends_rate<-as.numeric(dividends_rate$dividends_rate)
 dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
