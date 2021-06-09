@@ -52,7 +52,7 @@ index_data_old<-index_data_old[,!names(
   index_data_old) %in% pwc_variables_list]
 
 #Adjust years in pwc data to account for two year lag
-paying_taxes$year<-paying_taxes$year+2
+paying_taxes$year<-paying_taxes$year+3
 index_data_paying_taxes_variables<-merge(index_data_old,paying_taxes,by=c("ISO_2", "ISO_3","country","year"))
 
 
