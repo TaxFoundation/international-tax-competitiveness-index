@@ -2,7 +2,7 @@
 
 #Import data
 pwc_paying_taxes <- read_excel(paste(source_data,"pwc_paying_taxes.xlsx",sep=""),
-                               range = "B1:BH191")
+                               range = "B1:BP191")
 
 #Rename variables
 # pwc_paying_taxes<-
@@ -78,7 +78,28 @@ pwc_paying_taxes<-merge(pwc_paying_taxes,iso_country_codes,by=c("country"),all=T
 #Subset for OECD countries
 pwc_paying_taxes<-subset(pwc_paying_taxes,pwc_paying_taxes$ISO_3 %in% oecd_countries)
 
+
 #Transpose data year by year####
+
+#2011####
+pwc_paying_taxes_2011<-pwc_paying_taxes %>%
+  select(country:income,corporate_time_2011:total_payments_2011,ISO_2,ISO_3)%>%
+  gather(variable,value,corporate_time_2011:total_payments_2011)
+pwc_paying_taxes_2011$year<-2011
+
+pwc_paying_taxes_2011<-pwc_paying_taxes_2011%>%
+  spread(variable,value)
+
+pwc_paying_taxes_2011<-  pwc_paying_taxes_2011 %>%
+  rename(corporate_time = corporate_time_2011,
+         labor_time = labor_time_2011,
+         consumption_time = consumption_time_2011,
+         total_time = total_time_2011,
+         profit_payments = profit_payments_2011,
+         labor_payments = labor_payments_2011,
+         other_payments = other_payments_2011,
+         total_payments = total_payments_2011)
+
 #2012####
 pwc_paying_taxes_2012<-pwc_paying_taxes %>%
   select(country:income,corporate_time_2012:total_payments_2012,ISO_2,ISO_3)%>%
@@ -135,8 +156,6 @@ pwc_paying_taxes_2014<-  pwc_paying_taxes_2014 %>%
          labor_payments = labor_payments_2014,
          other_payments = other_payments_2014,
          total_payments = total_payments_2014)
-
-
 
 #2015####
 pwc_paying_taxes_2015<-pwc_paying_taxes %>%
@@ -215,7 +234,8 @@ pwc_paying_taxes_2018<-  pwc_paying_taxes_2018 %>%
          total_payments = total_payments_2018)
 
 #Join####
-pwc_paying_taxes<-rbind(pwc_paying_taxes_2012,
+pwc_paying_taxes<-rbind(pwc_paying_taxes_2011,
+                        pwc_paying_taxes_2012,
                         pwc_paying_taxes_2013,
                         pwc_paying_taxes_2014,
                           pwc_paying_taxes_2015,
