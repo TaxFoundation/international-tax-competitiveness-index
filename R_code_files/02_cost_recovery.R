@@ -10,6 +10,7 @@ data <- data[which(data$country=="AUS"
                    | data$country=="BGR"
                    | data$country=="CAN" 
                    | data$country=="CHL"
+                   | data$country=="COL"
                    | data$country=="HRV" 
                    | data$country=="CYP"
                    | data$country=="CZE" 
@@ -267,6 +268,10 @@ data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_reco
 #In fall 2018, Canada introduced full expensing for machinery
 data[c('machines_cost_recovery')][data$country == "CAN" & data$year >= 2018,] <- 1
 
+#In 2020, Chile introduced full expensing
+data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_recovery')][data$country == "CHL" & data$year >=2020,] <- 1
+
+
 #Adjust USA data to include bonus depreciation for machinery
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2002,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2002,] * 0.70) + 0.30
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2003,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2003,] * 0.70) + 0.30
@@ -283,6 +288,7 @@ data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2016,] <-
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2017,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2017,] * 0.50) + 0.50
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2018,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2018,] * 0.00) + 1.00
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2019,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2019,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2020,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2020,] * 0.00) + 1.00
 
 #Only keep data relevant to the ITCI
 data <- subset(data, select = c(country, year, buildings_cost_recovery, machines_cost_recovery, intangibles_cost_recovery))
