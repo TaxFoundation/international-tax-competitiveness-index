@@ -116,13 +116,13 @@ write.csv(vat_thresholds,paste(intermediate_outputs,"vat_thresholds.csv",sep="")
 
 
 #Vat Base####
-#Source data: https://doi.org/10.1787/888933890122
+#Source data: https://doi.org/10.1787/888934220135
 vat_base <- read_excel(paste(source_data,"oecd_vat_revenue_ratio_calculations.xlsx",sep=""), 
-                                             sheet = "Sheet1", range = "A7:W43")
+                                             sheet = "Sheet1", range = "A7:X44")
 vat_base <- vat_base[-c(2:16)]
 
 columns <- names(vat_base)
-values<-c("United States","0.341","0.354","0.358","0.351","0.347","0.341","0.339")
+values<-c("United States","0.341","0.354","0.358","0.354","0.348","0.340","0.338","0.341")
 US <- data.frame(columns, values)
 US <- spread(US, columns, values)
 
