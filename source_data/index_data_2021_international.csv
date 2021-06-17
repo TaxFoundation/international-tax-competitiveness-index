@@ -1,10 +1,10 @@
 ISO_2,ISO_3,country,dividends_exemption,capital_gains_exemption,country_limitations,dividends_withholding_tax,interest_withholding_tax,royalties_withholding_tax,tax_treaties,cfc_rules,thin_capitalization_rules
 AU,AUS,Australia,1,1,0,0.3,0.1,0.3,45,NA,0.5
-AT,AUT,Austria,1,1,0,0.275,0,0.2,89,NA,0.5
+AT,AUT,Austria,1,1,0,0.275,0,0.2,89,NA,1
 BE,BEL,Belgium,1,1,0,0.3,0.3,0.3,95,NA,1
 CA,CAN,Canada,1,0.5,1,0.25,0.25,0.25,96,NA,0.5
 CL,CHL,Chile,0,0,1,0.35,0.35,0.3,33,NA,0.5
-CO,COL,Colombia,,,,,,,,,
+CO,COL,Colombia,1,0,0,,,,,,0.5
 CZ,CZE,Czech Republic,1,1,1,0.15,0.15,0.15,89,NA,1
 DK,DNK,Denmark,1,1,1,0.27,0.22,0.22,75,NA,1
 EE,EST,Estonia,1,1,1,0,0,0.1,58,NA,1
@@ -15,10 +15,10 @@ GR,GRC,Greece,1,1,1,0.05,0.15,0.2,57,NA,1
 HU,HUN,Hungary,1,1,0,0,0,0,81,NA,1
 IS,ISL,Iceland,1,1,0,0.2,0.12,0.2,45,NA,1
 IE,IRL,Ireland,0,1,1,0.25,0.2,0.2,73,NA,0
-IL,ISR,Israel,0,0,1,0.3,0.23,0.23,58,NA,0
+IL,ISR,Israel,1,1,0,0.3,0.23,0.23,58,NA,0
 IT,ITA,Italy,0.95,0.95,1,0.26,0.26,0.225,100,NA,1
 JP,JPN,Japan,0.95,0,0,0.2,0.2,0.2,70,NA,1
-KR,KOR,Korea,0,0,1,0.22,0.22,0.22,93,NA,1
+KR,KOR,Korea,1,0,0,0.22,0.22,0.22,93,NA,1
 LV,LVA,Latvia,1,1,1,0,0,0,62,NA,1
 LT,LTU,Lithuania,1,1,1,0.15,0.1,0.1,54,NA,1
 LU,LUX,Luxembourg,1,1,0,0.15,0,0,83,NA,1
@@ -30,7 +30,7 @@ PL,POL,Poland,1,0,1,0.19,0.2,0.2,85,NA,1
 PT,PRT,Portugal,1,1,1,0.25,0.25,0.25,78,NA,1
 SK,SVK,Slovak Republic,1,1,1,0.35,0.19,0.19,70,NA,1
 SI,SVN,Slovenia,0.95,0.475,1,0.15,0.15,0.15,59,NA,0.5
-ES,ESP,Spain,1,1,1,0.19,0.19,0.24,93,NA,1
+ES,ESP,Spain,0.95,0.95,1,0.19,0.19,0.24,93,NA,1
 SE,SWE,Sweden,1,1,0,0.3,0,0,81,NA,1
 CH,CHE,Switzerland,1,1,0,0.35,0.35,0,93,NA,0.5
 TR,TUR,Turkey,1,1,0,0.15,0.1,0.2,86,NA,0.5
