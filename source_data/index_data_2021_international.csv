@@ -16,10 +16,10 @@ HU,HUN,Hungary,1,1,0,0,0,0,81,NA,1
 IS,ISL,Iceland,1,1,0,0.2,0.12,0.2,45,NA,1
 IE,IRL,Ireland,0,1,1,0.25,0.2,0.2,73,NA,0
 IL,ISR,Israel,1,1,0,0.3,0.23,0.23,58,NA,0
-IT,ITA,Italy,0.95,0.95,1,0.26,0.26,0.225,100,NA,1
-JP,JPN,Japan,0.95,0,0,0.2,0.2,0.2,70,NA,1
+IT,ITA,Italy,0.95,0.95,1,0.26,0.26,0.225,101,NA,1
+JP,JPN,Japan,0.95,0,0,0.2042,0.2042,0.2042,60,NA,1
 KR,KOR,Korea,1,0,0,0.22,0.22,0.22,93,NA,1
-LV,LVA,Latvia,1,1,1,0,0,0,62,NA,1
+LV,LVA,Latvia,1,1,1,0,0,0,63,NA,1
 LT,LTU,Lithuania,1,1,1,0.15,0.1,0.1,54,NA,1
 LU,LUX,Luxembourg,1,1,0,0.15,0,0,83,NA,1
 MX,MEX,Mexico,0,0,1,0.1,0.35,0.35,59,NA,1
@@ -34,5 +34,5 @@ ES,ESP,Spain,0.95,0.95,1,0.19,0.19,0.24,93,NA,1
 SE,SWE,Sweden,1,1,0,0.3,0,0,81,NA,1
 CH,CHE,Switzerland,1,1,0,0.35,0.35,0,93,NA,0.5
 TR,TUR,Turkey,1,1,0,0.15,0.1,0.2,86,NA,0.5
-GB,GBR,United Kingdom,1,1,0,0,0.2,0.2,130,NA,1
+GB,GBR,United Kingdom,1,1,0,0,0.2,0.2,131,NA,1
 US,USA,United States,1,0,0,0.3,0.3,0.3,66,NA,1
