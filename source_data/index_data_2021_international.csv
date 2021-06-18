@@ -3,10 +3,10 @@ AU,AUS,Australia,1,1,0,0.3,0.1,0.3,45,NA,0.5
 AT,AUT,Austria,1,1,0,0.275,0,0.2,89,NA,1
 BE,BEL,Belgium,1,1,0,0.3,0.3,0.3,95,NA,1
 CA,CAN,Canada,1,0.5,1,0.25,0.25,0.25,96,NA,0.5
-CL,CHL,Chile,0,0,1,0.35,0.35,0.3,33,NA,0.5
+CL,CHL,Chile,0,0,1,0.35,0.35,0.15,33,NA,0.5
 CO,COL,Colombia,1,0,0,0.32,0.2,0.2,10,,0.5
 CZ,CZE,Czech Republic,1,1,1,0.15,0.15,0.15,89,NA,1
-DK,DNK,Denmark,1,1,1,0.27,0.22,0.22,75,NA,1
+DK,DNK,Denmark,1,1,1,0.22,0.22,0.22,75,NA,1
 EE,EST,Estonia,1,1,1,0,0,0.1,58,NA,1
 FI,FIN,Finland,1,1,1,0.2,0,0.2,76,NA,1
 FR,FRA,France,0.95,0.88,1,0.28,0,0.28,122,NA,1
