@@ -1,4 +1,4 @@
-ISO_2,ISO_3,country,year,exists,active,exemption
+ISO_2,ISO_3,country,year,exists,active,no_exemption
 AU,AUS,Australia,2014,1,0,0
 AT,AUT,Austria,2014,0,0,0
 BE,BEL,Belgium,2014,0,0,0
