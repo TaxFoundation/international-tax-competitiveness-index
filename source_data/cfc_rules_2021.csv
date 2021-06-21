@@ -1,27 +1,27 @@
 ISO_2,ISO_3,country,year,exists,active,no_exemption
 AU,AUS,Australia,2021,1,0,0
 AT,AUT,Austria,2021,1,0,0
-BE,BEL,Belgium,2021,1,1,1
+BE,BEL,Belgium,2021,1,0,0
 CA,CAN,Canada,2021,1,0,0
-CL,CHL,Chile,2021,1,1,0
-CO,COL,Colombia,2021,1,1,0
-CZ,CZE,Czech Republic,2021,1,0,1
-DK,DNK,Denmark,2021,1,1,0
-EE,EST,Estonia,2021,1,1,0
-FI,FIN,Finland,2021,1,1,0
-FR,FRA,France,2021,1,1,0
+CL,CHL,Chile,2021,1,0.5,0.5
+CO,COL,Colombia,2021,1,0.5,0.5
+CZ,CZE,Czech Republic,2021,1,0,0.5
+DK,DNK,Denmark,2021,1,0,0.5
+EE,EST,Estonia,2021,1,0,0
+FI,FIN,Finland,2021,1,0.5,0
+FR,FRA,France,2021,1,0.5,0
 DE,DEU,Germany,2021,1,0,0
 GR,GRC,Greece,2021,1,0,0
 HU,HUN,Hungary,2021,1,0,0
 IS,ISL,Iceland,2021,1,1,0
-IE,IRL,Ireland,2021,1,1,0
+IE,IRL,Ireland,2021,1,0.5,0
 IL,ISR,Israel,2021,1,0,0
 IT,ITA,Italy,2021,1,1,0
-JP,JPN,Japan,2021,1,1,0
-KR,KOR,Korea,2021,1,1,0
+JP,JPN,Japan,2021,1,0,0
+KR,KOR,Korea,2021,1,0.5,0
 LV,LVA,Latvia,2021,1,0,0
 LT,LTU,Lithuania,2021,1,0,0
-LU,LUX,Luxembourg,2021,1,1,0
+LU,LUX,Luxembourg,2021,1,0.5,0
 MX,MEX,Mexico,2021,1,1,1
 NL,NLD,Netherlands,2021,1,0,0
 NZ,NZL,New Zealand,2021,1,0,0
