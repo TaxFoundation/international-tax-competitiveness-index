@@ -1,7 +1,7 @@
 ISO_2,ISO_3,country,corporate_rate,loss_carryback,loss_carryforward,machines_cost_recovery,buildings_cost_recovery,intangibles_cost_recovery,inventory,allowance_corporate_equity,patent_box,r_and_d_credit,digital_services_tax,corporate_time,profit_payments,other_payments,top_income_rate,threshold_top_income_rate,tax_wedge,labor_payments,labor_time,capital_gains_rate,index_capital_gains,dividends_rate,vat_rate,vat_threshold,vat_base,consumption_time,property_tax,property_tax_collections,net_wealth,estate_or_inheritance_tax,transfer_tax,asset_tax,capital_duties,financial_transaction_tax,dividends_exemption,capital_gains_exemption,country_limitations,dividends_withholding_tax,interest_withholding_tax,royalties_withholding_tax,tax_treaties,cfc_rules,thin_capitalization_rules
 AU,AUS,Australia,NA,0,100,0.851,0.479,0.548,0.5,0,0,1,0,37,1,6,NA,NA,NA,4,18,0.235,NA,NA,NA,NA,NA,50,1,NA,0,0,1,1,0,0,1,1,0,0.3,0.1,0.3,44,NA,0.5
 AT,AUT,Austria,NA,0,75,0.813,0.391,0.738,1,0,0,1,0,46,1,8,NA,NA,NA,3,50,0.275,NA,NA,NA,NA,NA,35,0,NA,0,0,1,1,0,0,1,1,0,0.275,0,0.2,89,NA,0.5
-BE,BEL,Belgium,NA,0,70,0.882,0.622,0.803,1,1,1,1,0,21,1,8,NA,NA,NA,2,40,0,NA,NA,NA,NA,NA,75,0.5,NA,1,1,1,1,0,1,1,1,0,0.3,0.3,0.3,95,NA,1
+BE,BEL,Belgium,NA,0,70,0.882,0.622,0.803,1,1,1,1,0,21,1,8,NA,NA,NA,2,40,0,NA,NA,NA,NA,NA,75,0.5,NA,0.5,1,1,1,0,1,1,1,0,0.3,0.3,0.3,95,NA,1
 CA,CAN,Canada,NA,3,20,1,0.426,0.49,0.5,0,0,1,0,45,1,4,NA,NA,NA,3,36,0.2675,NA,NA,NA,NA,NA,50,0.5,NA,0,0,1,1,1,0,1,0.5,1,0.25,0.25,0.25,94,NA,0.5
 CL,CHL,Chile,NA,0,100,0.633,0.338,0,0.5,0,0,1,0,48,1,5,NA,NA,NA,1,124.5,0.35,NA,NA,NA,NA,NA,123.5,0.5,NA,0,1,0,1,0,0,0,0,1,0.35,0.35,0.3,33,NA,0.5
 CO,COL,Colombia,,0,12,,,,0.5,0,0,,0,,,,,,,,,0.1,,,,,,,,,1,0,1,0,0,1,,,,,,,,,
