@@ -25,14 +25,14 @@ LU,LUX,Luxembourg,2021,1,0.5,0
 MX,MEX,Mexico,2021,1,0.5,0.5
 NL,NLD,Netherlands,2021,1,0,0
 NZ,NZL,New Zealand,2021,1,0,0
-NO,NOR,Norway,2021,1,1,0
-PL,POL,Poland,2021,1,1,0
-PT,PRT,Portugal,2021,1,1,0
-SK,SVK,Slovak Republic,2021,1,1,1
+NO,NOR,Norway,2021,1,0.5,0
+PL,POL,Poland,2021,1,0.5,0.5
+PT,PRT,Portugal,2021,1,0.5,0.5
+SK,SVK,Slovak Republic,2021,1,0.5,1
 SI,SVN,Slovenia,2021,1,0,0
-ES,ESP,Spain,2021,1,1,0
+ES,ESP,Spain,2021,1,0,0
 SE,SWE,Sweden,2021,1,1,0
 CH,CHE,Switzerland,2021,0,0,0
-TR,TUR,Turkey,2021,1,1,1
+TR,TUR,Turkey,2021,1,0.5,0.5
 GB,GBR,United Kingdom,2021,1,1,0
 US,USA,United States,2021,1,1,0

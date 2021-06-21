@@ -18,8 +18,8 @@ The value of the `cfc_rules` variable is a simple average of three variables:
 
 ## `active`: determines if the country's CFC regime taxes active income
 
-    Equal to 1 if CFC rules apply to active income; equal to 0 if they apply only to passive income or the country exempts CFCs with substantial activities or the country does not have a CFC regime; equal to 0.5 if there is a formula based on a share of passive income that triggers full inclusion.
+    Equal to 1 if CFC rules apply to active income; equal to 0 if they apply only to passive income or the country does not have a CFC regime; equal to 0.5 if there is a formula based on a share of passive income that triggers full inclusion or the country exempts CFCs with substantial activities.
 
 ## `no_exemption`: determines if the country has exemptions to its CFC regime
 
-    Equal to 1 if CFC rules do not have exemptions; equal to 0 if there are exemptions for countries or if there are no CFC rules; equal to 0.5 if there is a formula based on a share of passive income that triggers full inclusion.
+    Equal to 1 if CFC rules do not have exemptions; equal to 0 if there are exemptions for countries (including based on an effective or statutory rate test) or if there are no CFC rules; equal to 0.5 if there is a formula based on a share of passive income that triggers full inclusion.
