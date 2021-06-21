@@ -1,10 +1,10 @@
 ISO_2,ISO_3,country,property_tax,property_tax_collections,net_wealth,estate_or_inheritance_tax,transfer_tax,asset_tax,capital_duties,financial_transaction_tax
 AU,AUS,Australia,1,NA,0,0,1,1,0,0
 AT,AUT,Austria,0,NA,0,0,1,1,0,0
-BE,BEL,Belgium,0.5,NA,0,1,1,1,0,1
+BE,BEL,Belgium,0.5,NA,1,1,1,1,0,1
 CA,CAN,Canada,0.5,NA,0,0,1,1,1,0
 CL,CHL,Chile,0.5,NA,0,1,0,1,0,0
-CO,COL,Colombia,,,,0,1,0,0,1
+CO,COL,Colombia,,,1,0,1,0,0,1
 CZ,CZE,Czech Republic,0.5,NA,0,1,0,0,0,0
 DK,DNK,Denmark,0.5,NA,0,1,1,0,0,0
 EE,EST,Estonia,1,NA,0,0,0,0,0,0
