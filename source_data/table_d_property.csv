@@ -1,5 +1,5 @@
 ﻿,Real Property Taxes,,,,Wealth/Estate Taxes,,Capital/Asset Taxes,,
-Country,"Property Taxes, Real Property/Land Tax",Real Property Taxes Fully Deductible against Corporate Income Tax,Real Property Taxes as % of Capital Stock,Net Wealth Tax,Estate/Inheritance Tax,Transfer Taxes,Asset Taxes,Capital Duties,Financial Transaction Tax
+Country,"Property Taxes, Real Property/Land Tax",Real Property Taxes Fully Deductible against Corporate Income Tax,Real Property Taxes as % of Capital Stock,Wealth Tax,Estate/Inheritance Tax,Transfer Taxes,Asset Taxes,Capital Duties,Financial Transaction Tax
 Australia,Land Tax Levied by Individual States (a),Yes,1.20%,No,None,Stamp Duty on Transfer of Real Property,Bank Tax,No,No
 Austria,Tax on Real Property,No,0.10%,No,None,Real Estate Transfer Tax,Bank Tax,No,No
 Belgium,Tax on Real Property (b),Yes,0.70%,Wealth Tax on Selected Assets,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,No,Yes
@@ -31,7 +31,7 @@ Poland,Tax on Real Property,Yes,1.60%,No,Inheritance and Gift Tax,Real Estate Tr
 Portugal,Tax on Real Property,Yes,0.50%,No,Stamp Duty applies to Inheritance and Gifts,Real Estate Transfer Tax,Bank Tax,No,No
 Slovak Republic,Tax on Real Property,Yes,0.40%,No,None,No,No,No,No
 Slovenia,Tax on Real Property,No,0.40%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,No,No
-Spain,Tax on Real Property,No,0.60%,Net Wealth Tax,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
+Spain,Tax on Real Property,Yes,0.60%,Net Wealth Tax,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
 Sweden    ,Tax on Real Property,Yes,0.60%,No,None,Stamp Duty on Transfer of Real Property,Bank Tax,No,No
 Switzerland,Tax on Real Property,Yes,0.10%,Net Wealth Tax,Many cantons levy both Estate and Gift Taxes,Real Estate Transfer Tax,Cantonal/Community Equity Tax,Yes,Yes
 Turkey,Tax on Real Property,Yes,0.30%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
