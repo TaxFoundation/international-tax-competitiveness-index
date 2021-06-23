@@ -1,37 +1,38 @@
-"ISO_2","ISO_3","country","year","exists","active","exemption"
-"AU","AUS","Australia",2016,1,0,0
-"AT","AUT","Austria",2016,0,0,0
-"BE","BEL","Belgium",2016,0,0,0
-"CA","CAN","Canada",2016,1,0,0
-"CL","CHL","Chile",2016,1,0,1
-"CZ","CZE","Czech Republic",2016,0,0,0
-"DK","DNK","Denmark",2016,1,1,0
-"EE","EST","Estonia",2016,1,1,0
-"FI","FIN","Finland",2016,1,1,0
-"FR","FRA","France",2016,1,1,0
-"DE","DEU","Germany",2016,1,0,0
-"GR","GRC","Greece",2016,1,0,0
-"HU","HUN","Hungary",2016,1,1,0
-"IS","ISL","Iceland",2016,1,1,0
-"IE","IRL","Ireland",2016,0,0,0
-"IL","ISR","Israel",2016,1,0,1
-"IT","ITA","Italy",2016,1,1,0
-"JP","JPN","Japan",2016,1,1,0
-"KR","KOR","Korea",2016,1,1,0
-"LV","LVA","Latvia",2016,0,0,0
-"LT","LTU","Lithuania",2016,1,0,0
-"LU","LUX","Luxembourg",2016,0,0,0
-"MX","MEX","Mexico",2016,1,1,1
-"NL","NLD","Netherlands",2016,0,0,0
-"NZ","NZL","New Zealand",2016,1,0,0
-"NO","NOR","Norway",2016,1,1,0
-"PL","POL","Poland",2016,1,1,0
-"PT","PRT","Portugal",2016,1,1,0
-"SK","SVK","Slovak Republic",2016,0,0,0
-"SI","SVN","Slovenia",2016,0,0,0
-"ES","ESP","Spain",2016,1,0,0
-"SE","SWE","Sweden",2016,1,1,0
-"CH","CHE","Switzerland",2016,0,0,0
-"TR","TUR","Turkey",2016,1,1,1
-"GB","GBR","United Kingdom",2016,1,1,0
-"US","USA","United States",2016,1,0,0
+ISO_2,ISO_3,country,year,exists,active,no_exemption
+AU,AUS,Australia,2016,1,0,0
+AT,AUT,Austria,2016,0,0,0
+BE,BEL,Belgium,2016,0,0,0
+CA,CAN,Canada,2016,1,0,0
+CL,CHL,Chile,2016,1,0.5,0.5
+CO,COL,Colombia,2016,0,0,0
+CZ,CZE,Czech Republic,2016,0,0,0
+DK,DNK,Denmark,2016,1,0.5,0.5
+EE,EST,Estonia,2016,0,0,0
+FI,FIN,Finland,2016,1,0.5,0
+FR,FRA,France,2016,1,1,0
+DE,DEU,Germany,2016,1,0,0
+GR,GRC,Greece,2016,1,0,0
+HU,HUN,Hungary,2016,1,1,0
+IS,ISL,Iceland,2016,1,1,0
+IE,IRL,Ireland,2016,0,0,0
+IL,ISR,Israel,2016,1,0,0
+IT,ITA,Italy,2016,1,1,0
+JP,JPN,Japan,2016,1,1,0
+KR,KOR,Korea,2016,1,0.5,0
+LV,LVA,Latvia,2016,0,0,0
+LT,LTU,Lithuania,2016,1,0,0
+LU,LUX,Luxembourg,2016,0,0,0
+MX,MEX,Mexico,2016,1,0.5,0.5
+NL,NLD,Netherlands,2016,0,0,0
+NZ,NZL,New Zealand,2016,1,0,0
+NO,NOR,Norway,2016,1,0.5,0
+PL,POL,Poland,2016,1,0.5,0
+PT,PRT,Portugal,2016,1,1,0
+SK,SVK,Slovak Republic,2016,0,0,0
+SI,SVN,Slovenia,2016,0,0,0
+ES,ESP,Spain,2016,1,0,0
+SE,SWE,Sweden,2016,1,1,0
+CH,CHE,Switzerland,2016,0,0,0
+TR,TUR,Turkey,2016,1,0.5,0.5
+GB,GBR,United Kingdom,2016,1,0.5,0
+US,USA,United States,2016,1,0,0
