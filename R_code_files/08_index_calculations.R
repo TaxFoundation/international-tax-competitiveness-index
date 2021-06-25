@@ -206,8 +206,8 @@ cost_recovery_index<-c("loss_carryback","loss_carryforward","machines_cost_recov
 incentives_index<-c("patent_box","r_and_d_credit","digital_services_tax","corporate_time","profit_payments","other_payments")
 
 income_tax_index<-c("top_income_rate","threshold_top_income_rate","tax_wedge")
-capital_gains_and_dividends_index<-c("capital_gains_rate","dividends_rate")
 income_tax_complexity_index<-c("labor_payments","labor_time")
+capital_gains_and_dividends_index<-c("capital_gains_rate","dividends_rate")
 
 consumption_tax_rate_index<-c("vat_rate")
 consumption_tax_base_index<-c("vat_threshold","vat_base")
@@ -498,7 +498,7 @@ final_2021<-final_categories[final_categories$year==2021,]
 
 #Data Check####
 
-check<-raw_data[raw_data$country == "Greece",]
+check<-raw_data[raw_data$country == "Austria",]
 
 #Checking Sensitivity####
 
@@ -599,16 +599,14 @@ United_States<-final_categories[final_categories$Country=="United States",]
 
 
 #Changes from 2018 index
-M <- merge(final_2019,final_2018,by="country")
+#M <- merge(final_2019,final_2018,by="country")
 #drop ISO variables
-drop_iso<-names(M) %in% c("ISO_2.x","ISO_3.x","ISO_2.y","ISO_3.y")
-M<-M[!drop_iso]
+#drop_iso<-names(M) %in% c("ISO_2.x","ISO_3.x","ISO_2.y","ISO_3.y")
+#M<-M[!drop_iso]
 
-Changes <- M[,grepl("*\\.x$",names(M))] - M[,grepl("*\\.y$",names(M))]
+#Changes <- M[,grepl("*\\.x$",names(M))] - M[,grepl("*\\.y$",names(M))]
 
-Changes<-cbind(M[,1,drop=FALSE],Changes)
-
-final_subcategories_2021<-subset(final_subcategories,year==2021)
+#Changes<-cbind(M[,1,drop=FALSE],Changes)
 
 #The following file is used for country profile pages; do not edit
 write.csv(raw_data,paste(final_outputs,"raw_data_2021.csv",sep=""),row.names=F)
@@ -622,6 +620,7 @@ write.csv(final_2021, file = paste(final_outputs,"data_2021_run.csv",sep=""),row
 
 
 #The following file is used for country profile pages; do not edit
+final_subcategories_2021<-subset(final_subcategories,year==2021)
 write.csv(final_subcategories_2021,paste(final_outputs,"subcategories_2021.csv",sep=""),row.names=F)
 
 write.csv(final_categories,paste(final_outputs,"final_categories_2014_2021.csv",sep=""),row.names=F)
