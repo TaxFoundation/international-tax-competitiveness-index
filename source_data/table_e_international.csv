@@ -81,4 +81,4 @@ Sweden    ,100.00%,100.00%,None,30.00%,0.00%,0.00%,81,Yes,CFC exempt if located 
 Switzerland,100.00%,100.00%,None,35.00%,35.00%,0.00%,93,No,N/A,N/A,Debt-to-equity ratios apply and vary by asset class
 Turkey,100.00%,100.00%,None,15.00%,10.00%,20.00%,85,Yes,None,All Income,3:1 debt-to-equity ratio (6:1 for financial institutions) applies
 United Kingdom,100.00%,100.00%,None,0.00%,20.00%,20.00%,129,Yes,Various exemptions can apply,All Income,Interest deductions limited to 30% of EBITDA if deduction exceeds GBP 2 million
-United States,100.00%,0.00%,None,30.00%,30.00%,30.00%,65,Yes,Exemptions for foreign high-taxed income can apply,Passive,"Interest deductions limited to the sum of business interest income, 30% of adjusted taxable income, and floor plan financing interest"
+United States,100.00%,0.00%,None,30.00%,30.00%,30.00%,65,Yes (Subpart F),Exemptions for foreign high-taxed income can apply,Passive,"Interest deductions limited to the sum of business interest income, 30% of adjusted taxable income, and floor plan financing interest"
