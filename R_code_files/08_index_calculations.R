@@ -560,42 +560,115 @@ colnames(final_categories)<-c("ISO_2","ISO_3","Country","Year",
                               "International Rank","International Score")
 
 Australia<-final_categories[final_categories$Country=="Australia",]
+write.csv(Australia, paste(country_outputs, "Australia.csv", sep=""), row.names=F)
+
 Austria<-final_categories[final_categories$Country=="Austria",]
+write.csv(Austria, paste(country_outputs, "Austria.csv", sep=""), row.names=F)
+
 Belgium<-final_categories[final_categories$Country=="Belgium",]
+write.csv(Belgium, paste(country_outputs, "Belgium.csv", sep=""), row.names=F)
+
 Canada<-final_categories[final_categories$Country=="Canada",]
+write.csv(Canada, paste(country_outputs, "Canada.csv", sep=""), row.names=F)
+
 Chile<-final_categories[final_categories$Country=="Chile",]
+write.csv(Chile, paste(country_outputs, "Chile.csv", sep=""), row.names=F)
+
 Colombia<-final_categories[final_categories$Country=="Colombia",]
+write.csv(Colombia, paste(country_outputs, "Colombia.csv", sep=""), row.names=F)
+
 Czech_Republic<-final_categories[final_categories$Country=="Czech Republic",]
+write.csv(Czech_Republic, paste(country_outputs, "Czech Republic.csv", sep=""), row.names=F)
+
 Denmark<-final_categories[final_categories$Country=="Denmark",]
+write.csv(Denmark, paste(country_outputs, "Denmark.csv", sep=""), row.names=F)
+
 Estonia<-final_categories[final_categories$Country=="Estonia",]
+write.csv(Estonia, paste(country_outputs, "Estonia.csv", sep=""), row.names=F)
+
 Finland<-final_categories[final_categories$Country=="Finland",]
+write.csv(Finland, paste(country_outputs, "Finland.csv", sep=""), row.names=F)
+
 France<-final_categories[final_categories$Country=="France",]
+write.csv(France, paste(country_outputs, "France.csv", sep=""), row.names=F)
+
 Germany<-final_categories[final_categories$Country=="Germany",]
+write.csv(Germany, paste(country_outputs, "Germany.csv", sep=""), row.names=F)
+
 Greece<-final_categories[final_categories$Country=="Greece",]
+write.csv(Greece, paste(country_outputs, "Greece.csv", sep=""), row.names=F)
+
 Hungary<-final_categories[final_categories$Country=="Hungary",]
+write.csv(Hungary, paste(country_outputs, "Hungary.csv", sep=""), row.names=F)
+
 Iceland<-final_categories[final_categories$Country=="Iceland",]
+write.csv(Iceland, paste(country_outputs, "Iceland.csv", sep=""), row.names=F)
+
 Ireland<-final_categories[final_categories$Country=="Ireland",]
+write.csv(Ireland, paste(country_outputs, "Ireland.csv", sep=""), row.names=F)
+
 Israel<-final_categories[final_categories$Country=="Israel",]
+write.csv(Israel, paste(country_outputs, "Israel.csv", sep=""), row.names=F)
+
 Italy<-final_categories[final_categories$Country=="Italy",]
+write.csv(Italy, paste(country_outputs, "Italy.csv", sep=""), row.names=F)
+
 Japan<-final_categories[final_categories$Country=="Japan",]
+write.csv(Japan, paste(country_outputs, "Japan.csv", sep=""), row.names=F)
+
 Korea<-final_categories[final_categories$Country=="Korea",]
+write.csv(Korea, paste(country_outputs, "Korea.csv", sep=""), row.names=F)
+
 Latvia<-final_categories[final_categories$Country=="Latvia",]
+write.csv(Latvia, paste(country_outputs, "Latvia.csv", sep=""), row.names=F)
+
 Lithuania<-final_categories[final_categories$Country=="Lithuania",]
+write.csv(Lithuania, paste(country_outputs, "Lithuania.csv", sep=""), row.names=F)
+
 Luxembourg<-final_categories[final_categories$Country=="Luxembourg",]
+write.csv(Luxembourg, paste(country_outputs, "Luxembourg.csv", sep=""), row.names=F)
+
 Mexico<-final_categories[final_categories$Country=="Mexico",]
+write.csv(Mexico, paste(country_outputs, "Mexico.csv", sep=""), row.names=F)
+
 Netherlands<-final_categories[final_categories$Country=="Netherlands",]
+write.csv(Netherlands, paste(country_outputs, "Netherlands.csv", sep=""), row.names=F)
+
 New_Zealand<-final_categories[final_categories$Country=="New Zealand",]
+write.csv(New_Zealand, paste(country_outputs, "New Zealand.csv", sep=""), row.names=F)
+
 Norway<-final_categories[final_categories$Country=="Norway",]
+write.csv(Norway, paste(country_outputs, "Norway.csv", sep=""), row.names=F)
+
 Poland<-final_categories[final_categories$Country=="Poland",]
+write.csv(Poland, paste(country_outputs, "Poland.csv", sep=""), row.names=F)
+
 Portugal<-final_categories[final_categories$Country=="Portugal",]
+write.csv(Portugal, paste(country_outputs, "Portugal.csv", sep=""), row.names=F)
+
 Slovak_Republic<-final_categories[final_categories$Country=="Slovak Republic",]
+write.csv(Slovak_Republic, paste(country_outputs, "Slovak Republic.csv", sep=""), row.names=F)
+
 Slovenia<-final_categories[final_categories$Country=="Slovenia",]
+write.csv(Slovenia, paste(country_outputs, "Slovenia.csv", sep=""), row.names=F)
+
 Spain<-final_categories[final_categories$Country=="Spain",]
+write.csv(Spain, paste(country_outputs, "Spain.csv", sep=""), row.names=F)
+
 Sweden<-final_categories[final_categories$Country=="Sweden",]
+write.csv(Sweden, paste(country_outputs, "Sweden.csv", sep=""), row.names=F)
+
 Switzerland<-final_categories[final_categories$Country=="Switzerland",]
+write.csv(Switzerland, paste(country_outputs, "Switzerland.csv", sep=""), row.names=F)
+
 Turkey<-final_categories[final_categories$Country=="Turkey",]
+write.csv(Turkey, paste(country_outputs, "Turkey.csv", sep=""), row.names=F)
+
 United_Kingdom<-final_categories[final_categories$Country=="United Kingdom",]
+write.csv(United_Kingdom, paste(country_outputs, "United Kingdom.csv", sep=""), row.names=F)
+
 United_States<-final_categories[final_categories$Country=="United States",]
+write.csv(United_States, paste(country_outputs, "United States.csv", sep=""), row.names=F)
 
 
 #Changes from 2018 index
