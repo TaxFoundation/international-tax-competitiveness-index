@@ -153,7 +153,7 @@ table_7_international$`Overall Score`<-formatC(round(table_7_international$`Over
 table_7_international$`Div/Cap Gains Exemption Score`<-formatC(round(table_7_international$`Div/Cap Gains Exemption Score`,digits=1),format = "f",digits=1)
 table_7_international$`Withholding Taxes Score`<-formatC(round(table_7_international$`Withholding Taxes Score`,digits=1),format = "f",digits=1)
 table_7_international$`Tax Treaties Score`<-formatC(round(table_7_international$`Tax Treaties Score`,digits=1),format = "f",digits=1)
-table_7_international$`Regulations Score`<-formatC(round(table_7_international$`Regulations Score`,digits=1),format = "f",digits=1)
+table_7_international$`Anti-Tax Avoidance Score`<-formatC(round(table_7_international$`Anti-Tax Avoidance Score`,digits=1),format = "f",digits=1)
 
 write.csv(table_7_international,paste(final_outputs,"table_7_international.csv",sep=""),row.names=F)
 
@@ -161,7 +161,7 @@ write.csv(table_7_international,paste(final_outputs,"table_7_international.csv",
 ###Table A Corporate####
 
 #Raw Data
-table_a_corporate_raw<-subset(raw_data_2020,raw_data_2020$year==2020)
+table_a_corporate_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
 
 keep<-c("country",
         "corporate_rate",
@@ -174,6 +174,7 @@ keep<-c("country",
         "allowance_corporate_equity",
         "patent_box",
         "r_and_d_credit",
+        "digital_services_tax",
         "corporate_time",
         "profit_payments",
         "other_payments")
@@ -186,7 +187,7 @@ table_a_corporate_raw <- table_a_corporate_raw[order(table_a_corporate_raw$count
 #Text Data
 table_a_corporate_text<-read_csv(paste(source_data,"table_a_corporate.csv",sep=""))
 colnames(table_a_corporate_text)<-names(table_a_corporate_raw)
-table_a_corporate_text<-table_a_corporate_text[2:37,]
+table_a_corporate_text<-table_a_corporate_text[2:38,]
 
 
 #Replace raw data with text data for select columns
@@ -205,6 +206,7 @@ table_a_corporate<-table_a_corporate[c("country","corporate_rate",
                                      "allowance_corporate_equity",
                                      "patent_box",
                                      "r_and_d_credit",
+                                     "digital_services_tax",
                                      "corporate_time",
                                      "profit_payments",
                                      "other_payments")]
@@ -213,6 +215,7 @@ table_a_corporate<-table_a_corporate[c("country","corporate_rate",
 
 #Format variables
 #corporate_rate
+table_a_corporate$corporate_rate<-table_a_corporate$corporate_rate*100
 table_a_corporate$corporate_rate<-paste((formatC(round(table_a_corporate$corporate_rate,digits=1),format = "f",digits=1)),"%",sep="")
 
 #machines_cost_recovery
@@ -231,7 +234,10 @@ table_a_corporate$intangibles_cost_recovery<-paste((formatC(round(table_a_corpor
 table_a_corporate$r_and_d_credit<-paste((formatC(round(table_a_corporate$r_and_d_credit,digits=2),format = "f",digits=2)),sep="")
 
 #patent_box
-table_a_corporate$patent_box<-if_else(table_a_corporate$patent_box==1,"No","Yes")
+table_a_corporate$patent_box<-if_else(table_a_corporate$patent_box==1,"Yes","No")
+
+#digital_services_tax
+table_a_corporate$digital_services_tax<-if_else(table_a_corporate$digital_services_tax==1,"Yes","No")
 
 #corporate_time
 table_a_corporate$corporate_time<-formatC(round(table_a_corporate$corporate_time,digits=0),format = "f",digits=0)
@@ -252,7 +258,7 @@ headers<-c("",
            "",
            "",
            "",
-           "Tax Incentives and Complexity","","","","")
+           "Tax Incentives and Complexity","","","","","")
 columns<-c("Country",
            "Top Marginal Corporate Tax Rate",
            "Loss Carryback (Number of Years)",
@@ -264,6 +270,7 @@ columns<-c("Country",
            "Allowance for Corporate Equity (Rate and Base)",
            "Patent Box",
            "Implied Tax Subsidy Rates on R&D Expenditures",
+           "Digital Services Tax",
            "Corporate Complexity (Time)",
            "Corporate Complexity (Yearly Profit Payments)",
            "Corporate Complexity (Other Yearly Payments)")
@@ -277,7 +284,7 @@ write.csv(table_a_corporate,paste(final_outputs,"table_a_corporate.csv",sep=""),
 #Table B Individual####
 
 #Raw Data
-table_b_individual_raw<-subset(raw_data_2020,raw_data_2020$year==2020)
+table_b_individual_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
 #names(table_b_individual_raw)
 
 keep<-c("country","top_income_rate",
@@ -327,7 +334,7 @@ headers<-c("",
            "",
            "")
 columns<-c("Country",
-           "Top Marginal Income Tax Rate",
+           "Top Statutory Personal Income Tax Rate",
            "Top Income Tax Rate Threshold (a)",
            "Ratio of Marginal to Average Tax Wedge",
            "Income Tax Complexity (Payments)",
@@ -352,7 +359,7 @@ notes_2<-c("(a) Multiple of the average income at which the highest tax bracket 
            "",
            "")
 
-notes_3<-c("(b) After any imputation, credit, or offset.",
+notes_3<-c("(b) After any imputation, credit, or offset. Includes surtaxes.",
            "",
            "",
            "",
@@ -367,7 +374,7 @@ write.csv(table_b_individual,paste(final_outputs,"table_b_individual.csv",sep=""
 
 #Table C Consumption####
 #Raw Data
-table_c_consumption_raw<-subset(raw_data_2020,raw_data_2020$year==2020)
+table_c_consumption_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
 #names(table_c_consumption_raw)
 
 keep<-c("country","vat_rate",
@@ -394,7 +401,7 @@ table_c_consumption$consumption_time<-formatC(round(table_c_consumption$consumpt
 
 #fix US and Canada to add footnote markers
 table_c_consumption$vat_rate[4]<-paste0(table_c_consumption$vat_rate[4]," (b)")
-table_c_consumption$vat_rate[36]<-paste0(table_c_consumption$vat_rate[36]," (c)")
+table_c_consumption$vat_rate[37]<-paste0(table_c_consumption$vat_rate[37]," (c)")
 
 headers<-c("",
            "Consumption Tax Rate",
@@ -443,7 +450,7 @@ write.csv(table_c_consumption,paste(final_outputs,"table_c_consumption.csv",sep=
 
 #Table D Property####
 #Raw Data
-table_d_property_raw<-subset(raw_data_2020,raw_data_2020$year==2020)
+table_d_property_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
 #names(table_d_property_raw)
 
 keep<-c("country","property_tax", 
@@ -454,6 +461,7 @@ keep<-c("country","property_tax",
         "asset_tax",
         "capital_duties",
         "financial_transaction_tax")
+
 table_d_property_raw<-table_d_property_raw[keep]
 table_d_property_raw$property_taxes_deductible<-if_else(table_d_property_raw$property_tax==0.5,1,0)
 
@@ -473,11 +481,11 @@ colnames(table_d_property_text)<-c("country","property_tax",
                                   "asset_tax",
                                   "capital_duties",
                                   "financial_transaction_tax")
-table_d_property_text<-table_d_property_text[2:37,]
+table_d_property_text<-table_d_property_text[2:38,]
 
 
 #Replace raw data with text data for select columns
-replace<-c("property_tax","estate_or_inheritance_tax","transfer_tax","asset_tax")
+replace<-c("property_tax","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax")
 table_d_property_text<-table_d_property_text[replace]
 table_d_property<-table_d_property_raw[,!names(table_d_property_raw) %in% replace]
 table_d_property<-cbind(table_d_property,table_d_property_text)
@@ -499,14 +507,11 @@ table_d_property$property_taxes_deductible<-if_else(table_d_property$property_ta
 #property_tax_collections
 table_d_property$property_tax_collections<-paste((formatC(round(table_d_property$property_tax_collections,digits=1),format = "f",digits=1)),"%",sep="")
 
-#net_wealth
-table_d_property$net_wealth<-if_else(table_d_property$net_wealth==0,"Yes","No")
-
 #capital_duties
-table_d_property$capital_duties<-if_else(table_d_property$capital_duties==0,"Yes","No")
+table_d_property$capital_duties<-if_else(table_d_property$capital_duties==1,"Yes","No")
 
 #financial_transaction_tax
-table_d_property$financial_transaction_tax<-if_else(table_d_property$financial_transaction_tax==0,"Yes","No")
+table_d_property$financial_transaction_tax<-if_else(table_d_property$financial_transaction_tax==1,"Yes","No")
 
 
 headers<-c("",
@@ -602,7 +607,7 @@ write.csv(table_d_property,paste(final_outputs,"table_d_property.csv",sep=""),ro
 
 #Table E International####
 #Raw Data
-table_e_international_raw<-subset(raw_data_2020,raw_data_2020$year==2020)
+table_e_international_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
 names(table_e_international_raw)
 
 keep<-c("country",
@@ -637,7 +642,7 @@ colnames(table_e_international_text)<-c("country",
                                        "cfc_exemption",
                                        "cfc_income",
                                        "thin_capitalization_rules")
-table_e_international_text<-table_e_international_text[2:37,]
+table_e_international_text<-table_e_international_text[2:38,]
 
 
 #Replace raw data with text data for select columns
@@ -664,7 +669,6 @@ table_e_international<-table_e_international[c("country",
 table_e_international$dividends_exemption<-table_e_international$dividends_exemption*100
 table_e_international$dividends_exemption<-paste((formatC(round(table_e_international$dividends_exemption,digits=1),format = "f",digits=1)),"%",sep="")
 
-
 #capital_gains_exemption
 table_e_international$capital_gains_exemption<-table_e_international$capital_gains_exemption*100
 table_e_international$capital_gains_exemption<-paste((formatC(round(table_e_international$capital_gains_exemption,digits=1),format = "f",digits=1)),"%",sep="")
@@ -690,7 +694,7 @@ headers<-c("",
            "",
            "",
            "Tax Treaties",
-           "International Tax Regulations",
+           "Anti-Tax Avoidance Rules",
            "",
            "",
            "")
