@@ -1,6 +1,6 @@
 "country","property_tax","property_taxes_deductible","property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax"
 "","Real Property Taxes","","","Wealth/Estate Taxes","","Capital/Transaction Taxes","","",""
-"Country","Real Property or Land Tax","Real Property Taxes Deductible","Real Property Taxes as % of Capital Stock","Net Wealth Tax","Estate/Inheritance Tax","Transfer Taxes","Asset Taxes","Capital Duties","Financial Transaction Tax"
+"Country","Real Property or Land Tax","Real Property Taxes Deductible","Real Property Taxes as % of Capital Stock","Wealth Tax","Estate/Inheritance Tax","Transfer Taxes","Asset Taxes","Capital Duties","Financial Transaction Tax"
 "Australia","Land Tax Levied by Individual States (a)","No","0.8%","No","None","Stamp Duty on Transfer of Real Property","Bank Tax","No","No"
 "Austria","Tax on Real Property","No","0.1%","No","None","Real Estate Transfer Tax","Bank Tax","No","No"
 "Belgium","Tax on Real Property (b)","Yes","0.6%","Wealth Tax on Selected Assets","Inheritance and Gift Tax","Real Estate Transfer Tax","Bank Tax","No","Yes"
