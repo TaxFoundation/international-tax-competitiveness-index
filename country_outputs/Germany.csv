@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "DE","DEU","Germany",2014,14,67.8624272939205,27,58.9097839161179,28,56.3558904924519,10,69.9574574494037,11,71.2501474535484,12,73.9643797623686
 "DE","DEU","Germany",2015,14,67.1535034042424,25,53.8173188317208,30,55.6283583980839,10,69.9062719876219,10,71.254026179489,12,74.2383234741773
 "DE","DEU","Germany",2016,16,66.6543211043809,26,56.834844477321,29,55.8074401794651,10,70.4896835497648,10,71.5696790108322,12,76.3105498652623

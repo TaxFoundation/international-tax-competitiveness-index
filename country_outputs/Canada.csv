@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "CA","CAN","Canada",2014,25,62.4035488353628,24,60.0525877501979,26,57.6107748571528,9,71.0048419676825,27,56.8350447227177,20,64.9249806082584
 "CA","CAN","Canada",2015,18,65.889673078578,24,55.3718310613112,23,62.2711047519963,7,80.5598357218509,25,57.0831230753638,17,64.7994514264809
 "CA","CAN","Canada",2016,18,64.8315234493821,24,58.4596220036032,24,59.8247174057051,7,81.3653786964819,25,57.5915892360737,18,67.6276267281437

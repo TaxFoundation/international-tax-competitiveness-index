@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "LU","LUX","Luxembourg",2014,3,80.1850046412148,30,53.6923269455184,18,68.6795886643017,1,100,15,67.8422996221568,3,84.732759164268
 "LU","LUX","Luxembourg",2015,3,79.6645042926787,29,49.6500018336931,17,68.3312883852604,2,97.9867609307831,14,67.9033785485128,3,86.4182950321904
 "LU","LUX","Luxembourg",2016,2,79.5913201145921,29,53.6831268056729,18,67.3098197889522,1,100,15,68.2289157644884,3,87.5205551250015

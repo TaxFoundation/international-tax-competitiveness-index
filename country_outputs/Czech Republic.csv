@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "CZ","CZE","Czech Republic",2014,8,74.4676524951932,5,74.6228042863277,3,93.8257312663667,33,41.8501261313717,9,72.3933739984812,8,76.792015831563
 "CZ","CZE","Czech Republic",2015,7,73.7344312055597,5,70.8866043590911,3,93.2547034275414,33,41.7442365102809,8,72.3849555511029,9,76.8735800763299
 "CZ","CZE","Czech Republic",2016,8,73.2099962252153,6,73.3356800037422,4,92.2294822180341,34,41.6907108647448,8,72.728838668194,8,79.6590773205608

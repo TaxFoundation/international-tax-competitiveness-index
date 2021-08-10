@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "GB","GBR","United Kingdom",2014,19,65.4511994269364,20,61.6903851172467,22,63.8870262440817,22,58.7985107144229,33,43.8525603411022,2,96.0221311602218
 "GB","GBR","United Kingdom",2015,20,65.1619204959978,17,59.3835074416569,22,62.7539638585312,23,59.1729004524211,34,43.752420499298,2,95.9824896134007
 "GB","GBR","United Kingdom",2016,20,63.5467710856623,17,62.32741752702,25,59.2853343733597,23,58.7423858530663,34,43.9929791038551,2,96.5592498315075

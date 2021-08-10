@@ -1,4 +1,4 @@
-"country","year","corporate_rank","corporate","consumption_rank","consumption","property_rank","property","income_rank","income","international_rank","international","final_rank","final","ISO_2","ISO_3"
+"country","year","corporate_rank","corporate","consumption_rank","consumption","property_rank","property","income_rank","income","cross_border_rank","cross_border","final_rank","final","ISO_2","ISO_3"
 "Australia",2018,29,56.112936021124,7,78.5852624595986,4,80.498871594724,17,67.4474571766837,27,60.1435664614076,11,68.1259061501786,"AU","AUS"
 "Austria",2018,19,63.5392006382203,10,70.0547730183415,14,65.3810125017727,31,49.9463697621401,6,83.8283234853896,13,66.0222150293667,"AT","AUT"
 "Belgium",2018,17,64.4065214004973,26,50.7136746312125,30,45.9649880565085,9,76.7995459714978,10,76.4852813564392,21,60.1645085379128,"BE","BEL"

@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "MX","MEX","Mexico",2014,29,56.4939547931724,31,53.1919721133377,9,83.1617351051853,29,48.9236347838388,10,72.3488679497391,37,32.1077734983801
 "MX","MEX","Mexico",2015,33,53.2275660322069,32,48.6961492414325,18,66.9333109034239,27,52.5306161758315,9,72.3827740655374,37,32.5220434243974
 "MX","MEX","Mexico",2016,31,53.1036194162048,32,52.2103149669364,16,68.2770492773482,25,53.8970044237798,9,72.5608778392455,36,38.2400373325692
