@@ -14,7 +14,7 @@ subcategories_2021 <- read_csv(paste(final_outputs,"subcategories_2021.csv",sep=
 table_1_results <- final_2021
 
 #Select variables
-keep <- c("country","final_rank","final","corporate_rank","income_rank","consumption_rank","property_rank","international_rank")
+keep <- c("country","final_rank","final","corporate_rank","income_rank","consumption_rank","property_rank","cross_border_rank")
 table_1_results <- table_1_results[keep]
 
 #Sort by rank
@@ -138,24 +138,24 @@ table_6_property$`Capital/Transaction Taxes Score`<-formatC(round(table_6_proper
 write.csv(table_6_property,paste(final_outputs,"table_6_property.csv",sep=""),row.names=F)
 
 
-###Table 7 International####
-table_7_international<-subcategories_2021
-table_7_international<-merge(table_7_international,final_2021,by=c("country"))
+###Table 7 Cross-Border####
+table_7_cross_border<-subcategories_2021
+table_7_cross_border<-merge(table_7_cross_border,final_2021,by=c("country"))
 
-#names(table_7_international)
+#names(table_7_cross_border)
 
-keep<-c("country","international_rank","international","territorial_rank","territorial","withholding_taxes_rank","withholding_taxes","tax_treaties_rank", "tax_treaties", "international_regulations_rank","international_regulations")
-table_7_international<-table_7_international[keep]
+keep<-c("country","cross_border_rank","cross_border","territorial_rank","territorial","withholding_taxes_rank","withholding_taxes","tax_treaties_rank", "tax_treaties", "international_regulations_rank","international_regulations")
+table_7_cross_border<-table_7_cross_border[keep]
 
-colnames(table_7_international)<-c("Country","Overall Rank","Overall Score", "Div/Cap Gains Exemption Rank","Div/Cap Gains Exemption Score","Withholding Taxes Rank","Withholding Taxes Score","Tax Treaties Rank","Tax Treaties Score","Anti-Tax Avoidance Rank","Anti-Tax Avoidance Score")
+colnames(table_7_cross_border)<-c("Country","Overall Rank","Overall Score", "Div/Cap Gains Exemption Rank","Div/Cap Gains Exemption Score","Withholding Taxes Rank","Withholding Taxes Score","Tax Treaties Rank","Tax Treaties Score","Anti-Tax Avoidance Rank","Anti-Tax Avoidance Score")
 
-table_7_international$`Overall Score`<-formatC(round(table_7_international$`Overall Score`,digits=1),format = "f",digits=1)
-table_7_international$`Div/Cap Gains Exemption Score`<-formatC(round(table_7_international$`Div/Cap Gains Exemption Score`,digits=1),format = "f",digits=1)
-table_7_international$`Withholding Taxes Score`<-formatC(round(table_7_international$`Withholding Taxes Score`,digits=1),format = "f",digits=1)
-table_7_international$`Tax Treaties Score`<-formatC(round(table_7_international$`Tax Treaties Score`,digits=1),format = "f",digits=1)
-table_7_international$`Anti-Tax Avoidance Score`<-formatC(round(table_7_international$`Anti-Tax Avoidance Score`,digits=1),format = "f",digits=1)
+table_7_cross_border$`Overall Score`<-formatC(round(table_7_cross_border$`Overall Score`,digits=1),format = "f",digits=1)
+table_7_cross_border$`Div/Cap Gains Exemption Score`<-formatC(round(table_7_cross_border$`Div/Cap Gains Exemption Score`,digits=1),format = "f",digits=1)
+table_7_cross_border$`Withholding Taxes Score`<-formatC(round(table_7_cross_border$`Withholding Taxes Score`,digits=1),format = "f",digits=1)
+table_7_cross_border$`Tax Treaties Score`<-formatC(round(table_7_cross_border$`Tax Treaties Score`,digits=1),format = "f",digits=1)
+table_7_cross_border$`Anti-Tax Avoidance Score`<-formatC(round(table_7_cross_border$`Anti-Tax Avoidance Score`,digits=1),format = "f",digits=1)
 
-write.csv(table_7_international,paste(final_outputs,"table_7_international.csv",sep=""),row.names=F)
+write.csv(table_7_cross_border,paste(final_outputs,"table_7_cross_border.csv",sep=""),row.names=F)
 
 
 ###Table A Corporate####
@@ -605,10 +605,10 @@ table_d_property<-rbind(headers,columns,table_d_property,notes_1,notes_2,notes_3
 write.csv(table_d_property,paste(final_outputs,"table_d_property.csv",sep=""),row.names = F)
 
 
-#Table E International####
+#Table E Cross-Border####
 #Raw Data
-table_e_international_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
-names(table_e_international_raw)
+table_e_cross_border_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
+names(table_e_cross_border_raw)
 
 keep<-c("country",
         "dividends_exemption",
@@ -620,17 +620,17 @@ keep<-c("country",
         "tax_treaties",
         "cfc_rules",
         "thin_capitalization_rules")
-table_e_international_raw<-table_e_international_raw[keep]
-table_e_international_raw$cfc_income<-table_e_international_raw$cfc_rules
-table_e_international_raw$cfc_exemption<-table_e_international_raw$cfc_rules
+table_e_cross_border_raw<-table_e_cross_border_raw[keep]
+table_e_cross_border_raw$cfc_income<-table_e_cross_border_raw$cfc_rules
+table_e_cross_border_raw$cfc_exemption<-table_e_cross_border_raw$cfc_rules
 
-table_e_international_raw <- table_e_international_raw[order(table_e_international_raw$country),]
+table_e_cross_border_raw <- table_e_cross_border_raw[order(table_e_cross_border_raw$country),]
 
 #Text Data
-table_e_international_text<-read_csv(paste(source_data,"table_e_international.csv",sep=""))
+table_e_cross_border_text<-read_csv(paste(source_data,"table_e_cross_border.csv",sep=""))
 
 
-colnames(table_e_international_text)<-c("country",
+colnames(table_e_cross_border_text)<-c("country",
                                        "dividends_exemption",
                                        "capital_gains_exemption",
                                        "country_limitations",
@@ -642,16 +642,16 @@ colnames(table_e_international_text)<-c("country",
                                        "cfc_exemption",
                                        "cfc_income",
                                        "thin_capitalization_rules")
-table_e_international_text<-table_e_international_text[2:38,]
+table_e_cross_border_text<-table_e_cross_border_text[2:38,]
 
 
 #Replace raw data with text data for select columns
 replace<-c("country_limitations","cfc_rules","cfc_income","cfc_exemption","thin_capitalization_rules")
-table_e_international_text<-table_e_international_text[replace]
-table_e_international<-table_e_international_raw[,!names(table_e_international_raw) %in% replace]
-table_e_international<-cbind(table_e_international,table_e_international_text)
+table_e_cross_border_text<-table_e_cross_border_text[replace]
+table_e_cross_border<-table_e_cross_border_raw[,!names(table_e_cross_border_raw) %in% replace]
+table_e_cross_border<-cbind(table_e_cross_border,table_e_cross_border_text)
 
-table_e_international<-table_e_international[c("country",
+table_e_cross_border<-table_e_cross_border[c("country",
                                              "dividends_exemption",
                                              "capital_gains_exemption",
                                              "country_limitations",
@@ -666,24 +666,24 @@ table_e_international<-table_e_international[c("country",
 
 #Format variables
 #dividends_exemption
-table_e_international$dividends_exemption<-table_e_international$dividends_exemption*100
-table_e_international$dividends_exemption<-paste((formatC(round(table_e_international$dividends_exemption,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_cross_border$dividends_exemption<-table_e_cross_border$dividends_exemption*100
+table_e_cross_border$dividends_exemption<-paste((formatC(round(table_e_cross_border$dividends_exemption,digits=1),format = "f",digits=1)),"%",sep="")
 
 #capital_gains_exemption
-table_e_international$capital_gains_exemption<-table_e_international$capital_gains_exemption*100
-table_e_international$capital_gains_exemption<-paste((formatC(round(table_e_international$capital_gains_exemption,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_cross_border$capital_gains_exemption<-table_e_cross_border$capital_gains_exemption*100
+table_e_cross_border$capital_gains_exemption<-paste((formatC(round(table_e_cross_border$capital_gains_exemption,digits=1),format = "f",digits=1)),"%",sep="")
 
 #dividends_withholding_tax
-table_e_international$dividends_withholding_tax<-table_e_international$dividends_withholding_tax*100
-table_e_international$dividends_withholding_tax<-paste((formatC(round(table_e_international$dividends_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_cross_border$dividends_withholding_tax<-table_e_cross_border$dividends_withholding_tax*100
+table_e_cross_border$dividends_withholding_tax<-paste((formatC(round(table_e_cross_border$dividends_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
 
 #interest_withholding_tax
-table_e_international$interest_withholding_tax<-table_e_international$interest_withholding_tax*100
-table_e_international$interest_withholding_tax<-paste((formatC(round(table_e_international$interest_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_cross_border$interest_withholding_tax<-table_e_cross_border$interest_withholding_tax*100
+table_e_cross_border$interest_withholding_tax<-paste((formatC(round(table_e_cross_border$interest_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
 
 #royalties_withholding_tax
-table_e_international$royalties_withholding_tax<-table_e_international$royalties_withholding_tax*100
-table_e_international$royalties_withholding_tax<-paste((formatC(round(table_e_international$royalties_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_cross_border$royalties_withholding_tax<-table_e_cross_border$royalties_withholding_tax*100
+table_e_cross_border$royalties_withholding_tax<-paste((formatC(round(table_e_cross_border$royalties_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
 
 
 headers<-c("",
@@ -712,6 +712,6 @@ columns<-c("Country",
            "Controlled Foreign Corporation Rules: Exemptions",
            "Interest Deduction Limitations")
 
-table_e_international<-rbind(headers,columns,table_e_international)
+table_e_cross_border<-rbind(headers,columns,table_e_cross_border)
 
-write.csv(table_e_international,paste(final_outputs,"table_e_international.csv",sep=""),row.names = F)
+write.csv(table_e_cross_border,paste(final_outputs,"table_e_cross_border.csv",sep=""),row.names = F)
