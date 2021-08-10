@@ -150,28 +150,28 @@ The next table shows the correlation coefficients between the subcategory scores
 
 | Subcategory	| Correlation Coefficient with the Final Score|
 |---|---|
-|Corporate Rate| 0.30
-|Cost Recovery|	0.52
-|Incentives/Complexity| 0.48
-|Income Taxes| 0.41
-|Income Tax Complexity|	0.35
-|Capital Gains and Dividends| 0.43
+|Corporate Rate| 0.25
+|Cost Recovery|	0.42
+|Incentives/Complexity| 0.56
+|Income Taxes| 0.36
+|Income Tax Complexity|	0.36
+|Capital Gains and Dividends| 0.35
 |Consumption Tax Rate| 0.14
-|Consumption Tax Base| 0.28
-|Consumption Tax Complexity| 0.36
-|Real Property Taxes| 0.57
-|Wealth/Estate Taxes| 0.40
-|Capital/Transaction Taxes| 0.43
-|Dividends/Capital Gains Exemption (Territoriality)| 0.44
+|Consumption Tax Base| 0.34
+|Consumption Tax Complexity| 0.32
+|Real Property Taxes| 0.61
+|Wealth/Estate Taxes| 0.44
+|Capital/Transaction Taxes| 0.49
+|Dividends/Capital Gains Exemption (Territoriality)| 0.35
 |Withholding Taxes| 0.56
-|Tax Treaties| -0.15
-|International Tax Regulations|	0.35
+|Tax Treaties| -0.14
+|International Tax Regulations|	0.37
 
 ### The Methodology
-The method used to construct the _Index_ relies heavily on normalizing variables using z-scores, scaled around zero. To test whether this method significantly alters the final score, we also calculated the _Index_ by normalizing variables on a scale of 0 to 10. Though the final results are not perfectly identical, the correlation between the final score developed using z-scores and the alternative normalization method is 0.98 for the 2020 scores.
+The method used to construct the _Index_ relies heavily on normalizing variables using z-scores, scaled around zero. To test whether this method significantly alters the final score, we also calculated the _Index_ by normalizing variables on a scale of 0 to 10. Though the final results are not perfectly identical, the correlation between the final score developed using z-scores and the alternative normalization method is 0.98 for the 2021 scores.
 
 ## Explanation of Data
-A more thorough description of these data and how the Tax Foundation uses them is contained within the [*International Tax Competitiveness Index*](https://taxfoundation.org/publications/international-tax-competitiveness-index/). When possible, the data is from the current year as of July (e.g., 2020 data for the _2020 Index_). If current data were not available, there is a time lag, as noted after each variable description.
+A more thorough description of these data and how the Tax Foundation uses them is contained within the [*International Tax Competitiveness Index*](https://taxfoundation.org/publications/international-tax-competitiveness-index/). When possible, the data is from the current year as of July (e.g., 2021 data for the _2021 Index_). If current data were not available, there is a time lag, as noted after each variable description.
 
 
 | Name | Description |
@@ -188,31 +188,32 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `intangibles_cost_recovery` | Percentage of the present value cost of intangibles that corporations can write off over the depreciable life of the asset. 1-year time lag. |
 | `inventory` | Score given based on a country’s allowable inventory cost accounting methods. Countries that allow Last In, First Out (LIFO) score `1`; countries that allow Average Cost of Inventory score `0.5`; countries that only allow First In, First Out (FIFO) score `0`. No time lag. |
 | `allowance_corporate_equity` | Indicates which countries have an allowance for corporate equity (sometimes also referred to as “notional interest deduction”), which gives businesses a deduction based on their (additional) equity stock. Countries with allowances for corporate equity are marked with `1`; countries without them are marked as `0`. No time lag. |
-| `patent_box` | Indicates which countries have patent boxes, which create lower tax rates for corporate income generated through patented products. Countries without patent boxes are marked with `1`; countries with patent boxes are marked as `0`. No time lag. |
+| `patent_box` | Indicates which countries have patent boxes, which create lower tax rates for corporate income generated through patented products. Countries without patent boxes are marked with `0`; countries with patent boxes are marked as `1`. No time lag. |
 | `r_and_d_credit` | Indicates the extent to which countries offer research and development (R&D) tax credits or other expenditure-based R&D tax incentives, measured as the implied tax subsidy rates on R&D expenditures. The variable is the average of profitable and loss-making SMEs and large businesses. 1-year time lag. |
-| `corporate_time` | Complexity of tax system measured by average time in hours needed to comply with a country's corporate tax requirements. 2-year time lag. |
-| `profit_payments` | Complexity of tax system measured by number of yearly profit payments. 2-year time lag. |
-| `other_payments` | Complexity of tax system measured by number of other yearly tax payments. 2-year time lag. |
+| `digital_services_tax` | Indicates whether a country has a digital services tax which is a tax targeted at digital companies over a certain size threshold and the tax rate applies to gross revenues. No time lag. |
+| `corporate_time` | Complexity of tax system measured by average time in hours needed to comply with a country's corporate tax requirements. 3-year time lag. |
+| `profit_payments` | Complexity of tax system measured by number of yearly profit payments. 3-year time lag. |
+| `other_payments` | Complexity of tax system measured by number of other yearly tax payments. 3-year time lag. |
 | `top_income_rate` | The top marginal income tax rate. 1-year lag. |
 | `threshold_top_income_rate` | Measure to show at what level the top statutory personal income tax rate applies, expressed as a multiple of the average income. 1-year time lag. |
 | `tax_wedge` | The total tax cost of labor in a country (includes individual income tax and payroll tax). This is the average of the ratio of the marginal tax wedge to the average tax wedge for employees at the 67th, 100th, 133rd, and 167th percentiles. 1-year time lag. |
-| `labor_payments` | Complexity of tax system measured by number of yearly labor tax payments. 2-year time lag. |
-| `labor_time` | Complexity of tax system measured by average time in hours needed to comply with a country’s labor tax requirements. 2-year time lag. |
+| `labor_payments` | Complexity of tax system measured by number of yearly labor tax payments. 3-year time lag. |
+| `labor_time` | Complexity of tax system measured by average time in hours needed to comply with a country’s labor tax requirements.32-year time lag. |
 | `capital_gains_rate` | Tax rate for capital gains after any imputation, credit, or offset. When the capital gains tax rate varies by type of asset sold, the tax rate applying to the sale of listed shares after an extended period of time is used. No time lag. |
 | `index_capital_gains` | Whether a country indexes basis for purposes of capital gains tax. No longer in use. |
 | `dividends_rate` |  The total top marginal dividend tax rate after any imputation or credit system. No time lag. |
 | `vat_rate` | The national (or average) consumption tax rate (either sales tax or VAT) for a country. No time lag. |
 | `vat_threshold` | The upper sales limit in U.S. dollars for which a corporation does not need to pay consumption taxes. No time lag. |
 | `vat_base` | The ratio of consumption taxes collected to potential collections if standard consumption tax rates were applied equally across all goods/services. This ratio measures exemptions to the taxes and/or noncompliance. 2-year time lag. |
-| `consumption_time` | Complexity of consumption taxes measured by average time in hours needed for corporations to comply with a country's consumption tax requirements. 2-year time lag. |
+| `consumption_time` | Complexity of consumption taxes measured by average time in hours needed for corporations to comply with a country's consumption tax requirements. 3-year time lag. |
 | `property_tax` | Indicates whether capital additions to land are taxed. Fully taxing land and improvements is marked `0`; allowing deductions of taxes on improvements from corporate income taxes is marked `0.5`; taxing only land or not having a property tax is marked `1`. No time lag. |
 | `property_tax_collections` | Property taxes collected in a country as a percentage of capital stock. 2-year time lag. |
-| `net_wealth` | Indicates the existence of taxes on net wealth. Countries with wealth taxes are marked `0`; those without are marked `1`. No time lag. |
-| `estate_or_inheritance_tax` | Indicates the existence of taxes on estates or inheritances. Countries with such taxes are marked `0`; those without are marked `1`. No time lag. |
-| `transfer_tax` | Indicates the existence of taxes on the transfer (buying and selling) of real property. Countries with property transfer taxes are marked `0`; those without are marked `1`. No time lag. |
-| `asset_tax` | Indicates the existence of a tax on net corporate assets. Countries with an asset tax are marked `0`; those without are marked `1`. No time lag. |
-| `capital_duties` | Indicates the existence of a tax on the issuance of shares of stock. Countries with a capital duties tax are marked `0`; those without are marked `1`. No time lag. |
-| `financial_transaction_tax` | Indicates the existence of a tax on the transfer of financial assets. Countries with financial transaction taxes are marked `0`; those without are marked `1`. No time lag. |
+| `net_wealth` | Indicates the existence of taxes on net wealth. Countries with wealth taxes are marked `1`; countries with wealth taxes on only some asset classes are marked `0.5`; those without are marked `0`. No time lag. |
+| `estate_or_inheritance_tax` | Indicates the existence of taxes on estates or inheritances. Countries with such taxes are marked `1`; those without are marked `0`. No time lag. |
+| `transfer_tax` | Indicates the existence of taxes on the transfer (buying and selling) of real property. Countries with property transfer taxes are marked `1`; those without are marked `0`. No time lag. |
+| `asset_tax` | Indicates the existence of a tax on net corporate assets. Countries with an asset tax are marked `1`; those without are marked `0`. No time lag. |
+| `capital_duties` | Indicates the existence of a tax on the issuance of shares of stock. Countries with a capital duties tax are marked `1`; those without are marked `0`. No time lag. |
+| `financial_transaction_tax` | Indicates the existence of a tax on the transfer of financial assets. Countries with financial transaction taxes are marked `1`; those without are marked `0`. No time lag. |
 | `dividends_exemption` | Percentage of dividends paid from foreign subsidiaries which are exempt from domestic taxes. No time lag. |
 | `capital_gains_exemption` | Percentage of capital gains from foreign investments which are exempted from domestic taxes. No time lag. |
 | `country_limitations` | Indicates whether a country has certain exemptions to a territorial tax system based on the source of the foreign income. Existence of exemptions are marked as `1`; no exemptions are marked `0`. No time lag. |
@@ -223,4 +224,4 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `cfc_rules` | Indicates existence and strictness of Controlled Foreign Corporation (CFC) rules. This combines measures of whether CFC rules exist, whether they tax passive or active income, and whether they provide exemptions. Countries without CFC rules are marked `0`; those with the strictest are marked `1`, countries in between have various scores. No time lag. |
 | `thin_capitalization_rules` | Indicates whether a country puts thin capitalization restrictions on companies’ debt-to-asset ratios. Countries that limit interest deductions with only transfer pricing regulations are scored as `0`. Countries with debt-to-equity ratios receive a score of `0.5`, and countries with interest-to-pretax-earning limits receive a score of `1`. No time lag. |
 
-The _ITCI_ uses the most up-to-date data available as of July 2020.
+The _ITCI_ uses the most up-to-date data available as of July 2021.
