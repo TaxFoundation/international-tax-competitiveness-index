@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "IT","ITA","Italy",2014,35,50.8148001643908,19,61.8631978108472,34,48.3059663551404,19,60.3084570308809,36,37.9981747505604,26,59.7266057249057
 "IT","ITA","Italy",2015,35,47.4863088640937,26,53.3839092313278,35,42.5890798516369,19,60.4147326973556,36,39.0069486225986,28,56.8470229636555
 "IT","ITA","Italy",2016,36,45.8592747691141,28,55.2233024581426,35,42.3325911171195,21,60.6606294746892,36,37.8281817846433,27,60.611617924144

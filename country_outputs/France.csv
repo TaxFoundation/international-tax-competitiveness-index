@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "FR","FRA","France",2014,37,42.0686042171131,36,39.1029508005099,36,36.8513647308083,18,61.3109625185679,37,30.2510584867817,17,67.1965670964745
 "FR","FRA","France",2015,37,42.0917031483149,37,33.9445717596238,36,39.86317294644,21,59.9511996757832,37,30.0913040574631,15,67.4426561315095
 "FR","FRA","France",2016,37,42.8176881171186,34,44.0237466569271,36,40.6299335964129,22,60.3340291382101,37,30.141902426696,15,70.0352711342714

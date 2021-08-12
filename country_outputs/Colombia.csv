@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "CO","COL","Colombia",2014,17,66.3561700692861,33,48.2021910990153,2,97.9455257078857,13,68.2428058290132,8,74.3066564608838,35,36.9642377688102
 "CO","COL","Colombia",2015,25,59.6578898509402,35,34.6344695336058,1,100,13,66.8346055291221,23,59.5120081645389,35,36.5215667773331
 "CO","COL","Colombia",2016,29,57.1253749392759,37,31.6776967808954,1,100,14,67.7516087939311,23,59.6350121077721,35,42.3233978705206

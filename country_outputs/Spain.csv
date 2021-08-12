@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "ES","ESP","Spain",2014,34,51.4116090453302,34,40.9848133656111,30,55.134820498443,15,64.0741568801221,31,48.4473518598755,25,60.8228746374783
 "ES","ESP","Spain",2015,31,53.807665949895,33,40.4675736524892,27,59.2252693081014,15,63.8813313634991,33,48.0842263203402,20,63.7382492041911
 "ES","ESP","Spain",2016,28,57.8706773098973,30,52.4667840281134,17,67.4779865302358,16,65.0085363185903,33,47.8827937189664,17,68.5289626536184

@@ -272,7 +272,7 @@ corporate_index<-c("corporate_rate","cost_recovery","incentives")
 consumption_index<-c("consumption_tax_rate","consumption_tax_base","consumption_tax_complexity")
 property_index<-c("real_property_tax","wealth_taxes","capital_taxes")
 income_index<-c("capital_gains_and_dividends","income_tax","income_tax_complexity")
-international_index<-c("territorial","withholding_taxes","tax_treaties","international_regulations")
+cross_border_index<-c("territorial","withholding_taxes","tax_treaties","international_regulations")
 
 
 categories<-data.frame(country=raw_data$country,
@@ -282,7 +282,7 @@ categories$corporate<-apply((subcategories[corporate_index]*(1/length(corporate_
 categories$consumption<-apply((subcategories[consumption_index]*(1/length(consumption_index))),1,sum)
 categories$property<-apply((subcategories[property_index]*(1/length(property_index))),1,sum)
 categories$income<-apply((subcategories[income_index]*(1/length(income_index))),1,sum)
-categories$international<-apply((subcategories[international_index]*(1/length(international_index))),1,sum)
+categories$cross_border<-apply((subcategories[cross_border_index]*(1/length(cross_border_index))),1,sum)
 categories$final<-apply((categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
 write.csv(subset(categories,categories$year==2021),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
@@ -298,7 +298,7 @@ alternate_categories$corporate<-apply((alternate_subcategories[corporate_index]*
 alternate_categories$consumption<-apply((alternate_subcategories[consumption_index]*(1/length(consumption_index))),1,sum)
 alternate_categories$property<-apply((alternate_subcategories[property_index]*(1/length(property_index))),1,sum)
 alternate_categories$income<-apply((alternate_subcategories[income_index]*(1/length(income_index))),1,sum)
-alternate_categories$international<-apply((alternate_subcategories[international_index]*(1/length(international_index))),1,sum)
+alternate_categories$cross_border<-apply((alternate_subcategories[cross_border_index]*(1/length(cross_border_index))),1,sum)
 alternate_categories$final<-apply((alternate_categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
 #normalize all category and subcategory scores
@@ -427,7 +427,7 @@ categories<-ddply(categories,
                   consumption_rank = rank(-consumption,ties.method = "min"),
                   property_rank = rank(-property,ties.method = "min"),
                   income_rank = rank(-income,ties.method = "min"),
-                  international_rank = rank(-international,ties.method = "min"),
+                  cross_border_rank = rank(-cross_border,ties.method = "min"),
                   final_rank = rank(-final,ties.method = "min")                      
 )
 
@@ -441,7 +441,7 @@ alternate_categories<-ddply(alternate_categories,
                      consumption_rank = rank(-consumption,ties.method = "min"),
                      property_rank = rank(-property,ties.method = "min"),
                      income_rank = rank(-income,ties.method = "min"),
-                     international_rank = rank(-international,ties.method = "min"),
+                     cross_border_rank = rank(-cross_border,ties.method = "min"),
                      final_rank = rank(-final,ties.method = "min")                      
 )
 
@@ -544,7 +544,7 @@ final_categories<-final_categories[c("ISO_2","ISO_3","country","year",
                                      "income_rank","income",
                                      "consumption_rank","consumption",
                                      "property_rank","property",
-                                     "international_rank","international")]
+                                     "cross_border_rank","cross_border")]
 
 #The following file is used for country profile pages and tax-competition.org; do not edit
 write.csv(final_categories,paste(final_outputs,"final_categories.csv",sep=""),row.names=F)
@@ -557,7 +557,7 @@ colnames(final_categories)<-c("ISO_2","ISO_3","Country","Year",
                               "Income Rank","Income Score",
                               "Consumption Rank","Consumption Score",
                               "Property Rank","Property Score",
-                              "International Rank","International Score")
+                              "Cross-Border Rank","Cross-Border Score")
 
 Australia<-final_categories[final_categories$Country=="Australia",]
 write.csv(Australia, paste(country_outputs, "Australia.csv", sep=""), row.names=F)

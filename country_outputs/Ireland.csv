@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "IE","IRL","Ireland",2014,18,65.7905163788543,4,85.9121098462664,31,52.963282387695,25,55.6646724403522,20,63.2408060361693,18,66.8080245222623
 "IE","IRL","Ireland",2015,21,64.7862453428145,4,82.442411685806,32,51.7871057919023,24,55.9235114863306,20,62.5890844751242,16,66.4042646700866
 "IE","IRL","Ireland",2016,21,63.4836440051504,4,80.299263893744,32,51.3758259404079,24,56.9436110056799,21,62.5743877143037,16,69.7396165301073

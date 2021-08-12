@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "KR","KOR","Korea",2014,23,64.0477975038343,23,60.714473719287,17,68.9435976117447,5,90.1169174953762,32,48.4064842406597,32,47.429653786683
 "KR","KOR","Korea",2015,16,66.4555351658689,19,57.4349266493127,16,71.22751407708,3,94.2676946095729,32,48.4859641195602,32,50.2486961624741
 "KR","KOR","Korea",2016,17,65.8302823489123,19,61.0013054182213,15,69.4013769183812,3,95.5127213856346,31,48.475765195067,32,54.8534621259241

@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "TR","TUR","Turkey",2014,12,69.6541796855645,9,71.0304210343253,8,83.413393133738,26,53.1071659644085,22,61.3818461147322,14,71.4340547625178
 "TR","TUR","Turkey",2015,11,69.5408360450264,10,67.1667356004578,8,83.7474179484901,26,54.4145681624013,22,61.4689874767658,13,71.1439813622648
 "TR","TUR","Turkey",2016,13,68.7329442828933,10,70.7531435430323,8,83.0824987394835,26,53.4007549659198,22,61.4774682036597,13,73.7615877484632

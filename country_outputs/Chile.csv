@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","International Rank","International Score"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "CL","CHL","Chile",2014,33,54.4046149689045,13,67.2444448692465,25,58.9011549515523,27,50.2232822812635,13,70.452625645208,36,34.4151035385384
 "CL","CHL","Chile",2015,32,53.5417459117569,15,60.5305665091448,24,60.3579034662808,30,49.8555561299873,12,70.6528963377045,36,33.6674227849365
 "CL","CHL","Chile",2016,34,47.3878960446379,20,60.8822057525661,30,52.7236918060427,30,49.5621087100329,13,70.8716017197746,37,29.9317075953768
