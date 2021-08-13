@@ -1,37 +1,38 @@
-"ISO_2","ISO_3","country","year","exists","active","exemption"
-"AU","AUS","Australia",2015,1,0,0
-"AT","AUT","Austria",2015,0,0,0
-"BE","BEL","Belgium",2015,0,0,0
-"CA","CAN","Canada",2015,1,0,0
-"CL","CHL","Chile",2015,0,0,0
-"CZ","CZE","Czech Republic",2015,0,0,0
-"DK","DNK","Denmark",2015,1,1,0
-"EE","EST","Estonia",2015,1,1,0
-"FI","FIN","Finland",2015,1,1,0
-"FR","FRA","France",2015,1,1,0
-"DE","DEU","Germany",2015,1,0,0
-"GR","GRC","Greece",2015,1,0,0
-"HU","HUN","Hungary",2015,1,1,0
-"IS","ISL","Iceland",2015,1,1,0
-"IE","IRL","Ireland",2015,0,0,0
-"IL","ISR","Israel",2015,1,0,1
-"IT","ITA","Italy",2015,1,1,0
-"JP","JPN","Japan",2015,1,1,0
-"KR","KOR","Korea",2015,1,1,0
-"LV","LVA","Latvia",2015,0,0,0
-"LT","LTU","Lithuania",2015,1,0,0
-"LU","LUX","Luxembourg",2015,0,0,0
-"MX","MEX","Mexico",2015,1,1,1
-"NL","NLD","Netherlands",2015,0,0,0
-"NZ","NZL","New Zealand",2015,1,0,0
-"NO","NOR","Norway",2015,1,1,0
-"PL","POL","Poland",2015,1,1,0
-"PT","PRT","Portugal",2015,1,1,0
-"SK","SVK","Slovak Republic",2015,0,0,0
-"SI","SVN","Slovenia",2015,0,0,0
-"ES","ESP","Spain",2015,1,0,0
-"SE","SWE","Sweden",2015,1,1,0
-"CH","CHE","Switzerland",2015,0,0,0
-"TR","TUR","Turkey",2015,1,1,1
-"GB","GBR","United Kingdom",2015,1,1,0
-"US","USA","United States",2015,1,0,0
+ISO_2,ISO_3,country,year,exists,active,no_exemption
+AU,AUS,Australia,2015,1,0,0
+AT,AUT,Austria,2015,0,0,0
+BE,BEL,Belgium,2015,0,0,0
+CA,CAN,Canada,2015,1,0,0
+CL,CHL,Chile,2015,0,0,0
+CO,COL,Colombia,2015,0,0,0
+CZ,CZE,Czech Republic,2015,0,0,0
+DK,DNK,Denmark,2015,1,0.5,0.5
+EE,EST,Estonia,2015,0,0,0
+FI,FIN,Finland,2015,1,0.5,0
+FR,FRA,France,2015,1,1,0
+DE,DEU,Germany,2015,1,0,0
+GR,GRC,Greece,2015,1,0,0
+HU,HUN,Hungary,2015,1,1,0
+IS,ISL,Iceland,2015,1,1,0
+IE,IRL,Ireland,2015,0,0,0
+IL,ISR,Israel,2015,1,0,0
+IT,ITA,Italy,2015,1,1,0
+JP,JPN,Japan,2015,1,1,0
+KR,KOR,Korea,2015,1,0.5,0
+LV,LVA,Latvia,2015,0,0,0
+LT,LTU,Lithuania,2015,1,0,0
+LU,LUX,Luxembourg,2015,0,0,0
+MX,MEX,Mexico,2015,1,0.5,0.5
+NL,NLD,Netherlands,2015,0,0,0
+NZ,NZL,New Zealand,2015,1,0,0
+NO,NOR,Norway,2015,1,0.5,0
+PL,POL,Poland,2015,1,0.5,0
+PT,PRT,Portugal,2015,1,1,0
+SK,SVK,Slovak Republic,2015,0,0,0
+SI,SVN,Slovenia,2015,0,0,0
+ES,ESP,Spain,2015,1,0,0
+SE,SWE,Sweden,2015,1,1,0
+CH,CHE,Switzerland,2015,0,0,0
+TR,TUR,Turkey,2015,1,0.5,0.5
+GB,GBR,United Kingdom,2015,1,0.5,0
+US,USA,United States,2015,1,0,0

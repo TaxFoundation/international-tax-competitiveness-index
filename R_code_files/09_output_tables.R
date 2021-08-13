@@ -1,19 +1,20 @@
 #output tables code
 #Read in relevant spreadsheets
 
-raw_data_2020 <- read_csv(paste(final_outputs,"raw_data_2020.csv",sep=""))
+raw_data_2021 <- read_csv(paste(final_outputs,"raw_data_2021.csv",sep=""))
 
 final_2018 <- read_csv(paste(final_outputs,"data_2018_run.csv",sep=""))
 final_2019 <- read_csv(paste(final_outputs,"data_2019_run.csv",sep=""))
 final_2020 <- read_csv(paste(final_outputs,"data_2020_run.csv",sep=""))
+final_2021 <- read_csv(paste(final_outputs,"data_2021_run.csv",sep=""))
 
-subcategories_2020 <- read_csv(paste(final_outputs,"subcategories_2020.csv",sep=""))
+subcategories_2021 <- read_csv(paste(final_outputs,"subcategories_2021.csv",sep=""))
 
 ###Table 1 Results####
-table_1_results <- final_2020
+table_1_results <- final_2021
 
 #Select variables
-keep <- c("country","final_rank","final","corporate_rank","income_rank","consumption_rank","property_rank","international_rank")
+keep <- c("country","final_rank","final","corporate_rank","income_rank","consumption_rank","property_rank","cross_border_rank")
 table_1_results <- table_1_results[keep]
 
 #Sort by rank
@@ -30,42 +31,42 @@ colnames(table_1_results) <- c("Country",
                              "Individual Taxes Rank", 
                              "Consumption Taxes Rank", 
                              "Property Taxes Rank", 
-                             "International Tax Rules Rank")
+                             "Cross-Border Tax Rules Rank")
 
 
 write.csv(table_1_results,paste(final_outputs,"table_1_results.csv",sep=""),row.names=F)
 
 ###Table 2 Changes####
-table_2_changes <- merge(final_2019,final_2020,by="country")
+table_2_changes <- merge(final_2020,final_2021,by="country")
 
 keep <- c("country","final_rank.x","final.x","final_rank.y","final.y")
 table_2_changes <- table_2_changes[keep]
 
-colnames(table_2_changes) <- c("country", "2019 Rank","2019 Score","2020 Rank","2020 Score")
+colnames(table_2_changes) <- c("country", "2020 Rank","2020 Score","2021 Rank","2021 Score")
 
-table_2_changes <- merge(final_2018,table_2_changes,by="country")
+table_2_changes <- merge(final_2019,table_2_changes,by="country")
 
-keep <- c("country","final_rank","final","2019 Rank","2019 Score","2020 Rank","2020 Score")
+keep <- c("country","final_rank","final","2020 Rank","2020 Score","2021 Rank","2021 Score")
 table_2_changes<-table_2_changes[keep]
 
-colnames(table_2_changes)<-c("Country","2018 Rank","2018 Score", "2019 Rank","2019 Score","2020 Rank","2020 Score")
+colnames(table_2_changes)<-c("Country","2019 Rank","2019 Score", "2020 Rank","2020 Score","2021 Rank","2021 Score")
 
-table_2_changes$'Change in Rank from 2019 to 2020'<-(table_2_changes$`2020 Rank`-table_2_changes$`2019 Rank`)*(-1)
-table_2_changes$'Change in Score from 2019 to 2020'<-table_2_changes$`2020 Score`-table_2_changes$`2019 Score`
+table_2_changes$'Change in Rank from 2020 to 2021'<-(table_2_changes$`2021 Rank`-table_2_changes$`2020 Rank`)*(-1)
+table_2_changes$'Change in Score from 2020 to 2021'<-table_2_changes$`2021 Score`-table_2_changes$`2020 Score`
 
 #Format Columns
 
-table_2_changes$`2018 Score`<-formatC(round(table_2_changes$`2018 Score`,digits=1),format = "f",digits=1)
 table_2_changes$`2019 Score`<-formatC(round(table_2_changes$`2019 Score`,digits=1),format = "f",digits=1)
 table_2_changes$`2020 Score`<-formatC(round(table_2_changes$`2020 Score`,digits=1),format = "f",digits=1)
-table_2_changes$`Change in Score from 2019 to 2020`<-formatC(round(table_2_changes$`Change in Score from 2019 to 2020`,digits=1),format = "f",digits=1)
+table_2_changes$`2021 Score`<-formatC(round(table_2_changes$`2021 Score`,digits=1),format = "f",digits=1)
+table_2_changes$`Change in Score from 2020 to 2021`<-formatC(round(table_2_changes$`Change in Score from 2020 to 2021`,digits=1),format = "f",digits=1)
 
 
 write.csv(table_2_changes,paste(final_outputs,"table_2_changes.csv",sep=""),row.names=F)
 
 ###Table 3 Corporate####
-table_3_corporate<-subcategories_2020
-table_3_corporate<-merge(table_3_corporate,final_2020,by=c("country"))
+table_3_corporate<-subcategories_2021
+table_3_corporate<-merge(table_3_corporate,final_2021,by=c("country"))
 
 keep<-c("country","corporate_rank","corporate","corporate_rate_rank","corporate_rate","cost_recovery_rank","cost_recovery","incentives_rank","incentives")
 table_3_corporate<-table_3_corporate[keep]
@@ -83,8 +84,8 @@ write.csv(table_3_corporate,paste(final_outputs,"table_3_corporate.csv",sep=""),
 
 
 ###Table 4 Individual####
-table_4_individual<-subcategories_2020
-table_4_individual<-merge(table_4_individual,final_2020,by=c("country"))
+table_4_individual<-subcategories_2021
+table_4_individual<-merge(table_4_individual,final_2021,by=c("country"))
 
 #names(table_4_individual)
 
@@ -98,12 +99,11 @@ table_4_individual$`Income Tax Score`<-formatC(round(table_4_individual$`Income 
 table_4_individual$`Complexity Score`<-formatC(round(table_4_individual$`Complexity Score`,digits=1),format = "f",digits=1)
 table_4_individual$`Capital Gains/Dividends Score`<-formatC(round(table_4_individual$`Capital Gains/Dividends Score`,digits=1),format = "f",digits=1)
 
-
 write.csv(table_4_individual,paste(final_outputs,"table_4_individual.csv",sep=""),row.names=F)
 
 ###Table 5 Consumption####
-table_5_consumption<-subcategories_2020
-table_5_consumption<-merge(table_5_consumption,final_2020,by=c("country"))
+table_5_consumption<-subcategories_2021
+table_5_consumption<-merge(table_5_consumption,final_2021,by=c("country"))
 
 #names(table_5_consumption)
 
@@ -117,12 +117,11 @@ table_5_consumption$`Rate Score`<-formatC(round(table_5_consumption$`Rate Score`
 table_5_consumption$`Base Score`<-formatC(round(table_5_consumption$`Base Score`,digits=1),format = "f",digits=1)
 table_5_consumption$`Complexity Score`<-formatC(round(table_5_consumption$`Complexity Score`,digits=1),format = "f",digits=1)
 
-
 write.csv(table_5_consumption,paste(final_outputs,"table_5_consumption.csv",sep=""),row.names=F)
 
 ###Table 6 Property####
-table_6_property<-subcategories_2020
-table_6_property<-merge(table_6_property,final_2020,by=c("country"))
+table_6_property<-subcategories_2021
+table_6_property<-merge(table_6_property,final_2021,by=c("country"))
 
 #names(table_6_property)
 
@@ -136,34 +135,33 @@ table_6_property$`Real Property Taxes Score`<-formatC(round(table_6_property$`Re
 table_6_property$`Wealth/Estate Taxes Score`<-formatC(round(table_6_property$`Wealth/Estate Taxes Score`,digits=1),format = "f",digits=1)
 table_6_property$`Capital/Transaction Taxes Score`<-formatC(round(table_6_property$`Capital/Transaction Taxes Score`,digits=1),format = "f",digits=1)
 
-
 write.csv(table_6_property,paste(final_outputs,"table_6_property.csv",sep=""),row.names=F)
 
 
-###Table 7 International####
-table_7_international<-subcategories_2020
-table_7_international<-merge(table_7_international,final_2020,by=c("country"))
+###Table 7 Cross-Border####
+table_7_cross_border<-subcategories_2021
+table_7_cross_border<-merge(table_7_cross_border,final_2021,by=c("country"))
 
-#names(table_7_international)
+#names(table_7_cross_border)
 
-keep<-c("country","international_rank","international","territorial_rank","territorial","withholding_taxes_rank","withholding_taxes","tax_treaties_rank", "tax_treaties", "international_regulations_rank","international_regulations")
-table_7_international<-table_7_international[keep]
+keep<-c("country","cross_border_rank","cross_border","territorial_rank","territorial","withholding_taxes_rank","withholding_taxes","tax_treaties_rank", "tax_treaties", "international_regulations_rank","international_regulations")
+table_7_cross_border<-table_7_cross_border[keep]
 
-colnames(table_7_international)<-c("Country","Overall Rank","Overall Score", "Div/Cap Gains Exemption Rank","Div/Cap Gains Exemption Score","Withholding Taxes Rank","Withholding Taxes Score","Tax Treaties Rank","Tax Treaties Score","Regulations Rank","Regulations Score")
+colnames(table_7_cross_border)<-c("Country","Overall Rank","Overall Score", "Div/Cap Gains Exemption Rank","Div/Cap Gains Exemption Score","Withholding Taxes Rank","Withholding Taxes Score","Tax Treaties Rank","Tax Treaties Score","Anti-Tax Avoidance Rank","Anti-Tax Avoidance Score")
 
-table_7_international$`Overall Score`<-formatC(round(table_7_international$`Overall Score`,digits=1),format = "f",digits=1)
-table_7_international$`Div/Cap Gains Exemption Score`<-formatC(round(table_7_international$`Div/Cap Gains Exemption Score`,digits=1),format = "f",digits=1)
-table_7_international$`Withholding Taxes Score`<-formatC(round(table_7_international$`Withholding Taxes Score`,digits=1),format = "f",digits=1)
-table_7_international$`Tax Treaties Score`<-formatC(round(table_7_international$`Tax Treaties Score`,digits=1),format = "f",digits=1)
-table_7_international$`Regulations Score`<-formatC(round(table_7_international$`Regulations Score`,digits=1),format = "f",digits=1)
+table_7_cross_border$`Overall Score`<-formatC(round(table_7_cross_border$`Overall Score`,digits=1),format = "f",digits=1)
+table_7_cross_border$`Div/Cap Gains Exemption Score`<-formatC(round(table_7_cross_border$`Div/Cap Gains Exemption Score`,digits=1),format = "f",digits=1)
+table_7_cross_border$`Withholding Taxes Score`<-formatC(round(table_7_cross_border$`Withholding Taxes Score`,digits=1),format = "f",digits=1)
+table_7_cross_border$`Tax Treaties Score`<-formatC(round(table_7_cross_border$`Tax Treaties Score`,digits=1),format = "f",digits=1)
+table_7_cross_border$`Anti-Tax Avoidance Score`<-formatC(round(table_7_cross_border$`Anti-Tax Avoidance Score`,digits=1),format = "f",digits=1)
 
-write.csv(table_7_international,paste(final_outputs,"table_7_international.csv",sep=""),row.names=F)
+write.csv(table_7_cross_border,paste(final_outputs,"table_7_cross_border.csv",sep=""),row.names=F)
 
 
-###Table A Coprorate####
+###Table A Corporate####
 
 #Raw Data
-table_a_corporate_raw<-subset(raw_data_2020,raw_data_2020$year==2020)
+table_a_corporate_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
 
 keep<-c("country",
         "corporate_rate",
@@ -176,6 +174,7 @@ keep<-c("country",
         "allowance_corporate_equity",
         "patent_box",
         "r_and_d_credit",
+        "digital_services_tax",
         "corporate_time",
         "profit_payments",
         "other_payments")
@@ -188,7 +187,7 @@ table_a_corporate_raw <- table_a_corporate_raw[order(table_a_corporate_raw$count
 #Text Data
 table_a_corporate_text<-read_csv(paste(source_data,"table_a_corporate.csv",sep=""))
 colnames(table_a_corporate_text)<-names(table_a_corporate_raw)
-table_a_corporate_text<-table_a_corporate_text[2:37,]
+table_a_corporate_text<-table_a_corporate_text[2:38,]
 
 
 #Replace raw data with text data for select columns
@@ -207,6 +206,7 @@ table_a_corporate<-table_a_corporate[c("country","corporate_rate",
                                      "allowance_corporate_equity",
                                      "patent_box",
                                      "r_and_d_credit",
+                                     "digital_services_tax",
                                      "corporate_time",
                                      "profit_payments",
                                      "other_payments")]
@@ -215,6 +215,7 @@ table_a_corporate<-table_a_corporate[c("country","corporate_rate",
 
 #Format variables
 #corporate_rate
+table_a_corporate$corporate_rate<-table_a_corporate$corporate_rate*100
 table_a_corporate$corporate_rate<-paste((formatC(round(table_a_corporate$corporate_rate,digits=1),format = "f",digits=1)),"%",sep="")
 
 #machines_cost_recovery
@@ -233,7 +234,10 @@ table_a_corporate$intangibles_cost_recovery<-paste((formatC(round(table_a_corpor
 table_a_corporate$r_and_d_credit<-paste((formatC(round(table_a_corporate$r_and_d_credit,digits=2),format = "f",digits=2)),sep="")
 
 #patent_box
-table_a_corporate$patent_box<-if_else(table_a_corporate$patent_box==1,"No","Yes")
+table_a_corporate$patent_box<-if_else(table_a_corporate$patent_box==1,"Yes","No")
+
+#digital_services_tax
+table_a_corporate$digital_services_tax<-if_else(table_a_corporate$digital_services_tax==1,"Yes","No")
 
 #corporate_time
 table_a_corporate$corporate_time<-formatC(round(table_a_corporate$corporate_time,digits=0),format = "f",digits=0)
@@ -254,7 +258,7 @@ headers<-c("",
            "",
            "",
            "",
-           "Tax Incentives and Complexity","","","","")
+           "Tax Incentives and Complexity","","","","","")
 columns<-c("Country",
            "Top Marginal Corporate Tax Rate",
            "Loss Carryback (Number of Years)",
@@ -266,6 +270,7 @@ columns<-c("Country",
            "Allowance for Corporate Equity (Rate and Base)",
            "Patent Box",
            "Implied Tax Subsidy Rates on R&D Expenditures",
+           "Digital Services Tax",
            "Corporate Complexity (Time)",
            "Corporate Complexity (Yearly Profit Payments)",
            "Corporate Complexity (Other Yearly Payments)")
@@ -279,7 +284,7 @@ write.csv(table_a_corporate,paste(final_outputs,"table_a_corporate.csv",sep=""),
 #Table B Individual####
 
 #Raw Data
-table_b_individual_raw<-subset(raw_data_2020,raw_data_2020$year==2020)
+table_b_individual_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
 #names(table_b_individual_raw)
 
 keep<-c("country","top_income_rate",
@@ -329,7 +334,7 @@ headers<-c("",
            "",
            "")
 columns<-c("Country",
-           "Top Marginal Income Tax Rate",
+           "Top Statutory Personal Income Tax Rate",
            "Top Income Tax Rate Threshold (a)",
            "Ratio of Marginal to Average Tax Wedge",
            "Income Tax Complexity (Payments)",
@@ -354,7 +359,7 @@ notes_2<-c("(a) Multiple of the average income at which the highest tax bracket 
            "",
            "")
 
-notes_3<-c("(b) After any imputation, credit, or offset.",
+notes_3<-c("(b) After any imputation, credit, or offset. Includes surtaxes.",
            "",
            "",
            "",
@@ -369,7 +374,7 @@ write.csv(table_b_individual,paste(final_outputs,"table_b_individual.csv",sep=""
 
 #Table C Consumption####
 #Raw Data
-table_c_consumption_raw<-subset(raw_data_2020,raw_data_2020$year==2020)
+table_c_consumption_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
 #names(table_c_consumption_raw)
 
 keep<-c("country","vat_rate",
@@ -396,7 +401,7 @@ table_c_consumption$consumption_time<-formatC(round(table_c_consumption$consumpt
 
 #fix US and Canada to add footnote markers
 table_c_consumption$vat_rate[4]<-paste0(table_c_consumption$vat_rate[4]," (b)")
-table_c_consumption$vat_rate[36]<-paste0(table_c_consumption$vat_rate[36]," (c)")
+table_c_consumption$vat_rate[37]<-paste0(table_c_consumption$vat_rate[37]," (c)")
 
 headers<-c("",
            "Consumption Tax Rate",
@@ -445,7 +450,7 @@ write.csv(table_c_consumption,paste(final_outputs,"table_c_consumption.csv",sep=
 
 #Table D Property####
 #Raw Data
-table_d_property_raw<-subset(raw_data_2020,raw_data_2020$year==2020)
+table_d_property_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
 #names(table_d_property_raw)
 
 keep<-c("country","property_tax", 
@@ -456,6 +461,7 @@ keep<-c("country","property_tax",
         "asset_tax",
         "capital_duties",
         "financial_transaction_tax")
+
 table_d_property_raw<-table_d_property_raw[keep]
 table_d_property_raw$property_taxes_deductible<-if_else(table_d_property_raw$property_tax==0.5,1,0)
 
@@ -475,11 +481,11 @@ colnames(table_d_property_text)<-c("country","property_tax",
                                   "asset_tax",
                                   "capital_duties",
                                   "financial_transaction_tax")
-table_d_property_text<-table_d_property_text[2:37,]
+table_d_property_text<-table_d_property_text[2:38,]
 
 
 #Replace raw data with text data for select columns
-replace<-c("property_tax","estate_or_inheritance_tax","transfer_tax","asset_tax")
+replace<-c("property_tax","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax")
 table_d_property_text<-table_d_property_text[replace]
 table_d_property<-table_d_property_raw[,!names(table_d_property_raw) %in% replace]
 table_d_property<-cbind(table_d_property,table_d_property_text)
@@ -501,14 +507,11 @@ table_d_property$property_taxes_deductible<-if_else(table_d_property$property_ta
 #property_tax_collections
 table_d_property$property_tax_collections<-paste((formatC(round(table_d_property$property_tax_collections,digits=1),format = "f",digits=1)),"%",sep="")
 
-#net_wealth
-table_d_property$net_wealth<-if_else(table_d_property$net_wealth==0,"Yes","No")
-
 #capital_duties
-table_d_property$capital_duties<-if_else(table_d_property$capital_duties==0,"Yes","No")
+table_d_property$capital_duties<-if_else(table_d_property$capital_duties==1,"Yes","No")
 
 #financial_transaction_tax
-table_d_property$financial_transaction_tax<-if_else(table_d_property$financial_transaction_tax==0,"Yes","No")
+table_d_property$financial_transaction_tax<-if_else(table_d_property$financial_transaction_tax==1,"Yes","No")
 
 
 headers<-c("",
@@ -526,7 +529,7 @@ columns<-c("Country",
            "Real Property or Land Tax",
            "Real Property Taxes Deductible",
            "Real Property Taxes as % of Capital Stock",
-           "Net Wealth Tax",
+           "Wealth Tax",
            "Estate/Inheritance Tax",
            "Transfer Taxes",
            "Asset Taxes",
@@ -602,10 +605,10 @@ table_d_property<-rbind(headers,columns,table_d_property,notes_1,notes_2,notes_3
 write.csv(table_d_property,paste(final_outputs,"table_d_property.csv",sep=""),row.names = F)
 
 
-#Table E International####
+#Table E Cross-Border####
 #Raw Data
-table_e_international_raw<-subset(raw_data_2020,raw_data_2020$year==2020)
-names(table_e_international_raw)
+table_e_cross_border_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
+names(table_e_cross_border_raw)
 
 keep<-c("country",
         "dividends_exemption",
@@ -617,17 +620,17 @@ keep<-c("country",
         "tax_treaties",
         "cfc_rules",
         "thin_capitalization_rules")
-table_e_international_raw<-table_e_international_raw[keep]
-table_e_international_raw$cfc_income<-table_e_international_raw$cfc_rules
-table_e_international_raw$cfc_exemption<-table_e_international_raw$cfc_rules
+table_e_cross_border_raw<-table_e_cross_border_raw[keep]
+table_e_cross_border_raw$cfc_income<-table_e_cross_border_raw$cfc_rules
+table_e_cross_border_raw$cfc_exemption<-table_e_cross_border_raw$cfc_rules
 
-table_e_international_raw <- table_e_international_raw[order(table_e_international_raw$country),]
+table_e_cross_border_raw <- table_e_cross_border_raw[order(table_e_cross_border_raw$country),]
 
 #Text Data
-table_e_international_text<-read_csv(paste(source_data,"table_e_international.csv",sep=""))
+table_e_cross_border_text<-read_csv(paste(source_data,"table_e_cross_border.csv",sep=""))
 
 
-colnames(table_e_international_text)<-c("country",
+colnames(table_e_cross_border_text)<-c("country",
                                        "dividends_exemption",
                                        "capital_gains_exemption",
                                        "country_limitations",
@@ -639,16 +642,16 @@ colnames(table_e_international_text)<-c("country",
                                        "cfc_exemption",
                                        "cfc_income",
                                        "thin_capitalization_rules")
-table_e_international_text<-table_e_international_text[2:37,]
+table_e_cross_border_text<-table_e_cross_border_text[2:38,]
 
 
 #Replace raw data with text data for select columns
 replace<-c("country_limitations","cfc_rules","cfc_income","cfc_exemption","thin_capitalization_rules")
-table_e_international_text<-table_e_international_text[replace]
-table_e_international<-table_e_international_raw[,!names(table_e_international_raw) %in% replace]
-table_e_international<-cbind(table_e_international,table_e_international_text)
+table_e_cross_border_text<-table_e_cross_border_text[replace]
+table_e_cross_border<-table_e_cross_border_raw[,!names(table_e_cross_border_raw) %in% replace]
+table_e_cross_border<-cbind(table_e_cross_border,table_e_cross_border_text)
 
-table_e_international<-table_e_international[c("country",
+table_e_cross_border<-table_e_cross_border[c("country",
                                              "dividends_exemption",
                                              "capital_gains_exemption",
                                              "country_limitations",
@@ -663,25 +666,24 @@ table_e_international<-table_e_international[c("country",
 
 #Format variables
 #dividends_exemption
-table_e_international$dividends_exemption<-table_e_international$dividends_exemption*100
-table_e_international$dividends_exemption<-paste((formatC(round(table_e_international$dividends_exemption,digits=1),format = "f",digits=1)),"%",sep="")
-
+table_e_cross_border$dividends_exemption<-table_e_cross_border$dividends_exemption*100
+table_e_cross_border$dividends_exemption<-paste((formatC(round(table_e_cross_border$dividends_exemption,digits=1),format = "f",digits=1)),"%",sep="")
 
 #capital_gains_exemption
-table_e_international$capital_gains_exemption<-table_e_international$capital_gains_exemption*100
-table_e_international$capital_gains_exemption<-paste((formatC(round(table_e_international$capital_gains_exemption,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_cross_border$capital_gains_exemption<-table_e_cross_border$capital_gains_exemption*100
+table_e_cross_border$capital_gains_exemption<-paste((formatC(round(table_e_cross_border$capital_gains_exemption,digits=1),format = "f",digits=1)),"%",sep="")
 
 #dividends_withholding_tax
-table_e_international$dividends_withholding_tax<-table_e_international$dividends_withholding_tax*100
-table_e_international$dividends_withholding_tax<-paste((formatC(round(table_e_international$dividends_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_cross_border$dividends_withholding_tax<-table_e_cross_border$dividends_withholding_tax*100
+table_e_cross_border$dividends_withholding_tax<-paste((formatC(round(table_e_cross_border$dividends_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
 
 #interest_withholding_tax
-table_e_international$interest_withholding_tax<-table_e_international$interest_withholding_tax*100
-table_e_international$interest_withholding_tax<-paste((formatC(round(table_e_international$interest_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_cross_border$interest_withholding_tax<-table_e_cross_border$interest_withholding_tax*100
+table_e_cross_border$interest_withholding_tax<-paste((formatC(round(table_e_cross_border$interest_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
 
 #royalties_withholding_tax
-table_e_international$royalties_withholding_tax<-table_e_international$royalties_withholding_tax*100
-table_e_international$royalties_withholding_tax<-paste((formatC(round(table_e_international$royalties_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
+table_e_cross_border$royalties_withholding_tax<-table_e_cross_border$royalties_withholding_tax*100
+table_e_cross_border$royalties_withholding_tax<-paste((formatC(round(table_e_cross_border$royalties_withholding_tax,digits=1),format = "f",digits=1)),"%",sep="")
 
 
 headers<-c("",
@@ -692,7 +694,7 @@ headers<-c("",
            "",
            "",
            "Tax Treaties",
-           "International Tax Regulations",
+           "Anti-Tax Avoidance Rules",
            "",
            "",
            "")
@@ -710,6 +712,6 @@ columns<-c("Country",
            "Controlled Foreign Corporation Rules: Exemptions",
            "Interest Deduction Limitations")
 
-table_e_international<-rbind(headers,columns,table_e_international)
+table_e_cross_border<-rbind(headers,columns,table_e_cross_border)
 
-write.csv(table_e_international,paste(final_outputs,"table_e_international.csv",sep=""),row.names = F)
+write.csv(table_e_cross_border,paste(final_outputs,"table_e_cross_border.csv",sep=""),row.names = F)

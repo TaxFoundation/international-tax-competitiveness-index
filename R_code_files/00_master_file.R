@@ -9,6 +9,8 @@ source_data<-"C:/Github/international-tax-competitiveness-index/source_data/"
 intermediate_outputs<-"C:/Github/international-tax-competitiveness-index/intermediate_outputs/"
 final_data<-"C:/Github/international-tax-competitiveness-index/final_data/"
 final_outputs<-"C:/Github/international-tax-competitiveness-index/final_outputs/"
+country_outputs<-"C:/Github/international-tax-competitiveness-index/country_outputs/"
+
 
 #Define Using function####
 using<-function(...,prompt=TRUE){
@@ -54,6 +56,7 @@ oecd_countries<-c("AUS",
                   "BEL",
                   "CAN",
                   "CHL",
+                  "COL",
                   "CZE",
                   "DNK",
                   "EST",
@@ -100,5 +103,4 @@ source("05_cfc_rules.R")
 source("06_paying_taxes.R")
 source("07_packaging_data.R")
 source("08_index_calculations.R")
-source("09_country_profiles.R")
-source("10_output_tables.R")
+source("09_output_tables.R")
