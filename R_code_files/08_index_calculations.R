@@ -636,6 +636,7 @@ write.csv(Netherlands, paste(country_outputs, "Netherlands.csv", sep=""), row.na
 
 New_Zealand<-final_categories[final_categories$Country=="New Zealand",]
 write.csv(New_Zealand, paste(country_outputs, "New Zealand.csv", sep=""), row.names=F)
+write.csv(New_Zealand, paste(new_zealand_reform, "New Zealand.csv", sep=""), row.names=F)
 
 Norway<-final_categories[final_categories$Country=="Norway",]
 write.csv(Norway, paste(country_outputs, "Norway.csv", sep=""), row.names=F)
