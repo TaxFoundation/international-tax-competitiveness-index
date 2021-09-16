@@ -1,4 +1,4 @@
-ISO_2,ISO_3,Country,Year,Final Rank,Final Score,Corporate Rank,Corporate Score,Income Rank,Income Score,Consumption Rank,Consumption Score,Property Rank,Property Score,Cross-Border Rank,Cross-Border Score,Scemario
+ISO_2,ISO_3,Country,Year,Final Rank,Final Score,Corporate Rank,Corporate Score,Income Rank,Income Score,Consumption Rank,Consumption Score,Property Rank,Property Score,Cross-Border Rank,Cross-Border Score,Scenario
 GB,GBR,United Kingdom,2014,19,65.45119943,20,61.69038512,22,63.88702624,22,58.79851071,33,43.85256034,2,96.02213116,Baseline
 GB,GBR,United Kingdom,2015,20,65.1619205,17,59.38350744,22,62.75396386,23,59.17290045,34,43.7524205,2,95.98248961,Baseline
 GB,GBR,United Kingdom,2016,20,63.54677109,17,62.32741753,25,59.28533437,23,58.74238585,34,43.9929791,2,96.55924983,Baseline
