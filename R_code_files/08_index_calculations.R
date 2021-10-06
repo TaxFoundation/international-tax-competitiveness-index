@@ -596,7 +596,7 @@ Germany<-final_categories[final_categories$Country=="Germany",]
 write.csv(Germany, paste(country_outputs, "Germany.csv", sep=""), row.names=F)
 
 Greece<-final_categories[final_categories$Country=="Greece",]
-write.csv(Greece, paste(country_outputs, "Greece.csv", sep=""), row.names=F)
+write.csv(Greece, paste(greece_reforms, "Greece.csv", sep=""), row.names=F)
 
 Hungary<-final_categories[final_categories$Country=="Hungary",]
 write.csv(Hungary, paste(country_outputs, "Hungary.csv", sep=""), row.names=F)
@@ -693,6 +693,7 @@ write.csv(final_2021, file = paste(final_outputs,"data_2021_run.csv",sep=""),row
 
 
 #The following file is used for country profile pages; do not edit
+
 final_subcategories_2021<-subset(final_subcategories,year==2021)
 write.csv(final_subcategories_2021,paste(final_outputs,"subcategories_2021.csv",sep=""),row.names=F)
 
