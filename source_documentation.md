@@ -4,81 +4,82 @@
 
 ## **Corporate Taxes**
 
-* **`corporate_rate`** OECD, "OECD Tax Database, Table II.1 Statutory corporate income tax rate," updated April 2020, https://stats.oecd.org/index.aspx?DataSetCode=Table_II1.
+* **`corporate_rate`** OECD, "OECD Tax Database, Table II.1 Statutory corporate income tax rate," updated April 2021, https://stats.oecd.org/index.aspx?DataSetCode=Table_II1.
 
-* **`loss_carryback`** PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/australia/corporate/deductions.
+* **`loss_carryback`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc/source/511920/147664382; and PwC, “Worldwide Tax Summaries: Corporate - Deductions,” https://www.pwc.com/gx/en/services/tax/worldwide-tax-summaries.html.
 
+* **`loss_carryforward`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc/source/511920/147664382; and PwC, “Worldwide Tax Summaries: Corporate - Deductions,” https://www.pwc.com/gx/en/services/tax/worldwide-tax-summaries.html.
 
-* **`loss_carryforward`** PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/australia/corporate/deductions.
+* **`machines_cost_recovery`** Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, October 2020, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2020_effective_tax_levels_revised_en.pdf; Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; EY, “Worldwide Capital and Fixed Assets Guide 2020,” Aug. 27, 2020, https://www.ey.com/en_gl/tax-guides/worldwide-capital-and-fixed-assets-guide-2020; EY, “Worldwide Corporate Tax Guide 2020,” July 22, 2020, https://www.ey.com/en_gl/tax-guides/worldwide-corporate-tax-guide-2020; and PwC, “Worldwide Tax Summaries: Corporate - Deductions,” https://taxsummaries.pwc.com/. Years prior to 2018 are based on Oxford University Centre for Business Taxation, “CBT Tax Database 2017,” https://oxfordtax.sbs.ox.ac.uk/cbt-tax-database. Calculations based on Elke Asen, “Capital Cost Recovery across the OECD,” Tax Foundation, Mar. 31, 2021, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
 
-* **`machines_cost_recovery`** Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, November 2019, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2019_effective_tax_levels_revised_en.pdf; EY, “Worldwide Capital and Fixed Assets Guide,” https://www.ey.com/Publication/vwLUAssets/ey-2019-worldwide-capital-fixed-assets-guide/$FILE/ey-2019-worldwide-capital-fixed-assets-guide.pdf; EY, “Worldwide Corporate Tax Guide,” https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf; PwC, “Worldwide Tax Summaries,” https://taxsummaries.pwc.com/; PKF, “International Worldwide Tax Guide 2019-20,” July 2019, https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2019-20/. Years prior to 2018 are based on Oxford University Centre for Business Taxation, “CBT Tax Database 2017,” http://eureka.sbs.ox.ac.uk/id/eprint/4635. Calculations based on Elke Asen, “Capital Cost Recovery across the OECD,” Tax Foundation, Apr. 8, 2020, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
+* **`buildings_cost_recovery`** Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, October 2020, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2020_effective_tax_levels_revised_en.pdf; Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; EY, “Worldwide Capital and Fixed Assets Guide 2020,” Aug. 27, 2020, https://www.ey.com/en_gl/tax-guides/worldwide-capital-and-fixed-assets-guide-2020; EY, “Worldwide Corporate Tax Guide 2020,” July 22, 2020, https://www.ey.com/en_gl/tax-guides/worldwide-corporate-tax-guide-2020; and PwC, “Worldwide Tax Summaries: Corporate - Deductions,” https://taxsummaries.pwc.com/. Years prior to 2018 are based on Oxford University Centre for Business Taxation, “CBT Tax Database 2017,” https://oxfordtax.sbs.ox.ac.uk/cbt-tax-database. Calculations based on Elke Asen, “Capital Cost Recovery across the OECD,” Tax Foundation, Mar. 31, 2021, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
 
-* **`buildings_cost_recovery`** Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, November 2019, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2019_effective_tax_levels_revised_en.pdf; EY, “Worldwide Capital and Fixed Assets Guide,” https://www.ey.com/Publication/vwLUAssets/ey-2019-worldwide-capital-fixed-assets-guide/$FILE/ey-2019-worldwide-capital-fixed-assets-guide.pdf; EY, “Worldwide Corporate Tax Guide,” https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf; PwC, “Worldwide Tax Summaries,” https://taxsummaries.pwc.com/; PKF, “International Worldwide Tax Guide 2019-20,” July 2019, https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2019-20/. Years prior to 2018 are based on Oxford University Centre for Business Taxation, “CBT Tax Database 2017,” http://eureka.sbs.ox.ac.uk/id/eprint/4635. Calculations based on Elke Asen, “Capital Cost Recovery across the OECD,” Tax Foundation, Apr. 8, 2020, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
+* **`intangibles_cost_recovery`** Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, October 2020, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2020_effective_tax_levels_revised_en.pdf; Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; EY, “Worldwide Capital and Fixed Assets Guide 2020,” Aug. 27, 2020, https://www.ey.com/en_gl/tax-guides/worldwide-capital-and-fixed-assets-guide-2020; EY, “Worldwide Corporate Tax Guide 2020,” July 22, 2020, https://www.ey.com/en_gl/tax-guides/worldwide-corporate-tax-guide-2020; and PwC, “Worldwide Tax Summaries: Corporate - Deductions,” https://taxsummaries.pwc.com/. Years prior to 2018 are based on Oxford University Centre for Business Taxation, “CBT Tax Database 2017,” https://oxfordtax.sbs.ox.ac.uk/cbt-tax-database. Calculations based on Elke Asen, “Capital Cost Recovery across the OECD,” Tax Foundation, Mar. 31, 2021, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
 
-* **`intangibles_cost_recovery`** Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, November 2019, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2019_effective_tax_levels_revised_en.pdf; EY, “Worldwide Capital and Fixed Assets Guide,” https://www.ey.com/Publication/vwLUAssets/ey-2019-worldwide-capital-fixed-assets-guide/$FILE/ey-2019-worldwide-capital-fixed-assets-guide.pdf; EY, “Worldwide Corporate Tax Guide,” https://www.ey.com/Publication/vwLUAssets/ey-worldwide-corporate-tax-guide-2019/$FILE/ey-worldwide-corporate-tax-guide-2019.pdf; PwC, “Worldwide Tax Summaries,” https://taxsummaries.pwc.com/; PKF, “International Worldwide Tax Guide 2019-20,” July 2019, https://www.pkf.com/publications/tax-guides/pkf-international-worldwide-tax-guide-2019-20/. Years prior to 2018 are based on Oxford University Centre for Business Taxation, “CBT Tax Database 2017,” http://eureka.sbs.ox.ac.uk/id/eprint/4635. Calculations based on Elke Asen, “Capital Cost Recovery across the OECD,” Tax Foundation, Apr. 8, 2020, https://taxfoundation.org/publications/capital-cost-recovery-across-the-oecd/.
+* **`inventory`** Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, October 2020, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2020_effective_tax_levels_revised_en.pdf; PwC, "Worldwide Tax Summaries: Corporate - Income Determination," https://taxsummaries.pwc.com/australia/corporate/income-determination; and EY, “Worldwide Corporate Tax Guide 2020,” July 22, 2020, https://www.ey.com/en_gl/tax-guides/worldwide-corporate-tax-guide-2020.
 
-* **`inventory`** PwC, "Worldwide Tax Summaries: Corporate - Income Determination," https://taxsummaries.pwc.com/australia/corporate/income-determination; and EY, “Worldwide Corporate Tax Guide 2019,“ https://www.ey.com/en_gl/tax-guides/worldwide-corporate-tax-guide-2019.
+* **`allowance_corporate_equity`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/turkey/corporate/deductions; and Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, October 2020, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2020_effective_tax_levels_revised_en.pdf.
 
-* **`allowance_corporate_equity`** PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/turkey/corporate/deductions; Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, November 2019, https://ec.europa.eu/taxation_customs/sites/taxation/files/final_report_2019_effective_tax_levels_revised_en.pdf; and OECD, "Tax Policy Reforms 2019," Sept. 5, 2019, https://www.oecd.org/tax/tax-policy-reforms-26173433.htm.
+* **`patent_box`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; PwC, "Worldwide Tax Summaries: Corporate - Tax credits and incentives," https://taxsummaries.pwc.com/australia/corporate/tax-credits-and-incentives; and OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes.
 
-* **`patent_box`** OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes; and PwC, "Worldwide Tax Summaries: Corporate - Tax credits and incentives," https://taxsummaries.pwc.com/australia/corporate/tax-credits-and-incentives.
+* **`r_and_d_credit`** OECD, "R&D Tax Incentive Indicators: Implied tax subsidy rates on R&D expenditures," updated March 19, 2021, https://stats.oecd.org/Index.aspx?DataSetCode=RDSUB.
 
-* **`r_and_d_credit`** OECD, "R&D Tax Incentive Indicators: Implied tax subsidy rates on R&D expenditures," https://stats.oecd.org/Index.aspx?DataSetCode=RDSUB.
+* **`digital_services_tax`** KPMG, “Taxation of the digitalized economy: Developments summary,” updated Jan. 15, 2021, https://tax.kpmg.us/content/dam/tax/en/pdfs/2020/digitalized-economy-taxation-developments-summary.pdf.
 
-* **`corporate_time`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools.
+* **`corporate_time`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools. Due to the COVID-19 pandemic, PwC and the World Bank Group did not release a 2021 edition of "Paying Taxes."
 
-* **`profit_payments`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools.
+* **`profit_payments`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools. Due to the COVID-19 pandemic, PwC and the World Bank Group did not release a 2021 edition of "Paying Taxes."
 
-* **`other_payments`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools.
+* **`other_payments`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools. Due to the COVID-19 pandemic, PwC and the World Bank Group did not release a 2021 edition of "Paying Taxes."
 
 
 ## **Income Taxes**
 
-* **`top_income_rate`** OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rate and top marginal tax rates for employees, 2000-2019,” updated Apr. 30, 2020, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
+* **`top_income_rate`** OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rates,” updated Apr. 29, 2021, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
 
-* **`threshold_top_income_rate`** OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rate and top marginal tax rates for employees, 2000-2019,” updated Apr. 30, 2020, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
+* **`threshold_top_income_rate`** OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rates,” updated Apr. 29, 2021, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
 
-* **`tax_wedge`** OECD, "OECD Tax Database, Table I.4. Marginal personal income tax and social security contribution rates on gross labour income," updated April 30, 2020, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I4; and OECD, "OECD Tax Database, Table I.5. Average personal income tax and social security contribution rates on gross labour income," updated Apr. 2020, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I5.
+* **`tax_wedge`** OECD, "OECD Tax Database, Table I.4. Marginal personal income tax and social security contribution rates on gross labour income," updated Apr. 29, 2021, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I4; and OECD, "OECD Tax Database, Table I.5. Average personal income tax and social security contribution rates on gross labour income," updated Apr. 29, 2021, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I5.
  
-* **`labor_payments`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools.
+* **`labor_payments`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools. Due to the COVID-19 pandemic, PwC and the World Bank Group did not release a 2021 edition of "Paying Taxes."
 
-* **`labor_time`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools.
+* **`labor_time`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools. Due to the COVID-19 pandemic, PwC and the World Bank Group did not release a 2021 edition of "Paying Taxes."
 
-* **`capital_gains_rate`** PwC, "Quick Charts: Capital gains tax (CGT) rates," https://taxsummaries.pwc.com/quick-charts/capital-gains-tax-cgt-rates; and EY, "Worldwide Personal Tax and Immigration Guide 2019-20," November 2019, https://www.ey.com/en_gl/tax-guides/worldwide-personal-tax-and-immigration-guide-2019-20. Includes surtaxes if applicable.
+* **`capital_gains_rate`** Bloomberg Tax, “Country Guide,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/; PwC, "Quick Charts: Capital gains tax (CGT) rates," https://taxsummaries.pwc.com/quick-charts/capital-gains-tax-cgt-rates; and PwC, “Worldwide Tax Summaries: Individual - Income determination,” https://www.taxsummaries.pwc.com/. Includes surtaxes if applicable.
 
 * **`index_capital_gains`** This variable is no longer used.
 
-* **`dividends_rate`** OECD, “OECD Tax Database, Table II.4 - Overall statutory tax rates on dividend income,” updated Apr. 8, 2020, https://stats.oecd.org/Index.aspx?DataSetCode=TABLE_II4.
+* **`dividends_rate`** OECD, “OECD Tax Database, Table II.4 - Overall statutory tax rates on dividend income,” updated Apr. 29, 2021, https://stats.oecd.org/Index.aspx?DataSetCode=TABLE_II4.
 
 
 ## **Consumption Taxes**
 
-* **`vat_rate`** For years up to 2019 the source for the VAT rates is OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. For 2020, the source is PwC, "Quick Charts: Value-added tax (VAT) rates," https://taxsummaries.pwc.com/quick-charts/value-added-tax-vat-rates.
+* **`vat_rate`** OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2021): VAT/GST: standard and any reduced rates (2021)," http://www.oecd.org/tax/tax-policy/tax-database/.
 
-* **`vat_threshold`** For years up to 2019 the source for the VAT thresholds is OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2019)," http://www.oecd.org/tax/tax-policy/tax-database/. For 2020, the VAT registration thresholds were researched individually based on the following sources: Avalara, "EU VAT registration thresholds 2020," https://www.avalara.com/vatlive/en/eu-vat-rules/eu-vat-number-registration/vat-registration-threshold.html; European Commission, "Taxes in Europe Database," https://ec.europa.eu/taxation_customs/tedb/splSearchForm.html; and EY, "Worldwide VAT, GST and Sales Tax Guide 2020," Apr. 24, 2020, https://www.ey.com/en_gl/tax-guides/worldwide-vat--gst-and-sales-tax-guide-2020.
+* **`vat_threshold`** OECD, "Value Added Tax/Goods and Services Tax (VAT/GST) (1976-2021): VAT/GST: Registration/Collection Thresholds (2021)," http://www.oecd.org/tax/tax-policy/tax-database/.
 
-* **`vat_base`** For years up to 2016 the source for the VAT Revenue Ratio is OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92; (the relevant table can be downloaded using the following link: https://doi.org/10.1787/888933890122). For the years 2017 and 2018, the VAT Revenue Ratio was calculated using the following formula in line with the OECD's calculations: VRR = VAT Revenue/[(Consumption - VAT revenue) x standard VAT rate]. Consumption = Final Consumption Expenditure (Heading P3) in the OECD national accounts. VAT rates used are standard rates applicable as of January 1 of each year. For Canada, the VRR calculation includes federal VAT only. For the years up to 2016, the OECD adjusted the annual final consumption expenditure in national accounts for Canada, Japan, and New Zealand to ensure matching between the fiscal year for the VAT revenue and the civil year for final consumption figures. This adjustment was not made in the own calculations for the years 2017 and 2018. For Australia and Greece there was no 2018 VAT revenue data available as of June 1, 2020, and thus their 2017 VAT Revenue Ratios were copied to 2018.
+* **`vat_base`**  The VAT Revenue Ratio was calculated using the following formula in line with the OECD's VRR calculations: VRR = VAT Revenue/[(Consumption - VAT revenue) x standard VAT rate]. Consumption = Final Consumption Expenditure (Heading P3) in the OECD national accounts. VAT rates used are standard rates applicable as of January 1 of each year. For Canada, the VRR calculation includes federal VAT only. For Australia, Greece, and Mexico there was no 2019 VAT revenue data available as of June 1, 2021, and thus their 2018 VAT Revenue Ratios were copied to 2019. The calculations are based on the following OECD source: OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92 (the relevant table can be downloaded using the following link: https://doi.org/10.1787/888933890122). The 2020 edition of the OECD publication "Consumption Tax Trends" includes OECD VRR numbers up to 2018 (https://doi.org/10.1787/888934220135); however, the downloadable data does not include the underlying calculations.
 
-* **`consumption_time`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools.
+* **`consumption_time`** PwC and the World Bank Group, “Paying Taxes 2020,” https://www.pwc.com/gx/en/services/tax/publications/paying-taxes-2020.html#tools. Due to the COVID-19 pandemic, PwC and the World Bank Group did not release a 2021 edition of "Paying Taxes."
 
 
 ## **Property Taxes**
 
-* **`property_tax`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; PwC, "Worldwide Tax Summaries: Corporate - Income Determination," https://taxsummaries.pwc.com/australia/corporate/deductions.
+* **`property_tax`** Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/australia/corporate/deductions; and Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides.
 
-* **`property_tax_collections`** OECD, “OECD Revenue Statistics - OECD Countries: Comparative tables,” updated December 2019, https://stats.oecd.org/index.aspx?DataSetCode=rev; IMF, “Investment and Capital Stock Dataset,” https://www.imf.org/external/np/fad/publicinvestment/#5; and IMF, “International Financial Statistics (IFS), Gross Domestic Product and Components selected indicators,” https://data.imf.org/regular.aspx?key=61545852. The IMF dataset “Investment and Capital Stock” ends in 2017. Thus, the variable “Capital Formation” in IMF’s IFS database was used to construct the years 2017 and 2018 (2018 is the year with the most recent property tax revenue data from the OECD). 
+* **`property_tax_collections`** OECD, “OECD Revenue Statistics - OECD Countries: Comparative tables,” updated December 2020, https://stats.oecd.org/index.aspx?DataSetCode=rev; and IMF - Infrastructure Governance, “Knowledge Hub - Publications & Data: IMF’s Investment and Capital Stock Database,” updated May 2021, https://infrastructuregovern.imf.org/content/PIMA/Home/Knowledge-Hub/Publications.html. The IMF's Investment and Capital Stock Database usually does not get updated annually, so if there is no recent update the variable “Capital Formation” in IMF’s IFS database is used to construct the missing years (IMF, “International Financial Statistics (IFS), Gross Domestic Product and Components selected indicators,” https://data.imf.org/regular.aspx?key=61545852).
 
-* **`net_wealth`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides;  EY, “Worldwide Estate and Inheritance Tax Guide 2019,” https://www.ey.com/en_gl/tax-guides/worldwide-estate-and-inheritance-tax-guide-2019; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+* **`net_wealth`** EY, “Worldwide Estate and Inheritance Tax Guide 2021,” June 14, 2021, https://www.ey.com/en_gl/tax-guides/worldwide-estate-and-inheritance-tax-guide; Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; and Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides.
 
-* **`estate_or_inheritance_tax`** EY, “Worldwide Estate and Inheritance Tax Guide 2019,” https://www.ey.com/en_gl/tax-guides/worldwide-estate-and-inheritance-tax-guide-2019.
+* **`estate_or_inheritance_tax`** EY, “Worldwide Estate and Inheritance Tax Guide 2021,” June 14, 2021, https://www.ey.com/en_gl/tax-guides/worldwide-estate-and-inheritance-tax-guide.
 
-* **`transfer_tax`** Deloitte, “Tax Guides and Highlights,”  https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+* **`transfer_tax`** Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; and EY, “Worldwide Estate and Inheritance Tax Guide 2021,” June 14, 2021, https://www.ey.com/en_gl/tax-guides/worldwide-estate-and-inheritance-tax-guide.
 
 * **`asset_tax`** Bloomberg Tax, "Country Guides - Other Taxes" and "Country Guides - Special Industries," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
 
-* **`capital_duties`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; and Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380.
+* **`capital_duties`** Bloomberg Tax, "Country Guides," https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; and Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides.
 
-* **`financial_transaction_tax`** Deloitte, “Tax Guides and Highlights,” https://dits.deloitte.com/#TaxGuides; Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; and BNY Mellon, “Financial Transaction Taxes (FTT): A Global Perspective,” The Bank of New York Mellon Corporation, January 2018, https://www.bnymellon.com/emea/en/_locale-assets/pdf/our-thinking/ftt-globalperspective-brochure-03-2018.pdf.
+* **`financial_transaction_tax`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380; and PwC, “Worldwide Tax Summaries: Corporate - Other taxes,” https://taxsummaries.pwc.com/.
 
 
 ## **International Tax Rules**
@@ -120,12 +121,11 @@
 
 ## Czech Republic
 
-* **`loss_carryback`** As of June 1, the Czech Republic was considering the introduction of a 2-year loss carryback provision; see Bloomberg Tax, "Czech Republic Lower House Considers Bill to Amend Various Tax Laws Due to Coronavirus," May 28, 2020. However, as the law was not implemented on June 1, it is not included in this year's _International Index_.
+* **`capital_gains_rate`** Capital gains included in personal income tax but exempt if shares of a joint stock company were held for at least three years (five years if limited liability company).
 
 ## Denmark:
 
 * **`capital_gains_rate`** PwC, "Individual - Taxes on personal income," http://taxsummaries.pwc.com/ID/Denmark-Individual-Taxes-on-personal-income.
-
 
 ## Finland
 
@@ -160,17 +160,13 @@
 
 * **`capital_gains_rate`** Is measured as 0% due to the specific tax exemptions for certain types of capital gains.
 
-## Lithuania
-
-* **`capital_gains_rate`** Atlas Network, "Lithuanian Reforms Lower Tax Burden for 1.3 Million," July 13, 2018, https://www.atlasnetwork.org/news/article/lithuanian-reforms-lower-tax-burden-for-1.3-million.
-
 ## Luxembourg
 
 * **`capital_gains_rate`** Is measured as 0% due to the tax exemptions for capital gains from non-substantial shareholdings.
 
 ## Netherlands
 
-* **`capital_gains_rate`** Is measured as 30%, which is the rate that applies to Box 3 Income.
+* **`capital_gains_rate`** Is measured as 31%, which is the rate that applies to Box 3 Income.
 
 * **`vat_threshold`** As of Jan. 1, 2020, the Netherlands have a small business scheme, which allows businesses with a revenue below EUR 20,000 to be exempt from paying VAT; see Business.gov.nl, "Small businesses scheme (KOR)," https://business.gov.nl/subsidy/small-businesses-scheme/.
 
@@ -190,21 +186,13 @@
 
 ## Poland
 
-* **`loss_carryback`** Poland introduced a temporary 1-year loss carryback as part of its COVID-19 response. However, businesses are only eligible if their 2020 revenues are 50% below their 2019 revenues. As a result, the measure is not included in the _2020 ITCI_.
+* **`loss_carryback`** Poland introduced a temporary 1-year loss carryback as part of its COVID-19 response. However, businesses are only eligible if their 2020 revenues are 50% below their 2019 revenues. As a result, the measure is not included for the year 2020 in the _2021 ITCI_.
 
 * **`patent_box`** Bloomberg, "Country Guide - Corporate Tax Computation and Administration," https://www.bloomberglaw.com/product/tax/document/25153077800. 
-
-## Slovakia
-
-* **`capital_gains_rate`** Deloitte, “Tax Guides and Highlights,” 2019, https://dits.deloitte.com/#TaxGuides. EU, "Taxation Trends in the European Union: 2016," https://ec.europa.eu/taxation_customs/sites/taxation/files/resources/documents/taxation/gen_info/economic_analysis/tax_structures/2016/econ_analysis_report_2016.pdf. It is measured as 0% due to general exemption.
 
 ## Slovenia
 
 * **`capital_gains_rate`** Is measured as 0%, which is the rate that applies to securities held for 20 years.
-
-## Sweden
-
-* **`loss_carryback`** Business Sweden, "Corporate taxes in Sweden," April 2018, https://www.business-sweden.se/globalassets/invest-new/reports-and-documents/corporate-taxes-in-sweden.pdf.
 
 ## United States
 
@@ -212,11 +200,11 @@
 
 * **`loss_carryback`** Garrett Watson, "A Review of Net Operating Loss Tax Provisions in the CARES Act and Next Steps for Phase 4 Relief," Tax Foundation, Apr. 14, 2020, https://taxfoundation.org/phase-4-relief-legislation-net-operating-loss-cares-act/.
 
-* **`capital_gains_rate`** Erica York, "An Overview of Capital Gains Taxes," Tax Foundation, Apr. 16, 2019, https://taxfoundation.org/capital-gains-taxes/. The 2013 maximum rate includes the effect of the 3.8% tax on net investment income and 3% itemized deduction phaseout, computed as 25.102=20+3.8+.03*(39.6+3.8); see U.S. Department of the Treasury," https://www.treasury.gov/resource-center/tax-policy/tax-analysis/Documents/Taxes-Paid-on-Capital-Gains-for-Returns-with-Positive-Net-Capital-Gains.pdf.
+* **`capital_gains_rate`** Because average state and federal capital gains and dividends rates are similar, this measure is the combined federal and state-level dividends rates which is labeled "Net Personal Tax," in OECD, "Table II.4. Overall Statutory Tax Rates on Dividend Income," https://stats.oecd.org/Index.aspx?DataSetCode=TABLE_II4.
 
-* **`vat_rate`** The U.S. sales tax rate is the average of all U.S. state sales tax rates (weighted by population); see Janelle Cammenga, "State and Local Sales Tax Rates, 2020," Tax Foundation, Jan. 15, 2020, https://taxfoundation.org/publications/state-and-local-sales-tax-rates/.
+* **`vat_rate`** The U.S. sales tax rate is the average of all U.S. state sales tax rates (weighted by population); see Janelle Cammenga, "State and Local Sales Tax Rates, 2021," Tax Foundation, Jan. 6, 2021, https://taxfoundation.org/publications/state-and-local-sales-tax-rates/.
 
-* **`vat_base`** OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92. This paper does not include a VRR for the United States as the U.S. does not levy a VAT. A proxy of the VRR was calculated "by hand" for the U.S, using the following formula: VRR(US) = Sales Tax Revenue/[(Consumption - Sales Tax Revenue) x Average Sales Tax Rate Weighted by Population]. Sales tax revenue was retrieved from OECD, "Global Revenue Statistics Database: 5112 Sales tax," https://stats.oecd.org/Index.aspx?DataSetCode=RS_GBL. Consumption data was retrieved from OECD, "Gross domestic product (GDP): P3: Final consumption expenditure," https://stats.oecd.org/index.aspx?queryid=60702. Sales tax rates were retrieved from Janelle Cammenga, "State and Local Sales Tax Rates, 2020," Tax Foundation, Jan. 15, 2020, https://taxfoundation.org/publications/state-and-local-sales-tax-rates/.
+* **`vat_base`** OECD, "Consumption Tax Trends 2018," Dec. 5, 2018, https://read.oecd-ilibrary.org/taxation/consumption-tax-trends-2018_ctt-2018-en#page92. This paper does not include a VRR for the United States as the U.S. does not levy a VAT. A proxy of the VRR was calculated "by hand" for the U.S, using the following formula: VRR(US) = Sales Tax Revenue/[(Consumption - Sales Tax Revenue) x Average Sales Tax Rate Weighted by Population]. Sales tax revenue was retrieved from OECD, "Global Revenue Statistics Database: 5112 Sales tax," https://stats.oecd.org/Index.aspx?DataSetCode=RS_GBL. Consumption data was retrieved from OECD, "Gross domestic product (GDP): P3: Final consumption expenditure," https://stats.oecd.org/index.aspx?queryid=60702. Sales tax rates were retrieved from Janelle Cammenga, "State and Local Sales Tax Rates, 2021," Tax Foundation, Jan. 6, 2021, https://taxfoundation.org/publications/state-and-local-sales-tax-rates/.
 
 * **`dividends_exemption`** Kyle Pomerleau, "A Hybrid Approach: The Treatment of Foreign Profits under the Tax Cuts and Jobs Act," Tax Foundation, May 3, 2018, https://taxfoundation.org/treatment-foreign-profits-tax-cuts-jobs-act/.
 

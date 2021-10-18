@@ -28,7 +28,20 @@ index_data2019$year<-2019
 index_data2020<-read_csv(paste(source_data,"index_data_2020.csv",sep=""))
 index_data2020$year<-2020
 
-index_data_old<-rbind(index_data2014,index_data2015,index_data2016,index_data2017,index_data2018,index_data2019,index_data2020)
+index_data2021_corporate <- read_csv(paste(source_data,"index_data_2021_corporate.csv",sep=""))
+index_data2021_individual <- read_csv(paste(source_data,"index_data_2021_individual.csv",sep=""))
+index_data2021_consumption <- read_csv(paste(source_data,"index_data_2021_consumption.csv",sep=""))
+index_data2021_property <- read_csv(paste(source_data,"index_data_2021_property.csv",sep=""))
+index_data2021_cross_border <- read_csv(paste(source_data,"index_data_2021_cross_border.csv",sep=""))
+
+index_data2021<-merge(index_data2021_corporate, index_data2021_individual, by=c("country","ISO_2","ISO_3"))
+index_data2021<-merge(index_data2021, index_data2021_consumption, by=c("country","ISO_2","ISO_3"))
+index_data2021<-merge(index_data2021, index_data2021_property, by=c("country","ISO_2","ISO_3"))
+index_data2021<-merge(index_data2021, index_data2021_cross_border, by=c("country","ISO_2","ISO_3"))
+
+index_data2021$year<-2021
+
+index_data_old<-rbind(index_data2014,index_data2015,index_data2016,index_data2017,index_data2018,index_data2019,index_data2020,index_data2021)
 
 #Join PwC data with index_data_property_tax_variables####
 
@@ -38,10 +51,9 @@ pwc_variables_list<-c("corporate_time","labor_time", "consumption_time",
 index_data_old<-index_data_old[,!names(
   index_data_old) %in% pwc_variables_list]
 
-#Adjust years in pwc data to account for two year lag
-paying_taxes$year<-paying_taxes$year+2
+#Adjust years in pwc data to account for three year lag
+paying_taxes$year<-paying_taxes$year+3
 index_data_paying_taxes_variables<-merge(index_data_old,paying_taxes,by=c("ISO_2", "ISO_3","country","year"))
-
 
 
 #Join OECD data with index_data_old####
@@ -49,7 +61,6 @@ index_data_paying_taxes_variables<-merge(index_data_old,paying_taxes,by=c("ISO_2
 #Remove variables from index_data_old that are in OECD data
 oecd_variables_list<-c("corporate_rate", "r_and_d_credit", "top_income_rate", "threshold_top_income_rate", "tax_wedge","dividends_rate" )
 index_data_paying_taxes_variables<-index_data_paying_taxes_variables[,!names(index_data_paying_taxes_variables) %in% oecd_variables_list]
-
 
 index_data_oecd_variables<-merge(index_data_paying_taxes_variables,oecd_variables,by=c("country","ISO_2","ISO_3","year"))
 
@@ -61,6 +72,7 @@ cost_recovery_list<-c("machines_cost_recovery","buildings_cost_recovery", "intan
 index_data_oecd_variables<-index_data_oecd_variables[,!names(index_data_oecd_variables) %in% cost_recovery_list]
 index_data_cost_recovery_variables<-merge(index_data_oecd_variables,cost_recovery,by=c("ISO_2","ISO_3","country","year"))
 
+
 #Join vat data with index_data_cost_recovery_variables####
 
 #Remove variables from index_data_old that are in vat data
@@ -69,6 +81,7 @@ vat_list<-c("vat_rate","vat_threshold", "vat_base")
 index_data_cost_recovery_variables<-index_data_cost_recovery_variables[,!names(index_data_cost_recovery_variables) %in% vat_list]
 
 index_data_vat_variables<-merge(index_data_cost_recovery_variables,vat_data,by=c("ISO_2","ISO_3","country","year"))
+
 
 #Join Property tax data with index_data_cost_recovery_variables####
 property_tax_variables<-c("property_tax_collections")
@@ -89,15 +102,15 @@ index_data_property_tax_variables<-index_data_property_tax_variables[,!names(ind
 index_data_cfc_variables<-merge(index_data_property_tax_variables,cfc_rules,by=c("ISO_2","ISO_3","country","year"))
 
 
-
 index_data_final<-index_data_cfc_variables
 names(index_data_final)
+
 #Reorder columns ####
 index_data_final<-index_data_final[c("ISO_2","ISO_3","country","year",
                                    "corporate_rate","loss_carryback","loss_carryforward",
                                    "machines_cost_recovery","buildings_cost_recovery",
                                    "intangibles_cost_recovery","inventory","allowance_corporate_equity","patent_box",
-                                   "r_and_d_credit","corporate_time","profit_payments","other_payments",
+                                   "r_and_d_credit","digital_services_tax","corporate_time","profit_payments","other_payments",
                                    "top_income_rate","threshold_top_income_rate","tax_wedge",
                                    "labor_payments","labor_time","capital_gains_rate",
                                    "index_capital_gains","dividends_rate",
@@ -119,3 +132,4 @@ write.csv(subset(index_data_final,index_data_final$year==2017),file = paste(fina
 write.csv(subset(index_data_final,index_data_final$year==2018),file = paste(final_data,"final_index_data_2018.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2019),file = paste(final_data,"final_index_data_2019.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2020),file = paste(final_data,"final_index_data_2020.csv",sep=""),row.names=F)
+write.csv(subset(index_data_final,index_data_final$year==2021),file = paste(final_data,"final_index_data_2021.csv",sep=""),row.names=F)

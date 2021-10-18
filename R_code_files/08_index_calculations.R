@@ -1,4 +1,4 @@
-#main index code
+#Main index code
 
 #Load Data####
 #2014
@@ -15,14 +15,17 @@ raw_data_2018 <- read_csv(paste(final_data,"final_index_data_2018.csv",sep=""))
 raw_data_2019 <- read_csv(paste(final_data,"final_index_data_2019.csv",sep=""))
 #2020
 raw_data_2020 <- read_csv(paste(final_data,"final_index_data_2020.csv",sep=""))
+#2021
+raw_data_2021 <- read_csv(paste(final_data,"final_index_data_2021.csv",sep=""))
 
 
 #Combined Data####
-raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,raw_data_2017,raw_data_2018,raw_data_2019,raw_data_2020)
+raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,raw_data_2017,raw_data_2018,raw_data_2019,raw_data_2020,raw_data_2021)
 
 
 raw_data$patent_box<-as.numeric(raw_data$patent_box)
 raw_data$r_and_d_credit<-as.numeric(raw_data$r_and_d_credit)
+raw_data$digital_services_tax<-as.numeric(raw_data$digital_services_tax)
 raw_data$net_wealth<-as.numeric(raw_data$net_wealth)
 raw_data$estate_or_inheritance_tax<-as.numeric(raw_data$estate_or_inheritance_tax)
 raw_data$transfer_tax<-as.numeric(raw_data$transfer_tax)
@@ -36,7 +39,7 @@ raw_data$country_limitations<-as.numeric(raw_data$country_limitations)
 
 #Order variables for easier working
 raw_data<-raw_data[c("ISO_2","ISO_3","country","year",
-                 "corporate_rate","loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory","allowance_corporate_equity","patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments",
+                 "corporate_rate","loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory","allowance_corporate_equity","patent_box","r_and_d_credit","digital_services_tax","corporate_time","profit_payments","other_payments",
                  "top_income_rate","threshold_top_income_rate","tax_wedge","labor_payments","labor_time","capital_gains_rate","index_capital_gains","dividends_rate",
                  "vat_rate","vat_threshold","vat_base","consumption_time",
                  "property_tax", "property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax",
@@ -49,16 +52,16 @@ normalize <-function(x){
   return(normal)
 }   
 
-#standardize all the scores into a new dataframe called "zscores," This does this by year.
+#standardize all the scores into a new dataframe called "zscores" (this does this by year)
 zscores<-data.frame(country=raw_data$country,
                     year=raw_data$year,
-                    ddply(raw_data[4:46],
+                    ddply(raw_data[4:47],
                           .(year),
                           scale)
 )
 alternate_scores<-data.frame(country=raw_data$country,
                       year=raw_data$year,
-                      ddply(raw_data[4:46],
+                      ddply(raw_data[4:47],
                             .(year),
                             normalize)
 )
@@ -67,12 +70,18 @@ alternate_scores<-data.frame(country=raw_data$country,
 zscores<-zscores[-3]
 alternate_scores<-alternate_scores[-3]
 
+#set the digital_services_tax variable to 0 for years prior to 2017 (no countries imposed DSTs then so it currently shows as NA)
+zscores[is.na(zscores)] <- 0
+alternate_scores[is.na(alternate_scores)] <- 0
+
 #Flipping zeros and ones####
 
 #Multiply variables that need to be flipped by -1 (There is likely a better way to do this)
 #List of variables flipped for reference:
 # corporate_rate
+# patent_box
 # r_and_d_credit
+# digital_services_tax
 # corporate_time
 # profit_payments
 # other_payments
@@ -87,6 +96,12 @@ alternate_scores<-alternate_scores[-3]
 # vat_threshold
 # consumption_time
 # property_tax_collections
+# net_wealth
+# estate_or_inheritance_tax
+# transfer_tax
+# asset_tax
+# capital_duties
+# financial_transaction_tax
 # country_limitations
 # dividends_withholding_tax
 # interest_withholding_tax
@@ -94,9 +109,10 @@ alternate_scores<-alternate_scores[-3]
 # cfc_rules
 # thin_capitalization_rules
 
-flip<-c("corporate_rate","r_and_d_credit","corporate_time","profit_payments","other_payments","vat_rate","vat_threshold","consumption_time","property_tax_collections",
-        "capital_gains_rate","dividends_rate","top_income_rate","threshold_top_income_rate","tax_wedge","labor_payments","labor_time",
-        "dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","cfc_rules","country_limitations","thin_capitalization_rules")
+flip <- c("corporate_rate", "patent_box", "r_and_d_credit", "digital_services_tax", "corporate_time", "profit_payments", "other_payments", "top_income_rate", "threshold_top_income_rate", "tax_wedge", 
+          "labor_payments", "labor_time", "capital_gains_rate", "dividends_rate", "vat_rate", "vat_threshold", "consumption_time", "property_tax_collections", "net_wealth", 
+          "estate_or_inheritance_tax", "transfer_tax", "asset_tax", "capital_duties", "financial_transaction_tax", "country_limitations", "dividends_withholding_tax", "interest_withholding_tax", 
+          "royalties_withholding_tax", "cfc_rules", "thin_capitalization_rules")
 
 
 flipfunc <- function(x) {
@@ -120,6 +136,7 @@ for (i in flip) {
 #Create Subcategories####
 
 #Categories and variables for Reference:
+
   #Corporate Rate
     # corporate_rate
   #Cost Recovery
@@ -133,16 +150,30 @@ for (i in flip) {
   #Incentives/Complexity
     # patent_box
     # r_and_d_credit
+    # digital_services_tax
     # corporate_time
     # profit_payments
     # other_payments
+
+  #Income taxes
+    # top_income_rate
+    # threshold_top_income_rate
+    # tax_wedge
+  #Income complexity
+    # labor_payments
+    # labor_time
+  #Capital Gains and Dividends
+    # capital_gains_rates
+    # dividends_rate
+
   #Consumption Tax Rate
     # vat_rate
-  #Consumption Tax vat_base
+  #Consumption Tax Base
     # vat_threshold
     # vat_base
   #Consumption Tax Complexity
     # consumption_time
+
   #Real Property Taxes
     # property_tax
     # propertycollections
@@ -153,19 +184,10 @@ for (i in flip) {
     # transfer_tax
     # asset_tax
     # capital_duties
-    # financial_transaction_taxactiontaxes
-  #Capital Gains and Dividends
-    # capital_gains_rates
-    # dividends_rate
-  #income taxes
-    # top_income_rate
-    # threshold_top_income_rate
-    # tax_wedge
-  #income complexity
-    # labor_payments
-    # labor_time
+    # financial_transaction_taxes
+
   #territoriality
-    # dividends_exemptionion
+    # dividends_exemption
     # capital_gains_exemption
     # country_limitations
   #withholding taxes
@@ -181,16 +203,20 @@ for (i in flip) {
 corporate_rate_index<-c("corporate_rate")
 cost_recovery_index<-c("loss_carryback","loss_carryforward","machines_cost_recovery",
                        "buildings_cost_recovery","intangibles_cost_recovery","inventory","allowance_corporate_equity")
-incentives_index<-c("patent_box","r_and_d_credit","corporate_time","profit_payments","other_payments")
+incentives_index<-c("patent_box","r_and_d_credit","digital_services_tax","corporate_time","profit_payments","other_payments")
+
+income_tax_index<-c("top_income_rate","threshold_top_income_rate","tax_wedge")
+income_tax_complexity_index<-c("labor_payments","labor_time")
+capital_gains_and_dividends_index<-c("capital_gains_rate","dividends_rate")
+
 consumption_tax_rate_index<-c("vat_rate")
 consumption_tax_base_index<-c("vat_threshold","vat_base")
 consumption_tax_complexity<-c("consumption_time")
+
 real_property_index<-c("property_tax","property_tax_collections")
 wealth_taxes_index<-c("net_wealth","estate_or_inheritance_tax")
 capital_taxes_index<-c("transfer_tax","asset_tax","capital_duties","financial_transaction_tax")
-capital_gains_and_dividends_index<-c("capital_gains_rate","dividends_rate")
-income_tax_index<-c("top_income_rate","threshold_top_income_rate","tax_wedge")
-income_tax_complexity_index<-c("labor_payments","labor_time")
+
 territorial_index<-c("dividends_exemption","capital_gains_exemption","country_limitations")
 withholding_index<-c("dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax")
 tax_treaties_index<-c("tax_treaties")
@@ -246,7 +272,7 @@ corporate_index<-c("corporate_rate","cost_recovery","incentives")
 consumption_index<-c("consumption_tax_rate","consumption_tax_base","consumption_tax_complexity")
 property_index<-c("real_property_tax","wealth_taxes","capital_taxes")
 income_index<-c("capital_gains_and_dividends","income_tax","income_tax_complexity")
-international_index<-c("territorial","withholding_taxes","tax_treaties","international_regulations")
+cross_border_index<-c("territorial","withholding_taxes","tax_treaties","international_regulations")
 
 
 categories<-data.frame(country=raw_data$country,
@@ -256,10 +282,10 @@ categories$corporate<-apply((subcategories[corporate_index]*(1/length(corporate_
 categories$consumption<-apply((subcategories[consumption_index]*(1/length(consumption_index))),1,sum)
 categories$property<-apply((subcategories[property_index]*(1/length(property_index))),1,sum)
 categories$income<-apply((subcategories[income_index]*(1/length(income_index))),1,sum)
-categories$international<-apply((subcategories[international_index]*(1/length(international_index))),1,sum)
+categories$cross_border<-apply((subcategories[cross_border_index]*(1/length(cross_border_index))),1,sum)
 categories$final<-apply((categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
-write.csv(subset(categories,categories$year==2020),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
+write.csv(subset(categories,categories$year==2021),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
 
 
 
@@ -272,7 +298,7 @@ alternate_categories$corporate<-apply((alternate_subcategories[corporate_index]*
 alternate_categories$consumption<-apply((alternate_subcategories[consumption_index]*(1/length(consumption_index))),1,sum)
 alternate_categories$property<-apply((alternate_subcategories[property_index]*(1/length(property_index))),1,sum)
 alternate_categories$income<-apply((alternate_subcategories[income_index]*(1/length(income_index))),1,sum)
-alternate_categories$international<-apply((alternate_subcategories[international_index]*(1/length(international_index))),1,sum)
+alternate_categories$cross_border<-apply((alternate_subcategories[cross_border_index]*(1/length(cross_border_index))),1,sum)
 alternate_categories$final<-apply((alternate_categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
 #normalize all category and subcategory scores
@@ -308,7 +334,7 @@ rank1<-function(x){
   ranks<-rank(-x,ties.method= "min")
   return(ranks)
 }
-write.csv(subset(subcategories,subcategories$year==2020),file = paste(final_outputs,"subcategories_z_score.csv",sep=""),row.names=F)
+write.csv(subset(subcategories,subcategories$year==2021),file = paste(final_outputs,"subcategories_z_score.csv",sep=""),row.names=F)
 
 
 #Subcategory Scores####
@@ -401,7 +427,7 @@ categories<-ddply(categories,
                   consumption_rank = rank(-consumption,ties.method = "min"),
                   property_rank = rank(-property,ties.method = "min"),
                   income_rank = rank(-income,ties.method = "min"),
-                  international_rank = rank(-international,ties.method = "min"),
+                  cross_border_rank = rank(-cross_border,ties.method = "min"),
                   final_rank = rank(-final,ties.method = "min")                      
 )
 
@@ -415,7 +441,7 @@ alternate_categories<-ddply(alternate_categories,
                      consumption_rank = rank(-consumption,ties.method = "min"),
                      property_rank = rank(-property,ties.method = "min"),
                      income_rank = rank(-income,ties.method = "min"),
-                     international_rank = rank(-international,ties.method = "min"),
+                     cross_border_rank = rank(-cross_border,ties.method = "min"),
                      final_rank = rank(-final,ties.method = "min")                      
 )
 
@@ -468,10 +494,11 @@ final_2017<-final_categories[final_categories$year==2017,]
 final_2018<-final_categories[final_categories$year==2018,]
 final_2019<-final_categories[final_categories$year==2019,]
 final_2020<-final_categories[final_categories$year==2020,]
+final_2021<-final_categories[final_categories$year==2021,]
 
 #Data Check####
 
-check<-raw_data[raw_data$country == "Greece",]
+check<-raw_data[raw_data$country == "Austria",]
 
 #Checking Sensitivity####
 
@@ -479,7 +506,7 @@ check<-raw_data[raw_data$country == "Greece",]
 final_categories<-final_categories[order(final_categories$country,final_categories$year),]
 alternate_final_categories<-alternate_final_categories[order(alternate_final_categories$country,alternate_final_categories$year),]
 
-cor(alternate_final_categories$final[alternate_final_categories$year == 2020],final_categories$final[final_categories$year == 2020])
+cor(alternate_final_categories$final[alternate_final_categories$year == 2021],final_categories$final[final_categories$year == 2021])
 
 
 #not really. 98 percent correlation between the two
@@ -488,8 +515,8 @@ cor(alternate_final_categories$final[alternate_final_categories$year == 2020],fi
 
 #normal scoring techniques:
 
-cortest1<-final_categories[final_categories$year == 2020,]
-subcortest1<-final_subcategories[final_subcategories$year == 2020,]
+cortest1<-final_categories[final_categories$year == 2021,]
+subcortest1<-final_subcategories[final_subcategories$year == 2021,]
 subcortest1<-cbind(subcortest1,cortest1[14])
 cor(cortest1[c(4,6,8,10,12,14)])
 categories_correl<-data.frame(cor(cortest1[c(4,6,8,10,12,14)]))
@@ -517,7 +544,7 @@ final_categories<-final_categories[c("ISO_2","ISO_3","country","year",
                                      "income_rank","income",
                                      "consumption_rank","consumption",
                                      "property_rank","property",
-                                     "international_rank","international")]
+                                     "cross_border_rank","cross_border")]
 
 #The following file is used for country profile pages and tax-competition.org; do not edit
 write.csv(final_categories,paste(final_outputs,"final_categories.csv",sep=""),row.names=F)
@@ -530,68 +557,143 @@ colnames(final_categories)<-c("ISO_2","ISO_3","Country","Year",
                               "Income Rank","Income Score",
                               "Consumption Rank","Consumption Score",
                               "Property Rank","Property Score",
-                              "International Rank","International Score")
+                              "Cross-Border Rank","Cross-Border Score")
 
 Australia<-final_categories[final_categories$Country=="Australia",]
+write.csv(Australia, paste(country_outputs, "Australia.csv", sep=""), row.names=F)
+
 Austria<-final_categories[final_categories$Country=="Austria",]
+write.csv(Austria, paste(country_outputs, "Austria.csv", sep=""), row.names=F)
+
 Belgium<-final_categories[final_categories$Country=="Belgium",]
+write.csv(Belgium, paste(country_outputs, "Belgium.csv", sep=""), row.names=F)
+
 Canada<-final_categories[final_categories$Country=="Canada",]
+write.csv(Canada, paste(country_outputs, "Canada.csv", sep=""), row.names=F)
+
 Chile<-final_categories[final_categories$Country=="Chile",]
+write.csv(Chile, paste(country_outputs, "Chile.csv", sep=""), row.names=F)
+
+Colombia<-final_categories[final_categories$Country=="Colombia",]
+write.csv(Colombia, paste(country_outputs, "Colombia.csv", sep=""), row.names=F)
+
 Czech_Republic<-final_categories[final_categories$Country=="Czech Republic",]
+write.csv(Czech_Republic, paste(country_outputs, "Czech Republic.csv", sep=""), row.names=F)
+
 Denmark<-final_categories[final_categories$Country=="Denmark",]
+write.csv(Denmark, paste(country_outputs, "Denmark.csv", sep=""), row.names=F)
+
 Estonia<-final_categories[final_categories$Country=="Estonia",]
+write.csv(Estonia, paste(country_outputs, "Estonia.csv", sep=""), row.names=F)
+
 Finland<-final_categories[final_categories$Country=="Finland",]
+write.csv(Finland, paste(country_outputs, "Finland.csv", sep=""), row.names=F)
+
 France<-final_categories[final_categories$Country=="France",]
+write.csv(France, paste(country_outputs, "France.csv", sep=""), row.names=F)
+
 Germany<-final_categories[final_categories$Country=="Germany",]
+write.csv(Germany, paste(country_outputs, "Germany.csv", sep=""), row.names=F)
+
 Greece<-final_categories[final_categories$Country=="Greece",]
+write.csv(Greece, paste(country_outputs, "Greece.csv", sep=""), row.names=F)
+
 Hungary<-final_categories[final_categories$Country=="Hungary",]
+write.csv(Hungary, paste(country_outputs, "Hungary.csv", sep=""), row.names=F)
+
 Iceland<-final_categories[final_categories$Country=="Iceland",]
+write.csv(Iceland, paste(country_outputs, "Iceland.csv", sep=""), row.names=F)
+
 Ireland<-final_categories[final_categories$Country=="Ireland",]
+write.csv(Ireland, paste(country_outputs, "Ireland.csv", sep=""), row.names=F)
+
 Israel<-final_categories[final_categories$Country=="Israel",]
+write.csv(Israel, paste(country_outputs, "Israel.csv", sep=""), row.names=F)
+
 Italy<-final_categories[final_categories$Country=="Italy",]
+write.csv(Italy, paste(country_outputs, "Italy.csv", sep=""), row.names=F)
+
 Japan<-final_categories[final_categories$Country=="Japan",]
+write.csv(Japan, paste(country_outputs, "Japan.csv", sep=""), row.names=F)
+
 Korea<-final_categories[final_categories$Country=="Korea",]
+write.csv(Korea, paste(country_outputs, "Korea.csv", sep=""), row.names=F)
+
 Latvia<-final_categories[final_categories$Country=="Latvia",]
+write.csv(Latvia, paste(country_outputs, "Latvia.csv", sep=""), row.names=F)
+
 Lithuania<-final_categories[final_categories$Country=="Lithuania",]
+write.csv(Lithuania, paste(country_outputs, "Lithuania.csv", sep=""), row.names=F)
+
 Luxembourg<-final_categories[final_categories$Country=="Luxembourg",]
+write.csv(Luxembourg, paste(country_outputs, "Luxembourg.csv", sep=""), row.names=F)
+
 Mexico<-final_categories[final_categories$Country=="Mexico",]
+write.csv(Mexico, paste(country_outputs, "Mexico.csv", sep=""), row.names=F)
+
 Netherlands<-final_categories[final_categories$Country=="Netherlands",]
+write.csv(Netherlands, paste(country_outputs, "Netherlands.csv", sep=""), row.names=F)
+
 New_Zealand<-final_categories[final_categories$Country=="New Zealand",]
+write.csv(New_Zealand, paste(country_outputs, "New Zealand.csv", sep=""), row.names=F)
+
 Norway<-final_categories[final_categories$Country=="Norway",]
+write.csv(Norway, paste(country_outputs, "Norway.csv", sep=""), row.names=F)
+
 Poland<-final_categories[final_categories$Country=="Poland",]
+write.csv(Poland, paste(country_outputs, "Poland.csv", sep=""), row.names=F)
+
 Portugal<-final_categories[final_categories$Country=="Portugal",]
+write.csv(Portugal, paste(country_outputs, "Portugal.csv", sep=""), row.names=F)
+
 Slovak_Republic<-final_categories[final_categories$Country=="Slovak Republic",]
+write.csv(Slovak_Republic, paste(country_outputs, "Slovak Republic.csv", sep=""), row.names=F)
+
 Slovenia<-final_categories[final_categories$Country=="Slovenia",]
+write.csv(Slovenia, paste(country_outputs, "Slovenia.csv", sep=""), row.names=F)
+
 Spain<-final_categories[final_categories$Country=="Spain",]
+write.csv(Spain, paste(country_outputs, "Spain.csv", sep=""), row.names=F)
+
 Sweden<-final_categories[final_categories$Country=="Sweden",]
+write.csv(Sweden, paste(country_outputs, "Sweden.csv", sep=""), row.names=F)
+
 Switzerland<-final_categories[final_categories$Country=="Switzerland",]
+write.csv(Switzerland, paste(country_outputs, "Switzerland.csv", sep=""), row.names=F)
+
 Turkey<-final_categories[final_categories$Country=="Turkey",]
+write.csv(Turkey, paste(country_outputs, "Turkey.csv", sep=""), row.names=F)
+
 United_Kingdom<-final_categories[final_categories$Country=="United Kingdom",]
+write.csv(United_Kingdom, paste(country_outputs, "United Kingdom.csv", sep=""), row.names=F)
+
 United_States<-final_categories[final_categories$Country=="United States",]
+write.csv(United_States, paste(country_outputs, "United States.csv", sep=""), row.names=F)
 
 
 #Changes from 2018 index
-M <- merge(final_2019,final_2018,by="country")
+#M <- merge(final_2019,final_2018,by="country")
 #drop ISO variables
-drop_iso<-names(M) %in% c("ISO_2.x","ISO_3.x","ISO_2.y","ISO_3.y")
-M<-M[!drop_iso]
+#drop_iso<-names(M) %in% c("ISO_2.x","ISO_3.x","ISO_2.y","ISO_3.y")
+#M<-M[!drop_iso]
 
-Changes <- M[,grepl("*\\.x$",names(M))] - M[,grepl("*\\.y$",names(M))]
+#Changes <- M[,grepl("*\\.x$",names(M))] - M[,grepl("*\\.y$",names(M))]
 
-Changes<-cbind(M[,1,drop=FALSE],Changes)
-
-final_subcategories_2020<-subset(final_subcategories,year==2020)
+#Changes<-cbind(M[,1,drop=FALSE],Changes)
 
 #The following file is used for country profile pages; do not edit
-write.csv(raw_data,paste(final_outputs,"raw_data_2020.csv",sep=""),row.names=F)
+write.csv(raw_data,paste(final_outputs,"raw_data_2021.csv",sep=""),row.names=F)
 
 
 write.csv(final_2017, file = paste(final_outputs,"data_2017_run.csv",sep=""),row.names=F)
 write.csv(final_2018, file = paste(final_outputs,"data_2018_run.csv",sep=""),row.names=F)
 write.csv(final_2019, file = paste(final_outputs,"data_2019_run.csv",sep=""),row.names=F)
 write.csv(final_2020, file = paste(final_outputs,"data_2020_run.csv",sep=""),row.names=F)
+write.csv(final_2021, file = paste(final_outputs,"data_2021_run.csv",sep=""),row.names=F)
+
 
 #The following file is used for country profile pages; do not edit
-write.csv(final_subcategories_2020,paste(final_outputs,"subcategories_2020.csv",sep=""),row.names=F)
+final_subcategories_2021<-subset(final_subcategories,year==2021)
+write.csv(final_subcategories_2021,paste(final_outputs,"subcategories_2021.csv",sep=""),row.names=F)
 
-write.csv(final_categories,paste(final_outputs,"final_categories_2014_2020.csv",sep=""),row.names=F)
+write.csv(final_categories,paste(final_outputs,"final_categories_2014_2021.csv",sep=""),row.names=F)

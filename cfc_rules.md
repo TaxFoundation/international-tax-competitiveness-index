@@ -10,7 +10,7 @@ Countries with CFC rules that have exemptions or only apply to passive income or
 
 Zero is the best score. 
 
-The value of the `cfc_rules` variable is a simple average of three binary variables:
+The value of the `cfc_rules` variable is a simple average of three variables:
 
 ## `exists`: determines if the country has CFC rules or not.
 
@@ -18,8 +18,8 @@ The value of the `cfc_rules` variable is a simple average of three binary variab
 
 ## `active`: determines if the country's CFC regime taxes active income
 
-    Equal to 1 if CFC rules apply to active income and equal to 0 if they apply only to passive income or the country does not have a CFC regime
+    Equal to 1 if CFC rules apply to active income; equal to 0 if they apply only to passive income or the country does not have a CFC regime; equal to 0.5 if there is a formula based on a share of passive income that triggers full inclusion or the country exempts CFCs with substantial activities.
 
-## `exemption`: determines if the country has exemptions to its CFC regime
+## `no_exemption`: determines if the country has exemptions to its CFC regime
 
-    Equal to 1 if CFC rules do not have exemptions; equal to zero if there are no CFC rules or if there are exemptions.
+    Equal to 1 if CFC rules do not have exemptions; equal to 0 if there are exemptions for countries (including based on an effective or statutory rate test) or if there are no CFC rules; equal to 0.5 if there is a formula based on a share of passive income that triggers full inclusion.
