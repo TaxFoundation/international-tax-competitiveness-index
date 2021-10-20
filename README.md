@@ -67,7 +67,7 @@ This code organizes PwC's Paying Taxes data for the following variables:
 3. `other_payments`
 4. `labor_payments`
 5. `labor_time`
-4. `consumption_time`
+6. `consumption_time`
 
 The input file is `pwc_paying_taxes.csv`, which can be found in /source-data.
 
@@ -77,10 +77,7 @@ This file combines the source data and intermediate output data. The outputs are
 ### `08_index_calculations.R`
 This file is the main file for calculating _Index_ scores and ranks.
 
-### `09_country_profiles.R`
-This file creates the country profiles table used in the webtool.
-
-### `10_output_tables.R`
+### `09_output_tables.R`
 This file creates the tables used in the report.
 
 ## Designing your own reform scenario
