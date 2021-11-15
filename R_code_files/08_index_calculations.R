@@ -512,7 +512,7 @@ cor(cortest1[c(4,6,8,10,12,14)])
 categories_correl<-data.frame(cor(cortest1[c(4,6,8,10,12,14)]))
 write.csv(categories_correl,paste(final_outputs,"categories_correlation.csv",sep=""))
 
-subcategories_correl<-data.frame(cor(subcortest1[c(seq(4,34,2),37)]))
+subcategories_correl<-data.frame(cor(subcortest1[c(seq(4,30,2),33)]))
 write.csv(subcategories_correl,paste(final_outputs,"subcategories_correlation.csv",sep=""))
 
 
