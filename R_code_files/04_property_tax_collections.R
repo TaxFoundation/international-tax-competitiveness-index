@@ -91,7 +91,7 @@ dataset_list <- get_datasets()
 #dstruc$GOV
 
 property_tax_revenue <- get_dataset("REV",filter=list(c("NES"),c("4100"),c("TAXNAT"),c(oecd_countries)), start_time = 2012)
-property_tax_revenue <- property_tax_revenue[c("COU","obsTime","obsValue")]
+property_tax_revenue <- property_tax_revenue[c("COU","Time","ObsValue")]
 colnames(property_tax_revenue) <- c("isocode","year","property_tax_collections")
 
 #Missing country/years are simply prior year values
