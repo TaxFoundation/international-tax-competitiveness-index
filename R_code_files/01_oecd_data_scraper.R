@@ -11,8 +11,8 @@
 #dstruc$VAR_DESC
 
 corporate_rate<-get_dataset("Table_II1",filter= list(c(oecd_countries),c("COMB_CIT_RATE")), start_time = 2014)
-corporate_rate<-corporate_rate[c(1,4,5)]
-colnames(corporate_rate)<-c("country","year","corporate_rate")
+corporate_rate<-corporate_rate[c(2,3,5)]
+colnames(corporate_rate)<-c("country","corporate_rate","year")
 
 #Turkey increased its CIT rate to 25%
 corporate_rate[c('corporate_rate')][corporate_rate$country == "TUR" & corporate_rate$year == 2021,] <- "25"
