@@ -273,7 +273,7 @@ data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_reco
 data[c('machines_cost_recovery')][data$country == "CAN" & data$year >= 2018,] <- 1
 
 #In 2020, Chile introduced full expensing
-data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_recovery')][data$country == "CHL" & data$year >=2020,] <- 1
+data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_recovery')][data$country == "CHL" & data$year ==2020,] <- 1
 
 
 #Adjust USA data to include bonus depreciation for machinery
@@ -293,6 +293,10 @@ data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2017,] <-
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2018,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2018,] * 0.00) + 1.00
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2019,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2019,] * 0.00) + 1.00
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2020,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2020,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2021,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2021,] * 0.00) + 1.00
+
+#Ajdust UK data to include super-deduction
+data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2021,] <- (data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2021,] * 0.00) + 1.30
 
 #Only keep data relevant to the ITCI
 data <- subset(data, select = c(country, year, buildings_cost_recovery, machines_cost_recovery, intangibles_cost_recovery))
