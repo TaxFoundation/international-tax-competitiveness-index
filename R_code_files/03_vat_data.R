@@ -86,8 +86,11 @@ vat_thresholds_2021$year <- "2021"
 vat_thresholds <- rbind(vat_thresholds_2014, vat_thresholds_2015, vat_thresholds_2016, vat_thresholds_2017, vat_thresholds_2018, vat_thresholds_2019, vat_thresholds_2020, vat_thresholds_2021)
 
 #Change NAs to zeros and delete empty rows
-vat_thresholds[is.na(vat_thresholds)] <- 0
+vat_thresholds$country<-as.character(vat_thresholds$country)
+vat_thresholds$country[is.na(vat_thresholds$country)] <- "0"
+vat_thresholds$vat_threshold[is.na(vat_thresholds$vat_threshold)] <- 0
 vat_thresholds <- subset(vat_thresholds, vat_thresholds$country!="0")
+
 
 #Add US for all years; Latvia for 2014 and 2015; Lithuania for 2014, 2015, 2016, 2017; and Colombia for 2014-2019#
 country <- c("United States","United States","United States","United States","United States","United States", "United States", "United States")
