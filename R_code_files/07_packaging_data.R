@@ -28,17 +28,7 @@ index_data2019$year<-2019
 index_data2020<-read_csv(paste(source_data,"index_data_2020.csv",sep=""))
 index_data2020$year<-2020
 
-index_data2021_corporate <- read_csv(paste(source_data,"index_data_2021_corporate.csv",sep=""))
-index_data2021_individual <- read_csv(paste(source_data,"index_data_2021_individual.csv",sep=""))
-index_data2021_consumption <- read_csv(paste(source_data,"index_data_2021_consumption.csv",sep=""))
-index_data2021_property <- read_csv(paste(source_data,"index_data_2021_property.csv",sep=""))
-index_data2021_cross_border <- read_csv(paste(source_data,"index_data_2021_cross_border.csv",sep=""))
-
-index_data2021<-merge(index_data2021_corporate, index_data2021_individual, by=c("country","ISO_2","ISO_3"))
-index_data2021<-merge(index_data2021, index_data2021_consumption, by=c("country","ISO_2","ISO_3"))
-index_data2021<-merge(index_data2021, index_data2021_property, by=c("country","ISO_2","ISO_3"))
-index_data2021<-merge(index_data2021, index_data2021_cross_border, by=c("country","ISO_2","ISO_3"))
-
+index_data2021<-read_csv(paste(source_data,"index_data_2021.csv",sep=""))
 index_data2021$year<-2021
 
 index_data_old<-rbind(index_data2014,index_data2015,index_data2016,index_data2017,index_data2018,index_data2019,index_data2020,index_data2021)
