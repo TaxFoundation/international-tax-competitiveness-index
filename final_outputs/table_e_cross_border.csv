@@ -1,7 +1,7 @@
 "country","dividends_exemption","capital_gains_exemption","country_limitations","dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties","cfc_rules","cfc_income","cfc_exemption","thin_capitalization_rules"
 "","Participation Exemption","","","Withholding Taxes","","","Tax Treaties","Anti-Tax Avoidance Rules","","",""
 "Country","Dividend Exemption","Capital Gains Exemption","Country Limitations","Dividend Withholding Tax","Interest Withholding Tax","Royalties Withholding Tax","Number of Tax Treaties","Controlled Foreign Corporation Rules","Controlled Foreign Corporation Rules: Income","Controlled Foreign Corporation Rules: Exemptions","Interest Deduction Limitations"
-"Australia","100.0%","100.0%","None","30.0%","10.0%","30.0%","45","Yes","CFC exempt if it passes the active income test and narrower rules apply if located in a ìlistedî country.","Passive","1.5:1 debt-to-equity ratio (15:1 for financial institutions) applies"
+"Australia","100.0%","100.0%","None","30.0%","10.0%","30.0%","45","Yes","CFC exempt if it passes the active income test and narrower rules apply if located in a ‚Äúlisted‚Äù country.","Passive","1.5:1 debt-to-equity ratio (15:1 for financial institutions) applies"
 "Austria","100.0%","100.0%","None","27.5%","0.0%","20.0%","89","Yes","CFC with substantive economic activities exempted.","Passive","Interest limitation rule applies for ""excessive borrowing costs,"" i.e., costs greater than EUR 3 million and greater than 30% of adjusted EBITDA; arm's length standard applicable"
 "Belgium","100.0%","100.0%","None","30.0%","30.0%","30.0%","95","Yes","Effective tax rate exemption.","Passive (related to non-genuine arrangements)","Interest deductions limited to the higher of EUR 3 million or 30% of EBITDA
 
@@ -61,7 +61,7 @@ Several exemptions do not apply if the CFC is in jurisdiction on the EU list of 
 However, in specific cases, interest can be reclassified as a dividend"
 "Israel","100.0%","100.0%","None","30.0%","23.0%","23.0%","58","Yes","CFC exempt if at least 15% effective tax rate and if CFC is publicly traded.","Passive","None"
 "Italy","95.0%","95.0%","Blacklist countries are excluded","26.0%","26.0%","22.5%","100","Yes","CFC with substantive economic activities exempted.","All Income","Interest deductions limited to 30% of EBITDA"
-"Japan","95.0%","0.0%","None","20.4%","20.4%","20.4%","70","Yes","Exemptions exist for economic substance and certain control/location criteria.","Primarily passive (all income of ìpaper,î ìcash box,î or ìblacklistedî companies)","3:1 debt-to-equity ratio (2:1 for particular repo transactions) applies
+"Japan","95.0%","0.0%","None","20.4%","20.4%","20.4%","70","Yes","Exemptions exist for economic substance and certain control/location criteria.","Primarily passive (all income of ‚Äúpaper,‚Äù ‚Äúcash box,‚Äù or ‚Äúblacklisted‚Äù companies)","3:1 debt-to-equity ratio (2:1 for particular repo transactions) applies
 
 Interest deductions limited to 20% of adjusted income"
 "Korea","0.0%","0.0%","N/A","22.0%","22.0%","22.0%","93","Yes","CFC rules don't apply to active income if CFC has fixed facilities engaged in business in the foreign country.
