@@ -40,7 +40,7 @@ raw_data$country_limitations<-as.numeric(raw_data$country_limitations)
 #Order variables for easier working
 raw_data<-raw_data[c("ISO_2","ISO_3","country","year",
                  "corporate_rate","loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory","allowance_corporate_equity","patent_box","r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev",
-                 "top_income_rate","threshold_top_income_rate","tax_wedge","labor_payments","labor_time","capital_gains_rate","index_capital_gains","dividends_rate",
+                 "top_income_rate","threshold_top_income_rate","tax_wedge","personal_surtax","personal_other_rev","capital_gains_rate","index_capital_gains","dividends_rate",
                  "vat_rate","vat_threshold","vat_base","consumption_time",
                  "property_tax", "property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax",
                  "dividends_exemption","capital_gains_exemption","country_limitations","dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties","cfc_rules","thin_capitalization_rules")]
@@ -88,8 +88,8 @@ alternate_scores[is.na(alternate_scores)] <- 0
 # top_income_rate
 # threshold_top_income_rate
 # tax_wedge
-# labor_payments
-# labor_time
+# personal_surtax
+# personal_other_rev
 # capital_gains_rate
 # dividends_rate
 # vat_rate
@@ -110,7 +110,7 @@ alternate_scores[is.na(alternate_scores)] <- 0
 # thin_capitalization_rules
 
 flip <- c("corporate_rate", "patent_box", "r_and_d_credit", "digital_services_tax", "corporate_alt_minimum", "corporate_surtax", "corporate_other_rev", "top_income_rate", "threshold_top_income_rate", "tax_wedge", 
-          "labor_payments", "labor_time", "capital_gains_rate", "dividends_rate", "vat_rate", "vat_threshold", "consumption_time", "property_tax_collections", "net_wealth", 
+          "personal_surtax", "personal_other_rev", "capital_gains_rate", "dividends_rate", "vat_rate", "vat_threshold", "consumption_time", "property_tax_collections", "net_wealth", 
           "estate_or_inheritance_tax", "transfer_tax", "asset_tax", "capital_duties", "financial_transaction_tax", "country_limitations", "dividends_withholding_tax", "interest_withholding_tax", 
           "royalties_withholding_tax", "cfc_rules", "thin_capitalization_rules")
 
@@ -160,8 +160,8 @@ for (i in flip) {
     # threshold_top_income_rate
     # tax_wedge
   #Income complexity
-    # labor_payments
-    # labor_time
+    # personal_surtax
+    # personal_other_rev
   #Capital Gains and Dividends
     # capital_gains_rates
     # dividends_rate
@@ -206,7 +206,7 @@ cost_recovery_index<-c("loss_carryback","loss_carryforward","machines_cost_recov
 incentives_index<-c("patent_box","r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev")
 
 income_tax_index<-c("top_income_rate","threshold_top_income_rate","tax_wedge")
-income_tax_complexity_index<-c("labor_payments","labor_time")
+income_tax_complexity_index<-c("personal_surtax","personal_other_rev")
 capital_gains_and_dividends_index<-c("capital_gains_rate","dividends_rate")
 
 consumption_tax_rate_index<-c("vat_rate")
