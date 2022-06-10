@@ -1,5 +1,5 @@
 #PWC Paying Taxes Data####
-
+#This code has been disabled in the 00_master_file.R
 #Import data
 pwc_paying_taxes <- read_excel(paste(source_data,"pwc_paying_taxes.xlsx",sep=""),
                                range = "B1:BP191")
