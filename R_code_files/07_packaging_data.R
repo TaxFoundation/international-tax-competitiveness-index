@@ -5,7 +5,7 @@ cost_recovery<-read_csv(paste(intermediate_outputs,"cost_recovery_data.csv",sep=
 vat_data<-read_csv(paste(intermediate_outputs,"vat_data.csv",sep=""))
 property_tax<-read_csv(paste(intermediate_outputs,"property_tax_data.csv",sep=""))
 cfc_rules<-read_csv(paste(intermediate_outputs,"cfc_rules_data.csv",sep=""))
-paying_taxes<-read_csv(paste(intermediate_outputs,"pwc_paying_taxes.csv",sep=""))
+#paying_taxes<-read_csv(paste(intermediate_outputs,"pwc_paying_taxes.csv",sep=""))
 
 index_data2014<-read_csv(paste(source_data,"index_data_2014.csv",sep=""))
 index_data2014$year<-2014
@@ -37,7 +37,7 @@ index_data_old<-rbind(index_data2014,index_data2015,index_data2016,index_data201
 #This has been disabled
 #Remove variables from index_data_old that are in PwC paying taxes data
 #pwc_variables_list<-c("corporate_time","labor_time", "consumption_time", 
-                      "profit_payments","labor_payments", "other_payments" )
+#                      "profit_payments","labor_payments", "other_payments" )
 #index_data_old<-index_data_old[,!names(
 #  index_data_old) %in% pwc_variables_list]
 
@@ -100,11 +100,11 @@ index_data_final<-index_data_final[c("ISO_2","ISO_3","country","year",
                                    "corporate_rate","loss_carryback","loss_carryforward",
                                    "machines_cost_recovery","buildings_cost_recovery",
                                    "intangibles_cost_recovery","inventory","allowance_corporate_equity","patent_box",
-                                   "r_and_d_credit","digital_services_tax","corporate_time","profit_payments","other_payments",
+                                   "r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev",
                                    "top_income_rate","threshold_top_income_rate","tax_wedge",
-                                   "labor_payments","labor_time","capital_gains_rate",
+                                   "personal_surtax","personal_other_rev","capital_gains_rate",
                                    "index_capital_gains","dividends_rate",
-                                   "vat_rate","vat_threshold","vat_base","consumption_time",
+                                   "vat_rate","vat_threshold","vat_base",
                                    "property_tax", "property_tax_collections","net_wealth",
                                    "estate_or_inheritance_tax","transfer_tax","asset_tax",
                                    "capital_duties","financial_transaction_tax",
