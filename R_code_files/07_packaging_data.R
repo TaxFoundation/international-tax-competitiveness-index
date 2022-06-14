@@ -31,7 +31,10 @@ index_data2020$year<-2020
 index_data2021<-read_csv(paste(source_data,"index_data_2021.csv",sep=""))
 index_data2021$year<-2021
 
-index_data_old<-rbind(index_data2014,index_data2015,index_data2016,index_data2017,index_data2018,index_data2019,index_data2020,index_data2021)
+index_data2022<-read_csv(paste(source_data,"index_data_2022.csv",sep=""))
+index_data2022$year<-2022
+
+index_data_old<-rbind(index_data2014,index_data2015,index_data2016,index_data2017,index_data2018,index_data2019,index_data2020,index_data2021, index_data2022)
 
 #Join PwC data with index_data_property_tax_variables####
 #This has been disabled
@@ -123,3 +126,4 @@ write.csv(subset(index_data_final,index_data_final$year==2018),file = paste(fina
 write.csv(subset(index_data_final,index_data_final$year==2019),file = paste(final_data,"final_index_data_2019.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2020),file = paste(final_data,"final_index_data_2020.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2021),file = paste(final_data,"final_index_data_2021.csv",sep=""),row.names=F)
+write.csv(subset(index_data_final,index_data_final$year==2022),file = paste(final_data,"final_index_data_2021.csv",sep=""),row.names=F)
