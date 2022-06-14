@@ -82,8 +82,14 @@ colnames(vat_thresholds_2021) <- c("country", "vat_threshold")
 vat_thresholds_2021$country <- str_remove_all(vat_thresholds_2021$country, "[6*]")
 vat_thresholds_2021$year <- "2021"
 
+#2022
+vat_thresholds_2022 <- vat_thresholds_2021
+vat_thresholds_2022$year <- "2022"
+
 #Combine years
-vat_thresholds <- rbind(vat_thresholds_2014, vat_thresholds_2015, vat_thresholds_2016, vat_thresholds_2017, vat_thresholds_2018, vat_thresholds_2019, vat_thresholds_2020, vat_thresholds_2021)
+vat_thresholds <- rbind(vat_thresholds_2014, vat_thresholds_2015, vat_thresholds_2016, 
+                        vat_thresholds_2017, vat_thresholds_2018, vat_thresholds_2019, 
+                        vat_thresholds_2020, vat_thresholds_2021, vat_thresholds_2022)
 
 #Change NAs to zeros and delete empty rows
 vat_thresholds$country<-as.character(vat_thresholds$country)
@@ -92,10 +98,10 @@ vat_thresholds$vat_threshold[is.na(vat_thresholds$vat_threshold)] <- 0
 vat_thresholds <- subset(vat_thresholds, vat_thresholds$country!="0")
 
 
-#Add US for all years; Latvia for 2014 and 2015; Lithuania for 2014, 2015, 2016, 2017; and Colombia for 2014-2019#
-country <- c("United States","United States","United States","United States","United States","United States", "United States", "United States")
-vat_threshold <- c("0","0","0","0","0","0","0", "0")
-year <- c("2014","2015","2016","2017","2018","2019","2020", "2021")
+#Add US for all years; Latvia for 2014 and 2015; Lithuania for 2014, 2015, 2016, 2017; Colombia for 2014-2019, and Costa Rica for all years#
+country <- c("United States","United States","United States","United States","United States","United States", "United States", "United States", "United States")
+vat_threshold <- c("0","0","0","0","0","0","0", "0","0")
+year <- c("2014","2015","2016","2017","2018","2019","2020", "2021","2022")
 USA <- data.frame(country, vat_threshold, year)
 
 country <- c("Latvia", "Latvia")
@@ -113,7 +119,13 @@ vat_threshold <- c("0","0","0","0","0","0")
 year <- c("2014","2015","2016","2017","2018","2019")
 COL <- data.frame(country, vat_threshold, year)
 
-vat_thresholds <- rbind(vat_thresholds, USA, LVA, LTU, COL)
+
+country <- c("Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica")
+vat_threshold <- c("0","0","0","0","0","0","0","0","0")
+year <- c("2014","2015","2016","2017","2018","2019","2020","2021","2022")
+CRI <- data.frame(country, vat_threshold, year)
+
+vat_thresholds <- rbind(vat_thresholds, USA, LVA, LTU, COL, CRI)
 
 write.csv(vat_thresholds,paste(intermediate_outputs,"vat_thresholds.csv",sep=""),row.names = FALSE)
 
