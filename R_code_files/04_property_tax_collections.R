@@ -13,69 +13,55 @@ imf_capital_stock_data$capital_stock <- as.numeric(imf_capital_stock_data$capita
 imf_capital_stock_data$capital_stock <- (imf_capital_stock_data$capital_stock)*1000
 
 imf_capital_stock_data<-imf_capital_stock_data[c("isocode","country","year","capital_stock")]
-
-#ISO_OECD<-subset(iso_country_codes,iso_country_codes$ISO_3%in%oecd_countries)
-#ISO_2_OECD<-print(ISO_OECD$ISO_2)
+colnames(imf_capital_stock_data)<-c("ISO_3","country","year","capital_stock")
+ISO_OECD<-subset(iso_country_codes,iso_country_codes$ISO_3%in%oecd_countries)
+ISO_2_OECD<-print(ISO_OECD$ISO_2)
 
 
 #The following section is only needed when there is no recent update of the IMF's "Investment and Capital Stock Database" (https://infrastructuregovern.imf.org/content/PIMA/Home/Knowledge-Hub/Publications.html#Data) 
-#databaseID <- 'IFS'
-#checkquery = FALSE
-#IFS.available.codes <- DataStructureMethod('IFS')
-## All OECD Countries Gross Fixed Capital Formation Millions in National Currency
-#queryfilter <- list(CL_FREQ="A", CL_AREA_IFS=ISO_2_OECD, CL_INDICATOR_IFS =c("NFI_SA_XDC"))
+#IFS.available.codes <- DataStructureMethod("IFS")
+#CodeSearch(IFS.available.codes,"CL_INDICATOR_IFS", "Formation")
 
-#GFCF_2014<- data.frame(CompactDataMethod(databaseID, queryfilter, '2014-01-01', '2014-12-31', checkquery))
-#GFCF_2014<-data.frame(GFCF_2014$X.REF_AREA,unnest(GFCF_2014$Obs))
-#colnames(GFCF_2014)<-c("ISO_2","year","gross_fixed_capital_formation")
+databaseID <- "IFS"
+checkquery = FALSE
 
-#GFCF_2015<- data.frame(CompactDataMethod(databaseID, queryfilter, '2015-01-01', '2015-12-31', checkquery))
-#GFCF_2015<-data.frame(GFCF_2015$X.REF_AREA,unnest(GFCF_2015$Obs))
-#colnames(GFCF_2015)<-c("ISO_2","year","gross_fixed_capital_formation")
+# All OECD Countries Gross Fixed Capital Formation Millions in National Currency
+queryfilter <- list(CL_FREQ="A", CL_AREA_IFS=ISO_2_OECD, CL_INDICATOR_IFS =c("NFI_XDC"))
+GFCF_2019 <- data.frame(CompactDataMethod(databaseID, queryfilter, startdate= "2019-01-01", enddate = "2019-12-31",
+                                  checkquery))
+GFCF_2019<- GFCF_2019[-c(1,3:5)]
+GFCF_2019<-data.frame(GFCF_2019$X.REF_AREA,GFCF_2019$Obs)
+colnames(GFCF_2019)<-c("ISO_2","year","gross_fixed_capital_formation")
 
-#GFCF_2016<- data.frame(CompactDataMethod(databaseID, queryfilter, '2016-01-01', '2016-12-31', checkquery))
-#GFCF_2016<-data.frame(GFCF_2016$X.REF_AREA,unnest(GFCF_2016$Obs))
-#colnames(GFCF_2016)<-c("ISO_2","year","gross_fixed_capital_formation")
 
-#GFCF_2017<- data.frame(CompactDataMethod(databaseID, queryfilter, '2017-01-01', '2017-12-31', checkquery))
-#GFCF_2017<-data.frame(GFCF_2017$X.REF_AREA,unnest(GFCF_2017$Obs))
-#colnames(GFCF_2017)<-c("ISO_2","year","gross_fixed_capital_formation")
+GFCF_2020 <- data.frame(CompactDataMethod(databaseID, queryfilter, startdate= "2020-01-01", enddate = "2020-12-31",
+                                          checkquery))
+GFCF_2020<- GFCF_2020[-c(1,3:5)]
+GFCF_2020<-data.frame(GFCF_2020$X.REF_AREA,GFCF_2020$Obs)
+colnames(GFCF_2020)<-c("ISO_2","year","gross_fixed_capital_formation")
 
-#GFCF_2018<- data.frame(CompactDataMethod(databaseID, queryfilter, '2018-01-01', '2018-12-31', checkquery))
-#GFCF_2018<-data.frame(GFCF_2018$X.REF_AREA,unnest(GFCF_2018$Obs))
-#colnames(GFCF_2018)<-c("ISO_2","year","gross_fixed_capital_formation")
-
-#GFCF<-rbind(GFCF_2014,GFCF_2015,GFCF_2016,GFCF_2017,GFCF_2018)
-#GFCF_2018<-merge(GFCF_2018,iso_country_codes,by="ISO_2")
-#GFCF_2018$gross_fixed_capital_formation<-as.numeric(GFCF_2018$gross_fixed_capital_formation)
+GFCF<-rbind(GFCF_2019,GFCF_2020)
+GFCF<-merge(GFCF,iso_country_codes,by="ISO_2")
+GFCF$gross_fixed_capital_formation<-as.numeric(GFCF$gross_fixed_capital_formation)
 
 #Depreciate capital stock and add GFCF
 
-#2015
-#capital_stock_15<-merge(subset(GFCF,GFCF$year==2014),subset(imf_capital_stock_data,imf_capital_stock_data$year==2014),by="country")
-#capital_stock_15$year<-"2015"
-#capital_stock_15$capital_stock<-(capital_stock_15$capital_stock*(1-.1077))+(capital_stock_15$gross_fixed_capital_formation*(1-(.1077/2)))
-#capital_stock_15<-capital_stock_15[c("country","isocode","year","capital_stock")]
+#2019
+capital_stock_19<-merge(subset(imf_capital_stock_data,imf_capital_stock_data$year==2018),subset(GFCF,GFCF$year==2019),by="country")
+capital_stock_19$year<-"2019"
+capital_stock_19$capital_stock<-(capital_stock_19$capital_stock*(1-.1077))+(capital_stock_19$gross_fixed_capital_formation*(1-(.1077/2)))
+capital_stock_19<-capital_stock_19[-c(2,3)]
+names(capital_stock_19)
+capital_stock_19<-capital_stock_19[c("country","capital_stock","ISO_2","ISO_3.y","year.y")]
+colnames(capital_stock_19)<-c("country","capital_stock","ISO_2","ISO_3","year")
 
-#2016
-#capital_stock_16<-merge(subset(GFCF,GFCF$year==2015),subset(capital_stock_15),by="country")
-#capital_stock_16$year<-"2016"
-#capital_stock_16$capital_stock<-(capital_stock_16$capital_stock*(1-.1077))+(capital_stock_16$gross_fixed_capital_formation*(1-(.1077/2)))
-#capital_stock_16<-capital_stock_16[c("country","isocode","year","capital_stock")]
 
-#2017
-#capital_stock_17<-merge(subset(GFCF,GFCF$year==2016),capital_stock_16,by="country")
-#capital_stock_17$year<-"2017"
-#capital_stock_17$capital_stock<-(capital_stock_17$capital_stock*(1-.1077))+(capital_stock_17$gross_fixed_capital_formation*(1-(.1077/2)))
-#capital_stock_17<-capital_stock_17[c("country","isocode","year","capital_stock")]
-
-#2018
-#capital_stock_18<-merge(subset(imf_capital_stock_data,imf_capital_stock_data$year==2017),GFCF_2018,by="country")
-#capital_stock_18$year<-"2018"
-#capital_stock_18$capital_stock<-(capital_stock_18$capital_stock*(1-.1077))+(capital_stock_18$gross_fixed_capital_formation*(1-(.1077/2)))
-#capital_stock_18<-capital_stock_18[c("country","isocode","year","capital_stock")]
-
-#capital_stock_12_18<-rbind(imf_capital_stock_data,capital_stock_18)
+#2020
+capital_stock_20<-merge(capital_stock_19,subset(GFCF,GFCF$year==2020),by="country")
+capital_stock_20$year<-"2020"
+capital_stock_20$capital_stock<-(capital_stock_20$capital_stock*(1-.1077))+(capital_stock_20$gross_fixed_capital_formation*(1-(.1077/2)))
+capital_stock_20<-capital_stock_20[c("country","capital_stock","ISO_2.x","ISO_3.y","year")]
+colnames(capital_stock_20)<-c("country","capital_stock","ISO_2","ISO_3","year")
 
 
 #property tax revenues####
