@@ -51,18 +51,21 @@ capital_stock_19<-merge(subset(imf_capital_stock_data,imf_capital_stock_data$yea
 capital_stock_19$year<-"2019"
 capital_stock_19$capital_stock<-(capital_stock_19$capital_stock*(1-.1077))+(capital_stock_19$gross_fixed_capital_formation*(1-(.1077/2)))
 capital_stock_19<-capital_stock_19[-c(2,3)]
-names(capital_stock_19)
-capital_stock_19<-capital_stock_19[c("country","capital_stock","ISO_2","ISO_3.y","year.y")]
-colnames(capital_stock_19)<-c("country","capital_stock","ISO_2","ISO_3","year")
+capital_stock_19<-capital_stock_19[c("country","capital_stock","ISO_3.y","year.y")]
+colnames(capital_stock_19)<-c("country","capital_stock","ISO_3","year")
 
 
 #2020
 capital_stock_20<-merge(capital_stock_19,subset(GFCF,GFCF$year==2020),by="country")
 capital_stock_20$year<-"2020"
 capital_stock_20$capital_stock<-(capital_stock_20$capital_stock*(1-.1077))+(capital_stock_20$gross_fixed_capital_formation*(1-(.1077/2)))
-capital_stock_20<-capital_stock_20[c("country","capital_stock","ISO_2.x","ISO_3.y","year")]
-colnames(capital_stock_20)<-c("country","capital_stock","ISO_2","ISO_3","year")
+capital_stock_20<-capital_stock_20[c("country","capital_stock","ISO_3.y","year")]
+colnames(capital_stock_20)<-c("country","capital_stock","ISO_3","year")
 
+#combine
+imf_capital_stock_data<-subset(imf_capital_stock_data,imf_capital_stock_data$year<2019)
+
+imf_capital_stock_data<-rbind(imf_capital_stock_data,capital_stock_19,capital_stock_20)
 
 #property tax revenues####
 #Table_II1#
@@ -78,24 +81,24 @@ dataset_list <- get_datasets()
 
 property_tax_revenue <- get_dataset("REV",filter=list(c("NES"),c("4100"),c("TAXNAT"),c(oecd_countries)), start_time = 2012)
 property_tax_revenue <- property_tax_revenue[c("COU","Time","ObsValue")]
-colnames(property_tax_revenue) <- c("isocode","year","property_tax_collections")
+colnames(property_tax_revenue) <- c("ISO_3","year","property_tax_collections")
 
 #Missing country/years are simply prior year values
-isocode <- c("AUS","GRC","MEX")
-year <- c("2019","2019","2019")
-property_tax_collections <- c("32.694","3.594","49.444688")
-missing <- data.frame(isocode,year,property_tax_collections)
+ISO_3 <- c("AUS","GRC")
+year <- c("2020","2020")
+property_tax_collections <- c("33.803","3.268")
+missing <- data.frame(ISO_3,year,property_tax_collections)
 property_tax_revenue <- rbind(property_tax_revenue,missing)
 
 property_tax_revenue$property_tax_collections <- as.numeric(property_tax_revenue$property_tax_collections)
 property_tax_revenue$property_tax_collections <- (property_tax_revenue$property_tax_collections)*1000
 
 #Merge Property Tax Revenues data with Capital Stock Data
-property_tax <- merge(property_tax_revenue, imf_capital_stock_data, by=c("isocode","year"))
+property_tax <- merge(property_tax_revenue, imf_capital_stock_data, by=c("ISO_3","year"))
 
 property_tax$property_tax_collections <- (property_tax$property_tax_collections/property_tax$capital_stock)*100
 
-property_tax <- property_tax[c("country","year","property_tax_collections","isocode")]
+property_tax <- property_tax[c("country","year","property_tax_collections","ISO_3")]
 colnames(property_tax) <- c("country","year","property_tax_collections","ISO_3")
 property_tax <- property_tax[c("ISO_3","country","year","property_tax_collections")]
 
