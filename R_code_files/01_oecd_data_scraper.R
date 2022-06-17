@@ -282,6 +282,8 @@ OECDvars_data <- merge(OECDvars_data, dividends_rate, by=c("country","year"))
 OECDvars_data <- merge(OECDvars_data, corporate_other_rev, by=c("country","year"))
 OECDvars_data <- merge(OECDvars_data, personal_other_rev, by=c("country","year"))
 
+#drop all_in_rate
+OECDvars_data <- OECDvars_data[-c(6)]
 
 colnames(OECDvars_data) <- c("ISO_3","year","corporate_rate","r_and_d_credit", "top_income_rate", "threshold_top_income_rate", "tax_wedge", "dividends_rate","corporate_other_rev","personal_other_rev")
 OECDvars_data <- merge(OECDvars_data,iso_country_codes,by="ISO_3")
