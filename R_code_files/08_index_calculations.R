@@ -26,7 +26,7 @@ raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,
                 raw_data_2017,raw_data_2018,raw_data_2019,
                 raw_data_2020,raw_data_2021,raw_data_2022)
 
-
+raw_data$loss_carryback<-as.numeric(raw_data$patent_box)
 raw_data$patent_box<-as.numeric(raw_data$patent_box)
 raw_data$r_and_d_credit<-as.numeric(raw_data$r_and_d_credit)
 raw_data$digital_services_tax<-as.numeric(raw_data$digital_services_tax)
@@ -113,10 +113,11 @@ alternate_scores[is.na(alternate_scores)] <- 0
 # cfc_rules
 # thin_capitalization_rules
 
-flip <- c("corporate_rate", "patent_box", "r_and_d_credit", "digital_services_tax", "corporate_alt_minimum", "corporate_surtax", "corporate_other_rev", "top_income_rate", "threshold_top_income_rate", "tax_wedge", 
-          "personal_surtax", "personal_other_rev", "capital_gains_rate", "dividends_rate", "vat_rate", "vat_threshold", "consumption_time", "property_tax_collections", "net_wealth", 
-          "estate_or_inheritance_tax", "transfer_tax", "asset_tax", "capital_duties", "financial_transaction_tax", "country_limitations", "dividends_withholding_tax", "interest_withholding_tax", 
-          "royalties_withholding_tax", "cfc_rules", "thin_capitalization_rules")
+flip <- c("corporate_rate", "patent_box", "r_and_d_credit", "digital_services_tax", "corporate_alt_minimum", "corporate_surtax", "corporate_other_rev", 
+          "top_income_rate", "threshold_top_income_rate", "tax_wedge", "personal_surtax", "personal_other_rev", "capital_gains_rate", "dividends_rate", 
+          "vat_rate", "vat_threshold", 
+          "property_tax_collections", "net_wealth", "estate_or_inheritance_tax", "transfer_tax", "asset_tax", "capital_duties", "financial_transaction_tax", 
+          "country_limitations", "dividends_withholding_tax", "interest_withholding_tax", "royalties_withholding_tax", "cfc_rules", "thin_capitalization_rules")
 
 
 flipfunc <- function(x) {
@@ -215,7 +216,6 @@ capital_gains_and_dividends_index<-c("capital_gains_rate","dividends_rate")
 
 consumption_tax_rate_index<-c("vat_rate")
 consumption_tax_base_index<-c("vat_threshold","vat_base")
-consumption_tax_complexity<-c("consumption_time")
 
 real_property_index<-c("property_tax","property_tax_collections")
 wealth_taxes_index<-c("net_wealth","estate_or_inheritance_tax")
@@ -234,7 +234,6 @@ subcategories$cost_recovery<-apply((zscores[cost_recovery_index]*(1/length(cost_
 subcategories$incentives<-apply((zscores[incentives_index]*(1/length(incentives_index))),1,sum)
 subcategories$consumption_tax_rate<-apply((zscores[consumption_tax_rate_index]*(1/length(consumption_tax_rate_index))),1,sum)
 subcategories$consumption_tax_base<-apply((zscores[consumption_tax_base_index]*(1/length(consumption_tax_base_index))),1,sum)
-subcategories$consumption_tax_complexity<-apply((zscores[consumption_tax_complexity]*(1/length(consumption_tax_complexity))),1,sum)
 subcategories$real_property_tax<-apply((zscores[real_property_index]*(1/length(real_property_index))),1,sum)
 subcategories$wealth_taxes<-apply((zscores[wealth_taxes_index]*(1/length(wealth_taxes_index))),1,sum)
 subcategories$capital_taxes<-apply((zscores[capital_taxes_index]*(1/length(capital_taxes_index))),1,sum)
@@ -256,7 +255,6 @@ alternate_subcategories$cost_recovery<-apply((alternate_scores[cost_recovery_ind
 alternate_subcategories$incentives<-apply((alternate_scores[incentives_index]*(1/length(incentives_index))),1,sum)
 alternate_subcategories$consumption_tax_rate<-apply((alternate_scores[consumption_tax_rate_index]*(1/length(consumption_tax_rate_index))),1,sum)
 alternate_subcategories$consumption_tax_base<-apply((alternate_scores[consumption_tax_base_index]*(1/length(consumption_tax_base_index))),1,sum)
-alternate_subcategories$consumption_tax_complexity<-apply((alternate_scores[consumption_tax_complexity]*(1/length(consumption_tax_complexity))),1,sum)
 alternate_subcategories$real_property_tax<-apply((alternate_scores[real_property_index]*(1/length(real_property_index))),1,sum)
 alternate_subcategories$wealth_taxes<-apply((alternate_scores[wealth_taxes_index]*(1/length(wealth_taxes_index))),1,sum)
 alternate_subcategories$capital_taxes<-apply((alternate_scores[capital_taxes_index]*(1/length(capital_taxes_index))),1,sum)
@@ -273,7 +271,7 @@ alternate_subcategories$international_regulations<-apply((alternate_scores[inter
 
 #Same thing as above
 corporate_index<-c("corporate_rate","cost_recovery","incentives")
-consumption_index<-c("consumption_tax_rate","consumption_tax_base","consumption_tax_complexity")
+consumption_index<-c("consumption_tax_rate","consumption_tax_base")
 property_index<-c("real_property_tax","wealth_taxes","capital_taxes")
 income_index<-c("capital_gains_and_dividends","income_tax","income_tax_complexity")
 cross_border_index<-c("territorial","withholding_taxes","tax_treaties","international_regulations")
@@ -289,7 +287,7 @@ categories$income<-apply((subcategories[income_index]*(1/length(income_index))),
 categories$cross_border<-apply((subcategories[cross_border_index]*(1/length(cross_border_index))),1,sum)
 categories$final<-apply((categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
-write.csv(subset(categories,categories$year==2021),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
+write.csv(subset(categories,categories$year==2022),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
 
 
 
@@ -338,7 +336,7 @@ rank1<-function(x){
   ranks<-rank(-x,ties.method= "min")
   return(ranks)
 }
-write.csv(subset(subcategories,subcategories$year==2021),file = paste(final_outputs,"subcategories_z_score.csv",sep=""),row.names=F)
+write.csv(subset(subcategories,subcategories$year==2022),file = paste(final_outputs,"subcategories_z_score.csv",sep=""),row.names=F)
 
 
 #Subcategory Scores####
@@ -369,7 +367,6 @@ subcategories<-ddply(subcategories,
                      incentives_rank = rank(-incentives,ties.method = "min"),
                      consumption_tax_rate_rank = rank(-consumption_tax_rate,ties.method = "min"),
                      consumption_tax_base_rank = rank(-consumption_tax_base,ties.method = "min"),
-                     consumption_tax_complexity_rank = rank(-consumption_tax_complexity,ties.method = "min"),
                      real_property_tax_rank = rank(-real_property_tax,ties.method = "min"),
                      wealth_taxes_rank = rank(-wealth_taxes,ties.method = "min"),
                      capital_taxes_rank = rank(-capital_taxes,ties.method = "min"),
@@ -392,7 +389,6 @@ alternate_subcategories<-ddply(alternate_subcategories,
                         incentives_rank = rank(-incentives,ties.method = "min"),
                         consumption_tax_rate_rank = rank(-consumption_tax_rate,ties.method = "min"),
                         consumption_tax_base_rank = rank(-consumption_tax_base,ties.method = "min"),
-                        consumption_tax_complexity_rank = rank(-consumption_tax_complexity,ties.method = "min"),
                         real_property_tax_rank = rank(-real_property_tax,ties.method = "min"),
                         wealth_taxes_rank = rank(-wealth_taxes,ties.method = "min"),
                         capital_taxes_rank = rank(-capital_taxes,ties.method = "min"),
@@ -499,6 +495,7 @@ final_2018<-final_categories[final_categories$year==2018,]
 final_2019<-final_categories[final_categories$year==2019,]
 final_2020<-final_categories[final_categories$year==2020,]
 final_2021<-final_categories[final_categories$year==2021,]
+final_2022<-final_categories[final_categories$year==2022,]
 
 #Data Check####
 
@@ -510,10 +507,10 @@ check<-raw_data[raw_data$country == "Austria",]
 final_categories<-final_categories[order(final_categories$country,final_categories$year),]
 alternate_final_categories<-alternate_final_categories[order(alternate_final_categories$country,alternate_final_categories$year),]
 
-cor(alternate_final_categories$final[alternate_final_categories$year == 2021],final_categories$final[final_categories$year == 2021])
+cor(alternate_final_categories$final[alternate_final_categories$year == 2022],final_categories$final[final_categories$year == 2022])
 
 
-#not really. 98 percent correlation between the two
+#not really. 97.5 percent correlation between the two
 
 #Which Category drives the results the most?####
 
@@ -526,7 +523,7 @@ cor(cortest1[c(4,6,8,10,12,14)])
 categories_correl<-data.frame(cor(cortest1[c(4,6,8,10,12,14)]))
 write.csv(categories_correl,paste(final_outputs,"categories_correlation.csv",sep=""))
 
-subcategories_correl<-data.frame(cor(subcortest1[c(seq(4,34,2),37)]))
+subcategories_correl<-data.frame(cor(subcortest1[c(seq(4,32,2),35)]))
 write.csv(subcategories_correl,paste(final_outputs,"subcategories_correlation.csv",sep=""))
 
 
@@ -535,7 +532,7 @@ write.csv(subcategories_correl,paste(final_outputs,"subcategories_correlation.cs
 #calc.relimp(importance, rela= TRUE)
 #alternative scoring techniques:
 
-cortest2<-alternate_final_categories[alternate_final_categories$year == 2015,]
+cortest2<-alternate_final_categories[alternate_final_categories$year == 2022,]
 cor(cortest2[c(4,6,8,10,12,14)])     
 
 
@@ -689,7 +686,7 @@ write.csv(United_States, paste(country_outputs, "United States.csv", sep=""), ro
 #Changes<-cbind(M[,1,drop=FALSE],Changes)
 
 #The following file is used for country profile pages; do not edit
-write.csv(raw_data,paste(final_outputs,"raw_data_2021.csv",sep=""),row.names=F)
+write.csv(raw_data,paste(final_outputs,"raw_data_2022.csv",sep=""),row.names=F)
 
 
 write.csv(final_2017, file = paste(final_outputs,"data_2017_run.csv",sep=""),row.names=F)
@@ -697,10 +694,11 @@ write.csv(final_2018, file = paste(final_outputs,"data_2018_run.csv",sep=""),row
 write.csv(final_2019, file = paste(final_outputs,"data_2019_run.csv",sep=""),row.names=F)
 write.csv(final_2020, file = paste(final_outputs,"data_2020_run.csv",sep=""),row.names=F)
 write.csv(final_2021, file = paste(final_outputs,"data_2021_run.csv",sep=""),row.names=F)
+write.csv(final_2022, file = paste(final_outputs,"data_2022_run.csv",sep=""),row.names=F)
 
 
 #The following file is used for country profile pages; do not edit
-final_subcategories_2021<-subset(final_subcategories,year==2021)
-write.csv(final_subcategories_2021,paste(final_outputs,"subcategories_2021.csv",sep=""),row.names=F)
+final_subcategories_2022<-subset(final_subcategories,year==2022)
+write.csv(final_subcategories_2022,paste(final_outputs,"subcategories_2022.csv",sep=""),row.names=F)
 
-write.csv(final_categories,paste(final_outputs,"final_categories_2014_2021.csv",sep=""),row.names=F)
+write.csv(final_categories,paste(final_outputs,"final_categories_2014_2022.csv",sep=""),row.names=F)
