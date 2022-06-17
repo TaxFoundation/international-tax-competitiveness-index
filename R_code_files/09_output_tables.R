@@ -1,17 +1,18 @@
 #output tables code
 #Read in relevant spreadsheets
 
-raw_data_2021 <- read_csv(paste(final_outputs,"raw_data_2021.csv",sep=""))
+raw_data_2022 <- read_csv(paste(final_outputs,"raw_data_2022.csv",sep=""))
 
 final_2018 <- read_csv(paste(final_outputs,"data_2018_run.csv",sep=""))
 final_2019 <- read_csv(paste(final_outputs,"data_2019_run.csv",sep=""))
 final_2020 <- read_csv(paste(final_outputs,"data_2020_run.csv",sep=""))
 final_2021 <- read_csv(paste(final_outputs,"data_2021_run.csv",sep=""))
+final_2022 <- read_csv(paste(final_outputs,"data_2022_run.csv",sep=""))
 
-subcategories_2021 <- read_csv(paste(final_outputs,"subcategories_2021.csv",sep=""))
+subcategories_2022 <- read_csv(paste(final_outputs,"subcategories_2022.csv",sep=""))
 
 ###Table 1 Results####
-table_1_results <- final_2021
+table_1_results <- final_2022
 
 #Select variables
 keep <- c("country","final_rank","final","corporate_rank","income_rank","consumption_rank","property_rank","cross_border_rank")
@@ -37,36 +38,36 @@ colnames(table_1_results) <- c("Country",
 write.csv(table_1_results,paste(final_outputs,"table_1_results.csv",sep=""),row.names=F)
 
 ###Table 2 Changes####
-table_2_changes <- merge(final_2020,final_2021,by="country")
+table_2_changes <- merge(final_2021,final_2022,by="country")
 
 keep <- c("country","final_rank.x","final.x","final_rank.y","final.y")
 table_2_changes <- table_2_changes[keep]
 
-colnames(table_2_changes) <- c("country", "2020 Rank","2020 Score","2021 Rank","2021 Score")
+colnames(table_2_changes) <- c("country", "2021 Rank","2021 Score","2022 Rank","2022 Score")
 
-table_2_changes <- merge(final_2019,table_2_changes,by="country")
+table_2_changes <- merge(final_2020,table_2_changes,by="country")
 
-keep <- c("country","final_rank","final","2020 Rank","2020 Score","2021 Rank","2021 Score")
+keep <- c("country","final_rank","final","2021 Rank","2021 Score","2022 Rank","2022 Score")
 table_2_changes<-table_2_changes[keep]
 
-colnames(table_2_changes)<-c("Country","2019 Rank","2019 Score", "2020 Rank","2020 Score","2021 Rank","2021 Score")
+colnames(table_2_changes)<-c("Country","2020 Rank","2020 Score", "2021 Rank","2021 Score","2022 Rank","2022 Score")
 
-table_2_changes$'Change in Rank from 2020 to 2021'<-(table_2_changes$`2021 Rank`-table_2_changes$`2020 Rank`)*(-1)
-table_2_changes$'Change in Score from 2020 to 2021'<-table_2_changes$`2021 Score`-table_2_changes$`2020 Score`
+table_2_changes$'Change in Rank from 2021 to 2022'<-(table_2_changes$`2022 Rank`-table_2_changes$`2021 Rank`)*(-1)
+table_2_changes$'Change in Score from 2021 to 2022'<-table_2_changes$`2022 Score`-table_2_changes$`2021 Score`
 
 #Format Columns
 
-table_2_changes$`2019 Score`<-formatC(round(table_2_changes$`2019 Score`,digits=1),format = "f",digits=1)
 table_2_changes$`2020 Score`<-formatC(round(table_2_changes$`2020 Score`,digits=1),format = "f",digits=1)
 table_2_changes$`2021 Score`<-formatC(round(table_2_changes$`2021 Score`,digits=1),format = "f",digits=1)
-table_2_changes$`Change in Score from 2020 to 2021`<-formatC(round(table_2_changes$`Change in Score from 2020 to 2021`,digits=1),format = "f",digits=1)
+table_2_changes$`2022 Score`<-formatC(round(table_2_changes$`2022 Score`,digits=1),format = "f",digits=1)
+table_2_changes$`Change in Score from 2021 to 2022`<-formatC(round(table_2_changes$`Change in Score from 2021 to 2022`,digits=1),format = "f",digits=1)
 
 
 write.csv(table_2_changes,paste(final_outputs,"table_2_changes.csv",sep=""),row.names=F)
 
 ###Table 3 Corporate####
-table_3_corporate<-subcategories_2021
-table_3_corporate<-merge(table_3_corporate,final_2021,by=c("country"))
+table_3_corporate<-subcategories_2022
+table_3_corporate<-merge(table_3_corporate,final_2022,by=c("country"))
 
 keep<-c("country","corporate_rank","corporate","corporate_rate_rank","corporate_rate","cost_recovery_rank","cost_recovery","incentives_rank","incentives")
 table_3_corporate<-table_3_corporate[keep]
@@ -84,8 +85,8 @@ write.csv(table_3_corporate,paste(final_outputs,"table_3_corporate.csv",sep=""),
 
 
 ###Table 4 Individual####
-table_4_individual<-subcategories_2021
-table_4_individual<-merge(table_4_individual,final_2021,by=c("country"))
+table_4_individual<-subcategories_2022
+table_4_individual<-merge(table_4_individual,final_2022,by=c("country"))
 
 #names(table_4_individual)
 
@@ -102,26 +103,25 @@ table_4_individual$`Capital Gains/Dividends Score`<-formatC(round(table_4_indivi
 write.csv(table_4_individual,paste(final_outputs,"table_4_individual.csv",sep=""),row.names=F)
 
 ###Table 5 Consumption####
-table_5_consumption<-subcategories_2021
-table_5_consumption<-merge(table_5_consumption,final_2021,by=c("country"))
+table_5_consumption<-subcategories_2022
+table_5_consumption<-merge(table_5_consumption,final_2022,by=c("country"))
 
 #names(table_5_consumption)
 
-keep<-c("country","consumption_rank","consumption","consumption_tax_rate_rank","consumption_tax_rate","consumption_tax_base_rank","consumption_tax_base","consumption_tax_complexity_rank","consumption_tax_complexity")
+keep<-c("country","consumption_rank","consumption","consumption_tax_rate_rank","consumption_tax_rate","consumption_tax_base_rank","consumption_tax_base")
 table_5_consumption<-table_5_consumption[keep]
 
-colnames(table_5_consumption)<-c("Country","Overall Rank","Overall Score", "Rate Rank","Rate Score","Base Rank","Base Score","Complexity Rank","Complexity Score")
+colnames(table_5_consumption)<-c("Country","Overall Rank","Overall Score", "Rate Rank","Rate Score","Base Rank","Base Score")
 
 table_5_consumption$`Overall Score`<-formatC(round(table_5_consumption$`Overall Score`,digits=1),format = "f",digits=1)
 table_5_consumption$`Rate Score`<-formatC(round(table_5_consumption$`Rate Score`,digits=1),format = "f",digits=1)
 table_5_consumption$`Base Score`<-formatC(round(table_5_consumption$`Base Score`,digits=1),format = "f",digits=1)
-table_5_consumption$`Complexity Score`<-formatC(round(table_5_consumption$`Complexity Score`,digits=1),format = "f",digits=1)
 
 write.csv(table_5_consumption,paste(final_outputs,"table_5_consumption.csv",sep=""),row.names=F)
 
 ###Table 6 Property####
-table_6_property<-subcategories_2021
-table_6_property<-merge(table_6_property,final_2021,by=c("country"))
+table_6_property<-subcategories_2022
+table_6_property<-merge(table_6_property,final_2022,by=c("country"))
 
 #names(table_6_property)
 
@@ -139,8 +139,8 @@ write.csv(table_6_property,paste(final_outputs,"table_6_property.csv",sep=""),ro
 
 
 ###Table 7 Cross-Border####
-table_7_cross_border<-subcategories_2021
-table_7_cross_border<-merge(table_7_cross_border,final_2021,by=c("country"))
+table_7_cross_border<-subcategories_2022
+table_7_cross_border<-merge(table_7_cross_border,final_2022,by=c("country"))
 
 #names(table_7_cross_border)
 
@@ -161,7 +161,7 @@ write.csv(table_7_cross_border,paste(final_outputs,"table_7_cross_border.csv",se
 ###Table A Corporate####
 
 #Raw Data
-table_a_corporate_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
+table_a_corporate_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
 
 keep<-c("country",
         "corporate_rate",
@@ -175,9 +175,9 @@ keep<-c("country",
         "patent_box",
         "r_and_d_credit",
         "digital_services_tax",
-        "corporate_time",
-        "profit_payments",
-        "other_payments")
+        "corporate_alt_minimum",
+        "corporate_surtax",
+        "corporate_other_rev")
 
 table_a_corporate_raw<-table_a_corporate_raw[keep]
 
@@ -284,7 +284,7 @@ write.csv(table_a_corporate,paste(final_outputs,"table_a_corporate.csv",sep=""),
 #Table B Individual####
 
 #Raw Data
-table_b_individual_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
+table_b_individual_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
 #names(table_b_individual_raw)
 
 keep<-c("country","top_income_rate",
@@ -374,7 +374,7 @@ write.csv(table_b_individual,paste(final_outputs,"table_b_individual.csv",sep=""
 
 #Table C Consumption####
 #Raw Data
-table_c_consumption_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
+table_c_consumption_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
 #names(table_c_consumption_raw)
 
 keep<-c("country","vat_rate",
@@ -450,7 +450,7 @@ write.csv(table_c_consumption,paste(final_outputs,"table_c_consumption.csv",sep=
 
 #Table D Property####
 #Raw Data
-table_d_property_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
+table_d_property_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
 #names(table_d_property_raw)
 
 keep<-c("country","property_tax", 
@@ -607,7 +607,7 @@ write.csv(table_d_property,paste(final_outputs,"table_d_property.csv",sep=""),ro
 
 #Table E Cross-Border####
 #Raw Data
-table_e_cross_border_raw<-subset(raw_data_2021,raw_data_2021$year==2021)
+table_e_cross_border_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
 names(table_e_cross_border_raw)
 
 keep<-c("country",
