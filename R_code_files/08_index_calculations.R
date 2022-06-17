@@ -17,10 +17,14 @@ raw_data_2019 <- read_csv(paste(final_data,"final_index_data_2019.csv",sep=""))
 raw_data_2020 <- read_csv(paste(final_data,"final_index_data_2020.csv",sep=""))
 #2021
 raw_data_2021 <- read_csv(paste(final_data,"final_index_data_2021.csv",sep=""))
+#2022
+raw_data_2022 <- read_csv(paste(final_data,"final_index_data_2022.csv",sep=""))
 
 
 #Combined Data####
-raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,raw_data_2017,raw_data_2018,raw_data_2019,raw_data_2020,raw_data_2021)
+raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,
+                raw_data_2017,raw_data_2018,raw_data_2019,
+                raw_data_2020,raw_data_2021,raw_data_2022)
 
 
 raw_data$patent_box<-as.numeric(raw_data$patent_box)
@@ -41,7 +45,7 @@ raw_data$country_limitations<-as.numeric(raw_data$country_limitations)
 raw_data<-raw_data[c("ISO_2","ISO_3","country","year",
                  "corporate_rate","loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory","allowance_corporate_equity","patent_box","r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev",
                  "top_income_rate","threshold_top_income_rate","tax_wedge","personal_surtax","personal_other_rev","capital_gains_rate","index_capital_gains","dividends_rate",
-                 "vat_rate","vat_threshold","vat_base","consumption_time",
+                 "vat_rate","vat_threshold","vat_base",
                  "property_tax", "property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax",
                  "dividends_exemption","capital_gains_exemption","country_limitations","dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties","cfc_rules","thin_capitalization_rules")]
 
@@ -55,13 +59,13 @@ normalize <-function(x){
 #standardize all the scores into a new dataframe called "zscores" (this does this by year)
 zscores<-data.frame(country=raw_data$country,
                     year=raw_data$year,
-                    ddply(raw_data[4:47],
+                    ddply(raw_data[4:46],
                           .(year),
                           scale)
 )
 alternate_scores<-data.frame(country=raw_data$country,
                       year=raw_data$year,
-                      ddply(raw_data[4:47],
+                      ddply(raw_data[4:46],
                             .(year),
                             normalize)
 )
