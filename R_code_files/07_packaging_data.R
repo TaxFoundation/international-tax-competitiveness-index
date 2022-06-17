@@ -59,7 +59,7 @@ index_data_old<-index_data_old[,!names(index_data_old) %in% oecd_variables_list]
 
 index_data_oecd_variables<-merge(index_data_old,oecd_variables,by=c("country","ISO_2","ISO_3","year"))
 
-
+index_data_oecd_variables$top_income_rate<-index_data_oecd_variables$top_income_rate-(index_data_oecd_variables$personal_surtax/100)
 #Join cost recovery data with index_data2019####
 
 cost_recovery_list<-c("machines_cost_recovery","buildings_cost_recovery", "intangibles_cost_recovery")
