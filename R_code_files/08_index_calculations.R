@@ -579,7 +579,7 @@ Colombia<-final_categories[final_categories$Country=="Colombia",]
 write.csv(Colombia, paste(country_outputs, "Colombia.csv", sep=""), row.names=F)
 
 Costa_Rica<-final_categories[final_categories$Country=="Costa Rica",]
-write.csv(Colombia, paste(country_outputs, "Costa Rica.csv", sep=""), row.names=F)
+write.csv(Costa_Rica, paste(country_outputs, "Costa Rica.csv", sep=""), row.names=F)
 
 Czech_Republic<-final_categories[final_categories$Country=="Czech Republic",]
 write.csv(Czech_Republic, paste(country_outputs, "Czech Republic.csv", sep=""), row.names=F)
