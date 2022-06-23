@@ -18,7 +18,7 @@ corporate_rate$corporate_rate <- as.numeric(corporate_rate$corporate_rate)
 corporate_rate$corporate_rate <- corporate_rate$corporate_rate/100
 
 #hard code CIT rate for Chile for 2016-2022 since the current 10% rate for 2020-2022 only applies to SMEs and the OECD data is incorrect for 2017-2019
-country_chile<-c("Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile")
+country_chile<-c("CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL")
 year<-c("2014","2015","2016","2017","2018","2019","2020","2021","2022")
 corporate_rate_chile<-c("0.2","0.24","0.24","0.255","0.26","0.27","0.27","0.27","0.27")
 
