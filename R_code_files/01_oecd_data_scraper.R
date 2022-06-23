@@ -1,5 +1,5 @@
 #OECD data scraper
-
+#3. Sweden income tax rate
 ####OECD Data Scraper####
 
 #corporate_rate####
@@ -17,6 +17,18 @@ colnames(corporate_rate)<-c("country","corporate_rate","year")
 corporate_rate$corporate_rate <- as.numeric(corporate_rate$corporate_rate)
 corporate_rate$corporate_rate <- corporate_rate$corporate_rate/100
 
+#hard code CIT rate for Chile for 2016-2022 since the current 10% rate for 2020-2022 only applies to SMEs and the OECD data is incorrect for 2017-2019
+country_chile<-c("Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile")
+year<-c("2014","2015","2016","2017","2018","2019","2020","2021","2022")
+corporate_rate_chile<-c("0.2","0.24","0.24","0.255","0.26","0.27","0.27","0.27","0.27")
+
+chile<-data.frame(country_chile,corporate_rate_chile,year)
+colnames(chile)<-c("country","corporate_rate","year")
+
+#Merge Chile with corporate rate
+corporate_rate<-subset(corporate_rate,country!="CHL")
+
+corporate_rate<-rbind(corporate_rate,chile)
 
 #r_and_d_credit####
 #RDTAXSUB#
@@ -70,7 +82,12 @@ top_income_rate$year<-as.numeric(top_income_rate$year)
 
 #Chile increased its top personal income tax rate from 35% to 40% as of 2020
 top_income_rate[c('top_income_rate')][top_income_rate$country == "CHL" & top_income_rate$year >= 2019,] <- "40"
+
+#Colombia increased its top personal income tax rate from 33% to 39% as of 2019 and it has not changed since
+top_income_rate[c('top_income_rate')][top_income_rate$country == "COL" & top_income_rate$year >= 2019,] <- "39"
+
 top_income_rate$top_income_rate<-as.numeric(top_income_rate$top_income_rate)
+
 
 top_income_rate$year<-top_income_rate$year+1
 top_income_rate$top_income_rate<-top_income_rate$top_income_rate/100
@@ -105,6 +122,7 @@ colnames(threshold)<-c("country","threshold_top_income_rate","year")
 threshold$year<-as.numeric(threshold$year)
 threshold$year<-threshold$year+1
 
+#hard code Colombia 39% top rate
 
 #tax_wedge####
 
