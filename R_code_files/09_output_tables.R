@@ -246,7 +246,7 @@ table_a_corporate$corporate_alt_minimum<-formatC(round(table_a_corporate$corpora
 table_a_corporate$corporate_surtax<-formatC(round(table_a_corporate$corporate_surtax,digits=0),format = "f",digits=0)
 
 #corporate_other_rev
-table_a_corporate$corporate_other_rev<-formatC(round(table_a_corporate$corporate_other_rev,digits=2),format = "f",digits=2)
+table_a_corporate$corporate_other_rev<-paste(formatC(round(table_a_corporate$corporate_other_rev,digits=1),format = "f",digits=1),"%",sep="")
 
 
 headers<-c("",
@@ -271,9 +271,9 @@ columns<-c("Country",
            "Patent Box",
            "Implied Tax Subsidy Rates on R&D Expenditures",
            "Digital Services Tax",
-           "Corporate Complexity (Time)",
-           "Corporate Complexity (Yearly Profit Payments)",
-           "Corporate Complexity (Other Yearly Payments)")
+           "Corporate Complexity (Number of separate rates or alternative minimum taxes)",
+           "Corporate Complexity (Surtax rate on corporate income)",
+           "Corporate Complexity (Share of revenue collected on income from non-standard income taxes)")
 
 table_a_corporate<-rbind(headers,columns,table_a_corporate)
 
@@ -290,8 +290,8 @@ table_b_individual_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
 keep<-c("country","top_income_rate",
         "threshold_top_income_rate",
         "tax_wedge",
-        "labor_payments",
-        "labor_time",
+        "personal_surtax",
+        "personal_other_rev",
         "capital_gains_rate",
         "dividends_rate")
 table_b_individual<-table_b_individual_raw[keep]
@@ -310,11 +310,12 @@ table_b_individual$threshold_top_income_rate<-(formatC(round(table_b_individual$
 #tax_wedge
 table_b_individual$tax_wedge<-(formatC(round(table_b_individual$tax_wedge,digits=1),format = "f",digits=1))
 
-#labor_payments
-table_b_individual$labor_payments<-(formatC(round(table_b_individual$labor_payments,digits=0),format = "f",digits=0))
+#personal_surtax
+table_b_individual$personal_surtax<-paste(formatC(round(table_b_individual$personal_surtax,digits=0),format = "f",digits=0),"%",sep="")
 
-#labor_time
-table_b_individual$labor_time<-(formatC(round(table_b_individual$labor_time,digits=0),format = "f",digits=0))
+#personal_other_rev
+table_b_individual$personal_other_rev<-as.numeric(table_b_individual$personal_other_rev)
+table_b_individual$personal_other_rev<-paste(formatC(round(table_b_individual$personal_other_rev,digits=0),format = "f",digits=0),"%",sep="")
 
 #capital_gains_rate
 table_b_individual$capital_gains_rate<-table_b_individual$capital_gains_rate*100
@@ -334,11 +335,11 @@ headers<-c("",
            "",
            "")
 columns<-c("Country",
-           "Top Statutory Personal Income Tax Rate",
+           "Top Personal Income Tax Rate",
            "Top Income Tax Rate Threshold (a)",
            "Ratio of Marginal to Average Tax Wedge",
-           "Income Tax Complexity (Payments)",
-           "Income Tax Complexity (Time)",
+           "Income Tax Complexity (Surtax rate on personal income)",
+           "Income Tax Complexity (Share of revenue collected through non-standard social security and payroll taxes) (c)",
            "Top Marginal Capital Gains Tax Rate (b)",
            "Top Marginal Dividends Tax Rate (b)")
 notes_1<-c("Notes:",
@@ -379,8 +380,7 @@ table_c_consumption_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
 
 keep<-c("country","vat_rate",
         "vat_threshold",
-        "vat_base",
-        "consumption_time")
+        "vat_base")
 table_c_consumption<-table_c_consumption_raw[keep]
 
 table_c_consumption <- table_c_consumption[order(table_c_consumption$country),]
@@ -396,25 +396,19 @@ table_c_consumption$vat_threshold<-dollar(table_c_consumption$vat_threshold,larg
 table_c_consumption$vat_base<-table_c_consumption$vat_base*100
 table_c_consumption$vat_base<-paste((formatC(round(table_c_consumption$vat_base,digits=1),format = "f",digits=1)),"%",sep="")
 
-#consumption_time
-table_c_consumption$consumption_time<-formatC(round(table_c_consumption$consumption_time,digits=0),format = "f",digits=0)
-
 #fix US and Canada to add footnote markers
 table_c_consumption$vat_rate[4]<-paste0(table_c_consumption$vat_rate[4]," (b)")
-table_c_consumption$vat_rate[37]<-paste0(table_c_consumption$vat_rate[37]," (c)")
+table_c_consumption$vat_rate[38]<-paste0(table_c_consumption$vat_rate[38]," (c)")
 
 headers<-c("",
            "Consumption Tax Rate",
            "Consumption Tax Base",
-           "",
-           "Consumption Tax Complexity")
+           "")
 columns<-c("Country",
            "VAT/Sales Tax Rate",
            "VAT/Sales Tax Threshold (a)",
-           "VAT/Sales Tax Base as a Percent of Total Consumption",
-           "Complexity (Hours to Comply)")
+           "VAT/Sales Tax Base as a Percent of Total Consumption")
 notes_1<-c("Notes:",
-           "",
            "",
            "",
            "")
@@ -422,25 +416,13 @@ notes_1<-c("Notes:",
 notes_2<-c("(a) In U.S. dollars (PPP).",
            "",
            "",
-           "",
-           "",
-           "",
-           "",
            "")
 
 notes_3<-c("(b) The Canadian rate is the average of the total sales tax rate for the provinces and includes Goods and Services Tax, Provincial Sales Tax, and Retail Sales Tax where applicable.",
            "",
            "",
-           "",
-           "",
-           "",
-           "",
            "")
 notes_4<-c("(c) The United States' rate is the combined weighted average state and local sales tax rate.",
-           "",
-           "",
-           "",
-           "",
            "",
            "",
            "")
