@@ -187,7 +187,7 @@ table_a_corporate_raw <- table_a_corporate_raw[order(table_a_corporate_raw$count
 #Text Data
 table_a_corporate_text<-read_csv(paste(source_data,"table_a_corporate.csv",sep=""))
 colnames(table_a_corporate_text)<-names(table_a_corporate_raw)
-table_a_corporate_text<-table_a_corporate_text[2:38,]
+table_a_corporate_text<-table_a_corporate_text[2:39,]
 
 
 #Replace raw data with text data for select columns
@@ -207,9 +207,9 @@ table_a_corporate<-table_a_corporate[c("country","corporate_rate",
                                      "patent_box",
                                      "r_and_d_credit",
                                      "digital_services_tax",
-                                     "corporate_time",
-                                     "profit_payments",
-                                     "other_payments")]
+                                     "corporate_alt_minimum",
+                                     "corporate_surtax",
+                                     "corporate_other_rev")]
 
 
 
@@ -239,14 +239,14 @@ table_a_corporate$patent_box<-if_else(table_a_corporate$patent_box==1,"Yes","No"
 #digital_services_tax
 table_a_corporate$digital_services_tax<-if_else(table_a_corporate$digital_services_tax==1,"Yes","No")
 
-#corporate_time
-table_a_corporate$corporate_time<-formatC(round(table_a_corporate$corporate_time,digits=0),format = "f",digits=0)
+#corporate_alt_minimum
+table_a_corporate$corporate_alt_minimum<-formatC(round(table_a_corporate$corporate_alt_minimum,digits=0),format = "f",digits=0)
 
-#profit_payments
-table_a_corporate$profit_payments<-formatC(round(table_a_corporate$profit_payments,digits=0),format = "f",digits=0)
+#corporate_surtax
+table_a_corporate$corporate_surtax<-formatC(round(table_a_corporate$corporate_surtax,digits=0),format = "f",digits=0)
 
-#other_payments
-table_a_corporate$other_payments<-formatC(round(table_a_corporate$other_payments,digits=0),format = "f",digits=0)
+#corporate_other_rev
+table_a_corporate$corporate_other_rev<-formatC(round(table_a_corporate$corporate_other_rev,digits=2),format = "f",digits=2)
 
 
 headers<-c("",
