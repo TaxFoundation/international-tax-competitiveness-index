@@ -26,7 +26,7 @@ raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,
                 raw_data_2017,raw_data_2018,raw_data_2019,
                 raw_data_2020,raw_data_2021,raw_data_2022)
 
-raw_data$loss_carryback<-as.numeric(raw_data$patent_box)
+raw_data$loss_carryback<-as.numeric(raw_data$loss_carryback)
 raw_data$patent_box<-as.numeric(raw_data$patent_box)
 raw_data$r_and_d_credit<-as.numeric(raw_data$r_and_d_credit)
 raw_data$digital_services_tax<-as.numeric(raw_data$digital_services_tax)
