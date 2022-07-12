@@ -463,7 +463,7 @@ colnames(table_d_property_text)<-c("country","property_tax",
                                   "asset_tax",
                                   "capital_duties",
                                   "financial_transaction_tax")
-table_d_property_text<-table_d_property_text[2:38,]
+table_d_property_text<-table_d_property_text[2:39,]
 
 
 #Replace raw data with text data for select columns
@@ -590,7 +590,6 @@ write.csv(table_d_property,paste(final_outputs,"table_d_property.csv",sep=""),ro
 #Table E Cross-Border####
 #Raw Data
 table_e_cross_border_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
-names(table_e_cross_border_raw)
 
 keep<-c("country",
         "dividends_exemption",
@@ -624,7 +623,7 @@ colnames(table_e_cross_border_text)<-c("country",
                                        "cfc_exemption",
                                        "cfc_income",
                                        "thin_capitalization_rules")
-table_e_cross_border_text<-table_e_cross_border_text[2:38,]
+table_e_cross_border_text<-table_e_cross_border_text[2:39,]
 
 
 #Replace raw data with text data for select columns
