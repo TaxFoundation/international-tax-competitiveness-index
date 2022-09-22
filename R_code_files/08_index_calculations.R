@@ -576,7 +576,7 @@ Chile<-final_categories[final_categories$Country=="Chile",]
 write.csv(Chile, paste(country_outputs, "Chile.csv", sep=""), row.names=F)
 
 Colombia<-final_categories[final_categories$Country=="Colombia",]
-write.csv(Colombia, paste(country_outputs, "Colombia.csv", sep=""), row.names=F)
+write.csv(Colombia, paste(colombia_reforms, "Colombia.csv", sep=""), row.names=F)
 
 Costa_Rica<-final_categories[final_categories$Country=="Costa Rica",]
 write.csv(Costa_Rica, paste(country_outputs, "Costa Rica.csv", sep=""), row.names=F)
