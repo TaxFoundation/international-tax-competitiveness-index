@@ -15,3 +15,4 @@ GB,GBR,United Kingdom,2022,17,69.22912033,10,71.665259,24,63.42962803,19,55.8725
 GB,GBR,United Kingdom,2022,25,64.78120215,10,70.83159216,24,63.42962803,34,35.38682864,31,46.55508246,1,100,Transfer Tax eliminated (SDLT) - super-deduction remains in place
 GB,GBR,United Kingdom,2022,26,63.59469606,14,66.77953204,24,63.42962803,34,35.38682864,31,46.55508246,1,100,Transfer Tax eliminated (SDLT) + Full Expensing Machinery
 GB,GBR,United Kingdom,2022,26,64.08042896,14,66.77953204,24,63.42962803,34,35.38682864,28,48.27841705,1,100,Transfer Tax eliminated (SDLT) + Full Expensing Machinery + lower property tax as share of capital stock (1.7 -> 1.564)
+GB,GBR,United Kingdom,2022,26,63.66359771,10,70.83159216,17,66.50620086,34,35.38682864,34,39.82596843,1,100,Only lowering top PIT rate to .4
