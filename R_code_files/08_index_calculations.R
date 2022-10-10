@@ -510,7 +510,7 @@ alternate_final_categories<-alternate_final_categories[order(alternate_final_cat
 cor(alternate_final_categories$final[alternate_final_categories$year == 2022],final_categories$final[final_categories$year == 2022])
 
 
-#not really. 97.5 percent correlation between the two
+#not really. .968 correlation coefficient between the two
 
 #Which Category drives the results the most?####
 
