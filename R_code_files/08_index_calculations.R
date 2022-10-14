@@ -672,7 +672,7 @@ United_Kingdom<-final_categories[final_categories$Country=="United Kingdom",]
 write.csv(United_Kingdom, paste(country_outputs, "United Kingdom.csv", sep=""), row.names=F)
 
 United_States<-final_categories[final_categories$Country=="United States",]
-write.csv(United_States, paste(country_outputs, "United States.csv", sep=""), row.names=F)
+write.csv(United_States, paste(usa_reforms, "United States.csv", sep=""), row.names=F)
 
 
 #Changes from 2018 index
