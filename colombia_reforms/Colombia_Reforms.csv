@@ -13,3 +13,4 @@ Permanent estate tax - estate tax 0->1
 Remove reduced rate of 20% - corp_alt_min 2->1"
 CO,COL,Colombia,2022,30,58.66315421,38,32.52054902,2,99.19229016,16,59.25470734,24,54.2227546,36,46.52899523,VAT base at .4
 CO,COL,Colombia,2022,28,59.74866645,37,34.8600088,2,99.19229016,16,59.25470734,24,54.2227546,36,46.52899523,VAT base at .4 and full expensing for machinery
+CO,COL,Colombia,2022,35,51.99989683,38,32.52054902,6,88.65397583,18,56.45165327,32,42.57393339,36,46.52899523,"Corrected reforms - Dividend rate to 20%, estate tax from 0->1"
