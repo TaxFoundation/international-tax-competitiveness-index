@@ -10,6 +10,7 @@ intermediate_outputs<-"C:/Github/international-tax-competitiveness-index/interme
 final_data<-"C:/Github/international-tax-competitiveness-index/final_data/"
 final_outputs<-"C:/Github/international-tax-competitiveness-index/final_outputs/"
 country_outputs<-"C:/Github/international-tax-competitiveness-index/country_outputs/"
+germany_reforms<-"C:/Github/international-tax-competitiveness-index/germany_reforms/"
 
 
 #Define Using function####
