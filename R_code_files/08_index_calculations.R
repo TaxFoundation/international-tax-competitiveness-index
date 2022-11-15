@@ -600,7 +600,7 @@ Germany<-final_categories[final_categories$Country=="Germany",]
 write.csv(Germany, paste(country_outputs, "Germany.csv", sep=""), row.names=F)
 
 Greece<-final_categories[final_categories$Country=="Greece",]
-write.csv(Greece, paste(country_outputs, "Greece.csv", sep=""), row.names=F)
+write.csv(Greece, paste(greece_reforms, "Greece.csv", sep=""), row.names=F)
 
 Hungary<-final_categories[final_categories$Country=="Hungary",]
 write.csv(Hungary, paste(country_outputs, "Hungary.csv", sep=""), row.names=F)
