@@ -627,7 +627,7 @@ Latvia<-final_categories[final_categories$Country=="Latvia",]
 write.csv(Latvia, paste(country_outputs, "Latvia.csv", sep=""), row.names=F)
 
 Lithuania<-final_categories[final_categories$Country=="Lithuania",]
-write.csv(Lithuania, paste(country_outputs, "Lithuania.csv", sep=""), row.names=F)
+write.csv(lithuania_folder, paste(country_outputs, "Lithuania.csv", sep=""), row.names=F)
 
 Luxembourg<-final_categories[final_categories$Country=="Luxembourg",]
 write.csv(Luxembourg, paste(country_outputs, "Luxembourg.csv", sep=""), row.names=F)
