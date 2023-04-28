@@ -597,7 +597,7 @@ France<-final_categories[final_categories$Country=="France",]
 write.csv(France, paste(country_outputs, "France.csv", sep=""), row.names=F)
 
 Germany<-final_categories[final_categories$Country=="Germany",]
-write.csv(Germany, paste(country_outputs, "Germany.csv", sep=""), row.names=F)
+write.csv(Germany, paste(germany_folder, "Germany.csv", sep=""), row.names=F)
 
 Greece<-final_categories[final_categories$Country=="Greece",]
 write.csv(Greece, paste(country_outputs, "Greece.csv", sep=""), row.names=F)
