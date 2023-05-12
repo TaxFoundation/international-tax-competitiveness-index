@@ -243,22 +243,22 @@ corporate_other_rev<-subset(corporate_other_rev,country%in%oecd_countries)
 corporate_other_rev$corporate_other_rev<-as.numeric(corporate_other_rev$corporate_other_rev)
 corporate_other_rev$year<-as.numeric(corporate_other_rev$year)
 
-#Add in Australia, Greece, and Japan 2019 numbers
-#Australia: 2020 data not available -> use 2019 data
-#missing_australia <- subset(corporate_other_rev, subset = country == "AUS" & year == "2019")
-#missing_australia[missing_australia$year == 2019, "year"] <- 2020
+#Add in Australia, Greece, and Japan 2020 numbers
+#Australia: 2021 data not available -> use 2020 data
+missing_australia <- subset(corporate_other_rev, subset = country == "AUS" & year == "2020")
+missing_australia[missing_australia$year == 2020, "year"] <- 2021
 
-#Japan: 2020 data not available -> use 2019 data
-#missing_japan <- subset(corporate_other_rev, subset = country == "JPN" & year == "2019")
-#missing_japan[missing_japan$year == 2019, "year"] <- 2020
+#Japan: 2021 data not available -> use 2020 data
+missing_japan <- subset(corporate_other_rev, subset = country == "JPN" & year == "2020")
+missing_japan[missing_japan$year == 2020, "year"] <- 2021
 
-#Greece: 2020 data not available -> use 2019 data
-#missing_greece <- subset(corporate_other_rev, subset = country == "GRC" & year == "2019")
-#missing_greece[missing_greece$year == 2019, "year"] <- 2020
+#Greece: 2021 data not available -> use 2020 data
+missing_greece <- subset(corporate_other_rev, subset = country == "GRC" & year == "2020")
+missing_greece[missing_greece$year == 2020, "year"] <- 2021
 
 #combine
-#corporate_other_rev<-rbind(corporate_other_rev,missing_australia,missing_japan,missing_greece)
-#corporate_other_rev$year<-corporate_other_rev$year+2
+corporate_other_rev<-rbind(corporate_other_rev,missing_australia,missing_japan,missing_greece)
+corporate_other_rev$year<-corporate_other_rev$year+2
 
 #personal_other_rev####
 taxes<-c("2400")
@@ -271,26 +271,26 @@ personal_other_rev<-subset(personal_other_rev,country%in%oecd_countries)
 personal_other_rev$personal_other_rev<-as.numeric(personal_other_rev$personal_other_rev)
 personal_other_rev$year<-as.numeric(personal_other_rev$year)
 
-#Add in Australia, Greece, Hungary, and Japan 2019 numbers
-#Australia: 2020 data not available -> use 2019 data
-#missing_australia <- subset(personal_other_rev, subset = country == "AUS" & year == "2019")
-#missing_australia[missing_australia$year == 2019, "year"] <- 2020
+#Add in Australia, Greece, Hungary, and Japan 2020 numbers
+#Australia: 2020 data not available -> use 2020 data
+missing_australia <- subset(personal_other_rev, subset = country == "AUS" & year == "2020")
+missing_australia[missing_australia$year == 2020, "year"] <- 2021
 
-#Hungary: 2020 data not available -> use 2019 data
-#missing_hungary <- subset(personal_other_rev, subset = country == "HUN" & year == "2019")
-#missing_hungary[missing_hungary$year == 2019, "year"] <- 2020
+#Hungary: 2020 data not available -> use 2020 data
+missing_hungary <- subset(personal_other_rev, subset = country == "HUN" & year == "2020")
+missing_hungary[missing_hungary$year == 2020, "year"] <- 2021
 
-#Japan: 2020 data not available -> use 2019 data
-#missing_japan <- subset(personal_other_rev, subset = country == "JPN" & year == "2019")
-#missing_japan[missing_japan$year == 2019, "year"] <- 2020
+#Japan: 2020 data not available -> use 2020 data
+missing_japan <- subset(personal_other_rev, subset = country == "JPN" & year == "2020")
+missing_japan[missing_japan$year == 2020, "year"] <- 2021
 
-#Greece: 2020 data not available -> use 2019 data
-#missing_greece <- subset(personal_other_rev, subset = country == "GRC" & year == "2019")
-#missing_greece[missing_greece$year == 2019, "year"] <- 2020
+#Greece: 2020 data not available -> use 2020 data
+missing_greece <- subset(personal_other_rev, subset = country == "GRC" & year == "2020")
+missing_greece[missing_greece$year == 2020, "year"] <- 2021
 
 #combine
-#personal_other_rev<-rbind(personal_other_rev,missing_australia,missing_japan,missing_hungary,missing_greece)
-#personal_other_rev$year<-personal_other_rev$year+2
+personal_other_rev<-rbind(personal_other_rev,missing_australia,missing_japan,missing_hungary,missing_greece)
+personal_other_rev$year<-personal_other_rev$year+2
 
 #End OECD data scraper#
 
