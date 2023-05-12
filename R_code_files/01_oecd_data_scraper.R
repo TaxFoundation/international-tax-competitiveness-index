@@ -18,17 +18,17 @@ corporate_rate$corporate_rate <- as.numeric(corporate_rate$corporate_rate)
 corporate_rate$corporate_rate <- corporate_rate$corporate_rate/100
 
 #hard code CIT rate for Chile for 2016-2022 since the current 10% rate for 2020-2022 only applies to SMEs and the OECD data is incorrect for 2017-2019
-country_chile<-c("CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL")
-year<-c("2014","2015","2016","2017","2018","2019","2020","2021","2022")
-corporate_rate_chile<-c("0.2","0.24","0.24","0.255","0.26","0.27","0.27","0.27","0.27")
+#country_chile<-c("CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL")
+#year<-c("2014","2015","2016","2017","2018","2019","2020","2021","2022")
+#corporate_rate_chile<-c("0.2","0.24","0.24","0.255","0.26","0.27","0.27","0.27","0.27")
 
-chile<-data.frame(country_chile,corporate_rate_chile,year)
-colnames(chile)<-c("country","corporate_rate","year")
+#chile<-data.frame(country_chile,corporate_rate_chile,year)
+#colnames(chile)<-c("country","corporate_rate","year")
 
 #Merge Chile with corporate rate
-corporate_rate<-subset(corporate_rate,country!="CHL")
+#corporate_rate<-subset(corporate_rate,country!="CHL")
 
-corporate_rate<-rbind(corporate_rate,chile)
+#corporate_rate<-rbind(corporate_rate,chile)
 
 #r_and_d_credit####
 #RDTAXSUB#
@@ -223,6 +223,15 @@ colnames(dividends_rate)<-c("country","dividends_rate","year")
 
 dividends_rate$dividends_rate<-as.numeric(dividends_rate$dividends_rate)
 dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
+
+#Colombia: 2023 data not available -> use 2022 data
+missing_colombia <- subset(dividends_rate, subset = country == "COL" & year == "2022")
+missing_colombia[missing_colombia$year == 2022, "year"] <- "2023"
+missing_colombia$year<-as.numeric(missing_colombia$year)
+
+#combine
+dividends_rate<-rbind(dividends_rate,missing_colombia)
+
 
 #corporate_other_rev####
 taxes<-c("1300","6100")
