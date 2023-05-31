@@ -134,6 +134,13 @@ vat_thresholds <- rbind(vat_thresholds, USA, LVA, LTU, COL, CRI)
 #Rename Turkey (Türkiye) for 2022
 vat_thresholds$country[vat_thresholds$country == "Türkiye"]<-"Turkey"
 
+#missing
+missing_uk <- subset(vat_thresholds, subset = country == "United Kingdom" & year == "2021")
+missing_uk$year<-2022
+
+#combine
+vat_thresholds<-rbind(vat_thresholds,missing_uk)
+
 write.csv(vat_thresholds,paste(intermediate_outputs,"vat_thresholds.csv",sep=""),row.names = FALSE)
 
 
@@ -144,26 +151,17 @@ vat_revenue <- get_dataset("REV", filter= list(c("NES"),c("5111"),c("TAXNAT")),s
 vat_revenue <- subset(vat_revenue,vat_revenue$COU%in%oecd_countries)
 vat_revenue <- vat_revenue[c(1,3,7)]
 
-#missing
-missing_australia <- subset(vat_revenue, subset = COU == "AUS" & Time == "2019")
-missing_greece <- subset(vat_revenue, subset = COU == "GRC" & Time == "2019")
-missing_japan <- subset(vat_revenue, subset = COU == "JPN" & Time == "2019")
-
-missing_australia$Time<-2020
-missing_greece$Time<-2020
-missing_japan$Time<-2020
-
 #Replace US VAT revenue with US sales tax revenue
 US_sales_revenue <- get_dataset("REV", filter= list(c("NES"),c("5112"),c("TAXNAT"),c("USA")),start_time = 2012)
 US_sales_revenue <- US_sales_revenue[c(1,3,7)]
 
 #combine
-US_sales_revenue<-rbind(US_sales_revenue,missing_us)
+#US_sales_revenue<-rbind(US_sales_revenue,missing_us)
 
 vat_revenue<-subset(vat_revenue,vat_revenue$COU!="USA")
 
 #combine
-vat_revenue<-rbind(vat_revenue,missing_australia,missing_greece,US_sales_revenue)
+vat_revenue<-rbind(vat_revenue,US_sales_revenue)
 
 #relabel
 colnames(vat_revenue)<-c("ISO_3","vat_revenue","year")
@@ -177,7 +175,7 @@ final_consumption<-final_consumption[c(1,4,8)]
 #missing_turkey$Time<-2020
 
 #combine
-final_consumption<-rbind(final_consumption,missing_turkey)
+#final_consumption<-rbind(final_consumption,missing_turkey)
 
 #relabel
 colnames(final_consumption)<-c("ISO_3","final_consumption","year")
