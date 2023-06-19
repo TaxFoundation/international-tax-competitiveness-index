@@ -3,7 +3,7 @@ AU,AUS,Australia,2022,1,0,0,0
 AT,AUT,Austria,2022,1,0,0,0
 BE,BEL,Belgium,2022,1,0,0,0
 CA,CAN,Canada,2022,1,0,0,0
-CL,CHL,Chile,2022,1,0.5,0.5,0
+CL,CHL,Chile,2022,1,0,0.5,0
 CO,COL,Colombia,2022,1,0.5,0.5,0
 CR,CRI,Costa Rica,2022,0,0,0,0
 CZ,CZE,Czech Republic,2022,1,0,0,0
@@ -29,7 +29,7 @@ NZ,NZL,New Zealand,2022,1,0,0,0
 NO,NOR,Norway,2022,1,0.5,0,0
 PL,POL,Poland,2022,1,0.5,0,0
 PT,PRT,Portugal,2022,1,0.5,0,0
-SK,SVK,Slovak Republic,2022,1,0.5,1,0
+SK,SVK,Slovak Republic,2022,1,0.5,0,0
 SI,SVN,Slovenia,2022,1,0,0,0
 ES,ESP,Spain,2022,1,0,0,0
 SE,SWE,Sweden,2022,1,1,0,0
