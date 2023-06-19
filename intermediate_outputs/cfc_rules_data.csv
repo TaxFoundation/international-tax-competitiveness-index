@@ -303,41 +303,79 @@
 "TR","TUR","Turkey",2021,1,0.5,0.5,0,0.5
 "GB","GBR","United Kingdom",2021,1,0.5,0,0,0.375
 "US","USA","United States",2021,1,0,0,1,0.5
+"AU","AUS","Australia",2021,1,0,0,0,0.25
+"AT","AUT","Austria",2021,1,0,0,0,0.25
+"BE","BEL","Belgium",2021,1,0,0,0,0.25
+"CA","CAN","Canada",2021,1,0,0,0,0.25
+"CL","CHL","Chile",2021,1,0,0.5,0,0.375
+"CO","COL","Colombia",2021,1,0.5,0.5,0,0.5
+"CR","CRI","Costa Rica",2021,0,0,0,0,0
+"CZ","CZE","Czech Republic",2021,1,0,0,0,0.25
+"DK","DNK","Denmark",2021,1,0.5,0.5,0,0.5
+"EE","EST","Estonia",2021,1,0,0,0,0.25
+"FI","FIN","Finland",2021,1,0.5,0,0,0.375
+"FR","FRA","France",2021,1,1,0,0,0.5
+"DE","DEU","Germany",2021,1,0,0,0,0.25
+"GR","GRC","Greece",2021,1,0,0,0,0.25
+"HU","HUN","Hungary",2021,1,0,0,0,0.25
+"IS","ISL","Iceland",2021,1,1,0,0,0.5
+"IE","IRL","Ireland",2021,1,0,0,0,0.25
+"IL","ISR","Israel",2021,1,0,0,0,0.25
+"IT","ITA","Italy",2021,1,1,0,0,0.5
+"JP","JPN","Japan",2021,1,0,0,0,0.25
+"KR","KOR","Korea",2021,1,0.5,0,0,0.375
+"LV","LVA","Latvia",2021,1,0,0,0,0.25
+"LT","LTU","Lithuania",2021,1,0,0,0,0.25
+"LU","LUX","Luxembourg",2021,1,0,0,0,0.25
+"MX","MEX","Mexico",2021,1,0.5,0.5,0,0.5
+"NL","NLD","Netherlands",2021,1,0,0,0,0.25
+"NZ","NZL","New Zealand",2021,1,0,0,0,0.25
+"NO","NOR","Norway",2021,1,0.5,0,0,0.375
+"PL","POL","Poland",2021,1,0.5,0,0,0.375
+"PT","PRT","Portugal",2021,1,0.5,0,0,0.375
+"SK","SVK","Slovak Republic",2021,1,0.5,0,0,0.375
+"SI","SVN","Slovenia",2021,1,0,0,0,0.25
+"ES","ESP","Spain",2021,1,0,0,0,0.25
+"SE","SWE","Sweden",2021,1,1,0,0,0.5
+"CH","CHE","Switzerland",2021,0,0,0,0,0
+"TR","TUR","Turkey",2021,1,0.5,0.5,0,0.5
+"GB","GBR","United Kingdom",2021,1,0.5,0,0,0.375
+"US","USA","United States",2021,1,0,0,1,0.5
+"AT","AUT","Austria",2022,1,0.5,0.5,0,0.5
 "AU","AUS","Australia",2022,1,0,0,0,0.25
-"AT","AUT","Austria",2022,1,0,0,0,0.25
-"BE","BEL","Belgium",2022,1,0,0,0,0.25
+"BE","BEL","Belgium",2022,1,1,1,0,0.75
 "CA","CAN","Canada",2022,1,0,0,0,0.25
-"CL","CHL","Chile",2022,1,0.5,0.5,0,0.5
+"CH","CHE","Switzerland",2022,0,0,0,0,0
+"CL","CHL","Chile",2022,1,0,0.5,0,0.375
 "CO","COL","Colombia",2022,1,0.5,0.5,0,0.5
 "CR","CRI","Costa Rica",2022,0,0,0,0,0
 "CZ","CZE","Czech Republic",2022,1,0,0,0,0.25
+"DE","DEU","Germany",2022,1,0,0,0,0.25
 "DK","DNK","Denmark",2022,1,0.5,0.5,0,0.5
 "EE","EST","Estonia",2022,1,0,0,0,0.25
+"ES","ESP","Spain",2022,1,0,0,0,0.25
 "FI","FIN","Finland",2022,1,0.5,0,0,0.375
 "FR","FRA","France",2022,1,1,0,0,0.5
-"DE","DEU","Germany",2022,1,0,0,0,0.25
+"GB","GBR","United Kingdom",2022,1,0.5,0,0,0.375
 "GR","GRC","Greece",2022,1,0,0,0,0.25
 "HU","HUN","Hungary",2022,1,0,0,0,0.25
-"IS","ISL","Iceland",2022,1,1,0,0,0.5
 "IE","IRL","Ireland",2022,1,0,0,0,0.25
 "IL","ISR","Israel",2022,1,0,0,0,0.25
+"IS","ISL","Iceland",2022,1,1,0,0,0.5
 "IT","ITA","Italy",2022,1,1,0,0,0.5
-"JP","JPN","Japan",2022,1,0,0,0,0.25
+"JP","JPN","Japan",2022,1,0.5,0,0,0.375
 "KR","KOR","Korea",2022,1,0.5,0,0,0.375
-"LV","LVA","Latvia",2022,1,0,0,0,0.25
 "LT","LTU","Lithuania",2022,1,0,0,0,0.25
 "LU","LUX","Luxembourg",2022,1,0,0,0,0.25
+"LV","LVA","Latvia",2022,1,0,0,0,0.25
 "MX","MEX","Mexico",2022,1,0.5,0.5,0,0.5
 "NL","NLD","Netherlands",2022,1,0,0,0,0.25
-"NZ","NZL","New Zealand",2022,1,0,0,0,0.25
 "NO","NOR","Norway",2022,1,0.5,0,0,0.375
+"NZ","NZL","New Zealand",2022,1,0,0,0,0.25
 "PL","POL","Poland",2022,1,0.5,0,0,0.375
 "PT","PRT","Portugal",2022,1,0.5,0,0,0.375
-"SK","SVK","Slovak Republic",2022,1,0.5,1,0,0.625
-"SI","SVN","Slovenia",2022,1,0,0,0,0.25
-"ES","ESP","Spain",2022,1,0,0,0,0.25
 "SE","SWE","Sweden",2022,1,1,0,0,0.5
-"CH","CHE","Switzerland",2022,0,0,0,0,0
+"SI","SVN","Slovenia",2022,1,0,0,0,0.25
+"SK","SVK","Slovak Republic",2022,1,0.5,0,0,0.375
 "TR","TUR","Turkey",2022,1,0.5,0.5,0,0.5
-"GB","GBR","United Kingdom",2022,1,0.5,0,0,0.375
 "US","USA","United States",2022,1,0,0,1,0.5
