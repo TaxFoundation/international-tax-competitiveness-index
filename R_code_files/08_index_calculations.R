@@ -19,12 +19,16 @@ raw_data_2020 <- read_csv(paste(final_data,"final_index_data_2020.csv",sep=""))
 raw_data_2021 <- read_csv(paste(final_data,"final_index_data_2021.csv",sep=""))
 #2022
 raw_data_2022 <- read_csv(paste(final_data,"final_index_data_2022.csv",sep=""))
-
+#2023 Until further changes, use intermediate data set for 2023 due to manual inputs
+#raw_data_2023 <- read_csv(paste(final_data,"final_index_data_2023.csv",sep=""))
+raw_data_2023 <- read_csv(paste(source_data,"index_data_2023.csv",sep=""))
+raw_data_2023 <- raw_data_2023[, !(names(raw_data_2023) == "consumption_time")]
 
 #Combined Data####
 raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,
                 raw_data_2017,raw_data_2018,raw_data_2019,
-                raw_data_2020,raw_data_2021,raw_data_2022)
+                raw_data_2020,raw_data_2021,raw_data_2022,
+                raw_data_2023)
 
 raw_data$loss_carryback<-as.numeric(raw_data$loss_carryback)
 raw_data$patent_box<-as.numeric(raw_data$patent_box)
@@ -287,7 +291,7 @@ categories$income<-apply((subcategories[income_index]*(1/length(income_index))),
 categories$cross_border<-apply((subcategories[cross_border_index]*(1/length(cross_border_index))),1,sum)
 categories$final<-apply((categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
-write.csv(subset(categories,categories$year==2022),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
+write.csv(subset(categories,categories$year==2023),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
 
 
 
@@ -336,7 +340,7 @@ rank1<-function(x){
   ranks<-rank(-x,ties.method= "min")
   return(ranks)
 }
-write.csv(subset(subcategories,subcategories$year==2022),file = paste(final_outputs,"subcategories_z_score.csv",sep=""),row.names=F)
+write.csv(subset(subcategories,subcategories$year==2023),file = paste(final_outputs,"subcategories_z_score.csv",sep=""),row.names=F)
 
 
 #Subcategory Scores####
@@ -496,6 +500,8 @@ final_2019<-final_categories[final_categories$year==2019,]
 final_2020<-final_categories[final_categories$year==2020,]
 final_2021<-final_categories[final_categories$year==2021,]
 final_2022<-final_categories[final_categories$year==2022,]
+final_2023<-final_categories[final_categories$year==2023,]
+
 
 #Data Check####
 
@@ -507,17 +513,18 @@ check<-raw_data[raw_data$country == "Austria",]
 final_categories<-final_categories[order(final_categories$country,final_categories$year),]
 alternate_final_categories<-alternate_final_categories[order(alternate_final_categories$country,alternate_final_categories$year),]
 
-cor(alternate_final_categories$final[alternate_final_categories$year == 2022],final_categories$final[final_categories$year == 2022])
+cor(alternate_final_categories$final[alternate_final_categories$year == 2023],final_categories$final[final_categories$year == 2023])
 
 
-#not really. .968 correlation coefficient between the two
+#2022: not really. .968 correlation coefficient between the two
+#2023: .965 correlation coefficient.
 
 #Which Category drives the results the most?####
 
 #normal scoring techniques:
 
-cortest1<-final_categories[final_categories$year == 2021,]
-subcortest1<-final_subcategories[final_subcategories$year == 2021,]
+cortest1<-final_categories[final_categories$year == 2022,]
+subcortest1<-final_subcategories[final_subcategories$year == 2022,]
 subcortest1<-cbind(subcortest1,cortest1[14])
 cor(cortest1[c(4,6,8,10,12,14)])
 categories_correl<-data.frame(cor(cortest1[c(4,6,8,10,12,14)]))
@@ -532,7 +539,7 @@ write.csv(subcategories_correl,paste(final_outputs,"subcategories_correlation.cs
 #calc.relimp(importance, rela= TRUE)
 #alternative scoring techniques:
 
-cortest2<-alternate_final_categories[alternate_final_categories$year == 2022,]
+cortest2<-alternate_final_categories[alternate_final_categories$year == 2023,]
 cor(cortest2[c(4,6,8,10,12,14)])     
 
 
@@ -686,7 +693,7 @@ write.csv(United_States, paste(country_outputs, "United States.csv", sep=""), ro
 #Changes<-cbind(M[,1,drop=FALSE],Changes)
 
 #The following file is used for country profile pages; do not edit
-write.csv(raw_data,paste(final_outputs,"raw_data_2022.csv",sep=""),row.names=F)
+write.csv(raw_data,paste(final_outputs,"raw_data_2023.csv",sep=""),row.names=F)
 
 
 write.csv(final_2017, file = paste(final_outputs,"data_2017_run.csv",sep=""),row.names=F)
@@ -695,10 +702,11 @@ write.csv(final_2019, file = paste(final_outputs,"data_2019_run.csv",sep=""),row
 write.csv(final_2020, file = paste(final_outputs,"data_2020_run.csv",sep=""),row.names=F)
 write.csv(final_2021, file = paste(final_outputs,"data_2021_run.csv",sep=""),row.names=F)
 write.csv(final_2022, file = paste(final_outputs,"data_2022_run.csv",sep=""),row.names=F)
+write.csv(final_2023, file = paste(final_outputs,"data_2023_run.csv",sep=""),row.names=F)
 
 
 #The following file is used for country profile pages; do not edit
-final_subcategories_2022<-subset(final_subcategories,year==2022)
-write.csv(final_subcategories_2022,paste(final_outputs,"subcategories_2022.csv",sep=""),row.names=F)
+final_subcategories_2023<-subset(final_subcategories,year==2023)
+write.csv(final_subcategories_2023,paste(final_outputs,"subcategories_2023.csv",sep=""),row.names=F)
 
-write.csv(final_categories,paste(final_outputs,"final_categories_2014_2022.csv",sep=""),row.names=F)
+write.csv(final_categories,paste(final_outputs,"final_categories_2014_2023.csv",sep=""),row.names=F)
