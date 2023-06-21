@@ -1,0 +1,12 @@
+﻿Property tax revenue as share of capital stock: Calculations for Ukraine,,,,,,,
+,2014,2015,2016,2017,2018,2019,2020
+"Property tax revenue (millions, UAH)",167.12,15577.12,24742.50,28810.19,30957.10,37717.95,37230.57
+"Capital stock (billions, UAH)",7.62E+06,9.81E+06,1.08E+07,1.15E+07,1.29E+07,1.22E+07,1.14E+07
+"Capital stock (millions, UAH)",7.62E+03,9.81E+03,1.08E+04,1.15E+04,1.29E+04,1.22E+04,1.14E+04
+Property collections,2.19%,158.85%,229.29%,249.80%,239.74%,309.54%,326.86%
+,,,,,,,
+,,,,,,,
+,,,,,,,
+Sources:,,,,,,,
+Property Tax Revenue: https://stats.oecd.org/Index.aspx?DataSetCode=REVUKR,4100,"Recurrent taxes on immovable property, in millions of nominal national currency",,,,,
+"Capital stock: IMF data [all adjustments, see 04_property_tax_collections.R]",kpriv_n,"Private capital stock, in billions of nominal national currency",,,,,

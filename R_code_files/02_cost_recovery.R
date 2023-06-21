@@ -46,6 +46,7 @@ data <- data[which(data$country=="AUS"
                    | data$country=="CHE"
                    | data$country=="TUR"
                    | data$country=="GBR"
+                   | data$country=="UKR"
                    | data$country=="USA"),]
 
 
