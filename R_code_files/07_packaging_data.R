@@ -133,3 +133,4 @@ write.csv(subset(index_data_final,index_data_final$year==2019),file = paste(fina
 write.csv(subset(index_data_final,index_data_final$year==2020),file = paste(final_data,"final_index_data_2020.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2021),file = paste(final_data,"final_index_data_2021.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2022),file = paste(final_data,"final_index_data_2022.csv",sep=""),row.names=F)
+write.csv(subset(index_data_final,index_data_final$year==2023),file = paste(final_data,"final_index_data_2023.csv",sep=""),row.names=F)
