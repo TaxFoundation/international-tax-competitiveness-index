@@ -19,10 +19,9 @@ raw_data_2020 <- read_csv(paste(final_data,"final_index_data_2020.csv",sep=""))
 raw_data_2021 <- read_csv(paste(final_data,"final_index_data_2021.csv",sep=""))
 #2022
 raw_data_2022 <- read_csv(paste(final_data,"final_index_data_2022.csv",sep=""))
-#2023 Until further changes, use intermediate data set for 2023 due to manual inputs
-#raw_data_2023 <- read_csv(paste(final_data,"final_index_data_2023.csv",sep=""))
-raw_data_2023 <- read_csv(paste(source_data,"index_data_2023.csv",sep=""))
-raw_data_2023 <- raw_data_2023[, !(names(raw_data_2023) == "consumption_time")]
+#2023
+raw_data_2023 <- read_csv(paste(final_data,"final_index_data_2023.csv",sep=""))
+
 
 #Combined Data####
 raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,
@@ -502,7 +501,6 @@ final_2021<-final_categories[final_categories$year==2021,]
 final_2022<-final_categories[final_categories$year==2022,]
 final_2023<-final_categories[final_categories$year==2023,]
 
-
 #Data Check####
 
 check<-raw_data[raw_data$country == "Austria",]
@@ -516,8 +514,7 @@ alternate_final_categories<-alternate_final_categories[order(alternate_final_cat
 cor(alternate_final_categories$final[alternate_final_categories$year == 2023],final_categories$final[final_categories$year == 2023])
 
 
-#2022: not really. .968 correlation coefficient between the two
-#2023: .965 correlation coefficient.
+#not really. .968 correlation coefficient between the two
 
 #Which Category drives the results the most?####
 
