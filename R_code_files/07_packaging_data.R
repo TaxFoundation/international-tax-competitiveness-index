@@ -72,6 +72,9 @@ index_data_oecd_variables<-index_data_oecd_variables[,!names(index_data_oecd_var
 index_data_cost_recovery_variables<-merge(index_data_oecd_variables,cost_recovery,by=c("ISO_2","ISO_3","country","year"))
 
 
+#Adjust VAT data to reflect previous year
+
+
 #Join vat data with index_data_cost_recovery_variables####
 
 #Remove variables from index_data_old that are in vat data

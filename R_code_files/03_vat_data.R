@@ -90,7 +90,6 @@ colnames(vat_thresholds_2022) <- c("country", "vat_threshold")
 vat_thresholds_2022$country <- str_remove_all(vat_thresholds_2022$country, "[6*]")
 vat_thresholds_2022$year <- "2022"
 
-
 #Combine years
 vat_thresholds <- rbind(vat_thresholds_2014, vat_thresholds_2015, vat_thresholds_2016, 
                         vat_thresholds_2017, vat_thresholds_2018, vat_thresholds_2019, 
@@ -131,11 +130,12 @@ CRI <- data.frame(country, vat_threshold, year)
 
 vat_thresholds <- rbind(vat_thresholds, USA, LVA, LTU, COL, CRI)
 
-#Rename Turkey (Türkiye) for 2022
+#Rename Turkey (Türkiye) from 2022
 vat_thresholds$country[vat_thresholds$country == "Türkiye"]<-"Turkey"
 
 #missing
 missing_uk <- subset(vat_thresholds, subset = country == "United Kingdom" & year == "2021")
+missing_uk$vat_threshold<-123188
 missing_uk$year<-2022
 
 #combine
@@ -215,5 +215,8 @@ vat_data <- merge(vat_data,vat_base,by=c("country", "year"))
 
 vat_data <- merge(vat_data,iso_country_codes,by=c("country"))
 vat_data <- vat_data[c("ISO_2","ISO_3","country","year","vat_rate","vat_threshold","vat_base")]
+
+#Adjust to current year for packaging
+vat_data$year<-vat_data$year+1
 
 write.csv(vat_data,file = paste(intermediate_outputs,"vat_data.csv",sep=""),row.names=F)
