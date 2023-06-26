@@ -2,21 +2,21 @@
 
 #Load Data####
 #2014
-raw_data_2014 <- read_csv(paste(final_data,"final_index_data_2014.csv",sep=""))
+#raw_data_2014 <- read_csv(paste(final_data,"final_index_data_2014.csv",sep=""))
 #2015
-raw_data_2015 <- read_csv(paste(final_data,"final_index_data_2015.csv",sep=""))
+#raw_data_2015 <- read_csv(paste(final_data,"final_index_data_2015.csv",sep=""))
 #2016
-raw_data_2016 <- read_csv(paste(final_data,"final_index_data_2016.csv",sep=""))
+#raw_data_2016 <- read_csv(paste(final_data,"final_index_data_2016.csv",sep=""))
 #2017
-raw_data_2017 <- read_csv(paste(final_data,"final_index_data_2017.csv",sep=""))
+#raw_data_2017 <- read_csv(paste(final_data,"final_index_data_2017.csv",sep=""))
 #2018
-raw_data_2018 <- read_csv(paste(final_data,"final_index_data_2018.csv",sep=""))
+#raw_data_2018 <- read_csv(paste(final_data,"final_index_data_2018.csv",sep=""))
 #2019
-raw_data_2019 <- read_csv(paste(final_data,"final_index_data_2019.csv",sep=""))
+#raw_data_2019 <- read_csv(paste(final_data,"final_index_data_2019.csv",sep=""))
 #2020
-raw_data_2020 <- read_csv(paste(final_data,"final_index_data_2020.csv",sep=""))
+#raw_data_2020 <- read_csv(paste(final_data,"final_index_data_2020.csv",sep=""))
 #2021
-raw_data_2021 <- read_csv(paste(final_data,"final_index_data_2021.csv",sep=""))
+#raw_data_2021 <- read_csv(paste(final_data,"final_index_data_2021.csv",sep=""))
 #2022
 raw_data_2022 <- read_csv(paste(final_data,"final_index_data_2022.csv",sep=""))
 #2023
@@ -24,10 +24,11 @@ raw_data_2023 <- read_csv(paste(final_data,"final_index_data_2023.csv",sep=""))
 
 
 #Combined Data####
-raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,
-                raw_data_2017,raw_data_2018,raw_data_2019,
-                raw_data_2020,raw_data_2021,raw_data_2022,
-                raw_data_2023)
+#raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,
+#                raw_data_2017,raw_data_2018,raw_data_2019,
+#                raw_data_2020,raw_data_2021,raw_data_2022,
+#                raw_data_2023)
+raw_data<-rbind(raw_data_2022,raw_data_2023)
 
 raw_data$loss_carryback<-as.numeric(raw_data$loss_carryback)
 raw_data$patent_box<-as.numeric(raw_data$patent_box)
@@ -39,7 +40,7 @@ raw_data$transfer_tax<-as.numeric(raw_data$transfer_tax)
 raw_data$asset_tax<-as.numeric(raw_data$asset_tax)
 raw_data$capital_duties<-as.numeric(raw_data$capital_duties)
 raw_data$financial_transaction_tax<-as.numeric(raw_data$financial_transaction_tax)
-raw_data$index_capital_gains<-as.numeric(raw_data$index_capital_gains)
+#raw_data$index_capital_gains<-as.numeric(raw_data$index_capital_gains)
 raw_data$tax_treaties<-as.numeric(raw_data$tax_treaties)
 raw_data$country_limitations<-as.numeric(raw_data$country_limitations)
 
@@ -47,7 +48,7 @@ raw_data$country_limitations<-as.numeric(raw_data$country_limitations)
 #Order variables for easier working
 raw_data<-raw_data[c("ISO_2","ISO_3","country","year",
                  "corporate_rate","loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory","allowance_corporate_equity","patent_box","r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev",
-                 "top_income_rate","threshold_top_income_rate","tax_wedge","personal_surtax","personal_other_rev","capital_gains_rate","index_capital_gains","dividends_rate",
+                 "top_income_rate","threshold_top_income_rate","tax_wedge","personal_surtax","personal_other_rev","capital_gains_rate","dividends_rate",
                  "vat_rate","vat_threshold","vat_base",
                  "property_tax", "property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax",
                  "dividends_exemption","capital_gains_exemption","country_limitations","dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties","cfc_rules","thin_capitalization_rules")]
@@ -62,13 +63,13 @@ normalize <-function(x){
 #standardize all the scores into a new dataframe called "zscores" (this does this by year)
 zscores<-data.frame(country=raw_data$country,
                     year=raw_data$year,
-                    ddply(raw_data[4:46],
+                    ddply(raw_data[4:45],
                           .(year),
                           scale)
 )
 alternate_scores<-data.frame(country=raw_data$country,
                       year=raw_data$year,
-                      ddply(raw_data[4:46],
+                      ddply(raw_data[4:45],
                             .(year),
                             normalize)
 )
@@ -515,6 +516,8 @@ cor(alternate_final_categories$final[alternate_final_categories$year == 2023],fi
 
 
 #not really. .968 correlation coefficient between the two
+#[1] 0.9632878 for 2022-23
+
 
 #Which Category drives the results the most?####
 
@@ -693,11 +696,11 @@ write.csv(United_States, paste(country_outputs, "United States.csv", sep=""), ro
 write.csv(raw_data,paste(final_outputs,"raw_data_2023.csv",sep=""),row.names=F)
 
 
-write.csv(final_2017, file = paste(final_outputs,"data_2017_run.csv",sep=""),row.names=F)
-write.csv(final_2018, file = paste(final_outputs,"data_2018_run.csv",sep=""),row.names=F)
-write.csv(final_2019, file = paste(final_outputs,"data_2019_run.csv",sep=""),row.names=F)
-write.csv(final_2020, file = paste(final_outputs,"data_2020_run.csv",sep=""),row.names=F)
-write.csv(final_2021, file = paste(final_outputs,"data_2021_run.csv",sep=""),row.names=F)
+#write.csv(final_2017, file = paste(final_outputs,"data_2017_run.csv",sep=""),row.names=F)
+#write.csv(final_2018, file = paste(final_outputs,"data_2018_run.csv",sep=""),row.names=F)
+#write.csv(final_2019, file = paste(final_outputs,"data_2019_run.csv",sep=""),row.names=F)
+#write.csv(final_2020, file = paste(final_outputs,"data_2020_run.csv",sep=""),row.names=F)
+#write.csv(final_2021, file = paste(final_outputs,"data_2021_run.csv",sep=""),row.names=F)
 write.csv(final_2022, file = paste(final_outputs,"data_2022_run.csv",sep=""),row.names=F)
 write.csv(final_2023, file = paste(final_outputs,"data_2023_run.csv",sep=""),row.names=F)
 

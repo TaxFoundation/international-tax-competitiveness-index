@@ -217,6 +217,7 @@ vat_data <- merge(vat_data,iso_country_codes,by=c("country"))
 vat_data <- vat_data[c("ISO_2","ISO_3","country","year","vat_rate","vat_threshold","vat_base")]
 
 #Adjust to current year for packaging
-vat_data$year<-vat_data$year+1
+vat_data <- rbind(vat_data, transform(subset(vat_data, year == 2022), year = 2023))
+
 
 write.csv(vat_data,file = paste(intermediate_outputs,"vat_data.csv",sep=""),row.names=F)
