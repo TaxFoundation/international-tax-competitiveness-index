@@ -2,21 +2,21 @@
 
 #Load Data####
 #2014
-#raw_data_2014 <- read_csv(paste(final_data,"final_index_data_2014.csv",sep=""))
+raw_data_2014 <- read_csv(paste(final_data,"final_index_data_2014.csv",sep=""))
 #2015
-#raw_data_2015 <- read_csv(paste(final_data,"final_index_data_2015.csv",sep=""))
+raw_data_2015 <- read_csv(paste(final_data,"final_index_data_2015.csv",sep=""))
 #2016
-#raw_data_2016 <- read_csv(paste(final_data,"final_index_data_2016.csv",sep=""))
+raw_data_2016 <- read_csv(paste(final_data,"final_index_data_2016.csv",sep=""))
 #2017
-#raw_data_2017 <- read_csv(paste(final_data,"final_index_data_2017.csv",sep=""))
+raw_data_2017 <- read_csv(paste(final_data,"final_index_data_2017.csv",sep=""))
 #2018
-#raw_data_2018 <- read_csv(paste(final_data,"final_index_data_2018.csv",sep=""))
+raw_data_2018 <- read_csv(paste(final_data,"final_index_data_2018.csv",sep=""))
 #2019
-#raw_data_2019 <- read_csv(paste(final_data,"final_index_data_2019.csv",sep=""))
+raw_data_2019 <- read_csv(paste(final_data,"final_index_data_2019.csv",sep=""))
 #2020
-#raw_data_2020 <- read_csv(paste(final_data,"final_index_data_2020.csv",sep=""))
+raw_data_2020 <- read_csv(paste(final_data,"final_index_data_2020.csv",sep=""))
 #2021
-#raw_data_2021 <- read_csv(paste(final_data,"final_index_data_2021.csv",sep=""))
+raw_data_2021 <- read_csv(paste(final_data,"final_index_data_2021.csv",sep=""))
 #2022
 raw_data_2022 <- read_csv(paste(final_data,"final_index_data_2022.csv",sep=""))
 #2023
@@ -24,11 +24,11 @@ raw_data_2023 <- read_csv(paste(final_data,"final_index_data_2023.csv",sep=""))
 
 
 #Combined Data####
-#raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,
-#                raw_data_2017,raw_data_2018,raw_data_2019,
-#                raw_data_2020,raw_data_2021,raw_data_2022,
-#                raw_data_2023)
-raw_data<-rbind(raw_data_2022,raw_data_2023)
+raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,
+                raw_data_2017,raw_data_2018,raw_data_2019,
+                raw_data_2020,raw_data_2021,raw_data_2022,
+                raw_data_2023)
+#raw_data<-rbind(raw_data_2022,raw_data_2023)
 
 raw_data$loss_carryback<-as.numeric(raw_data$loss_carryback)
 raw_data$patent_box<-as.numeric(raw_data$patent_box)

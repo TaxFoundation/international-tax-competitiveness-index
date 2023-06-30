@@ -31,8 +31,19 @@ colnames(vat_rates) <- c("country", "year", "vat_rate")
 vat_rates$country <- str_remove_all(vat_rates$country, "[*]")
 
 vat_rates_vrr<-subset(vat_rates,vat_rates$year!="2022")
+#Costa Rica (for VAT Base calculation later)
+vat_rates_vrr$year <- as.numeric(as.character(vat_rates_vrr$year))
 
-vat_rates<-subset(vat_rates,vat_rates$year!="2012"&vat_rates$year!="2013")
+vat_rates_vrr$vat_rate[vat_rates_vrr$country == "Costa Rica" & vat_rates_vrr$year < 2020] <- 13
+
+
+vat_rates<-subset(vat_rates,vat_rates$year!="2012")
+
+vat_rates$year <- as.numeric(as.character(vat_rates$year))
+
+#Hardcoding Costa Rica before 2020
+vat_rates$vat_rate[vat_rates$country == "Costa Rica" & vat_rates$year < 2020] <- 13
+
 
 #Add 1-year lag to rates
 vat_rates$year <- as.numeric(as.character(vat_rates$year))+1
@@ -93,10 +104,16 @@ colnames(vat_thresholds_2022) <- c("country", "vat_threshold")
 vat_thresholds_2022$country <- str_remove_all(vat_thresholds_2022$country, "[6*]")
 vat_thresholds_2022$year <- "2022"
 
+#2023
+vat_thresholds_2023 <- vat_thresholds_2022
+vat_thresholds_2023$year <- "2023"
+
 #Combine years
 vat_thresholds <- rbind(vat_thresholds_2014, vat_thresholds_2015, vat_thresholds_2016, 
                         vat_thresholds_2017, vat_thresholds_2018, vat_thresholds_2019, 
-                        vat_thresholds_2020, vat_thresholds_2021, vat_thresholds_2022)
+                        vat_thresholds_2020, vat_thresholds_2021, vat_thresholds_2022,
+                        vat_thresholds_2023)
+
 
 #Change NAs to zeros and delete empty rows
 vat_thresholds$country<-as.character(vat_thresholds$country)
@@ -106,9 +123,9 @@ vat_thresholds <- subset(vat_thresholds, vat_thresholds$country!="0")
 
 
 #Add US for all years; Latvia for 2014 and 2015; Lithuania for 2014, 2015, 2016, 2017; Colombia for 2014-2019, and Costa Rica for all years up to 2021#
-country <- c("United States","United States","United States","United States","United States","United States", "United States", "United States", "United States")
-vat_threshold <- c("0","0","0","0","0","0","0","0","0")
-year <- c("2014","2015","2016","2017","2018","2019","2020","2021","2022")
+country <- c("United States","United States","United States","United States","United States","United States", "United States", "United States", "United States", "United States")
+vat_threshold <- c("0","0","0","0","0","0","0","0","0","0")
+year <- c("2014","2015","2016","2017","2018","2019","2020","2021","2022","2023")
 USA <- data.frame(country, vat_threshold, year)
 
 country <- c("Latvia", "Latvia")
@@ -131,21 +148,17 @@ vat_threshold <- c("0","0","0","0","0","0","0","0")
 year <- c("2014","2015","2016","2017","2018","2019","2020","2021")
 CRI <- data.frame(country, vat_threshold, year)
 
-vat_thresholds <- rbind(vat_thresholds, USA, LVA, LTU, COL, CRI)
+country <- c("United Kingdom","United Kingdom")
+vat_threshold <- c("123188","123188")
+year <- c("2022","2023")
+GBR <- data.frame(country, vat_threshold, year)
+
+vat_thresholds <- rbind(vat_thresholds, USA, LVA, LTU, COL, CRI, GBR)
+
 
 #Rename Turkey (Türkiye) from 2022
 vat_thresholds$country[vat_thresholds$country == "Türkiye"]<-"Turkey"
 
-#missing
-missing_uk <- subset(vat_thresholds, subset = country == "United Kingdom" & year == "2021")
-missing_uk$vat_threshold<-123188
-missing_uk$year<-2022
-
-#combine
-vat_thresholds<-rbind(vat_thresholds,missing_uk)
-
-#Add 1-year lag to thresholds
-vat_thresholds$year <- as.numeric(as.character(vat_thresholds$year))+1
 
 write.csv(vat_thresholds,paste(intermediate_outputs,"vat_thresholds.csv",sep=""),row.names = FALSE)
 
@@ -199,7 +212,7 @@ final_consumption$final_consumption<-as.numeric(final_consumption$final_consumpt
 final_consumption$final_consumption<-final_consumption$final_consumption/1000
 
 vat_rates_vrr<-merge(vat_rates_vrr,iso_country_codes,by="country")
-
+#vat_rates_vrr$year<-vat_rates_vrr$year-2
 
 #combine rates, revenue, consumption data
 vat_base<-merge(vat_rates_vrr,vat_revenue,by=c("ISO_3","year"))
@@ -230,6 +243,7 @@ vat_data <- merge(vat_data,vat_base,by=c("country", "year"))
 
 vat_data <- merge(vat_data,iso_country_codes,by=c("country"))
 vat_data <- vat_data[c("ISO_2","ISO_3","country","year","vat_rate","vat_threshold","vat_base")]
+
 
 
 write.csv(vat_data,file = paste(intermediate_outputs,"vat_data.csv",sep=""),row.names=F)
