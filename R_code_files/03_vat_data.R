@@ -30,9 +30,12 @@ vat_rates <- melt(vat_rates,id.vars=c("country"))
 colnames(vat_rates) <- c("country", "year", "vat_rate")
 vat_rates$country <- str_remove_all(vat_rates$country, "[*]")
 
-vat_rates_vrr<-subset(vat_rates,vat_rates$year!="2021"&vat_rates$year!="2022")
+vat_rates_vrr<-subset(vat_rates,vat_rates$year!="2022")
 
 vat_rates<-subset(vat_rates,vat_rates$year!="2012"&vat_rates$year!="2013")
+
+#Add 1-year lag to rates
+vat_rates$year <- as.numeric(as.character(vat_rates$year))+1
 
 write.csv(vat_rates,paste(intermediate_outputs,"vat_rates.csv",sep=""),row.names = FALSE)
 
@@ -141,6 +144,9 @@ missing_uk$year<-2022
 #combine
 vat_thresholds<-rbind(vat_thresholds,missing_uk)
 
+#Add 1-year lag to thresholds
+vat_thresholds$year <- as.numeric(as.character(vat_thresholds$year))+1
+
 write.csv(vat_thresholds,paste(intermediate_outputs,"vat_thresholds.csv",sep=""),row.names = FALSE)
 
 
@@ -160,11 +166,19 @@ US_sales_revenue <- US_sales_revenue[c(1,3,7)]
 
 vat_revenue<-subset(vat_revenue,vat_revenue$COU!="USA")
 
+#missing
+missing_greece <- subset(vat_revenue, subset = COU == "GRC" & Time == "2020")
+missing_greece$Time<-2021
+
+missing_australia <- subset(vat_revenue, subset = COU == "AUS" & Time == "2020")
+missing_australia$Time<-2021
+
 #combine
-vat_revenue<-rbind(vat_revenue,US_sales_revenue)
+vat_revenue<-rbind(vat_revenue,US_sales_revenue,missing_greece, missing_australia)
 
 #relabel
 colnames(vat_revenue)<-c("ISO_3","vat_revenue","year")
+
 
 #Final Consumption
 final_consumption <- get_dataset("SNA_TABLE1", filter= list(c(oecd_countries),c("P3"),c("C")),start_time = 2012, end_time = 2021)
@@ -186,6 +200,7 @@ final_consumption$final_consumption<-final_consumption$final_consumption/1000
 
 vat_rates_vrr<-merge(vat_rates_vrr,iso_country_codes,by="country")
 
+
 #combine rates, revenue, consumption data
 vat_base<-merge(vat_rates_vrr,vat_revenue,by=c("ISO_3","year"))
 vat_base<-merge(vat_base,final_consumption,by=c("ISO_3","year"))
@@ -197,7 +212,7 @@ vat_base$final_consumption<-as.numeric(vat_base$final_consumption)
 vat_base$vat_base<-vat_base$vat_revenue/((vat_base$final_consumption-vat_base$vat_revenue)*(vat_base$vat_rate/100))
 
 
-#Add 2-year lag
+#Add 2-year lag to base
 vat_base$year <- as.character.Date(vat_base$year)
 vat_base$year <- as.numeric(vat_base$year)
 vat_base$year <- vat_base$year+2
@@ -215,9 +230,6 @@ vat_data <- merge(vat_data,vat_base,by=c("country", "year"))
 
 vat_data <- merge(vat_data,iso_country_codes,by=c("country"))
 vat_data <- vat_data[c("ISO_2","ISO_3","country","year","vat_rate","vat_threshold","vat_base")]
-
-#Adjust to current year for packaging
-vat_data <- rbind(vat_data, transform(subset(vat_data, year == 2022), year = 2023))
 
 
 write.csv(vat_data,file = paste(intermediate_outputs,"vat_data.csv",sep=""),row.names=F)
