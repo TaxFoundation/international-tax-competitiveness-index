@@ -124,7 +124,6 @@ index_data_final<-index_data_final[c("ISO_2","ISO_3","country","year",
                                    "thin_capitalization_rules")]
 
 
-
 write.csv(subset(index_data_final,index_data_final$year==2014),file = paste(final_data,"final_index_data_2014.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2015),file = paste(final_data,"final_index_data_2015.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2016),file = paste(final_data,"final_index_data_2016.csv",sep=""),row.names=F)
