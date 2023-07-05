@@ -696,11 +696,11 @@ write.csv(United_States, paste(country_outputs, "United States.csv", sep=""), ro
 write.csv(raw_data,paste(final_outputs,"raw_data_2023.csv",sep=""),row.names=F)
 
 
-#write.csv(final_2017, file = paste(final_outputs,"data_2017_run.csv",sep=""),row.names=F)
-#write.csv(final_2018, file = paste(final_outputs,"data_2018_run.csv",sep=""),row.names=F)
-#write.csv(final_2019, file = paste(final_outputs,"data_2019_run.csv",sep=""),row.names=F)
-#write.csv(final_2020, file = paste(final_outputs,"data_2020_run.csv",sep=""),row.names=F)
-#write.csv(final_2021, file = paste(final_outputs,"data_2021_run.csv",sep=""),row.names=F)
+write.csv(final_2017, file = paste(final_outputs,"data_2017_run.csv",sep=""),row.names=F)
+write.csv(final_2018, file = paste(final_outputs,"data_2018_run.csv",sep=""),row.names=F)
+write.csv(final_2019, file = paste(final_outputs,"data_2019_run.csv",sep=""),row.names=F)
+write.csv(final_2020, file = paste(final_outputs,"data_2020_run.csv",sep=""),row.names=F)
+write.csv(final_2021, file = paste(final_outputs,"data_2021_run.csv",sep=""),row.names=F)
 write.csv(final_2022, file = paste(final_outputs,"data_2022_run.csv",sep=""),row.names=F)
 write.csv(final_2023, file = paste(final_outputs,"data_2023_run.csv",sep=""),row.names=F)
 
