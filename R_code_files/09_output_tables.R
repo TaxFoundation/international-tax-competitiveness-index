@@ -53,8 +53,8 @@ table_2_changes<-table_2_changes[keep]
 
 colnames(table_2_changes)<-c("Country","2021 Rank","2021 Score", "2022 Rank","2022 Score","2023 Rank","2023 Score")
 
-table_2_changes$'Change in Rank from 2021 to 2022'<-(table_2_changes$`2022 Rank`-table_2_changes$`2021 Rank`)*(-1)
-table_2_changes$'Change in Score from 2021 to 2022'<-table_2_changes$`2022 Score`-table_2_changes$`2021 Score`
+table_2_changes$'Change in Rank from 2022 to 2023'<-(table_2_changes$`2023 Rank`-table_2_changes$`2022 Rank`)*(-1)
+table_2_changes$'Change in Score from 2022 to 2023'<-table_2_changes$`2023 Score`-table_2_changes$`2022 Score`
 
 #Format Columns
 
