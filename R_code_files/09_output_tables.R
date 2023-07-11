@@ -46,19 +46,18 @@ table_2_changes <- table_2_changes[keep]
 
 colnames(table_2_changes) <- c("country", "2022 Rank","2022 Score","2023 Rank","2023 Score")
 
-table_2_changes <- merge(final_2021,table_2_changes,by="country")
+#table_2_changes <- merge(final_2021,table_2_changes,by="country")
+#keep <- c("country","final_rank","final","2022 Rank","2022 Score","2023 Rank","2023 Score")
+#table_2_changes<-table_2_changes[keep]
 
-keep <- c("country","final_rank","final","2022 Rank","2022 Score","2023 Rank","2023 Score")
-table_2_changes<-table_2_changes[keep]
-
-colnames(table_2_changes)<-c("Country","2021 Rank","2021 Score", "2022 Rank","2022 Score","2023 Rank","2023 Score")
+colnames(table_2_changes)<-c("Country","2022 Rank","2022 Score","2023 Rank","2023 Score")
 
 table_2_changes$'Change in Rank from 2022 to 2023'<-(table_2_changes$`2023 Rank`-table_2_changes$`2022 Rank`)*(-1)
 table_2_changes$'Change in Score from 2022 to 2023'<-table_2_changes$`2023 Score`-table_2_changes$`2022 Score`
 
 #Format Columns
 
-table_2_changes$'2021 Score'<-formatC(round(table_2_changes$'2021 Score',digits=1),format = "f",digits=1)
+#table_2_changes$'2021 Score'<-formatC(round(table_2_changes$'2021 Score',digits=1),format = "f",digits=1)
 table_2_changes$'2022 Score'<-formatC(round(table_2_changes$'2022 Score',digits=1),format = "f",digits=1)
 table_2_changes$'2023 Score'<-formatC(round(table_2_changes$'2023 Score',digits=1),format = "f",digits=1)
 table_2_changes$'Change in Score from 2022 to 2023'<-as.numeric(table_2_changes$'Change in Score from 2022 to 2023')
@@ -553,7 +552,17 @@ notes_3<-c("(b) Tax on the imputed rent of properties. Applies to machinery.",
            "",
            "",
            "")
-notes_4<-c("(c) The Land Appreciation Tax is levied like a capital gains tax on the sale of property.",
+notes_4<- c("(c) Representative model with state-level deviations.",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "")
+notes_5<-c("(d) The Land Appreciation Tax is levied like a capital gains tax on the sale of property.",
            "",
            "",
            "",
@@ -563,7 +572,7 @@ notes_4<-c("(c) The Land Appreciation Tax is levied like a capital gains tax on 
            "",
            "",
            "")
-notes_5<-c("(d) Levied by local governments. A few cities tax capital improvements.",
+notes_6<-c("(e) Levied by local governments. A few cities tax capital improvements.",
            "",
            "",
            "",
@@ -573,7 +582,7 @@ notes_5<-c("(d) Levied by local governments. A few cities tax capital improvemen
            "",
            "",
            "")
-notes_6<-c("(e) The purchaser of real property is subject to a purchase tax.",
+notes_7<-c("(f) The purchaser of real property is subject to a purchase tax.",
            "",
            "",
            "",
