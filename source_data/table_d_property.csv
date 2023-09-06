@@ -17,7 +17,7 @@ Greece,Tax on Real Property,Yes,1.20%,No,Inheritance and Gift Tax,Real Estate Tr
 Hungary,Tax on Real Property,Yes,0.30%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,No,Yes
 Iceland ,Tax on Real Property,No,1.00%,No,Inheritance Tax,Stamp Duty on Transfer of Real Property,Bank Tax,No,No
 Ireland,Tax on Real Property,Yes,0.30%,No,Inheritance and Gift Tax,Stamp Duty on Transfer of Real Property,No,No,Yes
-Israel,Tax on Sale of Real Property (d),Yes,1.20%,No,None,Real Estate Transfer Tax (f),No,No,No
+Israel,Tax on Sale of Real Property (d),Yes,1.20%,No,None,Real Estate Transfer Tax €,No,No,No
 Italy,Tax on Real Property,No,0.60%,Wealth Tax on Selected Assets,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
 Japan,Tax on Real Property,Yes,0.80%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Fixed assets tax,Yes,No
 Korea,Tax on Real Property,No,0.40%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
@@ -26,7 +26,7 @@ Lithuania,Tax on Real Property,Yes,0.20%,No,Inheritance Tax,No,No,No,No
 Luxembourg,Tax on Real Property,Yes,0.00%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Tax on Corporate Net Assets,No,No
 Mexico,Tax on Real Property,Yes,0.10%,No,Income Tax can apply,Real Estate Transfer Tax,No,No,No
 Netherlands,Tax on Real Property,Yes,0.50%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,No,No
-New Zealand,Land Value Tax (e),No,1.20%,No,None,No,No,No,No
+New Zealand,Tax on Real Property,No,1.20%,No,None,No,No,No,No
 Norway,Tax on Real Property,Yes,0.20%,Net Wealth Tax,None,Stamp Duty on Transfer of Real Property,No,No,No
 Poland,Tax on Real Property,Yes,0.80%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,Yes,Yes
 Portugal,Tax on Real Property,Yes,0.40%,No,Stamp Duty applies to Inheritance and Gifts,Real Estate Transfer Tax,Bank Tax,No,No
@@ -41,13 +41,12 @@ United States,Tax on Real Property,Yes,1.60%,No,Inheritance and Gift Tax,Real Es
 ,,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,
-Notes: (a) Tax applies to some real estate (vacation homes). (b) Tax on the imputed rent of properties. Applies to machinery. (c) Representative model with state-level deviations. (d) The Land Appreciation Tax is levied like a capital gains tax on the sale of property. (e) Levied by local governments. A few cities tax capital improvements.,,,,,,,,,
+Notes: (a) Tax applies to some real estate (vacation homes). (b) Tax on the imputed rent of properties. Applies to machinery. (c) Representative model with state-level deviations. (d) The Land Appreciation Tax is levied like a capital gains tax on the sale of property. (e) The purchaser of real property is subject to a purchase tx.,,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,
-Notes: (f) The purchaser of real property is subject to a purchase tax.,,,,,,,,,
 ,,,,Net Wealth Tax,Wealth Tax,,,,
 ,,,,"Estate, Inheritance, or Gift Tax",Estate/Inheritance Tax,,,,
 ,,,,Property Transfer Tax,Transfer Taxes,,,,

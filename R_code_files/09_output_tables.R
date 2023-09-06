@@ -572,17 +572,7 @@ notes_5<-c("(d) The Land Appreciation Tax is levied like a capital gains tax on 
            "",
            "",
            "")
-notes_6<-c("(e) Levied by local governments. A few cities tax capital improvements.",
-           "",
-           "",
-           "",
-           "",
-           "",
-           "",
-           "",
-           "",
-           "")
-notes_7<-c("(f) The purchaser of real property is subject to a purchase tax.",
+notes_7<-c("(e) The purchaser of real property is subject to a purchase tax.",
            "",
            "",
            "",
