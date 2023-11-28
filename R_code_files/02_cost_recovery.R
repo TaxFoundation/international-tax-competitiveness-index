@@ -168,6 +168,9 @@ data[c('taxdepmachtimesl')][data$country == "USA" & data$year >1982 & data$year<
 
 #machines_cost_recovery####
 
+#Initialize new column
+data$machines_cost_recovery <- NA
+
 #DB
 data$machines_cost_recovery[data$taxdepmachtype == "DB" & !is.na(data$taxdepmachtype)] <- DB(data$taxdeprmachdb[data$taxdepmachtype == "DB" & !is.na(data$taxdepmachtype)],0.075)
 data$machines_cost_recovery[data$taxdepmachtype == "DB" & !is.na(data$taxdepmachtype)] <- DB(data$taxdeprmachdb[data$taxdepmachtype == "DB" & !is.na(data$taxdepmachtype)],0.075)
@@ -203,6 +206,9 @@ for (x in 1:length(data$taxdeprmachdb)){
 
 
 #buildings_cost_recovery####
+
+#Initialize new column
+data$buildings_cost_recovery <- NA
 
 #DB
 data$buildings_cost_recovery[data$taxdepbuildtype == "DB" & !is.na(data$taxdepbuildtype)] <- DB(data$taxdeprbuilddb[data$taxdepbuildtype == "DB" & !is.na(data$taxdepbuildtype)],0.075)
@@ -240,6 +246,9 @@ for (x in 1:length(data$taxdeprbuilddb)){
 
 #intangibles_cost_recovery####
 
+#Initialize new column
+data$intangibles_cost_recovery <- NA
+
 #DB
 data$intangibles_cost_recovery[data$taxdepintangibltype == "DB" & !is.na(data$taxdepintangibltype)] <- DB(data$taxdeprintangibldb[data$taxdepintangibltype == "DB" & !is.na(data$taxdepintangibltype)], 0.075)
 data$intangibles_cost_recovery[data$taxdepintangibltype == "DB" & !is.na(data$taxdepintangibltype)] <- DB(data$taxdeprintangibldb[data$taxdepintangibltype == "DB" & !is.na(data$taxdepintangibltype)], 0.075)
@@ -272,9 +281,10 @@ data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_reco
 #In fall 2018, Canada introduced full expensing for machinery
 data[c('machines_cost_recovery')][data$country == "CAN" & data$year >= 2018,] <- 1
 
-#In 2020, Chile introduced full expensing
+#Chile introduced full expensing in 2020; phase-out in 2023, reverting to pre-2020 values
 data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_recovery')][data$country == "CHL" & data$year ==2020,] <- 1
-
+data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_recovery')][data$country == "CHL" & data$year ==2021,] <- 1
+data[c('intangibles_cost_recovery', 'machines_cost_recovery', 'buildings_cost_recovery')][data$country == "CHL" & data$year == 2022, ] <- data[c('intangibles_cost_recovery', 'machines_cost_recovery', 'buildings_cost_recovery')][data$country == "CHL" & data$year == 2019, ]
 
 #Adjust USA data to include bonus depreciation for machinery
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2002,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2002,] * 0.70) + 0.30
@@ -294,9 +304,11 @@ data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2018,] <-
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2019,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2019,] * 0.00) + 1.00
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2020,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2020,] * 0.00) + 1.00
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2021,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2021,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2022,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2022,] * 0.00) + 0.80
 
-#Ajdust UK data to include super-deduction
+#Adjust UK data to include super-deduction (2023 Spring budget: Full-expensing)
 data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2021,] <- (data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2021,] * 0.00) + 1.30
+data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2022,] <- (data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2022,] * 0.00) + 1
 
 #Only keep data relevant to the ITCI
 data <- subset(data, select = c(country, year, buildings_cost_recovery, machines_cost_recovery, intangibles_cost_recovery))

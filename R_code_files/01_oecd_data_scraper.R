@@ -18,17 +18,17 @@ corporate_rate$corporate_rate <- as.numeric(corporate_rate$corporate_rate)
 corporate_rate$corporate_rate <- corporate_rate$corporate_rate/100
 
 #hard code CIT rate for Chile for 2016-2022 since the current 10% rate for 2020-2022 only applies to SMEs and the OECD data is incorrect for 2017-2019
-country_chile<-c("CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL")
-year<-c("2014","2015","2016","2017","2018","2019","2020","2021","2022")
-corporate_rate_chile<-c("0.2","0.24","0.24","0.255","0.26","0.27","0.27","0.27","0.27")
+#country_chile<-c("CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL")
+#year<-c("2014","2015","2016","2017","2018","2019","2020","2021","2022")
+#corporate_rate_chile<-c("0.2","0.24","0.24","0.255","0.26","0.27","0.27","0.27","0.27")
 
-chile<-data.frame(country_chile,corporate_rate_chile,year)
-colnames(chile)<-c("country","corporate_rate","year")
+#chile<-data.frame(country_chile,corporate_rate_chile,year)
+#colnames(chile)<-c("country","corporate_rate","year")
 
 #Merge Chile with corporate rate
-corporate_rate<-subset(corporate_rate,country!="CHL")
+#corporate_rate<-subset(corporate_rate,country!="CHL")
 
-corporate_rate<-rbind(corporate_rate,chile)
+#corporate_rate<-rbind(corporate_rate,chile)
 
 #r_and_d_credit####
 #RDTAXSUB#
@@ -54,14 +54,15 @@ r_and_d_credit2018 <- aggregate(r_and_d_credit$`2018`,by=list(r_and_d_credit$cou
 r_and_d_credit2019 <- aggregate(r_and_d_credit$`2019`,by=list(r_and_d_credit$country),FUN=mean)
 r_and_d_credit2020 <- aggregate(r_and_d_credit$`2020`,by=list(r_and_d_credit$country),FUN=mean)
 r_and_d_credit2021 <- aggregate(r_and_d_credit$`2021`,by=list(r_and_d_credit$country),FUN=mean)
+r_and_d_credit2022 <- aggregate(r_and_d_credit$`2022`,by=list(r_and_d_credit$country),FUN=mean)
 
-countries <- r_and_d_credit2021$Group.1
+countries <- r_and_d_credit2022$Group.1
 
 r_and_d_credit <- data.frame(countries, r_and_d_credit2013$x, r_and_d_credit2014$x, r_and_d_credit2015$x,
-                             r_and_d_credit2016$x, r_and_d_credit2017$x, r_and_d_credit2018$x, r_and_d_credit2019$x, r_and_d_credit2020$x, r_and_d_credit2021$x)
+                             r_and_d_credit2016$x, r_and_d_credit2017$x, r_and_d_credit2018$x, r_and_d_credit2019$x, r_and_d_credit2020$x, r_and_d_credit2021$x, r_and_d_credit2022$x)
 
-colnames(r_and_d_credit) <- c("country","2013","2014","2015","2016","2017","2018","2019","2020","2021")
-r_and_d_credit <- gather(r_and_d_credit,"year","r_and_d_credit","2013","2014","2015","2016","2017","2018","2019","2020","2021")
+colnames(r_and_d_credit) <- c("country","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022")
+r_and_d_credit <- gather(r_and_d_credit,"year","r_and_d_credit","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022")
 r_and_d_credit$year <- as.numeric(r_and_d_credit$year)
 r_and_d_credit$year <- r_and_d_credit$year+1
 
@@ -81,10 +82,10 @@ colnames(top_income_rate)<-c("country","top_income_rate","year")
 top_income_rate$year<-as.numeric(top_income_rate$year)
 
 #Chile increased its top personal income tax rate from 35% to 40% as of 2020
-top_income_rate[c('top_income_rate')][top_income_rate$country == "CHL" & top_income_rate$year >= 2019,] <- "40"
+#top_income_rate[c('top_income_rate')][top_income_rate$country == "CHL" & top_income_rate$year >= 2019,] <- "40"
 
 #Colombia increased its top personal income tax rate from 33% to 39% as of 2019 and it has not changed since
-top_income_rate[c('top_income_rate')][top_income_rate$country == "COL" & top_income_rate$year >= 2019,] <- "39"
+#top_income_rate[c('top_income_rate')][top_income_rate$country == "COL" & top_income_rate$year >= 2019,] <- "39"
 
 top_income_rate$top_income_rate<-as.numeric(top_income_rate$top_income_rate)
 
@@ -151,6 +152,7 @@ martax_wedge2018<-aggregate(martax_wedge$`2018`,by=list(martax_wedge$country),FU
 martax_wedge2019<-aggregate(martax_wedge$`2019`,by=list(martax_wedge$country),FUN=mean)
 martax_wedge2020<-aggregate(martax_wedge$`2020`,by=list(martax_wedge$country),FUN=mean)
 martax_wedge2021<-aggregate(martax_wedge$`2021`,by=list(martax_wedge$country),FUN=mean)
+martax_wedge2022<-aggregate(martax_wedge$`2022`,by=list(martax_wedge$country),FUN=mean)
 
 
 #avgtax_wedge
@@ -179,6 +181,7 @@ avgtax_wedge2018<-aggregate(avgtax_wedge$`2018`,by=list(avgtax_wedge$country),FU
 avgtax_wedge2019<-aggregate(avgtax_wedge$`2019`,by=list(avgtax_wedge$country),FUN=mean)
 avgtax_wedge2020<-aggregate(avgtax_wedge$`2020`,by=list(avgtax_wedge$country),FUN=mean)
 avgtax_wedge2021<-aggregate(avgtax_wedge$`2021`,by=list(avgtax_wedge$country),FUN=mean)
+avgtax_wedge2022<-aggregate(avgtax_wedge$`2022`,by=list(avgtax_wedge$country),FUN=mean)
 
 
 countries<-avgtax_wedge2020$Group.1
@@ -191,13 +194,14 @@ tax_wedge2017<-martax_wedge2017$x/avgtax_wedge2017$x
 tax_wedge2018<-martax_wedge2018$x/avgtax_wedge2018$x
 tax_wedge2019<-martax_wedge2019$x/avgtax_wedge2019$x
 tax_wedge2020<-martax_wedge2020$x/avgtax_wedge2020$x
-tax_wedge2021<-martax_wedge2020$x/avgtax_wedge2021$x
+tax_wedge2021<-martax_wedge2021$x/avgtax_wedge2021$x # Previously: tax_wedge2021<-martax_wedge2020$x/avgtax_wedge2021$x
+tax_wedge2022<-martax_wedge2022$x/avgtax_wedge2022$x
 
 
-tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,tax_wedge2016,tax_wedge2017,tax_wedge2018,tax_wedge2019,tax_wedge2020,tax_wedge2021)
+tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,tax_wedge2016,tax_wedge2017,tax_wedge2018,tax_wedge2019,tax_wedge2020,tax_wedge2021,tax_wedge2022)
 
-colnames(tax_wedge)<-c("country","2013","2014","2015","2016","2017","2018","2019","2020","2021")
-tax_wedge<-gather(tax_wedge,"year","tax_wedge","2013","2014","2015","2016","2017","2018","2019","2020","2021")
+colnames(tax_wedge)<-c("country","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022")
+tax_wedge<-gather(tax_wedge,"year","tax_wedge","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022")
 tax_wedge$year<-as.numeric(tax_wedge$year)
 tax_wedge$year<-tax_wedge$year+1
 
@@ -220,6 +224,15 @@ colnames(dividends_rate)<-c("country","dividends_rate","year")
 dividends_rate$dividends_rate<-as.numeric(dividends_rate$dividends_rate)
 dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
 
+#Colombia: 2023 data not available -> use 2022 data
+missing_colombia <- subset(dividends_rate, subset = country == "COL" & year == "2022")
+missing_colombia[missing_colombia$year == 2022, "year"] <- "2023"
+missing_colombia$year<-as.numeric(missing_colombia$year)
+
+#combine
+dividends_rate<-rbind(dividends_rate,missing_colombia)
+
+
 #corporate_other_rev####
 taxes<-c("1300","6100")
 corporate_other_rev <- get_dataset("REV", filter= list(c("NES"),c(taxes),c("TAXPER")),start_time = 2012)
@@ -239,18 +252,18 @@ corporate_other_rev<-subset(corporate_other_rev,country%in%oecd_countries)
 corporate_other_rev$corporate_other_rev<-as.numeric(corporate_other_rev$corporate_other_rev)
 corporate_other_rev$year<-as.numeric(corporate_other_rev$year)
 
-#Add in Australia, Greece, and Japan 2019 numbers
-#Australia: 2020 data not available -> use 2019 data
-missing_australia <- subset(corporate_other_rev, subset = country == "AUS" & year == "2019")
-missing_australia[missing_australia$year == 2019, "year"] <- 2020
+#Add in Australia, Greece, and Japan 2020 numbers
+#Australia: 2021 data not available -> use 2020 data
+missing_australia <- subset(corporate_other_rev, subset = country == "AUS" & year == "2020")
+missing_australia[missing_australia$year == 2020, "year"] <- 2021
 
-#Japan: 2020 data not available -> use 2019 data
-missing_japan <- subset(corporate_other_rev, subset = country == "JPN" & year == "2019")
-missing_japan[missing_japan$year == 2019, "year"] <- 2020
+#Japan: 2021 data not available -> use 2020 data
+missing_japan <- subset(corporate_other_rev, subset = country == "JPN" & year == "2020")
+missing_japan[missing_japan$year == 2020, "year"] <- 2021
 
-#Greece: 2020 data not available -> use 2019 data
-missing_greece <- subset(corporate_other_rev, subset = country == "GRC" & year == "2019")
-missing_greece[missing_greece$year == 2019, "year"] <- 2020
+#Greece: 2021 data not available -> use 2020 data
+missing_greece <- subset(corporate_other_rev, subset = country == "GRC" & year == "2020")
+missing_greece[missing_greece$year == 2020, "year"] <- 2021
 
 #combine
 corporate_other_rev<-rbind(corporate_other_rev,missing_australia,missing_japan,missing_greece)
@@ -267,22 +280,22 @@ personal_other_rev<-subset(personal_other_rev,country%in%oecd_countries)
 personal_other_rev$personal_other_rev<-as.numeric(personal_other_rev$personal_other_rev)
 personal_other_rev$year<-as.numeric(personal_other_rev$year)
 
-#Add in Australia, Greece, Hungary, and Japan 2019 numbers
-#Australia: 2020 data not available -> use 2019 data
-missing_australia <- subset(personal_other_rev, subset = country == "AUS" & year == "2019")
-missing_australia[missing_australia$year == 2019, "year"] <- 2020
+#Add in Australia, Greece, Hungary, and Japan 2020 numbers
+#Australia: 2020 data not available -> use 2020 data
+missing_australia <- subset(personal_other_rev, subset = country == "AUS" & year == "2020")
+missing_australia[missing_australia$year == 2020, "year"] <- 2021
 
-#Hungary: 2020 data not available -> use 2019 data
-missing_hungary <- subset(personal_other_rev, subset = country == "HUN" & year == "2019")
-missing_hungary[missing_hungary$year == 2019, "year"] <- 2020
+#Hungary: 2020 data not available -> use 2020 data
+missing_hungary <- subset(personal_other_rev, subset = country == "HUN" & year == "2020")
+missing_hungary[missing_hungary$year == 2020, "year"] <- 2021
 
-#Japan: 2020 data not available -> use 2019 data
-missing_japan <- subset(personal_other_rev, subset = country == "JPN" & year == "2019")
-missing_japan[missing_japan$year == 2019, "year"] <- 2020
+#Japan: 2020 data not available -> use 2020 data
+missing_japan <- subset(personal_other_rev, subset = country == "JPN" & year == "2020")
+missing_japan[missing_japan$year == 2020, "year"] <- 2021
 
-#Greece: 2020 data not available -> use 2019 data
-missing_greece <- subset(personal_other_rev, subset = country == "GRC" & year == "2019")
-missing_greece[missing_greece$year == 2019, "year"] <- 2020
+#Greece: 2020 data not available -> use 2020 data
+missing_greece <- subset(personal_other_rev, subset = country == "GRC" & year == "2020")
+missing_greece[missing_greece$year == 2020, "year"] <- 2021
 
 #combine
 personal_other_rev<-rbind(personal_other_rev,missing_australia,missing_japan,missing_hungary,missing_greece)

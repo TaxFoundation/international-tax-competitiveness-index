@@ -1,18 +1,19 @@
 #output tables code
 #Read in relevant spreadsheets
 
-raw_data_2022 <- read_csv(paste(final_outputs,"raw_data_2022.csv",sep=""))
+raw_data_2023 <- read_csv(paste(final_outputs,"raw_data_2023.csv",sep=""))
 
 final_2018 <- read_csv(paste(final_outputs,"data_2018_run.csv",sep=""))
 final_2019 <- read_csv(paste(final_outputs,"data_2019_run.csv",sep=""))
 final_2020 <- read_csv(paste(final_outputs,"data_2020_run.csv",sep=""))
 final_2021 <- read_csv(paste(final_outputs,"data_2021_run.csv",sep=""))
 final_2022 <- read_csv(paste(final_outputs,"data_2022_run.csv",sep=""))
+final_2023 <- read_csv(paste(final_outputs,"data_2023_run.csv",sep=""))
 
-subcategories_2022 <- read_csv(paste(final_outputs,"subcategories_2022.csv",sep=""))
+subcategories_2023 <- read_csv(paste(final_outputs,"subcategories_2023.csv",sep=""))
 
 ###Table 1 Results####
-table_1_results <- final_2022
+table_1_results <- final_2023
 
 #Select variables
 keep <- c("country","final_rank","final","corporate_rank","income_rank","consumption_rank","property_rank","cross_border_rank")
@@ -38,36 +39,38 @@ colnames(table_1_results) <- c("Country",
 write.csv(table_1_results,paste(final_outputs,"table_1_results.csv",sep=""),row.names=F)
 
 ###Table 2 Changes####
-table_2_changes <- merge(final_2021,final_2022,by="country")
+table_2_changes <- merge(final_2022,final_2023,by="country")
 
 keep <- c("country","final_rank.x","final.x","final_rank.y","final.y")
 table_2_changes <- table_2_changes[keep]
 
-colnames(table_2_changes) <- c("country", "2021 Rank","2021 Score","2022 Rank","2022 Score")
+colnames(table_2_changes) <- c("country", "2022 Rank","2022 Score","2023 Rank","2023 Score")
 
-table_2_changes <- merge(final_2020,table_2_changes,by="country")
+#table_2_changes <- merge(final_2021,table_2_changes,by="country")
+#keep <- c("country","final_rank","final","2022 Rank","2022 Score","2023 Rank","2023 Score")
+#table_2_changes<-table_2_changes[keep]
 
-keep <- c("country","final_rank","final","2021 Rank","2021 Score","2022 Rank","2022 Score")
-table_2_changes<-table_2_changes[keep]
+colnames(table_2_changes)<-c("Country","2022 Rank","2022 Score","2023 Rank","2023 Score")
 
-colnames(table_2_changes)<-c("Country","2020 Rank","2020 Score", "2021 Rank","2021 Score","2022 Rank","2022 Score")
-
-table_2_changes$'Change in Rank from 2021 to 2022'<-(table_2_changes$`2022 Rank`-table_2_changes$`2021 Rank`)*(-1)
-table_2_changes$'Change in Score from 2021 to 2022'<-table_2_changes$`2022 Score`-table_2_changes$`2021 Score`
+table_2_changes$'Change in Rank from 2022 to 2023'<-(table_2_changes$`2023 Rank`-table_2_changes$`2022 Rank`)*(-1)
+table_2_changes$'Change in Score from 2022 to 2023'<-table_2_changes$`2023 Score`-table_2_changes$`2022 Score`
 
 #Format Columns
 
-table_2_changes$`2020 Score`<-formatC(round(table_2_changes$`2020 Score`,digits=1),format = "f",digits=1)
-table_2_changes$`2021 Score`<-formatC(round(table_2_changes$`2021 Score`,digits=1),format = "f",digits=1)
-table_2_changes$`2022 Score`<-formatC(round(table_2_changes$`2022 Score`,digits=1),format = "f",digits=1)
-table_2_changes$`Change in Score from 2021 to 2022`<-formatC(round(table_2_changes$`Change in Score from 2021 to 2022`,digits=1),format = "f",digits=1)
+#table_2_changes$'2021 Score'<-formatC(round(table_2_changes$'2021 Score',digits=1),format = "f",digits=1)
+table_2_changes$'2022 Score'<-formatC(round(table_2_changes$'2022 Score',digits=1),format = "f",digits=1)
+table_2_changes$'2023 Score'<-formatC(round(table_2_changes$'2023 Score',digits=1),format = "f",digits=1)
+table_2_changes$'Change in Score from 2022 to 2023'<-as.numeric(table_2_changes$'Change in Score from 2022 to 2023')
+table_2_changes$'Change in Score from 2022 to 2023'<-formatC(round(table_2_changes$'Change in Score from 2022 to 2023',digits=1),format = "f",digits=1)
 
+#Error in round(table_2_changes$"Change in Score from 2022 to 2023", digits = 1) :  non-numeric argument to mathematical function
 
 write.csv(table_2_changes,paste(final_outputs,"table_2_changes.csv",sep=""),row.names=F)
 
+
 ###Table 3 Corporate####
-table_3_corporate<-subcategories_2022
-table_3_corporate<-merge(table_3_corporate,final_2022,by=c("country"))
+table_3_corporate<-subcategories_2023
+table_3_corporate<-merge(table_3_corporate,final_2023,by=c("country"))
 
 keep<-c("country","corporate_rank","corporate","corporate_rate_rank","corporate_rate","cost_recovery_rank","cost_recovery","incentives_rank","incentives")
 table_3_corporate<-table_3_corporate[keep]
@@ -85,8 +88,8 @@ write.csv(table_3_corporate,paste(final_outputs,"table_3_corporate.csv",sep=""),
 
 
 ###Table 4 Individual####
-table_4_individual<-subcategories_2022
-table_4_individual<-merge(table_4_individual,final_2022,by=c("country"))
+table_4_individual<-subcategories_2023
+table_4_individual<-merge(table_4_individual,final_2023,by=c("country"))
 
 #names(table_4_individual)
 
@@ -103,8 +106,8 @@ table_4_individual$`Capital Gains/Dividends Score`<-formatC(round(table_4_indivi
 write.csv(table_4_individual,paste(final_outputs,"table_4_individual.csv",sep=""),row.names=F)
 
 ###Table 5 Consumption####
-table_5_consumption<-subcategories_2022
-table_5_consumption<-merge(table_5_consumption,final_2022,by=c("country"))
+table_5_consumption<-subcategories_2023
+table_5_consumption<-merge(table_5_consumption,final_2023,by=c("country"))
 
 #names(table_5_consumption)
 
@@ -120,8 +123,8 @@ table_5_consumption$`Base Score`<-formatC(round(table_5_consumption$`Base Score`
 write.csv(table_5_consumption,paste(final_outputs,"table_5_consumption.csv",sep=""),row.names=F)
 
 ###Table 6 Property####
-table_6_property<-subcategories_2022
-table_6_property<-merge(table_6_property,final_2022,by=c("country"))
+table_6_property<-subcategories_2023
+table_6_property<-merge(table_6_property,final_2023,by=c("country"))
 
 #names(table_6_property)
 
@@ -139,8 +142,8 @@ write.csv(table_6_property,paste(final_outputs,"table_6_property.csv",sep=""),ro
 
 
 ###Table 7 Cross-Border####
-table_7_cross_border<-subcategories_2022
-table_7_cross_border<-merge(table_7_cross_border,final_2022,by=c("country"))
+table_7_cross_border<-subcategories_2023
+table_7_cross_border<-merge(table_7_cross_border,final_2023,by=c("country"))
 
 #names(table_7_cross_border)
 
@@ -161,7 +164,7 @@ write.csv(table_7_cross_border,paste(final_outputs,"table_7_cross_border.csv",se
 ###Table A Corporate####
 
 #Raw Data
-table_a_corporate_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
+table_a_corporate_raw<-subset(raw_data_2023,raw_data_2023$year==2023)
 
 keep<-c("country",
         "corporate_rate",
@@ -243,7 +246,7 @@ table_a_corporate$digital_services_tax<-if_else(table_a_corporate$digital_servic
 table_a_corporate$corporate_alt_minimum<-formatC(round(table_a_corporate$corporate_alt_minimum,digits=0),format = "f",digits=0)
 
 #corporate_surtax
-table_a_corporate$corporate_surtax<-formatC(round(table_a_corporate$corporate_surtax,digits=0),format = "f",digits=0)
+table_a_corporate$corporate_surtax<-if_else(table_a_corporate$corporate_surtax==1,"Yes","No")
 
 #corporate_other_rev
 table_a_corporate$corporate_other_rev<-paste(formatC(round(table_a_corporate$corporate_other_rev,digits=1),format = "f",digits=1),"%",sep="")
@@ -272,7 +275,7 @@ columns<-c("Country",
            "Implied Tax Subsidy Rates on R&D Expenditures",
            "Digital Services Tax",
            "Corporate Complexity (Number of separate rates or alternative minimum taxes)",
-           "Corporate Complexity (Surtax rate on corporate income)",
+           "Corporate Complexity (Surtax on corporate income)",
            "Corporate Complexity (Share of revenue collected on income from non-standard income taxes)")
 
 table_a_corporate<-rbind(headers,columns,table_a_corporate)
@@ -284,7 +287,7 @@ write.csv(table_a_corporate,paste(final_outputs,"table_a_corporate.csv",sep=""),
 #Table B Individual####
 
 #Raw Data
-table_b_individual_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
+table_b_individual_raw<-subset(raw_data_2023,raw_data_2023$year==2023)
 #names(table_b_individual_raw)
 
 keep<-c("country","top_income_rate",
@@ -311,7 +314,7 @@ table_b_individual$threshold_top_income_rate<-(formatC(round(table_b_individual$
 table_b_individual$tax_wedge<-(formatC(round(table_b_individual$tax_wedge,digits=1),format = "f",digits=1))
 
 #personal_surtax
-table_b_individual$personal_surtax<-paste(formatC(round(table_b_individual$personal_surtax,digits=0),format = "f",digits=0),"%",sep="")
+table_b_individual$personal_surtax<-if_else(table_b_individual$personal_surtax==1,"Yes","No")
 
 #personal_other_rev
 table_b_individual$personal_other_rev<-as.numeric(table_b_individual$personal_other_rev)
@@ -338,7 +341,7 @@ columns<-c("Country",
            "Top Personal Income Tax Rate",
            "Top Income Tax Rate Threshold (a)",
            "Ratio of Marginal to Average Tax Wedge",
-           "Income Tax Complexity (Surtax rate on personal income)",
+           "Income Tax Complexity (Surtax on personal income)",
            "Income Tax Complexity (Share of revenue collected through non-standard social security and payroll taxes) (c)",
            "Top Marginal Capital Gains Tax Rate (b)",
            "Top Marginal Dividends Tax Rate (b)")
@@ -375,7 +378,7 @@ write.csv(table_b_individual,paste(final_outputs,"table_b_individual.csv",sep=""
 
 #Table C Consumption####
 #Raw Data
-table_c_consumption_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
+table_c_consumption_raw<-subset(raw_data_2023,raw_data_2023$year==2023)
 #names(table_c_consumption_raw)
 
 keep<-c("country","vat_rate",
@@ -432,7 +435,7 @@ write.csv(table_c_consumption,paste(final_outputs,"table_c_consumption.csv",sep=
 
 #Table D Property####
 #Raw Data
-table_d_property_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
+table_d_property_raw<-subset(raw_data_2023,raw_data_2023$year==2023)
 #names(table_d_property_raw)
 
 keep<-c("country","property_tax", 
@@ -549,7 +552,17 @@ notes_3<-c("(b) Tax on the imputed rent of properties. Applies to machinery.",
            "",
            "",
            "")
-notes_4<-c("(c) The Land Appreciation Tax is levied like a capital gains tax on the sale of property.",
+notes_4<- c("(c) Representative model with state-level deviations.",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "")
+notes_5<-c("(d) The Land Appreciation Tax is levied like a capital gains tax on the sale of property.",
            "",
            "",
            "",
@@ -559,17 +572,7 @@ notes_4<-c("(c) The Land Appreciation Tax is levied like a capital gains tax on 
            "",
            "",
            "")
-notes_5<-c("(d) Levied by local governments. A few cities tax capital improvements.",
-           "",
-           "",
-           "",
-           "",
-           "",
-           "",
-           "",
-           "",
-           "")
-notes_6<-c("(e) The purchaser of real property is subject to a purchase tax.",
+notes_7<-c("(e) The purchaser of real property is subject to a purchase tax.",
            "",
            "",
            "",
@@ -589,7 +592,7 @@ write.csv(table_d_property,paste(final_outputs,"table_d_property.csv",sep=""),ro
 
 #Table E Cross-Border####
 #Raw Data
-table_e_cross_border_raw<-subset(raw_data_2022,raw_data_2022$year==2022)
+table_e_cross_border_raw<-subset(raw_data_2023,raw_data_2023$year==2023)
 
 keep<-c("country",
         "dividends_exemption",

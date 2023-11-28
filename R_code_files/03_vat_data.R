@@ -30,9 +30,23 @@ vat_rates <- melt(vat_rates,id.vars=c("country"))
 colnames(vat_rates) <- c("country", "year", "vat_rate")
 vat_rates$country <- str_remove_all(vat_rates$country, "[*]")
 
-vat_rates_vrr<-subset(vat_rates,vat_rates$year!="2021"&vat_rates$year!="2022")
+vat_rates_vrr<-subset(vat_rates,vat_rates$year!="2022")
+#Costa Rica (for VAT Base calculation later)
+vat_rates_vrr$year <- as.numeric(as.character(vat_rates_vrr$year))
 
-vat_rates<-subset(vat_rates,vat_rates$year!="2012"&vat_rates$year!="2013")
+vat_rates_vrr$vat_rate[vat_rates_vrr$country == "Costa Rica" & vat_rates_vrr$year < 2020] <- 13
+
+
+vat_rates<-subset(vat_rates,vat_rates$year!="2012")
+
+vat_rates$year <- as.numeric(as.character(vat_rates$year))
+
+#Hardcoding Costa Rica before 2020
+vat_rates$vat_rate[vat_rates$country == "Costa Rica" & vat_rates$year < 2020] <- 13
+
+
+#Add 1-year lag to rates
+vat_rates$year <- as.numeric(as.character(vat_rates$year))+1
 
 write.csv(vat_rates,paste(intermediate_outputs,"vat_rates.csv",sep=""),row.names = FALSE)
 
@@ -42,7 +56,7 @@ vat_thresholds_2014 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnove
 vat_thresholds_2016 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx",sep=""), sheet = "2016", range = "a4:e41")
 vat_thresholds_2018 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx",sep=""), sheet = "2018", range = "A4:e42")
 vat_thresholds_2020 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx",sep=""), sheet = "2020", range = "A4:e43")
-vat_thresholds_2021 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx",sep=""), sheet = "2021", range = "A4:e43")
+vat_thresholds_2022 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx",sep=""), sheet = "2022", range = "A4:e43")
 
 #2014
 vat_thresholds_2014 <- vat_thresholds_2014[-c(2:3)]
@@ -81,19 +95,25 @@ vat_thresholds_2020$country <- str_remove_all(vat_thresholds_2020$country, "[6*]
 vat_thresholds_2020$year <- "2020"
 
 #2021
-vat_thresholds_2021 <- vat_thresholds_2021[-c(2:4)]
-colnames(vat_thresholds_2021) <- c("country", "vat_threshold")
-vat_thresholds_2021$country <- str_remove_all(vat_thresholds_2021$country, "[6*]")
+vat_thresholds_2021 <- vat_thresholds_2020
 vat_thresholds_2021$year <- "2021"
 
 #2022
-vat_thresholds_2022 <- vat_thresholds_2021
+vat_thresholds_2022 <- vat_thresholds_2022[-c(2:4)]
+colnames(vat_thresholds_2022) <- c("country", "vat_threshold")
+vat_thresholds_2022$country <- str_remove_all(vat_thresholds_2022$country, "[6*]")
 vat_thresholds_2022$year <- "2022"
+
+#2023
+vat_thresholds_2023 <- vat_thresholds_2022
+vat_thresholds_2023$year <- "2023"
 
 #Combine years
 vat_thresholds <- rbind(vat_thresholds_2014, vat_thresholds_2015, vat_thresholds_2016, 
                         vat_thresholds_2017, vat_thresholds_2018, vat_thresholds_2019, 
-                        vat_thresholds_2020, vat_thresholds_2021, vat_thresholds_2022)
+                        vat_thresholds_2020, vat_thresholds_2021, vat_thresholds_2022,
+                        vat_thresholds_2023)
+
 
 #Change NAs to zeros and delete empty rows
 vat_thresholds$country<-as.character(vat_thresholds$country)
@@ -102,10 +122,10 @@ vat_thresholds$vat_threshold[is.na(vat_thresholds$vat_threshold)] <- 0
 vat_thresholds <- subset(vat_thresholds, vat_thresholds$country!="0")
 
 
-#Add US for all years; Latvia for 2014 and 2015; Lithuania for 2014, 2015, 2016, 2017; Colombia for 2014-2019, and Costa Rica for all years#
-country <- c("United States","United States","United States","United States","United States","United States", "United States", "United States", "United States")
-vat_threshold <- c("0","0","0","0","0","0","0", "0","0")
-year <- c("2014","2015","2016","2017","2018","2019","2020", "2021","2022")
+#Add US for all years; Latvia for 2014 and 2015; Lithuania for 2014, 2015, 2016, 2017; Colombia for 2014-2019, and Costa Rica for all years up to 2021#
+country <- c("United States","United States","United States","United States","United States","United States", "United States", "United States", "United States", "United States")
+vat_threshold <- c("0","0","0","0","0","0","0","0","0","0")
+year <- c("2014","2015","2016","2017","2018","2019","2020","2021","2022","2023")
 USA <- data.frame(country, vat_threshold, year)
 
 country <- c("Latvia", "Latvia")
@@ -123,13 +143,22 @@ vat_threshold <- c("0","0","0","0","0","0")
 year <- c("2014","2015","2016","2017","2018","2019")
 COL <- data.frame(country, vat_threshold, year)
 
-
-country <- c("Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica")
-vat_threshold <- c("0","0","0","0","0","0","0","0","0")
-year <- c("2014","2015","2016","2017","2018","2019","2020","2021","2022")
+country <- c("Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica")
+vat_threshold <- c("0","0","0","0","0","0","0","0")
+year <- c("2014","2015","2016","2017","2018","2019","2020","2021")
 CRI <- data.frame(country, vat_threshold, year)
 
-vat_thresholds <- rbind(vat_thresholds, USA, LVA, LTU, COL, CRI)
+country <- c("United Kingdom","United Kingdom")
+vat_threshold <- c("123188","123188")
+year <- c("2022","2023")
+GBR <- data.frame(country, vat_threshold, year)
+
+vat_thresholds <- rbind(vat_thresholds, USA, LVA, LTU, COL, CRI, GBR)
+
+
+#Rename Turkey (Türkiye) from 2022
+vat_thresholds$country[vat_thresholds$country == "Türkiye"]<-"Turkey"
+
 
 write.csv(vat_thresholds,paste(intermediate_outputs,"vat_thresholds.csv",sep=""),row.names = FALSE)
 
@@ -141,36 +170,39 @@ vat_revenue <- get_dataset("REV", filter= list(c("NES"),c("5111"),c("TAXNAT")),s
 vat_revenue <- subset(vat_revenue,vat_revenue$COU%in%oecd_countries)
 vat_revenue <- vat_revenue[c(1,3,7)]
 
-#missing
-missing_australia <- subset(vat_revenue, subset = COU == "AUS" & Time == "2019")
-missing_greece <- subset(vat_revenue, subset = COU == "GRC" & Time == "2019")
-missing_japan <- subset(vat_revenue, subset = COU == "JPN" & Time == "2019")
-
-missing_australia$Time<-2020
-missing_greece$Time<-2020
-missing_japan$Time<-2020
-
 #Replace US VAT revenue with US sales tax revenue
 US_sales_revenue <- get_dataset("REV", filter= list(c("NES"),c("5112"),c("TAXNAT"),c("USA")),start_time = 2012)
 US_sales_revenue <- US_sales_revenue[c(1,3,7)]
 
+#combine
+#US_sales_revenue<-rbind(US_sales_revenue,missing_us)
+
 vat_revenue<-subset(vat_revenue,vat_revenue$COU!="USA")
 
+#missing
+missing_greece <- subset(vat_revenue, subset = COU == "GRC" & Time == "2020")
+missing_greece$Time<-2021
+
+missing_australia <- subset(vat_revenue, subset = COU == "AUS" & Time == "2020")
+missing_australia$Time<-2021
+
 #combine
-vat_revenue<-rbind(vat_revenue,missing_australia,missing_greece,US_sales_revenue)
+vat_revenue<-rbind(vat_revenue,US_sales_revenue,missing_greece, missing_australia)
 
 #relabel
 colnames(vat_revenue)<-c("ISO_3","vat_revenue","year")
 
+
 #Final Consumption
-final_consumption <- get_dataset("SNA_TABLE1", filter= list(c(oecd_countries),c("P3"),c("C")),start_time = 2012, end_time = 2020)
+final_consumption <- get_dataset("SNA_TABLE1", filter= list(c(oecd_countries),c("P3"),c("C")),start_time = 2012, end_time = 2021)
 final_consumption<-final_consumption[c(1,4,8)]
+
 #missing
-missing_turkey <- subset(final_consumption, subset = LOCATION == "TUR" & Time == "2019")
-missing_turkey$Time<-2020
+#missing_turkey <- subset(final_consumption, subset = LOCATION == "TUR" & Time == "2019")
+#missing_turkey$Time<-2020
 
 #combine
-final_consumption<-rbind(final_consumption,missing_turkey)
+#final_consumption<-rbind(final_consumption,missing_turkey)
 
 #relabel
 colnames(final_consumption)<-c("ISO_3","final_consumption","year")
@@ -180,6 +212,7 @@ final_consumption$final_consumption<-as.numeric(final_consumption$final_consumpt
 final_consumption$final_consumption<-final_consumption$final_consumption/1000
 
 vat_rates_vrr<-merge(vat_rates_vrr,iso_country_codes,by="country")
+#vat_rates_vrr$year<-vat_rates_vrr$year-2
 
 #combine rates, revenue, consumption data
 vat_base<-merge(vat_rates_vrr,vat_revenue,by=c("ISO_3","year"))
@@ -192,7 +225,7 @@ vat_base$final_consumption<-as.numeric(vat_base$final_consumption)
 vat_base$vat_base<-vat_base$vat_revenue/((vat_base$final_consumption-vat_base$vat_revenue)*(vat_base$vat_rate/100))
 
 
-#Add 2-year lag
+#Add 2-year lag to base
 vat_base$year <- as.character.Date(vat_base$year)
 vat_base$year <- as.numeric(vat_base$year)
 vat_base$year <- vat_base$year+2
@@ -210,5 +243,7 @@ vat_data <- merge(vat_data,vat_base,by=c("country", "year"))
 
 vat_data <- merge(vat_data,iso_country_codes,by=c("country"))
 vat_data <- vat_data[c("ISO_2","ISO_3","country","year","vat_rate","vat_threshold","vat_base")]
+
+
 
 write.csv(vat_data,file = paste(intermediate_outputs,"vat_data.csv",sep=""),row.names=F)

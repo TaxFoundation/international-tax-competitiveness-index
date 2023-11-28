@@ -19,8 +19,8 @@ ISO_2_OECD<-print(ISO_OECD$ISO_2)
 
 
 #The following section is only needed when there is no recent update of the IMF's "Investment and Capital Stock Database" (https://infrastructuregovern.imf.org/content/PIMA/Home/Knowledge-Hub/Publications.html#Data) 
-#IFS.available.codes <- DataStructureMethod("IFS")
-#CodeSearch(IFS.available.codes,"CL_INDICATOR_IFS", "Formation")
+IFS.available.codes <- DataStructureMethod("IFS")
+CodeSearch(IFS.available.codes,"CL_INDICATOR_IFS", "Formation")
 
 databaseID <- "IFS"
 checkquery = FALSE
@@ -40,7 +40,15 @@ GFCF_2020<- GFCF_2020[-c(1,3:5)]
 GFCF_2020<-data.frame(GFCF_2020$X.REF_AREA,GFCF_2020$Obs)
 colnames(GFCF_2020)<-c("ISO_2","year","gross_fixed_capital_formation")
 
-GFCF<-rbind(GFCF_2019,GFCF_2020)
+
+GFCF_2021 <- data.frame(CompactDataMethod(databaseID, queryfilter, startdate= "2021-01-01", enddate = "2021-12-31",
+                                          checkquery))
+GFCF_2021<- GFCF_2021[-c(1,3:5)]
+GFCF_2021<-data.frame(GFCF_2021$X.REF_AREA,GFCF_2021$Obs)
+colnames(GFCF_2021)<-c("ISO_2","year","gross_fixed_capital_formation")
+
+
+GFCF<-rbind(GFCF_2019,GFCF_2020,GFCF_2021)
 GFCF<-merge(GFCF,iso_country_codes,by="ISO_2")
 GFCF$gross_fixed_capital_formation<-as.numeric(GFCF$gross_fixed_capital_formation)
 
@@ -62,10 +70,18 @@ capital_stock_20$capital_stock<-(capital_stock_20$capital_stock*(1-.1077))+(capi
 capital_stock_20<-capital_stock_20[c("country","capital_stock","ISO_3.y","year")]
 colnames(capital_stock_20)<-c("country","capital_stock","ISO_3","year")
 
+
+#2020
+capital_stock_21<-merge(capital_stock_20,subset(GFCF,GFCF$year==2021),by="country")
+capital_stock_21$year<-"2021"
+capital_stock_21$capital_stock<-(capital_stock_21$capital_stock*(1-.1077))+(capital_stock_21$gross_fixed_capital_formation*(1-(.1077/2)))
+capital_stock_21<-capital_stock_21[c("country","capital_stock","ISO_3.y","year")]
+colnames(capital_stock_21)<-c("country","capital_stock","ISO_3","year")
+
 #combine
 imf_capital_stock_data<-subset(imf_capital_stock_data,imf_capital_stock_data$year<2019)
 
-imf_capital_stock_data<-rbind(imf_capital_stock_data,capital_stock_19,capital_stock_20)
+imf_capital_stock_data<-rbind(imf_capital_stock_data,capital_stock_19,capital_stock_20,capital_stock_21)
 
 #property tax revenues####
 #Table_II1#
@@ -85,8 +101,8 @@ colnames(property_tax_revenue) <- c("ISO_3","year","property_tax_collections")
 
 #Missing country/years are simply prior year values
 ISO_3 <- c("AUS","GRC")
-year <- c("2020","2020")
-property_tax_collections <- c("33.803","3.268")
+year <- c("2021","2021")
+property_tax_collections <- c("34.471","3.064")
 missing <- data.frame(ISO_3,year,property_tax_collections)
 property_tax_revenue <- rbind(property_tax_revenue,missing)
 
