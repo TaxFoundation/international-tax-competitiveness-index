@@ -278,13 +278,18 @@ data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_reco
 #In 2018, Latvia also moved to a cash-flow type business tax
 data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_recovery')][data$country == "LVA" & data$year >=2018,] <- 1
 
-#In fall 2018, Canada introduced full expensing for machinery
-data[c('machines_cost_recovery')][data$country == "CAN" & data$year >= 2018,] <- 1
+#In 2019, Canada introduced full expensing for machinery (For assets from Nov 20, 2018; do not count 2018 as reform being active)
+data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2019,] <- (data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2019,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2020,] <- (data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2020,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2021,] <- (data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2021,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2022,] <- (data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2022,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2023,] <- (data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2023,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2024,] <- (data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2024,] * 0.10) + 0.90
 
 #Chile introduced full expensing in 2020; phase-out in 2023, reverting to pre-2020 values
 data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_recovery')][data$country == "CHL" & data$year ==2020,] <- 1
 data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_recovery')][data$country == "CHL" & data$year ==2021,] <- 1
-data[c('intangibles_cost_recovery', 'machines_cost_recovery', 'buildings_cost_recovery')][data$country == "CHL" & data$year == 2022, ] <- data[c('intangibles_cost_recovery', 'machines_cost_recovery', 'buildings_cost_recovery')][data$country == "CHL" & data$year == 2019, ]
+data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_recovery')][data$country == "CHL" & data$year ==2022,] <- 1
 
 #Adjust USA data to include bonus depreciation for machinery
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2002,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2002,] * 0.70) + 0.30
@@ -304,24 +309,27 @@ data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2018,] <-
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2019,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2019,] * 0.00) + 1.00
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2020,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2020,] * 0.00) + 1.00
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2021,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2021,] * 0.00) + 1.00
-data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2022,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2022,] * 0.00) + 0.80
+data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2022,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2022,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2023,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2023,] * 0.20) + 0.80
+data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2024,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2024,] * 0.40) + 0.60
 
-#Adjust UK data to include super-deduction (2023 Spring budget: Full-expensing)
+#Adjust UK data to include super-deduction and permanent full expensing
 data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2021,] <- (data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2021,] * 0.00) + 1.30
-data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2022,] <- (data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2022,] * 0.00) + 1
+data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2022,] <- (data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2022,] * 0.00) + 1.30
+data[c('machines_cost_recovery')][data$country == "GBR" & data$year >= 2023,] <- 1
 
 #Only keep data relevant to the ITCI
 data <- subset(data, select = c(country, year, buildings_cost_recovery, machines_cost_recovery, intangibles_cost_recovery))
 
 #Add one year to account for 1-year lag
-data$year <- data$year+1
+#data$year <- data$year+1
 
 #Format output table
 colnames(data) <- c("ISO_3","year","buildings_cost_recovery", "machines_cost_recovery", "intangibles_cost_recovery")
 data <- merge(data, iso_country_codes, by="ISO_3")
 data <- data[c("ISO_2","ISO_3","country","year","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery")]
 
-data<-subset(data,data$year>2013)
+data<-subset(data,data$year>=2014 & year<=2024)
 data<-subset(data,data$ISO_3%in%oecd_countries)
 
 #Write CSV output file
