@@ -43,9 +43,16 @@ write.csv(corporate_rate, file = paste(intermediate_outputs,"oecd_corporate_rate
 #str(dstruc, max.level = 1)
 #dstruc$VAR_DESC
 
-r_and_d_credit <- get_dataset("RDSUB",filter= list(c(oecd_countries), c("SME","LARGE"), c("PROFITABLE", "LOSS-MAKING")), start_time = 2013)
-r_and_d_credit <- r_and_d_credit[c(1,2,3,4,6)]
-colnames(r_and_d_credit) <- c("country","r_and_d_credit","Profit", "Size", "year")
+#r_and_d_credit <- get_dataset("RDSUB",filter= list(c(oecd_countries), c("SME","LARGE"), c("PROFITABLE", "LOSS-MAKING")), start_time = 2013)
+#r_and_d_credit <- r_and_d_credit[c(1,2,3,4,6)]
+#colnames(r_and_d_credit) <- c("country","r_and_d_credit","Profit", "Size", "year")
+#r_and_d_credit$year <- as.numeric(r_and_d_credit$year)
+#r_and_d_credit$r_and_d_credit <- as.numeric(r_and_d_credit$r_and_d_credit)
+
+r_and_d_credit <- spread(r_and_d_credit,year,r_and_d_credit)
+r_and_d_credit <- get_dataset("OECD.STI.STP,DSD_RDTAX@DF_RDSUB,1.0","")
+r_and_d_credit <- r_and_d_credit[c(4,6,7,8,9)]
+colnames(r_and_d_credit) <- c("r_and_d_credit","profit","country","size","year")
 r_and_d_credit$year <- as.numeric(r_and_d_credit$year)
 r_and_d_credit$r_and_d_credit <- as.numeric(r_and_d_credit$r_and_d_credit)
 
@@ -61,16 +68,19 @@ r_and_d_credit2019 <- aggregate(r_and_d_credit$`2019`,by=list(r_and_d_credit$cou
 r_and_d_credit2020 <- aggregate(r_and_d_credit$`2020`,by=list(r_and_d_credit$country),FUN=mean)
 r_and_d_credit2021 <- aggregate(r_and_d_credit$`2021`,by=list(r_and_d_credit$country),FUN=mean)
 r_and_d_credit2022 <- aggregate(r_and_d_credit$`2022`,by=list(r_and_d_credit$country),FUN=mean)
+r_and_d_credit2023 <- aggregate(r_and_d_credit$`2023`,by=list(r_and_d_credit$country),FUN=mean)
 
 countries <- r_and_d_credit2022$Group.1
 
 r_and_d_credit <- data.frame(countries, r_and_d_credit2013$x, r_and_d_credit2014$x, r_and_d_credit2015$x,
-                             r_and_d_credit2016$x, r_and_d_credit2017$x, r_and_d_credit2018$x, r_and_d_credit2019$x, r_and_d_credit2020$x, r_and_d_credit2021$x, r_and_d_credit2022$x)
+                             r_and_d_credit2016$x, r_and_d_credit2017$x, r_and_d_credit2018$x, r_and_d_credit2019$x, r_and_d_credit2020$x, r_and_d_credit2021$x, r_and_d_credit2022$x, r_and_d_credit2023$x)
 
-colnames(r_and_d_credit) <- c("country","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022")
-r_and_d_credit <- gather(r_and_d_credit,"year","r_and_d_credit","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022")
+colnames(r_and_d_credit) <- c("country","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023")
+r_and_d_credit <- gather(r_and_d_credit,"year","r_and_d_credit","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023")
 r_and_d_credit$year <- as.numeric(r_and_d_credit$year)
 r_and_d_credit$year <- r_and_d_credit$year+1
+
+write.csv(r_and_d_credit, file = paste(intermediate_outputs,"oecd_r_and_d_credit.csv",sep=""), row.names = FALSE)
 
 
 #top_income_rate####
