@@ -1,5 +1,4 @@
 #OECD data scraper
-#3. Sweden income tax rate
 ####OECD Data Scraper####
 
 #corporate_rate####
@@ -16,6 +15,13 @@ colnames(corporate_rate)<-c("country","corporate_rate","year")
 
 corporate_rate$corporate_rate <- as.numeric(corporate_rate$corporate_rate)
 corporate_rate$corporate_rate <- corporate_rate$corporate_rate/100
+
+#Missing Turkey
+missing_turkey <- c("TUR",0.2,2023)
+corporate_rate <- rbind(corporate_rate, missing_turkey)
+
+write.csv(corporate_rate, file = paste(intermediate_outputs,"oecd_corporate_rate.csv",sep=""), row.names = FALSE)
+
 
 #hard code CIT rate for Chile for 2016-2022 since the current 10% rate for 2020-2022 only applies to SMEs and the OECD data is incorrect for 2017-2019
 #country_chile<-c("CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL")
