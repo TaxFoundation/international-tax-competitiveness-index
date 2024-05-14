@@ -49,7 +49,8 @@ write.csv(corporate_rate, file = paste(intermediate_outputs,"oecd_corporate_rate
 #r_and_d_credit$year <- as.numeric(r_and_d_credit$year)
 #r_and_d_credit$r_and_d_credit <- as.numeric(r_and_d_credit$r_and_d_credit)
 
-r_and_d_credit <- spread(r_and_d_credit,year,r_and_d_credit)
+#r_and_d_credit <- spread(r_and_d_credit,year,r_and_d_credit)
+
 r_and_d_credit <- get_dataset("OECD.STI.STP,DSD_RDTAX@DF_RDSUB,1.0","")
 r_and_d_credit <- r_and_d_credit[c(4,6,7,8,9)]
 colnames(r_and_d_credit) <- c("r_and_d_credit","profit","country","size","year")
@@ -143,6 +144,35 @@ threshold$year<-threshold$year+1
 
 #tax_wedge####
 
+#New API: 2023 values
+martax_wedge<-get_dataset("OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,1.0",".MR_TW.PT_COS_LB.S_C0.AW167+AW133+AW100+AW67..A")
+
+martax_wedge<-martax_wedge[c("REF_AREA","INCOME_PRINCIPAL","ObsValue","TIME_PERIOD")]
+colnames(martax_wedge)<-c("ISO_3","income","martax_wedge","year")
+martax_wedge$martax_wedge<-as.numeric(martax_wedge$martax_wedge)
+martax_wedge<-spread(martax_wedge,year,martax_wedge)
+
+martax_wedge2023<-aggregate(martax_wedge$`2023`,by=list(martax_wedge$ISO_3),FUN=mean)
+
+avgtax_wedge<-get_dataset("OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,1.0",".AV_TW.PT_COS_LB.S_C0.AW167+AW133+AW100+AW67..A")
+
+avgtax_wedge<-avgtax_wedge[c("REF_AREA","INCOME_PRINCIPAL","ObsValue","TIME_PERIOD")]
+colnames(avgtax_wedge)<-c("ISO_3","income","avgtax_wedge","year")
+avgtax_wedge$avgtax_wedge<-as.numeric(avgtax_wedge$avgtax_wedge)
+avgtax_wedge<-spread(avgtax_wedge,year,avgtax_wedge)
+
+avgtax_wedge2023<-aggregate(avgtax_wedge$`2023`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+
+tax_wedge2023<-martax_wedge2023$x/avgtax_wedge2023$x
+
+tax_wedge2023 <- merge(x = martax_wedge2023,y = avgtax_wedge2023,by = "Group.1",suffixes = c("_x", "_y"))
+tax_wedge2023$tax_wedge <- tax_wedge2023$x_x / tax_wedge2023$x_y
+tax_wedge2023<-tax_wedge2023[c("Group.1","tax_wedge")]
+colnames(tax_wedge2023)<-c("ISO_3","tax_wedge")
+
+write.csv(tax_wedge2023, file = paste(intermediate_outputs,"oecd_taxwedge2023.csv",sep=""), row.names = FALSE)
+#End NewAPI
+
 #martax_wedge
 #Table_I4#
 #dataset<-("Table_I4")
@@ -169,7 +199,6 @@ martax_wedge2019<-aggregate(martax_wedge$`2019`,by=list(martax_wedge$country),FU
 martax_wedge2020<-aggregate(martax_wedge$`2020`,by=list(martax_wedge$country),FUN=mean)
 martax_wedge2021<-aggregate(martax_wedge$`2021`,by=list(martax_wedge$country),FUN=mean)
 martax_wedge2022<-aggregate(martax_wedge$`2022`,by=list(martax_wedge$country),FUN=mean)
-
 
 #avgtax_wedge
 #Table_I5#
@@ -232,6 +261,9 @@ tax_wedge[c('tax_wedge')][tax_wedge$country == "COL" & tax_wedge$year >=2014,] <
 #str(dstruc, max.level = 1)
 #dstruc$VAR_DESC
 #dstruc$CL_TABLE_II4_STAT_DIV_TAX
+
+
+#dividends_rate <- get_dataset("OECD,DF_TABLE_II4,1.0","")
 
 dividends_rate<-get_dataset("Table_II4",filter= list(c(oecd_countries),c("NET_PERS_TAX")), start_time = 2014)
 dividends_rate<-dividends_rate[c(1,2,5)]
