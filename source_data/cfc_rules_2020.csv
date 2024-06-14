@@ -1,6 +1,6 @@
 ISO_2,ISO_3,country,year,exists,active,no_exemption,minimum_tax
 AU,AUS,Australia,2020,1,0,0,0
-AT,AUT,Austria,2020,1,0,0,0
+AT,AUT,Austria,2020,1,0.5,0.5,0
 BE,BEL,Belgium,2020,1,0,0,0
 CA,CAN,Canada,2020,1,0,0,0
 CL,CHL,Chile,2020,1,0.5,0.5,0
