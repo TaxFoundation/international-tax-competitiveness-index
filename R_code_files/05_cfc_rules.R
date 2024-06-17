@@ -9,14 +9,15 @@ cfc_rules_2020 <- read_csv(paste(source_data,"cfc_rules_2020.csv",sep=""))
 cfc_rules_2021 <- read_csv(paste(source_data,"cfc_rules_2021.csv",sep=""))
 cfc_rules_2022 <- read_csv(paste(source_data,"cfc_rules_2022.csv",sep=""))
 cfc_rules_2023 <- read_csv(paste(source_data,"cfc_rules_2023.csv",sep=""))
+cfc_rules_2024 <- read_csv(paste(source_data,"cfc_rules_2023.csv",sep=""))
 
 
 cfc_rules<-rbind(cfc_rules_2014,cfc_rules_2015,cfc_rules_2016,
                  cfc_rules_2017,cfc_rules_2018,cfc_rules_2019,
                  cfc_rules_2020,cfc_rules_2021,cfc_rules_2022,
-                 cfc_rules_2023)
+                 cfc_rules_2023, cfc_rules_2024)
 
-cfc_rules$cfc_rules<-rowMeans(cfc_rules[,5:8])
+cfc_rules$cfc_rules<-rowMeans(cfc_rules[,5:7])
 
 
 write.csv(cfc_rules, file = paste(intermediate_outputs,"cfc_rules_data.csv",sep=""),row.names=F)
