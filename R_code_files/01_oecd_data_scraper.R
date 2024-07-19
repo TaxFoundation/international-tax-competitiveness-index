@@ -2,16 +2,14 @@
 ####OECD Data Scraper####
 
 #corporate_rate####
-#Table_II1#
-#dataset_list<-get_datasets()
-#dataset<-("Table_II1")
-#dstruc<-get_data_structure(dataset)
-#str(dstruc, max.level = 1)
-#dstruc$VAR_DESC
 
-corporate_rate<-get_dataset("Table_II1",filter= list(c(oecd_countries),c("COMB_CIT_RATE")), start_time = 2014)
-corporate_rate<-corporate_rate[c(2,3,5)]
-colnames(corporate_rate)<-c("country","corporate_rate","year")
+#corporate_rate<-get_dataset("Table_II1",filter= list(c(oecd_countries),c("COMB_CIT_RATE")), start_time = 2014)
+#corporate_rate<-corporate_rate[c(2,3,5)]
+#colnames(corporate_rate)<-c("country","corporate_rate","year")
+
+corporate_rate<-get_dataset("OECD.CTP.TPS,DSD_TAX_CIT@DF_CIT,1.0", filter="BEL+AUT+AUS+EST+DNK+CZE+CRI+COL+CHL+CAN+ISL+HUN+GRC+DEU+FRA+FIN+LVA+KOR+JPN+ITA+ISR+IRL+NLD+MEX+LUX+LTU+SVN+SVK+PRT+POL+NOR+NZL+TUR+USA+GBR+CHE+SWE+ESP.A.CIT_C.ST..S13..")
+corporate_rate<-corporate_rate[c(5,7,11)]
+colnames(corporate_rate)<-c("corporate_rate","ISO_3","year")
 
 corporate_rate$corporate_rate <- as.numeric(corporate_rate$corporate_rate)
 corporate_rate$corporate_rate <- corporate_rate$corporate_rate/100
@@ -85,16 +83,14 @@ write.csv(r_and_d_credit, file = paste(intermediate_outputs,"oecd_r_and_d_credit
 
 
 #top_income_rate####
-#Table_I7#
-#dataset<-("Table_I7")
-#dstruc<-get_data_structure(dataset)
-#str(dstruc, max.level = 1)
-#dstruc$VAR_DESC
-#dstruc$CL_TABLE_I7_TAX
 
-top_income_rate<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("TOP_TRATE")), start_time = 2013)
-top_income_rate<-top_income_rate[c(1,2,6)]
-colnames(top_income_rate)<-c("country","top_income_rate","year")
+#top_income_rate<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("TOP_TRATE")), start_time = 2013)
+#top_income_rate<-top_income_rate[c(1,2,6)]
+#colnames(top_income_rate)<-c("country","top_income_rate","year")
+
+top_income_rate<-get_dataset("OECD.CTP.TPS,DSD_TAX_PIT@DF_PIT_TOP_EARN_THRESH,1.0", filter=".A..TS_PIT..S13......")
+top_income_rate<-top_income_rate[c(10,11,14)]
+colnames(top_income_rate)<-c("top_income_rate","ISO_3","year")
 
 top_income_rate$year<-as.numeric(top_income_rate$year)
 
@@ -111,9 +107,15 @@ top_income_rate$year<-top_income_rate$year+1
 top_income_rate$top_income_rate<-top_income_rate$top_income_rate/100
 
 #all_in_rate
-all_in_rate<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("PER_ARATE")), start_time = 2013)
-all_in_rate<-all_in_rate[c(1,2,6)]
-colnames(all_in_rate)<-c("country","all_in_rate","year")
+
+#all_in_rate<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("PER_ARATE")), start_time = 2013)
+#all_in_rate<-all_in_rate[c(1,2,6)]
+#colnames(all_in_rate)<-c("country","all_in_rate","year")
+
+all_in_rate<-get_dataset("OECD.CTP.TPS,DSD_TAX_PIT@DF_PIT_TOP_EARN_THRESH,1.0", filter=".A..PIT_SSC_R_TH..S13......")
+all_in_rate<-all_in_rate[c(10,11,14)]
+colnames(all_in_rate)<-c("all_in_rate","ISO_3","year")
+
 
 all_in_rate$year<-as.numeric(all_in_rate$year)
 all_in_rate$all_in_rate<-as.numeric(all_in_rate$all_in_rate)
@@ -123,20 +125,18 @@ all_in_rate$all_in_rate<-all_in_rate$all_in_rate/100
 
 
 #take the max of top rate or all-in rate
-top_income_rate<-merge(top_income_rate,all_in_rate, by=c("country","year"))
+top_income_rate<-merge(top_income_rate,all_in_rate, by=c("ISO_3","year"))
 top_income_rate$top_income_rate<-pmax(top_income_rate$top_income_rate,top_income_rate$all_in_rate)
 
 #threshold_top_income_rate####
-#Table_I7#
-#dataset<-("Table_I7")
-#dstruc<-get_data_structure(dataset)
-#str(dstruc, max.level = 1)
-#dstruc$VAR_DESC
-#dstruc$CL_TABLE_I7_TAX
 
-threshold<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("THRESHOLD")), start_time = 2013)
-threshold<-threshold[c(1,2,6)]
-colnames(threshold)<-c("country","threshold_top_income_rate","year")
+#threshold<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("THRESHOLD")), start_time = 2013)
+#threshold<-threshold[c(1,2,6)]
+
+threshold<-get_dataset("OECD.CTP.TPS,DSD_TAX_PIT@DF_PIT_TOP_EARN_THRESH,1.0", filter=".A..TS_PIT_TH..S13......")
+threshold<-threshold[c(10,11,14)]
+colnames(threshold)<-c("threshold_top_income_rate","ISO_3","year")
+
 threshold$year<-as.numeric(threshold$year)
 threshold$year<-threshold$year+1
 
