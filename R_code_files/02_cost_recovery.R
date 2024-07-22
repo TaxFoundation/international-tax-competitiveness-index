@@ -318,6 +318,7 @@ data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2021,] <-
 data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2022,] <- (data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2022,] * 0.00) + 1.30
 data[c('machines_cost_recovery')][data$country == "GBR" & data$year >= 2023,] <- 1
 
+
 #Only keep data relevant to the ITCI
 data <- subset(data, select = c(country, year, buildings_cost_recovery, machines_cost_recovery, intangibles_cost_recovery))
 
