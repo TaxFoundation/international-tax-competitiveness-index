@@ -126,75 +126,48 @@ threshold$year<-as.numeric(threshold$year)
 
 #tax_wedge####
 
-#New API: 2023 values
-martax_wedge<-get_dataset("OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,1.0",".MR_TW.PT_COS_LB.S_C0.AW167+AW133+AW100+AW67..A")
-
-martax_wedge<-martax_wedge[c("REF_AREA","INCOME_PRINCIPAL","ObsValue","TIME_PERIOD")]
-colnames(martax_wedge)<-c("ISO_3","income","martax_wedge","year")
-martax_wedge$martax_wedge<-as.numeric(martax_wedge$martax_wedge)
-martax_wedge<-spread(martax_wedge,year,martax_wedge)
-
-martax_wedge2023<-aggregate(martax_wedge$`2023`,by=list(martax_wedge$ISO_3),FUN=mean)
-
-avgtax_wedge<-get_dataset("OECD.CTP.TPS,DSD_TAX_WAGES_DECOMP@DF_TW_DECOMP,1.0",".AV_TW.PT_COS_LB.S_C0.AW167+AW133+AW100+AW67..A")
-
-avgtax_wedge<-avgtax_wedge[c("REF_AREA","INCOME_PRINCIPAL","ObsValue","TIME_PERIOD")]
-colnames(avgtax_wedge)<-c("ISO_3","income","avgtax_wedge","year")
-avgtax_wedge$avgtax_wedge<-as.numeric(avgtax_wedge$avgtax_wedge)
-avgtax_wedge<-spread(avgtax_wedge,year,avgtax_wedge)
-
-avgtax_wedge2023<-aggregate(avgtax_wedge$`2023`,by=list(avgtax_wedge$ISO_3),FUN=mean)
-
-tax_wedge2023<-martax_wedge2023$x/avgtax_wedge2023$x
-
-tax_wedge2023 <- merge(x = martax_wedge2023,y = avgtax_wedge2023,by = "Group.1",suffixes = c("_x", "_y"))
-tax_wedge2023$tax_wedge <- tax_wedge2023$x_x / tax_wedge2023$x_y
-tax_wedge2023<-tax_wedge2023[c("Group.1","tax_wedge")]
-colnames(tax_wedge2023)<-c("ISO_3","tax_wedge")
-
-write.csv(tax_wedge2023, file = paste(intermediate_outputs,"oecd_taxwedge2023.csv",sep=""), row.names = FALSE)
-"
 #martax_wedge
 
-martax_wedge<-get_dataset("Table_I4",filter= list(c(oecd_countries),c("67","100","133","167"),c("TOT_TAX_WEDGE")), start_time = 2013)
+martax_wedge<-get_dataset("OECD.CTP.TPS,DSD_TAX_WAGES_COMP@DF_TW_COMP,",".MR_TW_PE.PT_COS_LB.S_C0.AW167+AW67+AW100._Z.A")
 
-martax_wedge<-martax_wedge[c(1,2,4,6)]
-colnames(martax_wedge)<-c("country","income","martax_wedge","year")
+martax_wedge<-martax_wedge[c(5,9,10,11)]
+colnames(martax_wedge)<-c("income","martax_wedge","ISO_3","year")
 martax_wedge$martax_wedge<-as.numeric(martax_wedge$martax_wedge)
 martax_wedge<-spread(martax_wedge,year,martax_wedge)
 
-martax_wedge2013<-aggregate(martax_wedge$`2013`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2014<-aggregate(martax_wedge$`2014`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2015<-aggregate(martax_wedge$`2015`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2016<-aggregate(martax_wedge$`2016`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2017<-aggregate(martax_wedge$`2017`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2018<-aggregate(martax_wedge$`2018`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2019<-aggregate(martax_wedge$`2019`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2020<-aggregate(martax_wedge$`2020`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2021<-aggregate(martax_wedge$`2021`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2022<-aggregate(martax_wedge$`2022`,by=list(martax_wedge$country),FUN=mean)
+martax_wedge2013<-aggregate(martax_wedge$`2013`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2014<-aggregate(martax_wedge$`2014`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2015<-aggregate(martax_wedge$`2015`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2016<-aggregate(martax_wedge$`2016`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2017<-aggregate(martax_wedge$`2017`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2018<-aggregate(martax_wedge$`2018`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2019<-aggregate(martax_wedge$`2019`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2020<-aggregate(martax_wedge$`2020`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2021<-aggregate(martax_wedge$`2021`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2022<-aggregate(martax_wedge$`2022`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2022<-aggregate(martax_wedge$`2023`,by=list(martax_wedge$ISO_3),FUN=mean)
 
 #avgtax_wedge
 
-avgtax_wedge<-get_dataset("Table_I5",filter= list(c(oecd_countries),c("67","100","133","167"),c("TOT_TAX_WEDGE")), start_time = 2013)
+avgtax_wedge<-get_dataset("OECD.CTP.TPS,DSD_TAX_WAGES_COMP@DF_TW_COMP,",".AV_TW.PT_COS_LB.S_C0.AW167+AW67+AW100._Z.A")
 
-avgtax_wedge<-avgtax_wedge[c(2,3,4,6)]
-colnames(avgtax_wedge)<-c("country","income","avgtax_wedge","year")
+avgtax_wedge<-avgtax_wedge[c(5,9,10,11)]
+colnames(avgtax_wedge)<-c("income","avgtax_wedge","ISO_3","year")
 avgtax_wedge$avgtax_wedge<-as.numeric(avgtax_wedge$avgtax_wedge)
 
 avgtax_wedge<-spread(avgtax_wedge,year,avgtax_wedge)
 
-avgtax_wedge2013<-aggregate(avgtax_wedge$`2013`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2014<-aggregate(avgtax_wedge$`2014`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2015<-aggregate(avgtax_wedge$`2015`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2016<-aggregate(avgtax_wedge$`2016`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2017<-aggregate(avgtax_wedge$`2017`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2018<-aggregate(avgtax_wedge$`2018`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2019<-aggregate(avgtax_wedge$`2019`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2020<-aggregate(avgtax_wedge$`2020`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2021<-aggregate(avgtax_wedge$`2021`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2022<-aggregate(avgtax_wedge$`2022`,by=list(avgtax_wedge$country),FUN=mean)
-
+avgtax_wedge2013<-aggregate(avgtax_wedge$`2013`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2014<-aggregate(avgtax_wedge$`2014`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2015<-aggregate(avgtax_wedge$`2015`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2016<-aggregate(avgtax_wedge$`2016`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2017<-aggregate(avgtax_wedge$`2017`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2018<-aggregate(avgtax_wedge$`2018`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2019<-aggregate(avgtax_wedge$`2019`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2020<-aggregate(avgtax_wedge$`2020`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2021<-aggregate(avgtax_wedge$`2021`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2022<-aggregate(avgtax_wedge$`2022`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2022<-aggregate(avgtax_wedge$`2022`,by=list(avgtax_wedge$ISO_3),FUN=mean)
 
 countries<-avgtax_wedge2020$Group.1
 
@@ -208,18 +181,19 @@ tax_wedge2019<-martax_wedge2019$x/avgtax_wedge2019$x
 tax_wedge2020<-martax_wedge2020$x/avgtax_wedge2020$x
 tax_wedge2021<-martax_wedge2021$x/avgtax_wedge2021$x # Previously: tax_wedge2021<-martax_wedge2020$x/avgtax_wedge2021$x
 tax_wedge2022<-martax_wedge2022$x/avgtax_wedge2022$x
+tax_wedge2023<-martax_wedge2023$x/avgtax_wedge2023$x
 
 
-tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,tax_wedge2016,tax_wedge2017,tax_wedge2018,tax_wedge2019,tax_wedge2020,tax_wedge2021,tax_wedge2022)
+tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,tax_wedge2016,tax_wedge2017,tax_wedge2018,tax_wedge2019,tax_wedge2020,tax_wedge2021,tax_wedge2022, tax_wedge2023)
 
-colnames(tax_wedge)<-c("country","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022")
-tax_wedge<-gather(tax_wedge,"year","tax_wedge","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022")
+colnames(tax_wedge)<-c("ISO_3","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023")
+tax_wedge<-gather(tax_wedge,"year","tax_wedge","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023")
 tax_wedge$year<-as.numeric(tax_wedge$year)
 tax_wedge$year<-tax_wedge$year+1
 
 tax_wedge[c('tax_wedge')][tax_wedge$country == "COL" & tax_wedge$year >=2014,] <- 0
-"
 
+write.csv(tax_wedge, file = paste(intermediate_outputs,"oecd_taxwedge.csv",sep=""), row.names = FALSE)
 
 #dividends_rate####
 
