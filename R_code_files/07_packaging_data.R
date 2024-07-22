@@ -97,7 +97,7 @@ index_data_property_tax_variables<-merge(index_data_vat_variables,property_tax,b
 
 
 #Join CFC rules data####
-cfc_rules<-cfc_rules[-c(5:8)]
+cfc_rules<-cfc_rules[-c(5:7)]
 
 cfc_rules_list<-c("cfc_rules")
 index_data_property_tax_variables<-index_data_property_tax_variables[,!names(index_data_property_tax_variables) %in% cfc_rules_list]
@@ -108,10 +108,9 @@ index_data_cfc_variables<-merge(index_data_property_tax_variables,cfc_rules,by=c
 index_data_final<-index_data_cfc_variables
 
 #Delete capital gains index column####
-index_data_final<-index_data_final[-c(15)]
+index_data_final<-index_data_final[-c(15,16)]
 
 names(index_data_final)
-
 
 #Reorder columns ####
 index_data_final<-index_data_final[c("ISO_2","ISO_3","country","year",
