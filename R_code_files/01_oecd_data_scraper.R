@@ -14,25 +14,15 @@ colnames(corporate_rate)<-c("corporate_rate","ISO_3","year")
 corporate_rate$corporate_rate <- as.numeric(corporate_rate$corporate_rate)
 corporate_rate$corporate_rate <- corporate_rate$corporate_rate/100
 
+#Missing Slovakia
+missing_slovakia <- c(0.21,"SVK",2024)
+corporate_rate <- rbind(corporate_rate, missing_slovakia)
+
 #Missing Turkey
-missing_turkey <- c("TUR",0.2,2023)
+missing_turkey <- c(0.25,"TUR",2024)
 corporate_rate <- rbind(corporate_rate, missing_turkey)
 
 write.csv(corporate_rate, file = paste(intermediate_outputs,"oecd_corporate_rate.csv",sep=""), row.names = FALSE)
-
-
-#hard code CIT rate for Chile for 2016-2022 since the current 10% rate for 2020-2022 only applies to SMEs and the OECD data is incorrect for 2017-2019
-#country_chile<-c("CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL")
-#year<-c("2014","2015","2016","2017","2018","2019","2020","2021","2022")
-#corporate_rate_chile<-c("0.2","0.24","0.24","0.255","0.26","0.27","0.27","0.27","0.27")
-
-#chile<-data.frame(country_chile,corporate_rate_chile,year)
-#colnames(chile)<-c("country","corporate_rate","year")
-
-#Merge Chile with corporate rate
-#corporate_rate<-subset(corporate_rate,country!="CHL")
-
-#corporate_rate<-rbind(corporate_rate,chile)
 
 #r_and_d_credit####
 
@@ -44,7 +34,7 @@ write.csv(corporate_rate, file = paste(intermediate_outputs,"oecd_corporate_rate
 
 #r_and_d_credit <- spread(r_and_d_credit,year,r_and_d_credit)
 
-r_and_d_credit <- get_dataset("OECD.STI.STP,DSD_RDTAX@DF_RDSUB,1.0","")
+r_and_d_credit <- get_dataset("OECD.STI.STP,DSD_RDTAX@DF_RDSUB,1.0","TUR+GBR+USA+SVN+ESP+SWE+CHE+NLD+NZL+NOR+POL+PRT+SVK+ITA+JPN+KOR+LVA+LTU+LUX+MEX+ISL+IRL+ISR+DNK+EST+FIN+FRA+DEU+GRC+HUN+AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE.A....")
 r_and_d_credit <- r_and_d_credit[c(4,6,7,8,9)]
 colnames(r_and_d_credit) <- c("r_and_d_credit","profit","ISO_3","size","year")
 r_and_d_credit$year <- as.numeric(r_and_d_credit$year)
@@ -97,8 +87,7 @@ top_income_rate$year<-as.numeric(top_income_rate$year)
 
 top_income_rate$top_income_rate<-as.numeric(top_income_rate$top_income_rate)
 
-
-top_income_rate$year<-top_income_rate$year+1
+#top_income_rate$year<-top_income_rate$year+1
 top_income_rate$top_income_rate<-top_income_rate$top_income_rate/100
 
 #all_in_rate
@@ -115,7 +104,7 @@ colnames(all_in_rate)<-c("all_in_rate","ISO_3","year")
 all_in_rate$year<-as.numeric(all_in_rate$year)
 all_in_rate$all_in_rate<-as.numeric(all_in_rate$all_in_rate)
 
-all_in_rate$year<-all_in_rate$year+1
+#all_in_rate$year<-all_in_rate$year+1
 all_in_rate$all_in_rate<-all_in_rate$all_in_rate/100
 
 
@@ -133,9 +122,7 @@ threshold<-threshold[c(10,11,14)]
 colnames(threshold)<-c("threshold_top_income_rate","ISO_3","year")
 
 threshold$year<-as.numeric(threshold$year)
-threshold$year<-threshold$year+1
-
-#hard code Colombia 39% top rate
+#threshold$year<-threshold$year+1
 
 #tax_wedge####
 
@@ -241,21 +228,18 @@ tax_wedge[c('tax_wedge')][tax_wedge$country == "COL" & tax_wedge$year >=2014,] <
 #dividends_rate<-get_dataset("Table_II4",filter= list(c(oecd_countries),c("NET_PERS_TAX")), start_time = 2014)
 #dividends_rate<-dividends_rate[c(1,2,5)]
 
-dividends_rate<-read_csv(paste(source_data,"oecd_table_ii4_overall-dividends-rate.csv",sep=""))
-dividends_rate<-dividends_rate[c(5,9,11)]
-colnames(dividends_rate)<-c("ISO_3","year","dividends_rate")
+#dividends_rate<-read_csv(paste(source_data,"oecd_table_ii4_overall-dividends-rate.csv",sep=""))
+#dividends_rate<-dividends_rate[c(5,9,11)]
+#colnames(dividends_rate)<-c("ISO_3","year","dividends_rate")
+
+dividends_rate<-get_dataset("OECD.CTP.TPS,DSD_TAX_CIT@DF_CIT_DIVD_INCOME,1.0", filter="CHE+TUR+GBR+USA+SVK+SVN+ESP+SWE+MEX+NLD+NZL+NOR+POL+PRT+LVA+LTU+LUX+ISL+IRL+ISR+ITA+JPN+KOR+FIN+DNK+EST+FRA+DEU+GRC+HUN+AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE.A.NPT.....")
+dividends_rate<-dividends_rate[c(5,7,11)]
+colnames(dividends_rate)<-c("dividends_rate","ISO_3","year")
 
 dividends_rate$dividends_rate<-as.numeric(dividends_rate$dividends_rate)
 dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
 
-#Colombia: 2023 data not available -> use 2022 data
-missing_colombia <- subset(dividends_rate, subset = ISO_3 == "COL" & year == "2022")
-missing_colombia[missing_colombia$year == 2022, "year"] <- "2023"
-missing_colombia$year<-as.numeric(missing_colombia$year)
-
-#combine
-dividends_rate<-rbind(dividends_rate,missing_colombia)
-
+# OLD API: Corporate and personal other revenue
 
 #corporate_other_rev####
 taxes<-c("1300","6100")
@@ -290,6 +274,7 @@ corporate_other_rev<-rbind(corporate_other_rev,missing_australia,missing_greece)
 corporate_other_rev$year<-corporate_other_rev$year+2
 
 write.csv(corporate_other_rev, file = paste(intermediate_outputs,"oecd_corporate_other_rev.csv",sep=""), row.names = FALSE)
+corporate_other_rev<-read.csv(paste(intermediate_outputs,"oecd_corporate_other_rev.csv",sep=""))
 
 
 #personal_other_rev####
@@ -325,6 +310,7 @@ personal_other_rev<-rbind(personal_other_rev,missing_australia,missing_japan,mis
 personal_other_rev$year<-personal_other_rev$year+2
 
 write.csv(personal_other_rev, file = paste(intermediate_outputs,"oecd_personal_other_rev.csv",sep=""), row.names = FALSE)
+personal_other_rev<-read.csv(paste(intermediate_outputs,"oecd_personal_other_rev.csv",sep=""))
 
 
 #End OECD data scraper#
@@ -333,13 +319,13 @@ write.csv(personal_other_rev, file = paste(intermediate_outputs,"oecd_personal_o
 
 # ISO_3 and country merge
 
-OECDvars_data <- merge(corporate_rate, r_and_d_credit, by=c("country","year"))
-OECDvars_data <- merge(OECDvars_data, top_income_rate, by=c("country","year"))
-OECDvars_data <- merge(OECDvars_data, threshold, by=c("country","year"))
-OECDvars_data <- merge(OECDvars_data, tax_wedge, by=c("country","year"))
-OECDvars_data <- merge(OECDvars_data, dividends_rate, by=c("country","year"))
-OECDvars_data <- merge(OECDvars_data, corporate_other_rev, by=c("country","year"))
-OECDvars_data <- merge(OECDvars_data, personal_other_rev, by=c("country","year"))
+OECDvars_data <- merge(corporate_rate, r_and_d_credit, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, top_income_rate, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, threshold, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, tax_wedge, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, dividends_rate, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, corporate_other_rev, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, personal_other_rev, by=c("ISO_3","year"))
 
 #drop all_in_rate
 OECDvars_data <- OECDvars_data[-c(6)]
