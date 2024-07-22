@@ -122,7 +122,7 @@ threshold<-threshold[c(10,11,14)]
 colnames(threshold)<-c("threshold_top_income_rate","ISO_3","year")
 
 threshold$year<-as.numeric(threshold$year)
-#threshold$year<-threshold$year+1
+threshold$year<-threshold$year+1
 
 #tax_wedge####
 
@@ -145,7 +145,7 @@ martax_wedge2019<-aggregate(martax_wedge$`2019`,by=list(martax_wedge$ISO_3),FUN=
 martax_wedge2020<-aggregate(martax_wedge$`2020`,by=list(martax_wedge$ISO_3),FUN=mean)
 martax_wedge2021<-aggregate(martax_wedge$`2021`,by=list(martax_wedge$ISO_3),FUN=mean)
 martax_wedge2022<-aggregate(martax_wedge$`2022`,by=list(martax_wedge$ISO_3),FUN=mean)
-martax_wedge2022<-aggregate(martax_wedge$`2023`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2023<-aggregate(martax_wedge$`2023`,by=list(martax_wedge$ISO_3),FUN=mean)
 
 #avgtax_wedge
 
@@ -168,6 +168,7 @@ avgtax_wedge2020<-aggregate(avgtax_wedge$`2020`,by=list(avgtax_wedge$ISO_3),FUN=
 avgtax_wedge2021<-aggregate(avgtax_wedge$`2021`,by=list(avgtax_wedge$ISO_3),FUN=mean)
 avgtax_wedge2022<-aggregate(avgtax_wedge$`2022`,by=list(avgtax_wedge$ISO_3),FUN=mean)
 avgtax_wedge2022<-aggregate(avgtax_wedge$`2022`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2023<-aggregate(avgtax_wedge$`2023`,by=list(avgtax_wedge$ISO_3),FUN=mean)
 
 countries<-avgtax_wedge2020$Group.1
 
@@ -191,7 +192,7 @@ tax_wedge<-gather(tax_wedge,"year","tax_wedge","2013","2014","2015","2016","2017
 tax_wedge$year<-as.numeric(tax_wedge$year)
 tax_wedge$year<-tax_wedge$year+1
 
-tax_wedge[c('tax_wedge')][tax_wedge$country == "COL" & tax_wedge$year >=2014,] <- 0
+tax_wedge[c('tax_wedge')][tax_wedge$ISO_3 == "COL" & tax_wedge$year >=2014,] <- 0
 
 write.csv(tax_wedge, file = paste(intermediate_outputs,"oecd_taxwedge.csv",sep=""), row.names = FALSE)
 
@@ -250,6 +251,8 @@ corporate_other_rev$year<-corporate_other_rev$year+2
 write.csv(corporate_other_rev, file = paste(intermediate_outputs,"oecd_corporate_other_rev.csv",sep=""), row.names = FALSE)
 corporate_other_rev<-read.csv(paste(intermediate_outputs,"oecd_corporate_other_rev.csv",sep=""))
 
+corporate_other_rev <- corporate_other_rev %>%
+  rename(ISO_3 = country)
 
 #personal_other_rev####
 taxes<-c("2400")
@@ -286,6 +289,8 @@ personal_other_rev$year<-personal_other_rev$year+2
 write.csv(personal_other_rev, file = paste(intermediate_outputs,"oecd_personal_other_rev.csv",sep=""), row.names = FALSE)
 personal_other_rev<-read.csv(paste(intermediate_outputs,"oecd_personal_other_rev.csv",sep=""))
 
+personal_other_rev <- personal_other_rev %>%
+  rename(ISO_3 = country)
 
 #End OECD data scraper#
 
