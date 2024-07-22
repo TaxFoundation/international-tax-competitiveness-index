@@ -88,6 +88,7 @@ top_income_rate$year<-as.numeric(top_income_rate$year)
 top_income_rate$top_income_rate<-as.numeric(top_income_rate$top_income_rate)
 
 #top_income_rate$year<-top_income_rate$year+1
+
 top_income_rate$top_income_rate<-top_income_rate$top_income_rate/100
 
 #all_in_rate
@@ -107,10 +108,22 @@ all_in_rate$all_in_rate<-as.numeric(all_in_rate$all_in_rate)
 #all_in_rate$year<-all_in_rate$year+1
 all_in_rate$all_in_rate<-all_in_rate$all_in_rate/100
 
+#Create current year from prior year values
+top_rate_current <- subset(top_income_rate, year == 2023)
+top_rate_current$year <- 2024
+top_income_rate <- rbind(top_income_rate, top_rate_current)
+
+all_in_current <- subset(all_in_rate, year == 2023)
+all_in_current$year <- 2024
+all_in_rate <- rbind(all_in_rate, all_in_current)
 
 #take the max of top rate or all-in rate
 top_income_rate<-merge(top_income_rate,all_in_rate, by=c("ISO_3","year"))
 top_income_rate$top_income_rate<-pmax(top_income_rate$top_income_rate,top_income_rate$all_in_rate)
+
+#Missing Netherlands
+missing_netherlands <- c("NLD",2014,0.52,0.526)
+top_income_rate <- rbind(top_income_rate, missing_netherlands)
 
 #threshold_top_income_rate####
 
@@ -123,6 +136,12 @@ colnames(threshold)<-c("threshold_top_income_rate","ISO_3","year")
 
 threshold$year<-as.numeric(threshold$year)
 threshold$year<-threshold$year+1
+
+#Missing Netherlands
+missing_netherlands <- c(1.179464,"NLD",2014)
+threshold <- rbind(threshold, missing_netherlands)
+missing_netherlands <- c(1.221825,"NLD",2015)
+threshold <- rbind(threshold, missing_netherlands)
 
 #tax_wedge####
 
@@ -214,7 +233,12 @@ colnames(dividends_rate)<-c("dividends_rate","ISO_3","year")
 dividends_rate$dividends_rate<-as.numeric(dividends_rate$dividends_rate)
 dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
 
-# OLD API: Corporate and personal other revenue
+#Missing Slovakia
+missing_slovakia <- c(0.07,"SVK",2024)
+dividends_rate <- rbind(dividends_rate, missing_slovakia)
+ 
+dividends_rate<-subset(dividends_rate,year>2013)
+## OLD API: Corporate and personal other revenue ##
 
 #corporate_other_rev####
 taxes<-c("1300","6100")
@@ -235,14 +259,18 @@ corporate_other_rev<-subset(corporate_other_rev,country%in%oecd_countries)
 corporate_other_rev$corporate_other_rev<-as.numeric(corporate_other_rev$corporate_other_rev)
 corporate_other_rev$year<-as.numeric(corporate_other_rev$year)
 
-#Add in Australia and Greece 2021 numbers
-#Australia: 2022 data not available -> use 2020 data
-missing_australia <- subset(corporate_other_rev, subset = country == "AUS" & year == "2020")
+#Add in Australia, Greece, and Japan 2021 numbers
+#Australia: 2022 data not available -> use 2021 data
+missing_australia <- subset(corporate_other_rev, subset = country == "AUS" & year == "2021")
 missing_australia[missing_australia$year == 2021, "year"] <- 2022
 
-#Greece: 2022 data not available -> use 2020 data
-missing_greece <- subset(corporate_other_rev, subset = country == "GRC" & year == "2020")
+#Greece: 2022 data not available -> use 2021 data
+missing_greece <- subset(corporate_other_rev, subset = country == "GRC" & year == "2021")
 missing_greece[missing_greece$year == 2021, "year"] <- 2022
+
+#Japan: 2022 data not available -> use 2021 data
+missing_japan <- subset(corporate_other_rev, subset = country == "JPN" & year == "2021")
+missing_japan[missing_japan$year == 2021, "year"] <- 2022
 
 #combine
 corporate_other_rev<-rbind(corporate_other_rev,missing_australia,missing_greece)
@@ -265,25 +293,29 @@ personal_other_rev<-subset(personal_other_rev,country%in%oecd_countries)
 personal_other_rev$personal_other_rev<-as.numeric(personal_other_rev$personal_other_rev)
 personal_other_rev$year<-as.numeric(personal_other_rev$year)
 
-#Add in Australia, Greece, Hungary, and Japan 2021 numbers
-#Australia: 2021 data not available -> use 2021 data
+#Add in Australia, Greece, Hungary, and Japan 2022 numbers
+#Australia: 2022 data not available -> use 2021 data
 missing_australia <- subset(personal_other_rev, subset = country == "AUS" & year == "2021")
 missing_australia[missing_australia$year == 2021, "year"] <- 2022
 
-#Hungary: 2021 data not available -> use 2021 data
+#Hungary: 2022 data not available -> use 2021 data
 missing_hungary <- subset(personal_other_rev, subset = country == "HUN" & year == "2021")
 missing_hungary[missing_hungary$year == 2021, "year"] <- 2022
 
-#Japan: 2021 data not available -> use 2021 data
+#Japan: 2022 data not available -> use 2021 data
 missing_japan <- subset(personal_other_rev, subset = country == "JPN" & year == "2021")
 missing_japan[missing_japan$year == 2021, "year"] <- 2022
 
-#Greece: 2021 data not available -> use 2021 data
+#Greece: 2022 data not available -> use 2021 data
 missing_greece <- subset(personal_other_rev, subset = country == "GRC" & year == "2021")
 missing_greece[missing_greece$year == 2021, "year"] <- 2022
 
+#Poland: 2022 data not available -> use 2021 data
+missing_poland <- subset(personal_other_rev, subset = country == "POL" & year == "2021")
+missing_poland[missing_poland$year == 2021, "year"] <- 2022
+
 #combine
-personal_other_rev<-rbind(personal_other_rev,missing_australia,missing_japan,missing_hungary,missing_greece)
+personal_other_rev<-rbind(personal_other_rev,missing_australia,missing_japan,missing_hungary,missing_greece,missing_poland)
 personal_other_rev$year<-personal_other_rev$year+2
 
 write.csv(personal_other_rev, file = paste(intermediate_outputs,"oecd_personal_other_rev.csv",sep=""), row.names = FALSE)
