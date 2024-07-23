@@ -65,13 +65,13 @@ normalize <-function(x){
 #standardize all the scores into a new dataframe called "zscores" (this does this by year)
 zscores<-data.frame(country=raw_data$country,
                     year=raw_data$year,
-                    ddply(raw_data[4:45],
+                    ddply(raw_data[4:46],
                           .(year),
                           scale)
 )
 alternate_scores<-data.frame(country=raw_data$country,
                       year=raw_data$year,
-                      ddply(raw_data[4:45],
+                      ddply(raw_data[4:46],
                             .(year),
                             normalize)
 )
@@ -249,6 +249,7 @@ subcategories$income_tax_complexity<-apply((zscores[income_tax_complexity_index]
 subcategories$territorial<-apply((zscores[territorial_index]*(1/length(territorial_index))),1,sum)
 subcategories$withholding_taxes<-apply((zscores[withholding_index]*(1/length(withholding_index))),1,sum)
 subcategories$tax_treaties<-apply((zscores[tax_treaties_index]*(1/length(tax_treaties_index))),1,sum)
+
 subcategories$international_regulations<-apply((zscores[international_regulations_index]*(1/length(international_regulations_index))),1,sum)
 
 #alternate_ Scoring Technique
