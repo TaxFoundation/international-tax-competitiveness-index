@@ -123,7 +123,7 @@ flip <- c("corporate_rate", "patent_box", "r_and_d_credit", "digital_services_ta
           "top_income_rate", "threshold_top_income_rate", "tax_wedge", "personal_surtax", "personal_other_rev", "capital_gains_rate", "dividends_rate", 
           "vat_rate", "vat_threshold", 
           "property_tax_collections", "net_wealth", "estate_or_inheritance_tax", "transfer_tax", "asset_tax", "capital_duties", "financial_transaction_tax", 
-          "country_limitations", "dividends_withholding_tax", "interest_withholding_tax", "royalties_withholding_tax", "cfc_rules", "thin_capitalization_rules")
+          "country_limitations", "dividends_withholding_tax", "interest_withholding_tax", "royalties_withholding_tax", "cfc_rules", "thin_capitalization_rules","minimum_tax")
 
 
 flipfunc <- function(x) {
