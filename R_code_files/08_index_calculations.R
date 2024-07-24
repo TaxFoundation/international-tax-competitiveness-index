@@ -29,19 +29,19 @@ raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,
                 raw_data_2017,raw_data_2018,raw_data_2019,
                 raw_data_2020,raw_data_2021,raw_data_2022,
                 raw_data_2023,raw_data_2024)
-#raw_data<-rbind(raw_data_2022,raw_data_2023)
 
 raw_data$loss_carryback<-as.numeric(raw_data$loss_carryback)
 raw_data$patent_box<-as.numeric(raw_data$patent_box)
 raw_data$r_and_d_credit<-as.numeric(raw_data$r_and_d_credit)
 raw_data$digital_services_tax<-as.numeric(raw_data$digital_services_tax)
+raw_data$corporate_other_rev <- abs(raw_data$corporate_other_rev)
+raw_data$personal_other_rev <- abs(raw_data$personal_other_rev)
 raw_data$net_wealth<-as.numeric(raw_data$net_wealth)
 raw_data$estate_or_inheritance_tax<-as.numeric(raw_data$estate_or_inheritance_tax)
 raw_data$transfer_tax<-as.numeric(raw_data$transfer_tax)
 raw_data$asset_tax<-as.numeric(raw_data$asset_tax)
 raw_data$capital_duties<-as.numeric(raw_data$capital_duties)
 raw_data$financial_transaction_tax<-as.numeric(raw_data$financial_transaction_tax)
-#raw_data$index_capital_gains<-as.numeric(raw_data$index_capital_gains)
 raw_data$tax_treaties<-as.numeric(raw_data$tax_treaties)
 raw_data$country_limitations<-as.numeric(raw_data$country_limitations)
 raw_data$minimum_tax<-as.numeric(raw_data$minimum_tax)
