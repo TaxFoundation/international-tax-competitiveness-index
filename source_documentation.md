@@ -4,7 +4,7 @@
 
 ## **Corporate Taxes**
 
-* **`corporate_rate`** OECD, "OECD Tax Database, Table II.1 Statutory corporate income tax rate," updated May 2022, https://stats.oecd.org/index.aspx?DataSetCode=Table_II1.
+* **`corporate_rate`** OECD, "OECD Data Explorer, Corporate income tax statutory and targeted small business rates, Combined corporate income tax rate" updated July 2024, https://data-explorer.oecd.org/vis?df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_TAX_CIT%40DF_CIT&df[ag]=OECD.CTP.TPS&df[vs]=1.0.
 
 * **`loss_carryback`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc/source/511920/147664382; and PwC, “Worldwide Tax Summaries: Corporate - Deductions,” https://www.pwc.com/gx/en/services/tax/worldwide-tax-summaries.html.
 
@@ -16,29 +16,29 @@
 
 * **`intangibles_cost_recovery`** Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, March 2022, https://taxation-customs.ec.europa.eu/system/files/2022-03/final_report_2021_effective_tax_levels_revised_en.pdf; Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; EY, “Worldwide Capital and Fixed Assets Guide 2021,” June 30, 2021, https://assets.ey.com/content/dam/ey-sites/ey-com/en_gl/topics/tax/tax-guides/2021/ey-worldwide-capital-and-fixed-assets-guide-2021.pdf?download; EY, “Worldwide Corporate Tax Guide 2021,” Aug. 17, 2021, https://www.ey.com/en_id/tax_law_guides/worldwide-corporate-tax-guide-20201; and PwC, “Worldwide Tax Summaries: Corporate - Deductions,” https://taxsummaries.pwc.com/. Years prior to 2018 are based on Oxford University Centre for Business Taxation, “CBT Tax Database 2017,” https://oxfordtax.sbs.ox.ac.uk/cbt-tax-database. Calculations based on Lisa Hogreve and Daniel Bunn, “Capital Cost Recovery across the OECD,” Tax Foundation, Apr. 26, 2022, https://taxfoundation.org/capital-allowances-cost-recovery/.
 
-* **`inventory`** Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, March 2022, https://taxation-customs.ec.europa.eu/system/files/2022-03/final_report_2021_effective_tax_levels_revised_en.pdf; PwC, "Worldwide Tax Summaries: Corporate - Income Determination," https://taxsummaries.pwc.com/australia/corporate/income-determination; and EY, “Worldwide Corporate Tax Guide 2021,” Aug. 17, 2021, https://www.ey.com/en_id/tax_law_guides/worldwide-corporate-tax-guide-20201.
+* **`inventory`** Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, March 2022, https://taxation-customs.ec.europa.eu/system/files/2022-03/final_report_2021_effective_tax_levels_revised_en.pdf; PwC, "Worldwide Tax Summaries: Corporate - Income Determination," https://taxsummaries.pwc.com/australia/corporate/income-determination; and EY, “Worldwide Corporate Tax Guide 2023,” Sep. 5, 2023, https://www.ey.com/en_id/tax_law_guides/worldwide-corporate-tax-guide-20201.
 
 * **`allowance_corporate_equity`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; PwC, "Worldwide Tax Summaries: Corporate - Deductions," https://taxsummaries.pwc.com/turkey/corporate/deductions; and Christoph Spengel, Frank Schmidt, Jost Heckemeyer, and Katharina Nicolay, “Effective Tax Levels Using the Devereux/Griffith Methodology,” European Commission, March 2022, https://taxation-customs.ec.europa.eu/system/files/2022-03/final_report_2021_effective_tax_levels_revised_en.pdf.
 
 * **`patent_box`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; PwC, "Worldwide Tax Summaries: Corporate - Tax credits and incentives," https://taxsummaries.pwc.com/australia/corporate/tax-credits-and-incentives; and OECD, "Intellectual Property Regimes," https://qdd.oecd.org/data/IP_Regimes.
 
-* **`r_and_d_credit`** OECD, "R&D Tax Incentive Indicators: Implied tax subsidy rates on R&D expenditures," updated Apr. 4, 2022, https://stats.oecd.org/Index.aspx?DataSetCode=RDSUB.
+* **`r_and_d_credit`** OECD, "OECD Data Explorer, Implied tax subsidy rates on R&D expenditures," updated July 2024, https://data-explorer.oecd.org/vis?pg=0&bp=true&snb=3&tm=implied&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_RDTAX%40DF_RDSUB&df[ag]=OECD.STI.STP&df[vs]=1.0.
 
 * **`digital_services_tax`** KPMG, “Taxation of the digitalized economy: Developments summary,” updated June 27, 2022, https://tax.kpmg.us/content/dam/tax/en/pdfs/2022/digitalized-economy-taxation-developments-summary.pdf.
 
-* **`corporate_alt_minimum`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; EY, “Worldwide Corporate Tax Guide 2021,” Aug. 17, 2021, https://www.ey.com/en_id/tax_law_guides/worldwide-corporate-tax-guide-20201; and PwC, “Worldwide Tax Summaries: Corporate - Taxes on corporate income,” https://taxsummaries.pwc.com/.
+* **`corporate_alt_minimum`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; EY, “Worldwide Corporate Tax Guide 2023,” Sep. 5, 2023, https://www.ey.com/en_id/tax_law_guides/worldwide-corporate-tax-guide-20201; and PwC, “Worldwide Tax Summaries: Corporate - Taxes on corporate income,” https://taxsummaries.pwc.com/.
 
-* **`corporate_surtax`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; EY, “Worldwide Corporate Tax Guide 2021,” Aug. 17, 2021, https://www.ey.com/en_id/tax_law_guides/worldwide-corporate-tax-guide-20201; and PwC, “Worldwide Tax Summaries: Corporate - Taxes on corporate income,” https://taxsummaries.pwc.com/.
+* **`corporate_surtax`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; EY, “Worldwide Corporate Tax Guide 2023,” Sep. 5, 2023, https://www.ey.com/en_id/tax_law_guides/worldwide-corporate-tax-guide-20201; and PwC, “Worldwide Tax Summaries: Corporate - Taxes on corporate income,” https://taxsummaries.pwc.com/.
 
 * **`corporate_other_rev`** OECD, "Revenue Statistics - OECD countries: Comparative tables," updated Dec. 20, 2020, https://stats.oecd.org/Index.aspx?DataSetCode=REV.
 
 ## **Income Taxes**
 
-* **`top_income_rate`** OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rates,” updated May 24, 2022, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
+* **`top_income_rate`** OECD, “OECD Data Explorer, Top statutory personal income tax rate and marginal tax rate for employees at the earnings threshold where the top statutory personal income tax rate first applies,” updated July 18, 2024, https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CTaxation%23TAX%23%7CPersonal%20and%20property%20tax%23TAX_PPT%23&pg=0&fc=Topic&bp=true&snb=4&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_TAX_PIT%40DF_PIT_TOP_EARN_THRESH&df[ag]=OECD.CTP.TPS&df[vs]=1.0.
 
-* **`threshold_top_income_rate`** OECD, “OECD Tax Database, Table I.7 - Top statutory personal income tax rates,” updated May 24, 2022, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I7.
+* **`threshold_top_income_rate`** OECD, “OECD Data Explorer, Top statutory personal income tax rate and marginal tax rate for employees at the earnings threshold where the top statutory personal income tax rate first applies,” updated July 18, 2024, https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CTaxation%23TAX%23%7CPersonal%20and%20property%20tax%23TAX_PPT%23&pg=0&fc=Topic&bp=true&snb=4&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_TAX_PIT%40DF_PIT_TOP_EARN_THRESH&df[ag]=OECD.CTP.TPS&df[vs]=1.0. 
 
-* **`tax_wedge`** OECD, "OECD Tax Database, Table I.4. Marginal personal income tax and social security contribution rates on gross labour income," updated May 24, 2022, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I4; and OECD, "OECD Tax Database, Table I.5. Average personal income tax and social security contribution rates on gross labour income," updated May 24, 2022, https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I5.
+* **`tax_wedge`** OECD, "OECD Data Explorer, Labour taxation - average and marginal tax wedge decompositions," updated June 6, 2024, https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CTaxation%23TAX%23%7CPersonal%20and%20property%20tax%23TAX_PPT%23&pg=0&fc=Topic&bp=true&snb=4&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_TAX_WAGES_DECOMP%40DF_TW_DECOMP&df[ag]=OECD.CTP.TPS&df[vs]=1.1.
  
 * **`personal_surtax`** Bloomberg Tax, “Country Guides,” https://www.bloomberglaw.com/product/tax/toc_view_menu/3380/node/3380; and PwC, “Worldwide Tax Summaries: Individual - Taxes on individual income,” https://taxsummaries.pwc.com/.
 
@@ -48,7 +48,7 @@
 
 * **`index_capital_gains`** This variable is no longer used.
 
-* **`dividends_rate`** OECD, “OECD Tax Database, Table II.4 - Overall statutory tax rates on dividend income,” updated May 24, 2022, https://stats.oecd.org/Index.aspx?DataSetCode=TABLE_II4.
+* **`dividends_rate`** OECD, “OECD Data Explorer, Combined (corporate and shareholder) statutory tax rates on dividend income, Net personal tax” updated July 2024, https://data-explorer.oecd.org/vis?fs[0]=Topic%2C1%7CTaxation%23TAX%23%7CCorporate%20tax%23TAX_CPT%23&pg=0&fc=Topic&bp=true&snb=16&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_TAX_CIT%40DF_CIT_DIVD_INCOME&df[ag]=OECD.CTP.TPS&df[vs]=1.0
 
 
 ## **Consumption Taxes**

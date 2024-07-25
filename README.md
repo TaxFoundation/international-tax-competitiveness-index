@@ -179,9 +179,9 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `corporate_rate` | The top marginal corporate tax rate in a given nation. No time lag. |
 | `loss_carryback` | Number of years a corporation may apply current losses against previous tax bills, allowing for tax rebates. No time lag. If there is a general limitation on the amount of income that losses can be used to offset income, the number of years is reduced by that percentage. E.g. only 50 percent of taxable income can be offset with losses and there is a one year loss carryback, the `loss_carryback` variable would show `0.5`.|
 | `loss_carryforward` | Number of years a corporation may apply current losses against future tax bills, lowering those years’ taxable income. No time lag. If there is a general limitation on the amount of income that losses can be used to offset income, the number of years is reduced by that percentage. E.g. only 50 percent of taxable income can be offset with losses and there is a 20 year loss carryforward, the `loss_carryforward` variable would show `10`.|
-| `machines_cost_recovery` | Percentage of the present value cost of machinery that corporations can write off over the depreciable life of the asset. 1-year time lag. |
-| `buildings_cost_recovery` | Percentage of the present value cost of buildings that corporations can write off over the depreciable life of the asset. 1-year time lag. |
-| `intangibles_cost_recovery` | Percentage of the present value cost of intangibles that corporations can write off over the depreciable life of the asset. 1-year time lag. |
+| `machines_cost_recovery` | Percentage of the present value cost of machinery that corporations can write off over the depreciable life of the asset. No time lag. |
+| `buildings_cost_recovery` | Percentage of the present value cost of buildings that corporations can write off over the depreciable life of the asset. No time lag. |
+| `intangibles_cost_recovery` | Percentage of the present value cost of intangibles that corporations can write off over the depreciable life of the asset. No time lag. |
 | `inventory` | Score given based on a country’s allowable inventory cost accounting methods. Countries that allow Last In, First Out (LIFO) score `1`; countries that allow Average Cost of Inventory score `0.5`; countries that only allow First In, First Out (FIFO) score `0`. No time lag. |
 | `allowance_corporate_equity` | Indicates which countries have an allowance for corporate equity (sometimes also referred to as “notional interest deduction”), which gives businesses a deduction based on their (additional) equity stock. Countries with allowances for corporate equity are marked with `1`; countries without them are marked as `0`. No time lag. |
 | `patent_box` | Indicates which countries have patent boxes, which create lower tax rates for corporate income generated through patented products. Countries without patent boxes are marked with `0`; countries with patent boxes are marked as `1`. No time lag. |
@@ -190,14 +190,14 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `corporate_time` | Complexity of tax system measured by average time in hours needed to comply with a country's corporate tax requirements. 3-year time lag. No longer in use, replaced with `corporate_alt_minimum`.|
 | `corporate_alt_minimum` | Complexity of tax system measured by number of rates applied to corporate profits. Includes alternative minimum taxes, number of tax brackets, and the existence of special general tax rates other than patent box rates. No time lag.|
 | `profit_payments` | Complexity of tax system measured by number of yearly profit payments. 3-year time lag. No longer in use, replaced with `corporate_surtax`.|
-| `corporate_surtax` | Complexity of tax system measured by the highest surtax rate applied to corporate profits. No time lag.|
+| `corporate_surtax` | Complexity of tax system measured by the existence of a surtax applied to corporate income tax. No time lag.|
 | `other_payments` | Complexity of tax system measured by number of other yearly tax payments. 3-year time lag. No longer in use, replaced with `corporate_other_rev`.|
 | `corporate_other_rev` | Complexity of tax system measured by share of revenue collected outside of normal taxes on income. Revenue codes 1300 and 6100. 2-year time lag.|
 | `top_income_rate` | The top marginal income tax rate. 1-year lag. |
 | `threshold_top_income_rate` | Measure to show at what level the top statutory personal income tax rate applies, expressed as a multiple of the average income. 1-year time lag. |
-| `tax_wedge` | The total tax cost of labor in a country (includes individual income tax and payroll tax). This is the average of the ratio of the marginal tax wedge to the average tax wedge for employees at the 67th, 100th, 133rd, and 167th percentiles. 1-year time lag. |
+| `tax_wedge` | The total tax cost of labor in a country (includes individual income tax and payroll tax). This is the average of the ratio of the marginal tax wedge to the average tax wedge for employees at the 67th, 100th, and 167th percentiles. 1-year time lag. |
 | `labor_payments` | Complexity of tax system measured by number of yearly labor tax payments. 3-year time lag. No longer in use, replaced with `personal_surtax`.|
-| `personal_surtax` | Complexity of tax system measured by the highest surtax rate applied to personal income. No time lag.|
+| `personal_surtax` | Complexity of tax system measured by the existence of a surtax applied to personal income tax. No time lag.|
 | `labor_time` | Complexity of tax system measured by average time in hours needed to comply with a country’s labor tax requirements.32-year time lag. No longer in use, replaced with `personal_other_rev`.|
 | `personal_other_rev` |Complexity of tax system measured by share of revenue collected outside of normal taxes on on payroll. Revenue code 2400. 2-year time lag.|
 | `capital_gains_rate` | Tax rate for capital gains after any imputation, credit, or offset. When the capital gains tax rate varies by type of asset sold, the tax rate applying to the sale of listed shares after an extended period of time is used. No time lag. |
@@ -206,7 +206,7 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `vat_rate` | The national (or average) consumption tax rate (either sales tax or VAT) for a country. No time lag. |
 | `vat_threshold` | The upper sales limit in U.S. dollars for which a corporation does not need to pay consumption taxes. No time lag. |
 | `vat_base` | The ratio of consumption taxes collected to potential collections if standard consumption tax rates were applied equally across all goods/services. This ratio measures exemptions to the taxes and/or noncompliance. 2-year time lag. |
-| `consumption_time` | Complexity of consumption taxes measured by average time in hours needed for corporations to comply with a country's consumption tax requirements. 3-year time lag. |
+| `consumption_time` | Complexity of consumption taxes measured by average time in hours needed for corporations to comply with a country's consumption tax requirements. 3-year time lag. No longer in use. |
 | `property_tax` | Indicates whether capital additions to land are taxed. Fully taxing land and improvements is marked `0`; allowing deductions of taxes on improvements from corporate income taxes is marked `0.5`; taxing only land or not having a property tax is marked `1`. No time lag. |
 | `property_tax_collections` | Property taxes collected in a country as a percentage of capital stock. 2-year time lag. |
 | `net_wealth` | Indicates the existence of taxes on net wealth. Countries with wealth taxes are marked `1`; countries with wealth taxes on only some asset classes are marked `0.5`; those without are marked `0`. No time lag. |
@@ -222,7 +222,8 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `interest_withholding_tax` | Required withholding for tax payments on interest to be paid to foreign investors or businesses. No time lag. |
 | `royalties_withholding_tax` | Required withholding for tax payments on royalties to be paid to foreign investors or businesses. No time lag. |
 | `tax_treaties` | Number of foreign nations with which a country has tax treaties. 1-year time lag. |
-| `cfc_rules` | Indicates existence and strictness of Controlled Foreign Corporation (CFC) rules. This combines measures of whether CFC rules exist, whether they tax passive or active income, whether they provide exemptions, and whether the rules use a general minimum tax (like GILTI in the US). Countries without CFC rules are marked `0`; those with the strictest are marked `1`, countries in between have various scores. No time lag. |
+| `cfc_rules` | Indicates existence and strictness of Controlled Foreign Corporation (CFC) rules. This combines measures of whether CFC rules exist, whether they tax passive or active income, and whether they provide exemptions. Countries without CFC rules are marked `0`; those with the strictest are marked `1`, countries in between have various scores. No time lag. |
 | `thin_capitalization_rules` | Indicates whether a country puts thin capitalization restrictions on companies’ debt-to-asset ratios. Countries that limit interest deductions with only transfer pricing regulations are scored as `0`. Countries with debt-to-equity ratios receive a score of `0.5`, and countries with interest-to-pretax-earning limits receive a score of `1`. No time lag. |
+| `minimum_tax` | Indicates whether a country imposes a general minimum tax. Countries with an Income Inclusion Rule (IIR) or GILTI in the U.S.are marked as `0.5`; Countries that impose both an IIR and an Under-Taxed Profits Rule (UTPR) or BEAT in the U.S. are marked as `1`. No time lag. |
 
-The _ITCI_ uses the most up-to-date data available as of July 2022.
+The _ITCI_ uses the most up-to-date data available as of July 2024.

@@ -1,11 +1,10 @@
 # CFC Rules Model
-The averaging function in `05_cfc_rules.R` creates the  `cfc_rules` variable. The inputs are the `cfc_rules_2014.csv`,`cfc_rules_2015.csv`,`cfc_rules_2016.csv`,`cfc_rules_2017.csv`,`cfc_rules_2018.csv`,`cfc_rules_2019.csv`, and `cfc_rules_2020.csv` files in the `/source-data` folder and the output is the `cfc_rules_data.csv` file in the `/intermediate-outputs` folder.
+The averaging function in `05_cfc_rules.R` creates the  `cfc_rules` variable. The inputs are the `cfc_rules_2014.csv`,`cfc_rules_2015.csv`,`cfc_rules_2016.csv`,`cfc_rules_2017.csv`,`cfc_rules_2018.csv`,`cfc_rules_2019.csv`, `cfc_rules_2020.csv`, `cfc_rules_2021.csv`, `cfc_rules_2022.csv`, `cfc_rules_2023.csv`, and `cfc_rules_2024.csv` files in the `/source-data` folder and the output is the `cfc_rules_data.csv` file in the `/intermediate-outputs` folder.
 
 Each country’s score in this subcomponent is based on three aspects of controlled foreign corporation (CFC) rules: 
 1. Whether a country has CFC regulations; 
 2. whether CFC rules apply to passive income or all income;  
 3. the breadth of exemptions from the general CFC rules. Countries receive the best score if they do not have CFC rules; and
-4.  whether the CFC rules use a general minimum tax rule for foreign earnings (like GILTI in the US).
 
 Countries with CFC rules that have exemptions or only apply to passive income or income associated with non-genuine arrangements receive a better score. Countries score worst if they have CFC rules that apply to all income, have no exemptions, and do not have a general minimum tax rule for foreign earnings. 
 
@@ -24,7 +23,3 @@ The value of the `cfc_rules` variable is a simple average of three variables:
 ## `no_exemption`: determines if the country has exemptions to its CFC regime
 
     Equal to 1 if CFC rules do not have exemptions; equal to 0 if there are exemptions for countries (including based on an effective or statutory rate test) or if there are no CFC rules; equal to 0.5 if there is a formula based on a share of passive income that triggers full inclusion.
-
-## `minimum_tax`: determines if the country has a general minimum tax rule applied to foreign earnings
-
-    Equal to 1 if there is a general rule that applies a minimum tax to foreign earnings similar to US GILTI policy or what is envisioned by the global minimum tax (which had not been adopted by any country at the time of the 2022 publication).
