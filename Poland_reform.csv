@@ -12,10 +12,10 @@ PL,POL,Poland,2023,30,58.61468094,14,66.86118224,11,77.03320073,35,39.68939006,3
 PL,POL,Poland,2024,31,57.48595744,12,65.6173939,11,76.74656445,37,33.71420034,30,43.59830052,23,65.99323669,Baseline
 ,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,Personal Income Tax Changes:
-PL,POL,Poland,2024,33,56.78834447,12,65.6173939,13,72.07514536,37,33.71420034,30,43.59830052,23,65.9932367,"PIT schedule: 23.5 percent flat tax, PLN 60,000 threshold. Top rate from 36 to 23.5 percent. Top threshold from 11.67 to 0.7 times the average income. Tax wedge from 1.2635 to 2.27."
-PL,POL,Poland,2024,34,56.18456792,12,65.6173939,14,69.38985459,37,33.71420034,30,43.59830052,23,65.9932367,[+] Dividends rate from 19 to 23.5 percent.
-PL,POL,Poland,2024,34,55.67314633,12,65.6173939,14,67.11031389,37,33.71420034,30,43.59830052,23,65.9932367,[+] Capital gains rate from 19 to 23.5 percent.
-PL,POL,Poland,2024,31,58.29053295,12,65.6173939,11,79.06775849,37,33.71420034,30,43.59830052,23,65.9932367,[/ ] New PIT schedule + dividends rate from 19 to 23.5 percent + no taxation of long-term capital gains w/o substantial ownership.
+PL,POL,Poland,2024,29,58.6985409,12,65.6173939,11,81.7190285,37,33.71420034,30,43.59830052,23,65.9932367,"PIT schedule: 23.5 percent flat tax, PLN 30,0000 threshold. Top rate from 36 to 23.5 percent. Top threshold from 11.67 to 0.35 times the average salary. Ratio of marginal to average tax wedge from 1.2635 to 1.5641."
+PL,POL,Poland,2024,31,58.08995408,12,65.6173939,11,79.03770917,37,33.71420034,30,43.59830052,23,65.9932367,[+] Dividends rate from 19 to 23.5 percent.
+PL,POL,Poland,2024,31,57.57458829,12,65.6173939,11,76.76748077,37,33.71420034,30,43.59830052,23,65.9932367,[+] Capital gains rate from 19 to 23.5 percent.
+PL,POL,Poland,2024,29,60.21180953,12,65.6173939,6,88.67607725,37,33.71420034,30,43.59830052,23,65.9932367,[/ ] New PIT schedule + dividends &  capital gains rate from 19 to 23.5 percent + no taxation of long-term capital gains w/o substantial ownership.
 ,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,Value-Added Tax Changes:
 PL,POL,Poland,2024,20,65.31254494,12,65.6173939,11,76.74656445,16,60.35413819,30,43.59830052,23,65.9932367,"VAT from 23 to 19.5 percent; closing the rate gap, moving the C-efficiency from 0.46 to 0.7524."
