@@ -5,8 +5,8 @@ Austria,Tax on Real Property,No,0.10%,No,None,Real Estate Transfer Tax,Bank Tax,
 Belgium,Tax on Real Property (b),Yes,0.60%,Wealth Tax on Selected Assets,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,No,Yes
 Canada,Tax on Real Property,Yes,1.50%,No,None,Real Estate Transfer Tax,Bank Tax in certain provinces,Yes,No
 Chile,Tax on Real Property,Yes,0.40%,No,Inheritance and Gift Tax,No,Yearly fee on tax-adjusted equity,No,No
-Colombia,Tax on Real Property,Yes,0.50%,Net Wealth Tax ,None,Real Estate Registration Tax,No,Yes,Yes
-Costa Rica,Tax on Real Property,Yes,,No,None,Real Estate Transfer Tax,No,No,Yes
+Colombia,Tax on Real Property,Yes,0.50%,Net Wealth Tax ,Capital Gains tax applies,Real Estate Registration Tax,No,Yes,Yes
+Costa Rica,Tax on Real Property,Yes,,No,None,Real Estate Transfer Tax,Yes,No,Yes
 Czech Republic,Tax on Real Property,Yes,0.10%,No,Inheritances and gifts are subject to Income Tax,No,No,No,No
 Denmark,Tax on Real Property,Yes,0.70%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,No,No
 Estonia,Land Tax,No,0.10%,No,None,No,No,No,No
@@ -17,7 +17,7 @@ Greece,Tax on Real Property,Yes,1.20%,No,Inheritance and Gift Tax,Real Estate Tr
 Hungary,Tax on Real Property,Yes,0.30%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,No,Yes
 Iceland ,Tax on Real Property,No,1.00%,No,Inheritance Tax,Stamp Duty on Transfer of Real Property,Bank Tax,No,No
 Ireland,Tax on Real Property,Yes,0.30%,No,Inheritance and Gift Tax,Stamp Duty on Transfer of Real Property,No,No,Yes
-Israel,Tax on Sale of Real Property (d),Yes,1.20%,No,None,Real Estate Transfer Tax €,No,No,No
+Israel,Tax on Sale of Real Property ©,Yes,1.20%,No,None,Real Estate Transfer Tax €,No,No,No
 Italy,Tax on Real Property,No,0.60%,Wealth Tax on Selected Assets,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
 Japan,Tax on Real Property,Yes,0.80%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Fixed assets tax,Yes,No
 Korea,Tax on Real Property,No,0.40%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
@@ -41,7 +41,7 @@ United States,Tax on Real Property,Yes,1.60%,No,Inheritance and Gift Tax,Real Es
 ,,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,
-Notes: (a) Tax applies to some real estate (vacation homes). (b) Tax on the imputed rent of properties. Applies to machinery. (c) Representative model with state-level deviations. (d) The Land Appreciation Tax is levied like a capital gains tax on the sale of property. (e) The purchaser of real property is subject to a purchase tx.,,,,,,,,,
+Notes: (a) Tax applies to some real estate (vacation homes). (b) Tax on the imputed rent of properties. Applies to machinery. (c) The Land Appreciation Tax is levied like a capital gains tax on the sale of property.,,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,
 ,,,,,,,,,

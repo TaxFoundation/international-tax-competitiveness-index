@@ -1,83 +1,81 @@
 #OECD data scraper
-#3. Sweden income tax rate
 ####OECD Data Scraper####
 
 #corporate_rate####
-#Table_II1#
-#dataset_list<-get_datasets()
-#dataset<-("Table_II1")
-#dstruc<-get_data_structure(dataset)
-#str(dstruc, max.level = 1)
-#dstruc$VAR_DESC
 
-corporate_rate<-get_dataset("Table_II1",filter= list(c(oecd_countries),c("COMB_CIT_RATE")), start_time = 2014)
-corporate_rate<-corporate_rate[c(2,3,5)]
-colnames(corporate_rate)<-c("country","corporate_rate","year")
+#corporate_rate<-get_dataset("Table_II1",filter= list(c(oecd_countries),c("COMB_CIT_RATE")), start_time = 2014)
+#corporate_rate<-corporate_rate[c(2,3,5)]
+#colnames(corporate_rate)<-c("country","corporate_rate","year")
+
+corporate_rate<-get_dataset("OECD.CTP.TPS,DSD_TAX_CIT@DF_CIT,1.0", filter="BEL+AUT+AUS+EST+DNK+CZE+CRI+COL+CHL+CAN+ISL+HUN+GRC+DEU+FRA+FIN+LVA+KOR+JPN+ITA+ISR+IRL+NLD+MEX+LUX+LTU+SVN+SVK+PRT+POL+NOR+NZL+TUR+USA+GBR+CHE+SWE+ESP.A.CIT_C.ST..S13..")
+corporate_rate<-corporate_rate[c(5,7,11)]
+colnames(corporate_rate)<-c("corporate_rate","ISO_3","year")
 
 corporate_rate$corporate_rate <- as.numeric(corporate_rate$corporate_rate)
 corporate_rate$corporate_rate <- corporate_rate$corporate_rate/100
 
-#hard code CIT rate for Chile for 2016-2022 since the current 10% rate for 2020-2022 only applies to SMEs and the OECD data is incorrect for 2017-2019
-#country_chile<-c("CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL","CHL")
-#year<-c("2014","2015","2016","2017","2018","2019","2020","2021","2022")
-#corporate_rate_chile<-c("0.2","0.24","0.24","0.255","0.26","0.27","0.27","0.27","0.27")
+#Missing Slovakia
+missing_slovakia <- c(0.21,"SVK",2024)
+corporate_rate <- rbind(corporate_rate, missing_slovakia)
 
-#chile<-data.frame(country_chile,corporate_rate_chile,year)
-#colnames(chile)<-c("country","corporate_rate","year")
+#Missing Turkey
+missing_turkey <- c(0.25,"TUR",2024)
+corporate_rate <- rbind(corporate_rate, missing_turkey)
 
-#Merge Chile with corporate rate
-#corporate_rate<-subset(corporate_rate,country!="CHL")
-
-#corporate_rate<-rbind(corporate_rate,chile)
+write.csv(corporate_rate, file = paste(intermediate_outputs,"oecd_corporate_rate.csv",sep=""), row.names = FALSE)
 
 #r_and_d_credit####
-#RDTAXSUB#
-#dataset<-("RDSUB")
-#dstruc<-get_data_structure(dataset)
-#str(dstruc, max.level = 1)
-#dstruc$VAR_DESC
 
-r_and_d_credit <- get_dataset("RDSUB",filter= list(c(oecd_countries), c("SME","LARGE"), c("PROFITABLE", "LOSS-MAKING")), start_time = 2013)
-r_and_d_credit <- r_and_d_credit[c(1,2,3,4,6)]
-colnames(r_and_d_credit) <- c("country","r_and_d_credit","Profit", "Size", "year")
+#r_and_d_credit <- get_dataset("RDSUB",filter= list(c(oecd_countries), c("SME","LARGE"), c("PROFITABLE", "LOSS-MAKING")), start_time = 2013)
+#r_and_d_credit <- r_and_d_credit[c(1,2,3,4,6)]
+#colnames(r_and_d_credit) <- c("country","r_and_d_credit","Profit", "Size", "year")
+#r_and_d_credit$year <- as.numeric(r_and_d_credit$year)
+#r_and_d_credit$r_and_d_credit <- as.numeric(r_and_d_credit$r_and_d_credit)
+
+#r_and_d_credit <- spread(r_and_d_credit,year,r_and_d_credit)
+
+r_and_d_credit <- get_dataset("OECD.STI.STP,DSD_RDTAX@DF_RDSUB,1.0","TUR+GBR+USA+SVN+ESP+SWE+CHE+NLD+NZL+NOR+POL+PRT+SVK+ITA+JPN+KOR+LVA+LTU+LUX+MEX+ISL+IRL+ISR+DNK+EST+FIN+FRA+DEU+GRC+HUN+AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE.A....")
+r_and_d_credit <- r_and_d_credit[c(4,6,7,8,9)]
+colnames(r_and_d_credit) <- c("r_and_d_credit","profit","ISO_3","size","year")
 r_and_d_credit$year <- as.numeric(r_and_d_credit$year)
 r_and_d_credit$r_and_d_credit <- as.numeric(r_and_d_credit$r_and_d_credit)
 
 r_and_d_credit <- spread(r_and_d_credit,year,r_and_d_credit)
 
-r_and_d_credit2013 <- aggregate(r_and_d_credit$`2013`,by=list(r_and_d_credit$country),FUN=mean)
-r_and_d_credit2014 <- aggregate(r_and_d_credit$`2014`,by=list(r_and_d_credit$country),FUN=mean)
-r_and_d_credit2015 <- aggregate(r_and_d_credit$`2015`,by=list(r_and_d_credit$country),FUN=mean)
-r_and_d_credit2016 <- aggregate(r_and_d_credit$`2016`,by=list(r_and_d_credit$country),FUN=mean)
-r_and_d_credit2017 <- aggregate(r_and_d_credit$`2017`,by=list(r_and_d_credit$country),FUN=mean)
-r_and_d_credit2018 <- aggregate(r_and_d_credit$`2018`,by=list(r_and_d_credit$country),FUN=mean)
-r_and_d_credit2019 <- aggregate(r_and_d_credit$`2019`,by=list(r_and_d_credit$country),FUN=mean)
-r_and_d_credit2020 <- aggregate(r_and_d_credit$`2020`,by=list(r_and_d_credit$country),FUN=mean)
-r_and_d_credit2021 <- aggregate(r_and_d_credit$`2021`,by=list(r_and_d_credit$country),FUN=mean)
-r_and_d_credit2022 <- aggregate(r_and_d_credit$`2022`,by=list(r_and_d_credit$country),FUN=mean)
+r_and_d_credit2013 <- aggregate(r_and_d_credit$`2013`,by=list(r_and_d_credit$ISO_3),FUN=mean)
+r_and_d_credit2014 <- aggregate(r_and_d_credit$`2014`,by=list(r_and_d_credit$ISO_3),FUN=mean)
+r_and_d_credit2015 <- aggregate(r_and_d_credit$`2015`,by=list(r_and_d_credit$ISO_3),FUN=mean)
+r_and_d_credit2016 <- aggregate(r_and_d_credit$`2016`,by=list(r_and_d_credit$ISO_3),FUN=mean)
+r_and_d_credit2017 <- aggregate(r_and_d_credit$`2017`,by=list(r_and_d_credit$ISO_3),FUN=mean)
+r_and_d_credit2018 <- aggregate(r_and_d_credit$`2018`,by=list(r_and_d_credit$ISO_3),FUN=mean)
+r_and_d_credit2019 <- aggregate(r_and_d_credit$`2019`,by=list(r_and_d_credit$ISO_3),FUN=mean)
+r_and_d_credit2020 <- aggregate(r_and_d_credit$`2020`,by=list(r_and_d_credit$ISO_3),FUN=mean)
+r_and_d_credit2021 <- aggregate(r_and_d_credit$`2021`,by=list(r_and_d_credit$ISO_3),FUN=mean)
+r_and_d_credit2022 <- aggregate(r_and_d_credit$`2022`,by=list(r_and_d_credit$ISO_3),FUN=mean)
+r_and_d_credit2023 <- aggregate(r_and_d_credit$`2023`,by=list(r_and_d_credit$ISO_3),FUN=mean)
 
-countries <- r_and_d_credit2022$Group.1
+ISO_3 <- r_and_d_credit2022$Group.1
 
-r_and_d_credit <- data.frame(countries, r_and_d_credit2013$x, r_and_d_credit2014$x, r_and_d_credit2015$x,
-                             r_and_d_credit2016$x, r_and_d_credit2017$x, r_and_d_credit2018$x, r_and_d_credit2019$x, r_and_d_credit2020$x, r_and_d_credit2021$x, r_and_d_credit2022$x)
+r_and_d_credit <- data.frame(ISO_3, r_and_d_credit2013$x, r_and_d_credit2014$x, r_and_d_credit2015$x,
+                             r_and_d_credit2016$x, r_and_d_credit2017$x, r_and_d_credit2018$x, r_and_d_credit2019$x, r_and_d_credit2020$x, r_and_d_credit2021$x, r_and_d_credit2022$x, r_and_d_credit2023$x)
 
-colnames(r_and_d_credit) <- c("country","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022")
-r_and_d_credit <- gather(r_and_d_credit,"year","r_and_d_credit","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022")
+colnames(r_and_d_credit) <- c("ISO_3","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023")
+r_and_d_credit <- gather(r_and_d_credit,"year","r_and_d_credit","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023")
 r_and_d_credit$year <- as.numeric(r_and_d_credit$year)
 r_and_d_credit$year <- r_and_d_credit$year+1
 
+write.csv(r_and_d_credit, file = paste(intermediate_outputs,"oecd_r_and_d_credit.csv",sep=""), row.names = FALSE)
+
 
 #top_income_rate####
-#Table_I7#
-#dataset<-("Table_I7")
-#dstruc<-get_data_structure(dataset)
-#str(dstruc, max.level = 1)
-#dstruc$VAR_DESC
-#dstruc$CL_TABLE_I7_TAX
 
-top_income_rate<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("TOP_TRATE")), start_time = 2013)
-top_income_rate<-top_income_rate[c(1,2,6)]
-colnames(top_income_rate)<-c("country","top_income_rate","year")
+#top_income_rate<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("TOP_TRATE")), start_time = 2013)
+#top_income_rate<-top_income_rate[c(1,2,6)]
+#colnames(top_income_rate)<-c("country","top_income_rate","year")
+
+top_income_rate<-get_dataset("OECD.CTP.TPS,DSD_TAX_PIT@DF_PIT_TOP_EARN_THRESH,1.0", filter=".A..TS_PIT..S13......")
+top_income_rate<-top_income_rate[c(10,11,14)]
+colnames(top_income_rate)<-c("top_income_rate","ISO_3","year")
 
 top_income_rate$year<-as.numeric(top_income_rate$year)
 
@@ -89,100 +87,107 @@ top_income_rate$year<-as.numeric(top_income_rate$year)
 
 top_income_rate$top_income_rate<-as.numeric(top_income_rate$top_income_rate)
 
+#top_income_rate$year<-top_income_rate$year+1
 
-top_income_rate$year<-top_income_rate$year+1
 top_income_rate$top_income_rate<-top_income_rate$top_income_rate/100
 
 #all_in_rate
-all_in_rate<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("PER_ARATE")), start_time = 2013)
-all_in_rate<-all_in_rate[c(1,2,6)]
-colnames(all_in_rate)<-c("country","all_in_rate","year")
+
+#all_in_rate<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("PER_ARATE")), start_time = 2013)
+#all_in_rate<-all_in_rate[c(1,2,6)]
+#colnames(all_in_rate)<-c("country","all_in_rate","year")
+
+all_in_rate<-get_dataset("OECD.CTP.TPS,DSD_TAX_PIT@DF_PIT_TOP_EARN_THRESH,1.0", filter=".A..PIT_SSC_R_TH..S13......")
+all_in_rate<-all_in_rate[c(10,11,14)]
+colnames(all_in_rate)<-c("all_in_rate","ISO_3","year")
+
 
 all_in_rate$year<-as.numeric(all_in_rate$year)
 all_in_rate$all_in_rate<-as.numeric(all_in_rate$all_in_rate)
 
-all_in_rate$year<-all_in_rate$year+1
+#all_in_rate$year<-all_in_rate$year+1
 all_in_rate$all_in_rate<-all_in_rate$all_in_rate/100
 
+#Create current year from prior year values
+top_rate_current <- subset(top_income_rate, year == 2023)
+top_rate_current$year <- 2024
+top_income_rate <- rbind(top_income_rate, top_rate_current)
+
+all_in_current <- subset(all_in_rate, year == 2023)
+all_in_current$year <- 2024
+all_in_rate <- rbind(all_in_rate, all_in_current)
 
 #take the max of top rate or all-in rate
-top_income_rate<-merge(top_income_rate,all_in_rate, by=c("country","year"))
+top_income_rate<-merge(top_income_rate,all_in_rate, by=c("ISO_3","year"))
 top_income_rate$top_income_rate<-pmax(top_income_rate$top_income_rate,top_income_rate$all_in_rate)
 
-#threshold_top_income_rate####
-#Table_I7#
-#dataset<-("Table_I7")
-#dstruc<-get_data_structure(dataset)
-#str(dstruc, max.level = 1)
-#dstruc$VAR_DESC
-#dstruc$CL_TABLE_I7_TAX
+#Missing Netherlands
+missing_netherlands <- c("NLD",2014,0.52,0.526)
+top_income_rate <- rbind(top_income_rate, missing_netherlands)
 
-threshold<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("THRESHOLD")), start_time = 2013)
-threshold<-threshold[c(1,2,6)]
-colnames(threshold)<-c("country","threshold_top_income_rate","year")
+#threshold_top_income_rate####
+
+#threshold<-get_dataset("Table_I7",filter= list(c(oecd_countries),c("THRESHOLD")), start_time = 2013)
+#threshold<-threshold[c(1,2,6)]
+
+threshold<-get_dataset("OECD.CTP.TPS,DSD_TAX_PIT@DF_PIT_TOP_EARN_THRESH,1.0", filter=".A..TS_PIT_TH..S13......")
+threshold<-threshold[c(10,11,14)]
+colnames(threshold)<-c("threshold_top_income_rate","ISO_3","year")
+
 threshold$year<-as.numeric(threshold$year)
 threshold$year<-threshold$year+1
 
-#hard code Colombia 39% top rate
+#Missing Netherlands
+missing_netherlands <- c(1.179464,"NLD",2014)
+threshold <- rbind(threshold, missing_netherlands)
+missing_netherlands <- c(1.221825,"NLD",2015)
+threshold <- rbind(threshold, missing_netherlands)
 
 #tax_wedge####
 
 #martax_wedge
-#Table_I4#
-#dataset<-("Table_I4")
-#dstruc<-get_data_structure(dataset)
-#str(dstruc, max.level = 1)
-#dstruc$VAR_DESC
-#dstruc$INCOMEAW
-#dstruc$CL_TABLE_I4_MARGRATES
 
-martax_wedge<-get_dataset("Table_I4",filter= list(c(oecd_countries),c("67","100","133","167"),c("TOT_TAX_WEDGE")), start_time = 2013)
+martax_wedge<-get_dataset("OECD.CTP.TPS,DSD_TAX_WAGES_COMP@DF_TW_COMP,",".MR_TW_PE.PT_COS_LB.S_C0.AW167+AW67+AW100._Z.A")
 
-martax_wedge<-martax_wedge[c(1,2,4,6)]
-colnames(martax_wedge)<-c("country","income","martax_wedge","year")
+martax_wedge<-martax_wedge[c(5,9,10,11)]
+colnames(martax_wedge)<-c("income","martax_wedge","ISO_3","year")
 martax_wedge$martax_wedge<-as.numeric(martax_wedge$martax_wedge)
 martax_wedge<-spread(martax_wedge,year,martax_wedge)
 
-martax_wedge2013<-aggregate(martax_wedge$`2013`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2014<-aggregate(martax_wedge$`2014`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2015<-aggregate(martax_wedge$`2015`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2016<-aggregate(martax_wedge$`2016`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2017<-aggregate(martax_wedge$`2017`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2018<-aggregate(martax_wedge$`2018`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2019<-aggregate(martax_wedge$`2019`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2020<-aggregate(martax_wedge$`2020`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2021<-aggregate(martax_wedge$`2021`,by=list(martax_wedge$country),FUN=mean)
-martax_wedge2022<-aggregate(martax_wedge$`2022`,by=list(martax_wedge$country),FUN=mean)
-
+martax_wedge2013<-aggregate(martax_wedge$`2013`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2014<-aggregate(martax_wedge$`2014`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2015<-aggregate(martax_wedge$`2015`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2016<-aggregate(martax_wedge$`2016`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2017<-aggregate(martax_wedge$`2017`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2018<-aggregate(martax_wedge$`2018`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2019<-aggregate(martax_wedge$`2019`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2020<-aggregate(martax_wedge$`2020`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2021<-aggregate(martax_wedge$`2021`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2022<-aggregate(martax_wedge$`2022`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2023<-aggregate(martax_wedge$`2023`,by=list(martax_wedge$ISO_3),FUN=mean)
 
 #avgtax_wedge
-#Table_I5#
-#dataset<-("Table_I5")
-#dstruc<-get_data_structure(dataset)
-#str(dstruc, max.level = 1)
-#dstruc$VAR_DESC
-#dstruc$INCOMEAW
-#dstruc$CL_TABLE_I4_MARGRATES
 
-avgtax_wedge<-get_dataset("Table_I5",filter= list(c(oecd_countries),c("67","100","133","167"),c("TOT_TAX_WEDGE")), start_time = 2013)
+avgtax_wedge<-get_dataset("OECD.CTP.TPS,DSD_TAX_WAGES_COMP@DF_TW_COMP,",".AV_TW.PT_COS_LB.S_C0.AW167+AW67+AW100._Z.A")
 
-avgtax_wedge<-avgtax_wedge[c(2,3,4,6)]
-colnames(avgtax_wedge)<-c("country","income","avgtax_wedge","year")
+avgtax_wedge<-avgtax_wedge[c(5,9,10,11)]
+colnames(avgtax_wedge)<-c("income","avgtax_wedge","ISO_3","year")
 avgtax_wedge$avgtax_wedge<-as.numeric(avgtax_wedge$avgtax_wedge)
 
 avgtax_wedge<-spread(avgtax_wedge,year,avgtax_wedge)
 
-avgtax_wedge2013<-aggregate(avgtax_wedge$`2013`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2014<-aggregate(avgtax_wedge$`2014`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2015<-aggregate(avgtax_wedge$`2015`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2016<-aggregate(avgtax_wedge$`2016`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2017<-aggregate(avgtax_wedge$`2017`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2018<-aggregate(avgtax_wedge$`2018`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2019<-aggregate(avgtax_wedge$`2019`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2020<-aggregate(avgtax_wedge$`2020`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2021<-aggregate(avgtax_wedge$`2021`,by=list(avgtax_wedge$country),FUN=mean)
-avgtax_wedge2022<-aggregate(avgtax_wedge$`2022`,by=list(avgtax_wedge$country),FUN=mean)
-
+avgtax_wedge2013<-aggregate(avgtax_wedge$`2013`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2014<-aggregate(avgtax_wedge$`2014`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2015<-aggregate(avgtax_wedge$`2015`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2016<-aggregate(avgtax_wedge$`2016`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2017<-aggregate(avgtax_wedge$`2017`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2018<-aggregate(avgtax_wedge$`2018`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2019<-aggregate(avgtax_wedge$`2019`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2020<-aggregate(avgtax_wedge$`2020`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2021<-aggregate(avgtax_wedge$`2021`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2022<-aggregate(avgtax_wedge$`2022`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2022<-aggregate(avgtax_wedge$`2022`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2023<-aggregate(avgtax_wedge$`2023`,by=list(avgtax_wedge$ISO_3),FUN=mean)
 
 countries<-avgtax_wedge2020$Group.1
 
@@ -196,42 +201,44 @@ tax_wedge2019<-martax_wedge2019$x/avgtax_wedge2019$x
 tax_wedge2020<-martax_wedge2020$x/avgtax_wedge2020$x
 tax_wedge2021<-martax_wedge2021$x/avgtax_wedge2021$x # Previously: tax_wedge2021<-martax_wedge2020$x/avgtax_wedge2021$x
 tax_wedge2022<-martax_wedge2022$x/avgtax_wedge2022$x
+tax_wedge2023<-martax_wedge2023$x/avgtax_wedge2023$x
 
 
-tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,tax_wedge2016,tax_wedge2017,tax_wedge2018,tax_wedge2019,tax_wedge2020,tax_wedge2021,tax_wedge2022)
+tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,tax_wedge2016,tax_wedge2017,tax_wedge2018,tax_wedge2019,tax_wedge2020,tax_wedge2021,tax_wedge2022, tax_wedge2023)
 
-colnames(tax_wedge)<-c("country","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022")
-tax_wedge<-gather(tax_wedge,"year","tax_wedge","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022")
+colnames(tax_wedge)<-c("ISO_3","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023")
+tax_wedge<-gather(tax_wedge,"year","tax_wedge","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023")
 tax_wedge$year<-as.numeric(tax_wedge$year)
 tax_wedge$year<-tax_wedge$year+1
 
-tax_wedge[c('tax_wedge')][tax_wedge$country == "COL" & tax_wedge$year >=2014,] <- 0
+tax_wedge[c('tax_wedge')][tax_wedge$ISO_3 == "COL" & tax_wedge$year >=2014,] <- 0
 
-
+write.csv(tax_wedge, file = paste(intermediate_outputs,"oecd_taxwedge.csv",sep=""), row.names = FALSE)
 
 #dividends_rate####
-#Table_II4#
-#dataset<-("Table_II4")
-#dstruc<-get_data_structure(dataset)
-#str(dstruc, max.level = 1)
-#dstruc$VAR_DESC
-#dstruc$CL_TABLE_II4_STAT_DIV_TAX
 
-dividends_rate<-get_dataset("Table_II4",filter= list(c(oecd_countries),c("NET_PERS_TAX")), start_time = 2014)
-dividends_rate<-dividends_rate[c(1,2,5)]
-colnames(dividends_rate)<-c("country","dividends_rate","year")
+#dividends_rate <- get_dataset("OECD,DF_TABLE_II4,1.0","")
+
+#dividends_rate<-get_dataset("Table_II4",filter= list(c(oecd_countries),c("NET_PERS_TAX")), start_time = 2014)
+#dividends_rate<-dividends_rate[c(1,2,5)]
+
+#dividends_rate<-read_csv(paste(source_data,"oecd_table_ii4_overall-dividends-rate.csv",sep=""))
+#dividends_rate<-dividends_rate[c(5,9,11)]
+#colnames(dividends_rate)<-c("ISO_3","year","dividends_rate")
+
+dividends_rate<-get_dataset("OECD.CTP.TPS,DSD_TAX_CIT@DF_CIT_DIVD_INCOME,1.0", filter="CHE+TUR+GBR+USA+SVK+SVN+ESP+SWE+MEX+NLD+NZL+NOR+POL+PRT+LVA+LTU+LUX+ISL+IRL+ISR+ITA+JPN+KOR+FIN+DNK+EST+FRA+DEU+GRC+HUN+AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE.A.NPT.....")
+dividends_rate<-dividends_rate[c(5,7,11)]
+colnames(dividends_rate)<-c("dividends_rate","ISO_3","year")
 
 dividends_rate$dividends_rate<-as.numeric(dividends_rate$dividends_rate)
 dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
 
-#Colombia: 2023 data not available -> use 2022 data
-missing_colombia <- subset(dividends_rate, subset = country == "COL" & year == "2022")
-missing_colombia[missing_colombia$year == 2022, "year"] <- "2023"
-missing_colombia$year<-as.numeric(missing_colombia$year)
-
-#combine
-dividends_rate<-rbind(dividends_rate,missing_colombia)
-
+#Missing Slovakia
+missing_slovakia <- c(0.07,"SVK",2024)
+dividends_rate <- rbind(dividends_rate, missing_slovakia)
+ 
+dividends_rate<-subset(dividends_rate,year>2013)
+## OLD API: Corporate and personal other revenue ##
 
 #corporate_other_rev####
 taxes<-c("1300","6100")
@@ -252,22 +259,28 @@ corporate_other_rev<-subset(corporate_other_rev,country%in%oecd_countries)
 corporate_other_rev$corporate_other_rev<-as.numeric(corporate_other_rev$corporate_other_rev)
 corporate_other_rev$year<-as.numeric(corporate_other_rev$year)
 
-#Add in Australia, Greece, and Japan 2020 numbers
-#Australia: 2021 data not available -> use 2020 data
-missing_australia <- subset(corporate_other_rev, subset = country == "AUS" & year == "2020")
-missing_australia[missing_australia$year == 2020, "year"] <- 2021
+#Add in Australia, Greece, and Japan 2021 numbers
+#Australia: 2022 data not available -> use 2021 data
+missing_australia <- subset(corporate_other_rev, subset = country == "AUS" & year == "2021")
+missing_australia[missing_australia$year == 2021, "year"] <- 2022
 
-#Japan: 2021 data not available -> use 2020 data
-missing_japan <- subset(corporate_other_rev, subset = country == "JPN" & year == "2020")
-missing_japan[missing_japan$year == 2020, "year"] <- 2021
+#Greece: 2022 data not available -> use 2021 data
+missing_greece <- subset(corporate_other_rev, subset = country == "GRC" & year == "2021")
+missing_greece[missing_greece$year == 2021, "year"] <- 2022
 
-#Greece: 2021 data not available -> use 2020 data
-missing_greece <- subset(corporate_other_rev, subset = country == "GRC" & year == "2020")
-missing_greece[missing_greece$year == 2020, "year"] <- 2021
+#Japan: 2022 data not available -> use 2021 data
+missing_japan <- subset(corporate_other_rev, subset = country == "JPN" & year == "2021")
+missing_japan[missing_japan$year == 2021, "year"] <- 2022
 
 #combine
-corporate_other_rev<-rbind(corporate_other_rev,missing_australia,missing_japan,missing_greece)
+corporate_other_rev<-rbind(corporate_other_rev,missing_australia,missing_greece)
 corporate_other_rev$year<-corporate_other_rev$year+2
+
+write.csv(corporate_other_rev, file = paste(intermediate_outputs,"oecd_corporate_other_rev.csv",sep=""), row.names = FALSE)
+corporate_other_rev<-read.csv(paste(intermediate_outputs,"oecd_corporate_other_rev.csv",sep=""))
+
+corporate_other_rev <- corporate_other_rev %>%
+  rename(ISO_3 = country)
 
 #personal_other_rev####
 taxes<-c("2400")
@@ -280,38 +293,50 @@ personal_other_rev<-subset(personal_other_rev,country%in%oecd_countries)
 personal_other_rev$personal_other_rev<-as.numeric(personal_other_rev$personal_other_rev)
 personal_other_rev$year<-as.numeric(personal_other_rev$year)
 
-#Add in Australia, Greece, Hungary, and Japan 2020 numbers
-#Australia: 2020 data not available -> use 2020 data
-missing_australia <- subset(personal_other_rev, subset = country == "AUS" & year == "2020")
-missing_australia[missing_australia$year == 2020, "year"] <- 2021
+#Add in Australia, Greece, Hungary, and Japan 2022 numbers
+#Australia: 2022 data not available -> use 2021 data
+missing_australia <- subset(personal_other_rev, subset = country == "AUS" & year == "2021")
+missing_australia[missing_australia$year == 2021, "year"] <- 2022
 
-#Hungary: 2020 data not available -> use 2020 data
-missing_hungary <- subset(personal_other_rev, subset = country == "HUN" & year == "2020")
-missing_hungary[missing_hungary$year == 2020, "year"] <- 2021
+#Hungary: 2022 data not available -> use 2021 data
+missing_hungary <- subset(personal_other_rev, subset = country == "HUN" & year == "2021")
+missing_hungary[missing_hungary$year == 2021, "year"] <- 2022
 
-#Japan: 2020 data not available -> use 2020 data
-missing_japan <- subset(personal_other_rev, subset = country == "JPN" & year == "2020")
-missing_japan[missing_japan$year == 2020, "year"] <- 2021
+#Japan: 2022 data not available -> use 2021 data
+missing_japan <- subset(personal_other_rev, subset = country == "JPN" & year == "2021")
+missing_japan[missing_japan$year == 2021, "year"] <- 2022
 
-#Greece: 2020 data not available -> use 2020 data
-missing_greece <- subset(personal_other_rev, subset = country == "GRC" & year == "2020")
-missing_greece[missing_greece$year == 2020, "year"] <- 2021
+#Greece: 2022 data not available -> use 2021 data
+missing_greece <- subset(personal_other_rev, subset = country == "GRC" & year == "2021")
+missing_greece[missing_greece$year == 2021, "year"] <- 2022
+
+#Poland: 2022 data not available -> use 2021 data
+missing_poland <- subset(personal_other_rev, subset = country == "POL" & year == "2021")
+missing_poland[missing_poland$year == 2021, "year"] <- 2022
 
 #combine
-personal_other_rev<-rbind(personal_other_rev,missing_australia,missing_japan,missing_hungary,missing_greece)
+personal_other_rev<-rbind(personal_other_rev,missing_australia,missing_japan,missing_hungary,missing_greece,missing_poland)
 personal_other_rev$year<-personal_other_rev$year+2
+
+write.csv(personal_other_rev, file = paste(intermediate_outputs,"oecd_personal_other_rev.csv",sep=""), row.names = FALSE)
+personal_other_rev<-read.csv(paste(intermediate_outputs,"oecd_personal_other_rev.csv",sep=""))
+
+personal_other_rev <- personal_other_rev %>%
+  rename(ISO_3 = country)
 
 #End OECD data scraper#
 
 #output####
 
-OECDvars_data <- merge(corporate_rate, r_and_d_credit, by=c("country","year"))
-OECDvars_data <- merge(OECDvars_data, top_income_rate, by=c("country","year"))
-OECDvars_data <- merge(OECDvars_data, threshold, by=c("country","year"))
-OECDvars_data <- merge(OECDvars_data, tax_wedge, by=c("country","year"))
-OECDvars_data <- merge(OECDvars_data, dividends_rate, by=c("country","year"))
-OECDvars_data <- merge(OECDvars_data, corporate_other_rev, by=c("country","year"))
-OECDvars_data <- merge(OECDvars_data, personal_other_rev, by=c("country","year"))
+# ISO_3 and country merge
+
+OECDvars_data <- merge(corporate_rate, r_and_d_credit, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, top_income_rate, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, threshold, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, tax_wedge, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, dividends_rate, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, corporate_other_rev, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, personal_other_rev, by=c("ISO_3","year"))
 
 #drop all_in_rate
 OECDvars_data <- OECDvars_data[-c(6)]

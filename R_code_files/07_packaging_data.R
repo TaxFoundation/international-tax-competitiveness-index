@@ -37,10 +37,13 @@ index_data2022$year<-2022
 index_data2023<-read_csv(paste(source_data,"index_data_2023.csv",sep=""))
 index_data2023$year<-2023
 
+index_data2024<-read_csv(paste(source_data,"index_data_2024.csv",sep=""))
+index_data2024$year<-2024
+
 index_data_old<-rbind(index_data2014,index_data2015,index_data2016,
                       index_data2017,index_data2018,index_data2019,
                       index_data2020,index_data2021, index_data2022,
-                      index_data2023)
+                      index_data2023, index_data2024)
 
 #Join PwC data with index_data_property_tax_variables####
 #This has been disabled
@@ -94,7 +97,7 @@ index_data_property_tax_variables<-merge(index_data_vat_variables,property_tax,b
 
 
 #Join CFC rules data####
-cfc_rules<-cfc_rules[-c(5:8)]
+cfc_rules<-cfc_rules[-c(5:7)]
 
 cfc_rules_list<-c("cfc_rules")
 index_data_property_tax_variables<-index_data_property_tax_variables[,!names(index_data_property_tax_variables) %in% cfc_rules_list]
@@ -103,6 +106,10 @@ index_data_cfc_variables<-merge(index_data_property_tax_variables,cfc_rules,by=c
 
 
 index_data_final<-index_data_cfc_variables
+
+#Delete capital gains index column####
+index_data_final<-index_data_final[-c(15,16)]
+
 names(index_data_final)
 
 #Reorder columns ####
@@ -121,7 +128,7 @@ index_data_final<-index_data_final[c("ISO_2","ISO_3","country","year",
                                    "dividends_exemption","capital_gains_exemption","country_limitations",
                                    "dividends_withholding_tax","interest_withholding_tax",
                                    "royalties_withholding_tax","tax_treaties","cfc_rules",
-                                   "thin_capitalization_rules")]
+                                   "thin_capitalization_rules","minimum_tax")]
 
 
 write.csv(subset(index_data_final,index_data_final$year==2014),file = paste(final_data,"final_index_data_2014.csv",sep=""),row.names=F)
@@ -134,3 +141,4 @@ write.csv(subset(index_data_final,index_data_final$year==2020),file = paste(fina
 write.csv(subset(index_data_final,index_data_final$year==2021),file = paste(final_data,"final_index_data_2021.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2022),file = paste(final_data,"final_index_data_2022.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2023),file = paste(final_data,"final_index_data_2023.csv",sep=""),row.names=F)
+write.csv(subset(index_data_final,index_data_final$year==2024),file = paste(final_data,"final_index_data_2024.csv",sep=""),row.names=F)

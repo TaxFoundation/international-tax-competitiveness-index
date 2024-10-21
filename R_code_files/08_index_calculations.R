@@ -21,28 +21,30 @@ raw_data_2021 <- read_csv(paste(final_data,"final_index_data_2021.csv",sep=""))
 raw_data_2022 <- read_csv(paste(final_data,"final_index_data_2022.csv",sep=""))
 #2023
 raw_data_2023 <- read_csv(paste(final_data,"final_index_data_2023.csv",sep=""))
-
+#2024
+raw_data_2024 <- read_csv(paste(final_data,"final_index_data_2024.csv",sep=""))
 
 #Combined Data####
 raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,
                 raw_data_2017,raw_data_2018,raw_data_2019,
                 raw_data_2020,raw_data_2021,raw_data_2022,
-                raw_data_2023)
-#raw_data<-rbind(raw_data_2022,raw_data_2023)
+                raw_data_2023,raw_data_2024)
 
 raw_data$loss_carryback<-as.numeric(raw_data$loss_carryback)
 raw_data$patent_box<-as.numeric(raw_data$patent_box)
 raw_data$r_and_d_credit<-as.numeric(raw_data$r_and_d_credit)
 raw_data$digital_services_tax<-as.numeric(raw_data$digital_services_tax)
+raw_data$corporate_other_rev <- abs(raw_data$corporate_other_rev)
+raw_data$personal_other_rev <- abs(raw_data$personal_other_rev)
 raw_data$net_wealth<-as.numeric(raw_data$net_wealth)
 raw_data$estate_or_inheritance_tax<-as.numeric(raw_data$estate_or_inheritance_tax)
 raw_data$transfer_tax<-as.numeric(raw_data$transfer_tax)
 raw_data$asset_tax<-as.numeric(raw_data$asset_tax)
 raw_data$capital_duties<-as.numeric(raw_data$capital_duties)
 raw_data$financial_transaction_tax<-as.numeric(raw_data$financial_transaction_tax)
-#raw_data$index_capital_gains<-as.numeric(raw_data$index_capital_gains)
 raw_data$tax_treaties<-as.numeric(raw_data$tax_treaties)
 raw_data$country_limitations<-as.numeric(raw_data$country_limitations)
+raw_data$minimum_tax<-as.numeric(raw_data$minimum_tax)
 
 
 #Order variables for easier working
@@ -51,7 +53,7 @@ raw_data<-raw_data[c("ISO_2","ISO_3","country","year",
                  "top_income_rate","threshold_top_income_rate","tax_wedge","personal_surtax","personal_other_rev","capital_gains_rate","dividends_rate",
                  "vat_rate","vat_threshold","vat_base",
                  "property_tax", "property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax",
-                 "dividends_exemption","capital_gains_exemption","country_limitations","dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties","cfc_rules","thin_capitalization_rules")]
+                 "dividends_exemption","capital_gains_exemption","country_limitations","dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax","tax_treaties","cfc_rules","thin_capitalization_rules",'minimum_tax')]
 
 #alternate_ Min-Max Test
 normalize <-function(x){
@@ -63,13 +65,13 @@ normalize <-function(x){
 #standardize all the scores into a new dataframe called "zscores" (this does this by year)
 zscores<-data.frame(country=raw_data$country,
                     year=raw_data$year,
-                    ddply(raw_data[4:45],
+                    ddply(raw_data[4:46],
                           .(year),
                           scale)
 )
 alternate_scores<-data.frame(country=raw_data$country,
                       year=raw_data$year,
-                      ddply(raw_data[4:45],
+                      ddply(raw_data[4:46],
                             .(year),
                             normalize)
 )
@@ -121,7 +123,7 @@ flip <- c("corporate_rate", "patent_box", "r_and_d_credit", "digital_services_ta
           "top_income_rate", "threshold_top_income_rate", "tax_wedge", "personal_surtax", "personal_other_rev", "capital_gains_rate", "dividends_rate", 
           "vat_rate", "vat_threshold", 
           "property_tax_collections", "net_wealth", "estate_or_inheritance_tax", "transfer_tax", "asset_tax", "capital_duties", "financial_transaction_tax", 
-          "country_limitations", "dividends_withholding_tax", "interest_withholding_tax", "royalties_withholding_tax", "cfc_rules", "thin_capitalization_rules")
+          "country_limitations", "dividends_withholding_tax", "interest_withholding_tax", "royalties_withholding_tax", "cfc_rules", "thin_capitalization_rules","minimum_tax")
 
 
 flipfunc <- function(x) {
@@ -228,7 +230,7 @@ capital_taxes_index<-c("transfer_tax","asset_tax","capital_duties","financial_tr
 territorial_index<-c("dividends_exemption","capital_gains_exemption","country_limitations")
 withholding_index<-c("dividends_withholding_tax","interest_withholding_tax","royalties_withholding_tax")
 tax_treaties_index<-c("tax_treaties")
-international_regulations_index<-c("cfc_rules","thin_capitalization_rules")
+international_regulations_index<-c("cfc_rules","thin_capitalization_rules","minimum_tax")
 
 subcategories<-data.frame(country=zscores$country,
                           year=zscores$year)
@@ -247,6 +249,7 @@ subcategories$income_tax_complexity<-apply((zscores[income_tax_complexity_index]
 subcategories$territorial<-apply((zscores[territorial_index]*(1/length(territorial_index))),1,sum)
 subcategories$withholding_taxes<-apply((zscores[withholding_index]*(1/length(withholding_index))),1,sum)
 subcategories$tax_treaties<-apply((zscores[tax_treaties_index]*(1/length(tax_treaties_index))),1,sum)
+
 subcategories$international_regulations<-apply((zscores[international_regulations_index]*(1/length(international_regulations_index))),1,sum)
 
 #alternate_ Scoring Technique
@@ -291,7 +294,7 @@ categories$income<-apply((subcategories[income_index]*(1/length(income_index))),
 categories$cross_border<-apply((subcategories[cross_border_index]*(1/length(cross_border_index))),1,sum)
 categories$final<-apply((categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
-write.csv(subset(categories,categories$year==2023),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
+write.csv(subset(categories,categories$year==2024),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
 
 
 
@@ -340,7 +343,7 @@ rank1<-function(x){
   ranks<-rank(-x,ties.method= "min")
   return(ranks)
 }
-write.csv(subset(subcategories,subcategories$year==2023),file = paste(final_outputs,"subcategories_z_score.csv",sep=""),row.names=F)
+write.csv(subset(subcategories,subcategories$year==2024),file = paste(final_outputs,"subcategories_z_score.csv",sep=""),row.names=F)
 
 
 #Subcategory Scores####
@@ -501,6 +504,8 @@ final_2020<-final_categories[final_categories$year==2020,]
 final_2021<-final_categories[final_categories$year==2021,]
 final_2022<-final_categories[final_categories$year==2022,]
 final_2023<-final_categories[final_categories$year==2023,]
+final_2024<-final_categories[final_categories$year==2024,]
+
 
 #Data Check####
 
@@ -512,7 +517,7 @@ check<-raw_data[raw_data$country == "Austria",]
 final_categories<-final_categories[order(final_categories$country,final_categories$year),]
 alternate_final_categories<-alternate_final_categories[order(alternate_final_categories$country,alternate_final_categories$year),]
 
-cor(alternate_final_categories$final[alternate_final_categories$year == 2023],final_categories$final[final_categories$year == 2023])
+cor(alternate_final_categories$final[alternate_final_categories$year == 2024],final_categories$final[final_categories$year == 2024])
 
 
 #not really. .968 correlation coefficient between the two
@@ -523,8 +528,8 @@ cor(alternate_final_categories$final[alternate_final_categories$year == 2023],fi
 
 #normal scoring techniques:
 
-cortest1<-final_categories[final_categories$year == 2022,]
-subcortest1<-final_subcategories[final_subcategories$year == 2022,]
+cortest1<-final_categories[final_categories$year == 2023,]
+subcortest1<-final_subcategories[final_subcategories$year == 2023,]
 subcortest1<-cbind(subcortest1,cortest1[14])
 cor(cortest1[c(4,6,8,10,12,14)])
 categories_correl<-data.frame(cor(cortest1[c(4,6,8,10,12,14)]))
@@ -539,7 +544,7 @@ write.csv(subcategories_correl,paste(final_outputs,"subcategories_correlation.cs
 #calc.relimp(importance, rela= TRUE)
 #alternative scoring techniques:
 
-cortest2<-alternate_final_categories[alternate_final_categories$year == 2023,]
+cortest2<-alternate_final_categories[alternate_final_categories$year == 2024,]
 cor(cortest2[c(4,6,8,10,12,14)])     
 
 
@@ -693,7 +698,7 @@ write.csv(United_States, paste(country_outputs, "United States.csv", sep=""), ro
 #Changes<-cbind(M[,1,drop=FALSE],Changes)
 
 #The following file is used for country profile pages; do not edit
-write.csv(raw_data,paste(final_outputs,"raw_data_2023.csv",sep=""),row.names=F)
+write.csv(raw_data,paste(final_outputs,"raw_data_2024.csv",sep=""),row.names=F)
 
 
 write.csv(final_2017, file = paste(final_outputs,"data_2017_run.csv",sep=""),row.names=F)
@@ -703,10 +708,11 @@ write.csv(final_2020, file = paste(final_outputs,"data_2020_run.csv",sep=""),row
 write.csv(final_2021, file = paste(final_outputs,"data_2021_run.csv",sep=""),row.names=F)
 write.csv(final_2022, file = paste(final_outputs,"data_2022_run.csv",sep=""),row.names=F)
 write.csv(final_2023, file = paste(final_outputs,"data_2023_run.csv",sep=""),row.names=F)
+write.csv(final_2024, file = paste(final_outputs,"data_2024_run.csv",sep=""),row.names=F)
 
 
 #The following file is used for country profile pages; do not edit
-final_subcategories_2023<-subset(final_subcategories,year==2023)
-write.csv(final_subcategories_2023,paste(final_outputs,"subcategories_2023.csv",sep=""),row.names=F)
+final_subcategories_2024<-subset(final_subcategories,year==2024)
+write.csv(final_subcategories_2024,paste(final_outputs,"subcategories_2024.csv",sep=""),row.names=F)
 
-write.csv(final_categories,paste(final_outputs,"final_categories_2014_2023.csv",sep=""),row.names=F)
+write.csv(final_categories,paste(final_outputs,"final_categories_2014_2024.csv",sep=""),row.names=F)

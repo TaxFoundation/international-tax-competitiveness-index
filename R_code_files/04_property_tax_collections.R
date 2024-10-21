@@ -48,7 +48,14 @@ GFCF_2021<-data.frame(GFCF_2021$X.REF_AREA,GFCF_2021$Obs)
 colnames(GFCF_2021)<-c("ISO_2","year","gross_fixed_capital_formation")
 
 
-GFCF<-rbind(GFCF_2019,GFCF_2020,GFCF_2021)
+GFCF_2022 <- data.frame(CompactDataMethod(databaseID, queryfilter, startdate= "2022-01-01", enddate = "2022-12-31",
+                                          checkquery))
+GFCF_2022<- GFCF_2022[-c(1,3:5)]
+GFCF_2022<-data.frame(GFCF_2022$X.REF_AREA,GFCF_2022$Obs)
+colnames(GFCF_2022)<-c("ISO_2","year","gross_fixed_capital_formation")
+
+
+GFCF<-rbind(GFCF_2019,GFCF_2020,GFCF_2021,GFCF_2022)
 GFCF<-merge(GFCF,iso_country_codes,by="ISO_2")
 GFCF$gross_fixed_capital_formation<-as.numeric(GFCF$gross_fixed_capital_formation)
 
@@ -71,17 +78,25 @@ capital_stock_20<-capital_stock_20[c("country","capital_stock","ISO_3.y","year")
 colnames(capital_stock_20)<-c("country","capital_stock","ISO_3","year")
 
 
-#2020
+#2021
 capital_stock_21<-merge(capital_stock_20,subset(GFCF,GFCF$year==2021),by="country")
 capital_stock_21$year<-"2021"
 capital_stock_21$capital_stock<-(capital_stock_21$capital_stock*(1-.1077))+(capital_stock_21$gross_fixed_capital_formation*(1-(.1077/2)))
 capital_stock_21<-capital_stock_21[c("country","capital_stock","ISO_3.y","year")]
 colnames(capital_stock_21)<-c("country","capital_stock","ISO_3","year")
 
+
+#2022
+capital_stock_22<-merge(capital_stock_20,subset(GFCF,GFCF$year==2022),by="country")
+capital_stock_22$year<-"2022"
+capital_stock_22$capital_stock<-(capital_stock_22$capital_stock*(1-.1077))+(capital_stock_22$gross_fixed_capital_formation*(1-(.1077/2)))
+capital_stock_22<-capital_stock_22[c("country","capital_stock","ISO_3.y","year")]
+colnames(capital_stock_22)<-c("country","capital_stock","ISO_3","year")
+
 #combine
 imf_capital_stock_data<-subset(imf_capital_stock_data,imf_capital_stock_data$year<2019)
 
-imf_capital_stock_data<-rbind(imf_capital_stock_data,capital_stock_19,capital_stock_20,capital_stock_21)
+imf_capital_stock_data<-rbind(imf_capital_stock_data,capital_stock_19,capital_stock_20,capital_stock_21,capital_stock_22)
 
 #property tax revenues####
 #Table_II1#
@@ -101,8 +116,8 @@ colnames(property_tax_revenue) <- c("ISO_3","year","property_tax_collections")
 
 #Missing country/years are simply prior year values
 ISO_3 <- c("AUS","GRC")
-year <- c("2021","2021")
-property_tax_collections <- c("34.471","3.064")
+year <- c("2022","2022")
+property_tax_collections <- c("36.473","3.195")
 missing <- data.frame(ISO_3,year,property_tax_collections)
 property_tax_revenue <- rbind(property_tax_revenue,missing)
 
