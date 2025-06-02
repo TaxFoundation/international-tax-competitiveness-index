@@ -216,27 +216,34 @@ vat_revenue<-rbind(vat_revenue,US_sales_revenue,missing_greece, missing_australi
 #Cutoff
 vat_revenue<-subset(vat_revenue, year >= 2012)
 
+colnames(vat_revenue) <- c("ISO_3","year","vat_revenue")
+vat_revenue<-merge(vat_revenue,iso_country_codes,by="ISO_3")
+
+
 #Final Consumption
-final_consumption <- get_dataset("","")
-  get_dataset("SNA_TABLE1", filter= list(c(oecd_countries),c("P3"),c("C")),start_time = 2012, end_time = 2023)
-final_consumption<-final_consumption[c(1,4,8)]
+final_consumption <- get_dataset("OECD.SDD.NAD,DSD_NAMAIN10@DF_TABLE1_EXPENDITURE,2.0","A.AUS+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+AUT+BEL+CAN+CHL+COL+CRI+CZE.S1M..P3....XDC.V..")
+final_consumption<-final_consumption[c(12,15,10)]
+#relabel
+colnames(final_consumption) <- c("ISO_3","year","final_consumption")
+#Cutoff
+final_consumption<-subset(final_consumption, year >= 2012)
 
 #missing
-#missing_turkey <- subset(final_consumption, subset = LOCATION == "TUR" & Time == "2019")
-#missing_turkey$Time<-2020
+missing_costarica <- subset(final_consumption, subset = ISO_3 == "CRI" & year == "2022")
+missing_costarica$year<-2023
 
 #combine
-#final_consumption<-rbind(final_consumption,missing_turkey)
+final_consumption<-rbind(final_consumption,missing_costarica)
 
-#relabel
-colnames(final_consumption)<-c("country", "year", "final_consumption")
+final_consumption<-merge(final_consumption,iso_country_codes,by="ISO_3")
 
 #turn into billions
 final_consumption$final_consumption<-as.numeric(final_consumption$final_consumption)
 final_consumption$final_consumption<-final_consumption$final_consumption/1000
 
 vat_rates_vrr<-merge(vat_rates_vrr,iso_country_codes,by="country")
-#vat_rates_vrr$year<-vat_rates_vrr$year-2
+vat_rates_vrr<-vat_rates_vrr[c("country","year","vat_rate")]
+final_consumption<-final_consumption[c("country","year","final_consumption")]
 
 #combine rates, revenue, consumption data
 vat_base<-merge(vat_rates_vrr,vat_revenue,by=c("country","year"))
