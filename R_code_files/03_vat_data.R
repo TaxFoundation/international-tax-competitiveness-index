@@ -30,24 +30,20 @@ vat_rates <- melt(vat_rates,id.vars=c("country"))
 colnames(vat_rates) <- c("country", "year", "vat_rate")
 vat_rates$country <- str_remove_all(vat_rates$country, "[*]")
 
+vat_rates$year <- as.numeric(as.character(vat_rates$year))
+
 #Rename Turkey (Türkiye) for consistency
 vat_rates$country[vat_rates$country == "Türkiye"]<-"Turkey"
 
-vat_rates_vrr<-subset(vat_rates,vat_rates$year!="2024")
+vat_rates_vrr<-subset(vat_rates,vat_rates$year<2024)
 #Costa Rica (for VAT Base calculation later)
-vat_rates_vrr$year <- as.numeric(as.character(vat_rates_vrr$year))
 
 vat_rates_vrr$vat_rate[vat_rates_vrr$country == "Costa Rica" & vat_rates_vrr$year < 2020] <- 13
 
-
-vat_rates$year <- as.numeric(as.character(vat_rates$year))
-
 vat_rates<-subset(vat_rates,vat_rates$year>=2014)
-
 
 #Hardcoding Costa Rica before 2020
 vat_rates$vat_rate[vat_rates$country == "Costa Rica" & vat_rates$year < 2020] <- 13
-
 
 #Add 1-year lag to rates
 #vat_rates$year <- as.numeric(as.character(vat_rates$year))+1
@@ -221,19 +217,20 @@ vat_revenue<-merge(vat_revenue,iso_country_codes,by="ISO_3")
 
 
 #Final Consumption
-final_consumption <- get_dataset("OECD.SDD.NAD,DSD_NAMAIN10@DF_TABLE1_EXPENDITURE,2.0","A.AUS+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+AUT+BEL+CAN+CHL+COL+CRI+CZE.S1M..P3....XDC.V..")
+final_consumption <- get_dataset("OECD.SDD.NAD,DSD_NAMAIN10@DF_TABLE1_EXPENDITURE,2.0",
+                                 "A.AUS+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA+AUT+BEL+CAN+CHL+COL+CRI+CZE.S1..P3....XDC.V..")
 final_consumption<-final_consumption[c(12,15,10)]
 #relabel
 colnames(final_consumption) <- c("ISO_3","year","final_consumption")
 #Cutoff
-final_consumption<-subset(final_consumption, year >= 2012)
+final_consumption<-subset(final_consumption, year >= 2012 & year < 2024 )
 
 #missing
-missing_costarica <- subset(final_consumption, subset = ISO_3 == "CRI" & year == "2022")
-missing_costarica$year<-2023
+#missing_costarica <- subset(final_consumption, subset = ISO_3 == "CRI" & year == "2022")
+#missing_costarica$year<-2023
 
 #combine
-final_consumption<-rbind(final_consumption,missing_costarica)
+#final_consumption<-rbind(final_consumption,missing_costarica)
 
 final_consumption<-merge(final_consumption,iso_country_codes,by="ISO_3")
 
@@ -265,12 +262,12 @@ write.csv(vat_base,paste(intermediate_outputs,"vat_base.csv",sep=""), row.names 
 
 #Combine files####
 vat_base <- read_csv(paste(intermediate_outputs,"vat_base.csv",sep=""))
-vat_base<-vat_base[c(2,3,8)]
+vat_base<-vat_base[c(1,2,8)]
 vat_rates <- read_csv(paste(intermediate_outputs,"vat_rates.csv",sep=""))
 vat_thresholds <- read_csv(paste(intermediate_outputs,"vat_thresholds.csv",sep=""))
 
 vat_data <- merge(vat_rates, vat_thresholds, by=c("country","year"))
-vat_data <- merge(vat_data,vat_base,by=c("country", "year"))
+vat_data <- merge(vat_data, vat_base, by=c("country","year"))
 
 vat_data <- merge(vat_data,iso_country_codes,by=c("country"))
 vat_data <- vat_data[c("ISO_2","ISO_3","country","year","vat_rate","vat_threshold","vat_base")]
