@@ -40,10 +40,13 @@ index_data2023$year<-2023
 index_data2024<-read_csv(paste(source_data,"index_data_2024.csv",sep=""))
 index_data2024$year<-2024
 
+index_data2024<-read_csv(paste(source_data,"index_data_2025.csv",sep=""))
+index_data2024$year<-2025
+
 index_data_old<-rbind(index_data2014,index_data2015,index_data2016,
                       index_data2017,index_data2018,index_data2019,
                       index_data2020,index_data2021, index_data2022,
-                      index_data2023, index_data2024)
+                      index_data2023, index_data2024, index_data_2025)
 
 #Join PwC data with index_data_property_tax_variables####
 #This has been disabled
@@ -103,7 +106,6 @@ cfc_rules_list<-c("cfc_rules")
 index_data_property_tax_variables<-index_data_property_tax_variables[,!names(index_data_property_tax_variables) %in% cfc_rules_list]
 
 index_data_cfc_variables<-merge(index_data_property_tax_variables,cfc_rules,by=c("ISO_2","ISO_3","country","year"))
-
 
 index_data_final<-index_data_cfc_variables
 
