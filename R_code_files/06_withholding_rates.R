@@ -29,4 +29,8 @@ withholding_rates <- rbind(withholding_rates, withholding_rates_current)
 withholding_rates <- merge(withholding_rates,iso_country_codes,by="ISO_3")
 withholding_rates <- withholding_rates[c("ISO_2","ISO_3","country","year","dividends","interest", "royalties")]
 
+withholding_rates$dividends<-as.numeric(withholding_rates$dividends)/100
+withholding_rates$interest<-as.numeric(withholding_rates$interest)/100
+withholding_rates$royalties<-as.numeric(withholding_rates$royalties)/100
+
 write.csv(withholding_rates, file = paste(intermediate_outputs,"oecd_withholding_rates.csv",sep=""), row.names = FALSE)
