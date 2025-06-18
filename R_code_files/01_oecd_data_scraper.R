@@ -287,6 +287,8 @@ personal_other_rev<-personal_other_rev[personal_other_rev$year >=2012,]
 personal_other_rev<-subset(personal_other_rev,country%in%oecd_countries)
 
 personal_other_rev$personal_other_rev<-as.numeric(personal_other_rev$personal_other_rev)
+personal_other_rev$personal_other_rev[is.na(personal_other_rev$personal_other_rev)] <- 0
+
 personal_other_rev$year<-as.numeric(personal_other_rev$year)
 
 
