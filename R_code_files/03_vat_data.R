@@ -11,7 +11,7 @@ colnames(vat_rates) <- c("country","2012","2013", "2014", "2015", "2016", "2017"
 
 #US VAT rate equivalent
 columns <- names(vat_rates)
-values <- c("United States","7.2","7.2","7.2","7.3","7.3","7.4","7.4","7.4","7.4","7.4","7.4","7.5","0","0")
+values <- c("United States","7.2","7.2","7.2","7.3","7.3","7.4","7.4","7.4","7.4","7.4","7.4","7.5","7.5","7.5")
 US <- data.frame(columns, values)
 US <- spread(US, columns, values)
 
