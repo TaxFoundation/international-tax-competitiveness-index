@@ -1,7 +1,7 @@
 #output tables code
 #Read in relevant spreadsheets
 
-raw_data_2024 <- read_csv(paste(final_outputs,"raw_data_2024.csv",sep=""))
+raw_data_2024 <- read_csv(paste(final_outputs,"raw_data_2025.csv",sep=""))
 
 final_2018 <- read_csv(paste(final_outputs,"data_2018_run.csv",sep=""))
 final_2019 <- read_csv(paste(final_outputs,"data_2019_run.csv",sep=""))
@@ -10,11 +10,12 @@ final_2021 <- read_csv(paste(final_outputs,"data_2021_run.csv",sep=""))
 final_2022 <- read_csv(paste(final_outputs,"data_2022_run.csv",sep=""))
 final_2023 <- read_csv(paste(final_outputs,"data_2023_run.csv",sep=""))
 final_2024 <- read_csv(paste(final_outputs,"data_2024_run.csv",sep=""))
+final_2025 <- read_csv(paste(final_outputs,"data_2025_run.csv",sep=""))
 
-subcategories_2024 <- read_csv(paste(final_outputs,"subcategories_2024.csv",sep=""))
+subcategories_2025 <- read_csv(paste(final_outputs,"subcategories_2025.csv",sep=""))
 
 ###Table 1 Results####
-table_1_results <- final_2024
+table_1_results <- final_2025
 
 #Select variables
 keep <- c("country","final_rank","final","corporate_rank","income_rank","consumption_rank","property_rank","cross_border_rank")
@@ -40,37 +41,37 @@ colnames(table_1_results) <- c("Country",
 write.csv(table_1_results,paste(final_outputs,"table_1_results.csv",sep=""),row.names=F)
 
 ###Table 2 Changes####
-table_2_changes <- merge(final_2023,final_2024,by="country")
+table_2_changes <- merge(final_2024,final_2025,by="country")
 
 keep <- c("country","final_rank.x","final.x","final_rank.y","final.y")
 table_2_changes <- table_2_changes[keep]
 
-colnames(table_2_changes) <- c("country", "2023 Rank","2023 Score","2024 Rank","2024 Score")
+colnames(table_2_changes) <- c("country", "2024 Rank","2024 Score","2025 Rank","2025 Score")
 
 #table_2_changes <- merge(final_2021,table_2_changes,by="country")
-#keep <- c("country","final_rank","final","2022 Rank","2022 Score","2023 Rank","2023 Score")
+#keep <- c("country","final_rank","final","2022 Rank","2022 Score","2024 Rank","2024 Score")
 #table_2_changes<-table_2_changes[keep]
 
-colnames(table_2_changes)<-c("Country","2023 Rank","2023 Score","2024 Rank","2024 Score")
+colnames(table_2_changes)<-c("Country","2024 Rank","2024 Score","2025 Rank","2025 Score")
 
-table_2_changes$'Change in Rank from 2023 to 2024'<-(table_2_changes$`2024 Rank`-table_2_changes$`2023 Rank`)*(-1)
-table_2_changes$'Change in Score from 2023 to 2024'<-table_2_changes$`2024 Score`-table_2_changes$`2023 Score`
+table_2_changes$'Change in Rank from 2024 to 2025'<-(table_2_changes$`2025 Rank`-table_2_changes$`2024 Rank`)*(-1)
+table_2_changes$'Change in Score from 2024 to 2025'<-table_2_changes$`2025 Score`-table_2_changes$`2024 Score`
 
 #Format Columns
 
-table_2_changes$'2023 Score'<-formatC(round(table_2_changes$'2023 Score',digits=1),format = "f",digits=1)
 table_2_changes$'2024 Score'<-formatC(round(table_2_changes$'2024 Score',digits=1),format = "f",digits=1)
-table_2_changes$'Change in Score from 2023 to 2024'<-as.numeric(table_2_changes$'Change in Score from 2023 to 2024')
-table_2_changes$'Change in Score from 2023 to 2024'<-formatC(round(table_2_changes$'Change in Score from 2023 to 2024',digits=1),format = "f",digits=1)
+table_2_changes$'2025 Score'<-formatC(round(table_2_changes$'2025 Score',digits=1),format = "f",digits=1)
+table_2_changes$'Change in Score from 2024 to 2025'<-as.numeric(table_2_changes$'Change in Score from 2024 to 2025')
+table_2_changes$'Change in Score from 2024 to 2025'<-formatC(round(table_2_changes$'Change in Score from 2024 to 2025',digits=1),format = "f",digits=1)
 
-#Error in round(table_2_changes$"Change in Score from 2023 to 2024", digits = 1) :  non-numeric argument to mathematical function
+#Error in round(table_2_changes$"Change in Score from 2024 to 2025", digits = 1) :  non-numeric argument to mathematical function
 
 write.csv(table_2_changes,paste(final_outputs,"table_2_changes.csv",sep=""),row.names=F)
 
 
 ###Table 3 Corporate####
-table_3_corporate<-subcategories_2024
-table_3_corporate<-merge(table_3_corporate,final_2024,by=c("country"))
+table_3_corporate<-subcategories_2025
+table_3_corporate<-merge(table_3_corporate,final_2025,by=c("country"))
 
 keep<-c("country","corporate_rank","corporate","corporate_rate_rank","corporate_rate","cost_recovery_rank","cost_recovery","incentives_rank","incentives")
 table_3_corporate<-table_3_corporate[keep]
@@ -88,8 +89,8 @@ write.csv(table_3_corporate,paste(final_outputs,"table_3_corporate.csv",sep=""),
 
 
 ###Table 4 Individual####
-table_4_individual<-subcategories_2024
-table_4_individual<-merge(table_4_individual,final_2024,by=c("country"))
+table_4_individual<-subcategories_2025
+table_4_individual<-merge(table_4_individual,final_2025,by=c("country"))
 
 #names(table_4_individual)
 
@@ -106,8 +107,8 @@ table_4_individual$`Capital Gains/Dividends Score`<-formatC(round(table_4_indivi
 write.csv(table_4_individual,paste(final_outputs,"table_4_individual.csv",sep=""),row.names=F)
 
 ###Table 5 Consumption####
-table_5_consumption<-subcategories_2024
-table_5_consumption<-merge(table_5_consumption,final_2024,by=c("country"))
+table_5_consumption<-subcategories_2025
+table_5_consumption<-merge(table_5_consumption,final_2025,by=c("country"))
 
 #names(table_5_consumption)
 
@@ -123,8 +124,8 @@ table_5_consumption$`Base Score`<-formatC(round(table_5_consumption$`Base Score`
 write.csv(table_5_consumption,paste(final_outputs,"table_5_consumption.csv",sep=""),row.names=F)
 
 ###Table 6 Property####
-table_6_property<-subcategories_2024
-table_6_property<-merge(table_6_property,final_2024,by=c("country"))
+table_6_property<-subcategories_2025
+table_6_property<-merge(table_6_property,final_2025,by=c("country"))
 
 #names(table_6_property)
 
@@ -142,8 +143,8 @@ write.csv(table_6_property,paste(final_outputs,"table_6_property.csv",sep=""),ro
 
 
 ###Table 7 Cross-Border####
-table_7_cross_border<-subcategories_2024
-table_7_cross_border<-merge(table_7_cross_border,final_2024,by=c("country"))
+table_7_cross_border<-subcategories_2025
+table_7_cross_border<-merge(table_7_cross_border,final_2025,by=c("country"))
 
 #names(table_7_cross_border)
 
