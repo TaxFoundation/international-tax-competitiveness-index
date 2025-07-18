@@ -1,7 +1,7 @@
 #output tables code
 #Read in relevant spreadsheets
 
-raw_data_2024 <- read_csv(paste(final_outputs,"raw_data_2025.csv",sep=""))
+raw_data_2025 <- read_csv(paste(final_outputs,"raw_data_2025.csv",sep=""))
 
 final_2018 <- read_csv(paste(final_outputs,"data_2018_run.csv",sep=""))
 final_2019 <- read_csv(paste(final_outputs,"data_2019_run.csv",sep=""))
@@ -165,7 +165,7 @@ write.csv(table_7_cross_border,paste(final_outputs,"table_7_cross_border.csv",se
 ###Table A Corporate####
 
 #Raw Data
-table_a_corporate_raw<-subset(raw_data_2024,raw_data_2024$year==2024)
+table_a_corporate_raw<-subset(raw_data_2025,raw_data_2025$year==2025)
 
 keep<-c("country",
         "corporate_rate",
@@ -288,7 +288,7 @@ write.csv(table_a_corporate,paste(final_outputs,"table_a_corporate.csv",sep=""),
 #Table B Individual####
 
 #Raw Data
-table_b_individual_raw<-subset(raw_data_2024,raw_data_2024$year==2024)
+table_b_individual_raw<-subset(raw_data_2025,raw_data_2025$year==2025)
 #names(table_b_individual_raw)
 
 keep<-c("country","top_income_rate",
@@ -379,7 +379,7 @@ write.csv(table_b_individual,paste(final_outputs,"table_b_individual.csv",sep=""
 
 #Table C Consumption####
 #Raw Data
-table_c_consumption_raw<-subset(raw_data_2024,raw_data_2024$year==2024)
+table_c_consumption_raw<-subset(raw_data_2025,raw_data_2025$year==2025)
 #names(table_c_consumption_raw)
 
 keep<-c("country","vat_rate",
@@ -436,7 +436,7 @@ write.csv(table_c_consumption,paste(final_outputs,"table_c_consumption.csv",sep=
 
 #Table D Property####
 #Raw Data
-table_d_property_raw<-subset(raw_data_2024,raw_data_2024$year==2024)
+table_d_property_raw<-subset(raw_data_2025,raw_data_2025$year==2024)
 #names(table_d_property_raw)
 
 keep<-c("country","property_tax", 
@@ -583,7 +583,7 @@ write.csv(table_d_property,paste(final_outputs,"table_d_property.csv",sep=""),ro
 
 #Table E Cross-Border####
 #Raw Data
-table_e_cross_border_raw<-subset(raw_data_2024,raw_data_2024$year==2024)
+table_e_cross_border_raw<-subset(raw_data_2025,raw_data_2025$year==2025)
 
 keep<-c("country",
         "dividends_exemption",
