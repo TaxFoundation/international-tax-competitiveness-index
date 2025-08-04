@@ -65,6 +65,7 @@ vat_thresholds_2020 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnove
 vat_thresholds_2022 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx",sep=""), sheet = "2022", range = "A4:E44")
 vat_thresholds_2023 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx",sep=""), sheet = "2023", range = "A4:E44")
 vat_thresholds_2024 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx",sep=""), sheet = "2024", range = "A4:E44")
+vat_thresholds_2025 <- read_excel(paste(source_data,"oecd_vat_gst_annual_turnover_concessions_ctt_trends.xlsx",sep=""), sheet = "2025", range = "A4:E44")
 
 #2014
 vat_thresholds_2014 <- vat_thresholds_2014[-c(2:3)]
@@ -121,14 +122,20 @@ vat_thresholds_2023$year <- "2023"
 #2024
 vat_thresholds_2024 <- vat_thresholds_2024[-c(2:4)]
 colnames(vat_thresholds_2024) <- c("country", "vat_threshold")
-vat_thresholds_2024$country <- str_remove_all(vat_thresholds_2023$country, "[6*]")
+vat_thresholds_2024$country <- str_remove_all(vat_thresholds_2024$country, "[6*]")
 vat_thresholds_2024$year <- "2024"
+
+#2025
+vat_thresholds_2025 <- vat_thresholds_2025[-c(2:4)]
+colnames(vat_thresholds_2025) <- c("country", "vat_threshold")
+vat_thresholds_2025$country <- str_remove_all(vat_thresholds_2025$country, "[6*]")
+vat_thresholds_2025$year <- "2025"
 
 #Combine years
 vat_thresholds <- rbind(vat_thresholds_2014, vat_thresholds_2015, vat_thresholds_2016, 
                         vat_thresholds_2017, vat_thresholds_2018, vat_thresholds_2019, 
                         vat_thresholds_2020, vat_thresholds_2021, vat_thresholds_2022,
-                        vat_thresholds_2023, vat_thresholds_2024)
+                        vat_thresholds_2023, vat_thresholds_2024, vat_thresholds_2025)
 
 
 #Change NAs to zeros and delete empty rows
@@ -141,9 +148,9 @@ vat_thresholds <- subset(vat_thresholds, vat_thresholds$country!="0")
 vat_thresholds$country[vat_thresholds$country == "Türkiye"]<-"Turkey"
 
 #Add US for all years; Latvia for 2014 and 2015; Lithuania for 2014, 2015, 2016, 2017; Colombia for 2014-2019, and Costa Rica for all years up to 2021#
-country <- c("United States","United States","United States","United States","United States","United States", "United States", "United States", "United States", "United States","United States")
-vat_threshold <- c("0","0","0","0","0","0","0","0","0","0","0")
-year <- c("2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024")
+country <- c("United States","United States","United States","United States","United States","United States", "United States", "United States", "United States", "United States","United States","United States")
+vat_threshold <- c("0","0","0","0","0","0","0","0","0","0","0","0")
+year <- c("2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025")
 USA <- data.frame(country, vat_threshold, year)
 
 country <- c("Latvia", "Latvia")
@@ -174,9 +181,9 @@ CRI <- data.frame(country, vat_threshold, year)
 vat_thresholds <- rbind(vat_thresholds, USA, LVA, LTU, COL, CRI)
 
 #Create current year from prior year values
-vat_current <- subset(vat_thresholds, year == 2024)
-vat_current$year <- 2025
-vat_thresholds <- rbind(vat_thresholds, vat_current)
+#vat_current <- subset(vat_thresholds, year == 2024)
+#vat_current$year <- 2025
+#vat_thresholds <- rbind(vat_thresholds, vat_current)
 
 
 write.csv(vat_thresholds,paste(intermediate_outputs,"vat_thresholds.csv",sep=""),row.names = FALSE)
