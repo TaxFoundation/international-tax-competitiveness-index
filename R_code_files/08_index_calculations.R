@@ -296,7 +296,7 @@ categories$income<-apply((subcategories[income_index]*(1/length(income_index))),
 categories$cross_border<-apply((subcategories[cross_border_index]*(1/length(cross_border_index))),1,sum)
 categories$final<-apply((categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
-write.csv(subset(categories,categories$year==2024),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
+write.csv(subset(categories,categories$year==2025),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
 
 
 
@@ -530,8 +530,8 @@ cor(alternate_final_categories$final[alternate_final_categories$year == 2025],fi
 
 #normal scoring techniques:
 
-cortest1<-final_categories[final_categories$year == 2023,]
-subcortest1<-final_subcategories[final_subcategories$year == 2023,]
+cortest1<-final_categories[final_categories$year == 2025,]
+subcortest1<-final_subcategories[final_subcategories$year == 2025,]
 subcortest1<-cbind(subcortest1,cortest1[14])
 cor(cortest1[c(4,6,8,10,12,14)])
 categories_correl<-data.frame(cor(cortest1[c(4,6,8,10,12,14)]))
