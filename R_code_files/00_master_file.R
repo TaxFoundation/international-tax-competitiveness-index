@@ -105,6 +105,7 @@ source("04_property_tax_collections.R")
 source("05_cfc_rules.R")
 #Disable Paying Taxes Because the Data is no longer used
 #source("06_paying_taxes.R")
+source("06_withholding_rates.R")
 source("07_packaging_data.R")
 source("08_index_calculations.R")
 source("09_output_tables.R")

@@ -1,9 +1,9 @@
 ﻿,Corporate Rate,Cost Recovery,,,,,,,Tax Incentives and Complexity,,,,,
 Country,Top Marginal Corporate Tax Rate,Loss Carryback (Number of Years),Loss Carryforward (Number of Years),Machinery,Industrial Buildings,Intangibles,Inventory (Best Available),Allowance for Corporate Equity (Rate and Base),Patent Box,Research and Development Credit and/or Super Deductions,Digital Services Tax,Corporate Complexity (Time),Corporate Complexity (Yearly Profit Payments),Corporate Complexity (Other Yearly Payments)
-Australia,30.00%,0,No Limit,85.10%,47.90%,54.80%,Average Cost,No,Yes,Credit,No,37,1,6
+Australia,30.00%,0,No Limit,85.10%,47.90%,54.80%,Average Cost,No,No,Credit,No,37,1,6
 Austria,25.00%,0,"No Limit, capped at 75% of taxable income",81.30%,39.10%,73.80%,LIFO,No,No,Credit,Yes,46,1,8
 Belgium,29.60%,0,"No Limit, capped at 70% of taxable income exceeding EUR 1 million",88.20%,62.20%,80.30%,LIFO,No,Yes,Credit,No,21,1,8
-Canada,26.80%,3,20,100.00%,42.60%,49.00%,Average Cost,No,No,Credit,Yes,45,1,4
+Canada,26.80%,3,20,100.00%,42.60%,49.00%,Average Cost,No,No,Credit,No,45,1,4
 Chile,25.00%,0,No Limit,63.30%,33.80%,0.00%,Average Cost,No,No,Credit,No,48,1,5
 Colombia,,0,12,,,,Average Cost,No,No,,Yes,,,
 Costa Rica,,0,3,,,,LIFO,No,No,,No,,,
@@ -19,22 +19,22 @@ Iceland ,20.00%,0,10,86.00%,60.20%,81.20%,Average Cost,No,No,Credit,No,40,1,7
 Ireland,12.50%,1,No Limit,78.70%,47.90%,54.80%,FIFO,No,Yes,Credit,No,12,1,7
 Israel,23.00%,0,No Limit,87.00%,39.10%,78.70%,Average Cost,No,Yes,None,No,110,2,14
 Italy,27.80%,0,"No Limit, capped at 80% of taxable income",76.00%,46.30%,96.50%,LIFO,No,No,Credit,Yes,39,2,11
-Japan,29.70%,"1, limited to small and medium-sized enterprises","10, capped at 50% of taxable income",77.00%,27.90%,78.70%,Average Cost,No,No,Credit,No,38,3,13
+Japan,29.70%,"1, limited to small and medium-sized enterprises","10, capped at 50% of taxable income",77.00%,27.90%,78.70%,Average Cost,No,Yes,Credit,No,38,3,13
 Korea,27.50%,"1, limited to small and medium-sized enterprises","15, capped at 80% of taxable income for companies other than small and medium-sized enterprises",92.20%,54.80%,73.80%,LIFO,No,Yes,Credit,No,83,2,8
 Latvia,20.00%,No Limit (Cash-flow Tax),No Limit (Cash-flow Tax),100.00%,100.00%,100.00%,LIFO,No (Cash-flow Tax),No,None,No,23,1,5
 Lithuania,,0,"No Limit, capped at 70% of taxable income",91.80%,83.80%,98.00%,LIFO,No,Yes,Super Deduction,No,18,1,8
 Luxembourg,26.00%,0,17,86.40%,47.90%,87.00%,LIFO,No,Yes,None,No,19,5,6
-Mexico,30.00%,0,10,73.80%,54.80%,73.80%,LIFO,No,No,Credit,No,102,1,3
+Mexico,30.00%,0,10,73.80%,54.80%,73.80%,Average Cost,No,No,Credit,No,102,1,3
 Netherlands,25.00%,"1, limited to 50% of taxable income exceeding EUR 1 million","No Limit, capped at 50% of taxable income exceeding EUR 1 million",96.50%,33.80%,73.80%,LIFO,No,Yes,Credit,No,21,1,7
 New Zealand,28.00%,0,No Limit,74.70%,31.00%,73.80%,Average Cost,No,No,Credit,No,34,1,4
 Norway,23.00%,0,No Limit,78.20%,37.40%,73.80%,FIFO,No,No,Credit,No,24,1,3
-Poland,19.00%,0,"5, capped at 50% of total loss per year",73.80%,33.80%,87.00%,LIFO,"Yes (6.75% in 2022, All Equity)",Yes,Super Deduction,Yes,59,1,4
-Portugal,31.50%,0,"No Limit, capped at 65% of taxable income. Not applicable to top-up business taxes.",88.80%,54.80%,73.80%,Average Cost,"Yes (7%, New Equity, Limited to EUR 1 Million or 25% of EBITDA)",Yes,Both,Yes,63,1,6
+Poland,19.00%,0,"5, capped at 50% of total loss per year",73.80%,33.80%,87.00%,LIFO,"Yes (6.75%, New Equity and Retained Earnings)",Yes,Super Deduction,Yes,59,1,4
+Portugal,31.50%,0,"No Limit, capped at 65% of taxable income. Not applicable to top-up business taxes.",88.80%,54.80%,73.80%,Average Cost,"Yes (5.29%, New Equity, Limited to EUR 4 Million or 30% of EBITDA)",Yes,Both,Yes,63,1,6
 Slovak Republic,21.00%,0,"5, capped at 50% of taxable income",87.40%,65.30%,87.00%,Average Cost,No,Yes,Super Deduction,No,46,1,6
-Slovenia,19.00%,0,"No Limit, capped at 63% of taxable income",87.00%,39.10%,73.80%,Average Cost,No,No,None,No,74,1,8
-Spain,25.00%,0,"No Limit, capped at 70% of taxable income exceeding EUR 1 million.",77.90%,39.10%,73.80%,Average Cost,No,Yes,Credit,Yes,33,1,7
+Slovenia,19.00%,0,"5, capped at 63% of taxable income",87.00%,39.10%,73.80%,Average Cost,No,No,None,No,74,1,8
+Spain,25.00%,0,"No Limit, capped at 70% of taxable income exceeding EUR 1 million, lowered to 50% and 25% if net turnover exceeds EUR 20 or 60 million, respectively.",77.90%,39.10%,73.80%,Average Cost,No,Yes,Credit,Yes,33,1,7
 Sweden    ,22.00%,0,No Limit,86.00%,47.90%,86.00%,FIFO,No,No,None,No,50,1,4
 Switzerland,21.10%,0,7,86.00%,55.50%,90.50%,LIFO,No,Yes,None,Yes,15,2,10
-Turkey,22.00%,0,5,87.60%,47.90%,63.20%,Average Cost,"Yes (19.62% in 2020, New Equity)",Yes,Credit,Yes,24,1,8
+Turkey,22.00%,0,5,87.60%,47.90%,63.20%,Average Cost,"Yes (53.11% in 2024, New Equity)",Yes,Credit,Yes,24,1,8
 United Kingdom,19.00%,1,"No Limit, capped at 50% of taxable income exceeding GBP 5 million",75.90%,27.90%,82.70%,FIFO,No,Yes,Credit,Yes,32,1,6
 United States,25.80%,0,"No Limit, capped at 80% of taxable income",100.00%,35.00%,63.30%,LIFO,No,No,Credit,No,87,2,5

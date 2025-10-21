@@ -55,7 +55,14 @@ GFCF_2022<-data.frame(GFCF_2022$X.REF_AREA,GFCF_2022$Obs)
 colnames(GFCF_2022)<-c("ISO_2","year","gross_fixed_capital_formation")
 
 
-GFCF<-rbind(GFCF_2019,GFCF_2020,GFCF_2021,GFCF_2022)
+GFCF_2023 <- data.frame(CompactDataMethod(databaseID, queryfilter, startdate= "2023-01-01", enddate = "2023-12-31",
+                                          checkquery))
+GFCF_2023<- GFCF_2023[-c(1,3:5)]
+GFCF_2023<-data.frame(GFCF_2023$X.REF_AREA,GFCF_2023$Obs)
+colnames(GFCF_2023)<-c("ISO_2","year","gross_fixed_capital_formation")
+
+
+GFCF<-rbind(GFCF_2019,GFCF_2020,GFCF_2021,GFCF_2022,GFCF_2023)
 GFCF<-merge(GFCF,iso_country_codes,by="ISO_2")
 GFCF$gross_fixed_capital_formation<-as.numeric(GFCF$gross_fixed_capital_formation)
 
@@ -93,31 +100,31 @@ capital_stock_22$capital_stock<-(capital_stock_22$capital_stock*(1-.1077))+(capi
 capital_stock_22<-capital_stock_22[c("country","capital_stock","ISO_3.y","year")]
 colnames(capital_stock_22)<-c("country","capital_stock","ISO_3","year")
 
+
+#2023
+capital_stock_23<-merge(capital_stock_20,subset(GFCF,GFCF$year==2023),by="country")
+capital_stock_23$year<-"2023"
+capital_stock_23$capital_stock<-(capital_stock_23$capital_stock*(1-.1077))+(capital_stock_23$gross_fixed_capital_formation*(1-(.1077/2)))
+capital_stock_23<-capital_stock_23[c("country","capital_stock","ISO_3.y","year")]
+colnames(capital_stock_23)<-c("country","capital_stock","ISO_3","year")
+
 #combine
 imf_capital_stock_data<-subset(imf_capital_stock_data,imf_capital_stock_data$year<2019)
 
-imf_capital_stock_data<-rbind(imf_capital_stock_data,capital_stock_19,capital_stock_20,capital_stock_21,capital_stock_22)
+imf_capital_stock_data<-rbind(imf_capital_stock_data,capital_stock_19,capital_stock_20,capital_stock_21,capital_stock_22,capital_stock_23)
 
 #property tax revenues####
-#Table_II1#
-dataset_list <- get_datasets()
-#search_dataset("revenues", dataset_list)
 
-#dataset<-("REV")
-#dstruc<-get_data_structure(dataset)
-#str(dstruc, max.level = 1)
-#dstruc$TAX
-#dstruc$TRANSACT
-#dstruc$GOV
-
-property_tax_revenue <- get_dataset("REV",filter=list(c("NES"),c("4100"),c("TAXNAT"),c(oecd_countries)), start_time = 2012)
-property_tax_revenue <- property_tax_revenue[c("COU","Time","ObsValue")]
+property_tax_revenue <- get_dataset("OECD.CTP.TPS,DSD_REV_COMP_OECD@DF_RSOECD",
+                                   "TUR+GBR+USA+SVN+ESP+SWE+CHE+NLD+NZL+NOR+POL+PRT+SVK+ITA+JPN+KOR+LVA+LTU+LUX+MEX+ISL+IRL+ISR+DNK+EST+FIN+FRA+DEU+GRC+HUN+AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE..S13.T_4100..USD.A")
+property_tax_revenue<-property_tax_revenue[c(8,12,7)]
 colnames(property_tax_revenue) <- c("ISO_3","year","property_tax_collections")
+property_tax_revenue<-property_tax_revenue[property_tax_revenue$year >=2012,]
 
 #Missing country/years are simply prior year values
-ISO_3 <- c("AUS","GRC")
-year <- c("2022","2022")
-property_tax_collections <- c("36.473","3.195")
+ISO_3 <- c("AUS")
+year <- c("2023")
+property_tax_collections <- c("1.568561")
 missing <- data.frame(ISO_3,year,property_tax_collections)
 property_tax_revenue <- rbind(property_tax_revenue,missing)
 

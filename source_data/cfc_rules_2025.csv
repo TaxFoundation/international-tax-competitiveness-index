@@ -1,0 +1,39 @@
+ISO_2,ISO_3,country,year,exists,active,no_exemption
+AT,AUT,Austria,2025,1,0.5,0.5
+AU,AUS,Australia,2025,1,0,0
+BE,BEL,Belgium,2025,1,0.5,0.5
+CA,CAN,Canada,2025,1,0,0
+CH,CHE,Switzerland,2025,0,0,0
+CL,CHL,Chile,2025,1,0,0.5
+CO,COL,Colombia,2025,1,0,1
+CR,CRI,Costa Rica,2025,0,0,0
+CZ,CZE,Czech Republic,2025,1,0,0
+DE,DEU,Germany,2025,1,0,0
+DK,DNK,Denmark,2025,1,0.5,0.5
+EE,EST,Estonia,2025,1,0,0
+ES,ESP,Spain,2025,1,0,0
+FI,FIN,Finland,2025,1,0.5,0
+FR,FRA,France,2025,1,1,0
+GB,GBR,United Kingdom,2025,1,0.5,0
+GR,GRC,Greece,2025,1,0,0
+HU,HUN,Hungary,2025,1,0,0
+IE,IRL,Ireland,2025,1,0,0
+IL,ISR,Israel,2025,1,0,0
+IS,ISL,Iceland,2025,1,1,0
+IT,ITA,Italy,2025,1,0.5,0
+JP,JPN,Japan,2025,1,0.5,0
+KR,KOR,Korea,2025,1,0.5,0
+LT,LTU,Lithuania,2025,1,0,0
+LU,LUX,Luxembourg,2025,1,0,0
+LV,LVA,Latvia,2025,1,0,0
+MX,MEX,Mexico,2025,1,0.5,0.5
+NL,NLD,Netherlands,2025,1,0,0
+NO,NOR,Norway,2025,1,0.5,0
+NZ,NZL,New Zealand,2025,1,0,0
+PL,POL,Poland,2025,1,0.5,0
+PT,PRT,Portugal,2025,1,0.5,0
+SE,SWE,Sweden,2025,1,1,0
+SI,SVN,Slovenia,2025,1,0,0
+SK,SVK,Slovak Republic,2025,1,0.5,0
+TR,TUR,Turkey,2025,1,0.5,0.5
+US,USA,United States,2025,1,0,0
