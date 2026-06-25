@@ -35,38 +35,14 @@ write.csv(corporate_rate, file = paste(intermediate_outputs,"oecd_corporate_rate
 #r_and_d_credit <- spread(r_and_d_credit,year,r_and_d_credit)
 
 r_and_d_credit <- get_dataset("OECD.STI.STP,DSD_RDTAX@DF_RDSUB,1.0","TUR+GBR+USA+SVN+ESP+SWE+CHE+NLD+NZL+NOR+POL+PRT+SVK+ITA+JPN+KOR+LVA+LTU+LUX+MEX+ISL+IRL+ISR+DNK+EST+FIN+FRA+DEU+GRC+HUN+AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE.A....")
-r_and_d_credit <- r_and_d_credit[c(4,6,7,8,9)]
+r_and_d_credit <- r_and_d_credit[c(6,8,9,10,11)]
 colnames(r_and_d_credit) <- c("r_and_d_credit","profit","ISO_3","size","year")
 r_and_d_credit$year <- as.numeric(r_and_d_credit$year)
 r_and_d_credit$r_and_d_credit <- as.numeric(r_and_d_credit$r_and_d_credit)
+r_and_d_credit <- r_and_d_credit[!is.na(r_and_d_credit$year), ]
 
-r_and_d_credit <- spread(r_and_d_credit,year,r_and_d_credit)
-
-r_and_d_credit2013 <- aggregate(r_and_d_credit$`2013`,by=list(r_and_d_credit$ISO_3),FUN=mean)
-r_and_d_credit2014 <- aggregate(r_and_d_credit$`2014`,by=list(r_and_d_credit$ISO_3),FUN=mean)
-r_and_d_credit2015 <- aggregate(r_and_d_credit$`2015`,by=list(r_and_d_credit$ISO_3),FUN=mean)
-r_and_d_credit2016 <- aggregate(r_and_d_credit$`2016`,by=list(r_and_d_credit$ISO_3),FUN=mean)
-r_and_d_credit2017 <- aggregate(r_and_d_credit$`2017`,by=list(r_and_d_credit$ISO_3),FUN=mean)
-r_and_d_credit2018 <- aggregate(r_and_d_credit$`2018`,by=list(r_and_d_credit$ISO_3),FUN=mean)
-r_and_d_credit2019 <- aggregate(r_and_d_credit$`2019`,by=list(r_and_d_credit$ISO_3),FUN=mean)
-r_and_d_credit2020 <- aggregate(r_and_d_credit$`2020`,by=list(r_and_d_credit$ISO_3),FUN=mean)
-r_and_d_credit2021 <- aggregate(r_and_d_credit$`2021`,by=list(r_and_d_credit$ISO_3),FUN=mean)
-r_and_d_credit2022 <- aggregate(r_and_d_credit$`2022`,by=list(r_and_d_credit$ISO_3),FUN=mean)
-r_and_d_credit2023 <- aggregate(r_and_d_credit$`2023`,by=list(r_and_d_credit$ISO_3),FUN=mean)
-r_and_d_credit2024 <- aggregate(r_and_d_credit$`2024`,by=list(r_and_d_credit$ISO_3),FUN=mean)
-
-
-ISO_3 <- r_and_d_credit2022$Group.1
-
-r_and_d_credit <- data.frame(ISO_3, r_and_d_credit2013$x, r_and_d_credit2014$x, r_and_d_credit2015$x,
-                             r_and_d_credit2016$x, r_and_d_credit2017$x, r_and_d_credit2018$x, r_and_d_credit2019$x,
-                             r_and_d_credit2020$x, r_and_d_credit2021$x, r_and_d_credit2022$x, r_and_d_credit2023$x,
-                             r_and_d_credit2024$x)
-
-colnames(r_and_d_credit) <- c("ISO_3","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024")
-r_and_d_credit <- gather(r_and_d_credit,"year","r_and_d_credit","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024")
-r_and_d_credit$year <- as.numeric(r_and_d_credit$year)
-r_and_d_credit$year <- r_and_d_credit$year+1
+r_and_d_credit <- aggregate(r_and_d_credit ~ ISO_3 + year, data = r_and_d_credit, FUN = mean, na.rm = TRUE)
+r_and_d_credit$year <- r_and_d_credit$year + 1
 
 write.csv(r_and_d_credit, file = paste(intermediate_outputs,"oecd_r_and_d_credit.csv",sep=""), row.names = FALSE)
 
@@ -113,12 +89,12 @@ all_in_rate$all_in_rate<-as.numeric(all_in_rate$all_in_rate)
 all_in_rate$all_in_rate<-all_in_rate$all_in_rate/100
 
 #Create current year from prior year values
-top_rate_current <- subset(top_income_rate, year == 2024)
-top_rate_current$year <- 2025
+top_rate_current <- subset(top_income_rate, year == 2025)
+top_rate_current$year <- 2026
 top_income_rate <- rbind(top_income_rate, top_rate_current)
 
-all_in_current <- subset(all_in_rate, year == 2024)
-all_in_current$year <- 2025
+all_in_current <- subset(all_in_rate, year == 2025)
+all_in_current$year <- 2026
 all_in_rate <- rbind(all_in_rate, all_in_current)
 
 #take the max of top rate or all-in rate
@@ -139,7 +115,13 @@ threshold<-threshold[c(10,11,14)]
 colnames(threshold)<-c("threshold_top_income_rate","ISO_3","year")
 
 threshold$year<-as.numeric(threshold$year)
-threshold$year<-threshold$year+1
+
+#Create current year from prior year values
+threshold_current <- subset(threshold, year == 2025)
+threshold_current$year <- 2026
+threshold <- rbind(threshold, threshold_current)
+
+#threshold$year<-threshold$year+1
 
 #Missing Netherlands
 #missing_netherlands <- c(1.179464,"NLD",2014)
@@ -170,6 +152,7 @@ martax_wedge2021<-aggregate(martax_wedge$`2021`,by=list(martax_wedge$ISO_3),FUN=
 martax_wedge2022<-aggregate(martax_wedge$`2022`,by=list(martax_wedge$ISO_3),FUN=mean)
 martax_wedge2023<-aggregate(martax_wedge$`2023`,by=list(martax_wedge$ISO_3),FUN=mean)
 martax_wedge2024<-aggregate(martax_wedge$`2024`,by=list(martax_wedge$ISO_3),FUN=mean)
+martax_wedge2025<-aggregate(martax_wedge$`2025`,by=list(martax_wedge$ISO_3),FUN=mean)
 
 
 #avgtax_wedge
@@ -195,6 +178,7 @@ avgtax_wedge2022<-aggregate(avgtax_wedge$`2022`,by=list(avgtax_wedge$ISO_3),FUN=
 avgtax_wedge2022<-aggregate(avgtax_wedge$`2022`,by=list(avgtax_wedge$ISO_3),FUN=mean)
 avgtax_wedge2023<-aggregate(avgtax_wedge$`2023`,by=list(avgtax_wedge$ISO_3),FUN=mean)
 avgtax_wedge2024<-aggregate(avgtax_wedge$`2024`,by=list(avgtax_wedge$ISO_3),FUN=mean)
+avgtax_wedge2025<-aggregate(avgtax_wedge$`2025`,by=list(avgtax_wedge$ISO_3),FUN=mean)
 
 countries<-avgtax_wedge2020$Group.1
 
@@ -210,11 +194,12 @@ tax_wedge2021<-martax_wedge2021$x/avgtax_wedge2021$x # Previously: tax_wedge2021
 tax_wedge2022<-martax_wedge2022$x/avgtax_wedge2022$x
 tax_wedge2023<-martax_wedge2023$x/avgtax_wedge2023$x
 tax_wedge2024<-martax_wedge2024$x/avgtax_wedge2024$x
+tax_wedge2025<-martax_wedge2025$x/avgtax_wedge2025$x
 
-tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,tax_wedge2016,tax_wedge2017,tax_wedge2018,tax_wedge2019,tax_wedge2020,tax_wedge2021,tax_wedge2022, tax_wedge2023, tax_wedge2024)
+tax_wedge<-data.frame(countries,tax_wedge2013,tax_wedge2014,tax_wedge2015,tax_wedge2016,tax_wedge2017,tax_wedge2018,tax_wedge2019,tax_wedge2020,tax_wedge2021,tax_wedge2022, tax_wedge2023, tax_wedge2024, tax_wedge2025)
 
-colnames(tax_wedge)<-c("ISO_3","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024")
-tax_wedge<-gather(tax_wedge,"year","tax_wedge","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024")
+colnames(tax_wedge)<-c("ISO_3","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025")
+tax_wedge<-gather(tax_wedge,"year","tax_wedge","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025")
 tax_wedge$year<-as.numeric(tax_wedge$year)
 tax_wedge$year<-tax_wedge$year+1
 
@@ -261,15 +246,23 @@ corporate_other_rev<-subset(corporate_other_rev,country%in%oecd_countries)
 corporate_other_rev$year<-as.numeric(corporate_other_rev$year)
 corporate_other_rev$corporate_other_rev<-as.numeric(corporate_other_rev$corporate_other_rev)
 
-#Add in Australia 2022 numbers
-#Australia: 2023 data not available -> use 2022 data
-missing_australia <- subset(corporate_other_rev, subset = country == "AUS" & year == "2022")
-missing_australia[missing_australia$year == 2022, "year"] <- 2023
+#Add in Australia 2023 numbers
+#Australia: 2024 data not available -> use 2023 data
+missing_australia <- subset(corporate_other_rev, subset = country == "AUS" & year == "2023")
+missing_australia[missing_australia$year == 2023, "year"] <- 2024
 missing_australia$corporate_other_rev<-as.numeric(missing_australia$corporate_other_rev)
 
+#Add in Japan 2023 numbers
+#Japan: 2024 data not available -> use 2023 data
+missing_japan <- subset(corporate_other_rev, subset = country == "JPN" & year == "2023")
+missing_japan[missing_japan$year == 2023, "year"] <- 2024
+missing_japan$corporate_other_rev<-as.numeric(missing_japan$corporate_other_rev)
+
 #combine
-corporate_other_rev<-rbind(corporate_other_rev,missing_australia)
+corporate_other_rev<-rbind(corporate_other_rev,missing_australia,missing_japan)
 corporate_other_rev$year<-corporate_other_rev$year+2
+
+
 
 write.csv(corporate_other_rev, file = paste(intermediate_outputs,"oecd_corporate_other_rev.csv",sep=""), row.names = FALSE)
 corporate_other_rev<-read.csv(paste(intermediate_outputs,"oecd_corporate_other_rev.csv",sep=""))
@@ -291,15 +284,20 @@ personal_other_rev$personal_other_rev[is.na(personal_other_rev$personal_other_re
 
 personal_other_rev$year<-as.numeric(personal_other_rev$year)
 
-
-#Add in Australia 2022 numbers
-#Australia: 2023 data not available -> use 2022 data
-missing_australia <- subset(personal_other_rev, subset = country == "AUS" & year == "2022")
-missing_australia[missing_australia$year == 2022, "year"] <- 2023
+#Add in Australia 2023 numbers
+#Australia: 2024 data not available -> use 2023 data
+missing_australia <- subset(personal_other_rev, subset = country == "AUS" & year == "2023")
+missing_australia[missing_australia$year == 2023, "year"] <- 2024
 missing_australia$personal_other_rev<-as.numeric(missing_australia$personal_other_rev)
 
+#Add in Japan 2023 numbers
+#Japan: 2024 data not available -> use 2023 data
+missing_japan <- subset(personal_other_rev, subset = country == "JPN" & year == "2023")
+missing_japan[missing_japan$year == 2023, "year"] <- 2024
+missing_japan$personal_other_rev<-as.numeric(missing_japan$personal_other_rev)
+
 #combine
-personal_other_rev<-rbind(personal_other_rev,missing_australia)
+personal_other_rev<-rbind(personal_other_rev,missing_australia,missing_japan)
 personal_other_rev$year<-personal_other_rev$year+2
 
 write.csv(personal_other_rev, file = paste(intermediate_outputs,"oecd_personal_other_rev.csv",sep=""), row.names = FALSE)
