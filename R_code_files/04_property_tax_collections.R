@@ -18,53 +18,29 @@ ISO_OECD<-subset(iso_country_codes,iso_country_codes$ISO_3%in%oecd_countries)
 ISO_2_OECD<-print(ISO_OECD$ISO_2)
 
 
-#The following section is only needed when there is no recent update of the IMF's "Investment and Capital Stock Database" (https://infrastructuregovern.imf.org/content/PIMA/Home/Knowledge-Hub/Publications.html#Data) 
-IFS.available.codes <- DataStructureMethod("IFS")
-CodeSearch(IFS.available.codes,"CL_INDICATOR_IFS", "Formation")
+#Roll the IMF capital stock forward from 2018 using annual Gross Fixed Capital
+#Formation (current prices, national currency). The legacy IFS SDMX service
+#(dataservices.imf.org) was retired by the IMF, so GFCF is pulled from the new
+#IMF Data Portal SDMX 3.0 API: National Economic Accounts (NEA), Annual Data
+#(dataflow IMF.STA/ANEA), indicator P51G "Gross fixed capital formation".
+#Key dimensions: COUNTRY.INDICATOR.PRICE_TYPE(V=current).TYPE_OF_TRANSFORMATION(XDC=domestic currency).FREQUENCY(A)
+gfcf_url <- paste0("https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/ANEA/+/",
+                   paste(oecd_countries, collapse = "+"), ".P51G.V.XDC.A")
 
-databaseID <- "IFS"
-checkquery = FALSE
+gfcf_response <- GET(gfcf_url, add_headers(Accept = "application/vnd.sdmx.data+csv;version=2.0.0"))
+stop_for_status(gfcf_response)
 
-# All OECD Countries Gross Fixed Capital Formation Millions in National Currency
-queryfilter <- list(CL_FREQ="A", CL_AREA_IFS=ISO_2_OECD, CL_INDICATOR_IFS =c("NFI_XDC"))
-GFCF_2019 <- data.frame(CompactDataMethod(databaseID, queryfilter, startdate= "2019-01-01", enddate = "2019-12-31",
-                                  checkquery))
-GFCF_2019<- GFCF_2019[-c(1,3:5)]
-GFCF_2019<-data.frame(GFCF_2019$X.REF_AREA,GFCF_2019$Obs)
-colnames(GFCF_2019)<-c("ISO_2","year","gross_fixed_capital_formation")
+GFCF <- read.csv(text = content(gfcf_response, as = "text", encoding = "UTF-8"), stringsAsFactors = FALSE)
+GFCF <- GFCF[c("COUNTRY","TIME_PERIOD","OBS_VALUE")]
+colnames(GFCF) <- c("ISO_3","year","gross_fixed_capital_formation")
 
+# ANEA values are in units of national currency; the IMF capital stock (kpriv_n*1000)
+# and the legacy IFS GFCF were in millions, so rescale GFCF to millions.
+GFCF$gross_fixed_capital_formation <- as.numeric(GFCF$gross_fixed_capital_formation)/1000000
+GFCF <- subset(GFCF, GFCF$year>=2019 & GFCF$year<=2024)
 
-GFCF_2020 <- data.frame(CompactDataMethod(databaseID, queryfilter, startdate= "2020-01-01", enddate = "2020-12-31",
-                                          checkquery))
-GFCF_2020<- GFCF_2020[-c(1,3:5)]
-GFCF_2020<-data.frame(GFCF_2020$X.REF_AREA,GFCF_2020$Obs)
-colnames(GFCF_2020)<-c("ISO_2","year","gross_fixed_capital_formation")
-
-
-GFCF_2021 <- data.frame(CompactDataMethod(databaseID, queryfilter, startdate= "2021-01-01", enddate = "2021-12-31",
-                                          checkquery))
-GFCF_2021<- GFCF_2021[-c(1,3:5)]
-GFCF_2021<-data.frame(GFCF_2021$X.REF_AREA,GFCF_2021$Obs)
-colnames(GFCF_2021)<-c("ISO_2","year","gross_fixed_capital_formation")
-
-
-GFCF_2022 <- data.frame(CompactDataMethod(databaseID, queryfilter, startdate= "2022-01-01", enddate = "2022-12-31",
-                                          checkquery))
-GFCF_2022<- GFCF_2022[-c(1,3:5)]
-GFCF_2022<-data.frame(GFCF_2022$X.REF_AREA,GFCF_2022$Obs)
-colnames(GFCF_2022)<-c("ISO_2","year","gross_fixed_capital_formation")
-
-
-GFCF_2023 <- data.frame(CompactDataMethod(databaseID, queryfilter, startdate= "2023-01-01", enddate = "2023-12-31",
-                                          checkquery))
-GFCF_2023<- GFCF_2023[-c(1,3:5)]
-GFCF_2023<-data.frame(GFCF_2023$X.REF_AREA,GFCF_2023$Obs)
-colnames(GFCF_2023)<-c("ISO_2","year","gross_fixed_capital_formation")
-
-
-GFCF<-rbind(GFCF_2019,GFCF_2020,GFCF_2021,GFCF_2022,GFCF_2023)
-GFCF<-merge(GFCF,iso_country_codes,by="ISO_2")
-GFCF$gross_fixed_capital_formation<-as.numeric(GFCF$gross_fixed_capital_formation)
+# attach country name and ISO_2 (the roll-forward merges below are by "country")
+GFCF <- merge(GFCF, iso_country_codes, by="ISO_3")
 
 #Depreciate capital stock and add GFCF
 
@@ -94,7 +70,7 @@ colnames(capital_stock_21)<-c("country","capital_stock","ISO_3","year")
 
 
 #2022
-capital_stock_22<-merge(capital_stock_20,subset(GFCF,GFCF$year==2022),by="country")
+capital_stock_22<-merge(capital_stock_21,subset(GFCF,GFCF$year==2022),by="country")
 capital_stock_22$year<-"2022"
 capital_stock_22$capital_stock<-(capital_stock_22$capital_stock*(1-.1077))+(capital_stock_22$gross_fixed_capital_formation*(1-(.1077/2)))
 capital_stock_22<-capital_stock_22[c("country","capital_stock","ISO_3.y","year")]
@@ -102,16 +78,24 @@ colnames(capital_stock_22)<-c("country","capital_stock","ISO_3","year")
 
 
 #2023
-capital_stock_23<-merge(capital_stock_20,subset(GFCF,GFCF$year==2023),by="country")
+capital_stock_23<-merge(capital_stock_22,subset(GFCF,GFCF$year==2023),by="country")
 capital_stock_23$year<-"2023"
 capital_stock_23$capital_stock<-(capital_stock_23$capital_stock*(1-.1077))+(capital_stock_23$gross_fixed_capital_formation*(1-(.1077/2)))
 capital_stock_23<-capital_stock_23[c("country","capital_stock","ISO_3.y","year")]
 colnames(capital_stock_23)<-c("country","capital_stock","ISO_3","year")
 
+
+#2024
+capital_stock_24<-merge(capital_stock_23,subset(GFCF,GFCF$year==2024),by="country")
+capital_stock_24$year<-"2024"
+capital_stock_24$capital_stock<-(capital_stock_24$capital_stock*(1-.1077))+(capital_stock_24$gross_fixed_capital_formation*(1-(.1077/2)))
+capital_stock_24<-capital_stock_24[c("country","capital_stock","ISO_3.y","year")]
+colnames(capital_stock_24)<-c("country","capital_stock","ISO_3","year")
+
 #combine
 imf_capital_stock_data<-subset(imf_capital_stock_data,imf_capital_stock_data$year<2019)
 
-imf_capital_stock_data<-rbind(imf_capital_stock_data,capital_stock_19,capital_stock_20,capital_stock_21,capital_stock_22,capital_stock_23)
+imf_capital_stock_data<-rbind(imf_capital_stock_data,capital_stock_19,capital_stock_20,capital_stock_21,capital_stock_22,capital_stock_23,capital_stock_24)
 
 #property tax revenues####
 
@@ -121,10 +105,16 @@ property_tax_revenue<-property_tax_revenue[c(8,12,7)]
 colnames(property_tax_revenue) <- c("ISO_3","year","property_tax_collections")
 property_tax_revenue<-property_tax_revenue[property_tax_revenue$year >=2012,]
 
-#Missing country/years are simply prior year values
-ISO_3 <- c("AUS")
-year <- c("2023")
-property_tax_collections <- c("1.568561")
+#Missing country/years are simply prior year values.
+#Drop rows the OECD has not yet populated (present but NA) so the hardcoded
+#carry-forward values below are the ones used.
+property_tax_revenue <- property_tax_revenue[!is.na(property_tax_revenue$property_tax_collections),]
+
+#As of the 2026 update the OECD has not yet published 2024 recurrent property
+#tax (T_4100) for Australia and Greece, so carry forward their 2023 values.
+ISO_3 <- c("AUS","GRC")
+year <- c("2024","2024")
+property_tax_collections <- c("30.042699","3.405995")
 missing <- data.frame(ISO_3,year,property_tax_collections)
 property_tax_revenue <- rbind(property_tax_revenue,missing)
 
