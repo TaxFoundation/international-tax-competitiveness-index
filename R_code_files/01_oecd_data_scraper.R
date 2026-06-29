@@ -14,13 +14,17 @@ colnames(corporate_rate)<-c("corporate_rate","ISO_3","year")
 corporate_rate$corporate_rate <- as.numeric(corporate_rate$corporate_rate)
 corporate_rate$corporate_rate <- corporate_rate$corporate_rate/100
 
-#Missing Slovakia
-#missing_slovakia <- c(0.21,"SVK",2024)
-#corporate_rate <- rbind(corporate_rate, missing_slovakia)
+#Missing Colombia
+missing_colombia <- c(0.35,"COL",2026)
+corporate_rate <- rbind(corporate_rate, missing_colombia)
+
+#Missing Israel
+missing_israel <- c(0.23,"COL",2026)
+corporate_rate <- rbind(corporate_rate, missing_israel)
 
 #Missing Turkey
-#missing_turkey <- c(0.25,"TUR",2024)
-#corporate_rate <- rbind(corporate_rate, missing_turkey)
+missing_turkey <- c(0.25,"TUR",2026)
+corporate_rate <- rbind(corporate_rate, missing_turkey)
 
 write.csv(corporate_rate, file = paste(intermediate_outputs,"oecd_corporate_rate.csv",sep=""), row.names = FALSE)
 
@@ -224,6 +228,12 @@ dividends_rate$dividends_rate<-dividends_rate$dividends_rate/100
 #dividends_rate <- rbind(dividends_rate, missing_slovakia)
  
 dividends_rate<-subset(dividends_rate,year>2013)
+
+#Create current year from prior year values
+dividends_rate_current <- subset(dividends_rate, year == 2025)
+dividends_rate_current$year <- 2026
+dividends_rate <- rbind(dividends_rate, dividends_rate_current)
+
 
 #corporate_other_rev####
 corporate_other_rev <- get_dataset("OECD.CTP.TPS,DSD_REV_COMP_OECD@DF_RSOECD",
