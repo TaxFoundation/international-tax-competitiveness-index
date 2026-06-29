@@ -3,21 +3,20 @@
 #Read in dataset containing depreciation data####
 data <- read_csv(paste(source_data, "cost_recovery_data.csv", sep=""))
 
-#Limit countries to OECD and EU countries
-data <- data[which(data$country=="AUS" 
+
+
+#Limit countries to OECD countries
+data <- data[which(data$country=="AUS"
                    | data$country=="AUT"
                    | data$country=="BEL"
-                   | data$country=="BGR"
-                   | data$country=="CAN" 
+                   | data$country=="CAN"
                    | data$country=="CHL"
                    | data$country=="COL"
                    | data$country=="CRI"
-                   | data$country=="HRV" 
-                   | data$country=="CYP"
-                   | data$country=="CZE" 
-                   | data$country=="DNK" 
-                   | data$country=="EST" 
-                   | data$country=="FIN" 
+                   | data$country=="CZE"
+                   | data$country=="DNK"
+                   | data$country=="EST"
+                   | data$country=="FIN"
                    | data$country=="FRA"
                    | data$country=="DEU"
                    | data$country=="GRC"
@@ -31,14 +30,12 @@ data <- data[which(data$country=="AUS"
                    | data$country=="LVA"
                    | data$country=="LTU"
                    | data$country=="LUX"
-                   | data$country=="MLT" 
                    | data$country=="MEX"
                    | data$country=="NLD"
                    | data$country=="NZL"
                    | data$country=="NOR"
                    | data$country=="POL"
                    | data$country=="PRT"
-                   | data$country=="ROU" 
                    | data$country=="SVK"
                    | data$country=="SVN"
                    | data$country=="ESP"
@@ -104,6 +101,7 @@ DBSL2 <- function(rate1,year1,rate2,year2,i){
 }
 
 #Italy's straight-line method for the years 1998-2007 for buildings and machinery (SLITA)
+#Special case of SL3. Deduct 3x rate in yr1, 2x in yr2, 1x rate until the last year.
 SLITA <- function(rate,year,i){
   pdv <- rate + (((rate*2)*(1+i))/i)*(1-(1^(2)/(1+i)^(2)))/(1+i) + ((rate*(1+i))/i)*(1-(1^(year-3)/(1+i)^(year-3)))/(1+i)^3
   return(pdv)
@@ -138,20 +136,19 @@ CZK <- function(rate,i){
 #  return(DB+SL)
 #}
 
+#Define constant: Fixed discount rate#
+discount_rate = 0.075
+discount_rate_indexing = 0.055
+
+#Countries with inflation indexing
+indexing_list <- c("CHL","ISR","MEX")
+
 
 #Debug summarys#
 summary(data)
 summary(data$taxdepbuildtype)
 summary(data$taxdepmachtype)
 summary(data$taxdepintangibltype)
-
-
-#Define constant: Fixed discount rate#
-discount_rate = 0.075
-discount_rate_indexing = 0.055
-
-#Countries with inflation indexing
-indexing_list <- c("ISR","MEX")
 
 
 #Replace odd depreciation systems ("SL3" and "DB DB SL")####
@@ -176,11 +173,9 @@ data[c('taxdepmachtimesl')][data$country == "USA" & data$year >1982 & data$year<
 
 #machines_cost_recovery####
 
-#Initialize new column
-data$machines_cost_recovery <- NA
+
 
 #DB
-data$machines_cost_recovery[data$taxdepmachtype == "DB" & !is.na(data$taxdepmachtype)] <- DB(data$taxdeprmachdb[data$taxdepmachtype == "DB" & !is.na(data$taxdepmachtype)],discount_rate)
 data$machines_cost_recovery[data$taxdepmachtype == "DB" & !is.na(data$taxdepmachtype)] <- DB(data$taxdeprmachdb[data$taxdepmachtype == "DB" & !is.na(data$taxdepmachtype)],discount_rate)
 
 #SL
@@ -188,38 +183,33 @@ data$machines_cost_recovery[data$taxdepmachtype == "SL" & !is.na(data$taxdepmach
 
 #initialDB
 data$machines_cost_recovery[data$taxdepmachtype == "initialDB" & !is.na(data$taxdepmachtype)] <- initialDB(data$taxdeprmachdb[data$taxdepmachtype == "initialDB" & !is.na(data$taxdepmachtype)],
-                                                                                                           data$taxdeprmachsl[data$taxdepmachtype == "initialDB" & !is.na(data$taxdepmachtype)],discount_rate)
+                                                                                                           data$taxdeprmachsl[data$taxdepmachtype == "initialDB" & !is.na(data$taxdepmachtype)], discount_rate)
 
 #DB or SL
 data$machines_cost_recovery[data$taxdepmachtype == "DB or SL" & !is.na(data$taxdepmachtype)] <- DBSL2(data$taxdeprmachdb[data$taxdepmachtype == "DB or SL" & !is.na(data$taxdepmachtype)],
                                                                                                       data$taxdepmachtimedb[data$taxdepmachtype == "DB or SL" & !is.na(data$taxdepmachtype)],
                                                                                                       data$taxdeprmachsl[data$taxdepmachtype == "DB or SL" & !is.na(data$taxdepmachtype)],
-                                                                                                      data$taxdepmachtimesl[data$taxdepmachtype == "DB or SL" & !is.na(data$taxdepmachtype)],discount_rate)
-
+                                                                                                      data$taxdepmachtimesl[data$taxdepmachtype == "DB or SL" & !is.na(data$taxdepmachtype)], discount_rate)
 #SL2
 data$machines_cost_recovery[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)] <- SL2(data$taxdeprmachdb[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)],
                                                                                                data$taxdepmachtimedb[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)],
                                                                                                data$taxdeprmachsl[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)],
-                                                                                               data$taxdepmachtimesl[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)],discount_rate)
-
+                                                                                               data$taxdepmachtimesl[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)], discount_rate)
 #SLITA
-data$machines_cost_recovery[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)] <- SL(data$taxdeprmachsl[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)],discount_rate)
+data$machines_cost_recovery[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)] <- SLITA(data$taxdeprmachsl[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)],
+                                                                                                   data$taxdepmachtimesl[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)],discount_rate)
 
 #CZK
 for (x in 1:length(data$taxdeprmachdb)){
   if(grepl("CZK",data$taxdepmachtype[x]) == TRUE){
-    data$machines_cost_recovery[x] <- CZK(data$taxdeprmachdb[x],discount_rate)
+    data$machines_cost_recovery[x] <- CZK(data$taxdeprmachdb[x], discount_rate)
   }
 }
 
 
 #buildings_cost_recovery####
 
-#Initialize new column
-data$buildings_cost_recovery <- NA
-
 #DB
-data$buildings_cost_recovery[data$taxdepbuildtype == "DB" & !is.na(data$taxdepbuildtype)] <- DB(data$taxdeprbuilddb[data$taxdepbuildtype == "DB" & !is.na(data$taxdepbuildtype)],discount_rate)
 data$buildings_cost_recovery[data$taxdepbuildtype == "DB" & !is.na(data$taxdepbuildtype)] <- DB(data$taxdeprbuilddb[data$taxdepbuildtype == "DB" & !is.na(data$taxdepbuildtype)],discount_rate)
 
 #SL
@@ -227,60 +217,54 @@ data$buildings_cost_recovery[data$taxdepbuildtype == "SL" & !is.na(data$taxdepbu
 
 #initialDB
 data$buildings_cost_recovery[data$taxdepbuildtype == "initialDB" & !is.na(data$taxdepbuildtype)] <- initialDB(data$taxdeprbuilddb[data$taxdepbuildtype == "initialDB" & !is.na(data$taxdepbuildtype)],
-                                                                                                              data$taxdeprbuildsl[data$taxdepbuildtype == "initialDB" & !is.na(data$taxdepbuildtype)],discount_rate)
+                                                                                                              data$taxdeprbuildsl[data$taxdepbuildtype == "initialDB" & !is.na(data$taxdepbuildtype)], discount_rate)
 
 #DB or SL
 data$buildings_cost_recovery[data$taxdepbuildtype == "DB or SL" & !is.na(data$taxdepbuildtype)] <- DBSL2(data$taxdeprbuilddb[data$taxdepbuildtype == "DB or SL" & !is.na(data$taxdepbuildtype)],
                                                                                                          data$taxdeprbuildtimedb[data$taxdepbuildtype == "DB or SL" & !is.na(data$taxdepbuildtype)],
                                                                                                          data$taxdeprbuildsl[data$taxdepbuildtype == "DB or SL" & !is.na(data$taxdepbuildtype)],
-                                                                                                         data$taxdeprbuildtimesl[data$taxdepbuildtype == "DB or SL" & !is.na(data$taxdepbuildtype)],discount_rate)
+                                                                                                         data$taxdeprbuildtimesl[data$taxdepbuildtype == "DB or SL" & !is.na(data$taxdepbuildtype)], discount_rate)
 
 #SL2
 data$buildings_cost_recovery[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)] <- SL2(data$taxdeprbuilddb[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)],
                                                                                                   data$taxdeprbuildtimedb[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)],
                                                                                                   data$taxdeprbuildsl[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)],
-                                                                                                  data$taxdeprbuildtimesl[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)],discount_rate)
+                                                                                                  data$taxdeprbuildtimesl[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)], discount_rate)
 
 #SLITA
-data$buildings_cost_recovery[data$taxdepbuildtype == "SLITA" & !is.na(data$taxdepbuildtype)]<-SL(data$taxdeprbuildsl[data$taxdepbuildtype == "SLITA" & !is.na(data$taxdepbuildtype)],discount_rate)
-
+data$buildings_cost_recovery[data$taxdepbuildtype == "SLITA" & !is.na(data$taxdepbuildtype)]<-SLITA(data$taxdeprmachsl[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)],
+                                                                                                    data$taxdepmachtimesl[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)],discount_rate)
 #CZK
 for (x in 1:length(data$taxdeprbuilddb)){
   if(grepl("CZK",data$taxdepbuildtype[x]) == TRUE){
-    data$buildings_cost_recovery[x] <- CZK(data$taxdeprbuilddb[x],discount_rate)
+    data$buildings_cost_recovery[x] <- CZK(data$taxdeprbuilddb[x], discount_rate)
   }
 }
 
 
 #intangibles_cost_recovery####
 
-#Initialize new column
-data$intangibles_cost_recovery <- NA
-
 #DB
-data$intangibles_cost_recovery[data$taxdepintangibltype == "DB" & !is.na(data$taxdepintangibltype)] <- DB(data$taxdeprintangibldb[data$taxdepintangibltype == "DB" & !is.na(data$taxdepintangibltype)],discount_rate)
-data$intangibles_cost_recovery[data$taxdepintangibltype == "DB" & !is.na(data$taxdepintangibltype)] <- DB(data$taxdeprintangibldb[data$taxdepintangibltype == "DB" & !is.na(data$taxdepintangibltype)],discount_rate)
+data$intangibles_cost_recovery[data$taxdepintangibltype == "DB" & !is.na(data$taxdepintangibltype)] <- DB(data$taxdeprintangibldb[data$taxdepintangibltype == "DB" & !is.na(data$taxdepintangibltype)], discount_rate)
 
 #SL
-data$intangibles_cost_recovery[data$taxdepintangibltype == "SL" & !is.na(data$taxdepintangibltype)] <- SL(data$taxdeprintangiblsl[data$taxdepintangibltype == "SL" & !is.na(data$taxdepintangibltype)],discount_rate)
+data$intangibles_cost_recovery[data$taxdepintangibltype == "SL" & !is.na(data$taxdepintangibltype)] <- SL(data$taxdeprintangiblsl[data$taxdepintangibltype == "SL" & !is.na(data$taxdepintangibltype)], discount_rate)
 
 #initialDB
 data$intangibles_cost_recovery[data$taxdepintangibltype == "initialDB" & !is.na(data$taxdepintangibltype)] <- initialDB(data$taxdeprintangibldb[data$taxdepintangibltype == "initialDB" & !is.na(data$taxdepintangibltype)],
-                                                                                                                        data$taxdeprintangiblsl[data$taxdepintangibltype == "initialDB" & !is.na(data$taxdepintangibltype)],discount_rate)
+                                                                                                                        data$taxdeprintangiblsl[data$taxdepintangibltype == "initialDB" & !is.na(data$taxdepintangibltype)], discount_rate)
 
 #DB or SL
 data$intangibles_cost_recovery[data$taxdepintangibltype == "DB or SL" & !is.na(data$taxdepintangibltype)] <- DBSL2(data$taxdeprintangibldb[data$taxdepintangibltype == "DB or SL" & !is.na(data$taxdepintangibltype)],
                                                                                                                    data$taxdepintangibltimedb[data$taxdepintangibltype == "DB or SL" & !is.na(data$taxdepintangibltype)],
                                                                                                                    data$taxdeprintangiblsl[data$taxdepintangibltype == "DB or SL" & !is.na(data$taxdepintangibltype)],
-                                                                                                                   data$taxdepintangibltimesl[data$taxdepintangibltype == "DB or SL" & !is.na(data$taxdepintangibltype)],discount_rate)
+                                                                                                                   data$taxdepintangibltimesl[data$taxdepintangibltype == "DB or SL" & !is.na(data$taxdepintangibltype)], discount_rate)
 
 #SL2
 data$intangibles_cost_recovery[data$taxdepintangibltype == "SL2" & !is.na(data$taxdepintangibltype)] <- SL2(data$taxdeprintangibldb[data$taxdepintangibltype == "SL2" & !is.na(data$taxdepintangibltype)],
                                                                                                             data$taxdepintangibltimedb[data$taxdepintangibltype == "SL2" & !is.na(data$taxdepintangibltype)],
                                                                                                             data$taxdeprintangiblsl[data$taxdepintangibltype == "SL2" & !is.na(data$taxdepintangibltype)],
-                                                                                                            data$taxdepintangibltimesl[data$taxdepintangibltype == "SL2" & !is.na(data$taxdepintangibltype)],discount_rate)
-
-
+                                                                                                            data$taxdepintangibltimesl[data$taxdepintangibltype == "SL2" & !is.na(data$taxdepintangibltype)], discount_rate)
 
 # Create subset of the data for countries with inflation indexing
 indexing_data <- data[data$country %in% indexing_list, ]
@@ -310,7 +294,8 @@ indexing_data$machines_cost_recovery[indexing_data$taxdepmachtype == "SL2" & !is
       indexing_data$taxdepmachtimesl[indexing_data$taxdepmachtype == "SL2" & !is.na(indexing_data$taxdepmachtype)], discount_rate_indexing)
 
 indexing_data$machines_cost_recovery[indexing_data$taxdepmachtype == "SLITA" & !is.na(indexing_data$taxdepmachtype)] <- 
-  SL(indexing_data$taxdeprmachsl[indexing_data$taxdepmachtype == "SLITA" & !is.na(indexing_data$taxdepmachtype)], discount_rate_indexing)
+  SLITA(indexing_data$taxdeprmachsl[indexing_data$taxdepmachtype == "SLITA" & !is.na(indexing_data$taxdepmachtype)],
+        indexing_data$taxdepmachtimesl[indexing_data$taxdepmachtype == "SLITA" & !is.na(indexing_data$taxdepmachtype)], discount_rate_indexing)
 
 for (x in 1:nrow(indexing_data)) {
   if (grepl("CZK", indexing_data$taxdepmachtype[x])) {
@@ -343,7 +328,8 @@ indexing_data$buildings_cost_recovery[indexing_data$taxdepbuildtype == "SL2" & !
       indexing_data$taxdepbuildtimesl[indexing_data$taxdepbuildtype == "SL2" & !is.na(indexing_data$taxdepbuildtype)], discount_rate_indexing)
 
 indexing_data$buildings_cost_recovery[indexing_data$taxdepbuildtype == "SLITA" & !is.na(indexing_data$taxdepbuildtype)] <- 
-  SL(indexing_data$taxdeprbuildsl[indexing_data$taxdepbuildtype == "SLITA" & !is.na(indexing_data$taxdepbuildtype)], discount_rate_indexing)
+  SLITA(indexing_data$taxdeprbuildsl[indexing_data$taxdepbuildtype == "SLITA" & !is.na(indexing_data$taxdepbuildtype)],
+        indexing_data$taxdepbuildtimesl[indexing_data$taxdepbuildtype == "SLITA" & !is.na(indexing_data$taxdepbuildtype)], discount_rate_indexing)
 
 for (x in 1:nrow(indexing_data)) {
   if (grepl("CZK", indexing_data$taxdepbuildtype[x])) {
@@ -375,13 +361,9 @@ indexing_data$intangibles_cost_recovery[indexing_data$taxdepintangibltype == "SL
       indexing_data$taxdepintangibltimesl[indexing_data$taxdepintangibltype == "SL2" & !is.na(indexing_data$taxdepintangibltype)], discount_rate_indexing)
 
 indexing_data$intangibles_cost_recovery[indexing_data$taxdepintangibltype == "SLITA" & !is.na(indexing_data$taxdepintangibltype)] <- 
-  SL(indexing_data$taxdeprintangiblsl[indexing_data$taxdepintangibltype == "SLITA" & !is.na(indexing_data$taxdepintangibltype)], discount_rate_indexing)
+  SLITA(indexing_data$taxdeprintangiblsl[indexing_data$taxdepintangibltype == "SLITA" & !is.na(indexing_data$taxdepintangibltype)],
+        indexing_data$taxdepintangibltimesl[indexing_data$taxdepintangibltype == "SLITA" & !is.na(indexing_data$taxdepintangibltype)], discount_rate_indexing)
 
-for (x in 1:nrow(indexing_data)) {
-  if (grepl("CZK", indexing_data$taxdepintangibltype[x])) {
-    indexing_data$intangibles_cost_recovery[x] <- CZK(indexing_data$taxdeprintangibldb[x], discount_rate_indexing)
-  }
-}
 
 # Merge results for countries with inflation indexing back to the main data frame
 data[data$country %in% indexing_list, ] <- indexing_data
@@ -398,9 +380,9 @@ data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2020,] <-
 data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2021,] <- (data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2021,] * 0.00) + 1.00
 data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2022,] <- (data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2022,] * 0.00) + 1.00
 data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2023,] <- (data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2023,] * 0.00) + 1.00
-data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2024,] <- (data[c('machines_cost_recovery')][data$country == "CAN" & data$year == 2024,] * 0.10) + 0.90
 
-#Chile introduced full expensing in 2020; phase-out in 2023, reverting to pre-2020 values
+
+#In 2020, Chile introduced full expensing
 data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_recovery')][data$country == "CHL" & data$year ==2020,] <- 1
 data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_recovery')][data$country == "CHL" & data$year ==2021,] <- 1
 data[c('intangibles_cost_recovery','machines_cost_recovery','buildings_cost_recovery')][data$country == "CHL" & data$year ==2022,] <- 1
@@ -426,7 +408,11 @@ data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2021,] <-
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2022,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2022,] * 0.00) + 1.00
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2023,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2023,] * 0.20) + 0.80
 data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2024,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2024,] * 0.40) + 0.60
-data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2025,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2025,] * 0.60) + 0.40
+data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2025,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2025,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2026,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2026,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2027,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2027,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2028,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2028,] * 0.00) + 1.00
+data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2029,] <- (data[c('machines_cost_recovery')][data$country == "USA" & data$year == 2029,] * 0.00) + 1.00
 
 #Adjust UK data to include super-deduction and permanent full expensing
 data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2021,] <- (data[c('machines_cost_recovery')][data$country == "GBR" & data$year == 2021,] * 0.00) + 1.30
@@ -437,15 +423,12 @@ data[c('machines_cost_recovery')][data$country == "GBR" & data$year >= 2023,] <-
 #Only keep data relevant to the ITCI
 data <- subset(data, select = c(country, year, buildings_cost_recovery, machines_cost_recovery, intangibles_cost_recovery))
 
-#Add one year to account for 1-year lag
-#data$year <- data$year+1
-
 #Format output table
 colnames(data) <- c("ISO_3","year","buildings_cost_recovery", "machines_cost_recovery", "intangibles_cost_recovery")
 data <- merge(data, iso_country_codes, by="ISO_3")
 data <- data[c("ISO_2","ISO_3","country","year","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery")]
 
-data<-subset(data,data$year>=2014 & year<=2025)
+data<-subset(data,data$year>=2014 & year<=2026)
 data<-subset(data,data$ISO_3%in%oecd_countries)
 
 #Write CSV output file
