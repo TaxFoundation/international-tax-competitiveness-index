@@ -11,7 +11,7 @@ colnames(vat_rates) <- c("country","2012","2013", "2014", "2015", "2016", "2017"
 
 #US VAT rate equivalent
 columns <- names(vat_rates)
-values <- c("United States","7.2","7.2","7.2","7.3","7.3","7.4","7.4","7.4","7.4","7.4","7.4","7.5","7.5","7.5","...")
+values <- c("United States","7.2","7.2","7.2","7.3","7.3","7.4","7.4","7.4","7.4","7.4","7.4","7.5","7.5","7.5","7.5")
 US <- data.frame(columns, values)
 US <- spread(US, columns, values)
 
@@ -19,7 +19,7 @@ vat_rates <- rbind(vat_rates, US)
 
 #Canada VAT rate equivalent - https://www.retailcouncil.org/resources/quick-facts/sales-tax-rates-by-province/
 columns <- names(vat_rates)
-values <- c("Canada","15.6","15.6","15.6","10.6","10.6","12.4","12.4","12.4","12.4","12.4","12.4","12.4","12.4","12.3","...")
+values <- c("Canada","15.6","15.6","15.6","10.6","10.6","12.4","12.4","12.4","12.4","12.4","12.4","12.4","12.4","12.3","12.3")
 Canada <- data.frame(columns, values)
 Canada <- spread(Canada, columns, values)
 
@@ -200,13 +200,13 @@ write.csv(vat_thresholds,paste(intermediate_outputs,"vat_thresholds.csv",sep="")
 #Vat Base####
 
 #VRR = vat_revenue/[(Consumption-VAT revenue)*standard VAT rate]
-vat_revenue <- get_dataset("OECD.CTP.TPS,DSD_REV_COMP_OECD@DF_RSOECD,1.1","COL+CHL+CAN+BEL+AUT+AUS+FRA+FIN+EST+DNK+CZE+CRI+ISR+IRL+ISL+HUN+GRC+DEU+KOR+JPN+ITA+NZL+NLD+MEX+LUX+LTU+LVA+PRT+ESP+SVN+SVK+POL+NOR+GBR+TUR+CHE+SWE..S13.T_5111..XDC.")
-vat_revenue <- vat_revenue[c(8,12,7)]
+vat_revenue <- get_dataset("OECD.CTP.TPS,DSD_REV_COMP_GLOBAL@DF_RSGLOBAL,","GBR+TUR+CHE+SWE+ESP+SVN+SVK+PRT+POL+NOR+NZL+NLD+MEX+LUX+LTU+KOR+ITA+ISR+IRL+ISL+HUN+GRC+JPN+LVA+DEU+FRA+FIN+EST+DNK+CRI+COL+CHL+CAN+BEL+AUT+CZE+AUS..S13.T_5111..XDC.A")
+vat_revenue <- vat_revenue[c("REF_AREA","TIME_PERIOD","ObsValue")]
 colnames(vat_revenue) <- c("country","year","vat_revenue")
 
 #Replace US VAT revenue with US sales tax revenue
-US_sales_revenue <- get_dataset("OECD.CTP.TPS,DSD_REV_COMP_OECD@DF_RSOECD,1.1","USA..S13.T_5112..XDC.") 
-US_sales_revenue <- US_sales_revenue[c(8,12,7)]
+US_sales_revenue <- get_dataset("OECD.CTP.TPS,DSD_REV_COMP_GLOBAL@DF_RSGLOBAL,","USA..S13.T_5112..XDC.A")
+US_sales_revenue <- US_sales_revenue[c("REF_AREA","TIME_PERIOD","ObsValue")]
 colnames(US_sales_revenue) <- c("country","year","vat_revenue")
 
 #combine
@@ -215,11 +215,11 @@ colnames(US_sales_revenue) <- c("country","year","vat_revenue")
 #vat_revenue<-subset(vat_revenue,vat_revenue$country!="USA")
 
 #missing
-#missing_greece <- subset(vat_revenue, subset = country == "GRC" & year == "2022")
-#missing_greece$year<-2023
+missing_greece <- subset(vat_revenue, subset = country == "GRC" & year == "2022")
+missing_greece$year<-2023
 
-#missing_australia <- subset(vat_revenue, subset = country == "AUS" & year == "2022")
-#missing_australia$year<-2023
+missing_australia <- subset(vat_revenue, subset = country == "AUS" & year == "2022")
+missing_australia$year<-2023
 
 #combine
 vat_revenue<-rbind(vat_revenue,US_sales_revenue,missing_greece, missing_australia)
