@@ -35,7 +35,7 @@ vat_rates$year <- as.numeric(as.character(vat_rates$year))
 #Rename Turkey (Türkiye) for consistency
 vat_rates$country[vat_rates$country == "Türkiye"]<-"Turkey"
 
-vat_rates_vrr<-subset(vat_rates,vat_rates$year<2024)
+vat_rates_vrr<-subset(vat_rates,vat_rates$year<2025)
 #Costa Rica (for VAT Base calculation later)
 
 vat_rates_vrr$vat_rate[vat_rates_vrr$country == "Costa Rica" & vat_rates_vrr$year < 2020] <- 13
@@ -215,11 +215,11 @@ colnames(US_sales_revenue) <- c("country","year","vat_revenue")
 #vat_revenue<-subset(vat_revenue,vat_revenue$country!="USA")
 
 #missing
-missing_greece <- subset(vat_revenue, subset = country == "GRC" & year == "2022")
-missing_greece$year<-2023
+missing_greece <- subset(vat_revenue, subset = country == "GRC" & year == "2023")
+missing_greece$year<-2024
 
-missing_australia <- subset(vat_revenue, subset = country == "AUS" & year == "2022")
-missing_australia$year<-2023
+missing_australia <- subset(vat_revenue, subset = country == "AUS" & year == "2023")
+missing_australia$year<-2024
 
 #combine
 vat_revenue<-rbind(vat_revenue,US_sales_revenue,missing_greece, missing_australia)
@@ -269,8 +269,8 @@ vat_base$vat_base<-vat_base$vat_revenue/((vat_base$final_consumption-vat_base$va
 
 
 #Add 2-year lag to base
-vat_base$year <- as.character.Date(vat_base$year)
-vat_base$year <- as.numeric(vat_base$year)
+#vat_base$year <- as.character.Date(vat_base$year)
+#vat_base$year <- as.numeric(vat_base$year)
 vat_base$year <- vat_base$year+2
 
 write.csv(vat_base,paste(intermediate_outputs,"vat_base.csv",sep=""), row.names = FALSE)
