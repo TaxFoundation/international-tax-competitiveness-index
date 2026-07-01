@@ -25,12 +25,15 @@ raw_data_2023 <- read_csv(paste(final_data,"final_index_data_2023.csv",sep=""))
 raw_data_2024 <- read_csv(paste(final_data,"final_index_data_2024.csv",sep=""))
 #2025
 raw_data_2025 <- read_csv(paste(final_data,"final_index_data_2025.csv",sep=""))
+#2026
+raw_data_2026 <- read_csv(paste(final_data,"final_index_data_2026.csv",sep=""))
 
 #Combined Data####
 raw_data<-rbind(raw_data_2014,raw_data_2015,raw_data_2016,
                 raw_data_2017,raw_data_2018,raw_data_2019,
                 raw_data_2020,raw_data_2021,raw_data_2022,
-                raw_data_2023,raw_data_2024,raw_data_2025)
+                raw_data_2023,raw_data_2024,raw_data_2025,
+                raw_data_2026)
 
 raw_data$loss_carryback<-as.numeric(raw_data$loss_carryback)
 raw_data$patent_box<-as.numeric(raw_data$patent_box)
@@ -296,7 +299,7 @@ categories$income<-apply((subcategories[income_index]*(1/length(income_index))),
 categories$cross_border<-apply((subcategories[cross_border_index]*(1/length(cross_border_index))),1,sum)
 categories$final<-apply((categories[3:7]*(1/length(categories[3:7]))),1,sum)
 
-write.csv(subset(categories,categories$year==2025),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
+write.csv(subset(categories,categories$year==2026),file = paste(final_outputs,"categories_score.csv",sep=""),row.names=F)
 
 
 
@@ -345,7 +348,7 @@ rank1<-function(x){
   ranks<-rank(-x,ties.method= "min")
   return(ranks)
 }
-write.csv(subset(subcategories,subcategories$year==2025),file = paste(final_outputs,"subcategories_z_score.csv",sep=""),row.names=F)
+write.csv(subset(subcategories,subcategories$year==2026),file = paste(final_outputs,"subcategories_z_score.csv",sep=""),row.names=F)
 
 
 #Subcategory Scores####
@@ -508,6 +511,7 @@ final_2022<-final_categories[final_categories$year==2022,]
 final_2023<-final_categories[final_categories$year==2023,]
 final_2024<-final_categories[final_categories$year==2024,]
 final_2025<-final_categories[final_categories$year==2025,]
+final_2026<-final_categories[final_categories$year==2026,]
 
 #Data Check####
 
@@ -519,7 +523,7 @@ check<-raw_data[raw_data$country == "Austria",]
 final_categories<-final_categories[order(final_categories$country,final_categories$year),]
 alternate_final_categories<-alternate_final_categories[order(alternate_final_categories$country,alternate_final_categories$year),]
 
-cor(alternate_final_categories$final[alternate_final_categories$year == 2025],final_categories$final[final_categories$year == 2025])
+cor(alternate_final_categories$final[alternate_final_categories$year == 2026],final_categories$final[final_categories$year == 2026])
 
 
 #not really. .968 correlation coefficient between the two
@@ -546,7 +550,7 @@ write.csv(subcategories_correl,paste(final_outputs,"subcategories_correlation.cs
 #calc.relimp(importance, rela= TRUE)
 #alternative scoring techniques:
 
-cortest2<-alternate_final_categories[alternate_final_categories$year == 2025,]
+cortest2<-alternate_final_categories[alternate_final_categories$year == 2026,]
 cor(cortest2[c(4,6,8,10,12,14)])     
 
 
@@ -712,10 +716,11 @@ write.csv(final_2022, file = paste(final_outputs,"data_2022_run.csv",sep=""),row
 write.csv(final_2023, file = paste(final_outputs,"data_2023_run.csv",sep=""),row.names=F)
 write.csv(final_2024, file = paste(final_outputs,"data_2024_run.csv",sep=""),row.names=F)
 write.csv(final_2025, file = paste(final_outputs,"data_2025_run.csv",sep=""),row.names=F)
+write.csv(final_2026, file = paste(final_outputs,"data_2026_run.csv",sep=""),row.names=F)
 
 
 #The following file is used for country profile pages; do not edit
-final_subcategories_2025<-subset(final_subcategories,year==2025)
-write.csv(final_subcategories_2025,paste(final_outputs,"subcategories_2025.csv",sep=""),row.names=F)
+final_subcategories_2026<-subset(final_subcategories,year==2026)
+write.csv(final_subcategories_2026,paste(final_outputs,"subcategories_2026.csv",sep=""),row.names=F)
 
-write.csv(final_categories,paste(final_outputs,"final_categories_2014_2025.csv",sep=""),row.names=F)
+write.csv(final_categories,paste(final_outputs,"final_categories_2014_2026.csv",sep=""),row.names=F)

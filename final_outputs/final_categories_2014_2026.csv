@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","country","year","final_rank","final","corporate_rank","corporate","income_rank","income","consumption_rank","consumption","property_rank","property","cross_border_rank","cross_border"
+"ISO_2","ISO_3","Country","Year","Final Rank","Final Score","Corporate Rank","Corporate Score","Income Rank","Income Score","Consumption Rank","Consumption Score","Property Rank","Property Score","Cross-Border Rank","Cross-Border Score"
 "AU","AUS","Australia",2014,9,78.2452646100652,25,59.285277584958,20,63.7214233011727,8,78.4486827071126,2,88.6051134286245,27,60.761713083503
 "AU","AUS","Australia",2015,9,78.2323467627455,24,58.2386086537686,19,61.1446991318903,8,84.0409707316764,2,89.0120591402125,26,60.9156369291678
 "AU","AUS","Australia",2016,9,77.8454328311185,25,57.5946482064849,20,61.6871505123433,8,79.591727590324,2,89.8900563534875,26,62.6191870824494
