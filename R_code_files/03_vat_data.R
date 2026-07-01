@@ -156,7 +156,7 @@ vat_thresholds <- subset(vat_thresholds, vat_thresholds$country!="0")
 vat_thresholds$country[vat_thresholds$country == "Türkiye"]<-"Turkey"
 
 #Add US for all years; Latvia for 2014 and 2015; Lithuania for 2014, 2015, 2016, 2017; Colombia for 2014-2019, and Costa Rica for all years up to 2021#
-country <- c("United States","United States","United States","United States","United States","United States", "United States", "United States", "United States", "United States","United States","United States","United STates")
+country <- c("United States","United States","United States","United States","United States","United States", "United States", "United States", "United States", "United States","United States","United States","United States")
 vat_threshold <- c("0","0","0","0","0","0","0","0","0","0","0","0","0")
 year <- c("2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026")
 USA <- data.frame(country, vat_threshold, year)
