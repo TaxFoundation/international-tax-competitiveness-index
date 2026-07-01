@@ -7,12 +7,14 @@
 #corporate_rate<-corporate_rate[c(2,3,5)]
 #colnames(corporate_rate)<-c("country","corporate_rate","year")
 
-corporate_rate<-get_dataset("OECD.CTP.TPS,DSD_TAX_CIT@DF_CIT,latest", filter="USA+GBR+TUR+CHE+SWE+ESP+SVN+SVK+PRT+POL+NOR+NZL+NLD+MEX+LUX+LTU+LVA+KOR+JPN+ITA+ISR+IRL+ISL+HUN+GRC+DEU+FRA+FIN+EST+DNK+CZE+CRI+COL+CHL+CAN+BEL+AUT+AUS.A.CIT_C.ST..S13...")
-corporate_rate<-corporate_rate[c(5,7,11)]
+corporate_rate<-get_dataset("OECD.CTP.TPS,DSD_TAX_CIT@DF_CIT,2.0", filter="AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE+DNK+EST+FIN+FRA+DEU+GRC+HUN+ISL+IRL+ISR+ITA+JPN+KOR+LVA+LTU+LUX+MEX+NLD+NZL+NOR+POL+PRT+SVK+SVN+ESP+SWE+CHE+TUR+GBR+USA.A..ST..S13...")
+corporate_rate<-corporate_rate[c("ObsValue","REF_AREA","TIME_PERIOD")]
 colnames(corporate_rate)<-c("corporate_rate","ISO_3","year")
 
 corporate_rate$corporate_rate <- as.numeric(corporate_rate$corporate_rate)
 corporate_rate$corporate_rate <- corporate_rate$corporate_rate/100
+
+corporate_rate <- subset(corporate_rate, year >= 2014)
 
 #Missing Colombia
 missing_colombia <- c(0.35,"COL",2026)
@@ -264,12 +266,12 @@ missing_australia$corporate_other_rev<-as.numeric(missing_australia$corporate_ot
 
 #Add in Japan 2023 numbers
 #Japan: 2024 data not available -> use 2023 data
-missing_japan <- subset(corporate_other_rev, subset = country == "JPN" & year == "2023")
-missing_japan[missing_japan$year == 2023, "year"] <- 2024
-missing_japan$corporate_other_rev<-as.numeric(missing_japan$corporate_other_rev)
+#missing_japan <- subset(corporate_other_rev, subset = country == "JPN" & year == "2023")
+#missing_japan[missing_japan$year == 2023, "year"] <- 2024
+#missing_japan$corporate_other_rev<-as.numeric(missing_japan$corporate_other_rev)
 
 #combine
-corporate_other_rev<-rbind(corporate_other_rev,missing_australia,missing_japan)
+corporate_other_rev<-rbind(corporate_other_rev,missing_australia)
 corporate_other_rev$year<-corporate_other_rev$year+2
 
 
@@ -302,12 +304,12 @@ missing_australia$personal_other_rev<-as.numeric(missing_australia$personal_othe
 
 #Add in Japan 2023 numbers
 #Japan: 2024 data not available -> use 2023 data
-missing_japan <- subset(personal_other_rev, subset = country == "JPN" & year == "2023")
-missing_japan[missing_japan$year == 2023, "year"] <- 2024
-missing_japan$personal_other_rev<-as.numeric(missing_japan$personal_other_rev)
+#missing_japan <- subset(personal_other_rev, subset = country == "JPN" & year == "2023")
+#missing_japan[missing_japan$year == 2023, "year"] <- 2024
+#missing_japan$personal_other_rev<-as.numeric(missing_japan$personal_other_rev)
 
 #combine
-personal_other_rev<-rbind(personal_other_rev,missing_australia,missing_japan)
+personal_other_rev<-rbind(personal_other_rev,missing_australia)
 personal_other_rev$year<-personal_other_rev$year+2
 
 write.csv(personal_other_rev, file = paste(intermediate_outputs,"oecd_personal_other_rev.csv",sep=""), row.names = FALSE)
