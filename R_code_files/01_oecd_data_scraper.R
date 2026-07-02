@@ -21,7 +21,7 @@ missing_colombia <- c(0.35,"COL",2026)
 corporate_rate <- rbind(corporate_rate, missing_colombia)
 
 #Missing Israel
-missing_israel <- c(0.23,"COL",2026)
+missing_israel <- c(0.23,"ISR",2026)
 corporate_rate <- rbind(corporate_rate, missing_israel)
 
 #Missing Turkey
