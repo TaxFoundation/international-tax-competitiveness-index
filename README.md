@@ -216,8 +216,8 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `asset_tax` | Indicates the existence of a tax on net corporate assets. Countries with an asset tax are marked `1`; those without are marked `0`. No time lag. |
 | `capital_duties` | Indicates the existence of a tax on the issuance of shares of stock. Countries with a capital duties tax are marked `1`; those without are marked `0`. No time lag. |
 | `financial_transaction_tax` | Indicates the existence of a tax on the transfer of financial assets. Countries with financial transaction taxes are marked `1`; those without are marked `0`. No time lag. |
-| `dividends_exemption` | Percentage of dividends paid from foreign subsidiaries which are exempt from domestic taxes. No time lag. |
-| `capital_gains_exemption` | Percentage of capital gains from foreign investments which are exempted from domestic taxes. No time lag. |
+| `dividends_exemption` | Percentage of dividends paid from foreign subsidiaries which are exempt from domestic taxes. Where the exemption is available only through a dedicated holding company regime, the score is halved. No time lag. |
+| `capital_gains_exemption` | Percentage of capital gains from foreign investments which are exempted from domestic taxes. Where the exemption is available only through a dedicated holding company regime, the score is halved. No time lag. |
 | `country_limitations` | Indicates whether a country has certain exemptions to a territorial tax system based on the source of the foreign income. Existence of exemptions are marked as `1`; no exemptions are marked `0`. No time lag. |
 | `dividends_withholding_tax` | Required withholding for tax payments on dividends to be paid to foreign investors or businesses. No time lag. |
 | `interest_withholding_tax` | Required withholding for tax payments on interest to be paid to foreign investors or businesses. No time lag. |
@@ -225,6 +225,7 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `tax_treaties` | Number of foreign nations with which a country has tax treaties. 1-year time lag. |
 | `cfc_rules` | Indicates existence and strictness of Controlled Foreign Corporation (CFC) rules. This combines measures of whether CFC rules exist, whether they tax passive or active income, and whether they provide exemptions. Countries without CFC rules are marked `0`; those with the strictest are marked `1`, countries in between have various scores. No time lag. |
 | `thin_capitalization_rules` | Indicates whether a country puts thin capitalization restrictions on companies’ debt-to-asset ratios. Countries that limit interest deductions with only transfer pricing regulations are scored as `0`. Countries with debt-to-equity ratios receive a score of `0.5`, and countries with interest-to-pretax-earning limits receive a score of `1`. No time lag. |
-| `minimum_tax` | Indicates whether a country imposes a general minimum tax. Countries with an Income Inclusion Rule (IIR) or GILTI in the U.S.are marked as `0.5`; Countries that impose both an IIR and an Under-Taxed Profits Rule (UTPR) or BEAT in the U.S. are marked as `1`. No time lag. |
+| `minimum_tax` | Indicates whether a country imposes a general minimum tax. Countries with an Income Inclusion Rule (IIR) or GILTI/NCTI in the U.S.are marked as `0.5`; Countries that impose both an IIR and an Under-Taxed Profits Rule (UTPR) or BEAT in the U.S. are marked as `1`. No time lag. |
+
 
 The _ITCI_ uses the most up-to-date data available as of July 2024.
