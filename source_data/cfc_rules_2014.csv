@@ -10,7 +10,7 @@ CZ,CZE,Czech Republic,2014,0,0,0
 DK,DNK,Denmark,2014,1,0.5,0.5
 EE,EST,Estonia,2014,0,0,0
 FI,FIN,Finland,2014,1,0.5,0
-FR,FRA,France,2014,1,1,0
+FR,FRA,France,2014,1,0.5,0
 DE,DEU,Germany,2014,1,0,0
 GR,GRC,Greece,2014,1,0,0
 HU,HUN,Hungary,2014,1,1,0
@@ -23,7 +23,7 @@ KR,KOR,Korea,2014,1,1,0
 LV,LVA,Latvia,2014,0,0,0
 LT,LTU,Lithuania,2014,1,0,0
 LU,LUX,Luxembourg,2014,0,0,0
-MX,MEX,Mexico,2014,1,0.5,0.5
+MX,MEX,Mexico,2014,1,0.5,0
 NL,NLD,Netherlands,2014,0,0,0
 NZ,NZL,New Zealand,2014,1,0,0
 NO,NOR,Norway,2014,1,0.5,0
@@ -34,6 +34,6 @@ SI,SVN,Slovenia,2014,0,0,0
 ES,ESP,Spain,2014,1,0,0
 SE,SWE,Sweden,2014,1,1,0
 CH,CHE,Switzerland,2014,0,0,0
-TR,TUR,Turkey,2014,1,0.5,0.5
+TR,TUR,Turkey,2014,1,0.5,0
 GB,GBR,United Kingdom,2014,1,0.5,0
 US,USA,United States,2014,1,0,0

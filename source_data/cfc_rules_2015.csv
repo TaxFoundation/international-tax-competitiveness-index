@@ -10,7 +10,7 @@ CZ,CZE,Czech Republic,2015,0,0,0
 DK,DNK,Denmark,2015,1,0.5,0.5
 EE,EST,Estonia,2015,0,0,0
 FI,FIN,Finland,2015,1,0.5,0
-FR,FRA,France,2015,1,1,0
+FR,FRA,France,2015,1,0.5,0
 DE,DEU,Germany,2015,1,0,0
 GR,GRC,Greece,2015,1,0,0
 HU,HUN,Hungary,2015,1,1,0
@@ -23,7 +23,7 @@ KR,KOR,Korea,2015,1,0.5,0
 LV,LVA,Latvia,2015,0,0,0
 LT,LTU,Lithuania,2015,1,0,0
 LU,LUX,Luxembourg,2015,0,0,0
-MX,MEX,Mexico,2015,1,0.5,0.5
+MX,MEX,Mexico,2015,1,0.5,0
 NL,NLD,Netherlands,2015,0,0,0
 NZ,NZL,New Zealand,2015,1,0,0
 NO,NOR,Norway,2015,1,0.5,0
@@ -34,6 +34,6 @@ SI,SVN,Slovenia,2015,0,0,0
 ES,ESP,Spain,2015,1,0,0
 SE,SWE,Sweden,2015,1,1,0
 CH,CHE,Switzerland,2015,0,0,0
-TR,TUR,Turkey,2015,1,0.5,0.5
+TR,TUR,Turkey,2015,1,0.5,0
 GB,GBR,United Kingdom,2015,1,0.5,0
 US,USA,United States,2015,1,0,0

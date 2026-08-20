@@ -1,32 +1,32 @@
 ISO_2,ISO_3,country,year,exists,active,no_exemption
-AT,AUT,Austria,2026,1,0.5,0.5
+AT,AUT,Austria,2026,1,0.5,0
 AU,AUS,Australia,2026,1,0,0
-BE,BEL,Belgium,2026,1,0.5,0.5
+BE,BEL,Belgium,2026,1,0.5,0
 CA,CAN,Canada,2026,1,0,0
 CH,CHE,Switzerland,2026,0,0,0
-CL,CHL,Chile,2026,1,0,0.5
+CL,CHL,Chile,2026,1,0,0
 CO,COL,Colombia,2026,1,0,1
 CR,CRI,Costa Rica,2026,0,0,0
 CZ,CZE,Czech Republic,2026,1,0,0
 DE,DEU,Germany,2026,1,0,0
 DK,DNK,Denmark,2026,1,0.5,0.5
-EE,EST,Estonia,2026,1,0,0
+EE,EST,Estonia,2026,1,0.5,0
 ES,ESP,Spain,2026,1,0,0
 FI,FIN,Finland,2026,1,0.5,0
-FR,FRA,France,2026,1,1,0
+FR,FRA,France,2026,1,0.5,0
 GB,GBR,United Kingdom,2026,1,0.5,0
 GR,GRC,Greece,2026,1,0,0
-HU,HUN,Hungary,2026,1,0,0
-IE,IRL,Ireland,2026,1,0,0
+HU,HUN,Hungary,2026,1,0.5,0
+IE,IRL,Ireland,2026,1,0.5,0
 IL,ISR,Israel,2026,1,0,0
 IS,ISL,Iceland,2026,1,1,0
 IT,ITA,Italy,2026,1,0.5,0
 JP,JPN,Japan,2026,1,0.5,0
 KR,KOR,Korea,2026,1,0.5,0
 LT,LTU,Lithuania,2026,1,0,0
-LU,LUX,Luxembourg,2026,1,0,0
-LV,LVA,Latvia,2026,1,0,0
-MX,MEX,Mexico,2026,1,0.5,0.5
+LU,LUX,Luxembourg,2026,1,0.5,0
+LV,LVA,Latvia,2026,1,0.5,0
+MX,MEX,Mexico,2026,1,0.5,0
 NL,NLD,Netherlands,2026,1,0,0
 NO,NOR,Norway,2026,1,0.5,0
 NZ,NZL,New Zealand,2026,1,0,0
@@ -35,5 +35,5 @@ PT,PRT,Portugal,2026,1,0.5,0
 SE,SWE,Sweden,2026,1,1,0
 SI,SVN,Slovenia,2026,1,0,0
 SK,SVK,Slovak Republic,2026,1,0.5,0
-TR,TUR,Turkey,2026,1,0.5,0.5
+TR,TUR,Turkey,2026,1,0.5,0
 US,USA,United States,2026,1,0,0
