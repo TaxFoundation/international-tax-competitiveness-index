@@ -1,5 +1,5 @@
 # International Tax Competitiveness Index
-The Tax Foundation’s [_International Tax Competitiveness Index_](https://taxfoundation.org/publications/international-tax-competitiveness-index/) (_ITCI_) measures the degree to which the 38 OECD countries’ tax systems promote competitiveness through low tax burdens on business investment and neutrality through a well-structured tax code. The _ITCI_ considers 41 variables across five categories: Corporate Taxes, Individual Taxes, Consumption Taxes, Property Taxes, and Cross-Border Tax Rules.
+The Tax Foundation’s [_International Tax Competitiveness Index_](https://taxfoundation.org/publications/international-tax-competitiveness-index/) (_ITCI_) measures the degree to which the 38 OECD countries’ tax systems promote competitiveness through low tax burdens on business investment and neutrality through a well-structured tax code. The _ITCI_ considers 43 variables across five categories: Corporate Taxes, Individual Taxes, Consumption Taxes, Property Taxes, and Cross-Border Tax Rules.
 
 The _ITCI_ attempts to display not only which countries provide the best tax environment for investment but also the best tax environment to start and grow a business.
 
@@ -43,6 +43,7 @@ This code pulls down data from the OECD portal for the following variables:
 6. `dividends_rate`
 7. `corporate_other_rev`
 8. `personal_other_rev `
+9. `gross_receipts_rev`
 
 ### `02_cost_recovery.R`
 This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Foundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The main input file is `cost_recovery_data.csv`, which can be found in /source-data. Descriptions of the variables in that file can be found in `oxford_cbt_tax_database_data_description.md`, which is located in the main directory. The output from `02_cost_recovery.R` is the data for the following variables:
@@ -99,7 +100,7 @@ If you would like to research the tax system of a particular country and add it 
 If you have fully researched the data values for all the variables for the country for each year of the _Index_ and created a file with those sources, you could then create a pull request that we will review to determine if we would like to include the additional country in the repository and, potentially, the next version of the _Index_.
 
 ## Methodology
-The ITCI is a relative ranking of the competitiveness and neutrality of the tax code in each of the 38 OECD countries. It utilizes 42 variables across five categories: corporate income tax, individual taxes, consumption taxes, property taxes, and cross-border tax rules. Each category has multiple subcategories, and each subcategory can hold several of the 41 variables. For example, the consumption tax category contains two subcategories: rate and base. The consumption tax base subcategory then includes two variables: “VAT/sales tax threshold” and “VAT/sales tax base as a percent of total consumption.”
+The ITCI is a relative ranking of the competitiveness and neutrality of the tax code in each of the 38 OECD countries. It utilizes 43 variables across five categories: corporate income tax, individual taxes, consumption taxes, property taxes, and cross-border tax rules. Each category has multiple subcategories, and each subcategory can hold several of the 43 variables. For example, the consumption tax category contains two subcategories: rate and base. The consumption tax base subcategory then includes two variables: “VAT/sales tax threshold” and “VAT/sales tax base as a percent of total consumption.”
 
 The ITCI is designed to measure a country’s tax code on a relative basis rather than on an absolute measurement. This means that a score of 100 does not signify the absolute best possible tax code but the best tax code among the 38 OECD countries. Each country’s score on the ITCI represents its relative difference from the best country’s score.
 
@@ -128,7 +129,7 @@ The same method is used to create the final score. First, the initial category s
 Second, the adjusted initial final scores for each country are scaled to 100, relative to the country with the best score in each category. This is done by taking each country’s adjusted initial final score and dividing it by the best adjusted initial final score in each category. For example, Estonia, which has the best final score, has the best adjusted final score of 1.72, and receives a final category score of 100.
 
 ## What Drives the Final Score?
-Because the _Index_ is constructed to compare 38 countries along 42 variables, it is possible that even despite the methods described above that certain variables, subcategories, or categories could be more highly correlated with the final score.
+Because the _Index_ is constructed to compare 38 countries along 43 variables, it is possible that even despite the methods described above that certain variables, subcategories, or categories could be more highly correlated with the final score.
 To evaluate this tendency, this section reviews the correlation coefficients between the components of the _Index_ and the final score.
 
 ### Specific Categories
@@ -193,14 +194,15 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `profit_payments` | Complexity of tax system measured by number of yearly profit payments. 3-year time lag. No longer in use, replaced with `corporate_surtax`.|
 | `corporate_surtax` | Complexity of tax system measured by the existence of a surtax applied to corporate income tax. No time lag.|
 | `other_payments` | Complexity of tax system measured by number of other yearly tax payments. 3-year time lag. No longer in use, replaced with `corporate_other_rev`.|
-| `corporate_other_rev` | Complexity of tax system measured by share of revenue collected outside of normal taxes on income. Revenue codes 1300 and 6100. 2-year time lag.|
+| `corporate_other_rev` | Complexity of tax system measured by share of corporate tax revenue collected outside of normal taxes on income, calculated as `(1300 + 6100) / (1300 + 6100 + 1200)`. Revenue codes 1300 and 6100 are siblings of 1200 in the OECD classification rather than subsets of it, so the numerator is added into the denominator. 2-year time lag.|
+| `gross_receipts_rev` | Complexity of tax system measured by share of corporate tax revenue raised through turnover taxes, calculated as `5113 / (5113 + 1200)`. Revenue code 5113 (“turnover and other general taxes on goods and services”) captures gross receipts taxes such as Hungary’s local business tax, which fall outside the corporate income tax but are borne by business. 2-year time lag.|
 | `top_income_rate` | The top marginal income tax rate. 1-year lag. |
 | `threshold_top_income_rate` | Measure to show at what level the top statutory personal income tax rate applies, expressed as a multiple of the average income. 1-year time lag. |
 | `tax_wedge` | The total tax cost of labor in a country (includes individual income tax and payroll tax). This is the average of the ratio of the marginal tax wedge to the average tax wedge for employees at the 67th, 100th, and 167th percentiles. 1-year time lag. |
 | `labor_payments` | Complexity of tax system measured by number of yearly labor tax payments. 3-year time lag. No longer in use, replaced with `personal_surtax`.|
 | `personal_surtax` | Complexity of tax system measured by the existence of a surtax applied to personal income tax. No time lag.|
 | `labor_time` | Complexity of tax system measured by average time in hours needed to comply with a country’s labor tax requirements.32-year time lag. No longer in use, replaced with `personal_other_rev`.|
-| `personal_other_rev` |Complexity of tax system measured by share of revenue collected outside of normal taxes on on payroll. Revenue code 2400. 2-year time lag.|
+| `personal_other_rev` |Complexity of tax system measured by share of social security contributions collected outside of normal taxes on payroll, calculated as `2400 / 2000`. Revenue code 2400 (unallocable contributions) is a subset of 2000 (total social security contributions), so the denominator is 2000 alone. 2-year time lag.|
 | `capital_gains_rate` | Tax rate for capital gains after any imputation, credit, or offset. When the capital gains tax rate varies by type of asset sold, the tax rate applying to the sale of listed shares after an extended period of time is used. No time lag. |
 | `index_capital_gains` | Whether a country indexes basis for purposes of capital gains tax. No longer in use. |
 | `dividends_rate` |  The total top marginal dividend tax rate after any imputation or credit system. No time lag. |

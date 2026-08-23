@@ -181,7 +181,8 @@ keep<-c("country",
         "digital_services_tax",
         "corporate_alt_minimum",
         "corporate_surtax",
-        "corporate_other_rev")
+        "corporate_other_rev",
+        "gross_receipts_rev")
 
 table_a_corporate_raw<-table_a_corporate_raw[keep]
 
@@ -213,7 +214,8 @@ table_a_corporate<-table_a_corporate[c("country","corporate_rate",
                                      "digital_services_tax",
                                      "corporate_alt_minimum",
                                      "corporate_surtax",
-                                     "corporate_other_rev")]
+                                     "corporate_other_rev",
+                                     "gross_receipts_rev")]
 
 
 
@@ -250,7 +252,14 @@ table_a_corporate$corporate_alt_minimum<-formatC(round(table_a_corporate$corpora
 table_a_corporate$corporate_surtax<-if_else(table_a_corporate$corporate_surtax==1,"Yes","No")
 
 #corporate_other_rev
+#Multiplied by 100 because the variable is now a share of corporate tax revenue rather
+#than a percentage of GDP.
+table_a_corporate$corporate_other_rev<-table_a_corporate$corporate_other_rev*100
 table_a_corporate$corporate_other_rev<-paste(formatC(round(table_a_corporate$corporate_other_rev,digits=1),format = "f",digits=1),"%",sep="")
+
+#gross_receipts_rev
+table_a_corporate$gross_receipts_rev<-table_a_corporate$gross_receipts_rev*100
+table_a_corporate$gross_receipts_rev<-paste(formatC(round(table_a_corporate$gross_receipts_rev,digits=1),format = "f",digits=1),"%",sep="")
 
 
 headers<-c("",
@@ -318,7 +327,10 @@ table_b_individual$tax_wedge<-(formatC(round(table_b_individual$tax_wedge,digits
 table_b_individual$personal_surtax<-if_else(table_b_individual$personal_surtax==1,"Yes","No")
 
 #personal_other_rev
+#Multiplied by 100 because the variable is now a share of social security contributions
+#rather than a percentage of GDP.
 table_b_individual$personal_other_rev<-as.numeric(table_b_individual$personal_other_rev)
+table_b_individual$personal_other_rev<-table_b_individual$personal_other_rev*100
 table_b_individual$personal_other_rev<-paste(formatC(round(table_b_individual$personal_other_rev,digits=0),format = "f",digits=0),"%",sep="")
 
 #capital_gains_rate

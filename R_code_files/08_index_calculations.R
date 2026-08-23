@@ -54,7 +54,7 @@ raw_data$minimum_tax<-as.numeric(raw_data$minimum_tax)
 
 #Order variables for easier working
 raw_data<-raw_data[c("ISO_2","ISO_3","country","year",
-                 "corporate_rate","loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory","allowance_corporate_equity","patent_box","r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev",
+                 "corporate_rate","loss_carryback","loss_carryforward","machines_cost_recovery","buildings_cost_recovery","intangibles_cost_recovery","inventory","allowance_corporate_equity","patent_box","r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev","gross_receipts_rev",
                  "top_income_rate","threshold_top_income_rate","tax_wedge","personal_surtax","personal_other_rev","capital_gains_rate","dividends_rate",
                  "vat_rate","vat_threshold","vat_base",
                  "property_tax", "property_tax_collections","net_wealth","estate_or_inheritance_tax","transfer_tax","asset_tax","capital_duties","financial_transaction_tax",
@@ -68,15 +68,18 @@ normalize <-function(x){
 }   
 
 #standardize all the scores into a new dataframe called "zscores" (this does this by year)
+#Columns 1:3 are ISO_2, ISO_3 and country; column 4 is year, which ddply groups by.
+#The upper bound is taken from ncol() rather than hardcoded so that adding a variable
+#to the reorder above does not silently drop the last one.
 zscores<-data.frame(country=raw_data$country,
                     year=raw_data$year,
-                    ddply(raw_data[4:46],
+                    ddply(raw_data[4:ncol(raw_data)],
                           .(year),
                           scale)
 )
 alternate_scores<-data.frame(country=raw_data$country,
                       year=raw_data$year,
-                      ddply(raw_data[4:46],
+                      ddply(raw_data[4:ncol(raw_data)],
                             .(year),
                             normalize)
 )
@@ -124,7 +127,7 @@ alternate_scores[is.na(alternate_scores)] <- 0
 # cfc_rules
 # thin_capitalization_rules
 
-flip <- c("corporate_rate", "patent_box", "r_and_d_credit", "digital_services_tax", "corporate_alt_minimum", "corporate_surtax", "corporate_other_rev", 
+flip <- c("corporate_rate", "patent_box", "r_and_d_credit", "digital_services_tax", "corporate_alt_minimum", "corporate_surtax", "corporate_other_rev", "gross_receipts_rev",
           "top_income_rate", "threshold_top_income_rate", "tax_wedge", "personal_surtax", "personal_other_rev", "capital_gains_rate", "dividends_rate", 
           "vat_rate", "vat_threshold", 
           "property_tax_collections", "net_wealth", "estate_or_inheritance_tax", "transfer_tax", "asset_tax", "capital_duties", "financial_transaction_tax", 
@@ -219,7 +222,7 @@ for (i in flip) {
 corporate_rate_index<-c("corporate_rate")
 cost_recovery_index<-c("loss_carryback","loss_carryforward","machines_cost_recovery",
                        "buildings_cost_recovery","intangibles_cost_recovery","inventory","allowance_corporate_equity")
-incentives_index<-c("patent_box","r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev")
+incentives_index<-c("patent_box","r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev","gross_receipts_rev")
 
 income_tax_index<-c("top_income_rate","threshold_top_income_rate","tax_wedge")
 income_tax_complexity_index<-c("personal_surtax","personal_other_rev")
