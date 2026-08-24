@@ -151,10 +151,17 @@ summary(data$taxdepmachtype)
 summary(data$taxdepintangibltype)
 
 
-#Replace odd depreciation systems ("SL3" and "DB DB SL")####
+#Replace odd depreciation systems ("SL3", "SLITA" and "DB DB SL")####
 
 #Treat SL3 as SL2
 data[c("taxdepbuildtype", "taxdepmachtype", "taxdepintangibltype")] <- as.data.frame(sapply(data[c("taxdepbuildtype", "taxdepmachtype", "taxdepintangibltype")], function(x) gsub("SL3", "SL2", x)))
+
+#Treat SLITA as SL2, matching capital_cost_recovery.R.
+#SLITA is not only Italy's old method: Austria's accelerated building depreciation from 2020
+#is coded with this type as well. For those rows the four parameters form a complete schedule
+#(2 x 6.395% + 35 x 2.5% = 100.3%), which is SL2. The SLITA function reads only the sl and
+#timesl fields and would drop the accelerated phase entirely.
+data[c("taxdepbuildtype", "taxdepmachtype", "taxdepintangibltype")] <- as.data.frame(sapply(data[c("taxdepbuildtype", "taxdepmachtype", "taxdepintangibltype")], function(x) gsub("SLITA", "SL2", x)))
 
 #Treat "DB DB SL" as initialDB ("DB DB SL" -> "initialDB")
 data[c("taxdepbuildtype", "taxdepmachtype", "taxdepintangibltype")] <- as.data.frame(sapply(data[c("taxdepbuildtype", "taxdepmachtype", "taxdepintangibltype")], function(x) gsub("DB DB SL", "initialDB", x)))
@@ -195,10 +202,6 @@ data$machines_cost_recovery[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmac
                                                                                                data$taxdepmachtimedb[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)],
                                                                                                data$taxdeprmachsl[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)],
                                                                                                data$taxdepmachtimesl[data$taxdepmachtype == "SL2" & !is.na(data$taxdepmachtype)], discount_rate)
-#SLITA
-data$machines_cost_recovery[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)] <- SLITA(data$taxdeprmachsl[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)],
-                                                                                                   data$taxdepmachtimesl[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)],discount_rate)
-
 #CZK
 for (x in 1:length(data$taxdeprmachdb)){
   if(grepl("CZK",data$taxdepmachtype[x]) == TRUE){
@@ -231,9 +234,6 @@ data$buildings_cost_recovery[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepb
                                                                                                   data$taxdeprbuildsl[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)],
                                                                                                   data$taxdeprbuildtimesl[data$taxdepbuildtype == "SL2" & !is.na(data$taxdepbuildtype)], discount_rate)
 
-#SLITA
-data$buildings_cost_recovery[data$taxdepbuildtype == "SLITA" & !is.na(data$taxdepbuildtype)]<-SLITA(data$taxdeprmachsl[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)],
-                                                                                                    data$taxdepmachtimesl[data$taxdepmachtype == "SLITA" & !is.na(data$taxdepmachtype)],discount_rate)
 #CZK
 for (x in 1:length(data$taxdeprbuilddb)){
   if(grepl("CZK",data$taxdepbuildtype[x]) == TRUE){
@@ -293,10 +293,6 @@ indexing_data$machines_cost_recovery[indexing_data$taxdepmachtype == "SL2" & !is
       indexing_data$taxdeprmachsl[indexing_data$taxdepmachtype == "SL2" & !is.na(indexing_data$taxdepmachtype)],
       indexing_data$taxdepmachtimesl[indexing_data$taxdepmachtype == "SL2" & !is.na(indexing_data$taxdepmachtype)], discount_rate_indexing)
 
-indexing_data$machines_cost_recovery[indexing_data$taxdepmachtype == "SLITA" & !is.na(indexing_data$taxdepmachtype)] <- 
-  SLITA(indexing_data$taxdeprmachsl[indexing_data$taxdepmachtype == "SLITA" & !is.na(indexing_data$taxdepmachtype)],
-        indexing_data$taxdepmachtimesl[indexing_data$taxdepmachtype == "SLITA" & !is.na(indexing_data$taxdepmachtype)], discount_rate_indexing)
-
 for (x in 1:nrow(indexing_data)) {
   if (grepl("CZK", indexing_data$taxdepmachtype[x])) {
     indexing_data$machines_cost_recovery[x] <- CZK(indexing_data$taxdeprmachdb[x], discount_rate_indexing)
@@ -327,10 +323,6 @@ indexing_data$buildings_cost_recovery[indexing_data$taxdepbuildtype == "SL2" & !
       indexing_data$taxdeprbuildsl[indexing_data$taxdepbuildtype == "SL2" & !is.na(indexing_data$taxdepbuildtype)],
       indexing_data$taxdepbuildtimesl[indexing_data$taxdepbuildtype == "SL2" & !is.na(indexing_data$taxdepbuildtype)], discount_rate_indexing)
 
-indexing_data$buildings_cost_recovery[indexing_data$taxdepbuildtype == "SLITA" & !is.na(indexing_data$taxdepbuildtype)] <- 
-  SLITA(indexing_data$taxdeprbuildsl[indexing_data$taxdepbuildtype == "SLITA" & !is.na(indexing_data$taxdepbuildtype)],
-        indexing_data$taxdepbuildtimesl[indexing_data$taxdepbuildtype == "SLITA" & !is.na(indexing_data$taxdepbuildtype)], discount_rate_indexing)
-
 for (x in 1:nrow(indexing_data)) {
   if (grepl("CZK", indexing_data$taxdepbuildtype[x])) {
     indexing_data$buildings_cost_recovery[x] <- CZK(indexing_data$taxdeprbuilddb[x], discount_rate_indexing)
@@ -359,10 +351,6 @@ indexing_data$intangibles_cost_recovery[indexing_data$taxdepintangibltype == "SL
       indexing_data$taxdepintangibltimedb[indexing_data$taxdepintangibltype == "SL2" & !is.na(indexing_data$taxdepintangibltype)],
       indexing_data$taxdeprintangiblsl[indexing_data$taxdepintangibltype == "SL2" & !is.na(indexing_data$taxdepintangibltype)],
       indexing_data$taxdepintangibltimesl[indexing_data$taxdepintangibltype == "SL2" & !is.na(indexing_data$taxdepintangibltype)], discount_rate_indexing)
-
-indexing_data$intangibles_cost_recovery[indexing_data$taxdepintangibltype == "SLITA" & !is.na(indexing_data$taxdepintangibltype)] <- 
-  SLITA(indexing_data$taxdeprintangiblsl[indexing_data$taxdepintangibltype == "SLITA" & !is.na(indexing_data$taxdepintangibltype)],
-        indexing_data$taxdepintangibltimesl[indexing_data$taxdepintangibltype == "SLITA" & !is.na(indexing_data$taxdepintangibltype)], discount_rate_indexing)
 
 
 # Merge results for countries with inflation indexing back to the main data frame

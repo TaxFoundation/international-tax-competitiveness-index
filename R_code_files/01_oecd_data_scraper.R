@@ -1,6 +1,11 @@
 #OECD data scraper
 ####OECD Data Scraper####
 
+#R's default download timeout is 60 seconds. The tax wedge query below returns about 2 MB
+#and takes roughly 45 seconds on a good day, so it fails intermittently at the default.
+#Set here as well as in 00_master_file.R so that running this script on its own works.
+options(timeout = max(600, getOption("timeout")))
+
 #Helper for the revenue share variables (corporate_other_rev, turnover_tax_rev,
 #personal_other_rev). Those are ratios of two OECD revenue codes, so a country-year with
 #no observation on either side cannot be computed and comes through as NA. Coercing every

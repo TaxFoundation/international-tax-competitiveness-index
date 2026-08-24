@@ -11,6 +11,12 @@ final_data<-"C:/Github/international-tax-competitiveness-index/final_data/"
 final_outputs<-"C:/Github/international-tax-competitiveness-index/final_outputs/"
 country_outputs<-"C:/Github/international-tax-competitiveness-index/country_outputs/"
 
+#Download timeout####
+#R defaults to 60 seconds, which is not enough for the larger OECD SDMX queries in
+#01_oecd_data_scraper.R, 03_vat_data.R, 04_property_tax_collections.R and
+#06_withholding_rates.R. The tax wedge query alone runs to about 2 MB and 45 seconds.
+options(timeout = max(600, getOption("timeout")))
+
 
 #Define Using function####
 using<-function(...,prompt=TRUE){
