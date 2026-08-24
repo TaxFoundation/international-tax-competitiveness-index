@@ -43,7 +43,7 @@ This code pulls down data from the OECD portal for the following variables:
 6. `dividends_rate`
 7. `corporate_other_rev`
 8. `personal_other_rev `
-9. `gross_receipts_rev`
+9. `turnover_tax_rev`
 
 ### `02_cost_recovery.R`
 This code takes the Oxford Centre for Business Taxation tax database data (and additions to that made by Tax Foundation) to calculate present discounted values for capital allowances for investments in machinery, buildings, and intangibles. The main input file is `cost_recovery_data.csv`, which can be found in /source-data. Descriptions of the variables in that file can be found in `oxford_cbt_tax_database_data_description.md`, which is located in the main directory. The output from `02_cost_recovery.R` is the data for the following variables:
@@ -195,7 +195,7 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `corporate_surtax` | Complexity of tax system measured by the existence of a surtax applied to corporate income tax. No time lag.|
 | `other_payments` | Complexity of tax system measured by number of other yearly tax payments. 3-year time lag. No longer in use, replaced with `corporate_other_rev`.|
 | `corporate_other_rev` | Complexity of tax system measured by share of corporate tax revenue collected outside of normal taxes on income, calculated as `(1300 + 6100) / (1300 + 6100 + 1200)`. Revenue codes 1300 and 6100 are siblings of 1200 in the OECD classification rather than subsets of it, so the numerator is added into the denominator. 2-year time lag.|
-| `gross_receipts_rev` | Complexity of tax system measured by share of corporate tax revenue raised through turnover taxes, calculated as `5113 / (5113 + 1200)`. Revenue code 5113 (“turnover and other general taxes on goods and services”) captures gross receipts taxes such as Hungary’s local business tax, which fall outside the corporate income tax but are borne by business. 2-year time lag.|
+| `turnover_tax_rev` | Complexity of tax system measured by share of corporate tax revenue raised through turnover taxes, calculated as `5113 / (5113 + 1200)`. Revenue code 5113 (“turnover and other general taxes on goods and services”) captures gross receipts taxes such as Hungary’s local business tax, which fall outside the corporate income tax but are borne by business. 2-year time lag.|
 | `top_income_rate` | The top marginal income tax rate. 1-year lag. |
 | `threshold_top_income_rate` | Measure to show at what level the top statutory personal income tax rate applies, expressed as a multiple of the average income. 1-year time lag. |
 | `tax_wedge` | The total tax cost of labor in a country (includes individual income tax and payroll tax). This is the average of the ratio of the marginal tax wedge to the average tax wedge for employees at the 67th, 100th, and 167th percentiles. 1-year time lag. |

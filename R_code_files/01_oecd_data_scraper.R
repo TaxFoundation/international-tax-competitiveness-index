@@ -1,7 +1,7 @@
 #OECD data scraper
 ####OECD Data Scraper####
 
-#Helper for the revenue share variables (corporate_other_rev, gross_receipts_rev,
+#Helper for the revenue share variables (corporate_other_rev, turnover_tax_rev,
 #personal_other_rev). Those are ratios of two OECD revenue codes, so a country-year with
 #no observation on either side cannot be computed and comes through as NA. Coercing every
 #NA to zero would turn "not yet published" into "no such tax", which silently understates
@@ -329,44 +329,44 @@ corporate_other_rev<-read.csv(paste(intermediate_outputs,"oecd_corporate_other_r
 corporate_other_rev <- corporate_other_rev %>%
   rename(ISO_3 = country)
 
-#gross_receipts_rev####
+#turnover_tax_rev####
 #Share of business tax revenue raised through turnover taxes: 5113 / (5113 + 1200).
 #OECD code 5113 is "turnover and other general taxes on goods and services"
-gross_receipts_rev <- get_dataset("OECD.CTP.TPS,DSD_REV_COMP_OECD@DF_RSOECD",
+turnover_tax_rev <- get_dataset("OECD.CTP.TPS,DSD_REV_COMP_OECD@DF_RSOECD",
                                   "TUR+GBR+USA+SVN+ESP+SWE+CHE+NLD+NZL+NOR+POL+PRT+SVK+ITA+JPN+KOR+LVA+LTU+LUX+MEX+ISL+IRL+ISR+DNK+EST+FIN+FRA+DEU+GRC+HUN+AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE..S13.T_5113+T_1200..USD.A")
-gross_receipts_rev<-gross_receipts_rev[c(8,7,9,12)]
-colnames(gross_receipts_rev)<-c("country","gross_receipts_rev","tax","year")
-gross_receipts_rev<-gross_receipts_rev[gross_receipts_rev$year >=2012,]
+turnover_tax_rev<-turnover_tax_rev[c(8,7,9,12)]
+colnames(turnover_tax_rev)<-c("country","turnover_tax_rev","tax","year")
+turnover_tax_rev<-turnover_tax_rev[turnover_tax_rev$year >=2012,]
 
-gross_receipts_rev<-spread(gross_receipts_rev,tax,gross_receipts_rev)
-gross_receipts_rev$`5113`<-as.numeric(gross_receipts_rev$`5113`)
-gross_receipts_rev$`1200`<-as.numeric(gross_receipts_rev$`1200`)
+turnover_tax_rev<-spread(turnover_tax_rev,tax,turnover_tax_rev)
+turnover_tax_rev$`5113`<-as.numeric(turnover_tax_rev$`5113`)
+turnover_tax_rev$`1200`<-as.numeric(turnover_tax_rev$`1200`)
 
 #As for corporate_other_rev, NAs are left in place and resolved by fill_revenue_share below.
-gross_receipts_rev$denominator<-gross_receipts_rev$`5113`+gross_receipts_rev$`1200`
-gross_receipts_rev$gross_receipts_rev<-ifelse(!is.na(gross_receipts_rev$denominator) &
-                                                gross_receipts_rev$denominator>0,
-                                              gross_receipts_rev$`5113`/gross_receipts_rev$denominator,
+turnover_tax_rev$denominator<-turnover_tax_rev$`5113`+turnover_tax_rev$`1200`
+turnover_tax_rev$turnover_tax_rev<-ifelse(!is.na(turnover_tax_rev$denominator) &
+                                                turnover_tax_rev$denominator>0,
+                                              turnover_tax_rev$`5113`/turnover_tax_rev$denominator,
                                               NA)
-gross_receipts_rev<-gross_receipts_rev[c("country","year","gross_receipts_rev")]
+turnover_tax_rev<-turnover_tax_rev[c("country","year","turnover_tax_rev")]
 
-gross_receipts_rev<-subset(gross_receipts_rev,country%in%oecd_countries)
+turnover_tax_rev<-subset(turnover_tax_rev,country%in%oecd_countries)
 
-gross_receipts_rev$year<-as.numeric(gross_receipts_rev$year)
-gross_receipts_rev$gross_receipts_rev<-as.numeric(gross_receipts_rev$gross_receipts_rev)
+turnover_tax_rev$year<-as.numeric(turnover_tax_rev$year)
+turnover_tax_rev$turnover_tax_rev<-as.numeric(turnover_tax_rev$turnover_tax_rev)
 
 #Australia: 2024 data not available -> use 2023 data, as for corporate_other_rev
-missing_australia <- subset(gross_receipts_rev, subset = country == "AUS" & year == "2023")
+missing_australia <- subset(turnover_tax_rev, subset = country == "AUS" & year == "2023")
 missing_australia[missing_australia$year == 2023, "year"] <- 2024
-missing_australia$gross_receipts_rev<-as.numeric(missing_australia$gross_receipts_rev)
+missing_australia$turnover_tax_rev<-as.numeric(missing_australia$turnover_tax_rev)
 
-gross_receipts_rev<-rbind(gross_receipts_rev,missing_australia)
+turnover_tax_rev<-rbind(turnover_tax_rev,missing_australia)
 
 #Two-year time lag, as for corporate_other_rev and personal_other_rev
-gross_receipts_rev$year<-gross_receipts_rev$year+2
+turnover_tax_rev$year<-turnover_tax_rev$year+2
 
 #Resolves the unpublished trailing years, Greece among them.
-gross_receipts_rev<-fill_revenue_share(gross_receipts_rev,"gross_receipts_rev")
+turnover_tax_rev<-fill_revenue_share(turnover_tax_rev,"turnover_tax_rev")
 
 #Latvia is the one case where the carry-forward is wrong. The only item behind code 5113
 #was the mandatory procurement component (Obligata iepirkuma komponente), an electricity
@@ -374,13 +374,13 @@ gross_receipts_rev<-fill_revenue_share(gross_receipts_rev,"gross_receipts_rev")
 #reported afterwards in the EU National Tax Lists. The trailing gap is a genuine zero, not
 #unpublished data, so it is set back to zero here. Years below are index years, i.e. data
 #year plus the two-year lag, so 2025 corresponds to data year 2023.
-gross_receipts_rev$gross_receipts_rev[gross_receipts_rev$country == "LVA" &
-                                        gross_receipts_rev$year >= 2025] <- 0
+turnover_tax_rev$turnover_tax_rev[turnover_tax_rev$country == "LVA" &
+                                        turnover_tax_rev$year >= 2025] <- 0
 
-write.csv(gross_receipts_rev, file = paste(intermediate_outputs,"oecd_gross_receipts_rev.csv",sep=""), row.names = FALSE)
-gross_receipts_rev<-read.csv(paste(intermediate_outputs,"oecd_gross_receipts_rev.csv",sep=""))
+write.csv(turnover_tax_rev, file = paste(intermediate_outputs,"oecd_turnover_tax_rev.csv",sep=""), row.names = FALSE)
+turnover_tax_rev<-read.csv(paste(intermediate_outputs,"oecd_turnover_tax_rev.csv",sep=""))
 
-gross_receipts_rev <- gross_receipts_rev %>%
+turnover_tax_rev <- turnover_tax_rev %>%
   rename(ISO_3 = country)
 
 #personal_other_rev####
@@ -448,7 +448,7 @@ OECDvars_data <- merge(OECDvars_data, threshold, by=c("ISO_3","year"))
 OECDvars_data <- merge(OECDvars_data, tax_wedge, by=c("ISO_3","year"))
 OECDvars_data <- merge(OECDvars_data, dividends_rate, by=c("ISO_3","year"))
 OECDvars_data <- merge(OECDvars_data, corporate_other_rev, by=c("ISO_3","year"))
-OECDvars_data <- merge(OECDvars_data, gross_receipts_rev, by=c("ISO_3","year"))
+OECDvars_data <- merge(OECDvars_data, turnover_tax_rev, by=c("ISO_3","year"))
 OECDvars_data <- merge(OECDvars_data, personal_other_rev, by=c("ISO_3","year"))
 
 #Drop all_in_rate, which is only used above to take the max against the top rate.
@@ -458,6 +458,6 @@ OECDvars_data$all_in_rate <- NULL
 
 OECDvars_data <- merge(OECDvars_data,iso_country_codes,by="ISO_3")
 
-OECDvars_data <- OECDvars_data[c("ISO_2","ISO_3","country","year","corporate_rate","r_and_d_credit", "top_income_rate", "threshold_top_income_rate", "tax_wedge", "dividends_rate","corporate_other_rev","gross_receipts_rev","personal_other_rev")]
+OECDvars_data <- OECDvars_data[c("ISO_2","ISO_3","country","year","corporate_rate","r_and_d_credit", "top_income_rate", "threshold_top_income_rate", "tax_wedge", "dividends_rate","corporate_other_rev","turnover_tax_rev","personal_other_rev")]
 
 write.csv(OECDvars_data, file = paste(intermediate_outputs,"oecd_variables_data.csv",sep=""), row.names = FALSE)

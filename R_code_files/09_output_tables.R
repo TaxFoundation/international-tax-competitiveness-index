@@ -182,7 +182,7 @@ keep<-c("country",
         "corporate_alt_minimum",
         "corporate_surtax",
         "corporate_other_rev",
-        "gross_receipts_rev")
+        "turnover_tax_rev")
 
 table_a_corporate_raw<-table_a_corporate_raw[keep]
 
@@ -215,7 +215,7 @@ table_a_corporate<-table_a_corporate[c("country","corporate_rate",
                                      "corporate_alt_minimum",
                                      "corporate_surtax",
                                      "corporate_other_rev",
-                                     "gross_receipts_rev")]
+                                     "turnover_tax_rev")]
 
 
 
@@ -257,9 +257,9 @@ table_a_corporate$corporate_surtax<-if_else(table_a_corporate$corporate_surtax==
 table_a_corporate$corporate_other_rev<-table_a_corporate$corporate_other_rev*100
 table_a_corporate$corporate_other_rev<-paste(formatC(round(table_a_corporate$corporate_other_rev,digits=1),format = "f",digits=1),"%",sep="")
 
-#gross_receipts_rev
-table_a_corporate$gross_receipts_rev<-table_a_corporate$gross_receipts_rev*100
-table_a_corporate$gross_receipts_rev<-paste(formatC(round(table_a_corporate$gross_receipts_rev,digits=1),format = "f",digits=1),"%",sep="")
+#turnover_tax_rev
+table_a_corporate$turnover_tax_rev<-table_a_corporate$turnover_tax_rev*100
+table_a_corporate$turnover_tax_rev<-paste(formatC(round(table_a_corporate$turnover_tax_rev,digits=1),format = "f",digits=1),"%",sep="")
 
 
 headers<-c("",

@@ -1,4 +1,4 @@
-"ISO_2","ISO_3","country","year","corporate_rate","r_and_d_credit","top_income_rate","threshold_top_income_rate","tax_wedge","dividends_rate","corporate_other_rev","gross_receipts_rev","personal_other_rev"
+"ISO_2","ISO_3","country","year","corporate_rate","r_and_d_credit","top_income_rate","threshold_top_income_rate","tax_wedge","dividends_rate","corporate_other_rev","turnover_tax_rev","personal_other_rev"
 "AU","AUS","Australia","2014","0.3",0.1425,0.465,"2.266751",1.43905821484179,0.27142857,0,0,0
 "AU","AUS","Australia","2015","0.3",0.1425,0.49,"2.229938",1.42440798506398,0.27142857,0,0,0
 "AU","AUS","Australia","2016","0.3",0.1425,0.49,"2.194088",1.45666927578124,0.27142857,0,0,0

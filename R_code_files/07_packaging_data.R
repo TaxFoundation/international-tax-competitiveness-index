@@ -68,7 +68,7 @@ index_data_old<-rbind(index_data2014,index_data2015,index_data2016,
 #Join OECD data with index_data_old####
 
 #Remove variables from index_data_old that are in OECD data
-oecd_variables_list<-c("corporate_rate", "r_and_d_credit", "top_income_rate", "threshold_top_income_rate", "tax_wedge","dividends_rate","corporate_other_rev","personal_other_rev","gross_receipts_rev")
+oecd_variables_list<-c("corporate_rate", "r_and_d_credit", "top_income_rate", "threshold_top_income_rate", "tax_wedge","dividends_rate","corporate_other_rev","personal_other_rev","turnover_tax_rev")
 index_data_old<-index_data_old[,!names(index_data_old) %in% oecd_variables_list]
 
 index_data_oecd_variables<-merge(index_data_old,oecd_variables,by=c("country","ISO_2","ISO_3","year"))
@@ -123,7 +123,7 @@ index_data_final<-index_data_final[c("ISO_2","ISO_3","country","year",
                                    "corporate_rate","loss_carryback","loss_carryforward",
                                    "machines_cost_recovery","buildings_cost_recovery",
                                    "intangibles_cost_recovery","inventory","allowance_corporate_equity","patent_box",
-                                   "r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev","gross_receipts_rev",
+                                   "r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev","turnover_tax_rev",
                                    "top_income_rate","threshold_top_income_rate","tax_wedge",
                                    "personal_surtax","personal_other_rev","capital_gains_rate",
                                    "dividends_rate",
