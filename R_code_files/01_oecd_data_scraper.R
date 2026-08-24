@@ -138,6 +138,17 @@ all_in_rate <- rbind(all_in_rate, all_in_current)
 top_income_rate<-merge(top_income_rate,all_in_rate, by=c("ISO_3","year"))
 top_income_rate$top_income_rate<-pmax(top_income_rate$top_income_rate,top_income_rate$all_in_rate)
 
+#Latvia: the OECD table reports a top statutory PIT rate of 0 for 2025, so the pmax above
+#falls back to the all-in rate alone (10.4%, essentially the employee social contribution).
+#Latvia moved to a two-rate schedule on 1 January 2025: 25.5% up to EUR 105,300 and 33% above
+#it, plus an additional 3% on income over EUR 200,000 (Deloitte Latvia Highlights 2026). The
+#top marginal rate is therefore 36%. Surcharges are included in this variable elsewhere -
+#Germany's 47.475% is 45% plus the 5.5% solidarity surcharge - so the 3% is included here too.
+#Set after the pmax so the broken OECD value cannot override it. 2026 is affected as well
+#because it is copied forward from 2025 above.
+top_income_rate$top_income_rate[top_income_rate$ISO_3 == "LVA" &
+                                  top_income_rate$year >= 2025] <- 0.36
+
 #Missing Netherlands
 #missing_netherlands <- c("NLD",2014,0.52,0.526)
 #top_income_rate <- rbind(top_income_rate, missing_netherlands)
@@ -157,6 +168,12 @@ threshold$year<-as.numeric(threshold$year)
 threshold_current <- subset(threshold, year == 2025)
 threshold_current$year <- 2026
 threshold <- rbind(threshold, threshold_current)
+
+#Latvia: as with the top rate above, the OECD table reports 0 for 2025 and 2026. The 36% top
+#marginal rate applies above EUR 200,000, which is 12.12 times average income. Set after the
+#rbind so both years are covered.
+threshold$threshold_top_income_rate[threshold$ISO_3 == "LVA" &
+                                      threshold$year >= 2025] <- 12.12
 
 #threshold$year<-threshold$year+1
 
