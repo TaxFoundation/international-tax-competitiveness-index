@@ -681,8 +681,8 @@ table_e_cross_border$minimum_tax <- case_when(
   TRUE ~ NA_character_  # Handles any other cases, returning NA)
 )
 
-#US GILTI and BEAT
-table_e_cross_border$minimum_tax[table_e_cross_border$country=="United States"] <- "GILTI and BEAT"
+#US NCTI and BEAT
+table_e_cross_border$minimum_tax[table_e_cross_border$country=="United States"] <- "NCTI and BEAT"
 
 headers<-c("",
            "Participation Exemption",
