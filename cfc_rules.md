@@ -18,7 +18,11 @@ The value of the `cfc_rules` variable is a simple average of three variables:
 
 ## `active`: determines if the country's CFC regime taxes active income
 
-    Equal to 1 if CFC rules apply to active income; equal to 0 if they apply only to passive income or the country does not have a CFC regime; equal to 0.5 if there is a formula based on a share of passive income that triggers full inclusion or the country exempts CFCs with substantial activities.
+    Equal to 1 if CFC rules capture both active and passive income; equal to 0.5 if the rules use a threshold based on the share of passive income to decide whether all of the entity's income is treated as passive; equal to 0 if they apply only to passive income, or only to income associated with non-genuine arrangements, or the country does not have a CFC regime.
+
+A threshold is the only route to 0.5, and it must switch the regime to full inclusion. Where a passive-income share merely opens the door to attributing the passive income itself — a de minimis gate rather than a switch — the rules still reach passive income only and the score is 0. Austria and Belgium are the countries this distinguishes: their one-third tests decide whether passive income is attributed at all, not whether the entity's whole income is treated as passive.
+
+An exemption for CFCs carrying out substantial economic activities does not by itself reduce the score, because it narrows who the rules reach rather than which income they cover; where such an exemption is the only qualification, the score follows the reach of the rules. Regimes implementing the "Model B" approach of the EU Anti-Tax Avoidance Directive attribute income arising from non-genuine or artificial arrangements rather than a category of income, and are scored 0.
 
 ## `no_exemption`: determines if the country has exemptions to its CFC regime
 
