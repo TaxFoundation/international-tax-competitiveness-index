@@ -1,9 +1,8 @@
 #output tables code
 #Read in relevant spreadsheets
 
-raw_data_2025 <- read_csv(paste(final_outputs,"raw_data_2025.csv",sep=""))
+raw_data_2026 <- read_csv(paste(final_outputs,"raw_data_2026.csv",sep=""))
 
-final_2018 <- read_csv(paste(final_outputs,"data_2018_run.csv",sep=""))
 final_2019 <- read_csv(paste(final_outputs,"data_2019_run.csv",sep=""))
 final_2020 <- read_csv(paste(final_outputs,"data_2020_run.csv",sep=""))
 final_2021 <- read_csv(paste(final_outputs,"data_2021_run.csv",sep=""))
@@ -11,11 +10,12 @@ final_2022 <- read_csv(paste(final_outputs,"data_2022_run.csv",sep=""))
 final_2023 <- read_csv(paste(final_outputs,"data_2023_run.csv",sep=""))
 final_2024 <- read_csv(paste(final_outputs,"data_2024_run.csv",sep=""))
 final_2025 <- read_csv(paste(final_outputs,"data_2025_run.csv",sep=""))
+final_2026 <- read_csv(paste(final_outputs,"data_2026_run.csv",sep=""))
 
-subcategories_2025 <- read_csv(paste(final_outputs,"subcategories_2025.csv",sep=""))
+subcategories_2026 <- read_csv(paste(final_outputs,"subcategories_2026.csv",sep=""))
 
 ###Table 1 Results####
-table_1_results <- final_2025
+table_1_results <- final_2026
 
 #Select variables
 keep <- c("country","final_rank","final","corporate_rank","income_rank","consumption_rank","property_rank","cross_border_rank")
@@ -41,37 +41,35 @@ colnames(table_1_results) <- c("Country",
 write.csv(table_1_results,paste(final_outputs,"table_1_results.csv",sep=""),row.names=F)
 
 ###Table 2 Changes####
-table_2_changes <- merge(final_2024,final_2025,by="country")
+table_2_changes <- merge(final_2025,final_2026,by="country")
 
 keep <- c("country","final_rank.x","final.x","final_rank.y","final.y")
 table_2_changes <- table_2_changes[keep]
 
-colnames(table_2_changes) <- c("country", "2024 Rank","2024 Score","2025 Rank","2025 Score")
+colnames(table_2_changes) <- c("country", "2025 Rank","2025 Score","2026 Rank","2026 Score")
 
-#table_2_changes <- merge(final_2021,table_2_changes,by="country")
-#keep <- c("country","final_rank","final","2022 Rank","2022 Score","2024 Rank","2024 Score")
+#table_2_changes <- merge(final_2022,table_2_changes,by="country")
+#keep <- c("country","final_rank","final","2023 Rank","2023 Score","2025 Rank","2025 Score")
 #table_2_changes<-table_2_changes[keep]
 
-colnames(table_2_changes)<-c("Country","2024 Rank","2024 Score","2025 Rank","2025 Score")
+colnames(table_2_changes)<-c("Country","2025 Rank","2025 Score","2026 Rank","2026 Score")
 
-table_2_changes$'Change in Rank from 2024 to 2025'<-(table_2_changes$`2025 Rank`-table_2_changes$`2024 Rank`)*(-1)
-table_2_changes$'Change in Score from 2024 to 2025'<-table_2_changes$`2025 Score`-table_2_changes$`2024 Score`
+table_2_changes$'Change in Rank from 2025 to 2026'<-(table_2_changes$`2026 Rank`-table_2_changes$`2025 Rank`)*(-1)
+table_2_changes$'Change in Score from 2025 to 2026'<-table_2_changes$`2026 Score`-table_2_changes$`2025 Score`
 
 #Format Columns
 
-table_2_changes$'2024 Score'<-formatC(round(table_2_changes$'2024 Score',digits=1),format = "f",digits=1)
 table_2_changes$'2025 Score'<-formatC(round(table_2_changes$'2025 Score',digits=1),format = "f",digits=1)
-table_2_changes$'Change in Score from 2024 to 2025'<-as.numeric(table_2_changes$'Change in Score from 2024 to 2025')
-table_2_changes$'Change in Score from 2024 to 2025'<-formatC(round(table_2_changes$'Change in Score from 2024 to 2025',digits=1),format = "f",digits=1)
-
-#Error in round(table_2_changes$"Change in Score from 2024 to 2025", digits = 1) :  non-numeric argument to mathematical function
+table_2_changes$'2026 Score'<-formatC(round(table_2_changes$'2026 Score',digits=1),format = "f",digits=1)
+table_2_changes$'Change in Score from 2025 to 2026'<-as.numeric(table_2_changes$'Change in Score from 2025 to 2026')
+table_2_changes$'Change in Score from 2025 to 2026'<-formatC(round(table_2_changes$'Change in Score from 2025 to 2026',digits=1),format = "f",digits=1)
 
 write.csv(table_2_changes,paste(final_outputs,"table_2_changes.csv",sep=""),row.names=F)
 
 
 ###Table 3 Corporate####
-table_3_corporate<-subcategories_2025
-table_3_corporate<-merge(table_3_corporate,final_2025,by=c("country"))
+table_3_corporate<-subcategories_2026
+table_3_corporate<-merge(table_3_corporate,final_2026,by=c("country"))
 
 keep<-c("country","corporate_rank","corporate","corporate_rate_rank","corporate_rate","cost_recovery_rank","cost_recovery","incentives_rank","incentives")
 table_3_corporate<-table_3_corporate[keep]
@@ -89,8 +87,8 @@ write.csv(table_3_corporate,paste(final_outputs,"table_3_corporate.csv",sep=""),
 
 
 ###Table 4 Individual####
-table_4_individual<-subcategories_2025
-table_4_individual<-merge(table_4_individual,final_2025,by=c("country"))
+table_4_individual<-subcategories_2026
+table_4_individual<-merge(table_4_individual,final_2026,by=c("country"))
 
 #names(table_4_individual)
 
@@ -107,8 +105,8 @@ table_4_individual$`Capital Gains/Dividends Score`<-formatC(round(table_4_indivi
 write.csv(table_4_individual,paste(final_outputs,"table_4_individual.csv",sep=""),row.names=F)
 
 ###Table 5 Consumption####
-table_5_consumption<-subcategories_2025
-table_5_consumption<-merge(table_5_consumption,final_2025,by=c("country"))
+table_5_consumption<-subcategories_2026
+table_5_consumption<-merge(table_5_consumption,final_2026,by=c("country"))
 
 #names(table_5_consumption)
 
@@ -124,8 +122,8 @@ table_5_consumption$`Base Score`<-formatC(round(table_5_consumption$`Base Score`
 write.csv(table_5_consumption,paste(final_outputs,"table_5_consumption.csv",sep=""),row.names=F)
 
 ###Table 6 Property####
-table_6_property<-subcategories_2025
-table_6_property<-merge(table_6_property,final_2025,by=c("country"))
+table_6_property<-subcategories_2026
+table_6_property<-merge(table_6_property,final_2026,by=c("country"))
 
 #names(table_6_property)
 
@@ -143,8 +141,8 @@ write.csv(table_6_property,paste(final_outputs,"table_6_property.csv",sep=""),ro
 
 
 ###Table 7 Cross-Border####
-table_7_cross_border<-subcategories_2025
-table_7_cross_border<-merge(table_7_cross_border,final_2025,by=c("country"))
+table_7_cross_border<-subcategories_2026
+table_7_cross_border<-merge(table_7_cross_border,final_2026,by=c("country"))
 
 #names(table_7_cross_border)
 
@@ -165,7 +163,7 @@ write.csv(table_7_cross_border,paste(final_outputs,"table_7_cross_border.csv",se
 ###Table A Corporate####
 
 #Raw Data
-table_a_corporate_raw<-subset(raw_data_2025,raw_data_2025$year==2025)
+table_a_corporate_raw<-subset(raw_data_2026,raw_data_2026$year==2026)
 
 keep<-c("country",
         "corporate_rate",
@@ -271,7 +269,7 @@ headers<-c("",
            "",
            "",
            "",
-           "Tax Incentives and Complexity","","","","","")
+           "Tax Incentives and Complexity","","","","","","")
 columns<-c("Country",
            "Top Marginal Corporate Tax Rate",
            "Loss Carryback (Number of Years)",
@@ -286,7 +284,8 @@ columns<-c("Country",
            "Digital Services Tax",
            "Corporate Complexity (Number of separate rates or alternative minimum taxes)",
            "Corporate Complexity (Surtax on corporate income)",
-           "Corporate Complexity (Share of revenue collected on income from non-standard income taxes)")
+           "Corporate Complexity (Share of revenue collected on income from non-standard income taxes)",
+           "Corporate Complexity (Share of revenue collected from turnover taxes)")
 
 table_a_corporate<-rbind(headers,columns,table_a_corporate)
 
@@ -297,7 +296,7 @@ write.csv(table_a_corporate,paste(final_outputs,"table_a_corporate.csv",sep=""),
 #Table B Individual####
 
 #Raw Data
-table_b_individual_raw<-subset(raw_data_2025,raw_data_2025$year==2025)
+table_b_individual_raw<-subset(raw_data_2026,raw_data_2026$year==2026)
 #names(table_b_individual_raw)
 
 keep<-c("country","top_income_rate",
@@ -348,7 +347,6 @@ headers<-c("",
            "Income Tax Complexity",
            "",
            "Capital Gains/Dividends",
-           "",
            "")
 columns<-c("Country",
            "Top Personal Income Tax Rate",
@@ -391,7 +389,7 @@ write.csv(table_b_individual,paste(final_outputs,"table_b_individual.csv",sep=""
 
 #Table C Consumption####
 #Raw Data
-table_c_consumption_raw<-subset(raw_data_2025,raw_data_2025$year==2025)
+table_c_consumption_raw<-subset(raw_data_2026,raw_data_2026$year==2026)
 #names(table_c_consumption_raw)
 
 keep<-c("country","vat_rate",
@@ -448,7 +446,7 @@ write.csv(table_c_consumption,paste(final_outputs,"table_c_consumption.csv",sep=
 
 #Table D Property####
 #Raw Data
-table_d_property_raw<-subset(raw_data_2025,raw_data_2025$year==2024)
+table_d_property_raw<-subset(raw_data_2026,raw_data_2026$year==2026)
 #names(table_d_property_raw)
 
 keep<-c("country","property_tax", 
@@ -595,7 +593,7 @@ write.csv(table_d_property,paste(final_outputs,"table_d_property.csv",sep=""),ro
 
 #Table E Cross-Border####
 #Raw Data
-table_e_cross_border_raw<-subset(raw_data_2025,raw_data_2025$year==2025)
+table_e_cross_border_raw<-subset(raw_data_2026,raw_data_2026$year==2026)
 
 keep<-c("country",
         "dividends_exemption",
