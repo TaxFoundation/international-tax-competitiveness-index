@@ -100,7 +100,7 @@ imf_capital_stock_data<-rbind(imf_capital_stock_data,capital_stock_19,capital_st
 #property tax revenues####
 
 property_tax_revenue <- get_dataset("OECD.CTP.TPS,DSD_REV_COMP_OECD@DF_RSOECD",
-                                   "TUR+GBR+USA+SVN+ESP+SWE+CHE+NLD+NZL+NOR+POL+PRT+SVK+ITA+JPN+KOR+LVA+LTU+LUX+MEX+ISL+IRL+ISR+DNK+EST+FIN+FRA+DEU+GRC+HUN+AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE..S13.T_4100..USD.A")
+                                   "TUR+GBR+USA+SVN+ESP+SWE+CHE+NLD+NZL+NOR+POL+PRT+SVK+ITA+JPN+KOR+LVA+LTU+LUX+MEX+ISL+IRL+ISR+DNK+EST+FIN+FRA+DEU+GRC+HUN+AUS+AUT+BEL+CAN+CHL+COL+CRI+CZE..S13.T_4100..XDC.A")
 property_tax_revenue<-property_tax_revenue[c(8,12,7)]
 colnames(property_tax_revenue) <- c("ISO_3","year","property_tax_collections")
 property_tax_revenue<-property_tax_revenue[property_tax_revenue$year >=2012,]
@@ -114,7 +114,7 @@ property_tax_revenue <- property_tax_revenue[!is.na(property_tax_revenue$propert
 #tax (T_4100) for Australia and Greece, so carry forward their 2023 values.
 ISO_3 <- c("AUS","GRC")
 year <- c("2024","2024")
-property_tax_collections <- c("30.042699","3.405995")
+property_tax_collections <- c("45.22","3.15")
 missing <- data.frame(ISO_3,year,property_tax_collections)
 property_tax_revenue <- rbind(property_tax_revenue,missing)
 
