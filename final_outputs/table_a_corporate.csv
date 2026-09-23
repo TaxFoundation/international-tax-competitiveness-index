@@ -2,7 +2,7 @@
 "","Corporate Rate","Cost Recovery","","","","","","","Tax Incentives and Complexity","","","","","",""
 "Country","Top Marginal Corporate Tax Rate","Loss Carryback (Number of Years)","Loss Carryforward (Number of Years)","Machinery","Industrial Buildings","Intangibles","Inventory (Best Available)","Allowance for Corporate Equity (Rate and Base)","Patent Box","Implied Tax Subsidy Rates on R&D Expenditures","Digital Services Tax","Corporate Complexity (Number of separate rates or alternative minimum taxes)","Corporate Complexity (Surtax on corporate income)","Corporate Complexity (Share of revenue collected on income from non-standard income taxes)","Corporate Complexity (Share of revenue collected from turnover taxes)"
 "Australia","30.0%","0","No Limit","85.1%","47.9%","54.8%","Average Cost","No","No","0.15","No","3","No","0.0%","0.0%"
-"Austria","23.0%","0","No Limit, capped at 75% of taxable income","88.4%","85.5%","73.8%","LIFO","No","No","0.17","Yes","3","No","13.8%","0.8%"
+"Austria","23.0%","0","No Limit, capped at 75% of taxable income","88.4%","40.9%","73.8%","LIFO","No","No","0.17","Yes","3","No","13.8%","0.8%"
 "Belgium","25.0%","0","No Limit, capped at 70% of taxable income exceeding EUR 1 million","87.0%","54.8%","87.0%","LIFO","No","Yes","0.16","No","2","No","0.4%","0.0%"
 "Canada","26.0%","3","20","100.0%","63.6%","100.0%","Average Cost","No","No","0.23","No","2","No","9.2%","0.4%"
 "Chile","27.0%","0","No Limit","70.6%","42.3%","0.0%","Average Cost","No","No","0.28","No","1","No","18.2%","0.0%"
