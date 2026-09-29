@@ -586,7 +586,7 @@ notes_6<-c("(d) The purchaser of real property is subject to a purchase tax.",
 
 
 
-table_d_property<-rbind(headers,columns,table_d_property,notes_1,notes_2,notes_3,notes_4,notes_5,notes_6)
+table_d_property<-rbind(headers,columns,table_d_property,notes_1,notes_2,notes_3,notes_5,notes_6)
 
 write.csv(table_d_property,paste(final_outputs,"table_d_property.csv",sep=""),row.names = F)
 

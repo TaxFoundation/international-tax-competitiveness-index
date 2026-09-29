@@ -12,12 +12,12 @@ Denmark,Tax on Real Property,Yes,0.70%,No,Inheritance and Gift Tax,Real Estate T
 Estonia,Land Tax,No,0.10%,No,None,No,No,No,No
 Finland,Tax on Real Property,Yes,0.30%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,No,Yes
 France,Tax on Real Property,Yes,1.10%,Wealth Tax on Selected Assets,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,No,Yes
-Germany,Tax on Real Property (c),Yes,0.20%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,No,No
+Germany,Tax on Real Property,Yes,0.20%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,No,No
 Greece,Tax on Real Property,Yes,1.20%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,Yes,No
 Hungary,Tax on Real Property,Yes,0.30%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Bank Tax,No,Yes
 Iceland ,Tax on Real Property,No,1.00%,No,Inheritance Tax,Stamp Duty on Transfer of Real Property,Bank Tax,No,No
 Ireland,Tax on Real Property,Yes,0.30%,No,Inheritance and Gift Tax,Stamp Duty on Transfer of Real Property,No,No,Yes
-Israel,Tax on Sale of Real Property ©,Yes,1.20%,No,None,Real Estate Transfer Tax €,No,No,No
+Israel,Tax on Sale of Real Property (c) ,Yes,1.20%,No,None,Real Estate Transfer Tax €,No,No,No
 Italy,Tax on Real Property,No,0.60%,Wealth Tax on Selected Assets,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
 Japan,Tax on Real Property,Yes,0.80%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Fixed assets tax,Yes,No
 Korea,Tax on Real Property,No,0.40%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
@@ -38,18 +38,3 @@ Switzerland,Tax on Real Property,Yes,0.10%,Net Wealth Tax,Many cantons levy both
 Turkey,Tax on Real Property,Yes,0.10%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,No,Yes,Yes
 United Kingdom,Tax on Real Property,Yes,1.80%,No,Inheritance and Gift Tax,Stamp Duty on Transfer of Real Property,Bank Tax,No,Yes
 United States,Tax on Real Property,Yes,1.60%,No,Inheritance and Gift Tax,Real Estate Transfer Tax,Tangible Property Taxes and Capital Stock Taxes,No,No
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-Notes: (a) Tax applies to some real estate (vacation homes). (b) Tax on the imputed rent of properties. Applies to machinery. (c) The Land Appreciation Tax is levied like a capital gains tax on the sale of property.,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,Net Wealth Tax,Wealth Tax,,,,
-,,,,"Estate, Inheritance, or Gift Tax",Estate/Inheritance Tax,,,,
-,,,,Property Transfer Tax,Transfer Taxes,,,,
-,,,,Corporate Asset Tax,Capital/Asset Taxes,,,,
-,,,,Capital Duties,Capital Duties,,,,
-,,,,Financial Transaction Tax,Financial Transaction Tax,,,,
