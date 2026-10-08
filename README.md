@@ -75,7 +75,7 @@ This code organizes PwC's Paying Taxes data for the following variables:
 The input file is `pwc_paying_taxes.csv`, which can be found in /source-data.
 
 ### `07_packaging_data.R`
-This file combines the source data and intermediate output data. The outputs are complete datasets for 2014-2022 stored in /final-data.
+This file combines the source data and intermediate output data. The outputs are complete datasets for 2014-2026 stored in /final-data.
 
 ### `08_index_calculations.R`
 This file is the main file for calculating _Index_ scores and ranks.
@@ -86,9 +86,9 @@ This file creates the tables used in the report.
 ## Designing your own reform scenario
 If you would like to see how a reform might impact a country's rank and score in the _Index_, you need to adjust only a handful of files.
 
-After downloading the repository you should edit the directory variables in `00_master_file.R` to ensure that the downloaded files paths match where they are located on your computer. Then you can run the `00_master_file.R` code up through `#Run code files####`. At that point you can run `source(“08_index_calculations.R”)` to produce the baseline rankings and scores from this year’s version of the _Index_. You may want to save the baseline output `data_2024_run.csv` to a new folder so that the results will not be overwritten in the next step.
+After downloading the repository you should edit the directory variables in `00_master_file.R` to ensure that the downloaded files paths match where they are located on your computer. Then you can run the `00_master_file.R` code up through `#Run code files####`. At that point you can run `source(“08_index_calculations.R”)` to produce the baseline rankings and scores from this year’s version of the _Index_. You may want to save the baseline output `data_2026_run.csv` to a new folder so that the results will not be overwritten in the next step.
 
-Next, you can create your reform scenario by manipulating the files in the `/final_data` folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the `final_index_data_2024.csv` file to change the corporate_rate variable for France to be 15 percent. 
+Next, you can create your reform scenario by manipulating the files in the `/final_data` folder. For example, if you wanted to test how a reduction in the French corporate tax rate would impact its rank and score, you could edit the `final_index_data_2026.csv` file to change the corporate_rate variable for France to be 15 percent. 
 
 Once that change is made and the file is saved, you can run the `08_index_calculations.R` file again and note the changes relative to the previous baseline.
 
@@ -105,71 +105,71 @@ The ITCI is a relative ranking of the competitiveness and neutrality of the tax 
 The ITCI is designed to measure a country’s tax code on a relative basis rather than on an absolute measurement. This means that a score of 100 does not signify the absolute best possible tax code but the best tax code among the 38 OECD countries. Each country’s score on the ITCI represents its relative difference from the best country’s score.
 
 ### The Calculation of the Variable, Subcategory, Category, and Final Score
-First, the standard deviation and average of each variable is calculated. The standard deviation measures the average difference of a country’s tax variables from the mean among all 38 countries.  For example, the average corporate income tax rate across the 38 OECD countries is about 23.6 percent, with a standard deviation of 5.3 percentage points. This means that on average, an OECD country’s corporate tax rate is 5.3 percentage points off from the mean rate of 23.6 percent.
+First, the standard deviation and average of each variable is calculated. The standard deviation measures the average difference of a country’s tax variables from the mean among all 38 countries.  For example, the average corporate income tax rate across the 38 OECD countries is about 24.2 percent, with a standard deviation of 5.4 percentage points. This means that on average, an OECD country’s corporate tax rate is 5.4 percentage points off from the mean rate of 24.2 percent.
 
 To compare variables with each other, it is necessary to standardize them, because each variable has a different mean and standard deviation. To standardize the variables, each observation is given a normalized score (z-score). This sets every variable’s mean to 0 with a standard deviation of 1. Each country’s score for each variable is a measure of its difference from the mean across all countries for that variable. A score of 0 means a country’s score is equal to the average, a score of -1 means it is one standard deviation below average, and a score of 1 is one standard deviation above average.
 
-The score for the corporate tax rate demonstrates this process. As mentioned, the average corporate income tax rate among the 38 OECD countries is 23.9 percent, and the standard deviation is 5.2 percentage points. The United States’ corporate tax rate normalized score is -0.34,  or 0.34 standard deviations less competitive than the average OECD country. In contrast, Ireland’s tax rate of 12.5 percent is 2.18 standard deviations more competitive than the average OECD country.
+The score for the corporate tax rate demonstrates this process. As mentioned, the average corporate income tax rate among the 38 OECD countries is 24.2 percent, and the standard deviation is 5.4 percentage points. The United States’ corporate tax rate normalized score is -0.24, or 0.24 standard deviations less competitive than the average OECD country. In contrast, Ireland’s tax rate of 12.5 percent is 2.17 standard deviations more competitive than the average OECD country.
 
 The next step is to combine variable scores to calculate subcategory scores. Within subcategories, each individual variable’s score is equally weighted and added together. For instance, the subcategory of cost recovery includes seven variables: loss carryback, loss carryforward, the present discounted value of depreciation schedules for machines, industrial buildings, and intangibles, inventory accounting method, and allowance for corporate equity. The scores for each of these seven variables are multiplied by 1/7, or 14.3 percent, to give them equal weight, and then added together. The result is the cost recovery subcategory score.
 
 #### Calculating Subcategory Scores
-From here, two transformations occur. First, to eliminate any negative values, the lowest z-score is multiplied by minus one. Then one is added to that value. For example, Colombia has the worst z-score for the corporate income tax rate subcategory (-2.14). Thus, -2.1403 multiplied by negative one is 2.1403. Adding one to that product gives 3.1403. Then 3.14 is added to each country’s z-score giving the adjusted z-score. This sets the worst score in each subcategory to 1. For Colombia, -2.14 plus 3.14 equals 1. 
+From here, two transformations occur. First, to eliminate any negative values, the lowest z-score is multiplied by minus one. Then one is added to that value. For example, France has the worst z-score for the corporate income tax rate subcategory (-2.20). Thus, -2.2006 multiplied by negative one is 2.2006. Adding one to that product gives 3.2006. Then 3.20 is added to each country’s z-score giving the adjusted z-score. This sets the worst score in each subcategory to 1. For France, -2.20 plus 3.20 equals 1. 
 
-Second, the adjusted subcategory scores for each country are scaled to 100, relative to the country with the best score in each subcategory. This is done by taking each country’s adjusted z-score and dividing it by the best adjusted z-score in each category. For example, Hungary, which has the lowest corporate tax rate, has the best adjusted corporate rate subcategory z-score of 2.85, and receives a final subcategory score of 100.
+Second, the adjusted subcategory scores for each country are scaled to 100, relative to the country with the best score in each subcategory. This is done by taking each country’s adjusted z-score and dividing it by the best adjusted z-score in each category. For example, Hungary, which has the lowest corporate tax rate, has the highest corporate rate subcategory z-score of 2.81, which becomes the best adjusted z-score of 6.02, and receives a final subcategory score of 100.
 
 #### Calculating Category Scores
-The same method is used to create the category scores. First, the z-score for subcategories is averaged to create the initial category score. Then, the worst z-score is multiplied by minus one and one is added to that product That resulting amount is added to each country’s z-score. For example, Colombia has the worst initial corporate category score of -0.91. Thus, -0.91 multiplied by negative one is 0.91. Adding one to that product gives 1.91. Then 1.91 is added to each country’s initial category score to give the adjusted initial category score. This sets the worst score in each category to 1. For Colombia, -0.91 plus 1.91 equals 1.
+The same method is used to create the category scores. First, the z-score for subcategories is averaged to create the initial category score. Then, the worst z-score is multiplied by minus one and one is added to that product That resulting amount is added to each country’s z-score. For example, France has the worst initial corporate category score of -1.24. Thus, -1.24 multiplied by negative one is 1.24. Adding one to that product gives 2.24. Then 2.24 is added to each country’s initial category score to give the adjusted initial category score. This sets the worst score in each category to 1. For France, -1.24 plus 2.24 equals 1.
 
-Second, the adjusted initial category scores for each country are scaled to 100, relative to the country with the best score in each category. This is done by taking each country’s adjusted initial category score and dividing it by the best adjusted initial category score in each category. For example, Latvia, which has the best corporate category score, has the best adjusted category score of 1.25, and receives a final category score of 100.
+Second, the adjusted initial category scores for each country are scaled to 100, relative to the country with the best score in each category. This is done by taking each country’s adjusted initial category score and dividing it by the best adjusted initial category score in each category. For example, Latvia, which has the best corporate category score, has the best adjusted category score of 3.46, and receives a final category score of 100.
 
 #### Calculating the Final Scores
-The same method is used to create the final score. First, the initial category scores are averaged to create the initial final score. Then, the lowest value of the initial final score is multiplied by negative one and one is added to that product. That resulting amount is added to each country’s initial final score. For example, Colombia has the worst initial final score of -0.47. Thus, -0.47 multiplied by negative one is 0.47. Adding one to that product gives 1.47. Then 1.47 is added to each country’s initial final score (the adjusted initial final score). This sets the worst score in each category to 1.
+The same method is used to create the final score. First, the initial category scores are averaged to create the initial final score. Then, the lowest value of the initial final score is multiplied by negative one and one is added to that product. That resulting amount is added to each country’s initial final score. For example, France has the worst initial final score of -0.52. Thus, -0.52 multiplied by negative one is 0.52. Adding one to that product gives 1.52. Then 1.52 is added to each country’s initial final score (the adjusted initial final score). This sets the worst score in each category to 1.
 
-Second, the adjusted initial final scores for each country are scaled to 100, relative to the country with the best score in each category. This is done by taking each country’s adjusted initial final score and dividing it by the best adjusted initial final score in each category. For example, Estonia, which has the best final score, has the best adjusted final score of 1.72, and receives a final category score of 100.
+Second, the adjusted initial final scores for each country are scaled to 100, relative to the country with the best score in each category. This is done by taking each country’s adjusted initial final score and dividing it by the best adjusted initial final score in each category. For example, Estonia, which has the best final score, has the best adjusted final score of 2.19, and receives a final category score of 100.
 
 ## What Drives the Final Score?
 Because the _Index_ is constructed to compare 38 countries along 43 variables, it is possible that even despite the methods described above that certain variables, subcategories, or categories could be more highly correlated with the final score.
 To evaluate this tendency, this section reviews the correlation coefficients between the components of the _Index_ and the final score.
 
 ### Specific Categories
-The following table shows the correlation coefficients between the category scores and the final score. The average of these correlations is 0.54 with the weakest correlate being Consumption Taxes (0.29) and the strongest correlate being Property Taxes (0.69). This data can be found in `/final_outputs` in the file `categories_correlation.csv`.
+The following table shows the correlation coefficients between the category scores and the final score. The average of these correlations is 0.54 with the weakest correlate being Consumption Taxes (0.28) and the strongest correlate being Property Taxes (0.70). This data can be found in `/final_outputs` in the file `categories_correlation.csv`.
 
 | Category |	Correlation Coefficient with the Final Score |
 |---|---|
 |Corporate Taxes|	0.65|
 |Individual Income Taxes|	0.61|
-|Consumption Taxes|	0.29|
-|Property Taxes	|0.69|
-|Cross-Border Tax Rules|	0.46|
+|Consumption Taxes|	0.28|
+|Property Taxes	|0.70|
+|Cross-Border Tax Rules|	0.47|
  
 ### Specific Subcategories
-The next table shows the correlation coefficients between the subcategory scores and the final score. The average of these correlations is 0.39 with the weakest correlate being Tax Treaties (-0.04) and the strongest correlate being Incentives Complexity (0.57). This data can be found in `/final_outputs` in the file `subcategories_correlation.csv`.
+The next table shows the correlation coefficients between the subcategory scores and the final score. The average of these correlations is 0.38 with the weakest correlate being Tax Treaties (-0.15) and the strongest correlate being Incentives Complexity (0.54). This data can be found in `/final_outputs` in the file `subcategories_correlation.csv`.
 
 | Subcategory	| Correlation Coefficient with the Final Score|
 |---|---|
-|Corporate Rate| 0.39 |
-|Cost Recovery|	0.49 |
-|Incentives/Complexity| 0.57 |
-|Income Taxes| 0.54 |
-|Income Tax Complexity| 0.13 |
-|Capital Gains and Dividends| 0.51 |
-|Consumption Tax Rate| 0.14 |
-|Consumption Tax Base| 0.33 |
+|Corporate Rate| 0.37 |
+|Cost Recovery|	0.50 |
+|Incentives/Complexity| 0.54 |
+|Income Taxes| 0.52 |
+|Income Tax Complexity| 0.20 |
+|Capital Gains and Dividends| 0.46 |
+|Consumption Tax Rate| 0.16 |
+|Consumption Tax Base| 0.31 |
 |Real Property Taxes| 0.49 |
-|Wealth/Estate Taxes| 0.50 |
-|Capital/Transation Taxes| 0.50 |
-|Dividends/Capital Gains Exemption (Territoriality)| 0.40 |
-|Withholding Taxes| 0.49 |
-|Tax Treaties| -0.04 |
-|International Tax Regulations| 0.36 |
+|Wealth/Estate Taxes| 0.53 |
+|Capital/Transation Taxes| 0.47 |
+|Dividends/Capital Gains Exemption (Territoriality)| 0.27 |
+|Withholding Taxes| 0.52 |
+|Tax Treaties| -0.15 |
+|International Tax Regulations| 0.46 |
 
 
 ### The Methodology
-The method used to construct the _Index_ relies heavily on normalizing variables using z-scores, scaled around zero. To test whether this method significantly alters the final score, we also calculated the _Index_ by normalizing variables on a scale of 0 to 10. Though the final results are not perfectly identical, the correlation between the final score developed using z-scores and the alternative normalization method is 0.968 for the 2022 scores.
+The method used to construct the _Index_ relies heavily on normalizing variables using z-scores, scaled around zero. To test whether this method significantly alters the final score, we also calculated the _Index_ by normalizing variables on a scale of 0 to 10. Though the final results are not perfectly identical, the correlation between the final score developed using z-scores and the alternative normalization method is 0.974 for the 2026 scores.
 
 ## Explanation of Data
-A more thorough description of these data and how the Tax Foundation uses them is contained within the [*International Tax Competitiveness Index*](https://taxfoundation.org/publications/international-tax-competitiveness-index/). When possible, the data is from the current year as of July (e.g., 2024 data for the _2024 Index_). If current data were not available, there is a time lag, as noted after each variable description.
+A more thorough description of these data and how the Tax Foundation uses them is contained within the [*International Tax Competitiveness Index*](https://taxfoundation.org/publications/international-tax-competitiveness-index/). When possible, the data is from the current year as of July (e.g., 2026 data for the _2026 Index_). If current data were not available, there is a time lag, as noted after each variable description.
 
 
 | Name | Description |
@@ -230,4 +230,4 @@ A more thorough description of these data and how the Tax Foundation uses them i
 | `minimum_tax` | Indicates whether a country imposes a general minimum tax. Countries with an Income Inclusion Rule (IIR) or GILTI/NCTI in the U.S.are marked as `0.5`; Countries that impose both an IIR and an Under-Taxed Profits Rule (UTPR) or BEAT in the U.S. are marked as `1`. No time lag. |
 
 
-The _ITCI_ uses the most up-to-date data available as of July 2024.
+The _ITCI_ uses the most up-to-date data available as of July 2026.

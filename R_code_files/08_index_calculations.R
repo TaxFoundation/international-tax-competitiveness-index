@@ -537,8 +537,8 @@ cor(alternate_final_categories$final[alternate_final_categories$year == 2026],fi
 
 #normal scoring techniques:
 
-cortest1<-final_categories[final_categories$year == 2025,]
-subcortest1<-final_subcategories[final_subcategories$year == 2025,]
+cortest1<-final_categories[final_categories$year == 2026,]
+subcortest1<-final_subcategories[final_subcategories$year == 2026,]
 subcortest1<-cbind(subcortest1,cortest1[14])
 cor(cortest1[c(4,6,8,10,12,14)])
 categories_correl<-data.frame(cor(cortest1[c(4,6,8,10,12,14)]))
