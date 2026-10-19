@@ -11,6 +11,12 @@ final_data<-"C:/Github/international-tax-competitiveness-index/final_data/"
 final_outputs<-"C:/Github/international-tax-competitiveness-index/final_outputs/"
 country_outputs<-"C:/Github/international-tax-competitiveness-index/country_outputs/"
 
+#Download timeout####
+#R defaults to 60 seconds, which is not enough for the larger OECD SDMX queries in
+#01_oecd_data_scraper.R, 03_vat_data.R, 04_property_tax_collections.R and
+#06_withholding_rates.R. The tax wedge query alone runs to about 2 MB and 45 seconds.
+options(timeout = max(600, getOption("timeout")))
+
 
 #Define Using function####
 using<-function(...,prompt=TRUE){
@@ -46,6 +52,7 @@ using(countrycode)
 using(tidyverse)
 using(stringr)
 using(IMFData)
+using(httr)
 using(readr)
 #using(xlsx)
 using(scales)
@@ -96,7 +103,8 @@ oecd_countries<-c("AUS",
 #Source: https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html
 iso_country_codes <- read_csv(paste(source_data,"iso_country_codes.csv",sep=""))
 colnames(iso_country_codes)<-c("country","ISO_2","ISO_3")
-                              
+          
+
 #Run code files####
 source("01_oecd_data_scraper.R")
 source("02_cost_recovery.R")

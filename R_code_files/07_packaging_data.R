@@ -43,10 +43,14 @@ index_data2024$year<-2024
 index_data2025<-read_csv(paste(source_data,"index_data_2025.csv",sep=""))
 index_data2025$year<-2025
 
+index_data2026<-read_csv(paste(source_data,"index_data_2026.csv",sep=""))
+index_data2026$year<-2026
+
 index_data_old<-rbind(index_data2014,index_data2015,index_data2016,
                       index_data2017,index_data2018,index_data2019,
                       index_data2020,index_data2021, index_data2022,
-                      index_data2023, index_data2024, index_data2025)
+                      index_data2023, index_data2024, index_data2025,
+                      index_data2026)
 
 #Join PwC data with index_data_property_tax_variables####
 #This has been disabled
@@ -64,7 +68,7 @@ index_data_old<-rbind(index_data2014,index_data2015,index_data2016,
 #Join OECD data with index_data_old####
 
 #Remove variables from index_data_old that are in OECD data
-oecd_variables_list<-c("corporate_rate", "r_and_d_credit", "top_income_rate", "threshold_top_income_rate", "tax_wedge","dividends_rate","corporate_other_rev","personal_other_rev")
+oecd_variables_list<-c("corporate_rate", "r_and_d_credit", "top_income_rate", "threshold_top_income_rate", "tax_wedge","dividends_rate","corporate_other_rev","personal_other_rev","turnover_tax_rev")
 index_data_old<-index_data_old[,!names(index_data_old) %in% oecd_variables_list]
 
 index_data_oecd_variables<-merge(index_data_old,oecd_variables,by=c("country","ISO_2","ISO_3","year"))
@@ -119,7 +123,7 @@ index_data_final<-index_data_final[c("ISO_2","ISO_3","country","year",
                                    "corporate_rate","loss_carryback","loss_carryforward",
                                    "machines_cost_recovery","buildings_cost_recovery",
                                    "intangibles_cost_recovery","inventory","allowance_corporate_equity","patent_box",
-                                   "r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev",
+                                   "r_and_d_credit","digital_services_tax","corporate_alt_minimum","corporate_surtax","corporate_other_rev","turnover_tax_rev",
                                    "top_income_rate","threshold_top_income_rate","tax_wedge",
                                    "personal_surtax","personal_other_rev","capital_gains_rate",
                                    "dividends_rate",
@@ -145,3 +149,4 @@ write.csv(subset(index_data_final,index_data_final$year==2022),file = paste(fina
 write.csv(subset(index_data_final,index_data_final$year==2023),file = paste(final_data,"final_index_data_2023.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2024),file = paste(final_data,"final_index_data_2024.csv",sep=""),row.names=F)
 write.csv(subset(index_data_final,index_data_final$year==2025),file = paste(final_data,"final_index_data_2025.csv",sep=""),row.names=F)
+write.csv(subset(index_data_final,index_data_final$year==2026),file = paste(final_data,"final_index_data_2026.csv",sep=""),row.names=F)
