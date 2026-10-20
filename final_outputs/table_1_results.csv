@@ -1,39 +1,39 @@
-"Country","Overall Rank","Overall Score","Corporate Tax Rank","Individual Taxes Rank","Consumption Taxes Rank","Property Taxes Rank","Cross-Border Tax Rules Rank"
-"Estonia",1,"100.0",2,1,24,1,7
-"Latvia",2,"92.5",1,8,22,4,6
-"New Zealand",3,"88.2",31,7,1,8,14
-"Switzerland",4,"86.8",7,9,4,36,2
-"Lithuania",5,"82.6",3,10,23,6,16
-"Luxembourg",6,"81.9",20,21,7,15,5
-"Czech Republic",7,"79.4",9,4,32,5,11
-"Australia",8,"78.9",29,14,9,3,23
-"Turkey",9,"76.0",21,6,15,22,8
-"Hungary",10,"75.6",5,3,38,23,4
-"Israel",11,"75.1",11,31,11,10,18
-"Slovak Republic",12,"74.7",24,2,33,7,17
-"Sweden",13,"74.6",6,18,26,9,12
-"Costa Rica",14,"73.3",35,13,6,11,29
-"Canada",15,"72.2",17,28,8,25,28
-"Netherlands",16,"71.6",23,30,14,20,3
-"United States",17,"71.2",8,17,3,27,37
-"Austria",18,"70.9",18,27,17,17,10
-"Germany",19,"69.2",30,34,13,12,9
-"Norway",20,"67.5",15,29,27,16,15
-"Mexico",21,"66.9",28,26,12,2,38
-"Finland",22,"66.2",10,24,28,21,24
-"Greece",23,"65.9",22,5,29,30,19
-"Chile",24,"65.2",32,23,10,13,36
-"Slovenia",25,"64.5",14,12,30,24,30
-"Korea",26,"63.8",26,38,2,31,34
-"Belgium",27,"63.5",16,15,25,28,21
-"Japan",28,"62.3",36,35,5,26,31
-"Ireland",29,"62.2",4,36,35,18,27
-"United Kingdom",30,"61.9",25,22,34,33,1
-"Denmark",31,"61.6",19,37,20,14,32
-"Poland",32,"61.2",12,11,36,29,25
-"Portugal",33,"59.6",34,19,21,19,33
-"Iceland",34,"59.0",13,32,19,34,26
-"Spain",35,"57.5",33,20,18,35,20
-"Italy",36,"50.8",27,16,37,38,22
-"Colombia",37,"47.3",37,25,16,37,35
-"France",38,"45.7",38,33,31,32,13
+Country Flag,Country,Overall Rank,Overall Score,Corporate Tax Rank,Individual Taxes Rank,Consumption Taxes Rank,Property Taxes Rank,Cross-Border Tax Rules Rank
+:EE: Estonia,Estonia,1,100,2,1,24,1,7
+:LV: Latvia,Latvia,2,92.1,1,8,22,4,6
+:NZ: New Zealand,New Zealand,3,89.3,27,7,1,8,14
+:CH: Switzerland,Switzerland,4,86.8,7,9,4,36,2
+:LU: Luxembourg,Luxembourg,5,81.7,21,21,7,15,5
+:LT: Lithuania,Lithuania,6,80.8,4,10,23,6,16
+:CZ: Czech Republic,Czech Republic,7,79.4,8,4,32,5,11
+:AU: Australia,Australia,8,79,30,14,9,3,23
+:TR: Turkey,Turkey,9,76,22,6,15,22,8
+:HU: Hungary,Hungary,10,75.7,5,3,38,23,4
+:IL: Israel,Israel,11,75.2,11,31,11,10,18
+:SK: Slovak Republic,Slovak Republic,12,74.7,24,2,33,7,17
+:SE: Sweden,Sweden,13,74.6,6,18,26,9,12
+:CR: Costa Rica,Costa Rica,14,73.4,35,13,6,11,29
+:CA: Canada,Canada,15,73,13,28,8,25,28
+:AT: Austria,Austria,16,70.9,18,27,17,17,10
+:NL: Netherlands,Netherlands,17,70.2,28,30,14,20,3
+:US: United States,United States,18,69.7,12,17,3,27,37
+:DE: Germany,Germany,19,68.5,32,34,13,12,9
+:NO: Norway,Norway,20,67.5,16,29,27,16,15
+:MX: Mexico,Mexico,21,66.5,29,26,12,2,38
+:FI: Finland,Finland,22,66.2,9,24,28,21,24
+:GR: Greece,Greece,23,65.9,23,5,29,30,19
+:KR: Korea,Korea,24,65.7,19,38,2,31,34
+:CL: Chile,Chile,25,65.3,33,23,10,13,36
+:SV: Slovenia,Slovenia,26,64.6,15,12,30,24,30
+:BE: Belgium,Belgium,27,63.5,17,15,25,28,21
+:JP: Japan,Japan,28,62.3,36,35,5,26,31
+:IR: Ireland,Ireland,29,62.2,3,36,35,18,27
+:GB: United Kingdom,United Kingdom,30,61.9,25,22,34,33,1
+:PL: Poland,Poland,31,61.7,10,11,36,29,25
+:DK: Denmark,Denmark,32,61.6,20,37,20,14,32
+:PT: Portugal,Portugal,33,60.4,31,19,21,19,33
+:IS: Iceland,Iceland,34,59,14,32,19,34,26
+:ES: Spain,Spain,35,57.6,34,20,18,35,20
+:IT: Italy,Italy,36,50.8,26,16,37,38,22
+:CO: Colombia,Colombia,37,47.4,37,25,16,37,35
+:FR:France,France,38,45.7,38,33,31,32,13
